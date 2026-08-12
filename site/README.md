@@ -61,8 +61,21 @@ Static, no build step, served from this repo.
    `organonart/organon-mind` repo.
 2. Set **Root Directory = `site`**, Framework Preset = **Other**, no build
    command, no install command.
-3. Domains: **`organonmind.org`** (apex), with **`www.organonmind.org`**
-   redirecting to it.
+3. Domains: **`organonmind.org`** (apex) is canonical, with
+   **`www.organonmind.org`** redirecting to it.
+
+⚠️ **Check the direction of that redirect; it has been backwards.** Measured
+2026-08-12: the apex served a 308 to `www`, i.e. `www` was canonical — the
+opposite of the line above, which had been sitting here describing an intention
+rather than the configuration. Verify with `curl`, not by reading:
+
+```
+curl -s -o /dev/null -w "%{redirect_url}\n" https://organonmind.org
+```
+
+This matters more here than on a marketing site. Publications are numbered so
+they can be **cited**, and a citation inherits whichever host answered when it
+was written. Settle the canonical host before publishing anything, not after.
 
 ⚠️ **Step 2 is the one that fails silently, and it already has once.** On the
 old layout, leaving Root Directory unset did not error — Vercel found a
