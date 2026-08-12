@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OM-001 · Conversational Agent Control Surfaces — Organon Mind</title>
+<meta name="description" content="A pattern language for mixed-initiative, tool-using interfaces. Fourteen patterns in the Gang of Four form.">
+<link rel="icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Organon Mind">
+<meta property="og:title" content="Conversational Agent Control Surfaces">
+<meta property="og:description" content="A pattern language for mixed-initiative, tool-using interfaces.">
+<meta property="og:url" content="https://organonmind.org/om-001">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --paper:#ffffff; --raise:#f7f8f9; --ink:#0f1114; --muted:#5d636c; --faint:#8b919b;
+  --rule:#e2e5e9; --rule-strong:#c9ced6; --link:#1440c4;
+  --sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --measure:34rem; --gutter:9.5rem;
+}
+/* Deliberately single-theme. A publication has a canonical appearance; it does
+   not follow the reader's operating system. Every colour is painted explicitly. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.65;margin:0;padding:0 1.5rem 8rem;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+.doc{max-width:calc(var(--gutter) + var(--measure));margin:0 auto}
+.row{display:grid;grid-template-columns:var(--gutter) minmax(0,1fr)}
+.row>.mark{font-family:var(--mono);font-size:.7rem;line-height:1.5;color:var(--faint);
+  letter-spacing:.04em;padding-top:.42rem;padding-right:1.5rem}
+.row>.body{min-width:0}
+@media (max-width:44rem){
+  .row{grid-template-columns:1fr}
+  .row>.mark{padding:0 0 .3rem;font-size:.66rem}
+  :root{--gutter:0rem}
+}
+
+.mast{padding:4.5rem 0 0}
+.org{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin:0}
+.org a{color:inherit;text-decoration:none}
+h1{font-weight:600;letter-spacing:-.022em;font-size:clamp(1.85rem,4.4vw,2.6rem);
+  line-height:1.14;margin:2.6rem 0 0;max-width:var(--measure);text-wrap:balance}
+.standfirst{font-size:1.1rem;color:var(--muted);margin:.85rem 0 0;max-width:var(--measure);text-wrap:balance}
+
+.meta{font-family:var(--mono);font-size:.735rem;line-height:1.85;
+  border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule);
+  margin:2.75rem 0 0;padding:.9rem 0;display:grid;grid-template-columns:max-content 1fr;gap:0 1.6rem}
+.meta dt{color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+.meta dd{margin:0}
+.revision{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin:.85rem 0 0;
+  padding-left:.9rem;border-left:2px solid var(--rule-strong)}
+
+h2{font-weight:600;font-size:1.32rem;letter-spacing:-.012em;line-height:1.28;margin:0;text-wrap:balance}
+h3{font-weight:600;font-size:1.05rem;letter-spacing:-.006em;margin:0;text-wrap:balance}
+.part{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 .3rem}
+section{margin:3.6rem 0 0}
+p{margin:0 0 1.1rem;max-width:var(--measure)}
+p:last-child{margin-bottom:0}
+a{color:var(--link);text-underline-offset:2px;text-decoration-thickness:1px}
+a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+strong{font-weight:620}
+ul{margin:0 0 1.1rem;padding-left:1.15rem;max-width:var(--measure)}
+li{margin:.3rem 0}
+li::marker{color:var(--faint)}
+.lede{font-size:1.06rem}
+blockquote{margin:1.9rem 0;padding:0 0 0 1.15rem;border-left:2px solid var(--ink);
+  font-size:1.06rem;max-width:var(--measure)}
+blockquote p{margin:0}
+
+.field{font-family:var(--mono);font-size:.685rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin:1.75rem 0 .4rem}
+.field.first{margin-top:1.1rem}
+
+pre{font-family:var(--mono);font-size:.78rem;line-height:1.6;background:var(--raise);
+  border:1px solid var(--rule);border-radius:2px;padding:.85rem 1rem;margin:1.15rem 0;overflow-x:auto}
+code{font-family:var(--mono);font-size:.87em}
+p code,li code,td code{background:var(--raise);border:1px solid var(--rule);border-radius:2px;padding:.05em .3em}
+pre code{background:none;border:0;padding:0}
+
+.tablewrap{overflow-x:auto;margin:1.4rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.5rem .8rem .5rem 0;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--faint);font-weight:500;border-bottom:1px solid var(--rule-strong)}
+
+figure{margin:1.5rem 0 1.8rem}
+figure svg{width:100%;height:auto;color:var(--ink);display:block}
+figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(--measure)}
+
+.toc{font-size:.92rem;margin:1.2rem 0 0}
+.toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:2rem}
+.toc li{margin:.18rem 0;break-inside:avoid}
+.toc .n{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-right:.5rem}
+@media (max-width:34rem){.toc ol{columns:1}}
+
+.colophon{margin:5.5rem 0 0;padding-top:1.1rem;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:.72rem;line-height:1.8;color:var(--muted)}
+.colophon a{color:var(--link)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{padding:0;font-size:10.5pt}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker>
+</defs></svg>
+
+<div class="doc">
+
+<header class="mast">
+  <div class="row">
+    <div class="mark">OM-001</div>
+    <div class="body">
+      <p class="org"><a href="/">Organon Mind</a></p>
+      <h1>Conversational Agent Control Surfaces</h1>
+      <p class="standfirst">A pattern language for mixed-initiative, tool-using interfaces.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mark"></div>
+    <div class="body">
+      <dl class="meta">
+        <dt>Document</dt><dd>OM-001</dd>
+        <dt>Category</dt><dd>Reference</dd>
+        <dt>Published</dt><dd>12 August 2026</dd>
+        <dt>Author</dt><dd>James Andrew Walsh, Organon Mind</dd>
+        <dt>Status</dt><dd>Current</dd>
+      </dl>
+      <p class="revision">Rev. 2 — 12 Aug 2026. <em>Honest Instrument</em> renamed <em>Honest Gauge</em> throughout; “instrument” collides with Organon’s primary sense. Rev. 1 superseded, not withdrawn.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="row">
+    <div class="mark">1</div>
+    <div class="body">
+      <h2>Why this form</h2>
+      <p class="lede">The <em>Design Patterns</em> catalogue worked because it named things practitioners were already building badly and inconsistently. Nobody invented the Observer; its authors noticed that four codebases had each grown a different half-solution to the same problem, and gave the shared shape a name so it could be argued about.</p>
+      <p>Conversational agent interfaces are at exactly that moment. Claude Code, Cursor’s agent mode, Aider, Pi, Devin and a dozen internal tools have each independently grown an approval prompt, a streaming renderer, a tool-activity log, and a way of saying “are you sure?” — and none of them call these things the same name. The literature that exists is either <em>conversation design</em>, mature but grown from voice assistants and customer-service bots, or <em>agent UX</em>, current but a flat list of tips rather than a structured language.</p>
+      <p>What is missing is the middle: a vocabulary with enough rigour to design against, argue with, and refuse.</p>
+      <blockquote><p><strong>The transcript is not the interface.</strong> In a tool-using agent, conversation is the control and negotiation layer. Plans, diffs, approvals, tool calls and artifacts are first-class structured objects that the conversation refers to, commands, and takes responsibility for.</p></blockquote>
+      <p>Every pattern here follows from that. A system that treats the transcript as the whole interface will reimplement each of these badly, as prose.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="mark">1.1</div>
+    <div class="body">
+      <h3>The adapted template</h3>
+      <p>The original template assumed the artifact under discussion was <em>code</em>. Here it is <em>an exchange</em>, so two fields change and one is added.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Gang of Four</th><th>Here</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Structure</td><td><strong>Structure</strong></td><td>turn and authority flow, not class inheritance</td></tr>
+          <tr><td>Participants</td><td><strong>Participants</strong></td><td>roles in the exchange, not objects</td></tr>
+          <tr><td>Sample Code</td><td><strong>Sample Interaction</strong></td><td><em>the artifact is a dialogue</em></td></tr>
+          <tr><td>—</td><td><strong>Failure Signature</strong></td><td><em>added</em></td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>Failure Signature</strong> is the addition, and it earns its place. A missing design pattern in code announces itself as duplication you can point at. A missing conversational pattern announces itself as <em>a feeling</em> — the tool is annoying, the agent is untrustworthy, the thing “doesn’t work” — and the diagnosis is usually wrong. Naming the observable symptom is how a pattern becomes actionable rather than aesthetic.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="mark">1.2</div>
+    <div class="body">
+      <h3>Shared vocabulary</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Principal</strong></td><td>the human whose authority the agent borrows. Not “the user” — the word carries the delegation</td></tr>
+          <tr><td><strong>Agent</strong></td><td>the system that plans, decides and acts</td></tr>
+          <tr><td><strong>Turn</strong></td><td>the unit of exchange, and the thing that is <em>held</em> by exactly one party</td></tr>
+          <tr><td><strong>Tool</strong></td><td>a capability with effects outside the conversation</td></tr>
+          <tr><td><strong>Artifact</strong></td><td>a durable output promoted out of the transcript into an inspectable object</td></tr>
+          <tr><td><strong>Gate</strong></td><td>a point where authority must be re-granted before proceeding</td></tr>
+          <tr><td><strong>Gauge</strong></td><td>a signal reporting system state to the principal</td></tr>
+          <tr><td><strong>Blast radius</strong></td><td>the set of things a step can change, weighted by reversibility</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="mark">2</div>
+    <div class="body">
+      <h2>The map</h2>
+      <p>The patterns are not a list; they sit at defined points on the loop a delegated task travels. Most arguments about agent design are really arguments about which arc you are on.</p>
+      <figure>
+        <svg viewBox="0 0 720 250" role="img" aria-label="A cycle of five stages — Orientation, Intent, Execution, Authority, Truth and continuity — with an arrow returning from the last to the first labelled next task. Turn sits apart, connected to Execution by a dashed line labelled governs every stage.">
+          <rect x="8" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="69" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Orientation</text>
+          <rect x="158" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="219" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Intent</text>
+          <rect x="308" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="369" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Execution</text>
+          <rect x="458" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="519" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Authority</text>
+          <rect x="588" y="110" width="124" height="34" fill="none" stroke="currentColor"/>
+          <text x="650" y="131" text-anchor="middle" font-size="11.5" fill="currentColor">Truth and</text>
+          <text x="650" y="131" text-anchor="middle" font-size="11.5" fill="currentColor" dy="-13">continuity</text>
+          <line x1="130" y1="57" x2="152" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="280" y1="57" x2="302" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="430" y1="57" x2="452" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M580,57 L650,57 L650,104" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M588,127 L520,127 L520,190 L69,190 L69,80" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="300" y="184" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">next task</text>
+          <rect x="308" y="110" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="369" y="131" text-anchor="middle" font-size="11.5" fill="currentColor">Turn</text>
+          <line x1="369" y1="106" x2="369" y2="78" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="380" y="98" font-size="10.5" fill="currentColor" opacity=".65">governs every stage</text>
+        </svg>
+        <figcaption>Turn management is drawn apart deliberately: it is not a stage but a property of every stage. A system can have an excellent approval gate and still be intolerable because the principal cannot interrupt it.</figcaption>
+      </figure>
+      <div class="toc">
+        <ol>
+          <li><span class="n">1</span>Capability Disclosure</li>
+          <li><span class="n">2</span>Mode Legibility</li>
+          <li><span class="n">3</span>Streaming Turn</li>
+          <li><span class="n">4</span>Barge-In</li>
+          <li><span class="n">5</span>Scope-on-Uncertainty</li>
+          <li><span class="n">6</span>Constrained Choice</li>
+          <li><span class="n">7</span>Plan · Approve · Execute · Receipt</li>
+          <li><span class="n">8</span>Tool-Call Transparency</li>
+          <li><span class="n">9</span>Ambient Activity Channel</li>
+          <li><span class="n">10</span>Approval Gate</li>
+          <li><span class="n">11</span>Progressive Autonomy</li>
+          <li><span class="n">12</span>Honest Gauge</li>
+          <li><span class="n">13</span>Recoverable Execution</li>
+          <li><span class="n">14</span>Continuity as Memory</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="mark">3</div>
+    <div class="body">
+      <p class="part">Part I · Orientation</p>
+      <h2>Capability Disclosure</h2>
+
+      <p class="field first">Intent</p>
+      <p>Make the agent’s powers, position and limits legible before the principal commits to a request, so expectations are formed from evidence rather than optimism.</p>
+
+      <p class="field">Also known as</p>
+      <p>Onboarding Surface; Working-Context Banner; Affordance Advertisement.</p>
+
+      <p class="field">Motivation</p>
+      <p>A principal opens a terminal agent and types “fix the tests.” The agent can read files, run commands and edit code — but it is rooted in the wrong directory, has no network access, and is looking at a different branch than the principal assumes. Every one of those facts is knowable at startup. None is shown. The failure surfaces ten minutes later as a confusing wrong answer, and the principal blames the model’s intelligence rather than its position.</p>
+      <p>Disclosure is not a help screen. A help screen answers <em>what commands exist</em>; disclosure answers <em>what is true right now</em>.</p>
+
+      <p class="field">Applicability</p>
+      <p>Use when effective capability varies by context — directory, credentials, connected services, mode; when the cost of a wrong assumption is paid late; or when one surface serves principals with different mental models.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 210" role="img" aria-label="A sequence between Principal, Agent and Environment. The agent resolves its position from the environment, receives the actual state, discloses capability and limits to the principal, who then makes a correctly scoped first request.">
+          <text x="60" y="18" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">Principal</text>
+          <text x="350" y="18" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">Agent</text>
+          <text x="630" y="18" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">Environment</text>
+          <line x1="60" y1="30" x2="60" y2="195" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="350" y1="30" x2="350" y2="195" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="630" y1="30" x2="630" y2="195" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="352" y1="58" x2="626" y2="58" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="489" y="50" text-anchor="middle" font-size="10.5" fill="currentColor">resolve position</text>
+          <line x1="628" y1="94" x2="354" y2="94" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="489" y="86" text-anchor="middle" font-size="10.5" fill="currentColor">actual state</text>
+          <line x1="348" y1="130" x2="64" y2="130" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="206" y="122" text-anchor="middle" font-size="10.5" fill="currentColor">disclose capability and limits</text>
+          <line x1="62" y1="172" x2="346" y2="172" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="206" y="164" text-anchor="middle" font-size="10.5" fill="currentColor">first request, correctly scoped</text>
+        </svg>
+        <figcaption>Disclosure is derived from the environment at the moment of disclosure — never authored by hand.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Agent</em> resolves and states its own position. <em>Environment</em> supplies ground truth. <em>Principal</em> calibrates.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Feeds <strong>Mode Legibility</strong> (2), disclosure of the variable most likely to change underfoot. Weak disclosure increases load on <strong>Scope-on-Uncertainty</strong> (5), because the agent must ask about things it could have stated.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: mis-scoped requests are prevented rather than debugged.</li>
+        <li><em>Gain</em>: the principal’s model stays accurate as context changes.</li>
+        <li><em>Cost</em>: screen real estate. Disclosure that scrolls past unread is decoration.</li>
+        <li><em>Cost</em>: it must be <strong>derived, never authored</strong>. A hand-written capability list is a lie with a delay fuse.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Derive every disclosed fact from the live system. Prefer a persistent, low-noise surface over a one-time splash. Disclose <em>limits</em> alongside powers — “no network” is more useful than ten available tools. When a disclosed fact changes mid-session, say so; an unannounced change is worse than never disclosing.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>organon-one · master · claude-opus-5
+tools: read, write, bash, powershell   ·   no network
+⚠ this is a git worktree — added directories are not inherited
+
+&gt; fix the failing test</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>The principal periodically asks questions whose answers the system already knows — “are you in the right folder?”, “can you see the database?” Repeated orientation questions are the tax on absent disclosure.</p>
+
+      <p class="field">Known uses</p>
+      <p>Claude Code’s startup banner. Cursor’s workspace indicator. <code>git status</code> — the oldest and still one of the best capability-disclosure surfaces in software, worth studying precisely because it is not conversational.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Mode Legibility</strong> (2) is its highest-frequency special case. <strong>Honest Gauge</strong> (12) governs its correctness.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="mark">4</div>
+    <div class="body">
+      <p class="part">Part I · Orientation</p>
+      <h2>Mode Legibility</h2>
+
+      <p class="field first">Intent</p>
+      <p>When a surface has modes that change the meaning of the same input, make the active mode visible <em>at the moment of use</em>, not merely settable at the moment of configuration.</p>
+
+      <p class="field">Also known as</p>
+      <p>Modal Feedback; Mode Indicator; State Visibility.</p>
+
+      <p class="field">Motivation</p>
+      <p>A push-to-talk surface has two modes: <em>dictation</em>, where speech becomes text at the cursor, and <em>agent</em>, where speech goes to an assistant who answers aloud. The mode is chosen from a menu and persists. A principal who left it in dictation, then returns expecting conversation, holds the key, speaks, and gets text pasted into a code fence. Nothing errored. Everything worked. The system is behaving perfectly and appears broken.</p>
+      <p>The sharper version, observed directly: the same binary exposes <code>--tray</code> (icon, overlay, push-to-talk) and <code>--listen</code> (identical capture loop, no interface at all). Launched with the wrong flag, the voice loop works flawlessly and the entire visible interface is simply absent — a failure that reads as “the UI is broken” and is actually “you asked for the headless mode.”</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever identical input produces materially different effects depending on state; when a mode persists across sessions; or when a mode is set in one place and used in another.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 190" role="img" aria-label="One identical input feeds a decision of active mode, which branches to text at cursor under dictation or spoken reply under agent. A dashed arrow returns from the mode to the input, labelled must be visible here, at the point of use.">
+          <rect x="8" y="72" width="150" height="40" fill="none" stroke="currentColor"/>
+          <text x="83" y="90" text-anchor="middle" font-size="11.5" fill="currentColor">identical input</text>
+          <text x="83" y="105" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">(hold key, speak)</text>
+          <path d="M300,60 L360,92 L300,124 L240,92 z" fill="none" stroke="currentColor"/>
+          <text x="300" y="96" text-anchor="middle" font-size="11.5" fill="currentColor">active mode</text>
+          <line x1="158" y1="92" x2="236" y2="92" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="500" y="18" width="192" height="36" fill="none" stroke="currentColor"/>
+          <text x="596" y="41" text-anchor="middle" font-size="11.5" fill="currentColor">text at cursor</text>
+          <rect x="500" y="130" width="192" height="36" fill="none" stroke="currentColor"/>
+          <text x="596" y="153" text-anchor="middle" font-size="11.5" fill="currentColor">spoken reply</text>
+          <path d="M330,72 L430,36 L494,36" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="410" y="28" text-anchor="middle" font-size="10.5" fill="currentColor">dictation</text>
+          <path d="M330,112 L430,148 L494,148" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="410" y="168" text-anchor="middle" font-size="10.5" fill="currentColor">agent</text>
+          <path d="M262,110 L200,150 L92,150 L92,116" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="200" y="168" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".7">must be visible here</text>
+        </svg>
+        <figcaption>The indicator must sit where the input is given. One that exists but is distant — a tray tooltip, a menu checkmark — does not satisfy the pattern.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Mode</em> is the hidden variable. <em>Input</em> is ambiguous without it. <em>Indicator</em> resolves the ambiguity where the input is given.</p>
+
+      <p class="field">Collaborations</p>
+      <p>A special case of <strong>Capability Disclosure</strong> (1) with a much higher refresh rate. Where modes carry different blast radii, <strong>Approval Gate</strong> (10) should key off the mode, not merely the action.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the class of bug where “it works but appears broken” disappears.</li>
+        <li><em>Cost</em>: an indicator at the point of use competes for the most valuable space on the surface.</li>
+        <li><em>Trap</em>: the test is whether the principal sees it <em>while acting</em>, not whether it exists.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Bind the indicator to the same state the behaviour reads from, never a parallel copy. Prefer encoding mode in a channel the principal already attends to — the cursor, the prompt, the colour of the thing they are holding. Where a mode defaults at startup to something other than last-used, say so loudly; silently reverting to a default is the most common instance of this failure.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>◉ AGENT   hold the chord, speak — she answers aloud
+○ dictate hold the chord, speak — text lands at your cursor
+          ^ shown in the overlay while you hold, not only in a menu</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>“It stopped working” for a system that is fully operational. Reports that cannot be reproduced by the maintainer, because the maintainer’s mode differs.</p>
+
+      <p class="field">Known uses</p>
+      <p>vim’s <code>-- INSERT --</code>. Caps-lock indicators. Cursor’s agent/ask toggle. Terminal agents that print the active model in the prompt.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Capability Disclosure</strong> (1), <strong>Honest Gauge</strong> (12).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="mark">5</div>
+    <div class="body">
+      <p class="part">Part II · Turn</p>
+      <h2>Streaming Turn</h2>
+
+      <p class="field first">Intent</p>
+      <p>Emit the response as it is produced rather than when it is complete, so the principal’s wait overlaps the agent’s work instead of following it.</p>
+
+      <p class="field">Also known as</p>
+      <p>Incremental Rendering; Token Streaming; Progressive Response.</p>
+
+      <p class="field">Motivation</p>
+      <p>A voice agent’s reply took 11.8 seconds from the end of the principal’s speech to the first spoken word. Decomposed: roughly 7 seconds of model generation, then roughly 4.9 seconds of speech synthesis — strictly in series, because the synthesiser was handed the reply only when the reply was finished. Neither component was slow for what it did. The architecture simply declined to overlap them.</p>
+      <p>The fix is not optimisation. It is refusing to treat “the response” as an atomic object. Once the response is a <em>stream of complete-enough fragments</em>, synthesis of sentence one proceeds while sentence two is still being written. Measured on the same system after the change: the first speakable sentence was available at <strong>+1.14 s</strong> where the previous path returned nothing until <strong>+3.94 s</strong>.</p>
+
+      <p class="field">Applicability</p>
+      <p>Use when generation is incremental and a downstream stage can begin on a prefix; when perceived latency matters more than total latency. Do <em>not</em> use when the consumer cannot act on a prefix without risk of acting on a fragment the remainder contradicts.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 230" role="img" aria-label="Two rows compared. Batched runs generate then synthesise in series, giving a first word at 11.8 seconds. Streamed generates and synthesises the first sentence while the second sentence is still generating, giving a first word at 1.1 seconds.">
+          <text x="8" y="18" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.2" fill="currentColor" opacity=".6">BATCHED</text>
+          <rect x="8" y="30" width="150" height="34" fill="none" stroke="currentColor"/>
+          <text x="83" y="51" text-anchor="middle" font-size="11.5" fill="currentColor">generate · 7s</text>
+          <rect x="200" y="30" width="164" height="34" fill="none" stroke="currentColor"/>
+          <text x="282" y="51" text-anchor="middle" font-size="11.5" fill="currentColor">synthesise · 4.9s</text>
+          <rect x="406" y="30" width="180" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="496" y="51" text-anchor="middle" font-size="11.5" fill="currentColor">first word · 11.8s</text>
+          <line x1="158" y1="47" x2="194" y2="47" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="364" y1="47" x2="400" y2="47" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="8" y1="92" x2="692" y2="92" stroke="currentColor" opacity=".18"/>
+          <text x="8" y="118" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.2" fill="currentColor" opacity=".6">STREAMED</text>
+          <rect x="8" y="130" width="128" height="34" fill="none" stroke="currentColor"/>
+          <text x="72" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">generate s1</text>
+          <rect x="176" y="130" width="138" height="34" fill="none" stroke="currentColor"/>
+          <text x="245" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">synthesise s1</text>
+          <rect x="354" y="130" width="170" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="439" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">first word · 1.1s</text>
+          <line x1="136" y1="147" x2="170" y2="147" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="314" y1="147" x2="348" y2="147" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="176" y="184" width="128" height="30" fill="none" stroke="currentColor" opacity=".75"/>
+          <text x="240" y="203" text-anchor="middle" font-size="10.5" fill="currentColor">generate s2</text>
+          <rect x="330" y="184" width="138" height="30" fill="none" stroke="currentColor" opacity=".75"/>
+          <text x="399" y="203" text-anchor="middle" font-size="10.5" fill="currentColor">synthesise s2</text>
+          <line x1="245" y1="166" x2="245" y2="182" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="490" y="203" font-size="10.5" fill="currentColor" opacity=".65">overlaps</text>
+          <line x1="470" y1="199" x2="484" y2="199" stroke="currentColor" stroke-dasharray="4 3"/>
+        </svg>
+        <figcaption>The same two components, the same total work. The only difference is whether the second stage may begin on a prefix of the first.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Producer</em> emits fragments. <em>Splitter</em> decides what constitutes a complete-enough fragment. <em>Consumer</em> acts on each in order.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Makes <strong>Barge-In</strong> (4) meaningful — there is nothing to interrupt until something has started. Tool events from <strong>Tool-Call Transparency</strong> (8) belong in the same stream, in order.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: perceived latency collapses toward the cost of the first fragment.</li>
+        <li><em>Gain</em>: the principal can begin evaluating — and interrupting — early.</li>
+        <li><em>Cost</em>: fragment boundaries become a design surface with their own failure modes. Too small starves the consumer; too large reintroduces the stall.</li>
+        <li><em>Cost</em>: partial output may be contradicted by what follows.</li>
+        <li><em>Trap</em>: <strong>the invariant is that streaming changes only <em>when</em> content appears, never <em>what</em> it is.</strong> This is testable and should be tested: streamed fragments concatenated must equal batched output, across arbitrary boundaries down to one character.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Keep fragmentation policy at the <em>consumer</em>, which alone knows its own costs; a producer that guesses chunk sizes will drift from the consumer that measures them. Negotiate streaming explicitly — a header, a capability flag — so a non-streaming consumer still works and the change reverts without a rebuild. Hold fragments back across structures meaningless in half: code fences, quotations, negations.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>[+0.28s] {"type":"transcript","text":"…","stt_ms":260}
+[+0.59s] {"type":"delta","text":"Yes, that's the swap unit."}
+[+1.29s] {"type":"delta","text":" It was reporting failed while swap was active,"}
+[+1.99s] {"type":"tool","on":true,"name":"bash"}
+[+2.69s] {"type":"delta","text":" which is worse than cosmetic."}
+[+3.39s] {"type":"end","reply":"Yes, that's the swap unit. It was …"}</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>A progress spinner with no content behind it. A response arriving all at once after a pause whose length correlates with the answer’s length — the signature of a system paying for its own verbosity before showing any of it.</p>
+
+      <p class="field">Known uses</p>
+      <p>ChatGPT and Claude token streaming. Compiler diagnostics per file. <code>git clone</code> progress. A sentence pipeline that streams to a synthesiser rather than a screen.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Barge-In</strong> (4), <strong>Tool-Call Transparency</strong> (8).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="mark">6</div>
+    <div class="body">
+      <p class="part">Part II · Turn</p>
+      <h2>Barge-In</h2>
+
+      <p class="field first">Intent</p>
+      <p>Let the principal seize the turn at any moment, and define precisely — and honestly — what that stops.</p>
+
+      <p class="field">Also known as</p>
+      <p>Interrupt; Cancel; Stop Generation; Push-to-Talk Override.</p>
+
+      <p class="field">Motivation</p>
+      <p>The agent is thirty seconds into explaining something the principal understood at second three. Without interruption the only options are to wait or kill the session, and both teach the principal to ask smaller questions than they have. Interruption is not a convenience; it is what makes it safe to let the agent try.</p>
+      <p>But interruption has a <em>scope</em>, and the scope is usually misrepresented. Stopping audio is not stopping thought. Stopping the display is not stopping the tool call already writing to disk. A system that says “stopped” while a turn continues in the background has lied about the one thing the principal was trying to control.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any surface with long-running output. Essential where output is time-based — speech, animation — and the principal cannot skim ahead.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="A state machine. Idle leads to Thinking, then Speaking, then back to Idle. Barge-in from either Thinking or Speaking leads to Cancelled, which leads to Listening and back to Thinking.">
+          <rect x="8" y="20" width="110" height="34" fill="none" stroke="currentColor"/>
+          <text x="63" y="41" text-anchor="middle" font-size="11.5" fill="currentColor">Idle</text>
+          <rect x="180" y="20" width="120" height="34" fill="none" stroke="currentColor"/>
+          <text x="240" y="41" text-anchor="middle" font-size="11.5" fill="currentColor">Thinking</text>
+          <rect x="362" y="20" width="120" height="34" fill="none" stroke="currentColor"/>
+          <text x="422" y="41" text-anchor="middle" font-size="11.5" fill="currentColor">Speaking</text>
+          <line x1="118" y1="37" x2="174" y2="37" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="300" y1="37" x2="356" y2="37" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M482,37 L560,37 L560,90 L63,90 L63,58" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="300" y="84" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">complete</text>
+          <rect x="240" y="130" width="130" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="305" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">Cancelled</text>
+          <path d="M240,58 L240,110 L285,110 L285,126" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M422,58 L422,110 L330,110 L330,126" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="382" y="106" font-size="10.5" fill="currentColor">barge-in</text>
+          <rect x="452" y="130" width="130" height="34" fill="none" stroke="currentColor"/>
+          <text x="517" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">Listening</text>
+          <line x1="370" y1="147" x2="446" y2="147" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="408" y="140" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">capture next</text>
+          <path d="M582,147 L640,147 L640,200 L240,200 L240,58" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="440" y="194" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">principal sends</text>
+        </svg>
+        <figcaption>The cancellation scope is a contract. Most systems stop the visible layer and imply they stopped the work: audio stops, generation may not, and an in-flight tool write almost certainly does not.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Principal</em> seizes. <em>Turn</em> is relinquished. <em>Cancellation scope</em> is the contract about what ceased.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Depends on <strong>Streaming Turn</strong> (3). Constrains <strong>Recoverable Execution</strong> (13): whatever cannot be stopped must be undoable.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the principal lets the agent attempt more, because attempts are cheap to abandon.</li>
+        <li><em>Gain</em>: one motion — interrupt and redirect — beats stop, wait, retype.</li>
+        <li><em>Cost</em>: cancellation must thread through every layer, including ones that do not naturally support it.</li>
+        <li><em>Trap</em>: partially-completed side effects. An interrupted turn that wrote three of five files has left the world in a state nobody designed.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Make the interrupt the same gesture as the next request where possible. Check cancellation at every stage boundary, and drop queued work rather than hiding it — generating speech nobody will hear wastes the resource that made the system fast. State the scope in the principal’s language.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>← agent: The swap unit was reporting failed while swap was actually
+         active, which is worse than cosmetic because —
+[principal holds the chord]
+  ⏹ audio stopped (18 ms) · turn still completing in background
+◉ listening…</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Principals waiting out responses they stopped reading. Or killing and restarting the process to regain control — the strongest possible signal that interruption is absent or untrusted.</p>
+
+      <p class="field">Known uses</p>
+      <p>ChatGPT’s stop button. Claude Code’s Esc. Voice assistants’ wake-word barge-in. A cancellation predicate threaded through a synthesis pipeline and checked at every chunk boundary.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Streaming Turn</strong> (3), <strong>Recoverable Execution</strong> (13).</p>
+    </div>
+  </div>
+</section>
+
+<!-- PATTERNS-CONT -->
+</div>
+</body>
+</html>
