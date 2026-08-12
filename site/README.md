@@ -64,18 +64,31 @@ Static, no build step, served from this repo.
 3. Domains: **`organonmind.org`** (apex) is canonical, with
    **`www.organonmind.org`** redirecting to it.
 
-⚠️ **Check the direction of that redirect; it has been backwards.** Measured
-2026-08-12: the apex served a 308 to `www`, i.e. `www` was canonical — the
-opposite of the line above, which had been sitting here describing an intention
-rather than the configuration. Verify with `curl`, not by reading:
+Verified 2026-08-12 — apex serves directly, `www` sends a 308 to it, one hop,
+path preserved:
 
 ```
-curl -s -o /dev/null -w "%{redirect_url}\n" https://organonmind.org
+organonmind.org           200
+www.organonmind.org       308 → https://organonmind.org/
+www.organonmind.org/why   308 → https://organonmind.org/why
 ```
+
+⚠️ **It was backwards until then**, and the line above described the intention
+while the configuration did the opposite. So check rather than read:
+
+```
+curl -s -o /dev/null -w "%{redirect_url}\n" https://www.organonmind.org
+```
+
+⚠️ **If you ever invert this again, order matters.** Point the apex at the
+Production environment *first*, then set `www` to redirect. Doing it the other
+way leaves both hosts redirecting at each other and the site is unreachable
+until you break the loop.
 
 This matters more here than on a marketing site. Publications are numbered so
 they can be **cited**, and a citation inherits whichever host answered when it
-was written. Settle the canonical host before publishing anything, not after.
+was written. The canonical host is settled before the first document goes up,
+which is the point of doing it now.
 
 ⚠️ **Step 2 is the one that fails silently, and it already has once.** On the
 old layout, leaving Root Directory unset did not error — Vercel found a
