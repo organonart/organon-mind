@@ -1,0 +1,22 @@
+# Line endings. `text=auto` stores everything as LF in the repo and checks it
+# out in the platform's native ending, which on Windows means CRLF.
+* text=auto
+
+# The generators are run from WSL and from Linux CI as often as from Windows.
+# A CRLF shebang makes the interpreter search for `python3\r`, and the error —
+# `bad interpreter: no such file or directory` — reads like a missing tool
+# rather than a line-ending bug. Free to pin, expensive to diagnose.
+*.py text eol=lf
+*.sh text eol=lf
+
+# Insurance. `text=auto` detects these correctly today; detection is a heuristic
+# over the first 8000 bytes, and a mangled favicon or card image would present
+# as a rendering problem rather than a checkout problem.
+*.png binary
+*.jpg binary
+*.pdf binary
+
+# The long version of this file — shebang leniency under MSYS, PowerShell 5.1
+# and BOMs, the Bright Star Catalog — lives in `organonart/organon`. None of it
+# applies to a repo of markdown and static HTML, and copying it here would be
+# cargo-culting a document that argues against cargo-culting.

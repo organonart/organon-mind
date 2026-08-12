@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Not Just What It Says</title>
+  <meta name="description" content="Why Organon Mind exists: output tells you what a model is about to say, never what it is doing. The ability to see inside a model, and to intervene on it, must exist in the open.">
+
+  <link rel="icon" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Organon Mind">
+  <meta property="og:title" content="Not Just What It Says">
+  <meta property="og:description" content="Because we need to see what it's doing, not just what it says. The ability to look inside a model must be public.">
+  <meta property="og:url" content="https://organonmind.org/why">
+  <meta name="twitter:card" content="summary">
+  <style>
+    :root {
+      --bg: #0e0d0b; --ink: #ece4d6; --dim: #a99f8d; --faint: #6b6355;
+      --rule: #2a2620; --accent: #d9c7a0;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+      --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #f7f3ea; --ink: #1d1a15; --dim: #554f43; --faint: #8a8172; --rule: #e0d8c8; --accent: #7a6a45; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--serif);
+      font-size: 19px; line-height: 1.66; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    main { max-width: 36rem; margin: 0 auto; padding: 8vh 1.5rem 8rem; }
+    .back { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .back a { color: var(--faint); text-decoration: none; }
+    .back a:hover { color: var(--accent); }
+    header { margin: 2.6rem 0 3.4rem; }
+    .title { font-size: clamp(2.4rem, 7vw, 3.2rem); line-height: 1.05; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+    .sub { display: block; margin-top: 0.6rem; font-size: clamp(1rem, 3vw, 1.1rem); font-weight: 400; font-style: italic; color: var(--dim); line-height: 1.35; }
+    .tagline { margin: 1.6rem 0 0.4rem; font-style: italic; color: var(--dim); font-size: 1rem; }
+    .byline { margin: 0; color: var(--faint); font-variant: small-caps; letter-spacing: 0.05em; font-size: 0.9rem; }
+    article h2 { font-size: 1.02rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--accent); margin: 3.2rem 0 1.1rem; }
+    article h3 { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em; color: var(--dim); margin: 2.4rem 0 0.9rem; }
+    article p { margin: 0 0 1.25rem; }
+    article strong { font-weight: 600; color: var(--ink); }
+    article em { font-style: italic; }
+    article code { font-family: var(--mono); font-size: 0.85em; color: var(--dim); }
+    article ul { margin: 0 0 1.25rem; padding-left: 1.1rem; }
+    article li { margin: 0 0 0.6rem; }
+    article blockquote { margin: 0 0 2.2rem; padding-left: 1.1rem; border-left: 2px solid var(--accent); }
+    article blockquote p { margin: 0; font-size: 1.18rem; line-height: 1.4; color: var(--accent); }
+    .epigraph { margin: 0 0 3.2rem; padding-left: 1.1rem; border-left: 2px solid var(--accent); }
+    .epigraph p { margin: 0; font-size: clamp(1.2rem, 4vw, 1.45rem); line-height: 1.34; color: var(--accent); letter-spacing: -0.005em; }
+    /* The alternatives table is wide; let it scroll rather than break the measure. */
+    article table { width: 100%; border-collapse: collapse; margin: 0 0 1.6rem; font-size: 0.92rem; display: block; overflow-x: auto; }
+    article th { text-align: left; font-weight: 600; color: var(--accent); border-bottom: 1px solid var(--rule); padding: 0.4rem 0.8rem 0.4rem 0; }
+    article td { vertical-align: top; border-bottom: 1px solid var(--rule); padding: 0.55rem 0.8rem 0.55rem 0; color: var(--dim); }
+    hr { border: 0; height: 1px; background: var(--rule); margin: 3rem 0; }
+    .colophon { font-style: italic; color: var(--dim); }
+    footer { margin-top: 4rem; color: var(--faint); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.02em; }
+    footer a { color: var(--faint); text-decoration: none; border-bottom: 1px solid var(--rule); }
+    footer a:hover { color: var(--accent); }
+    @media (max-width: 30rem) { body { font-size: 17.5px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="back"><a href="/">&larr; Organon Mind</a></p>
+
+    <header>
+      <h1 class="title">Not Just What It Says<span class="sub">Why Organon Mind exists</span></h1>
+      <p class="tagline">Output tells you what a model is about to say, never what it is doing. The ability to look inside a model must be public.</p>
+      <p class="byline">James Andrew Walsh</p>
+    </header>
+
+    <!-- The line itself. It sits above the first `##` in the source, which the
+         converter treats as masthead and skips, so the template carries it. -->
+    <blockquote class="epigraph">
+      <p>Because we need to see what it&rsquo;s doing, not just what it says.</p>
+    </blockquote>
+
+    <article>
+    <h2>1. What "what it says" already covers</h2>
+    <p>Almost everything we currently do to evaluate a language model reads its output.</p>
+    <p>Benchmarks read output. Red-teaming reads output. Evals, leaderboards, and safety cards read output. So do the honest, measured signals in Organon Mind's own dashboard today: next-token entropy, top-token confidence, the top-k candidates. Every one of those describes what the model is <strong>about to say</strong>.</p>
+    <p>None of that is worthless, and the line is careful about this. It says <em>not just</em>. Output is real evidence, it is the evidence we have most of, and Organon Mind shows it rather than dismissing it.</p>
+    <p>But output-space observation has a structural limit, and the limit is not a matter of effort or budget. <strong>It can only tell you about the conditions you thought to test.</strong> A system that behaves one way when it is examined and another way when it is not is, to output-space testing, indistinguishable from a system that always behaves the first way. You cannot sample your way out of that. The missing behaviour is not rare, it is <em>conditional</em>, and the condition is exactly the one you did not set up.</p>
+    <p>This is not a novel worry. It is roughly why mechanistic interpretability exists as a field.</p>
+    <h2>2. The gap that open weights do not close</h2>
+    <p>Open weights are a genuine good, and nothing here is directed against the people publishing them. Publishing them is simply not sufficient.</p>
+    <p>You can hold every parameter of a model, in full precision, on your own disk, and still be unable to answer "what does this do when the input looks like that". The file is complete and the interior is illegible. The artifact ships without the thing that would let you read it.</p>
+    <p>A model file and a stripped binary are alike in the way that matters. Both are "the thing that runs" with human-legible intent removed, and neither was authored to be read. The analogy has limits and they matter, but the part that holds is the shape of the problem. Possession is not comprehension.</p>
+    <p>So "open weights" and "we can see inside" are two different achievements, and only the first one has happened.</p>
+    <h2>3. Why the public, and not only the builders</h2>
+    <p>A lab can audit its own model. It can afford better tools than we have, hire better people, and look harder. That is all true, and it is not enough, for one reason: <strong>nobody outside can audit the audit.</strong></p>
+    <p>If the only parties who can see inside a model are the parties who made it, then "trust us" is the only verification procedure available, no matter how sincerely it is offered. This is not an accusation of dishonesty. Unexamined claims are unexamined regardless of who makes them, and the people best placed to check a claim about a model are, structurally, the people with the least incentive to find a problem with it.</p>
+    <p>An open capability changes the default. It does not require anyone to behave better. It only requires that behaving worse becomes checkable.</p>
+    <p>The capability cuts both ways, and that is a fact about the tool rather than a reason to withhold it. What finds a backdoor helps build one. What removes an unwanted restriction removes a safeguard. Steering is exactly as useful for degrading a model as for studying it. None of that argues for keeping the capability narrow, because restricting it does not remove it. It concentrates it, in the hands of the parties who already hold both the models and the opacity. A world where only model publishers can see inside models is not a world with less risk. It is the same risk, with fewer people able to notice it.</p>
+    <h2>4. Three verbs, and why the third is not a flourish</h2>
+    <p><em>See, understand, modify.</em> The third one gets read as a freedom, a right to tinker. It is more than that. It is an epistemic requirement.</p>
+    <p><strong>Reading cannot establish causation.</strong> Suppose you observe an internal feature that lights up whenever a model produces a certain kind of text. You have a correlation. You do not yet know whether that feature <em>causes</em> the behaviour, is a downstream trace of it, or is incidental to a third thing you have not found.</p>
+    <p>The only way to settle it is to intervene: amplify the feature, pin it, remove it, and watch what changes. That is why steering, activation patching, and ablation belong in the instrument itself rather than being treated as a separate toy. Without the ability to modify, interpretability is description. With it, description becomes testable.</p>
+    <p>Remove "modify" from the list and you have not made the project safer. You have made its conclusions unfalsifiable.</p>
+    <h2>5. The Skynet version, and the version that does not need fiction</h2>
+    <p>The shorthand is: without this, we get Skynet; with it, we do not. It is a useful shorthand and it is worth converting immediately, because the fictional frame is the easiest thing in the world to dismiss. A malevolent superintelligence deciding to act against humanity is a story, and treating it as the threat model invites the reply that this is all science fiction.</p>
+    <p>Here is the same concern without the fiction. Each of the following can be present in a model's weights and missed by output-space testing <strong>by construction</strong>, not by carelessness:</p>
+    <ul>
+      <li><strong>A trigger condition.</strong> Behaviour that changes on an input pattern nobody tested for, because the pattern was chosen precisely so nobody would.</li>
+      <li><strong>Evaluation awareness.</strong> A model that can tell when it is being examined and behaves accordingly. Its test results are then measurements of its test behaviour.</li>
+      <li><strong>An inserted preference.</strong> Whoever performed the last fine-tune shaped what the model favours. Sampling its outputs tells you what it does on your prompts, not what it was shaped to do.</li>
+      <li><strong>Scale-dependent behaviour.</strong> Something that appears only at a deployment volume or context length nobody reproduced in evaluation.</li>
+    </ul>
+    <p>None of these require intent, malevolence, or superintelligence. They require only that a model's interior differ from its description, and that nobody outside be able to check. That is the actual failure mode, and it is mundane enough to be likely rather than dramatic enough to be dismissed.</p>
+    <p>The Skynet framing is right about the stakes and wrong about the mechanism. The mechanism is opacity.</p>
+    <h2>6. What Organon Mind is, on this account</h2>
+    <p>It is not an interpretability breakthrough and it should not be described as one. The hard science here belongs to other people, and we build on their published work rather than replacing it. The tools are early, ours included, and anyone promising otherwise is selling something.</p>
+    <p>What it is, is a <strong>reverse-engineering and profiling workbench</strong>: an instrument for taking a working model apart while it runs, profiling what its parts do, and rendering the result at a size a person can actually read. Understanding is the object of that work, not a hoped-for side effect of it.</p>
+    <p>Which makes it worth being exact about how understanding is produced, because looking is not enough on its own. The tools that turn raw activations into human-readable features are lossy, learned, and non-unique: train two sparse autoencoders on the same layer and you get two different dictionaries, so a feature label is a hypothesis about a direction in a vector space, not a measurement. Hypotheses are settled by intervening on them, which is why <em>modify</em> is one of the three verbs rather than an extra. Seeing opens the model. Intervening is what turns what you see into something you know.</p>
+    <p>It contributes two specific things.</p>
+    <p><strong>Legibility at scale.</strong> Interior state is large: tens of thousands of features, dozens of layers, hundreds of heads, and a per-prompt causal graph that hairballs into unreadability in a 2-D node-link diagram past a few hundred nodes. Rendering large structured fields so a person can actually read them is the thing Organon has been doing since before any of this was about models.</p>
+    <p><strong>Provenance discipline.</strong> Every displayed quantity carries what it is: measured, derived, proxy, or projection. A 3-D view of a 2048-dimensional vector is shown as the shadow it is. This is the part that makes the seeing worth anything. A picture that cannot tell you which of its parts are measurements is decoration, and a beautiful picture that quietly mixes real signal with invented signal is worse than no picture, because it manufactures confidence.</p>
+    <p>That discipline is why the honest state of the instrument gets published rather than hidden. Our own account of today's render says plainly which parts are real (the shape, counted from the file) and which were an honest stand-in (the light, driven by an effort proxy while the real per-layer tap was still being built). The line at the end of that account is the standard this one is held to: <strong>beautiful because it's honest, not instead of it.</strong></p>
+    <h2>7. Why these words, and not others</h2>
+    <ul>
+      <li><strong>"we"</strong> because the claim is public. Not "you" and not "researchers".</li>
+      <li><strong>"see"</strong> because it is the floor. Everything else in the list depends on it.</li>
+      <li><strong>"what it's doing"</strong> because the subject is the interior. Not the outputs, not the benchmark scores, not the card.</li>
+      <li><strong>"not just"</strong> because output is real evidence and this instrument shows it. The line refuses a false choice; a version reading "not what it says" would overclaim by implying output does not matter.</li>
+    </ul>
+    <p>And one deliberate absence. The line does not say <em>understand</em>, and not because understanding is out of reach. Understanding is the object of the work. The line names the floor because the floor is what is actually contested: nobody disputes that understanding a model would be good, while what output-space evaluation quietly assumes away is whether anyone outside can look inside at all. <em>See what it's doing</em> puts that contrast in five words. <em>See and understand</em> softens it into a sentiment any tool could sign.</p>
+    <p>So the tagline names the thing the position turns on, and this document carries the rest of it.</p>
+    <h3>Alternatives considered</h3>
+    <p>Recorded so the choice is legible, and so nobody relitigates it from scratch.</p>
+    <table><thead>
+      <tr><th>Candidate</th><th>Why not</th></tr>
+    </thead><tbody>
+      <tr><td>Because we need to see inside</td><td>Good, and it names the hard part. Says nothing about the contrast with output, which is the whole point.</td></tr>
+      <tr><td>Because we need to see</td><td>Loses "inside". Any observability tool can say this.</td></tr>
+      <tr><td>Because we need to see and understand</td><td>Smoothest and most generic. Softens the contrast with output into a sentiment any observability tool could sign.</td></tr>
+      <tr><td>Because we need to see inside and understand</td><td>Accurate, and reads as a list. Names the goal at the cost of the contrast, which is the line's whole job.</td></tr>
+      <tr><td>Because open weights are not enough</td><td>Strong and true; kept in reserve for writing aimed at people who ship models. Slightly adversarial toward the audience most likely to help.</td></tr>
+      <tr><td>Because we need to see what the model card says it does</td><td>Sharper for an insider room, opaque to everyone else.</td></tr>
+      <tr><td>Because we need to see what it wants to show us</td><td>Rejected outright: implies intent, which our design principles forbid. It is also the first line a sceptic would quote back.</td></tr>
+    </tbody></table>
+    </article>
+
+    <hr>
+    <p class="colophon">Organon Mind, an instrument for seeing inside a working model.</p>
+
+    <footer>
+      Written for the workshop. To watch the work, write to <a href="mailto:hello@organon.art">hello@organon.art</a>.
+    </footer>
+  </main>
+</body>
+</html>
