@@ -95,8 +95,16 @@ githubRepoId: <the organon-mind id>
 Read it from the Vercel dashboard's deployment detail, or via the API. Before
 2026-08-12 every deployment here read `organon-private` with Root Directory
 `site-mind`, which is why pushes to this repo appeared to do nothing at all:
-they were not connected to anything. Reconnecting the project is also **not**
-enough on its own — Vercel does not build on reconnect, only on push.
+they were not connected to anything.
+
+⚠️ **Vercel builds on push, and on nothing else.** Measured twice while sorting
+this out: reconnecting the project to a different repo produced no deployment,
+and changing Root Directory afterwards produced no deployment either. Both are
+settings changes, and settings changes are not events. Until something lands on
+`main`, a corrected configuration looks exactly like a broken one — the site
+keeps serving whatever the last successful build produced, which may be from a
+repo you have since disconnected. After changing any project setting, push
+something (or redeploy from the dashboard) before believing the result.
 
 ## Before this gets traffic
 
