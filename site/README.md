@@ -78,10 +78,25 @@ the page. So check the value rather than assuming it. The Vercel bot's PR
 comment carries `rootDirectory` in its base64 payload, which is the cheapest way
 to read it back — it must say `site`.
 
-⚠️ **This repo is public.** The old one was private and the deploy source has
-moved; confirm the project is building from `organonart/organon-mind` and not
-still from `organon-private`, or the site will keep serving the old copy and
-edits here will appear to do nothing.
+⚠️ **Do not trust this file about where the site deploys from — check.** That
+sentence is written from experience: this README has, at various times, said the
+project built from `organonart/organon` and from `organonart/organon-private`,
+and both were wrong at the moment someone read them. The site moved and the
+prose did not.
+
+The value that cannot be stale is in the deployment metadata. Any deployment
+carries the repo that produced it:
+
+```
+githubRepo:   organon-mind     ← must say this
+githubRepoId: <the organon-mind id>
+```
+
+Read it from the Vercel dashboard's deployment detail, or via the API. Before
+2026-08-12 every deployment here read `organon-private` with Root Directory
+`site-mind`, which is why pushes to this repo appeared to do nothing at all:
+they were not connected to anything. Reconnecting the project is also **not**
+enough on its own — Vercel does not build on reconnect, only on push.
 
 ## Before this gets traffic
 
