@@ -173,6 +173,46 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--live);outline-offse
 
 .panel{display:none}
 
+/* ── overview (the default landing view) ── */
+body[data-view="overview"] .spec,
+body[data-view="overview"] .hero,
+body[data-view="overview"] .rel,
+body[data-view="overview"] .desig .no,
+body[data-view="overview"] .desig .tag{display:none}
+.prose .ovl{font-size:1.1rem;color:var(--muted);margin:0 0 1.5rem;max-width:34rem}
+.prose .claim{margin:0 0 1.6rem;padding:0 0 0 1.1rem;border-left:2px solid var(--ink);font-size:1.04rem}
+.prose .claim p{margin:0}
+.prose .mapfig{display:block;margin:1.2rem 0 1.9rem;padding:1.2rem;border:1px solid var(--rule);background:var(--paper)}
+.prose .mapfig svg{width:100%;height:auto;color:var(--ink);display:block}
+.prose .mapfig figcaption{font-size:.79rem;color:var(--muted);margin-top:.7rem;line-height:1.5}
+.stage{cursor:pointer}
+.stage rect{transition:fill .12s ease}
+.stage:hover rect,.stage:focus-visible rect{fill:var(--ink);fill-opacity:.06}
+.stage.on rect{fill:var(--ink);fill-opacity:.11;stroke-width:2}
+.stage:focus-visible{outline:none}
+.stage:focus-visible rect{stroke-width:2}
+@media (prefers-reduced-motion:reduce){.stage rect{transition:none}}
+
+.glance{list-style:none;margin:0 0 1.4rem;padding:0;border-top:1px solid var(--rule)}
+.glance li{border-bottom:1px solid var(--rule)}
+.glance button{width:100%;text-align:left;background:none;border:0;cursor:pointer;color:inherit;
+  font-family:var(--sans);padding:.5rem .3rem;display:grid;grid-template-columns:2rem 1fr;
+  gap:.45rem;align-items:baseline;font-size:.87rem}
+.glance button:hover{background:var(--sunk)}
+.glance button:hover .gname2{text-decoration:underline;text-decoration-color:var(--live);text-underline-offset:2px}
+.gn{font-family:var(--mono);font-size:.66rem;color:var(--faint);font-variant-numeric:tabular-nums}
+.gname2{font-weight:600;display:block;letter-spacing:-.005em}
+.gint{display:block;color:var(--muted);font-size:.83rem;line-height:1.45}
+.kbd{font-family:var(--mono);font-size:.78em;border:1px solid var(--rule-strong);padding:0 .25em}
+
+.railtop{padding:.85rem .95rem .1rem}
+.railtop button{width:100%;text-align:left;background:none;border:0;cursor:pointer;color:inherit;
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.4rem .45rem;border-left:2px solid transparent;color:var(--muted)}
+.railtop button:hover{background:var(--sunk);color:var(--ink)}
+.railtop button[aria-current="true"]{background:var(--paper);border-left-color:var(--ink);
+  color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule)}
+
 @media (max-width:52rem){
   :root{--rail:0rem}
   .shell{grid-template-columns:1fr}
@@ -230,6 +270,7 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--live);outline-offse
         <button class="chip" data-seam="disposition" aria-pressed="false">Disposition</button>
       </div>
     </div>
+    <div class="railtop"><button type="button" data-goto="overview">Overview</button></div>
     <div id="index"></div>
     <div class="railfoot">
       14 patterns · 6 stages<br>
@@ -267,7 +308,83 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--live);outline-offse
 
 </div>
 
-<div id="store" hidden><div class="panel" data-pat="capability-disclosure">
+<div id="store" hidden><div class="panel" data-pat="overview">
+
+<p class="ovl">A pattern language for mixed-initiative, tool-using interfaces.</p>
+
+<blockquote class="claim"><p><strong>The transcript is not the interface.</strong> In a tool-using agent, conversation is the control and negotiation layer. Plans, diffs, approvals, tool calls and artifacts are first-class structured objects that the conversation refers to, commands, and takes responsibility for.</p></blockquote>
+
+<p>Claude Code, Cursor’s agent mode, Aider, Devin and a dozen internal tools have each independently grown an approval prompt, a streaming renderer, a tool-activity log, and a way of saying “are you sure?” — and none of them call these things the same name. The literature that exists is either <em>conversation design</em>, mature but grown from voice assistants, or <em>agent UX</em>, current but a flat list of tips.</p>
+
+<p>What is missing is the middle: a vocabulary with enough rigour to design against, argue with, and refuse. These fourteen are a proposal for it. Each states what it costs and when it does not apply, so it can be argued out of the catalogue rather than merely admired.</p>
+
+<p class="field">The shape of it</p>
+<p>The patterns are not a list. They sit at defined points on the loop a delegated task travels — most arguments about agent design are really arguments about which arc you are on. <strong>Choose a stage to filter the index.</strong></p>
+
+<figure class="mapfig">
+  <svg viewBox="0 0 720 250" role="img" aria-label="A cycle of five stages — Orientation, Intent, Execution, Authority, Truth and continuity — with an arrow returning from the last to the first labelled next task. Turn sits apart, connected to Execution by a dashed line labelled governs every stage. Each stage can be selected to filter the index.">
+    <g class="stage" data-part="I" tabindex="0" role="button" aria-label="Filter to Orientation">
+      <rect x="8" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+      <text x="69" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Orientation</text></g>
+    <g class="stage" data-part="III" tabindex="0" role="button" aria-label="Filter to Intent">
+      <rect x="158" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+      <text x="219" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Intent</text></g>
+    <g class="stage" data-part="IV" tabindex="0" role="button" aria-label="Filter to Execution">
+      <rect x="308" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+      <text x="369" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Execution</text></g>
+    <g class="stage" data-part="V" tabindex="0" role="button" aria-label="Filter to Authority">
+      <rect x="458" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+      <text x="519" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Authority</text></g>
+    <g class="stage" data-part="VI" tabindex="0" role="button" aria-label="Filter to Truth and continuity">
+      <rect x="588" y="110" width="124" height="34" fill="none" stroke="currentColor"/>
+      <text x="650" y="126" text-anchor="middle" font-size="11.5" fill="currentColor">Truth and</text>
+      <text x="650" y="139" text-anchor="middle" font-size="11.5" fill="currentColor">continuity</text></g>
+    <line x1="130" y1="57" x2="152" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+    <line x1="280" y1="57" x2="302" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+    <line x1="430" y1="57" x2="452" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+    <path d="M580,57 L650,57 L650,104" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+    <path d="M588,127 L520,127 L520,190 L69,190 L69,80" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+    <text x="300" y="184" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">next task</text>
+    <g class="stage" data-part="II" tabindex="0" role="button" aria-label="Filter to Turn">
+      <rect x="308" y="110" width="122" height="34" fill="none" stroke="currentColor"/>
+      <text x="369" y="131" text-anchor="middle" font-size="11.5" fill="currentColor">Turn</text></g>
+    <line x1="369" y1="106" x2="369" y2="78" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+    <text x="380" y="98" font-size="10.5" fill="currentColor" opacity=".65">governs every stage</text>
+  </svg>
+  <figcaption>Turn is drawn apart because it is not a stage but a property of every stage. A system can have an excellent approval gate and still be intolerable because the principal cannot interrupt it.</figcaption>
+</figure>
+
+<p class="field">The fourteen</p>
+<ol class="glance">
+  <li><button type="button" data-goto="capability-disclosure"><span class="gn">01</span><span><span class="gname2">Capability Disclosure</span><span class="gint">Make the agent’s powers, position and limits legible before the principal commits.</span></span></button></li>
+  <li><button type="button" data-goto="mode-legibility"><span class="gn">02</span><span><span class="gname2">Mode Legibility</span><span class="gint">Make the active mode visible at the moment of use, not merely settable.</span></span></button></li>
+  <li><button type="button" data-goto="streaming-turn"><span class="gn">03</span><span><span class="gname2">Streaming Turn</span><span class="gint">Emit as you produce, so the wait overlaps the work instead of following it.</span></span></button></li>
+  <li><button type="button" data-goto="barge-in"><span class="gn">04</span><span><span class="gname2">Barge-In</span><span class="gint">Let the principal seize the turn — and say honestly what that stops.</span></span></button></li>
+  <li><button type="button" data-goto="scope-on-uncertainty"><span class="gn">05</span><span><span class="gname2">Scope-on-Uncertainty</span><span class="gint">Ask only when ambiguity changes the blast radius; otherwise state an assumption.</span></span></button></li>
+  <li><button type="button" data-goto="constrained-choice"><span class="gn">06</span><span><span class="gname2">Constrained Choice</span><span class="gint">When ambiguity is enumerable, offer structure rather than free text.</span></span></button></li>
+  <li><button type="button" data-goto="plan-approve-execute-receipt"><span class="gn">07</span><span><span class="gname2">Plan · Approve · Execute · Receipt</span><span class="gint">Four phases, so consent happens where judgement is still useful.</span></span></button></li>
+  <li><button type="button" data-goto="tool-call-transparency"><span class="gn">08</span><span><span class="gname2">Tool-Call Transparency</span><span class="gint">Which tool, against what, why, and with what result — as structure, not prose.</span></span></button></li>
+  <li><button type="button" data-goto="ambient-activity-channel"><span class="gn">09</span><span><span class="gname2">Ambient Activity Channel</span><span class="gint">Signal state through a channel perceived without being attended to.</span></span></button></li>
+  <li><button type="button" data-goto="approval-gate"><span class="gn">10</span><span><span class="gname2">Approval Gate</span><span class="gint">Explicit, per-action consent before anything irreversible or outward-facing.</span></span></button></li>
+  <li><button type="button" data-goto="progressive-autonomy"><span class="gn">11</span><span><span class="gname2">Progressive Autonomy</span><span class="gint">Scope widens with demonstrated reliability and narrows with risk.</span></span></button></li>
+  <li><button type="button" data-goto="honest-gauge"><span class="gn">12</span><span><span class="gname2">Honest Gauge</span><span class="gint">A signal must be wrong only when the system is wrong.</span></span></button></li>
+  <li><button type="button" data-goto="recoverable-execution"><span class="gn">13</span><span><span class="gname2">Recoverable Execution</span><span class="gint">Every action has a visible before-state and a path back.</span></span></button></li>
+  <li><button type="button" data-goto="continuity-as-memory"><span class="gn">14</span><span><span class="gname2">Continuity as Memory</span><span class="gint">What matters survives in durable, correctable memory — not transcript length.</span></span></button></li>
+</ol>
+
+<p class="field">Reading this page</p>
+<ul>
+  <li>The <strong>index</strong> on the left holds all fourteen, grouped by stage. <span class="kbd">[</span> and <span class="kbd">]</span> step through them.</li>
+  <li><strong>Related patterns</strong> on every entry are clickable. That field has been a dead list at the foot of a page since 1994; here it is how you move, and it is the point of a pattern <em>language</em> rather than a pattern list.</li>
+  <li><strong>Side of the seam</strong> splits them by how they fail. <em>Harness</em> patterns live in code — they fail the same way every time and a test can hold them. <em>Disposition</em> patterns live in the agent’s character — they fail stochastically, and you strengthen a tendency rather than pin a behaviour. Nine are harness, one is disposition, four are both: most of what makes an agent feel trustworthy turns out to be <em>buildable</em>.</li>
+</ul>
+
+<p class="field">Where this came from</p>
+<p>Four of the fourteen — Mode Legibility, Streaming Turn, Ambient Activity Channel and Honest Gauge — were found by hitting them on a single workstation running a voice-first agent with a resident process, local speech-to-text and synthesis, and a physical lighting channel. Every number quoted in those entries was measured on that machine rather than estimated.</p>
+<p>The argument for the form — why a pattern language, and why this template — is <a href="/om-001">OM-001</a>. You do not need it to use the catalogue.</p>
+
+</div>
+<div class="panel" data-pat="capability-disclosure">
       <p class="part">Part I · Orientation</p>
       <h2>Capability Disclosure</h2>
 
@@ -1436,6 +1553,22 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   }
 
   function show(id,push){
+    if(id==='overview'){
+      state.cur='overview';
+      document.body.setAttribute('data-view','overview');
+      document.getElementById('d-name').textContent='Patterns';
+      document.getElementById('d-prose').innerHTML=store.querySelector('[data-pat="overview"]').innerHTML;
+      wireStages();
+      indexEl.querySelectorAll('button[data-goto]').forEach(function(b){b.setAttribute('aria-current','false');});
+      document.querySelector('.railtop button').setAttribute('aria-current','true');
+      document.title='Patterns \u2014 Organon Mind';
+      if(push!==false&&location.hash) history.pushState({id:id},'',location.pathname);
+      document.getElementById('detail').scrollTop=0;
+      document.body.classList.remove('rail-open');
+      return;
+    }
+    document.body.setAttribute('data-view','pattern');
+    document.querySelector('.railtop button').setAttribute('aria-current','false');
     var p=BY[id]; if(!p) return;
     state.cur=id;
     document.getElementById('d-no').textContent=pad(p.n);
@@ -1514,9 +1647,27 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     show(P[e.key===']'?Math.min(P.length-1,i+1):Math.max(0,i-1)].id);
   });
 
+  function wireStages(){
+    document.querySelectorAll('.stage').forEach(function(g){
+      if(g.dataset.wired) return; g.dataset.wired='1';
+      function pick(){
+        var part=g.getAttribute('data-part'), already=g.classList.contains('on');
+        document.querySelectorAll('.stage').forEach(function(x){x.classList.remove('on');});
+        state.part = already ? 'all' : part;
+        if(!already) g.classList.add('on');
+        document.querySelectorAll('.chip[data-part]').forEach(function(x){
+          x.setAttribute('aria-pressed',String(x.getAttribute('data-part')===state.part));});
+        applyFilters();
+      }
+      g.addEventListener('click',pick);
+      g.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();}});
+    });
+  }
+
   applyFilters();
   var initial=location.hash.slice(1);
-  show(BY[initial]?initial:'capability-disclosure',false);
+  show(BY[initial]?initial:'overview',false);
 })();
 </script>
 </body>
