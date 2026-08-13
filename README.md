@@ -27,15 +27,22 @@ and the design — and the pattern explorer needs design control a renderer cann
 give. One artifact, no drift.
 
 `doc/` keeps sources for things that are genuinely *not* the pages: the figure
-prompts, which are the source for any generated figure, and the writing behind
-`/why`.
+prompts, which are the source for any generated figure, the writing behind
+`/why`, and the note on how a publication came to be the way it is.
+
+`doc/om-003-report.md` is the first of those last: what was assumed while drafting
+OM-003, what was verified and how, and what was left open. It exists because the
+decisions behind a paper — one document or two, which candidate was cut and why,
+which claims are reasoning rather than measurement — are worth more written down
+than reconstructed. It is not a page and will never be served.
 
 | Page | How it is made |
 |---|---|
-| `/` | `site/index.html` — hand-authored. The name, and two links |
+| `/` | `site/index.html` — hand-authored. The name, and the index |
 | `/patterns` | `site/patterns.html` — hand-authored. **The catalogue, and canonical for it** |
 | `/om-001` | `site/om-001.html` — hand-authored, figures as inline SVG. The argument |
 | `/om-002` | `site/om-002.html` — hand-authored. The second language, in full |
+| `/om-003` | `site/om-003.html` — hand-authored. The arrangements, and the level above |
 | `/why` | ⚠️ **still generated** — see below |
 
 **`/patterns` is canonical for the fourteen patterns; `/om-001` is the argument

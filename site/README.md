@@ -3,7 +3,7 @@
 The page for **organonmind.org**, Organon Mind's own address. Same letterhead
 lineage as `organon.art`: one page, no external requests.
 
-- `index.html` — **the name, and two links.** No tagline, no description of the
+- `index.html` — **the name, and the index.** No tagline, no description of the
   programme, no invitation, no mail address. Set in the same tokens as the
   publications: white ground, system sans, and the wordmark in tracked monospace
   — the same treatment as a publication masthead, scaled up, so the identity is
@@ -32,6 +32,19 @@ lineage as `organon.art`: one page, no external requests.
   (§5) along with what happens when they move: this becomes the argument, with a
   dated revision saying so. Until then there is exactly one copy of each — do not
   create a second by adding them to `/patterns` without moving them.
+- `om-003.html` — *Arrangements, and the Yard*, at `/om-003`. Two levels in one
+  document: six named arrangements of OM-002's eight patterns (§7–§12), and the
+  level above a fleet — one person working four to six squads at once (§14–§17).
+  ⚠️ **The two halves are written to be separable.** If the yard half grows
+  evidence of its own it becomes its own numbered document, and the split is a
+  dated revision here saying so; §3 states that on the page. Two fields are added
+  to the template and both are defended in §6 — *What it changes*, which is a
+  composite's central claim, and *Evidence*, which names per entry which of §4's
+  four sources it rests on. ⚠️ **The eight `#slot-N` anchors in §4 are
+  load-bearing**: entries link to them, and closing a slot means editing the slot
+  in place with a dated revision, not deleting it. This document has weaker
+  evidence than either predecessor and says so in §4 — do not "tidy" that section
+  into confidence.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
   `/why`. **Generated**, do not hand-edit. Run
   `python3 scripts/generate_mind_why.py` from the repo root; the source is
@@ -182,7 +195,7 @@ the swap there is an edit to the generator followed by a regenerate.
 
 **Decided 2026-08-12. Do not "fix" this.**
 
-The front page is the name and two links — the catalogue and the paper, each
+The front page is the name and a short index — the catalogue and the papers, each
 given a title and nothing more. There is no sentence saying what Organon Mind is,
 what it believes, who it is for, or what it would like from you. That is not an
 oversight and not an unfinished state: **the work is the description.** A visitor
