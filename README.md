@@ -14,20 +14,34 @@ kind of paper.
 ## What is here
 
 ```
-doc/        markdown sources of record — the writing, unrendered
-site/       organonmind.org, deployed as static files
-scripts/    one generator per document class
+site/       organonmind.org — the pages themselves, hand-authored
+doc/        sources for things that are not the pages
+scripts/    one surviving generator; see the warning below
 ```
 
-**`doc/` is the record; `site/` is a rendering.** Anything under `site/` that is
-generated must never be hand-edited — the markdown is what gets revised, and the
-page is rebuilt from it. This is the discipline the sibling repo already uses
-and the reason a document can be corrected years later without archaeology.
+**The HTML in `site/` is the document.** Publications are written directly as
+HTML rather than generated from markdown. The generator that used to do this
+existed because the site lived in a different repository from its source; now
+that they are together, a markdown renderer would only stand between the writing
+and the design — and the pattern explorer needs design control a renderer cannot
+give. One artifact, no drift.
 
-| Page | Source | Generator |
-|---|---|---|
-| `/` | `site/index.html` | hand-written — the name and the line, nothing else |
-| `/why` | `doc/not_just_what_it_says.md` | `scripts/generate_mind_why.py` |
+`doc/` keeps sources for things that are genuinely *not* the pages: the figure
+prompts, which are the source for any generated figure, and the writing behind
+`/why`.
+
+| Page | How it is made |
+|---|---|
+| `/` | `site/index.html` — hand-authored. The name, and nothing else |
+| `/om-001` | `site/om-001.html` — hand-authored, figures as inline SVG |
+| `/why` | ⚠️ **still generated** — see below |
+
+⚠️ **`site/why.html` is the one page that is still generated**, from
+`doc/not_just_what_it_says.md` via `scripts/generate_mind_why.py`. Do not
+hand-edit it; the next regenerate silently discards the change. This is a
+transitional state, not the rule — when `/why` is reset in the current type
+setting it becomes hand-authored like the rest, and the generator and its
+markdown go with it.
 
 ## Publishing
 

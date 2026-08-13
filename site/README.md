@@ -3,9 +3,12 @@
 The page for **organonmind.org**, Organon Mind's own address. Same letterhead
 lineage as `organon.art`: one page, no external requests.
 
-- `index.html` — **the name and the line. That is the whole page.** No
-  description of the instrument, no links, no invitation, no mail address,
-  nothing to click at all. It says one thing and stops.
+- `index.html` — **the name. That is the whole page.** No tagline, no
+  description, no links, no invitation, no mail address, nothing to click at
+  all. Set in the same tokens as the publications: white ground, system sans,
+  and the wordmark in tracked monospace — the same treatment as a publication
+  masthead, scaled up, so the identity is one element used consistently rather
+  than a logo.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
   `/why`. **Generated**, do not hand-edit. Run
   `python3 scripts/generate_mind_why.py` from the repo root; the source is
@@ -16,9 +19,10 @@ lineage as `organon.art`: one page, no external requests.
 
 ## What it says, and what it withholds
 
-The line carries the page: **"Because we need to see what it's doing, not just
-what it says."** What stands behind it is `doc/not_just_what_it_says.md`, served
-at `/why`.
+The page carried a line — *"Because we need to see what it's doing, not just what
+it says."* — until 2026-08-12, when the front page was reset to the name alone.
+The line is not gone as a position; it is simply no longer the front door. What
+stands behind it is `doc/not_just_what_it_says.md`, served at `/why`.
 
 That document is a **declaration, not an argument**, and the distinction is
 load-bearing for anyone editing it. It states the position and what follows from
@@ -30,21 +34,16 @@ rather than a concession against it. Keep internal references out of it too: no
 PRD section numbers, no repo paths, no "this product". It is published by an
 organization, and it should read that way.
 
-**The page withholds everything else, on purpose.** It carried a paragraph
-describing the instrument, links to `/why` and `organon.art/mind`, and the
-invitation. All of that came out (2026-08-01): the line is the whole page now.
-A visitor gets one sentence and no way forward, which was the intended effect
-while the instrument was unfinished.
+**The page withholds everything else, on purpose**, and has been narrowed twice.
+It once carried a paragraph describing the instrument, links to `/why` and
+`organon.art/mind`, and an invitation; all of that came out on 2026-08-01,
+leaving the line. The line came out on 2026-08-12, leaving the name. Each
+version is one `git show` away — the earliest in `organonart/organon-private`
+(`git show <commit>:site-mind/index.html`), the tagline version in this repo's
+history.
 
-That is a real trade, and it is now worth revisiting rather than inheriting.
-The page was a deliberate **dead end** when Mind had nothing published. That is
-no longer true: this repo exists to publish, and a visitor who arrives at a dead
-end cannot find what was published. Restoring a way forward is a small edit.
-The previous version is one `git show` away in `organonart/organon-private`
-(`git show <commit>:site-mind/index.html`).
-
-`/why` is **served but unlinked**, so anyone with the URL can read the
-declaration. Its footer carries `hello@organon.art`, which comes from the
+`/why` and `/om-001` are **served but unlinked**, so anyone with a URL can read
+them. `/why`'s footer carries `hello@organon.art`, which comes from the
 generator template rather than from this page.
 
 ## What this page deliberately is not
@@ -150,5 +149,21 @@ the swap there is an edit to the generator followed by a regenerate.
 - **`og:image`.** Omitted rather than reusing Organon's card, which is
   instrument-branded and would misdescribe the page in a link preview. A Mind
   card wants its own image.
-- **A way forward from the index.** See the trade above: the dead end was right
-  when there was nothing to link to, and this repo changes that.
+## The index is a dead end on purpose
+
+**Decided 2026-08-12. Do not "fix" this.**
+
+The front page is the name and nothing else — no description, no links, no
+address, nothing to click. `/why` and `/om-001` are both served and neither is
+reachable from it. That is not an oversight and not an unfinished state; it is
+the intended effect while the work is early. A visitor gets one word and no way
+forward, and anyone who is meant to have a document has its URL.
+
+It is recorded here because it looks exactly like a bug. The obvious, helpful,
+wrong move is to add a publications list the first time someone notices that a
+published document cannot be found from the homepage. Publications are numbered
+and cited by direct URL precisely so that the front page does not have to carry
+them.
+
+Reopening it is a small edit and a deliberate one. It should be made because the
+programme is ready to be found, not because a link was missing.
