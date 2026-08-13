@@ -32,9 +32,19 @@ prompts, which are the source for any generated figure, and the writing behind
 
 | Page | How it is made |
 |---|---|
-| `/` | `site/index.html` — hand-authored. The name, and nothing else |
-| `/om-001` | `site/om-001.html` — hand-authored, figures as inline SVG |
+| `/` | `site/index.html` — hand-authored. The name, and two links |
+| `/patterns` | `site/patterns.html` — hand-authored. **The catalogue, and canonical for it** |
+| `/om-001` | `site/om-001.html` — hand-authored, figures as inline SVG. The argument |
 | `/why` | ⚠️ **still generated** — see below |
+
+**`/patterns` is canonical for the fourteen patterns; `/om-001` is the argument
+for them.** OM-001 carried all fourteen in full until Rev. 3 (12 Aug 2026), which
+is when the explorer took over and the paper became what it should always have
+been: the case for the language, the evidence behind it, and the one field the
+Gang of Four template is missing. Two entries — Honest Gauge and Streaming Turn —
+are reproduced in the paper as worked examples, marked as reproductions, because
+an argument for a form has to show the form working. **If those two ever differ
+from `/patterns`, the catalogue is right.**
 
 ⚠️ **`site/why.html` is the one page that is still generated**, from
 `doc/not_just_what_it_says.md` via `scripts/generate_mind_why.py`. Do not

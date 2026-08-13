@@ -3,12 +3,24 @@
 The page for **organonmind.org**, Organon Mind's own address. Same letterhead
 lineage as `organon.art`: one page, no external requests.
 
-- `index.html` — **the name. That is the whole page.** No tagline, no
-  description, no links, no invitation, no mail address, nothing to click at
-  all. Set in the same tokens as the publications: white ground, system sans,
-  and the wordmark in tracked monospace — the same treatment as a publication
-  masthead, scaled up, so the identity is one element used consistently rather
-  than a logo.
+- `index.html` — **the name, and two links.** No tagline, no description of the
+  programme, no invitation, no mail address. Set in the same tokens as the
+  publications: white ground, system sans, and the wordmark in tracked monospace
+  — the same treatment as a publication masthead, scaled up, so the identity is
+  one element used consistently rather than a logo.
+- `patterns.html` — the pattern catalogue at `/patterns`, and **canonical for
+  it**: index rail, specimen detail, and Related Patterns as navigation rather
+  than a dead list. One file, hand-authored, no external requests; the small
+  amount of JavaScript is the explorer itself and runs from the same file.
+- `om-001.html` — the paper at `/om-001`. Since Rev. 3 it is the **argument** for
+  the catalogue, not the catalogue: the gap, why the existing literature does not
+  fill it, what the missing vocabulary costs, the evidence, and the proposed
+  form. Two patterns are reproduced in it as worked examples and say so on the
+  page. ⚠️ Its per-pattern anchors (`/om-001#approval-gate` and the other
+  thirteen) are **load-bearing** — Rev. 2 carried all fourteen at those ids, so
+  §9 keeps every one of them as a stub linking to the canonical entry. Do not
+  remove them to tidy the markup; a published fragment is as permanent as a
+  published number.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
   `/why`. **Generated**, do not hand-edit. Run
   `python3 scripts/generate_mind_why.py` from the repo root; the source is
@@ -34,17 +46,19 @@ rather than a concession against it. Keep internal references out of it too: no
 PRD section numbers, no repo paths, no "this product". It is published by an
 organization, and it should read that way.
 
-**The page withholds everything else, on purpose**, and has been narrowed twice.
-It once carried a paragraph describing the instrument, links to `/why` and
-`organon.art/mind`, and an invitation; all of that came out on 2026-08-01,
-leaving the line. The line came out on 2026-08-12, leaving the name. Each
+**The page withholds everything else, on purpose**, and has been narrowed twice
+before being reopened once. It originally carried a paragraph describing the
+instrument, links to `/why` and `organon.art/mind`, and an invitation; all of
+that came out on 2026-08-01, leaving the line. The line came out on 2026-08-12,
+leaving the name alone. Later the same day the work itself went up, and the page
+gained links to `/patterns` and `/om-001` — **two titles and nothing else**. Each
 version is one `git show` away — the earliest in `organonart/organon-private`
-(`git show <commit>:site-mind/index.html`), the tagline version in this repo's
-history.
+(`git show <commit>:site-mind/index.html`), the tagline and name-only versions in
+this repo's history.
 
-`/why` and `/om-001` are **served but unlinked**, so anyone with a URL can read
-them. `/why`'s footer carries `hello@organon.art`, which comes from the
-generator template rather than from this page.
+`/why` is still **served but unlinked**, so anyone with a URL can read it. Its
+footer carries `hello@organon.art`, which comes from the generator template
+rather than from this page.
 
 ## What this page deliberately is not
 
@@ -153,21 +167,24 @@ the swap there is an edit to the generator followed by a regenerate.
 - **`og:image`.** Omitted rather than reusing Organon's card, which is
   instrument-branded and would misdescribe the page in a link preview. A Mind
   card wants its own image.
-## The index is a dead end on purpose
+## The index says nothing about the programme
 
 **Decided 2026-08-12. Do not "fix" this.**
 
-The front page is the name and nothing else — no description, no links, no
-address, nothing to click. `/why` and `/om-001` are both served and neither is
-reachable from it. That is not an oversight and not an unfinished state; it is
-the intended effect while the work is early. A visitor gets one word and no way
-forward, and anyone who is meant to have a document has its URL.
+The front page is the name and two links — the catalogue and the paper, each
+given a title and nothing more. There is no sentence saying what Organon Mind is,
+what it believes, who it is for, or what it would like from you. That is not an
+oversight and not an unfinished state: **the work is the description.** A visitor
+who wants to know what this is reads a publication.
 
-It is recorded here because it looks exactly like a bug. The obvious, helpful,
-wrong move is to add a publications list the first time someone notices that a
-published document cannot be found from the homepage. Publications are numbered
-and cited by direct URL precisely so that the front page does not have to carry
-them.
+The page was a genuine dead end until 2026-08-12 — the name, nothing to click —
+and was reopened the day the catalogue went up. The reasoning is unchanged by
+that: it was reopened because the programme became findable, not because a link
+was missing. The earlier decision is left in the history rather than rewritten,
+because "we later disagreed with ourselves" is worth more than a clean file.
 
-Reopening it is a small edit and a deliberate one. It should be made because the
-programme is ready to be found, not because a link was missing.
+It is recorded here because the obvious next edit looks helpful and is not: a
+line under the wordmark explaining the research programme, a mission sentence, an
+invitation to get in touch. Each is a small improvement to a page whose whole
+effect depends on not making it. Publications are numbered and cited by direct
+URL precisely so the front page does not have to sell them.
