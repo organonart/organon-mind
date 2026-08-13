@@ -4,265 +4,272 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Patterns — Organon Mind</title>
-<meta name="description" content="Fourteen patterns for mixed-initiative, tool-using interfaces. The catalogue.">
+<meta name="description" content="An explorer for fourteen patterns of mixed-initiative, tool-using interfaces.">
 <link rel="icon" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Organon Mind">
 <meta property="og:title" content="Patterns">
-<meta property="og:description" content="Fourteen patterns for mixed-initiative, tool-using interfaces.">
+<meta property="og:description" content="An explorer for fourteen patterns of mixed-initiative, tool-using interfaces.">
 <meta property="og:url" content="https://organonmind.org/patterns">
 <meta name="twitter:card" content="summary">
 <style>
+/* ── Clean room. Metrology, not a hangar: hairlines, registration marks,
+   padded numerals, instrument readouts, and a great deal of white. ── */
 :root{
-  --paper:#ffffff; --raise:#f7f8f9; --ink:#0f1114; --muted:#5d636c; --faint:#8b919b;
-  --rule:#e2e5e9; --rule-strong:#c9ced6; --link:#1440c4;
+  --paper:#ffffff; --raise:#fafbfc; --sunk:#f0f2f4;
+  --ink:#0d0f12; --muted:#5c626b; --faint:#9aa1a9;
+  --rule:#e6e9ec; --rule-strong:#cdd2d8; --tick:#b9c0c7;
+  --live:#1440c4;
   --sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --mono:ui-monospace,"Cascadia Mono","SF Mono","Roboto Mono",Menlo,Consolas,monospace;
-  --measure:34rem; --gutter:9.5rem;
+  --rail:19.5rem; --bar:3rem;
 }
-/* Deliberately single-theme, as the publications are. */
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);
-  font-size:17px;line-height:1.65;margin:0;padding:0 1.5rem 8rem;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html,body{height:100%}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow:hidden;
+}
+a{color:var(--live);text-underline-offset:2px}
+a:focus-visible,button:focus-visible{outline:1px solid var(--live);outline-offset:2px}
+.mono{font-family:var(--mono)}
 
-.doc{max-width:calc(var(--gutter) + var(--measure));margin:0 auto}
-.row{display:grid;grid-template-columns:var(--gutter) minmax(0,1fr)}
-.row>.mark{font-family:var(--mono);font-size:.7rem;line-height:1.5;color:var(--faint);
-  letter-spacing:.04em;padding-top:.42rem;padding-right:1.5rem}
-.row>.body{min-width:0}
-@media (max-width:44rem){
-  .row{grid-template-columns:1fr}
-  .row>.mark{padding:0 0 .3rem;font-size:.66rem}
-  :root{--gutter:0rem}
+/* ── instrument bar ── */
+.bar{
+  position:fixed;inset:0 0 auto 0;height:var(--bar);z-index:20;
+  display:flex;align-items:center;gap:.9rem;padding:0 1rem;
+  background:var(--paper);border-bottom:1px solid var(--rule-strong);
+}
+.bar .org{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink);white-space:nowrap}
+.bar .sep{font-family:var(--mono);font-size:.68rem;color:var(--tick)}
+.bar .here{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.bar .spacer{flex:1}
+.bar .out{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;white-space:nowrap}
+.bar .out:hover{color:var(--live)}
+.railtoggle{display:none}
+
+/* a fine calibration rule beneath the bar — the clean-room tell */
+.bar::after{
+  content:"";position:absolute;left:0;right:0;bottom:-5px;height:4px;pointer-events:none;
+  background-image:repeating-linear-gradient(to right,var(--tick) 0 1px,transparent 1px 16px);
+  opacity:.5;
 }
 
-.mast{padding:4.5rem 0 0}
-.org{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin:0}
-.org a{color:inherit;text-decoration:none}
-h1{font-weight:600;letter-spacing:-.022em;font-size:clamp(1.85rem,4.4vw,2.6rem);
-  line-height:1.14;margin:2.6rem 0 0;max-width:var(--measure);text-wrap:balance}
-.standfirst{font-size:1.1rem;color:var(--muted);margin:.85rem 0 0;max-width:var(--measure);text-wrap:balance}
+.shell{position:fixed;inset:var(--bar) 0 0 0;display:grid;grid-template-columns:var(--rail) minmax(0,1fr)}
 
-h2{font-weight:600;font-size:1.32rem;letter-spacing:-.012em;line-height:1.28;margin:0;text-wrap:balance}
-section{margin:3.4rem 0 0;scroll-margin-top:1.5rem}
-p{margin:0 0 1.1rem;max-width:var(--measure)}
-p:last-child{margin-bottom:0}
-a{color:var(--link);text-underline-offset:2px;text-decoration-thickness:1px}
-a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
-strong{font-weight:620}
-ul{margin:0 0 1.1rem;padding-left:1.15rem;max-width:var(--measure)}
-li{margin:.3rem 0}
-li::marker{color:var(--faint)}
-blockquote{margin:1.9rem 0;padding:0 0 0 1.15rem;border-left:2px solid var(--ink);
-  font-size:1.06rem;max-width:var(--measure)}
-.part{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);margin:0 0 .3rem}
-
-.field{font-family:var(--mono);font-size:.685rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--muted);font-weight:500;margin:1.75rem 0 .4rem}
-.field.first{margin-top:1.1rem}
-
-pre{font-family:var(--mono);font-size:.78rem;line-height:1.6;background:var(--raise);
-  border:1px solid var(--rule);border-radius:2px;padding:.85rem 1rem;margin:1.15rem 0;overflow-x:auto}
-code{font-family:var(--mono);font-size:.87em}
-p code,li code,td code{background:var(--raise);border:1px solid var(--rule);border-radius:2px;padding:.05em .3em}
-pre code{background:none;border:0;padding:0}
-
-.tablewrap{overflow-x:auto;margin:1.4rem 0}
-table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
-th,td{text-align:left;padding:.5rem .8rem .5rem 0;border-bottom:1px solid var(--rule);vertical-align:top}
-th{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--faint);font-weight:500;border-bottom:1px solid var(--rule-strong)}
-
-figure{margin:1.5rem 0 1.8rem}
-figure svg{width:100%;height:auto;color:var(--ink);display:block}
-figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(--measure)}
-
-/* ---------- the map, used as navigation ---------- */
-.mapfig svg{cursor:default}
-.stage{cursor:pointer}
-.stage rect{transition:fill .12s ease}
-.stage:hover rect,.stage:focus-visible rect{fill:var(--ink);fill-opacity:.07}
-.stage.on rect{fill:var(--ink);fill-opacity:.12;stroke-width:2}
-.stage:focus-visible{outline:none}
-.stage:focus-visible rect{stroke-width:2}
-@media (prefers-reduced-motion:reduce){.stage rect{transition:none}}
-
-/* ---------- control bar ---------- */
-.controls{
-  position:sticky;top:0;z-index:5;background:var(--paper);
-  border-bottom:1px solid var(--rule-strong);
-  padding:.7rem 0 .65rem;margin:2.2rem 0 0;
-  display:flex;flex-wrap:wrap;gap:.9rem 1.6rem;align-items:baseline;
-}
-.cgroup{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap}
-.clabel{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
-.chip{
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;
-  border:1px solid var(--rule-strong);background:var(--paper);color:var(--muted);
-  padding:.2rem .5rem;border-radius:2px;cursor:pointer;
-}
+/* ── index rail ── */
+.rail{border-right:1px solid var(--rule-strong);overflow-y:auto;background:var(--raise);
+  display:flex;flex-direction:column}
+.filters{padding:1rem .95rem .8rem;border-bottom:1px solid var(--rule);position:sticky;top:0;
+  background:var(--raise);z-index:2}
+.frow{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap;margin-bottom:.5rem}
+.frow:last-child{margin-bottom:0}
+.flabel{font-family:var(--mono);font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--faint);width:2.9rem;flex:none}
+.chip{font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;border:1px solid var(--rule-strong);
+  background:var(--paper);color:var(--muted);padding:.14rem .42rem;cursor:pointer;border-radius:0}
 .chip:hover{border-color:var(--ink);color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-.chip:focus-visible{outline:2px solid var(--link);outline-offset:2px}
-.count{font-family:var(--mono);font-size:.66rem;color:var(--faint);margin-left:auto}
 
-/* ---------- pattern entries ---------- */
-.pat{position:relative}
-.pat.hidden{display:none}
-.pat .permalink{
-  font-family:var(--mono);font-size:.66rem;color:var(--faint);
-  text-decoration:none;margin-left:.5rem;opacity:0;transition:opacity .12s ease;
+.group{padding:.9rem .95rem .15rem}
+.gname{font-family:var(--mono);font-size:.56rem;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 .4rem;display:flex;align-items:center;gap:.5rem}
+.gname::after{content:"";flex:1;height:1px;background:var(--rule)}
+.idx{list-style:none;margin:0 0 .35rem;padding:0}
+.idx button{
+  width:100%;text-align:left;background:none;border:0;cursor:pointer;color:inherit;
+  font-family:var(--sans);font-size:.855rem;line-height:1.35;
+  padding:.38rem .45rem .4rem;border-left:2px solid transparent;
+  display:grid;grid-template-columns:1.55rem 1fr;gap:.4rem;align-items:baseline;
 }
-.pat:hover .permalink,.pat:focus-within .permalink{opacity:1}
-.pat .permalink:hover{color:var(--link)}
-.seam{
-  font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--faint);border:1px solid var(--rule);border-radius:2px;padding:.1rem .38rem;
-  margin-left:.5rem;vertical-align:.15em;white-space:nowrap;
+.idx button:hover{background:var(--sunk)}
+.idx button[aria-current="true"]{background:var(--paper);border-left-color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule)}
+.idx button[aria-current="true"] .iname{font-weight:640}
+.inum{font-family:var(--mono);font-size:.66rem;color:var(--faint);font-variant-numeric:tabular-nums}
+.iname{font-weight:520;letter-spacing:-.004em}
+.idx li.off{display:none}
+.railfoot{margin-top:auto;padding:.9rem .95rem 1.1rem;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:.6rem;color:var(--faint);line-height:1.8;letter-spacing:.02em}
+
+/* ── detail ── */
+.detail{overflow-y:auto}
+.pane{max-width:47rem;margin:0 auto;padding:2.4rem 2.2rem 8rem}
+
+.desig{display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap}
+.desig .no{font-family:var(--mono);font-size:1.35rem;letter-spacing:-.02em;color:var(--tick);
+  font-variant-numeric:tabular-nums;line-height:1}
+.desig h1{font-size:clamp(1.5rem,3.2vw,2.05rem);font-weight:600;letter-spacing:-.021em;
+  line-height:1.1;margin:0;text-wrap:balance}
+.tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--rule-strong);padding:.13rem .4rem;white-space:nowrap}
+
+/* calibration strip under the designation */
+.calib{height:5px;margin:.85rem 0 0;
+  background-image:repeating-linear-gradient(to right,var(--tick) 0 1px,transparent 1px 12px);
+  opacity:.55}
+
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:0;
+  border-bottom:1px solid var(--rule);margin:0 0 1.7rem}
+.spec div{padding:.65rem .9rem .7rem 0}
+.spec dt{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 .18rem}
+.spec dd{margin:0;font-size:.85rem;font-weight:560;font-variant-numeric:tabular-nums}
+
+/* specimen plate — registration marks at the corners */
+.hero{position:relative;margin:0 0 1.8rem;padding:1.4rem;border:1px solid var(--rule);background:var(--paper)}
+.hero.empty{display:none}
+.hero svg{width:100%;height:auto;color:var(--ink);display:block}
+.hero figcaption{font-size:.79rem;color:var(--muted);margin-top:.75rem;line-height:1.5}
+.hero .reg{position:absolute;width:9px;height:9px;pointer-events:none}
+.hero .reg::before,.hero .reg::after{content:"";position:absolute;background:var(--tick)}
+.hero .reg::before{width:9px;height:1px;top:0} .hero .reg::after{width:1px;height:9px;left:0}
+.hero .reg.tl{top:-1px;left:-1px}
+.hero .reg.tr{top:-1px;right:-1px;transform:scaleX(-1)}
+.hero .reg.bl{bottom:-1px;left:-1px;transform:scaleY(-1)}
+.hero .reg.br{bottom:-1px;right:-1px;transform:scale(-1,-1)}
+
+/* relations — the reason this is an explorer and not a document */
+.rel{border:1px solid var(--rule-strong);margin:0 0 1.9rem}
+.rel h2{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:0;padding:.5rem .85rem;border-bottom:1px solid var(--rule);
+  background:var(--raise);font-weight:500}
+.rel ul{list-style:none;margin:0;padding:0}
+.rel li{border-bottom:1px solid var(--rule)}
+.rel li:last-child{border-bottom:0}
+.rel button{width:100%;text-align:left;background:none;border:0;cursor:pointer;color:inherit;
+  font-family:var(--sans);padding:.52rem .85rem;display:grid;
+  grid-template-columns:9.5rem 1.6rem 1fr;gap:.5rem;align-items:baseline;font-size:.86rem}
+.rel button:hover{background:var(--sunk)}
+.rel button:hover .rname{text-decoration:underline;text-decoration-color:var(--live);text-underline-offset:2px}
+.rel .verb{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.rel .rnum{font-family:var(--mono);font-size:.66rem;color:var(--faint);font-variant-numeric:tabular-nums}
+.rel .rname{font-weight:540}
+@media (max-width:34rem){.rel button{grid-template-columns:1fr;gap:.05rem}}
+
+/* prose */
+.prose{max-width:36rem}
+.prose p{margin:0 0 1.05rem}
+.prose ul{margin:0 0 1.05rem;padding-left:1.15rem}
+.prose li{margin:.28rem 0}
+.prose li::marker{color:var(--faint)}
+.prose strong{font-weight:620}
+.prose .field{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin:1.75rem 0 .35rem;
+  display:flex;align-items:center;gap:.55rem}
+.prose .field::after{content:"";flex:1;height:1px;background:var(--rule)}
+.prose .field.first{margin-top:0}
+.prose .part,.prose h2,.prose figure{display:none}
+.prose pre{font-family:var(--mono);font-size:.755rem;line-height:1.58;background:var(--raise);
+  border:1px solid var(--rule);padding:.8rem .95rem;margin:1.1rem 0;overflow-x:auto}
+.prose code{font-family:var(--mono);font-size:.87em}
+.prose p code,.prose li code{background:var(--raise);border:1px solid var(--rule);padding:.05em .3em}
+.prose pre code{background:none;border:0;padding:0}
+.prose blockquote{margin:1.5rem 0;padding:0 0 0 1rem;border-left:2px solid var(--ink)}
+
+.panel{display:none}
+
+@media (max-width:52rem){
+  :root{--rail:0rem}
+  .shell{grid-template-columns:1fr}
+  .rail{position:fixed;inset:var(--bar) auto 0 0;width:17.5rem;z-index:15;
+    transform:translateX(-100%);transition:transform .16s ease}
+  body.rail-open .rail{transform:translateX(0)}
+  .railtoggle{display:inline-flex;align-items:center;background:none;border:1px solid var(--rule-strong);
+    padding:.2rem .45rem;cursor:pointer;font-family:var(--mono);font-size:.61rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .pane{padding:1.7rem 1.2rem 6rem}
 }
-
-/* depth + diagnose: fields are tagged by script, hidden by CSS */
-body[data-depth="intent"] .pat [data-field]:not([data-field="intent"]),
-body[data-depth="intent"] .pat figure{display:none}
-body[data-depth="core"] .pat [data-field]:not([data-field="intent"]):not([data-field="motivation"]):not([data-field="consequences"]):not([data-field="failure-signature"]),
-body[data-depth="core"] .pat figure{display:none}
-body[data-mode="diagnose"] .pat [data-field]:not([data-field="failure-signature"]),
-body[data-mode="diagnose"] .pat figure,
-body[data-mode="diagnose"] .pat .part{display:none}
-body[data-mode="diagnose"] .depthgroup{display:none}
-body[data-mode="diagnose"] .diagnose-note{display:block}
-.diagnose-note{display:none;margin:1.6rem 0 0;padding:.9rem 1rem;border:1px solid var(--rule);
-  background:var(--raise);font-size:.9rem;color:var(--muted);max-width:var(--measure)}
-
-.note{margin:2rem 0 0;padding:.9rem 1rem;border:1px solid var(--rule);background:var(--raise);
-  font-size:.9rem;color:var(--muted);max-width:var(--measure)}
-.note a{color:var(--link)}
-.empty{display:none;margin:2.5rem 0 0;color:var(--muted);font-size:.95rem}
-.empty.on{display:block}
-
-.colophon{margin:5rem 0 0;padding-top:1.1rem;border-top:1px solid var(--rule);
-  font-family:var(--mono);font-size:.72rem;line-height:1.8;color:var(--muted)}
-.colophon a{color:var(--link)}
-
+@media (prefers-reduced-motion:reduce){.rail{transition:none}}
 @media print{
-  body{padding:0;font-size:10.5pt}
-  .controls,.permalink{display:none}
-  section{break-inside:avoid}
+  body{overflow:visible;height:auto}
+  .bar,.rail{display:none}
+  .shell{position:static;display:block}
+  .detail{overflow:visible}
 }
 </style>
 </head>
-<body data-depth="full" data-mode="browse">
+<body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker>
 </defs></svg>
 
-<div class="doc">
-
-<header class="mast">
-  <div class="row">
-    <div class="mark"></div>
-    <div class="body">
-      <p class="org"><a href="/">Organon Mind</a></p>
-      <h1>Patterns</h1>
-      <p class="standfirst">Fourteen patterns for mixed-initiative, tool-using interfaces. This is the catalogue, and it is the canonical text — <a href="/om-001">OM-001</a> argues for the form.</p>
-    </div>
-  </div>
-</header>
-
-<section id="the-map-nav">
-  <div class="row">
-    <div class="mark"></div>
-    <div class="body">
-      <p>The patterns sit at defined points on the loop a delegated task travels. <strong>The map is the navigation</strong> — choose a stage to see only its patterns.</p>
-      <figure class="mapfig">
-        <svg viewBox="0 0 720 250" role="img" aria-label="A cycle of five stages — Orientation, Intent, Execution, Authority, Truth and continuity — with an arrow returning from the last to the first labelled next task. Turn sits apart, connected to Execution by a dashed line labelled governs every stage. Each stage can be selected to filter the catalogue.">
-          <g class="stage" data-part="I" tabindex="0" role="button" aria-label="Filter to Orientation">
-            <rect x="8" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-            <text x="69" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Orientation</text>
-          </g>
-          <g class="stage" data-part="III" tabindex="0" role="button" aria-label="Filter to Intent">
-            <rect x="158" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-            <text x="219" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Intent</text>
-          </g>
-          <g class="stage" data-part="IV" tabindex="0" role="button" aria-label="Filter to Execution">
-            <rect x="308" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-            <text x="369" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Execution</text>
-          </g>
-          <g class="stage" data-part="V" tabindex="0" role="button" aria-label="Filter to Authority">
-            <rect x="458" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-            <text x="519" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Authority</text>
-          </g>
-          <g class="stage" data-part="VI" tabindex="0" role="button" aria-label="Filter to Truth and continuity">
-            <rect x="588" y="110" width="124" height="34" fill="none" stroke="currentColor"/>
-            <text x="650" y="126" text-anchor="middle" font-size="11.5" fill="currentColor">Truth and</text>
-            <text x="650" y="139" text-anchor="middle" font-size="11.5" fill="currentColor">continuity</text>
-          </g>
-          <line x1="130" y1="57" x2="152" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
-          <line x1="280" y1="57" x2="302" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
-          <line x1="430" y1="57" x2="452" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
-          <path d="M580,57 L650,57 L650,104" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
-          <path d="M588,127 L520,127 L520,190 L69,190 L69,80" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
-          <text x="300" y="184" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">next task</text>
-          <g class="stage" data-part="II" tabindex="0" role="button" aria-label="Filter to Turn">
-            <rect x="308" y="110" width="122" height="34" fill="none" stroke="currentColor"/>
-            <text x="369" y="131" text-anchor="middle" font-size="11.5" fill="currentColor">Turn</text>
-          </g>
-          <line x1="369" y1="106" x2="369" y2="78" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
-          <text x="380" y="98" font-size="10.5" fill="currentColor" opacity=".65">governs every stage</text>
-        </svg>
-        <figcaption>Turn is drawn apart because it is not a stage but a property of every stage. A system can have an excellent approval gate and still be intolerable because the principal cannot interrupt it.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<div class="row">
-  <div class="mark"></div>
-  <div class="body">
-    <div class="controls">
-      <div class="cgroup">
-        <span class="clabel">View</span>
-        <button class="chip" data-mode-btn="browse" aria-pressed="true">Browse</button>
-        <button class="chip" data-mode-btn="diagnose" aria-pressed="false">Diagnose</button>
-      </div>
-      <div class="cgroup depthgroup">
-        <span class="clabel">Depth</span>
-        <button class="chip" data-depth-btn="intent" aria-pressed="false">Intent</button>
-        <button class="chip" data-depth-btn="core" aria-pressed="false">Core</button>
-        <button class="chip" data-depth-btn="full" aria-pressed="true">Full</button>
-      </div>
-      <div class="cgroup">
-        <span class="clabel">Side</span>
-        <button class="chip" data-seam-btn="all" aria-pressed="true">All</button>
-        <button class="chip" data-seam-btn="harness" aria-pressed="false">Harness</button>
-        <button class="chip" data-seam-btn="disposition" aria-pressed="false">Disposition</button>
-      </div>
-      <span class="count" id="count">14 of 14</span>
-    </div>
-
-    <div class="diagnose-note">
-      <strong>Diagnose.</strong> A missing conversational pattern announces itself as a symptom, not
-      as a name — nobody thinks “I need Recoverable Execution,” they think “why do I keep copying
-      files aside before letting it work?” These are the symptoms. Find the one you recognise.
-    </div>
-
-    <p class="empty" id="empty">No patterns match that combination. <button class="chip" id="reset">Clear filters</button></p>
-  </div>
+<div class="bar">
+  <button class="railtoggle" id="railtoggle" aria-label="Show index">Index</button>
+  <a class="org" href="/">Organon Mind</a>
+  <span class="sep">/</span>
+  <span class="here">Patterns</span>
+  <span class="spacer"></span>
+  <a class="out" href="/om-001">OM-001 · the paper →</a>
 </div>
 
-<section id="capability-disclosure" class="pat" data-part="I" data-seam="harness">
-  <div class="row">
-    <div class="mark">1</div>
-    <div class="body">
-      <p class="part">Part I · Orientation <span class="seam">harness</span></p>
-      <h2>Capability Disclosure<a class="permalink" href="#capability-disclosure" aria-label="Permanent link">#</a></h2>
+<div class="shell">
+
+  <nav class="rail" id="rail" aria-label="Pattern index">
+    <div class="filters">
+      <div class="frow">
+        <span class="flabel">Stage</span>
+        <button class="chip" data-part="all" aria-pressed="true">All</button>
+        <button class="chip" data-part="I" aria-pressed="false">I</button>
+        <button class="chip" data-part="II" aria-pressed="false">II</button>
+        <button class="chip" data-part="III" aria-pressed="false">III</button>
+        <button class="chip" data-part="IV" aria-pressed="false">IV</button>
+        <button class="chip" data-part="V" aria-pressed="false">V</button>
+        <button class="chip" data-part="VI" aria-pressed="false">VI</button>
+      </div>
+      <div class="frow">
+        <span class="flabel">Side</span>
+        <button class="chip" data-seam="all" aria-pressed="true">All</button>
+        <button class="chip" data-seam="harness" aria-pressed="false">Harness</button>
+        <button class="chip" data-seam="disposition" aria-pressed="false">Disposition</button>
+      </div>
+    </div>
+    <div id="index"></div>
+    <div class="railfoot">
+      14 patterns · 6 stages<br>
+      9 harness · 1 disposition · 4 both<br>
+      <span style="opacity:.75">[ ] to step</span>
+    </div>
+  </nav>
+
+  <main class="detail" id="detail">
+    <div class="pane">
+      <div class="desig">
+        <span class="no" id="d-no">01</span>
+        <h1 id="d-name">—</h1>
+        <span class="tag" id="d-part">—</span>
+        <span class="tag" id="d-seam">—</span>
+      </div>
+      <div class="calib" aria-hidden="true"></div>
+
+      <dl class="spec" id="d-spec"></dl>
+
+      <figure class="hero" id="d-hero">
+        <span class="reg tl"></span><span class="reg tr"></span>
+        <span class="reg bl"></span><span class="reg br"></span>
+        <div id="d-hero-in"></div>
+      </figure>
+
+      <div class="rel" id="d-rel">
+        <h2>Related patterns</h2>
+        <ul id="d-rel-list"></ul>
+      </div>
+
+      <div class="prose" id="d-prose"></div>
+    </div>
+  </main>
+
+</div>
+
+<div id="store" hidden><div class="panel" data-pat="capability-disclosure">
+      <p class="part">Part I · Orientation</p>
+      <h2>Capability Disclosure</h2>
 
       <p class="field first">Intent</p>
       <p>Make the agent’s powers, position and limits legible before the principal commits to a request, so expectations are formed from evidence rather than optimism.</p>
@@ -331,14 +338,9 @@ tools: read, write, bash, powershell   ·   no network
       <p class="field">Related patterns</p>
       <p><strong>Mode Legibility</strong> (2) is its highest-frequency special case. <strong>Honest Gauge</strong> (12) governs its correctness.</p>
     </div>
-  </div>
-</section>
-<section id="mode-legibility" class="pat" data-part="I" data-seam="harness">
-  <div class="row">
-    <div class="mark">2</div>
-    <div class="body">
-      <p class="part">Part I · Orientation <span class="seam">harness</span></p>
-      <h2>Mode Legibility<a class="permalink" href="#mode-legibility" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="mode-legibility">
+      <p class="part">Part I · Orientation</p>
+      <h2>Mode Legibility</h2>
 
       <p class="field first">Intent</p>
       <p>When a surface has modes that change the meaning of the same input, make the active mode visible <em>at the moment of use</em>, not merely settable at the moment of configuration.</p>
@@ -406,14 +408,9 @@ tools: read, write, bash, powershell   ·   no network
       <p class="field">Related patterns</p>
       <p><strong>Capability Disclosure</strong> (1), <strong>Honest Gauge</strong> (12).</p>
     </div>
-  </div>
-</section>
-<section id="streaming-turn" class="pat" data-part="II" data-seam="harness">
-  <div class="row">
-    <div class="mark">3</div>
-    <div class="body">
-      <p class="part">Part II · Turn <span class="seam">harness</span></p>
-      <h2>Streaming Turn<a class="permalink" href="#streaming-turn" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="streaming-turn">
+      <p class="part">Part II · Turn</p>
+      <h2>Streaming Turn</h2>
 
       <p class="field first">Intent</p>
       <p>Emit the response as it is produced rather than when it is complete, so the principal’s wait overlaps the agent’s work instead of following it.</p>
@@ -496,14 +493,9 @@ tools: read, write, bash, powershell   ·   no network
       <p class="field">Related patterns</p>
       <p><strong>Barge-In</strong> (4), <strong>Tool-Call Transparency</strong> (8).</p>
     </div>
-  </div>
-</section>
-<section id="barge-in" class="pat" data-part="II" data-seam="harness">
-  <div class="row">
-    <div class="mark">4</div>
-    <div class="body">
-      <p class="part">Part II · Turn <span class="seam">harness</span></p>
-      <h2>Barge-In<a class="permalink" href="#barge-in" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="barge-in">
+      <p class="part">Part II · Turn</p>
+      <h2>Barge-In</h2>
 
       <p class="field first">Intent</p>
       <p>Let the principal seize the turn at any moment, and define precisely — and honestly — what that stops.</p>
@@ -579,14 +571,9 @@ tools: read, write, bash, powershell   ·   no network
       <p class="field">Related patterns</p>
       <p><strong>Streaming Turn</strong> (3), <strong>Recoverable Execution</strong> (13).</p>
     </div>
-  </div>
-</section>
-<section id="scope-on-uncertainty" class="pat" data-part="III" data-seam="disposition">
-  <div class="row">
-    <div class="mark">5</div>
-    <div class="body">
-      <p class="part">Part III · Intent <span class="seam">disposition</span></p>
-      <h2>Scope-on-Uncertainty<a class="permalink" href="#scope-on-uncertainty" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="scope-on-uncertainty">
+      <p class="part">Part III · Intent</p>
+      <h2>Scope-on-Uncertainty</h2>
 
       <p class="field first">Intent</p>
       <p>Ask exactly one high-value question when ambiguity would change the blast radius; otherwise proceed on a stated assumption.</p>
@@ -668,14 +655,9 @@ I've built and tested the artifact (common to both). Which target?</code></pre>
       <p class="field">Related patterns</p>
       <p><strong>Constrained Choice</strong> (6), <strong>Approval Gate</strong> (10).</p>
     </div>
-  </div>
-</section>
-<section id="constrained-choice" class="pat" data-part="III" data-seam="both">
-  <div class="row">
-    <div class="mark">6</div>
-    <div class="body">
-      <p class="part">Part III · Intent <span class="seam">harness + disposition</span></p>
-      <h2>Constrained Choice<a class="permalink" href="#constrained-choice" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="constrained-choice">
+      <p class="part">Part III · Intent</p>
+      <h2>Constrained Choice</h2>
 
       <p class="field first">Intent</p>
       <p>When ambiguity is enumerable, offer the options as selectable structure rather than inviting free text.</p>
@@ -725,14 +707,9 @@ I've built and tested the artifact (common to both). Which target?</code></pre>
       <p class="field">Related patterns</p>
       <p><strong>Scope-on-Uncertainty</strong> (5), <strong>Approval Gate</strong> (10).</p>
     </div>
-  </div>
-</section>
-<section id="plan-approve-execute-receipt" class="pat" data-part="IV" data-seam="both">
-  <div class="row">
-    <div class="mark">7</div>
-    <div class="body">
-      <p class="part">Part IV · Execution <span class="seam">harness + disposition</span></p>
-      <h2>Plan · Approve · Execute · Receipt<a class="permalink" href="#plan-approve-execute-receipt" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="plan-approve-execute-receipt">
+      <p class="part">Part IV · Execution</p>
+      <h2>Plan · Approve · Execute · Receipt</h2>
 
       <p class="field first">Intent</p>
       <p>Structure delegated work as four distinct phases so that understanding, consent, action and evidence are each separately inspectable.</p>
@@ -817,14 +794,9 @@ RECEIPT
       <p class="field">Related patterns</p>
       <p><strong>Approval Gate</strong> (10), <strong>Tool-Call Transparency</strong> (8), <strong>Recoverable Execution</strong> (13).</p>
     </div>
-  </div>
-</section>
-<section id="tool-call-transparency" class="pat" data-part="IV" data-seam="harness">
-  <div class="row">
-    <div class="mark">8</div>
-    <div class="body">
-      <p class="part">Part IV · Execution <span class="seam">harness</span></p>
-      <h2>Tool-Call Transparency<a class="permalink" href="#tool-call-transparency" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="tool-call-transparency">
+      <p class="part">Part IV · Execution</p>
+      <h2>Tool-Call Transparency</h2>
 
       <p class="field first">Intent</p>
       <p>Expose which tool ran, against what target, why, and with what result — as structured events, not as prose and not as raw reasoning.</p>
@@ -898,14 +870,9 @@ RECEIPT
       <p class="field">Related patterns</p>
       <p><strong>Ambient Activity Channel</strong> (9), <strong>Honest Gauge</strong> (12).</p>
     </div>
-  </div>
-</section>
-<section id="ambient-activity-channel" class="pat" data-part="IV" data-seam="harness">
-  <div class="row">
-    <div class="mark">9</div>
-    <div class="body">
-      <p class="part">Part IV · Execution <span class="seam">harness</span></p>
-      <h2>Ambient Activity Channel<a class="permalink" href="#ambient-activity-channel" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="ambient-activity-channel">
+      <p class="part">Part IV · Execution</p>
+      <h2>Ambient Activity Channel</h2>
 
       <p class="field first">Intent</p>
       <p>Signal the agent’s state through a channel the principal perceives without attending to it, so presence and progress cost no screen and no focus.</p>
@@ -978,14 +945,9 @@ RECEIPT
       <p class="field">Related patterns</p>
       <p><strong>Tool-Call Transparency</strong> (8), <strong>Honest Gauge</strong> (12), <strong>Mode Legibility</strong> (2).</p>
     </div>
-  </div>
-</section>
-<section id="approval-gate" class="pat" data-part="V" data-seam="harness">
-  <div class="row">
-    <div class="mark">10</div>
-    <div class="body">
-      <p class="part">Part V · Authority <span class="seam">harness</span></p>
-      <h2>Approval Gate<a class="permalink" href="#approval-gate" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="approval-gate">
+      <p class="part">Part V · Authority</p>
+      <h2>Approval Gate</h2>
 
       <p class="field first">Intent</p>
       <p>Require explicit, per-action consent before any step that is irreversible, outward-facing, or spends the principal’s authority in a way they would want to know about.</p>
@@ -1069,14 +1031,9 @@ context is lost. I'll wait — nothing else I'm doing depends on it.</code></pre
       <p class="field">Related patterns</p>
       <p><strong>Progressive Autonomy</strong> (11), <strong>Scope-on-Uncertainty</strong> (5), <strong>Recoverable Execution</strong> (13).</p>
     </div>
-  </div>
-</section>
-<section id="progressive-autonomy" class="pat" data-part="V" data-seam="both">
-  <div class="row">
-    <div class="mark">11</div>
-    <div class="body">
-      <p class="part">Part V · Authority <span class="seam">harness + disposition</span></p>
-      <h2>Progressive Autonomy<a class="permalink" href="#progressive-autonomy" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="progressive-autonomy">
+      <p class="part">Part V · Authority</p>
+      <h2>Progressive Autonomy</h2>
 
       <p class="field first">Intent</p>
       <p>Let the scope of unattended action widen with demonstrated reliability and narrow with risk, rather than fixing it once at design time.</p>
@@ -1153,14 +1110,9 @@ context is lost. I'll wait — nothing else I'm doing depends on it.</code></pre
       <p class="field">Related patterns</p>
       <p><strong>Approval Gate</strong> (10), <strong>Capability Disclosure</strong> (1).</p>
     </div>
-  </div>
-</section>
-<section id="honest-gauge" class="pat" data-part="VI" data-seam="harness">
-  <div class="row">
-    <div class="mark">12</div>
-    <div class="body">
-      <p class="part">Part VI · Truth and continuity <span class="seam">harness</span></p>
-      <h2>Honest Gauge<a class="permalink" href="#honest-gauge" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="honest-gauge">
+      <p class="part">Part VI · Truth and continuity</p>
+      <h2>Honest Gauge</h2>
 
       <p class="field first">Intent</p>
       <p>Ensure every status signal is wrong <em>only</em> when the system is wrong; a signal that reports failure in its healthy steady state destroys its own value on the day it is right.</p>
@@ -1244,14 +1196,9 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       <p class="field">Related patterns</p>
       <p><strong>Capability Disclosure</strong> (1), <strong>Ambient Activity Channel</strong> (9).</p>
     </div>
-  </div>
-</section>
-<section id="recoverable-execution" class="pat" data-part="VI" data-seam="harness">
-  <div class="row">
-    <div class="mark">13</div>
-    <div class="body">
-      <p class="part">Part VI · Truth and continuity <span class="seam">harness</span></p>
-      <h2>Recoverable Execution<a class="permalink" href="#recoverable-execution" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="recoverable-execution">
+      <p class="part">Part VI · Truth and continuity</p>
+      <h2>Recoverable Execution</h2>
 
       <p class="field first">Intent</p>
       <p>Ensure every action has a visible before-state and a path back, so that being wrong is cheap.</p>
@@ -1329,14 +1276,9 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       <p class="field">Related patterns</p>
       <p><strong>Approval Gate</strong> (10), <strong>Progressive Autonomy</strong> (11), <strong>Barge-In</strong> (4).</p>
     </div>
-  </div>
-</section>
-<section id="continuity-as-memory" class="pat" data-part="VI" data-seam="both">
-  <div class="row">
-    <div class="mark">14</div>
-    <div class="body">
-      <p class="part">Part VI · Truth and continuity <span class="seam">harness + disposition</span></p>
-      <h2>Continuity as Memory<a class="permalink" href="#continuity-as-memory" aria-label="Permanent link">#</a></h2>
+<div class="panel" data-pat="continuity-as-memory">
+      <p class="part">Part VI · Truth and continuity</p>
+      <h2>Continuity as Memory</h2>
 
       <p class="field first">Intent</p>
       <p>Carry what matters across sessions in durable, inspectable memory rather than in the length of a transcript, so restarting is cheap and context is a chosen artifact rather than an accident of scrollback.</p>
@@ -1417,114 +1359,164 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
       <p class="field">Related patterns</p>
       <p><strong>Plan · Approve · Execute · Receipt</strong> (7), <strong>Honest Gauge</strong> (12), <strong>Capability Disclosure</strong> (1).</p>
-    </div>
-  </div>
-</section>
-
-<div class="row">
-  <div class="mark"></div>
-  <div class="body">
-    <div class="note">
-      <strong>On the seam.</strong> <em>Harness</em> patterns live in code: they fail deterministically
-      and can be pinned with a test. <em>Disposition</em> patterns live in the agent’s character: they
-      fail stochastically, and have a tendency you strengthen rather than a test that holds them.
-      Sorting by side tells you which of these are engineering problems and which are character
-      problems — they belong on different roadmaps.
-    </div>
-    <div class="colophon">
-      Organon Mind · the catalogue · <a href="/om-001">OM-001 argues for the form</a><br>
-      Patterns are cited by name and number; every entry has a permanent anchor.<br>
-      No external requests, no analytics, no trackers.
-    </div>
-  </div>
-</div>
-
-</div>
+    </div></div>
 
 <script>
 (function(){
-  var body = document.body;
-  var pats = Array.prototype.slice.call(document.querySelectorAll('.pat'));
+  var P = [
+    {id:"capability-disclosure",n:1,name:"Capability Disclosure",part:"I",stage:"Orientation",seam:"harness",
+     rel:[["feeds","mode-legibility"],["loads","scope-on-uncertainty"],["governed by","honest-gauge"],["discloses rung of","progressive-autonomy"]]},
+    {id:"mode-legibility",n:2,name:"Mode Legibility",part:"I",stage:"Orientation",seam:"harness",
+     rel:[["special case of","capability-disclosure"],["keys","approval-gate"],["governed by","honest-gauge"]]},
+    {id:"streaming-turn",n:3,name:"Streaming Turn",part:"II",stage:"Turn",seam:"harness",
+     rel:[["enables","barge-in"],["carries","tool-call-transparency"]]},
+    {id:"barge-in",n:4,name:"Barge-In",part:"II",stage:"Turn",seam:"harness",
+     rel:[["depends on","streaming-turn"],["constrains","recoverable-execution"]]},
+    {id:"scope-on-uncertainty",n:5,name:"Scope-on-Uncertainty",part:"III",stage:"Intent",seam:"disposition",
+     rel:[["escalates to","approval-gate"],["presented by","constrained-choice"],["loaded by","capability-disclosure"]]},
+    {id:"constrained-choice",n:6,name:"Constrained Choice",part:"III",stage:"Intent",seam:"both",
+     rel:[["presents","scope-on-uncertainty"],["presents","approval-gate"]]},
+    {id:"plan-approve-execute-receipt",n:7,name:"Plan · Approve · Execute · Receipt",part:"IV",stage:"Execution",seam:"both",
+     rel:[["gated by","approval-gate"],["placed by","progressive-autonomy"],["traced by","tool-call-transparency"],["feeds","continuity-as-memory"]]},
+    {id:"tool-call-transparency",n:8,name:"Tool-Call Transparency",part:"IV",stage:"Execution",seam:"harness",
+     rel:[["rides","streaming-turn"],["feeds","ambient-activity-channel"],["evidences","recoverable-execution"]]},
+    {id:"ambient-activity-channel",n:9,name:"Ambient Activity Channel",part:"IV",stage:"Execution",seam:"harness",
+     rel:[["consumes","tool-call-transparency"],["obeys","honest-gauge"],["relates to","mode-legibility"]]},
+    {id:"approval-gate",n:10,name:"Approval Gate",part:"V",stage:"Authority",seam:"harness",
+     rel:[["positioned by","progressive-autonomy"],["presented via","constrained-choice"],["cheapened by","recoverable-execution"],["undermined by","honest-gauge"]]},
+    {id:"progressive-autonomy",n:11,name:"Progressive Autonomy",part:"V",stage:"Authority",seam:"both",
+     rel:[["positions","approval-gate"],["depends on","recoverable-execution"],["disclosed by","capability-disclosure"]]},
+    {id:"honest-gauge",n:12,name:"Honest Gauge",part:"VI",stage:"Truth and continuity",seam:"harness",
+     rel:[["governs","capability-disclosure"],["governs","mode-legibility"],["governs","ambient-activity-channel"],["undermines","approval-gate"]]},
+    {id:"recoverable-execution",n:13,name:"Recoverable Execution",part:"VI",stage:"Truth and continuity",seam:"harness",
+     rel:[["reduces","approval-gate"],["enables","progressive-autonomy"],["unwinds","barge-in"]]},
+    {id:"continuity-as-memory",n:14,name:"Continuity as Memory",part:"VI",stage:"Truth and continuity",seam:"both",
+     rel:[["fed by","plan-approve-execute-receipt"],["governed by","honest-gauge"],["orients","capability-disclosure"]]}
+  ];
+  var BY={}; P.forEach(function(p){BY[p.id]=p;});
+  var SEAM={harness:"harness",disposition:"disposition",both:"harness + disposition"};
+  var GROUPS=[["I","Orientation"],["II","Turn"],["III","Intent"],["IV","Execution"],["V","Authority"],["VI","Truth and continuity"]];
+  var pad=function(n){return (n<10?"0":"")+n;};
 
-  // Tag each element inside a pattern with the field it belongs to, so depth
-  // and diagnose views can hide by field without restructuring the markup.
-  function slug(t){ return t.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
-  pats.forEach(function(p){
-    var host = p.querySelector('.body') || p;
-    var current = null;
-    Array.prototype.slice.call(host.children).forEach(function(el){
-      if (el.classList.contains('field')) { current = slug(el.textContent); }
-      if (current) { el.setAttribute('data-field', current); }
+  var store=document.getElementById('store'),
+      indexEl=document.getElementById('index'),
+      state={part:'all',seam:'all',cur:null};
+
+  var inbound={}; P.forEach(function(p){inbound[p.id]=0;});
+  P.forEach(function(p){p.rel.forEach(function(r){if(inbound[r[1]]!==undefined)inbound[r[1]]++;});});
+
+  GROUPS.forEach(function(g){
+    var wrap=document.createElement('div'); wrap.className='group'; wrap.setAttribute('data-group',g[0]);
+    var h=document.createElement('p'); h.className='gname'; h.textContent=g[0]+' · '+g[1];
+    var ul=document.createElement('ul'); ul.className='idx';
+    P.filter(function(p){return p.part===g[0];}).forEach(function(p){
+      var li=document.createElement('li'); li.setAttribute('data-id',p.id);
+      var b=document.createElement('button'); b.type='button'; b.setAttribute('data-goto',p.id);
+      b.innerHTML='<span class="inum">'+pad(p.n)+'</span><span class="iname"></span>';
+      b.querySelector('.iname').textContent=p.name;
+      li.appendChild(b); ul.appendChild(li);
     });
+    wrap.appendChild(h); wrap.appendChild(ul); indexEl.appendChild(wrap);
   });
 
-  var state = { part:'all', seam:'all' };
-
-  function apply(){
-    var shown = 0;
-    pats.forEach(function(p){
-      var okPart = state.part === 'all' || p.getAttribute('data-part') === state.part;
-      var seam = p.getAttribute('data-seam') || '';
-      var okSeam = state.seam === 'all' || seam === state.seam || seam === 'both';
-      var on = okPart && okSeam;
-      p.classList.toggle('hidden', !on);
-      if (on) shown++;
+  function matches(p){
+    var okPart=state.part==='all'||p.part===state.part;
+    var okSeam=state.seam==='all'||p.seam===state.seam||p.seam==='both';
+    return okPart&&okSeam;
+  }
+  function applyFilters(){
+    GROUPS.forEach(function(g){
+      var wrap=indexEl.querySelector('[data-group="'+g[0]+'"]'); var any=false;
+      P.filter(function(p){return p.part===g[0];}).forEach(function(p){
+        var li=wrap.querySelector('li[data-id="'+p.id+'"]');
+        var on=matches(p); li.classList.toggle('off',!on); if(on)any=true;
+      });
+      wrap.style.display=any?'':'none';
     });
-    document.getElementById('count').textContent = shown + ' of ' + pats.length;
-    document.getElementById('empty').classList.toggle('on', shown === 0);
   }
 
-  function press(sel, attr, val){
-    document.querySelectorAll(sel).forEach(function(b){
-      b.setAttribute('aria-pressed', String(b.getAttribute(attr) === val));
+  function show(id,push){
+    var p=BY[id]; if(!p) return;
+    state.cur=id;
+    document.getElementById('d-no').textContent=pad(p.n);
+    document.getElementById('d-name').textContent=p.name;
+    document.getElementById('d-part').textContent=p.part+' · '+p.stage;
+    document.getElementById('d-seam').textContent=SEAM[p.seam];
+
+    var src=store.querySelector('[data-pat="'+id+'"]');
+
+    var spec=document.getElementById('d-spec'); spec.innerHTML='';
+    [['Stage',p.part+' · '+p.stage],
+     ['Side of the seam',SEAM[p.seam]],
+     ['Links out',String(p.rel.length)],
+     ['Cited by',String(inbound[p.id])]].forEach(function(row){
+      var d=document.createElement('div'),
+          dt=document.createElement('dt'), dd=document.createElement('dd');
+      dt.textContent=row[0]; dd.textContent=row[1];
+      d.appendChild(dt); d.appendChild(dd); spec.appendChild(d);
     });
+
+    var hero=document.getElementById('d-hero'), inner=document.getElementById('d-hero-in');
+    inner.innerHTML=''; hero.classList.add('empty');
+    if(src){
+      var fig=src.querySelector('figure');
+      if(fig){ inner.innerHTML=fig.innerHTML; hero.classList.remove('empty'); }
+    }
+
+    var rl=document.getElementById('d-rel-list'); rl.innerHTML='';
+    p.rel.forEach(function(r){
+      var t=BY[r[1]]; if(!t)return;
+      var li=document.createElement('li');
+      var b=document.createElement('button'); b.type='button'; b.setAttribute('data-goto',t.id);
+      b.innerHTML='<span class="verb"></span><span class="rnum">'+pad(t.n)+'</span><span class="rname"></span>';
+      b.querySelector('.verb').textContent=r[0];
+      b.querySelector('.rname').textContent=t.name;
+      li.appendChild(b); rl.appendChild(li);
+    });
+    document.getElementById('d-rel').style.display=p.rel.length?'':'none';
+
+    document.getElementById('d-prose').innerHTML=src?src.innerHTML:'';
+
+    indexEl.querySelectorAll('button[data-goto]').forEach(function(b){
+      b.setAttribute('aria-current',String(b.getAttribute('data-goto')===id));
+    });
+    document.title=p.n+' · '+p.name+' — Patterns — Organon Mind';
+    if(push!==false&&location.hash.slice(1)!==id) history.pushState({id:id},'','#'+id);
+    document.getElementById('detail').scrollTop=0;
+    document.body.classList.remove('rail-open');
   }
 
-  document.querySelectorAll('[data-mode-btn]').forEach(function(b){
-    b.addEventListener('click', function(){
-      var v = b.getAttribute('data-mode-btn');
-      body.setAttribute('data-mode', v);
-      press('[data-mode-btn]','data-mode-btn',v);
-    });
-  });
-  document.querySelectorAll('[data-depth-btn]').forEach(function(b){
-    b.addEventListener('click', function(){
-      var v = b.getAttribute('data-depth-btn');
-      body.setAttribute('data-depth', v);
-      press('[data-depth-btn]','data-depth-btn',v);
-    });
-  });
-  document.querySelectorAll('[data-seam-btn]').forEach(function(b){
-    b.addEventListener('click', function(){
-      state.seam = b.getAttribute('data-seam-btn');
-      press('[data-seam-btn]','data-seam-btn',state.seam);
-      apply();
-    });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-goto]'); if(b){show(b.getAttribute('data-goto'));return;}
+    var pt=e.target.closest('[data-part]');
+    if(pt){ state.part=pt.getAttribute('data-part');
+      document.querySelectorAll('[data-part]').forEach(function(x){
+        x.setAttribute('aria-pressed',String(x.getAttribute('data-part')===state.part));});
+      applyFilters(); return; }
+    var sm=e.target.closest('[data-seam]');
+    if(sm){ state.seam=sm.getAttribute('data-seam');
+      document.querySelectorAll('[data-seam]').forEach(function(x){
+        x.setAttribute('aria-pressed',String(x.getAttribute('data-seam')===state.seam));});
+      applyFilters(); return; }
   });
 
-  function selectStage(g){
-    var part = g.getAttribute('data-part');
-    var already = g.classList.contains('on');
-    document.querySelectorAll('.stage').forEach(function(s){ s.classList.remove('on'); });
-    if (already) { state.part = 'all'; }
-    else { g.classList.add('on'); state.part = part; }
-    apply();
-  }
-  document.querySelectorAll('.stage').forEach(function(g){
-    g.addEventListener('click', function(){ selectStage(g); });
-    g.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectStage(g); }
-    });
+  document.getElementById('railtoggle').addEventListener('click',function(){
+    document.body.classList.toggle('rail-open');
+  });
+  window.addEventListener('popstate',function(){
+    var id=location.hash.slice(1); if(BY[id]) show(id,false);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.target.matches('input,textarea'))return;
+    if(e.key!=='['&&e.key!==']')return;
+    var i=-1; P.forEach(function(p,k){if(p.id===state.cur)i=k;});
+    if(i<0)return;
+    show(P[e.key===']'?Math.min(P.length-1,i+1):Math.max(0,i-1)].id);
   });
 
-  document.getElementById('reset').addEventListener('click', function(){
-    state.part = 'all'; state.seam = 'all';
-    document.querySelectorAll('.stage').forEach(function(s){ s.classList.remove('on'); });
-    press('[data-seam-btn]','data-seam-btn','all');
-    apply();
-  });
-
-  apply();
+  applyFilters();
+  var initial=location.hash.slice(1);
+  show(BY[initial]?initial:'capability-disclosure',false);
 })();
 </script>
 </body>
