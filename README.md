@@ -35,6 +35,7 @@ prompts, which are the source for any generated figure, and the writing behind
 | `/` | `site/index.html` — hand-authored. The name, and two links |
 | `/patterns` | `site/patterns.html` — hand-authored. **The catalogue, and canonical for it** |
 | `/om-001` | `site/om-001.html` — hand-authored, figures as inline SVG. The argument |
+| `/om-002` | `site/om-002.html` — hand-authored. The second language, in full |
 | `/why` | ⚠️ **still generated** — see below |
 
 **`/patterns` is canonical for the fourteen patterns; `/om-001` is the argument

@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OM-002 · Working a Fleet — Organon Mind</title>
+<meta name="description" content="Eight patterns for delegating to more than one agent at once: the split, the flight, and the join.">
+<link rel="icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Organon Mind">
+<meta property="og:title" content="Working a Fleet">
+<meta property="og:description" content="Eight patterns for delegating to more than one agent at once.">
+<meta property="og:url" content="https://organonmind.org/om-002">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --paper:#ffffff; --raise:#f7f8f9; --ink:#0f1114; --muted:#5d636c; --faint:#8b919b;
+  --rule:#e2e5e9; --rule-strong:#c9ced6; --link:#1440c4;
+  --sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --measure:34rem; --gutter:9.5rem;
+}
+/* Deliberately single-theme. A publication has a canonical appearance; it does
+   not follow the reader's operating system. Every colour is painted explicitly. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.65;margin:0;padding:0 1.5rem 8rem;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+.doc{max-width:calc(var(--gutter) + var(--measure));margin:0 auto}
+.row{display:grid;grid-template-columns:var(--gutter) minmax(0,1fr)}
+.row>.mark{font-family:var(--mono);font-size:.7rem;line-height:1.5;color:var(--faint);
+  letter-spacing:.04em;padding-top:.42rem;padding-right:1.5rem}
+.row>.body{min-width:0}
+@media (max-width:44rem){
+  .row{grid-template-columns:1fr}
+  .row>.mark{padding:0 0 .3rem;font-size:.66rem}
+  :root{--gutter:0rem}
+}
+
+.mast{padding:4.5rem 0 0}
+.org{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin:0}
+.org a{color:inherit;text-decoration:none}
+h1{font-weight:600;letter-spacing:-.022em;font-size:clamp(1.85rem,4.4vw,2.6rem);
+  line-height:1.14;margin:2.6rem 0 0;max-width:var(--measure);text-wrap:balance}
+.standfirst{font-size:1.1rem;color:var(--muted);margin:.85rem 0 0;max-width:var(--measure);text-wrap:balance}
+
+.meta{font-family:var(--mono);font-size:.735rem;line-height:1.85;
+  border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule);
+  margin:2.75rem 0 0;padding:.9rem 0;display:grid;grid-template-columns:max-content 1fr;gap:0 1.6rem}
+.meta dt{color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+.meta dd{margin:0}
+.meta a{color:var(--link)}
+.revision{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin:.85rem 0 0;
+  padding-left:.9rem;border-left:2px solid var(--rule-strong)}
+
+h2{font-weight:600;font-size:1.32rem;letter-spacing:-.012em;line-height:1.28;margin:0;text-wrap:balance}
+h3{font-weight:600;font-size:1.05rem;letter-spacing:-.006em;margin:0;text-wrap:balance}
+.part{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 .3rem}
+section{margin:3.6rem 0 0}
+p{margin:0 0 1.1rem;max-width:var(--measure)}
+p:last-child{margin-bottom:0}
+a{color:var(--link);text-underline-offset:2px;text-decoration-thickness:1px}
+a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+strong{font-weight:620}
+ul{margin:0 0 1.1rem;padding-left:1.15rem;max-width:var(--measure)}
+li{margin:.3rem 0}
+li::marker{color:var(--faint)}
+.lede{font-size:1.06rem}
+blockquote{margin:1.9rem 0;padding:0 0 0 1.15rem;border-left:2px solid var(--ink);
+  font-size:1.06rem;max-width:var(--measure)}
+blockquote p{margin:0}
+blockquote cite{display:block;font-style:normal;font-family:var(--mono);font-size:.72rem;
+  color:var(--muted);margin-top:.6rem}
+
+.field{font-family:var(--mono);font-size:.685rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin:1.75rem 0 .4rem}
+.field.first{margin-top:1.1rem}
+
+pre{font-family:var(--mono);font-size:.78rem;line-height:1.6;background:var(--raise);
+  border:1px solid var(--rule);border-radius:2px;padding:.85rem 1rem;margin:1.15rem 0;overflow-x:auto}
+code{font-family:var(--mono);font-size:.87em}
+p code,li code,td code{background:var(--raise);border:1px solid var(--rule);border-radius:2px;padding:.05em .3em}
+pre code{background:none;border:0;padding:0}
+
+.tablewrap{overflow-x:auto;margin:1.4rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.5rem .8rem .5rem 0;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--faint);font-weight:500;border-bottom:1px solid var(--rule-strong)}
+
+figure{margin:1.5rem 0 1.8rem}
+figure svg{width:100%;height:auto;color:var(--ink);display:block}
+figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(--measure)}
+
+.aside{font-size:.94rem;color:var(--muted);border-left:2px solid var(--rule-strong);
+  padding-left:.95rem;margin:1.6rem 0;max-width:var(--measure)}
+.aside p{margin:0 0 .6rem}
+.aside p:last-child{margin:0}
+
+.toc{font-size:.92rem;margin:1.2rem 0 0}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:.22rem 0}
+.toc .n{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-right:.5rem}
+.toc .g{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin:1rem 0 .35rem}
+
+.colophon{margin:5.5rem 0 0;padding-top:1.1rem;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:.72rem;line-height:1.8;color:var(--muted)}
+.colophon a{color:var(--link)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{padding:0;font-size:10.5pt}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker>
+</defs></svg>
+
+<div class="doc">
+
+<header class="mast">
+  <div class="row">
+    <div class="mark">OM-002</div>
+    <div class="body">
+      <p class="org"><a href="/">Organon Mind</a></p>
+      <h1>Working a Fleet</h1>
+      <p class="standfirst">Eight patterns for delegating to more than one agent at once: the split, the flight, and the join.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mark"></div>
+    <div class="body">
+      <dl class="meta">
+        <dt>Document</dt><dd>OM-002</dd>
+        <dt>Category</dt><dd>Pattern language</dd>
+        <dt>Published</dt><dd>13 August 2026</dd>
+        <dt>Author</dt><dd>James Andrew Walsh, Organon Mind</dd>
+        <dt>Follows</dt><dd><a href="/om-001">OM-001</a> · <a href="/patterns">the catalogue</a></dd>
+        <dt>Status</dt><dd>Current</dd>
+      </dl>
+      <p class="revision">Rev. 1 — 13 Aug 2026. First publication. Fills the gap <a href="/om-001#what-this-catalogue-does-not-cover">OM-001 §11</a> named first among the things it did not cover.</p>
+    </div>
+  </div>
+</header>
+
+<section id="the-gap">
+  <div class="row">
+    <div class="mark">1</div>
+    <div class="body">
+      <h2>The gap this fills is one we named</h2>
+      <p class="lede">OM-001 closed with a list of what its fourteen patterns did not cover. First on that list: <em>multi-agent choreography — delegation between agents, and what a receipt means when the actor was itself an agent.</em> It was excluded honestly. Nothing had been built, and a pattern with no observed failure is a preference wearing the template.</p>
+      <p>That changed quickly, and in two places at once. A console was built that spawns agents and renders what they do, which forced a series of measurements about what is actually knowable about a dispatched agent. And a working practice appeared alongside it: propose the units, approve them, dispatch them into isolated workspaces, and come back later to what they left.</p>
+      <p>Both produced failures. This document names eight of them.</p>
+
+      <p class="field">Why these are not patterns 15 to 22</p>
+      <p>The first fourteen describe <strong>one delegated task</strong> travelling a loop: orientation, intent, execution, authority, and what survives. Every one of them assumes a single agent, and the vocabulary says so — <em>Turn</em> is defined as “the unit of exchange, and the thing that is <em>held</em> by exactly one party.”</p>
+      <p>Put twelve agents in flight and there is no turn. There is no single thread of exchange to hold, nothing to interrupt, and no moment at which the principal and the agent are both present. The topology is not a longer cycle. It is a <strong>fan-out and a fan-in</strong>, and everything difficult lives at the two seams and in the space between them.</p>
+      <p>So this is a second language rather than an extension of the first. It cites the first constantly, and several of its patterns are the first language's patterns discovering that they do not survive multiplication.</p>
+    </div>
+  </div>
+</section>
+
+<section id="the-shape">
+  <div class="row">
+    <div class="mark">2</div>
+    <div class="body">
+      <h2>The shape of the work</h2>
+      <p>Three acts, and the eight patterns sit in them. The principal's role changes across the three, which is most of why this is hard: at the split they are deciding, in flight they are absent, and at the join they are reconciling work they did not watch.</p>
+      <figure>
+        <svg viewBox="0 0 720 300" role="img" aria-label="A fan-out and fan-in. A principal works with a primary agent, which proposes units. Approved units split into three parallel workspaces which run unattended. Their results join at a gather step, which returns one account to the principal. Three acts are labelled: the split, in flight, and the join.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">THE SPLIT</text>
+          <text x="300" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">IN FLIGHT</text>
+          <text x="560" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">THE JOIN</text>
+          <line x1="284" y1="26" x2="284" y2="284" stroke="currentColor" stroke-dasharray="3 5" opacity=".2"/>
+          <line x1="544" y1="26" x2="544" y2="284" stroke="currentColor" stroke-dasharray="3 5" opacity=".2"/>
+          <rect x="8" y="120" width="104" height="38" fill="none" stroke="currentColor"/>
+          <text x="60" y="144" text-anchor="middle" font-size="11.5" fill="currentColor">Principal</text>
+          <rect x="150" y="120" width="112" height="38" fill="none" stroke="currentColor"/>
+          <text x="206" y="137" text-anchor="middle" font-size="11.5" fill="currentColor">Primary agent</text>
+          <text x="206" y="151" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">holds the context</text>
+          <line x1="112" y1="139" x2="144" y2="139" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="310" y="46" width="150" height="34" fill="none" stroke="currentColor"/>
+          <text x="385" y="67" text-anchor="middle" font-size="11.5" fill="currentColor">unit · workspace</text>
+          <rect x="310" y="122" width="150" height="34" fill="none" stroke="currentColor"/>
+          <text x="385" y="143" text-anchor="middle" font-size="11.5" fill="currentColor">unit · workspace</text>
+          <rect x="310" y="198" width="150" height="34" fill="none" stroke="currentColor"/>
+          <text x="385" y="219" text-anchor="middle" font-size="11.5" fill="currentColor">unit · workspace</text>
+          <path d="M262,133 L286,133 L286,63 L304,63" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M262,139 L304,139" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M262,145 L286,145 L286,215 L304,215" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="584" y="120" width="128" height="38" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="648" y="144" text-anchor="middle" font-size="11.5" fill="currentColor">Gather</text>
+          <path d="M460,63 L546,63 L546,133 L578,133" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M460,139 L578,139" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M460,215 L546,215 L546,145 L578,145" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M648,158 L648,268 L60,268 L60,162" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="354" y="284" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">one account, back to the principal</text>
+        </svg>
+        <figcaption>The principal is present at both seams and absent between them. That absence is not a gap in the diagram; it is the point of the arrangement, and six of the eight patterns exist to make it survivable.</figcaption>
+      </figure>
+      <div class="toc">
+        <p class="g">The split</p>
+        <ol>
+          <li><span class="n">1</span>Proposed Dispatch</li>
+          <li><span class="n">2</span>Scoped Commission</li>
+          <li><span class="n">3</span>Isolation by Construction</li>
+        </ol>
+        <p class="g">In flight</p>
+        <ol start="4">
+          <li><span class="n">4</span>Dispatch Without Escort</li>
+          <li><span class="n">5</span>Fleet Standing</li>
+        </ol>
+        <p class="g">The join</p>
+        <ol start="6">
+          <li><span class="n">6</span>The Return Path</li>
+          <li><span class="n">7</span>Attribution Across Depth</li>
+          <li><span class="n">8</span>Gather</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="the-evidence">
+  <div class="row">
+    <div class="mark">3</div>
+    <div class="body">
+      <h2>The evidence</h2>
+      <p>Two sources, of different quality, and the difference is worth stating rather than blending.</p>
+
+      <p class="field first">Measured, while building a console that watches agents</p>
+      <p>A console was built whose second front-end spawns an agent over pipes and renders its structured event stream as native elements rather than as printed text. Rendering a <em>dispatched</em> agent forced four findings, each of which is a pattern in this document arriving as a bug.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Finding</th><th>What it cost</th><th>Pattern</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>A dispatch card sat on <code>running</code> for <strong>eight to sixteen minutes</strong>, then produced a wall of text. The events had been arriving the whole time and were being dropped.</td>
+            <td>One reading for a range of states that could have been distinguished.</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>The harness <strong>never forwards token-level deltas from a subagent</strong>. A step is always a completed burst, and the gaps between bursts are real.</td>
+            <td>A hard granularity floor. Any surface implying live progress is lying, and the lie is available and tempting.</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>The five lifecycle events key on <code>task_id</code>, <strong>not</strong> <code>tool_use_id</code> — and two of the five carry no <code>tool_use_id</code> at all.</td>
+            <td>Keying on the obvious field drops every status transition <em>while appearing to work</em>.</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Depth-2 lifecycle lines were declined and counted rather than merged, because a card holds one progress value with nowhere to record a depth.</td>
+            <td>Merging “would put the grandchild's work in the parent's voice.”</td>
+            <td>7</td>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <p class="field">Observed, in one morning's practice</p>
+      <p>The second source is a working session, recorded as it happened:</p>
+      <blockquote>
+        <p>“This morning I woke up to four such dispatch agents and I gave them that prompt. And then I took all of the replies and pasted them in series back to the agent that dispatched them.”</p>
+        <cite>Working notes, 13 August 2026</cite>
+      </blockquote>
+      <p>Every unit succeeded. Nothing errored. The whole cost of the missing mechanism landed in one person's morning, as clerical work — and that is precisely why it is easy not to notice. Pattern 6 is that sentence, named.</p>
+      <p>The same session produced the frame the patterns are arranged around:</p>
+      <blockquote>
+        <p>“A flow state when creating involves doing this very quickly: dispatch an agent, then immediately get back to doing something else and dispatch another agent. And the whole time, you are giving the thing that the agents need, which is the taste and the direction and the choices that make this thing you're building yours.”</p>
+        <cite>Working notes, 13 August 2026</cite>
+      </blockquote>
+
+      <p class="field">What this establishes, and what it does not</p>
+      <p>The console findings are <strong>measurements</strong>: they were made against a real harness, they are reproducible, and three of the four were discovered by a surface being wrong in a way somebody noticed. The practice is <strong>one person, over days</strong>. It establishes that these failures are real and cheap to hit. It establishes nothing about their frequency, nothing about whether eight is the right number, and nothing about whether the boundaries fall in the right places.</p>
+      <p>As with OM-001: patterns that survive contact with other people's fleets are worth keeping, and the rest should be argued out.</p>
+    </div>
+  </div>
+</section>
+
+<section id="forces">
+  <div class="row">
+    <div class="mark">4</div>
+    <div class="body">
+      <h2>Forces that recur</h2>
+      <p>The tensions that reappear across the eight. They are different from OM-001's, which is itself evidence that this is a second language rather than an extension.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Force</th><th>Pulls toward</th><th>Pulls against</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Attention does not divide</strong></td><td>unattended work, pre-granted authority</td><td>informed consent at the moment of action</td></tr>
+          <tr><td><strong>Isolation costs setup; collision costs correctness</strong></td><td>a workspace per unit</td><td>the time and disk each one takes</td></tr>
+          <tr><td><strong>You can only see what the channel carries</strong></td><td>reporting exactly the granularity you have</td><td>the surface that would be nicer to look at</td></tr>
+          <tr><td><strong>Authority granted early is granted blind</strong></td><td>scopes an environment enforces</td><td>the specificity of per-action consent</td></tr>
+          <tr><td><strong>Synthesis is not concatenation</strong></td><td>reconciling, and surfacing disagreement</td><td>the cost of actually reading N reports</td></tr>
+          <tr><td><strong>A finished unit that nobody routed has not finished</strong></td><td>return addresses, durable reports</td><td>the simplicity of leaving work where it lies</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section id="on-the-entries">
+  <div class="row">
+    <div class="mark">5</div>
+    <div class="body">
+      <h2>On the entries that follow</h2>
+      <p>Same template as OM-001, including the added field. <strong>Failure Signature</strong> earns its place harder here than it did there: a fleet failure is even further from its cause than a single-agent one, because the principal was not present when it happened and is reading a report about it afterwards.</p>
+      <p class="aside">These eight are published <em>in full</em> here, unlike the first fourteen, because the explorer at <a href="/patterns">/patterns</a> holds only the first language. When they move there, this document becomes the argument for them in the way OM-001 did, and a dated revision will say so. Until then this is the canonical text, and the catalogue is the one place that will ever hold two.</p>
+      <p><em>Also known as</em> is omitted where no name is genuinely in circulation. These are new enough that inventing synonyms would be dressing.</p>
+    </div>
+  </div>
+</section>
+
+<section id="proposed-dispatch">
+  <div class="row">
+    <div class="mark">6</div>
+    <div class="body">
+      <p class="part">The split · Pattern 1</p>
+      <h2>Proposed Dispatch</h2>
+
+      <p class="field first">Intent</p>
+      <p>Let the context that already holds the work propose the units, so the principal approves a decomposition rather than authoring one from memory.</p>
+
+      <p class="field">Motivation</p>
+      <p>A principal has been working with an agent for an hour. That agent knows the codebase, what has been tried, which constraint bit last time, and what the principal actually meant three messages ago. Then the principal opens a fresh window and types a new prompt, reconstructing by hand a fraction of what the agent already holds — and does the decomposition themselves, badly, because splitting work well requires knowing all of it.</p>
+      <p>The expensive part of fan-out is not running the agents. It is deciding what the units are. Doing that in the party with the least context is the defect.</p>
+
+      <p class="field">Applicability</p>
+      <p>When work decomposes into units that can run independently; when a primary agent holds context the principal would otherwise restate; when the principal's judgement is better spent on <em>which</em> and <em>whether</em> than on <em>how to phrase it</em>.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 190" role="img" aria-label="The primary agent, holding context, proposes three units. The principal approves, edits or refuses each. Approved units are commissioned and dispatched. A dashed arrow notes that the principal never authors the prompt.">
+          <rect x="8" y="72" width="140" height="44" fill="none" stroke="currentColor"/>
+          <text x="78" y="90" text-anchor="middle" font-size="11.5" fill="currentColor">Primary agent</text>
+          <text x="78" y="105" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">holds the context</text>
+          <rect x="222" y="26" width="150" height="30" fill="none" stroke="currentColor"/>
+          <text x="297" y="46" text-anchor="middle" font-size="11" fill="currentColor">proposed unit</text>
+          <rect x="222" y="79" width="150" height="30" fill="none" stroke="currentColor"/>
+          <text x="297" y="99" text-anchor="middle" font-size="11" fill="currentColor">proposed unit</text>
+          <rect x="222" y="132" width="150" height="30" fill="none" stroke="currentColor"/>
+          <text x="297" y="152" text-anchor="middle" font-size="11" fill="currentColor">proposed unit</text>
+          <path d="M148,88 L186,88 L186,41 L216,41" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M148,94 L216,94" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M148,100 L186,100 L186,147 L216,147" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="432" y="72" width="120" height="44" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="492" y="90" text-anchor="middle" font-size="11.5" fill="currentColor">Principal</text>
+          <text x="492" y="105" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">approve · edit · refuse</text>
+          <path d="M372,41 L404,41 L404,88 L426,88" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M372,94 L426,94" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M372,147 L404,147 L404,100 L426,100" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="600" y="72" width="92" height="44" fill="none" stroke="currentColor"/>
+          <text x="646" y="98" text-anchor="middle" font-size="11.5" fill="currentColor">commissioned</text>
+          <line x1="552" y1="94" x2="594" y2="94" stroke="currentColor" marker-end="url(#ah)"/>
+        </svg>
+        <figcaption>The principal's input is judgement, not transcription. A proposal they cannot edit is a menu; a proposal they must write is not a proposal.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Primary agent</em> proposes and states each unit's scope. <em>Principal</em> approves, edits or refuses. <em>Units</em> carry the proposal forward as their commission.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Takes its form from <strong>Constrained Choice</strong> (OM-001 · 6) — enumerated units, not free text. Approving one is <strong>Approval Gate</strong> (10) applied to a decomposition rather than an action. What it hands to <strong>Scoped Commission</strong> (2) determines whether the unit can be dispatched unattended at all.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the decomposition is done by the party with the most context.</li>
+        <li><em>Gain</em>: the principal's contribution becomes taste and direction, which is the part only they have.</li>
+        <li><em>Cost</em>: a proposal is easy to approve without reading, and approving without reading automates the wrong half of the job.</li>
+        <li><em>Trap</em>: the agent proposing the work is also the one least able to see what it does not know. A decomposition can be internally perfect and miss a unit entirely.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Propose <em>units</em>, not prompts, and make each editable in place. State each unit's scope on the proposal, so approval is informed by what it will be allowed to do rather than only by what it intends. Never dispatch on proposal; the pause is the pattern. Offer refusal as a first-class outcome — a decomposition the principal rejects wholesale is a useful result, not a failure of the interaction.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>Suggested task
+  Rename the shell to the console, safely
+  SHELL_ARCHITECTURE.md becomes CONSOLE_ARCHITECTURE.md and the
+  crate stops calling itself a shell — while leaving untouched the…
+
+  [ Start with worktree ▾ ]   Start locally · Send to cloud · Fix here</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>The principal retypes context the agent already had, at the top of every dispatch. Or: dispatched units that overlap or leave a gap, because the person who split them could not see the whole.</p>
+
+      <p class="field">Known uses</p>
+      <p>Suggested-task surfaces that offer a worktree, a local run or a cloud run. Agents that file their own issues for later work. A planning step whose output is a list of separable jobs rather than prose.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Scoped Commission</strong> (2), <strong>Constrained Choice</strong> (OM-001 · 6), <strong>Approval Gate</strong> (OM-001 · 10).</p>
+    </div>
+  </div>
+</section>
+
+<section id="scoped-commission">
+  <div class="row">
+    <div class="mark">7</div>
+    <div class="body">
+      <p class="part">The split · Pattern 2</p>
+      <h2>Scoped Commission</h2>
+
+      <p class="field first">Intent</p>
+      <p>Grant a dispatched agent its authority once, at dispatch, in a form the environment enforces — because per-action approval does not survive more than one agent.</p>
+
+      <p class="field">Motivation</p>
+      <p><strong>Approval Gate</strong> (OM-001 · 10) is the strongest pattern in the first language, and it works because the principal is <em>there</em>. Consent is per-action, specific, and given with the argument in front of them.</p>
+      <p>Now dispatch twelve agents. The principal is present for at most one. The other eleven face a choice with no good branch: stop and wait for a human who is not coming, which destroys the reason for dispatching them; or proceed unapproved, which destroys the gate. No amount of prompt engineering resolves this, because it is not a phrasing problem. It is arithmetic.</p>
+      <p>So the gate moves. Authority is granted at the moment of dispatch, bounded to the unit, and enforced by something other than the agent's cooperation.</p>
+      <p><strong>This is a real loss and should be stated as one.</strong> Dispatch-time authority is granted blind: a class of action is approved before any instance of it is seen. That is strictly less informed than Approval Gate. What buys it back is that the scope is narrow, mechanical, and cannot be talked out of.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever more than one agent runs without a human present. Also whenever a single agent runs long enough that the principal will not be there for its middle.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 210" role="img" aria-label="Two rows. With one agent, a gate sits before every action and the principal is present. With a fleet, one gate sits at dispatch and each unit then acts freely inside a bounded region it cannot leave.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">ONE AGENT</text>
+          <rect x="8" y="30" width="96" height="32" fill="none" stroke="currentColor"/>
+          <text x="56" y="50" text-anchor="middle" font-size="11" fill="currentColor">principal</text>
+          <rect x="160" y="30" width="70" height="32" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="195" y="50" text-anchor="middle" font-size="11" fill="currentColor">gate</text>
+          <rect x="286" y="30" width="70" height="32" fill="none" stroke="currentColor"/>
+          <text x="321" y="50" text-anchor="middle" font-size="11" fill="currentColor">act</text>
+          <rect x="412" y="30" width="70" height="32" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="447" y="50" text-anchor="middle" font-size="11" fill="currentColor">gate</text>
+          <rect x="538" y="30" width="70" height="32" fill="none" stroke="currentColor"/>
+          <text x="573" y="50" text-anchor="middle" font-size="11" fill="currentColor">act</text>
+          <line x1="104" y1="46" x2="154" y2="46" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="230" y1="46" x2="280" y2="46" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="356" y1="46" x2="406" y2="46" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="482" y1="46" x2="532" y2="46" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="628" y="50" font-size="10.5" fill="currentColor" opacity=".6">present</text>
+          <line x1="8" y1="86" x2="692" y2="86" stroke="currentColor" opacity=".18"/>
+          <text x="8" y="112" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">A FLEET</text>
+          <rect x="8" y="126" width="96" height="32" fill="none" stroke="currentColor"/>
+          <text x="56" y="146" text-anchor="middle" font-size="11" fill="currentColor">principal</text>
+          <rect x="160" y="126" width="120" height="32" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="220" y="146" text-anchor="middle" font-size="11" fill="currentColor">gate at dispatch</text>
+          <rect x="336" y="112" width="200" height="30" fill="none" stroke="currentColor" stroke-dasharray="5 3"/>
+          <text x="436" y="132" text-anchor="middle" font-size="11" fill="currentColor">act · act · act</text>
+          <rect x="336" y="152" width="200" height="30" fill="none" stroke="currentColor" stroke-dasharray="5 3"/>
+          <text x="436" y="172" text-anchor="middle" font-size="11" fill="currentColor">act · act · act</text>
+          <path d="M280,142 L308,142 L308,127 L330,127" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M280,146 L308,146 L308,167 L330,167" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="592" y="140" font-size="10.5" fill="currentColor" opacity=".6">absent —</text>
+          <text x="592" y="154" font-size="10.5" fill="currentColor" opacity=".6">the dashed edge</text>
+          <text x="592" y="168" font-size="10.5" fill="currentColor" opacity=".6">is the scope</text>
+        </svg>
+        <figcaption>The dashed boundary is the whole pattern. It has to be a wall the environment builds, not a line the agent was asked to respect.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Commission</em> carries the scope. <em>Environment</em> enforces it. <em>Unit</em> acts freely inside it and cannot act outside it. <em>Principal</em> grants once and is then absent.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Replaces <strong>Approval Gate</strong> (OM-001 · 10) for the common case and depends on it for the irreducible set. Its scope is usually realised by <strong>Isolation by Construction</strong> (3). <strong>Progressive Autonomy</strong> (OM-001 · 11) is how a scope widens over time, and is what stops this pattern being a permanent grant.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: N agents run unattended without either stalling or running unbounded.</li>
+        <li><em>Gain</em>: the scope is inspectable before dispatch, which makes approval meaningful rather than ceremonial.</li>
+        <li><em>Cost</em>: authority is granted before the action is known. This is the pattern's price and it is not recoverable by being clever.</li>
+        <li><em>Cost</em>: enforcement is real engineering. A scope nothing checks is a wish.</li>
+        <li><em>Trap</em>: <strong>a scope written in a prompt is not a scope.</strong> An instruction is a request to a system that is allowed to be wrong.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Express scope as something the environment already enforces: a worktree, a branch, a directory, a token with narrow permissions, a container. Prefer scopes that make the dangerous action <em>impossible</em> to scopes that ask for restraint. Keep an irreducible set that no dispatch may pre-authorise — anything outward-facing, anything that publishes, anything that cannot be undone — and route those back to a live human even at the cost of the unit stalling. A unit stalled on a genuinely irreversible action is the system working.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>commission
+  unit      fix the failing snapshot tests
+  workspace .worktrees/snapshot-fix      (own branch, own checkout)
+  may       read repo · write workspace · run tests
+  may not   push · open PR · touch main · network
+  escalate  anything outward-facing → back to a human</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>An agent sent to fix tests pushes to main. Or the mirror image, equally diagnostic: every dispatched agent is blocked on an approval nobody is present to give, and the fleet's throughput is zero while every unit reports itself healthy.</p>
+
+      <p class="field">Known uses</p>
+      <p>CI job permissions and scoped tokens. <code>sudoers</code>. Container capabilities. Database roles. The narrowly-scoped deploy key that exists precisely because nobody will be watching.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Isolation by Construction</strong> (3), <strong>Approval Gate</strong> (OM-001 · 10), <strong>Progressive Autonomy</strong> (OM-001 · 11).</p>
+    </div>
+  </div>
+</section>
+
+<section id="isolation-by-construction">
+  <div class="row">
+    <div class="mark">8</div>
+    <div class="body">
+      <p class="part">The split · Pattern 3</p>
+      <h2>Isolation by Construction</h2>
+
+      <p class="field first">Intent</p>
+      <p>Give each unit a workspace in which collision is impossible, so parallelism does not depend on the units being careful.</p>
+
+      <p class="field">Motivation</p>
+      <p>Two agents in one checkout. The first moves a file; the second writes to where it used to be. Or both edit the same function and the later write wins silently. Nothing errors, both report success, and the result is a tree neither of them describes. The failure is not that the agents were careless — it is that carefulness was load-bearing.</p>
+      <p>The remedy is structural and old: give each unit its own copy. A git worktree, a container, a branch, a scratch directory. Collisions stop being unlikely and start being unrepresentable.</p>
+      <p>The second effect matters as much as the first: <strong>isolation is what makes the scope in pattern 2 enforceable.</strong> “May write its workspace” means something only if the workspace has edges.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever two or more units may touch the same artifacts. Especially where the shared artifact is a working tree, a database, a device, or a service that permits one caller.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 200" role="img" aria-label="On the left, three units writing into one shared workspace, with a collision marked. On the right, three units each with their own workspace, whose results converge only at a join.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">SHARED</text>
+          <text x="386" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">ISOLATED</text>
+          <line x1="362" y1="8" x2="362" y2="192" stroke="currentColor" opacity=".18"/>
+          <rect x="8" y="36" width="86" height="26" fill="none" stroke="currentColor"/>
+          <text x="51" y="54" text-anchor="middle" font-size="10.5" fill="currentColor">unit</text>
+          <rect x="8" y="86" width="86" height="26" fill="none" stroke="currentColor"/>
+          <text x="51" y="104" text-anchor="middle" font-size="10.5" fill="currentColor">unit</text>
+          <rect x="8" y="136" width="86" height="26" fill="none" stroke="currentColor"/>
+          <text x="51" y="154" text-anchor="middle" font-size="10.5" fill="currentColor">unit</text>
+          <rect x="196" y="72" width="126" height="54" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-width="1.6"/>
+          <text x="259" y="94" text-anchor="middle" font-size="11" fill="currentColor">one tree</text>
+          <text x="259" y="110" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">last write wins</text>
+          <path d="M94,49 L150,49 L150,90 L190,90" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M94,99 L190,99" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M94,149 L150,149 L150,108 L190,108" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="386" y="30" width="86" height="26" fill="none" stroke="currentColor"/>
+          <text x="429" y="48" text-anchor="middle" font-size="10.5" fill="currentColor">unit</text>
+          <rect x="386" y="86" width="86" height="26" fill="none" stroke="currentColor"/>
+          <text x="429" y="104" text-anchor="middle" font-size="10.5" fill="currentColor">unit</text>
+          <rect x="386" y="142" width="86" height="26" fill="none" stroke="currentColor"/>
+          <text x="429" y="160" text-anchor="middle" font-size="10.5" fill="currentColor">unit</text>
+          <rect x="500" y="30" width="86" height="26" fill="none" stroke="currentColor" stroke-dasharray="5 3"/>
+          <text x="543" y="48" text-anchor="middle" font-size="10.5" fill="currentColor">tree</text>
+          <rect x="500" y="86" width="86" height="26" fill="none" stroke="currentColor" stroke-dasharray="5 3"/>
+          <text x="543" y="104" text-anchor="middle" font-size="10.5" fill="currentColor">tree</text>
+          <rect x="500" y="142" width="86" height="26" fill="none" stroke="currentColor" stroke-dasharray="5 3"/>
+          <text x="543" y="160" text-anchor="middle" font-size="10.5" fill="currentColor">tree</text>
+          <line x1="472" y1="43" x2="494" y2="43" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="472" y1="99" x2="494" y2="99" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="472" y1="155" x2="494" y2="155" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M586,43 L640,43 L640,86" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M586,155 L640,155 L640,112" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="586" y1="99" x2="628" y2="99" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="648" y="103" font-size="10.5" fill="currentColor" opacity=".65">join</text>
+        </svg>
+        <figcaption>Isolation does not remove conflict. It defers it to a place where a person can see it, which is the join, rather than letting it happen silently in the middle.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Workspace</em> is the unit's own. <em>Result</em> leaves it as a durable artifact — a branch, an image, a file. <em>Join</em> is where results meet, and the only place they may.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Realises the boundary <strong>Scoped Commission</strong> (2) declares. Its artifact is what <strong>The Return Path</strong> (6) carries and what <strong>Gather</strong> (8) reconciles. The workspace boundary is also the before-state <strong>Recoverable Execution</strong> (OM-001 · 13) needs: discarding a unit is discarding its workspace.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: parallelism without coordination between units, which is the only kind that scales.</li>
+        <li><em>Gain</em>: a failed unit is discarded rather than unwound.</li>
+        <li><em>Cost</em>: setup per unit, in time and disk. Real but small — a worktree costs a few hundred milliseconds and a copy of the tree.</li>
+        <li><em>Cost</em>: conflict is deferred, not removed, and arrives all at once at the join.</li>
+        <li><em>Trap</em>: isolation by convention. “The agents were told to work on different files” is not isolation; it is a hope with a schedule.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Prefer the isolation the platform already has, because it is enforced rather than simulated. Make the artifact the unit leaves a first-class thing with a name — a branch is better than a diff in a message, because it survives the conversation. Clean up automatically when a workspace is unchanged, or the mechanism accretes debris and people stop using it. And note the shared resources isolation does <em>not</em> cover: a port, a device, a bot token, a rate limit. Those need a mutex or a rule, and where no mutex exists the rule has to be stated rather than assumed.</p>
+
+      <p class="field">Failure signature</p>
+      <p>You are reluctant to run two agents at once, and cannot immediately say why. Or a change appears in the tree that no unit's report mentions.</p>
+
+      <p class="field">Known uses</p>
+      <p>Git worktrees and branches. Containers. CI runners, one per job. Database transactions. Any build system with a per-target sandbox.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Scoped Commission</strong> (2), <strong>Gather</strong> (8), <strong>Recoverable Execution</strong> (OM-001 · 13).</p>
+    </div>
+  </div>
+</section>
+
+<section id="dispatch-without-escort">
+  <div class="row">
+    <div class="mark">9</div>
+    <div class="body">
+      <p class="part">In flight · Pattern 4</p>
+      <h2>Dispatch Without Escort</h2>
+
+      <p class="field first">Intent</p>
+      <p>Make a dispatch complete at the moment it is made, so the principal can turn immediately to the next thing rather than staying to shepherd the last one.</p>
+
+      <p class="field">Motivation</p>
+      <p>This is the pattern that makes every other one worth having, and it is best stated as the behaviour it enables:</p>
+      <blockquote><p>“Dispatch an agent, then immediately get back to doing something else and dispatch another agent. And the whole time, you are giving the thing that the agents need, which is the taste and the direction and the choices that make this thing you're building yours.”</p></blockquote>
+      <p>Now suppose each dispatch asks one clarifying question thirty seconds in. Nothing is broken; each question is reasonable; the agent is being careful. But the principal cannot leave, so they cannot dispatch the next one, and throughput is pinned at one agent no matter how many the system can run. <strong>A dispatch that needs escorting is a dispatch that cannot be followed by another.</strong></p>
+      <p>The arithmetic is unforgiving. A unit that is ninety-five per cent unattended is not unattended; the five per cent lands on a single serialised human.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever the intended working rhythm is many dispatches in a session. Not applicable where a single unit genuinely warrants supervision — a migration, a destructive operation, anything the principal wants to watch. Those are supervised runs, and calling them dispatches is the mistake.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 200" role="img" aria-label="Two timelines. Escorted: the principal dispatches, waits, answers a question, waits again, and only then dispatches a second unit. Unescorted: the principal dispatches three units in quick succession while all three run in parallel.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">ESCORTED</text>
+          <rect x="8" y="30" width="80" height="28" fill="none" stroke="currentColor"/>
+          <text x="48" y="49" text-anchor="middle" font-size="10.5" fill="currentColor">dispatch</text>
+          <rect x="112" y="30" width="118" height="28" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="171" y="49" text-anchor="middle" font-size="10.5" fill="currentColor">wait · answer</text>
+          <rect x="254" y="30" width="118" height="28" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="313" y="49" text-anchor="middle" font-size="10.5" fill="currentColor">wait · answer</text>
+          <rect x="396" y="30" width="80" height="28" fill="none" stroke="currentColor"/>
+          <text x="436" y="49" text-anchor="middle" font-size="10.5" fill="currentColor">dispatch</text>
+          <line x1="88" y1="44" x2="106" y2="44" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="230" y1="44" x2="248" y2="44" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="372" y1="44" x2="390" y2="44" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="492" y="48" font-size="10.5" fill="currentColor" opacity=".6">two units, one attention</text>
+          <line x1="8" y1="80" x2="692" y2="80" stroke="currentColor" opacity=".18"/>
+          <text x="8" y="106" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">UNESCORTED</text>
+          <rect x="8" y="120" width="80" height="26" fill="none" stroke="currentColor"/>
+          <text x="48" y="137" text-anchor="middle" font-size="10.5" fill="currentColor">dispatch</text>
+          <rect x="100" y="120" width="80" height="26" fill="none" stroke="currentColor"/>
+          <text x="140" y="137" text-anchor="middle" font-size="10.5" fill="currentColor">dispatch</text>
+          <rect x="192" y="120" width="80" height="26" fill="none" stroke="currentColor"/>
+          <text x="232" y="137" text-anchor="middle" font-size="10.5" fill="currentColor">dispatch</text>
+          <rect x="320" y="112" width="240" height="20" fill="none" stroke="currentColor" opacity=".8"/>
+          <text x="440" y="127" text-anchor="middle" font-size="10" fill="currentColor">running</text>
+          <rect x="320" y="136" width="240" height="20" fill="none" stroke="currentColor" opacity=".8"/>
+          <text x="440" y="151" text-anchor="middle" font-size="10" fill="currentColor">running</text>
+          <rect x="320" y="160" width="240" height="20" fill="none" stroke="currentColor" opacity=".8"/>
+          <text x="440" y="175" text-anchor="middle" font-size="10" fill="currentColor">running</text>
+          <path d="M272,133 L296,133 L296,122 L314,122" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M272,146 L314,146" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M272,140 L296,140 L296,170 L314,170" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="580" y="148" font-size="10.5" fill="currentColor" opacity=".6">three units,</text>
+          <text x="580" y="162" font-size="10.5" fill="currentColor" opacity=".6">same attention</text>
+        </svg>
+        <figcaption>The dispatches are the same size in both rows. What differs is whether the principal is free between them, and that is what sets how many units a person can run.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Commission</em> carries everything the unit needs. <em>Unit</em> proceeds on stated assumptions rather than stopping. <em>Principal</em> leaves and does not return until the join.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Puts the whole weight on <strong>Scope-on-Uncertainty</strong> (OM-001 · 5): a unit that cannot ask must be very good at deciding when ambiguity actually changes the blast radius, and at proceeding under a stated assumption when it does not. Depends on <strong>Scoped Commission</strong> (2), which is what makes proceeding safe. <strong>Fleet Standing</strong> (5) is what lets the principal leave without anxiety.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: throughput scales with the principal's dispatch rate rather than their attention span.</li>
+        <li><em>Gain</em>: the principal's contribution concentrates on direction and taste, which is where it is scarce.</li>
+        <li><em>Cost</em>: a unit that cannot ask must guess, and some guesses are wrong in ways discovered only at the join.</li>
+        <li><em>Cost</em>: assumptions must be recorded, or the join cannot tell a decision from an accident.</li>
+        <li><em>Trap</em>: one blocking question per unit reintroduces full serialisation. The cost is not proportional to how often it happens; a single question at the wrong moment stops the rhythm.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Everything the unit needs travels with it at dispatch; a question it must ask is a defect in the commission, not a virtue in the agent. Where it genuinely must ask, prefer <em>asking and continuing</em> on a stated assumption to asking and stopping — and put the assumption in the report so the join can audit it. Give questions somewhere to accumulate that is not an interrupt, so the principal answers a batch when they choose rather than a stream when they do not.</p>
+
+      <p class="field">Failure signature</p>
+      <p>The principal dispatches, then sits watching that unit until it finishes. Or, at the fleet scale, N agents all halted on questions and one person working through them in series — which looks like diligence and is a stall.</p>
+
+      <p class="field">Known uses</p>
+      <p>Batch jobs with all inputs supplied up front. <code>make -j</code>. Anything designed to be run overnight, where asking is not an option and the design absorbed that constraint.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Fleet Standing</strong> (5), <strong>Scope-on-Uncertainty</strong> (OM-001 · 5), <strong>Scoped Commission</strong> (2).</p>
+    </div>
+  </div>
+</section>
+
+<section id="fleet-standing">
+  <div class="row">
+    <div class="mark">10</div>
+    <div class="body">
+      <p class="part">In flight · Pattern 5</p>
+      <h2>Fleet Standing</h2>
+
+      <p class="field first">Intent</p>
+      <p>Show every unit's state on one surface, at the granularity the channel actually carries, and never at a granularity it does not.</p>
+
+      <p class="field">Motivation</p>
+      <p>A dispatch card in a console sat on <code>running</code> for <strong>eight to sixteen minutes</strong> and then produced a wall of text. The events had been arriving the entire time and were being dropped on the floor. One reading covered every state from “just started” to “nearly done”, which is <strong>Honest Gauge</strong> (OM-001 · 12) at fleet scale: a gauge whose single value spans the range you needed it to distinguish.</p>
+      <p>Fixing it surfaced the harder half. <strong>The harness never forwards token-level deltas from a subagent.</strong> A dispatched agent's work arrives as completed bursts, and the gaps between them are real gaps, not rendering latency. So the honest surface reports counts, completed steps, the last tool, elapsed time — and must not imply a liveness that does not exist. A blinking cursor there would be a lie the data cannot support, and it is exactly the lie a designer reaches for.</p>
+      <p>The third finding is a correlation trap worth stating because it fails silently: the lifecycle events key on <code>task_id</code>, not <code>tool_use_id</code>, and two of the five carry no <code>tool_use_id</code> at all. Keying on the obvious field drops every status transition while the surface continues to look like it is working.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any time more than about two units are in flight. Especially where units are long-running, where the principal is deliberately absent, and where the only alternative is opening each session in turn to find out what happened.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 190" role="img" aria-label="Three units emit completed bursts of activity separated by real gaps. A fleet surface aggregates them into counts, last tool and elapsed time. A note marks that no token-level stream exists between the bursts.">
+          <rect x="8" y="34" width="66" height="24" fill="none" stroke="currentColor"/>
+          <text x="41" y="50" text-anchor="middle" font-size="10" fill="currentColor">unit 1</text>
+          <rect x="8" y="84" width="66" height="24" fill="none" stroke="currentColor"/>
+          <text x="41" y="100" text-anchor="middle" font-size="10" fill="currentColor">unit 2</text>
+          <rect x="8" y="134" width="66" height="24" fill="none" stroke="currentColor"/>
+          <text x="41" y="150" text-anchor="middle" font-size="10" fill="currentColor">unit 3</text>
+          <rect x="100" y="38" width="34" height="16" fill="currentColor" fill-opacity=".12" stroke="currentColor"/>
+          <rect x="168" y="38" width="34" height="16" fill="currentColor" fill-opacity=".12" stroke="currentColor"/>
+          <rect x="268" y="38" width="34" height="16" fill="currentColor" fill-opacity=".12" stroke="currentColor"/>
+          <rect x="118" y="88" width="34" height="16" fill="currentColor" fill-opacity=".12" stroke="currentColor"/>
+          <rect x="230" y="88" width="34" height="16" fill="currentColor" fill-opacity=".12" stroke="currentColor"/>
+          <rect x="100" y="138" width="34" height="16" fill="currentColor" fill-opacity=".12" stroke="currentColor"/>
+          <rect x="196" y="138" width="34" height="16" fill="currentColor" fill-opacity=".12" stroke="currentColor"/>
+          <rect x="284" y="138" width="34" height="16" fill="currentColor" fill-opacity=".12" stroke="currentColor"/>
+          <line x1="86" y1="46" x2="330" y2="46" stroke="currentColor" opacity=".25"/>
+          <line x1="86" y1="96" x2="330" y2="96" stroke="currentColor" opacity=".25"/>
+          <line x1="86" y1="146" x2="330" y2="146" stroke="currentColor" opacity=".25"/>
+          <text x="212" y="172" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">completed bursts — nothing streams between them</text>
+          <rect x="404" y="60" width="180" height="72" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="494" y="82" text-anchor="middle" font-size="11" fill="currentColor">fleet standing</text>
+          <text x="494" y="99" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">3 running · 7 steps</text>
+          <text x="494" y="114" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">last: Bash · 4m12s</text>
+          <line x1="340" y1="96" x2="398" y2="96" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="620" y="92" font-size="10.5" fill="currentColor" opacity=".6">what it has,</text>
+          <text x="620" y="106" font-size="10.5" fill="currentColor" opacity=".6">never more</text>
+        </svg>
+        <figcaption>The gaps in the top rows are the finding. A surface that filled them in would be more pleasant to watch and would be describing activity nobody measured.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Units</em> emit whatever the harness forwards. <em>Standing</em> aggregates without inventing. <em>Principal</em> reads it at a glance and decides whether to intervene.</p>
+
+      <p class="field">Collaborations</p>
+      <p>A direct application of <strong>Honest Gauge</strong> (OM-001 · 12); every rule there applies unchanged and matters more, because there are N of them. <strong>Ambient Activity Channel</strong> (OM-001 · 9) is how this reaches a principal who is not looking at the screen. It is what makes <strong>Dispatch Without Escort</strong> (4) psychologically possible.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the principal dispatches more, because they can see more.</li>
+        <li><em>Gain</em>: a stuck unit is visible as stuck rather than as slow.</li>
+        <li><em>Cost</em>: a second rendering surface that must be kept true as the fleet's shape changes.</li>
+        <li><em>Cost</em>: aggregate views hide individual detail by design, and sometimes the detail was the point.</li>
+        <li><em>Trap</em>: implying liveness the channel cannot support. This is the specific dishonesty available here, and it is attractive because the honest version looks less alive.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Report exactly what the channel carries and label it as what it is — elapsed since the last event is not elapsed since the last <em>work</em>, and saying so costs one word. Verify the correlation key by measurement rather than by its name; the obvious field is sometimes absent from the events that matter most. Distinguish “no news” from “no progress”, because they look identical and mean opposite things. And prefer a surface that shows all units badly to one that shows one unit well, since the question being asked is nearly always about the set.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>fleet · 4 units
+  01  snapshot-fix     running   7 steps   last Bash        4m12s
+  02  docs-rename      running   3 steps   last Edit       11m03s   ← quiet 9m
+  03  theme-extract    done      12 steps  branch ready     6m48s
+  04  bench-sweep      halted    2 steps   awaiting a human  0m31s</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>“Is it still going?” asked about a fleet. Or a principal opening each session in turn to find out what finished — the manual scan a standing surface exists to make unnecessary.</p>
+
+      <p class="field">Known uses</p>
+      <p>CI dashboards. <code>jobs</code> and process supervisors. Build farm views. A console's subagent cards folded onto the card that spawned them.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Honest Gauge</strong> (OM-001 · 12), <strong>Ambient Activity Channel</strong> (OM-001 · 9), <strong>Dispatch Without Escort</strong> (4).</p>
+    </div>
+  </div>
+</section>
+
+<section id="the-return-path">
+  <div class="row">
+    <div class="mark">11</div>
+    <div class="body">
+      <p class="part">The join · Pattern 6</p>
+      <h2>The Return Path</h2>
+
+      <p class="field first">Intent</p>
+      <p>Route a completed unit's result back to the context that commissioned it, so no human has to carry it there.</p>
+
+      <p class="field">Motivation</p>
+      <p>Four agents were dispatched overnight. In the morning all four had finished, each on its own branch. What happened next is the pattern's whole case:</p>
+      <blockquote>
+        <p>“I gave them that prompt. And then I took all of the replies and pasted them in series back to the agent that dispatched them.”</p>
+      </blockquote>
+      <p>A person performed message routing, by hand, with a clipboard. Every unit had succeeded. Every result existed. Nothing errored, and no system reported a problem, because from each unit's point of view there was none — <strong>the work returned, but it returned to the wrong place</strong>, and a human carried the last hop.</p>
+      <p>That is why this one is easy to miss for a long time. There is no error state, no red light, and no moment at which anything is obviously wrong. The entire cost is denominated in somebody's morning, and it scales linearly with the fleet.</p>
+      <p>A second, subtler failure hides underneath: the branch is not the report. A branch says where the work is. A report says what was done, what was assumed, what was refused, and what the next context needs to know. A fleet that leaves branches and no reports has produced artifacts nobody can act on without reading diffs.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever a unit's result must inform a context other than the principal's own attention — which is nearly always, once a primary agent is doing the decomposition.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 210" role="img" aria-label="Above, three units leave results that a human collects and carries back to the commissioning agent. Below, the same three units route their reports directly to the commissioning context, with the human absent from the path.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">HUMAN AS TRANSPORT</text>
+          <rect x="8" y="30" width="70" height="22" fill="none" stroke="currentColor"/>
+          <text x="43" y="45" text-anchor="middle" font-size="10" fill="currentColor">unit</text>
+          <rect x="8" y="58" width="70" height="22" fill="none" stroke="currentColor"/>
+          <text x="43" y="73" text-anchor="middle" font-size="10" fill="currentColor">unit</text>
+          <rect x="8" y="86" width="70" height="22" fill="none" stroke="currentColor"/>
+          <text x="43" y="101" text-anchor="middle" font-size="10" fill="currentColor">unit</text>
+          <rect x="196" y="52" width="120" height="34" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-width="1.6"/>
+          <text x="256" y="73" text-anchor="middle" font-size="11" fill="currentColor">a person</text>
+          <path d="M78,41 L150,41 L150,64 L190,64" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M78,69 L190,69" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M78,97 L150,97 L150,75 L190,75" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="440" y="52" width="150" height="34" fill="none" stroke="currentColor"/>
+          <text x="515" y="73" text-anchor="middle" font-size="11" fill="currentColor">commissioning agent</text>
+          <line x1="316" y1="69" x2="434" y2="69" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="375" y="61" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">copy · paste</text>
+          <line x1="8" y1="126" x2="692" y2="126" stroke="currentColor" opacity=".18"/>
+          <text x="8" y="150" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">ROUTED</text>
+          <rect x="120" y="158" width="70" height="20" fill="none" stroke="currentColor"/>
+          <text x="155" y="172" text-anchor="middle" font-size="10" fill="currentColor">unit</text>
+          <rect x="120" y="182" width="70" height="20" fill="none" stroke="currentColor"/>
+          <text x="155" y="196" text-anchor="middle" font-size="10" fill="currentColor">unit</text>
+          <rect x="440" y="160" width="150" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="515" y="181" text-anchor="middle" font-size="11" fill="currentColor">commissioning agent</text>
+          <path d="M190,168 L434,168" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M190,192 L300,192 L300,180 L434,180" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="310" y="160" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">report · return address on the commission</text>
+        </svg>
+        <figcaption>The two diagrams describe the same successful work. The difference is entirely in who does the carrying, and only one of them scales.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Commission</em> carries the return address. <em>Report</em> is the account, distinct from the artifact. <em>Artifact</em> is the durable work. <em>Commissioning context</em> receives both without a human relay.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Feeds <strong>Gather</strong> (8), which cannot happen at all without it. Carries what <strong>Attribution Across Depth</strong> (7) requires. It is <strong>Plan · Approve · Execute · Receipt</strong> (OM-001 · 7)'s receipt, arriving from an actor who was itself an agent — which is the precise question OM-001 §11 said it could not answer.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the commissioning context can reconcile without the principal acting as a bus.</li>
+        <li><em>Gain</em>: reports accumulate somewhere durable rather than in a session that will be closed.</li>
+        <li><em>Cost</em>: a return path is a channel, and channels need addressing, ordering, and a story for what happens when delivery fails.</li>
+        <li><em>Cost</em>: writing a real report is work the unit must do at the end, when it is most tempted to stop.</li>
+        <li><em>Trap</em>: mistaking the artifact for the report. A branch is where the work is, not what happened.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Put the return address in the commission, so a unit never has to work out where to send anything. Prefer a durable artifact <em>plus</em> a routed notification to either alone: the artifact survives, the notification arrives. Specify what a report must contain — what was done, what was assumed, what was refused, what the next context needs — rather than leaving it to each unit's taste, or the reports will not be comparable at the join. And make the missing case loud: a unit that finished without reporting should be visible as such, since silent success and silent failure look identical from outside.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>report · unit 02 · docs-rename
+  status     done
+  artifact   branch console/docs-rename  (12 files, +340 −295)
+  assumed    "shell" in IPC namespaces is load-bearing; left untouched
+  refused    did not rename the cargo feature — out of commission scope
+  for next   SHELL_ARCHITECTURE.md still names the crate; unit 03 overlaps here
+  → routed to: the session that commissioned this unit</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>The principal copies text from one agent into another. Or results that exist, are correct, and were never read by the context that needed them.</p>
+
+      <p class="field">Known uses</p>
+      <p>Exit codes and stdout. Callbacks and reply-to addresses on a message queue. A pull request that closes the issue that commissioned it. Distributed tracing, where a span reports to its parent by construction.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Gather</strong> (8), <strong>Attribution Across Depth</strong> (7), <strong>Plan · Approve · Execute · Receipt</strong> (OM-001 · 7).</p>
+    </div>
+  </div>
+</section>
+
+<section id="attribution-across-depth">
+  <div class="row">
+    <div class="mark">12</div>
+    <div class="body">
+      <p class="part">The join · Pattern 7</p>
+      <h2>Attribution Across Depth</h2>
+
+      <p class="field first">Intent</p>
+      <p>Make every result name who produced it and how far down, so no context ever reports another's work in its own voice.</p>
+
+      <p class="field">Motivation</p>
+      <p>An agent dispatches an agent, which dispatches another. The console rendering this had one progress value per card and nowhere to record a depth, so merging a depth-2 agent's activity into its grandparent's card was available and would have looked fine. It was declined, and the reason is the pattern:</p>
+      <blockquote><p>Merging “would put the grandchild's work in the parent's voice.”</p></blockquote>
+      <p>The consequence of getting this wrong is not cosmetic. A receipt is the basis for acting on work you did not watch. If it says an agent did something and a different agent did it, every judgement built on that receipt is built on a misattribution — including the judgement of whether to trust that agent with more next time, which is what <strong>Progressive Autonomy</strong> (OM-001 · 11) runs on.</p>
+      <p>This is the question OM-001 asked and declined to answer: <em>what a receipt means when the actor was itself an agent.</em> The answer is that a receipt must carry its actor and its depth, and that a surface which cannot show depth must <strong>count rather than merge</strong>.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any delegation more than one level deep. Also at one level, whenever a result will be summarised by something other than the thing that produced it.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 200" role="img" aria-label="A tree of three depths. On the left, the grandchild's steps are merged upward and reported in the parent's voice. On the right, each level keeps its own actor and the parent reports a count of the work done below it.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">MERGED</text>
+          <text x="392" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">COUNTED</text>
+          <line x1="368" y1="8" x2="368" y2="192" stroke="currentColor" opacity=".18"/>
+          <rect x="8" y="36" width="90" height="26" fill="none" stroke="currentColor"/>
+          <text x="53" y="54" text-anchor="middle" font-size="10.5" fill="currentColor">parent</text>
+          <rect x="8" y="88" width="90" height="26" fill="none" stroke="currentColor"/>
+          <text x="53" y="106" text-anchor="middle" font-size="10.5" fill="currentColor">child</text>
+          <rect x="8" y="140" width="90" height="26" fill="none" stroke="currentColor"/>
+          <text x="53" y="158" text-anchor="middle" font-size="10.5" fill="currentColor">grandchild</text>
+          <path d="M98,153 L140,153 L140,62 L140,55" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M98,101 L140,101" fill="none" stroke="currentColor" opacity=".4"/>
+          <rect x="176" y="72" width="160" height="56" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-width="1.6"/>
+          <text x="256" y="94" text-anchor="middle" font-size="11" fill="currentColor">“I did 12 steps”</text>
+          <text x="256" y="112" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">said by the parent</text>
+          <line x1="140" y1="46" x2="170" y2="82" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="392" y="36" width="90" height="26" fill="none" stroke="currentColor"/>
+          <text x="437" y="54" text-anchor="middle" font-size="10.5" fill="currentColor">parent</text>
+          <rect x="392" y="88" width="90" height="26" fill="none" stroke="currentColor"/>
+          <text x="437" y="106" text-anchor="middle" font-size="10.5" fill="currentColor">child</text>
+          <rect x="392" y="140" width="90" height="26" fill="none" stroke="currentColor"/>
+          <text x="437" y="158" text-anchor="middle" font-size="10.5" fill="currentColor">grandchild</text>
+          <line x1="437" y1="140" x2="437" y2="118" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="437" y1="88" x2="437" y2="66" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="524" y="72" width="168" height="56" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="608" y="92" text-anchor="middle" font-size="10.5" fill="currentColor">4 steps · mine</text>
+          <text x="608" y="107" text-anchor="middle" font-size="10.5" fill="currentColor">8 steps · below me</text>
+          <text x="608" y="121" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">depth kept, not flattened</text>
+          <line x1="482" y1="49" x2="518" y2="82" stroke="currentColor" marker-end="url(#ah)"/>
+        </svg>
+        <figcaption>The merged version reads better and is false. Where a surface has no room for depth, a count is the honest compression; a merge is not a compression but a change of author.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Actor</em> is who did it. <em>Depth</em> is how far from the principal's own commission. <em>Receipt</em> carries both. <em>Surface</em> shows them, or counts what it cannot show.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Extends <strong>Tool-Call Transparency</strong> (OM-001 · 8) with the dimension a fleet adds. It is what makes <strong>The Return Path</strong> (6)'s reports safe to combine. Without it, <strong>Progressive Autonomy</strong> (OM-001 · 11) adjusts trust against the wrong agent.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: a receipt you can act on, including acting on the actor.</li>
+        <li><em>Gain</em>: misbehaviour is traceable to a level rather than to a fleet.</li>
+        <li><em>Cost</em>: another dimension every surface, log line and report must carry.</li>
+        <li><em>Trap</em>: flattening for legibility. The flattened version is easier to read, which is exactly why it gets built.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Carry actor and depth on every event from the moment it is emitted; they cannot be reconstructed later. Where a surface holds one value per element, count the levels below rather than folding them in, and say that is what you are doing. Prefer “3 steps, 2 of them by a dispatched agent” to a list of five. When summarising, keep the summariser's identity distinct from the summarised — a parent describing a child's work should read as description, never as a first-person account.</p>
+
+      <p class="field">Failure signature</p>
+      <p>A summary nobody can trace. The question “which agent actually did this?” with no way to answer it. Or a parent's report describing work in a voice that turns out not to be its own.</p>
+
+      <p class="field">Known uses</p>
+      <p>Stack traces. <code>git blame</code> and commit authorship separate from committer. Distributed tracing spans with parent ids. Court records, which never merge a witness's account into the judge's.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>The Return Path</strong> (6), <strong>Tool-Call Transparency</strong> (OM-001 · 8), <strong>Progressive Autonomy</strong> (OM-001 · 11).</p>
+    </div>
+  </div>
+</section>
+
+<section id="gather">
+  <div class="row">
+    <div class="mark">13</div>
+    <div class="body">
+      <p class="part">The join · Pattern 8</p>
+      <h2>Gather</h2>
+
+      <p class="field first">Intent</p>
+      <p>Reconcile N reports into one account, surfacing where they disagree rather than letting the disagreement land in the artifact.</p>
+
+      <p class="field">Motivation</p>
+      <p>Four reports arrive. Read in series, each is internally coherent and each says its unit succeeded. Two of them touched the same file. One proceeded on an assumption that another's work contradicts. Read one after another, that contradiction is invisible — nothing in any single report is wrong, and the conflict exists only <em>between</em> them.</p>
+      <p>This is where fan-out either pays off or quietly produces a mess with several confident authors. The failure has a distinctive shape: a merge conflict that is not textual. The files merge cleanly and the system does not work, because two units made compatible edits under incompatible assumptions.</p>
+      <p>The temptation is concatenation, and it is strong because it looks like the job is being done. Pasting four reports in series is not a gather; it is a pile with a covering note.</p>
+
+      <p class="field">Applicability</p>
+      <p>Every fan-out with more than one unit. The cost scales worse than linearly with fleet size, because what must be checked is the pairs.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 190" role="img" aria-label="Four reports enter a gather step which produces one account plus an explicit list of disagreements. A note distinguishes concatenation, which passes all four through unchanged, from reconciliation.">
+          <rect x="8" y="24" width="96" height="24" fill="none" stroke="currentColor"/>
+          <text x="56" y="40" text-anchor="middle" font-size="10" fill="currentColor">report</text>
+          <rect x="8" y="60" width="96" height="24" fill="none" stroke="currentColor"/>
+          <text x="56" y="76" text-anchor="middle" font-size="10" fill="currentColor">report</text>
+          <rect x="8" y="96" width="96" height="24" fill="none" stroke="currentColor"/>
+          <text x="56" y="112" text-anchor="middle" font-size="10" fill="currentColor">report</text>
+          <rect x="8" y="132" width="96" height="24" fill="none" stroke="currentColor"/>
+          <text x="56" y="148" text-anchor="middle" font-size="10" fill="currentColor">report</text>
+          <rect x="196" y="60" width="130" height="60" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="261" y="84" text-anchor="middle" font-size="11" fill="currentColor">Gather</text>
+          <text x="261" y="101" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">compare the pairs</text>
+          <path d="M104,36 L150,36 L150,78 L190,78" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M104,72 L150,72 L150,84 L190,84" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M104,108 L150,108 L150,96 L190,96" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M104,144 L150,144 L150,102 L190,102" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="410" y="38" width="180" height="30" fill="none" stroke="currentColor"/>
+          <text x="500" y="58" text-anchor="middle" font-size="10.5" fill="currentColor">one account</text>
+          <rect x="410" y="106" width="180" height="34" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-width="1.6"/>
+          <text x="500" y="121" text-anchor="middle" font-size="10.5" fill="currentColor">disagreements,</text>
+          <text x="500" y="134" text-anchor="middle" font-size="10.5" fill="currentColor">stated</text>
+          <path d="M326,80 L370,80 L370,53 L404,53" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M326,100 L370,100 L370,123 L404,123" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="612" y="126" font-size="10.5" fill="currentColor" opacity=".6">the output</text>
+          <text x="612" y="140" font-size="10.5" fill="currentColor" opacity=".6">that earns it</text>
+        </svg>
+        <figcaption>The lower box is what distinguishes a gather from a summary. A reconciliation that reports no disagreements should have had to look for some.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Reports</em> arrive with their assumptions declared. <em>Gatherer</em> holds the original decomposition and so knows where units were expected to meet. <em>Account</em> is one narrative. <em>Disagreements</em> are a first-class output, not a footnote.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Consumes <strong>The Return Path</strong> (6) and is impossible without it. Relies on <strong>Attribution Across Depth</strong> (7) so a conflict can be traced to an actor. The assumptions it reconciles are the ones <strong>Dispatch Without Escort</strong> (4) required units to make and record.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: one account, at the cost of one context's attention rather than the principal's.</li>
+        <li><em>Gain</em>: semantic conflicts surface before they reach the artifact.</li>
+        <li><em>Cost</em>: real work that cannot be skipped, and it grows with the square of the fleet.</li>
+        <li><em>Cost</em>: the gatherer needs enough context to judge, which means it cannot be a fresh agent handed four documents.</li>
+        <li><em>Trap</em>: concatenation dressed as synthesis. If the output's length is roughly the sum of the inputs, no gathering happened.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Gather in the context that produced the decomposition — it alone knows where units were expected to overlap, which is where to look first. Compare pairwise on the axes conflicts actually travel: the same file, the same claim, contradicting assumptions, and work one unit refused that another assumed was done. Report disagreements explicitly and early; a gather that hides them has made the fleet less trustworthy than a single agent would have been. And treat “no conflicts found” as a claim requiring evidence, not as the default.</p>
+
+      <p class="field">Failure signature</p>
+      <p>A clean textual merge that produces a system which does not work. Four reports that each say the work is done, and a result that is not. Or a synthesis whose length is the sum of its inputs.</p>
+
+      <p class="field">Known uses</p>
+      <p>Map-reduce's reduce step. Editorial synthesis of several drafts. Code review across parallel branches. Meta-analysis, whose entire discipline is reconciling studies that each concluded something.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>The Return Path</strong> (6), <strong>Attribution Across Depth</strong> (7), <strong>Isolation by Construction</strong> (3).</p>
+    </div>
+  </div>
+</section>
+
+<section id="what-this-does-not-cover">
+  <div class="row">
+    <div class="mark">14</div>
+    <div class="body">
+      <h2>What this does not cover</h2>
+      <p>Named honestly, on the same principle as OM-001: a pattern language that pretends to completeness is its own dishonest gauge.</p>
+      <ul>
+        <li><strong>Depth beyond two.</strong> Agents dispatching agents dispatching agents. Pattern 7 says what a receipt must carry; it does not say how a principal reasons about a tree they never see. The console declined depth-2 rendering for a concrete reason, and nothing here has been tested at depth 3.</li>
+        <li><strong>Heterogeneous fleets.</strong> Every unit here is the same kind of agent. Dispatching to different harnesses, with different capabilities and different report shapes, is a real case and is not addressed.</li>
+        <li><strong>Cost.</strong> N agents cost roughly N times as much, and none of these patterns help a principal decide whether a fan-out was worth it. There is no pattern here for <em>when not to dispatch</em>, which is probably the most valuable one missing.</li>
+        <li><strong>Contention for things that cannot be isolated.</strong> A port, a device, an API token with one permitted caller, a rate limit. Pattern 3 explicitly does not cover these, and the honest remedy — a mutex where one exists, a stated rule where none does — is not a pattern so much as an admission.</li>
+        <li><strong>Failure of a unit that never reports.</strong> Pattern 6 says make it visible. It does not say what the commissioning context should <em>do</em>, and “retry” is not obviously right when the unit may have half-finished something.</li>
+        <li><strong>Evaluation.</strong> Still. There is no accepted measure of whether a fleet outperformed one agent on the same work, and until there is, every claim here — including the claim that any of this is worth doing — is argued rather than demonstrated.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sources-and-lineage">
+  <div class="row">
+    <div class="mark">15</div>
+    <div class="body">
+      <h2>Sources and lineage</h2>
+
+      <p class="field first">Directly ancestral</p>
+      <ul>
+        <li><a href="/om-001">OM-001</a>, <em>Conversational Agent Control Surfaces</em> — the template, the vocabulary, the Failure Signature field, and the gap this document fills. Its preface carries the debt to Alexander and to the Gang of Four, which this document inherits without restating.</li>
+        <li>Gamma, Helm, Johnson &amp; Vlissides, <em>Design Patterns</em> (1994) — the form.</li>
+        <li>Alexander, <em>The Origins of Pattern Theory…</em>, OOPSLA 1996 keynote — the standard the form is held to, and the reason Failure Signature exists at all.</li>
+      </ul>
+
+      <p class="field">Adjacent traditions</p>
+      <ul>
+        <li>Distributed systems: fan-out/fan-in, work queues with reply-to addressing, tracing spans with parent identity. Patterns 6 and 7 are that literature meeting a principal who is a person rather than a scheduler.</li>
+        <li>Build systems and CI: per-job isolation, scoped tokens, dashboards over N runners. Pattern 3 and pattern 5 have direct ancestors there, and the difference is that a build job cannot decide to do something else.</li>
+        <li>Operations and delegation practice: commission, scope, report. The vocabulary is deliberately older than software, because the problem is.</li>
+      </ul>
+
+      <p class="field">Primary material</p>
+      <p>Patterns 5 and 7 are drawn from measurements made while building a console that renders dispatched agents: the eight-to-sixteen-minute dead card, the absence of token-level deltas from a subagent, the <code>task_id</code> correlation trap, and the declined depth-2 merge. Patterns 1, 4 and 6 are drawn from one person's working practice over several days in August 2026, including the morning of four dispatched agents that produced pattern 6 entire.</p>
+
+      <p class="field">What is claimed</p>
+      <p>Less than OM-001 claimed, and OM-001 was already careful. That document had fourteen patterns, four of them measured, and said plainly that one machine establishes existence rather than frequency. This one has eight, two of them measured, and rests on a practice that is weeks old rather than years. It is published now because the failures are real and legible, and because a language argued in public gets corrected faster than one held back until it is safe.</p>
+      <p>Corrections and counter-examples: <a href="mailto:hello@organon.art">hello@organon.art</a>. A pattern shown not to exist in other people's fleets is a useful result and will be recorded as one.</p>
+    </div>
+  </div>
+</section>
+
+<div class="row">
+  <div class="mark"></div>
+  <div class="body">
+    <div class="colophon">
+      OM-002 · Organon Mind · <a href="/om-001">OM-001</a> · <a href="/patterns">the catalogue</a> · <a href="https://organonmind.org">organonmind.org</a><br>
+      Set in the system text face; apparatus and code in monospace. Figures drawn, not generated.<br>
+      No external requests, no analytics, no trackers.
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

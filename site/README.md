@@ -25,6 +25,13 @@ lineage as `organon.art`: one page, no external requests.
   §9 keeps every one of them as a stub linking to the canonical entry. Do not
   remove them to tidy the markup; a published fragment is as permanent as a
   published number.
+- `om-002.html` — *Working a Fleet*, at `/om-002`. Eight patterns for delegating
+  to more than one agent at once, in three acts: the split, in flight, the join.
+  ⚠️ **Unlike the first fourteen, these are published in full in the paper**,
+  because the explorer holds only the first language. That is stated on the page
+  (§5) along with what happens when they move: this becomes the argument, with a
+  dated revision saying so. Until then there is exactly one copy of each — do not
+  create a second by adding them to `/patterns` without moving them.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
   `/why`. **Generated**, do not hand-edit. Run
   `python3 scripts/generate_mind_why.py` from the repo root; the source is
