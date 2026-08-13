@@ -76,6 +76,35 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--live);outline-offse
 .chip:hover{border-color:var(--ink);color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 
+/* ── the language switch ──
+   Above the filters, and deliberately heavier than a chip: choosing a language
+   is not filtering one list, it is changing which list you are looking at. The
+   catalogue holds three languages and one set of compositions, and flattening
+   them into a single index is exactly what this control exists to refuse. */
+.langs{padding:.85rem .95rem .8rem;border-bottom:1px solid var(--rule-strong);background:var(--raise)}
+.langlab{font-family:var(--mono);font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 .45rem}
+.langrow{display:grid;grid-template-columns:1fr 1fr;gap:.3rem}
+.lang{text-align:left;background:var(--paper);border:1px solid var(--rule-strong);cursor:pointer;
+  color:inherit;padding:.36rem .45rem;display:block;font-family:var(--sans)}
+.lang:hover{border-color:var(--ink)}
+.lang .lname{display:block;font-size:.8rem;font-weight:600;letter-spacing:-.004em}
+.lang .lsub{display:block;font-family:var(--mono);font-size:.55rem;letter-spacing:.04em;
+  color:var(--faint);margin-top:.1rem}
+.lang[aria-pressed="true"]{background:var(--ink);border-color:var(--ink)}
+.lang[aria-pressed="true"] .lname{color:var(--paper)}
+.lang[aria-pressed="true"] .lsub{color:var(--paper);opacity:.62}
+.lang:focus-visible{outline:2px solid var(--live);outline-offset:1px}
+
+/* An entry whose full text is canonical in a paper rather than here. The
+   explorer holds its position and its relations; the paper holds its argument. */
+.elsewhere{border:1px solid var(--rule-strong);padding:1.05rem 1.2rem;margin:0 0 1.6rem;
+  background:var(--paper)}
+.elsewhere .eint{font-size:1.02rem;line-height:1.6;margin:0 0 .9rem}
+.elsewhere .ecanon{font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint);margin:0 0 .3rem}
+.elsewhere a{font-size:.9rem}
+
 .group{padding:.9rem .95rem .15rem}
 .gname{font-family:var(--mono);font-size:.56rem;letter-spacing:.17em;text-transform:uppercase;
   color:var(--faint);margin:0 0 .4rem;display:flex;align-items:center;gap:.5rem}
@@ -252,18 +281,15 @@ body[data-view="overview"] .desig .tag{display:none}
 <div class="shell">
 
   <nav class="rail" id="rail" aria-label="Pattern index">
-    <div class="filters">
-      <div class="frow">
+    <div class="langs">
+      <p class="langlab">Language</p>
+      <div class="langrow" id="langrow"></div>
+    </div>
+    <div class="filters" id="filters">
+      <div class="frow" id="frow-stage">
         <span class="flabel">Stage</span>
-        <button class="chip" data-part="all" aria-pressed="true">All</button>
-        <button class="chip" data-part="I" aria-pressed="false">I</button>
-        <button class="chip" data-part="II" aria-pressed="false">II</button>
-        <button class="chip" data-part="III" aria-pressed="false">III</button>
-        <button class="chip" data-part="IV" aria-pressed="false">IV</button>
-        <button class="chip" data-part="V" aria-pressed="false">V</button>
-        <button class="chip" data-part="VI" aria-pressed="false">VI</button>
       </div>
-      <div class="frow">
+      <div class="frow" id="frow-seam">
         <span class="flabel">Side</span>
         <button class="chip" data-seam="all" aria-pressed="true">All</button>
         <button class="chip" data-seam="harness" aria-pressed="false">Harness</button>
@@ -272,11 +298,7 @@ body[data-view="overview"] .desig .tag{display:none}
     </div>
     <div class="railtop"><button type="button" data-goto="overview">Overview</button></div>
     <div id="index"></div>
-    <div class="railfoot">
-      14 patterns · 6 stages<br>
-      9 harness · 1 disposition · 4 both<br>
-      <span style="opacity:.75">[ ] to step</span>
-    </div>
+    <div class="railfoot" id="railfoot"></div>
   </nav>
 
   <main class="detail" id="detail">
@@ -308,7 +330,7 @@ body[data-view="overview"] .desig .tag{display:none}
 
 </div>
 
-<div id="store" hidden><div class="panel" data-pat="overview">
+<div id="store" hidden><div class="panel" data-pat="overview-turn">
 
 <p class="ovl">A pattern language for mixed-initiative, tool-using interfaces.</p>
 
@@ -380,6 +402,7 @@ body[data-view="overview"] .desig .tag{display:none}
 <p class="field">Reading this page</p>
 <ul>
   <li>The <strong>index</strong> on the left holds all fourteen, grouped by stage. <span class="kbd">[</span> and <span class="kbd">]</span> step through them.</li>
+  <li><strong>Language</strong>, at the top of the rail, changes which catalogue you are in. There are three languages and one set of compositions, and they describe different things — one agent, one fleet, and one person running several. A relation may point across them, and following it switches the rail with you.</li>
   <li><strong>Related patterns</strong> on every entry are clickable. That field has been a dead list at the foot of a page since 1994; here it is how you move.</li>
   <li><strong>Side of the seam</strong> splits them by how they fail. <em>Harness</em> patterns live in code — they fail the same way every time and a test can hold them. <em>Disposition</em> patterns live in the agent’s character — they fail stochastically, and you strengthen a tendency rather than pin a behaviour. Nine are harness, one is disposition, four are both: most of what makes an agent feel trustworthy turns out to be <em>buildable</em>.</li>
 </ul>
@@ -387,6 +410,80 @@ body[data-view="overview"] .desig .tag{display:none}
 <p class="field">Where this came from</p>
 <p>Four of the fourteen — Mode Legibility, Streaming Turn, Ambient Activity Channel and Honest Gauge — were found by hitting them on a single workstation running a voice-first agent with a resident process, local speech-to-text and synthesis, and a physical lighting channel. Every number quoted in those entries was measured on that machine rather than estimated.</p>
 <p>The argument for all of it — the gap, why the existing literature does not fill it, and what the missing vocabulary costs — is <a href="/om-001">OM-001</a>. You do not need it to use the catalogue.</p>
+
+</div>
+<div class="panel" data-pat="overview-fleet">
+
+<p class="ovl">One dispatcher, many units. What changes when a delegated task is split.</p>
+
+<p>The fourteen patterns of the Turn language describe <em>one</em> delegated task, and the vocabulary says so: a turn is the unit of exchange, and the thing held by exactly one party. Put twelve agents in flight and there is no turn — nothing to hold, nothing to interrupt, and no moment at which the principal and the agent are both present.</p>
+
+<p>So this is a second language rather than an extension of the first. Its topology is a <strong>fan-out and a fan-in</strong>, and everything difficult lives at the two seams and in the space between them, where the principal is absent by design.</p>
+
+<p class="field">The eight</p>
+<ol class="glance">
+  <li><button type="button" data-goto="proposed-dispatch"><span class="gn">01</span><span><span class="gname2">Proposed Dispatch</span><span class="gint">The context that holds the work proposes the units; the principal approves rather than authors.</span></span></button></li>
+  <li><button type="button" data-goto="scoped-commission"><span class="gn">02</span><span><span class="gname2">Scoped Commission</span><span class="gint">Authority granted at dispatch, because per-action approval does not survive N.</span></span></button></li>
+  <li><button type="button" data-goto="isolation-by-construction"><span class="gn">03</span><span><span class="gname2">Isolation by Construction</span><span class="gint">A workspace per unit, so collision is impossible rather than unlikely.</span></span></button></li>
+  <li><button type="button" data-goto="dispatch-without-escort"><span class="gn">04</span><span><span class="gname2">Dispatch Without Escort</span><span class="gint">A dispatch that needs watching cannot be followed by another.</span></span></button></li>
+  <li><button type="button" data-goto="fleet-standing"><span class="gn">05</span><span><span class="gname2">Fleet Standing</span><span class="gint">Every unit's state on one surface, at the granularity the channel carries.</span></span></button></li>
+  <li><button type="button" data-goto="the-return-path"><span class="gn">06</span><span><span class="gname2">The Return Path</span><span class="gint">A result routes back to what commissioned it, without a human as transport.</span></span></button></li>
+  <li><button type="button" data-goto="attribution-across-depth"><span class="gn">07</span><span><span class="gname2">Attribution Across Depth</span><span class="gint">A receipt names who acted, and how far down.</span></span></button></li>
+  <li><button type="button" data-goto="gather"><span class="gn">08</span><span><span class="gname2">Gather</span><span class="gint">N reports reconciled into one account, with disagreement surfaced.</span></span></button></li>
+</ol>
+
+<p class="field">Where the full entries are</p>
+<p>In <a href="/om-002">OM-002 · <em>Working a Fleet</em></a>, which is canonical for them. This explorer holds their position and their relations so the language can be moved through; the paper holds the argument, the figures and the evidence. There is exactly one copy of each entry, and it is there.</p>
+
+</div>
+<div class="panel" data-pat="overview-arr">
+
+<p class="ovl">Named ways to arrange a fleet. Not patterns, but compositions of them.</p>
+
+<p>The Fleet language's eight patterns can be assembled into different wholes, and an arrangement earns a name only when it passes one test: <strong>a composite is worth naming when it changes what its constituent patterns mean.</strong></p>
+
+<div class="tablewrap"><table>
+  <thead><tr><th>Pattern</th><th>In plain fan-out</th><th>Inside another arrangement</th></tr></thead>
+  <tbody>
+    <tr><td>Gather</td><td>surfacing disagreement is a safety property</td><td>in a Panel it is adjudication, and disagreement is the product</td></tr>
+    <tr><td>Isolation</td><td>makes collision unrepresentable — about trees</td><td>under Adversarial Verify it is independence of judgement — about a channel</td></tr>
+    <tr><td>The Return Path</td><td>carries a report back to the commissioning context</td><td>in a Pipeline it <em>is</em> the next unit's commission; two patterns, one object</td></tr>
+  </tbody>
+</table></div>
+
+<p>These are the closest this catalogue comes to what Alexander meant by a pattern <em>language</em> rather than a pattern list: a sequence you can follow to produce a coherent whole, rather than a shelf of separable good ideas. Whether they reach it is argued, and doubted, in the paper.</p>
+
+<p class="field">The six</p>
+<ol class="glance">
+  <li><button type="button" data-goto="plain-fan-out"><span class="gn">01</span><span><span class="gname2">Plain Fan-Out</span><span class="gint">The default, named so the others read as departures rather than inventions.</span></span></button></li>
+  <li><button type="button" data-goto="pipeline"><span class="gn">02</span><span><span class="gname2">Pipeline</span><span class="gint">Units in series, each report standing as the next one's commission.</span></span></button></li>
+  <li><button type="button" data-goto="scout-then-swarm"><span class="gn">03</span><span><span class="gname2">Scout then Swarm</span><span class="gint">One read-only unit produces the decomposition; then fan out over it.</span></span></button></li>
+  <li><button type="button" data-goto="loop-until-dry"><span class="gn">04</span><span><span class="gname2">Loop Until Dry</span><span class="gint">Rounds until consecutive ones return nothing new — for work of unknown size.</span></span></button></li>
+  <li><button type="button" data-goto="panel"><span class="gn">05</span><span><span class="gname2">Panel</span><span class="gint">Several units, same question, kept apart, and the disagreement is the product.</span></span></button></li>
+  <li><button type="button" data-goto="adversarial-verify"><span class="gn">06</span><span><span class="gname2">Adversarial Verify</span><span class="gint">Units commissioned to refute, with the rule fixed before the verdicts arrive.</span></span></button></li>
+</ol>
+
+<p class="field">Where the full entries are</p>
+<p>In <a href="/om-003">OM-003 · <em>Arrangements, and the Yard</em></a>, §7–§12, which is canonical for them.</p>
+
+</div>
+<div class="panel" data-pat="overview-yard">
+
+<p class="ovl">One person, several fleets. The level where the dispatcher is human.</p>
+
+<p>The recursion stops here, and that is the whole finding. In the Fleet language the dispatcher is an agent: you can scope its authority, give it a return address, and hold it to a report. At the level above, the dispatcher is a person, who has none of those properties — <strong>a human cannot be commissioned.</strong></p>
+
+<p>Everything difficult at this level falls out of that asymmetry. Authority that cannot be scoped, no address that resolves, no report, and a scarce resource that is attention rather than compute — attention does not divide, and cannot be bought.</p>
+
+<p class="field">The three</p>
+<ol class="glance">
+  <li><button type="button" data-goto="standing-by-readiness"><span class="gn">01</span><span><span class="gname2">Standing by Readiness</span><span class="gint">Order the surface by what needs a person, not by what is happening.</span></span></button></li>
+  <li><button type="button" data-goto="re-entry-note"><span class="gn">02</span><span><span class="gname2">Re-entry Note</span><span class="gint">Coming back to a squad should cost reading rather than reconstruction.</span></span></button></li>
+  <li><button type="button" data-goto="landing-order"><span class="gn">03</span><span><span class="gname2">Landing Order</span><span class="gint">The shared trunk is the one thing isolation cannot copy.</span></span></button></li>
+</ol>
+
+<p class="field">Where the full entries are</p>
+<p>In <a href="/om-003">OM-003</a>, §14–§17, which is canonical for them. That document also leaves one question open on its face: whether an agent can run a yard at all.</p>
 
 </div>
 <div class="panel" data-pat="capability-disclosure">
@@ -1485,71 +1582,201 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
 <script>
 (function(){
-  var P = [
-    {id:"capability-disclosure",n:1,name:"Capability Disclosure",part:"I",stage:"Orientation",seam:"harness",
-     rel:[["feeds","mode-legibility"],["loads","scope-on-uncertainty"],["governed by","honest-gauge"],["discloses rung of","progressive-autonomy"]]},
-    {id:"mode-legibility",n:2,name:"Mode Legibility",part:"I",stage:"Orientation",seam:"harness",
-     rel:[["special case of","capability-disclosure"],["keys","approval-gate"],["governed by","honest-gauge"]]},
-    {id:"streaming-turn",n:3,name:"Streaming Turn",part:"II",stage:"Turn",seam:"harness",
-     rel:[["enables","barge-in"],["carries","tool-call-transparency"]]},
-    {id:"barge-in",n:4,name:"Barge-In",part:"II",stage:"Turn",seam:"harness",
-     rel:[["depends on","streaming-turn"],["constrains","recoverable-execution"]]},
-    {id:"scope-on-uncertainty",n:5,name:"Scope-on-Uncertainty",part:"III",stage:"Intent",seam:"disposition",
-     rel:[["escalates to","approval-gate"],["presented by","constrained-choice"],["loaded by","capability-disclosure"]]},
-    {id:"constrained-choice",n:6,name:"Constrained Choice",part:"III",stage:"Intent",seam:"both",
-     rel:[["presents","scope-on-uncertainty"],["presents","approval-gate"]]},
-    {id:"plan-approve-execute-receipt",n:7,name:"Plan · Approve · Execute · Receipt",part:"IV",stage:"Execution",seam:"both",
-     rel:[["gated by","approval-gate"],["placed by","progressive-autonomy"],["traced by","tool-call-transparency"],["feeds","continuity-as-memory"]]},
-    {id:"tool-call-transparency",n:8,name:"Tool-Call Transparency",part:"IV",stage:"Execution",seam:"harness",
-     rel:[["rides","streaming-turn"],["feeds","ambient-activity-channel"],["evidences","recoverable-execution"]]},
-    {id:"ambient-activity-channel",n:9,name:"Ambient Activity Channel",part:"IV",stage:"Execution",seam:"harness",
-     rel:[["consumes","tool-call-transparency"],["obeys","honest-gauge"],["relates to","mode-legibility"]]},
-    {id:"approval-gate",n:10,name:"Approval Gate",part:"V",stage:"Authority",seam:"harness",
-     rel:[["positioned by","progressive-autonomy"],["presented via","constrained-choice"],["cheapened by","recoverable-execution"],["undermined by","honest-gauge"]]},
-    {id:"progressive-autonomy",n:11,name:"Progressive Autonomy",part:"V",stage:"Authority",seam:"both",
-     rel:[["positions","approval-gate"],["depends on","recoverable-execution"],["disclosed by","capability-disclosure"]]},
-    {id:"honest-gauge",n:12,name:"Honest Gauge",part:"VI",stage:"Truth and continuity",seam:"harness",
-     rel:[["governs","capability-disclosure"],["governs","mode-legibility"],["governs","ambient-activity-channel"],["undermines","approval-gate"]]},
-    {id:"recoverable-execution",n:13,name:"Recoverable Execution",part:"VI",stage:"Truth and continuity",seam:"harness",
-     rel:[["reduces","approval-gate"],["enables","progressive-autonomy"],["unwinds","barge-in"]]},
-    {id:"continuity-as-memory",n:14,name:"Continuity as Memory",part:"VI",stage:"Truth and continuity",seam:"both",
-     rel:[["fed by","plan-approve-execute-receipt"],["governed by","honest-gauge"],["orients","capability-disclosure"]]}
+  // ── The catalogue holds more than one language ──────────────────────────────
+  //
+  // Three languages and one set of compositions. They are NOT one long list, and
+  // the switch above the rail exists to say so: each describes a different
+  // object — one agent, one fleet, one person running several — with its own
+  // stages, its own map and its own idea of what a stage even is. Pouring them
+  // into a single index would leave "Stage: Execution" printed next to an entry
+  // about which squad's work lands first, which is how a catalogue stops meaning
+  // anything.
+  //
+  // Only the Turn language's full text lives here; it is canonical for it. The
+  // other three carry position, intent and relations, and name the paper that
+  // holds their argument. One copy of each entry, never two.
+  var LANGS = [
+    {id:"turn", label:"Turn", sub:"one agent", doc:"OM-001", href:"/om-001", full:true, seam:true,
+     groups:[["I","Orientation"],["II","Turn"],["III","Intent"],["IV","Execution"],["V","Authority"],["VI","Truth and continuity"]],
+     foot:"14 patterns · 6 stages<br>9 harness · 1 disposition · 4 both"},
+    {id:"fleet", label:"Fleet", sub:"one dispatcher", doc:"OM-002", href:"/om-002", full:false, seam:false,
+     groups:[["S","The split"],["F","In flight"],["J","The join"]],
+     foot:"8 patterns · 3 acts<br>full entries in OM-002"},
+    {id:"arr", label:"Arrangements", sub:"compositions", doc:"OM-003", href:"/om-003", full:false, seam:false,
+     groups:[["A","Arrangements of a fleet"]],
+     foot:"6 arrangements<br>compositions of the Fleet patterns"},
+    {id:"yard", label:"Yard", sub:"many fleets", doc:"OM-003", href:"/om-003", full:false, seam:false,
+     groups:[["Y","The yard"]],
+     foot:"3 patterns · full entries in OM-003"}
   ];
+  var LANG={}; LANGS.forEach(function(l){LANG[l.id]=l;});
+
+  var P = [
+    // ── Turn (OM-001) ────────────────────────────────────────────────────────
+    {lang:"turn",id:"capability-disclosure",n:1,name:"Capability Disclosure",g:"I",seam:"harness",
+     rel:[["feeds","mode-legibility"],["loads","scope-on-uncertainty"],["governed by","honest-gauge"],["discloses rung of","progressive-autonomy"]]},
+    {lang:"turn",id:"mode-legibility",n:2,name:"Mode Legibility",g:"I",seam:"harness",
+     rel:[["special case of","capability-disclosure"],["keys","approval-gate"],["governed by","honest-gauge"]]},
+    {lang:"turn",id:"streaming-turn",n:3,name:"Streaming Turn",g:"II",seam:"harness",
+     rel:[["enables","barge-in"],["carries","tool-call-transparency"]]},
+    {lang:"turn",id:"barge-in",n:4,name:"Barge-In",g:"II",seam:"harness",
+     rel:[["depends on","streaming-turn"],["constrains","recoverable-execution"]]},
+    {lang:"turn",id:"scope-on-uncertainty",n:5,name:"Scope-on-Uncertainty",g:"III",seam:"disposition",
+     rel:[["escalates to","approval-gate"],["presented by","constrained-choice"],["loaded by","capability-disclosure"]]},
+    {lang:"turn",id:"constrained-choice",n:6,name:"Constrained Choice",g:"III",seam:"both",
+     rel:[["presents","scope-on-uncertainty"],["presents","approval-gate"]]},
+    {lang:"turn",id:"plan-approve-execute-receipt",n:7,name:"Plan · Approve · Execute · Receipt",g:"IV",seam:"both",
+     rel:[["gated by","approval-gate"],["placed by","progressive-autonomy"],["traced by","tool-call-transparency"],["feeds","continuity-as-memory"]]},
+    {lang:"turn",id:"tool-call-transparency",n:8,name:"Tool-Call Transparency",g:"IV",seam:"harness",
+     rel:[["rides","streaming-turn"],["feeds","ambient-activity-channel"],["evidences","recoverable-execution"]]},
+    {lang:"turn",id:"ambient-activity-channel",n:9,name:"Ambient Activity Channel",g:"IV",seam:"harness",
+     rel:[["consumes","tool-call-transparency"],["obeys","honest-gauge"],["relates to","mode-legibility"]]},
+    {lang:"turn",id:"approval-gate",n:10,name:"Approval Gate",g:"V",seam:"harness",
+     rel:[["positioned by","progressive-autonomy"],["presented via","constrained-choice"],["cheapened by","recoverable-execution"],["undermined by","honest-gauge"]]},
+    {lang:"turn",id:"progressive-autonomy",n:11,name:"Progressive Autonomy",g:"V",seam:"both",
+     rel:[["positions","approval-gate"],["depends on","recoverable-execution"],["disclosed by","capability-disclosure"]]},
+    {lang:"turn",id:"honest-gauge",n:12,name:"Honest Gauge",g:"VI",seam:"harness",
+     rel:[["governs","capability-disclosure"],["governs","mode-legibility"],["governs","ambient-activity-channel"],["undermines","approval-gate"]]},
+    {lang:"turn",id:"recoverable-execution",n:13,name:"Recoverable Execution",g:"VI",seam:"harness",
+     rel:[["reduces","approval-gate"],["enables","progressive-autonomy"],["unwinds","barge-in"]]},
+    {lang:"turn",id:"continuity-as-memory",n:14,name:"Continuity as Memory",g:"VI",seam:"both",
+     rel:[["fed by","plan-approve-execute-receipt"],["governed by","honest-gauge"],["orients","capability-disclosure"]]},
+
+    // ── Fleet (OM-002) ───────────────────────────────────────────────────────
+    {lang:"fleet",id:"proposed-dispatch",n:1,name:"Proposed Dispatch",g:"S",
+     intent:"Let the context that already holds the work propose the units, so the principal approves a decomposition rather than authoring one from memory.",
+     rel:[["hands to","scoped-commission"],["takes its form from","constrained-choice"],["is gated by","approval-gate"]]},
+    {lang:"fleet",id:"scoped-commission",n:2,name:"Scoped Commission",g:"S",
+     intent:"Grant a dispatched agent its authority once, at dispatch, in a form the environment enforces — because per-action approval does not survive more than one agent.",
+     rel:[["realised by","isolation-by-construction"],["replaces","approval-gate"],["widened by","progressive-autonomy"]]},
+    {lang:"fleet",id:"isolation-by-construction",n:3,name:"Isolation by Construction",g:"S",
+     intent:"Give each unit a workspace in which collision is impossible, so parallelism does not depend on the units being careful.",
+     rel:[["bounds","scoped-commission"],["feeds","gather"],["is before-state for","recoverable-execution"]]},
+    {lang:"fleet",id:"dispatch-without-escort",n:4,name:"Dispatch Without Escort",g:"F",
+     intent:"Make a dispatch complete at the moment it is made, so the principal can turn immediately to the next thing rather than staying to shepherd the last one.",
+     rel:[["needs","fleet-standing"],["leans on","scope-on-uncertainty"],["depends on","scoped-commission"]]},
+    {lang:"fleet",id:"fleet-standing",n:5,name:"Fleet Standing",g:"F",
+     intent:"Show every unit's state on one surface, at the granularity the channel actually carries, and never at a granularity it does not.",
+     rel:[["obeys","honest-gauge"],["reaches via","ambient-activity-channel"],["enables","dispatch-without-escort"]]},
+    {lang:"fleet",id:"the-return-path",n:6,name:"The Return Path",g:"J",
+     intent:"Route a completed unit's result back to the context that commissioned it, so no human has to carry it there.",
+     rel:[["feeds","gather"],["carries","attribution-across-depth"],["is the receipt for","plan-approve-execute-receipt"]]},
+    {lang:"fleet",id:"attribution-across-depth",n:7,name:"Attribution Across Depth",g:"J",
+     intent:"Make every result name who produced it and how far down, so no context ever reports another's work in its own voice.",
+     rel:[["rides","the-return-path"],["extends","tool-call-transparency"],["informs","progressive-autonomy"]]},
+    {lang:"fleet",id:"gather",n:8,name:"Gather",g:"J",
+     intent:"Reconcile N reports into one account, surfacing where they disagree rather than letting the disagreement land in the artifact.",
+     rel:[["consumes","the-return-path"],["needs","attribution-across-depth"],["reconciles","isolation-by-construction"]]},
+
+    // ── Arrangements (OM-003, level one) ─────────────────────────────────────
+    {lang:"arr",id:"plain-fan-out",n:1,name:"Plain Fan-Out",g:"A",
+     intent:"Split work into units that never meet, run them at once, and reconcile their reports — the default arrangement, named so that the others read as departures from something rather than as inventions.",
+     rel:[["departs to","pipeline"],["departs to","scout-then-swarm"],["joins with","gather"]]},
+    {lang:"arr",id:"pipeline",n:2,name:"Pipeline",g:"A",
+     intent:"Run units in series, each one's report standing as the next one's commission, when the work does not partition but does decompose into stages.",
+     rel:[["departs from","plain-fan-out"],["pairs with","scout-then-swarm"],["collapses","the-return-path"]]},
+    {lang:"arr",id:"scout-then-swarm",n:3,name:"Scout then Swarm",g:"A",
+     intent:"Spend one read-only unit on a survey whose product is the decomposition, then fan out over it — for work nobody present knows the shape of.",
+     rel:[["feeds","plain-fan-out"],["pairs with","pipeline"],["uses","proposed-dispatch"]]},
+    {lang:"arr",id:"loop-until-dry",n:4,name:"Loop Until Dry",g:"A",
+     intent:"Repeat rounds of fan-out, deduplicating against everything seen so far, until some number of consecutive rounds return nothing new — for work whose size is not known before starting.",
+     rel:[["repeats","plain-fan-out"],["pairs with","adversarial-verify"],["dedupes at","gather"]]},
+    {lang:"arr",id:"panel",n:5,name:"Panel",g:"A",
+     intent:"Give several units the same question, kept apart on purpose, and make the disagreement between their answers the product rather than a problem.",
+     rel:[["inverts with","adversarial-verify"],["departs from","plain-fan-out"],["needs","isolation-by-construction"]]},
+    {lang:"arr",id:"adversarial-verify",n:6,name:"Adversarial Verify",g:"A",
+     intent:"Commission units to refute a result rather than to review it, with the burden of proof on the claim and a rule fixed before the verdicts arrive.",
+     rel:[["inverts","panel"],["rounds with","loop-until-dry"],["needs","isolation-by-construction"]]},
+
+    // ── Yard (OM-003, level two) ─────────────────────────────────────────────
+    {lang:"yard",id:"standing-by-readiness",n:1,name:"Standing by Readiness",g:"Y",
+     intent:"Order the yard's surface by what needs a person, not by what is happening, so the scarce resource is spent on decisions rather than on scanning.",
+     rel:[["ordered by","landing-order"],["sits above","fleet-standing"],["obeys","honest-gauge"]]},
+    {lang:"yard",id:"re-entry-note",n:2,name:"Re-entry Note",g:"Y",
+     intent:"Have each squad maintain a short note written for the person's return, so that coming back to it costs reading rather than reconstruction.",
+     rel:[["feeds","standing-by-readiness"],["is","continuity-as-memory"],["summarises","gather"]]},
+    {lang:"yard",id:"landing-order",n:3,name:"Landing Order",g:"Y",
+     intent:"Decide the order in which finished work lands, explicitly and before it is finished, because the shared trunk is the one thing isolation cannot copy.",
+     rel:[["surfaces in","standing-by-readiness"],["limits","isolation-by-construction"],["sequences","gather"]]}
+  ];
+
   var BY={}; P.forEach(function(p){BY[p.id]=p;});
   var SEAM={harness:"harness",disposition:"disposition",both:"harness + disposition"};
-  var GROUPS=[["I","Orientation"],["II","Turn"],["III","Intent"],["IV","Execution"],["V","Authority"],["VI","Truth and continuity"]];
   var pad=function(n){return (n<10?"0":"")+n;};
 
   var store=document.getElementById('store'),
       indexEl=document.getElementById('index'),
-      state={part:'all',seam:'all',cur:null};
+      langRow=document.getElementById('langrow'),
+      stageRow=document.getElementById('frow-stage'),
+      seamRow=document.getElementById('frow-seam'),
+      railFoot=document.getElementById('railfoot'),
+      state={lang:'turn',part:'all',seam:'all',cur:null};
 
+  // Citation counts are computed across every language, because a relation that
+  // crosses one is still a citation — and the cross-language ones are the whole
+  // reason this catalogue is not four separate pages.
   var inbound={}; P.forEach(function(p){inbound[p.id]=0;});
   P.forEach(function(p){p.rel.forEach(function(r){if(inbound[r[1]]!==undefined)inbound[r[1]]++;});});
 
-  GROUPS.forEach(function(g){
-    var wrap=document.createElement('div'); wrap.className='group'; wrap.setAttribute('data-group',g[0]);
-    var h=document.createElement('p'); h.className='gname'; h.textContent=g[0]+' · '+g[1];
-    var ul=document.createElement('ul'); ul.className='idx';
-    P.filter(function(p){return p.part===g[0];}).forEach(function(p){
-      var li=document.createElement('li'); li.setAttribute('data-id',p.id);
-      var b=document.createElement('button'); b.type='button'; b.setAttribute('data-goto',p.id);
-      b.innerHTML='<span class="inum">'+pad(p.n)+'</span><span class="iname"></span>';
-      b.querySelector('.iname').textContent=p.name;
-      li.appendChild(b); ul.appendChild(li);
-    });
-    wrap.appendChild(h); wrap.appendChild(ul); indexEl.appendChild(wrap);
+  function inLang(id){return P.filter(function(p){return p.lang===id;});}
+
+  // ── the language switch ─────────────────────────────────────────────────────
+  LANGS.forEach(function(l){
+    var b=document.createElement('button');
+    b.type='button'; b.className='lang'; b.setAttribute('data-lang',l.id);
+    b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="lname"></span><span class="lsub"></span>';
+    b.querySelector('.lname').textContent=l.label;
+    b.querySelector('.lsub').textContent=l.sub;
+    langRow.appendChild(b);
   });
 
+  function buildStageChips(l){
+    stageRow.innerHTML='<span class="flabel">Stage</span>';
+    // A single group is not a filter, it is the whole set — offering "All" against
+    // one option is a control that cannot do anything.
+    if(l.groups.length<2){ stageRow.style.display='none'; return; }
+    stageRow.style.display='';
+    var mk=function(v,t){
+      var b=document.createElement('button'); b.className='chip';
+      b.setAttribute('data-part',v); b.setAttribute('aria-pressed',String(state.part===v));
+      b.textContent=t; stageRow.appendChild(b);
+    };
+    mk('all','All');
+    l.groups.forEach(function(g){mk(g[0],g[0]);});
+  }
+
+  function buildIndex(l){
+    indexEl.innerHTML='';
+    l.groups.forEach(function(g){
+      var wrap=document.createElement('div'); wrap.className='group'; wrap.setAttribute('data-group',g[0]);
+      var h=document.createElement('p'); h.className='gname';
+      h.textContent=(l.groups.length>1? g[0]+' · ':'')+g[1];
+      var ul=document.createElement('ul'); ul.className='idx';
+      inLang(l.id).filter(function(p){return p.g===g[0];}).forEach(function(p){
+        var li=document.createElement('li'); li.setAttribute('data-id',p.id);
+        var b=document.createElement('button'); b.type='button'; b.setAttribute('data-goto',p.id);
+        b.innerHTML='<span class="inum">'+pad(p.n)+'</span><span class="iname"></span>';
+        b.querySelector('.iname').textContent=p.name;
+        li.appendChild(b); ul.appendChild(li);
+      });
+      wrap.appendChild(h); wrap.appendChild(ul); indexEl.appendChild(wrap);
+    });
+    seamRow.style.display=l.seam?'':'none';
+    railFoot.innerHTML=l.foot+'<br><span style="opacity:.75">[ ] to step</span>';
+  }
+
   function matches(p){
-    var okPart=state.part==='all'||p.part===state.part;
-    var okSeam=state.seam==='all'||p.seam===state.seam||p.seam==='both';
+    var l=LANG[state.lang];
+    var okPart=state.part==='all'||p.g===state.part;
+    var okSeam=!l.seam||state.seam==='all'||p.seam===state.seam||p.seam==='both';
     return okPart&&okSeam;
   }
   function applyFilters(){
-    GROUPS.forEach(function(g){
-      var wrap=indexEl.querySelector('[data-group="'+g[0]+'"]'); var any=false;
-      P.filter(function(p){return p.part===g[0];}).forEach(function(p){
+    var l=LANG[state.lang];
+    l.groups.forEach(function(g){
+      var wrap=indexEl.querySelector('[data-group="'+g[0]+'"]'); if(!wrap) return; var any=false;
+      inLang(l.id).filter(function(p){return p.g===g[0];}).forEach(function(p){
         var li=wrap.querySelector('li[data-id="'+p.id+'"]');
         var on=matches(p); li.classList.toggle('off',!on); if(on)any=true;
       });
@@ -1557,39 +1784,69 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     });
   }
 
+  function setLang(id,keepFilters){
+    if(state.lang===id&&keepFilters) return;
+    state.lang=id;
+    if(!keepFilters){ state.part='all'; state.seam='all'; }
+    document.querySelectorAll('.lang').forEach(function(b){
+      b.setAttribute('aria-pressed',String(b.getAttribute('data-lang')===id));});
+    document.querySelectorAll('.chip[data-seam]').forEach(function(x){
+      x.setAttribute('aria-pressed',String(x.getAttribute('data-seam')===state.seam));});
+    buildStageChips(LANG[id]);
+    buildIndex(LANG[id]);
+    applyFilters();
+  }
+
+  function groupName(l,key){
+    var found=null; l.groups.forEach(function(g){if(g[0]===key)found=g;});
+    return found?(l.groups.length>1? found[0]+' · '+found[1] : found[1]):key;
+  }
+
+  function showOverview(push){
+    var l=LANG[state.lang];
+    state.cur='overview';
+    document.body.setAttribute('data-view','overview');
+    document.getElementById('d-name').textContent='Patterns';
+    var src=store.querySelector('[data-pat="overview-'+l.id+'"]');
+    document.getElementById('d-prose').innerHTML=src?src.innerHTML:'';
+    if(l.id==='turn') wireStages();
+    indexEl.querySelectorAll('button[data-goto]').forEach(function(b){b.setAttribute('aria-current','false');});
+    document.querySelector('.railtop button').setAttribute('aria-current','true');
+    document.title='Patterns — Organon Mind';
+    if(push!==false&&location.hash) history.pushState({id:'overview'},'',location.pathname);
+    document.getElementById('detail').scrollTop=0;
+    document.body.classList.remove('rail-open');
+  }
+
   function show(id,push){
-    if(id==='overview'){
-      state.cur='overview';
-      document.body.setAttribute('data-view','overview');
-      document.getElementById('d-name').textContent='Patterns';
-      document.getElementById('d-prose').innerHTML=store.querySelector('[data-pat="overview"]').innerHTML;
-      wireStages();
-      indexEl.querySelectorAll('button[data-goto]').forEach(function(b){b.setAttribute('aria-current','false');});
-      document.querySelector('.railtop button').setAttribute('aria-current','true');
-      document.title='Patterns \u2014 Organon Mind';
-      if(push!==false&&location.hash) history.pushState({id:id},'',location.pathname);
-      document.getElementById('detail').scrollTop=0;
-      document.body.classList.remove('rail-open');
-      return;
-    }
+    if(id==='overview'){ showOverview(push); return; }
+    var p=BY[id]; if(!p) return;
+    // Following a relation across a language boundary brings the rail with you;
+    // arriving somewhere whose index does not contain it is the one way this
+    // control could lie about where you are.
+    if(p.lang!==state.lang) setLang(p.lang,false);
+
+    var l=LANG[p.lang];
     document.body.setAttribute('data-view','pattern');
     document.querySelector('.railtop button').setAttribute('aria-current','false');
-    var p=BY[id]; if(!p) return;
     state.cur=id;
     document.getElementById('d-no').textContent=pad(p.n);
     document.getElementById('d-name').textContent=p.name;
-    document.getElementById('d-part').textContent=p.part+' · '+p.stage;
-    document.getElementById('d-seam').textContent=SEAM[p.seam];
+    document.getElementById('d-part').textContent=groupName(l,p.g);
+    var seamTag=document.getElementById('d-seam');
+    if(l.seam){ seamTag.textContent=SEAM[p.seam]; seamTag.style.display=''; }
+    else { seamTag.textContent=l.doc; seamTag.style.display=''; }
 
     var src=store.querySelector('[data-pat="'+id+'"]');
 
     var spec=document.getElementById('d-spec'); spec.innerHTML='';
-    [['Stage',p.part+' · '+p.stage],
-     ['Side of the seam',SEAM[p.seam]],
-     ['Links out',String(p.rel.length)],
-     ['Cited by',String(inbound[p.id])]].forEach(function(row){
-      var d=document.createElement('div'),
-          dt=document.createElement('dt'), dd=document.createElement('dd');
+    var rows=[[l.groups.length>1?'Stage':'Set',groupName(l,p.g)]];
+    if(l.seam) rows.push(['Side of the seam',SEAM[p.seam]]);
+    else rows.push(['Language',l.label]);
+    rows.push(['Links out',String(p.rel.length)]);
+    rows.push(['Cited by',String(inbound[p.id])]);
+    rows.forEach(function(row){
+      var d=document.createElement('div'), dt=document.createElement('dt'), dd=document.createElement('dd');
       dt.textContent=row[0]; dd.textContent=row[1];
       d.appendChild(dt); d.appendChild(dd); spec.appendChild(d);
     });
@@ -1606,30 +1863,51 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       var t=BY[r[1]]; if(!t)return;
       var li=document.createElement('li');
       var b=document.createElement('button'); b.type='button'; b.setAttribute('data-goto',t.id);
-      b.innerHTML='<span class="verb"></span><span class="rnum">'+pad(t.n)+'</span><span class="rname"></span>';
+      // A citation that crosses a language says so, because "which catalogue am I
+      // about to be in" is exactly what a bare name cannot tell you.
+      var cross=t.lang!==p.lang?' <span class="verb" style="opacity:.75">→ '+LANG[t.lang].label+'</span>':'';
+      b.innerHTML='<span class="verb"></span><span class="rnum">'+pad(t.n)+'</span><span class="rname"></span>'+cross;
       b.querySelector('.verb').textContent=r[0];
       b.querySelector('.rname').textContent=t.name;
       li.appendChild(b); rl.appendChild(li);
     });
     document.getElementById('d-rel').style.display=p.rel.length?'':'none';
 
-    document.getElementById('d-prose').innerHTML=src?src.innerHTML:'';
+    var prose=document.getElementById('d-prose');
+    if(src){
+      prose.innerHTML=src.innerHTML;
+    } else {
+      // No full text here on purpose. The paper is canonical; this explorer holds
+      // the position and the relations so the language can be moved through.
+      var d=document.createElement('div'); d.className='elsewhere';
+      var ip=document.createElement('p'); ip.className='eint'; ip.textContent=p.intent||'';
+      var cl=document.createElement('p'); cl.className='ecanon'; cl.textContent='Canonical entry';
+      var a=document.createElement('a'); a.href=l.href+'#'+p.id;
+      a.textContent='The full entry, with its figure and its evidence, is in '+l.doc+' →';
+      var wrap=document.createElement('p'); wrap.style.margin='0'; wrap.appendChild(a);
+      d.appendChild(ip); d.appendChild(cl); d.appendChild(wrap);
+      prose.innerHTML=''; prose.appendChild(d);
+    }
 
     indexEl.querySelectorAll('button[data-goto]').forEach(function(b){
       b.setAttribute('aria-current',String(b.getAttribute('data-goto')===id));
     });
-    document.title=p.n+' · '+p.name+' — Patterns — Organon Mind';
+    document.title=p.n+' · '+p.name+' — '+LANG[p.lang].label+' — Organon Mind';
     if(push!==false&&location.hash.slice(1)!==id) history.pushState({id:id},'','#'+id);
     document.getElementById('detail').scrollTop=0;
     document.body.classList.remove('rail-open');
   }
 
   document.addEventListener('click',function(e){
+    var lg=e.target.closest('[data-lang]');
+    if(lg){ setLang(lg.getAttribute('data-lang'),false); showOverview(); return; }
     var b=e.target.closest('[data-goto]'); if(b){show(b.getAttribute('data-goto'));return;}
     var pt=e.target.closest('[data-part]');
     if(pt){ state.part=pt.getAttribute('data-part');
-      document.querySelectorAll('[data-part]').forEach(function(x){
+      document.querySelectorAll('.chip[data-part]').forEach(function(x){
         x.setAttribute('aria-pressed',String(x.getAttribute('data-part')===state.part));});
+      document.querySelectorAll('.stage').forEach(function(x){
+        x.classList.toggle('on',x.getAttribute('data-part')===state.part);});
       applyFilters(); return; }
     var sm=e.target.closest('[data-seam]');
     if(sm){ state.seam=sm.getAttribute('data-seam');
@@ -1642,14 +1920,18 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     document.body.classList.toggle('rail-open');
   });
   window.addEventListener('popstate',function(){
-    var id=location.hash.slice(1); if(BY[id]) show(id,false);
+    var id=location.hash.slice(1);
+    if(BY[id]) show(id,false); else showOverview(false);
   });
   document.addEventListener('keydown',function(e){
     if(e.target.matches('input,textarea'))return;
     if(e.key!=='['&&e.key!==']')return;
-    var i=-1; P.forEach(function(p,k){if(p.id===state.cur)i=k;});
+    // Stepping stays inside the language you are reading. Falling off the end of
+    // one catalogue into another would make [ ] a different control at the edges.
+    var set=inLang(state.lang), i=-1;
+    set.forEach(function(p,k){if(p.id===state.cur)i=k;});
     if(i<0)return;
-    show(P[e.key===']'?Math.min(P.length-1,i+1):Math.max(0,i-1)].id);
+    show(set[e.key===']'?Math.min(set.length-1,i+1):Math.max(0,i-1)].id);
   });
 
   function wireStages(){
@@ -1670,9 +1952,12 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     });
   }
 
-  applyFilters();
+  // A citation written before this page held four languages still resolves: the
+  // id decides the language, so /patterns#gather lands in Fleet without anybody
+  // having to know that Fleet exists.
   var initial=location.hash.slice(1);
-  show(BY[initial]?initial:'overview',false);
+  if(BY[initial]){ setLang(BY[initial].lang,false); show(initial,false); }
+  else { setLang('turn',false); showOverview(false); }
 })();
 </script>
 </body>
