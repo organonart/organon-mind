@@ -1,0 +1,1458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OM-003 · Arrangements, and the Yard — Organon Mind</title>
+<meta name="description" content="Six named arrangements of a fleet, and the level above it: one person working several fleets at once.">
+<link rel="icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Organon Mind">
+<meta property="og:title" content="Arrangements, and the Yard">
+<meta property="og:description" content="Six named arrangements of a fleet, and the level above it: one person working several fleets at once.">
+<meta property="og:url" content="https://organonmind.org/om-003">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --paper:#ffffff; --raise:#f7f8f9; --ink:#0f1114; --muted:#5d636c; --faint:#8b919b;
+  --rule:#e2e5e9; --rule-strong:#c9ced6; --link:#1440c4;
+  --sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --measure:34rem; --gutter:9.5rem;
+}
+/* Deliberately single-theme. A publication has a canonical appearance; it does
+   not follow the reader's operating system. Every colour is painted explicitly. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.65;margin:0;padding:0 1.5rem 8rem;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+.doc{max-width:calc(var(--gutter) + var(--measure));margin:0 auto}
+.row{display:grid;grid-template-columns:var(--gutter) minmax(0,1fr)}
+.row>.mark{font-family:var(--mono);font-size:.7rem;line-height:1.5;color:var(--faint);
+  letter-spacing:.04em;padding-top:.42rem;padding-right:1.5rem}
+.row>.body{min-width:0}
+@media (max-width:44rem){
+  .row{grid-template-columns:1fr}
+  .row>.mark{padding:0 0 .3rem;font-size:.66rem}
+  :root{--gutter:0rem}
+}
+
+.mast{padding:4.5rem 0 0}
+.org{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin:0}
+.org a{color:inherit;text-decoration:none}
+h1{font-weight:600;letter-spacing:-.022em;font-size:clamp(1.85rem,4.4vw,2.6rem);
+  line-height:1.14;margin:2.6rem 0 0;max-width:var(--measure);text-wrap:balance}
+.standfirst{font-size:1.1rem;color:var(--muted);margin:.85rem 0 0;max-width:var(--measure);text-wrap:balance}
+
+.meta{font-family:var(--mono);font-size:.735rem;line-height:1.85;
+  border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule);
+  margin:2.75rem 0 0;padding:.9rem 0;display:grid;grid-template-columns:max-content 1fr;gap:0 1.6rem}
+.meta dt{color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+.meta dd{margin:0}
+.meta a{color:var(--link)}
+.revision{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin:.85rem 0 0;
+  padding-left:.9rem;border-left:2px solid var(--rule-strong)}
+
+h2{font-weight:600;font-size:1.32rem;letter-spacing:-.012em;line-height:1.28;margin:0;text-wrap:balance}
+h3{font-weight:600;font-size:1.05rem;letter-spacing:-.006em;margin:0;text-wrap:balance}
+.part{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 .3rem}
+section{margin:3.6rem 0 0}
+p{margin:0 0 1.1rem;max-width:var(--measure)}
+p:last-child{margin-bottom:0}
+a{color:var(--link);text-underline-offset:2px;text-decoration-thickness:1px}
+a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+strong{font-weight:620}
+ul{margin:0 0 1.1rem;padding-left:1.15rem;max-width:var(--measure)}
+li{margin:.3rem 0}
+li::marker{color:var(--faint)}
+.lede{font-size:1.06rem}
+blockquote{margin:1.9rem 0;padding:0 0 0 1.15rem;border-left:2px solid var(--ink);
+  font-size:1.06rem;max-width:var(--measure)}
+blockquote p{margin:0}
+blockquote cite{display:block;font-style:normal;font-family:var(--mono);font-size:.72rem;
+  color:var(--muted);margin-top:.6rem}
+
+.field{font-family:var(--mono);font-size:.685rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin:1.75rem 0 .4rem}
+.field.first{margin-top:1.1rem}
+
+pre{font-family:var(--mono);font-size:.78rem;line-height:1.6;background:var(--raise);
+  border:1px solid var(--rule);border-radius:2px;padding:.85rem 1rem;margin:1.15rem 0;overflow-x:auto}
+code{font-family:var(--mono);font-size:.87em}
+p code,li code,td code{background:var(--raise);border:1px solid var(--rule);border-radius:2px;padding:.05em .3em}
+pre code{background:none;border:0;padding:0}
+
+.tablewrap{overflow-x:auto;margin:1.4rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.5rem .8rem .5rem 0;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--faint);font-weight:500;border-bottom:1px solid var(--rule-strong)}
+
+figure{margin:1.5rem 0 1.8rem}
+figure svg{width:100%;height:auto;color:var(--ink);display:block}
+figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(--measure)}
+
+.aside{font-size:.94rem;color:var(--muted);border-left:2px solid var(--rule-strong);
+  padding-left:.95rem;margin:1.6rem 0;max-width:var(--measure)}
+.aside p{margin:0 0 .6rem}
+.aside p:last-child{margin:0}
+
+/* An open slot: a place where an incident belongs and none is on record yet.
+   Dashed rather than solid, because the distinction from an aside is exactly
+   that this one is unfinished and says so. */
+.slot{font-family:var(--mono);font-size:.735rem;line-height:1.75;color:var(--muted);
+  border-left:2px dashed var(--rule-strong);padding-left:.95rem;margin:1.3rem 0;max-width:var(--measure)}
+.slot b{color:var(--ink);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.685rem}
+.slot a{color:var(--link)}
+
+.toc{font-size:.92rem;margin:1.2rem 0 0}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:.22rem 0}
+.toc .n{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-right:.5rem}
+.toc .g{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin:1rem 0 .35rem}
+
+.colophon{margin:5.5rem 0 0;padding-top:1.1rem;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:.72rem;line-height:1.8;color:var(--muted)}
+.colophon a{color:var(--link)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{padding:0;font-size:10.5pt}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker>
+</defs></svg>
+
+<div class="doc">
+
+<header class="mast">
+  <div class="row">
+    <div class="mark">OM-003</div>
+    <div class="body">
+      <p class="org"><a href="/">Organon Mind</a></p>
+      <h1>Arrangements, and the Yard</h1>
+      <p class="standfirst">Six named arrangements of a fleet, and the level above it: one person working several fleets at once.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mark"></div>
+    <div class="body">
+      <dl class="meta">
+        <dt>Document</dt><dd>OM-003</dd>
+        <dt>Category</dt><dd>Pattern language</dd>
+        <dt>Published</dt><dd>13 August 2026</dd>
+        <dt>Author</dt><dd>James Andrew Walsh, Organon Mind</dd>
+        <dt>Follows</dt><dd><a href="/om-002">OM-002</a> · <a href="/om-001">OM-001</a> · <a href="/patterns">the catalogue</a></dd>
+        <dt>Status</dt><dd>Current</dd>
+      </dl>
+      <p class="revision">Rev. 1 — 13 Aug 2026. First publication. Answers the concession made in <a href="/om-001#preface">OM-001's preface</a> — that its acceptance checklist was the weaker thing Alexander warned about — and takes up the contention <a href="/om-002#what-this-does-not-cover">OM-002 §14</a> named and left open. Carries eight open evidence slots, marked as such in §4.</p>
+    </div>
+  </div>
+</header>
+
+<section id="the-gap">
+  <div class="row">
+    <div class="mark">1</div>
+    <div class="body">
+      <h2>Two gaps, one of them our own</h2>
+      <p class="lede">OM-002 described a fleet as though it had one shape. A commission is split, units run in isolation, reports come back, a gather reconciles them. That is a real shape and the most common one, but it is a shape — a choice among several — and the document never said so. Reading it back, the eight patterns look like a fixed sequence rather than a set of parts that can be assembled more than one way.</p>
+      <p>They can be assembled more than one way, and the assemblies are not variations. They are different enough that the same pattern means a different thing inside each one. That is the first half of this document.</p>
+      <p>The second half is a level up. OM-002's principal ran one fleet. In practice one person runs four to six areas of a product at once, each with its own dispatcher and its own units, and the difficulties there are not the difficulties of a larger fleet. They come from a single asymmetry, stated in §14 and worth putting early: <strong>the recursion fails at the top, because the principal cannot be commissioned.</strong> Everything else at that level falls out of it.</p>
+
+      <p class="field">What this closes, and what it does not</p>
+      <p>OM-002 listed six things it did not cover. This document takes up exactly one of them — <em>contention for things that cannot be isolated</em> — and only at the level where it bites hardest, which is the shared trunk rather than the shared port. Depth beyond two, heterogeneous fleets, cost, the unit that never reports, and evaluation are all still open, and §19 says so again rather than letting them fade.</p>
+      <p>It also takes up something OM-001 said about itself. That document's preface conceded that its acceptance checklist was “a checklist, which is precisely the weaker thing he was warning about”. §2 is the attempt to do better, and §13 is where the attempt is scored.</p>
+    </div>
+  </div>
+</section>
+
+<section id="what-a-composite-is">
+  <div class="row">
+    <div class="mark">2</div>
+    <div class="body">
+      <h2>A composite changes what its parts mean</h2>
+      <p>The reason to name an arrangement is not tidiness. If a composite were only its constituents run in a particular order, the name would be a convenience and the honest thing would be to describe the order and move on.</p>
+      <p><strong>A composite is worth a name when it changes what its constituent patterns mean.</strong> That is the test applied throughout this document, and it is not a low bar — one candidate failed it and was cut (§6).</p>
+      <p>Four examples, before any of the entries:</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Pattern</th><th>In plain fan-out</th><th>Inside another arrangement</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><a href="/om-002#gather"><strong>Gather</strong></a> (OM-002 · 8)</td>
+            <td>Surfacing disagreement is a <em>safety property</em>. Ideally there is none, and finding some means something went wrong.</td>
+            <td>In a <strong>Panel</strong> it is adjudication, and disagreement is the entire product. A panel that agrees unanimously has told you almost nothing.</td>
+          </tr>
+          <tr>
+            <td><a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (OM-002 · 3)</td>
+            <td>Makes collision unrepresentable. It is about files, trees and devices.</td>
+            <td>Under <strong>Adversarial Verify</strong> it is about independence of judgement. The thing being kept apart is not two writes; it is two opinions, one of which would otherwise inherit the other.</td>
+          </tr>
+          <tr>
+            <td><a href="/om-002#the-return-path"><strong>The Return Path</strong></a> (OM-002 · 6)</td>
+            <td>Carries a report back to the context that commissioned the unit.</td>
+            <td>In a <strong>Pipeline</strong> the report <em>is</em> the next unit's commission. Two patterns collapse into one object, and the seam between them becomes the thing to get right.</td>
+          </tr>
+          <tr>
+            <td><a href="/om-002#dispatch-without-escort"><strong>Dispatch Without Escort</strong></a> (OM-002 · 4)</td>
+            <td>Units proceed on stated assumptions, and the assumptions meet at the join where they may conflict.</td>
+            <td>In a <strong>Pipeline</strong> nothing meets. An assumption made at the first stage is inherited by the fourth, unexamined, because there is no second opinion anywhere in the line.</td>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <p class="field">Why this is the answer to a criticism, and not a taxonomy</p>
+      <p>Alexander told a room of object-oriented programmers in 1996 that the format had travelled to software and the important part had not. A pattern language was meant to be <em>generative</em>: a sequence you follow that produces a coherent whole, each step differentiating what the previous step laid down. What arrived instead was a shelf of separable good ideas, each individually defensible, with nothing saying how to go from one to a building.</p>
+      <p>OM-001 accepted the criticism and then demonstrated it. Its §10 turned fourteen patterns into fourteen questions to ask about a finished interface — useful, and exactly the weaker thing: a checklist is applied <em>afterwards</em>, to something already made.</p>
+      <p>A catalogue of composites is the stronger thing, or the nearest this subject has come to it, for three reasons:</p>
+      <ul>
+        <li>Its entries are <strong>sequences rather than items</strong>. Each says which patterns apply, in what order, and what each one is for at that point.</li>
+        <li>Its entries are <strong>not decomposable without loss</strong>. Given the table above, “Panel” cannot be replaced by “fan-out plus Gather”, because Gather does something else there.</li>
+        <li>They can be <strong>chosen before the work</strong> rather than checked after it. §13 is the selection sequence, and a sequence you follow forwards is the shape of the claim Alexander was making.</li>
+      </ul>
+      <p><strong>This is a partial discharge and should not be sold as more.</strong> Six named composites are still a shelf if nothing orders them, which is why §13 exists; and Alexander's real test was never structural. It was whether what gets generated is good for the people who have to live inside it. The person lives at the level above — which is the second half of this document, and the reason the two halves are one document.</p>
+    </div>
+  </div>
+</section>
+
+<section id="the-shape">
+  <div class="row">
+    <div class="mark">3</div>
+    <div class="body">
+      <h2>The shape of the work</h2>
+      <p>Two levels, and they are not the same problem repeated. Below, a fleet takes one of several shapes, each an arrangement of OM-002's eight patterns. Above, a person works several such fleets at once, and the constraints there come from the person rather than from the topology.</p>
+      <figure>
+        <svg viewBox="0 0 720 356" role="img" aria-label="Two levels. Below, three miniature diagrams show the same eight patterns arranged as a fan-out, a pipeline and a panel. Above, a principal divides attention between four fleets, whose finished work converges on a single shared trunk in a landing order.">
+          <text x="8" y="14" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">LEVEL ONE · ARRANGEMENTS OF ONE FLEET</text>
+          <rect x="8" y="28" width="216" height="94" fill="none" stroke="currentColor" opacity=".35"/>
+          <rect x="248" y="28" width="216" height="94" fill="none" stroke="currentColor" opacity=".35"/>
+          <rect x="488" y="28" width="216" height="94" fill="none" stroke="currentColor" opacity=".35"/>
+          <rect x="30" y="60" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="94" y="42" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="94" y="60" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="94" y="78" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="160" y="60" width="20" height="14" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M50,67 L72,67 L72,49 L88,49" fill="none" stroke="currentColor"/>
+          <path d="M50,67 L88,67" fill="none" stroke="currentColor"/>
+          <path d="M50,67 L72,67 L72,85 L88,85" fill="none" stroke="currentColor"/>
+          <path d="M114,49 L138,49 L138,67 L154,67" fill="none" stroke="currentColor"/>
+          <path d="M114,67 L154,67" fill="none" stroke="currentColor"/>
+          <path d="M114,85 L138,85 L138,67 L154,67" fill="none" stroke="currentColor"/>
+          <text x="116" y="110" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".7">fan-out and gather</text>
+          <rect x="270" y="60" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="330" y="60" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="390" y="60" width="20" height="14" fill="none" stroke="currentColor"/>
+          <line x1="290" y1="67" x2="324" y2="67" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="350" y1="67" x2="384" y2="67" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="356" y="94" text-anchor="middle" font-size="9.5" fill="currentColor" opacity=".6">report = commission</text>
+          <text x="356" y="110" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".7">pipeline</text>
+          <rect x="510" y="60" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="574" y="42" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="574" y="60" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="574" y="78" width="20" height="14" fill="none" stroke="currentColor"/>
+          <rect x="640" y="60" width="20" height="14" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M530,67 L552,67 L552,49 L568,49" fill="none" stroke="currentColor"/>
+          <path d="M530,67 L568,67" fill="none" stroke="currentColor"/>
+          <path d="M530,67 L552,67 L552,85 L568,85" fill="none" stroke="currentColor"/>
+          <path d="M594,49 L618,49 L618,67 L634,67" fill="none" stroke="currentColor"/>
+          <path d="M594,67 L634,67" fill="none" stroke="currentColor"/>
+          <path d="M594,85 L618,85 L618,67 L634,67" fill="none" stroke="currentColor"/>
+          <text x="584" y="34" text-anchor="middle" font-size="9.5" fill="currentColor" opacity=".6">same question to each</text>
+          <text x="596" y="110" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".7">panel</text>
+          <text x="8" y="142" font-size="10" fill="currentColor" opacity=".6">The right two are not variants of the left. Gather adjudicates in one and reconciles in another.</text>
+          <line x1="8" y1="164" x2="712" y2="164" stroke="currentColor" opacity=".2"/>
+          <text x="8" y="192" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">LEVEL TWO · THE YARD</text>
+          <rect x="8" y="240" width="120" height="44" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="68" y="258" text-anchor="middle" font-size="11.5" fill="currentColor">Principal</text>
+          <text x="68" y="273" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">a person</text>
+          <text x="8" y="308" font-size="10" fill="currentColor" opacity=".6">nothing commissions</text>
+          <text x="8" y="322" font-size="10" fill="currentColor" opacity=".6">this box, and nothing</text>
+          <text x="8" y="336" font-size="10" fill="currentColor" opacity=".6">holds it to a report</text>
+          <rect x="234" y="204" width="180" height="30" fill="none" stroke="currentColor"/>
+          <text x="324" y="224" text-anchor="middle" font-size="11" fill="currentColor">fleet · voice loop</text>
+          <rect x="234" y="242" width="180" height="30" fill="none" stroke="currentColor"/>
+          <text x="324" y="262" text-anchor="middle" font-size="11" fill="currentColor">fleet · console</text>
+          <rect x="234" y="280" width="180" height="30" fill="none" stroke="currentColor"/>
+          <text x="324" y="300" text-anchor="middle" font-size="11" fill="currentColor">fleet · presence</text>
+          <rect x="234" y="318" width="180" height="30" fill="none" stroke="currentColor"/>
+          <text x="324" y="338" text-anchor="middle" font-size="11" fill="currentColor">fleet · patterns</text>
+          <path d="M128,256 L180,256 L180,219 L228,219" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <path d="M128,260 L180,260 L180,257 L228,257" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <path d="M128,264 L180,264 L180,295 L228,295" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <path d="M128,268 L180,268 L180,333 L228,333" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="182" y="198" font-size="10" fill="currentColor" opacity=".6">attention, one at a time</text>
+          <rect x="560" y="248" width="148" height="52" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="634" y="270" text-anchor="middle" font-size="11.5" fill="currentColor">one trunk</text>
+          <text x="634" y="286" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">landing order</text>
+          <path d="M414,219 L490,219 L490,262 L554,262" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M414,257 L490,257 L490,268 L554,268" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M414,295 L490,295 L490,274 L554,274" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M414,333 L490,333 L490,280 L554,280" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="484" y="322" text-anchor="middle" font-size="10" fill="currentColor" opacity=".6">isolation ends here</text>
+        </svg>
+        <figcaption>The dashed arrows are the scarce channel and the reason the second half exists: they are the only ones in either diagram that cannot be made parallel, cannot be scoped, and have no delivery receipt.</figcaption>
+      </figure>
+      <div class="toc">
+        <p class="g">Level one · six arrangements</p>
+        <ol>
+          <li><span class="n">1</span>Plain Fan-Out</li>
+          <li><span class="n">2</span>Pipeline</li>
+          <li><span class="n">3</span>Scout then Swarm</li>
+          <li><span class="n">4</span>Loop Until Dry</li>
+          <li><span class="n">5</span>Panel</li>
+          <li><span class="n">6</span>Adversarial Verify</li>
+        </ol>
+        <p class="g">Level two · three patterns of the yard</p>
+        <ol>
+          <li><span class="n">1</span>Standing by Readiness</li>
+          <li><span class="n">2</span>Re-entry Note</li>
+          <li><span class="n">3</span>Landing Order</li>
+        </ol>
+      </div>
+      <p class="aside">Composites first, deliberately: you cannot describe what a person is orchestrating until there is a word for it, and what they orchestrate <em>are</em> arrangements. If the second half accumulates evidence of its own it becomes its own document, with a dated revision here saying so. The two halves are written to be separable for that reason.</p>
+    </div>
+  </div>
+</section>
+
+<section id="the-evidence">
+  <div class="row">
+    <div class="mark">4</div>
+    <div class="body">
+      <h2>The evidence, which is weaker than OM-002's</h2>
+      <p class="lede">This document has thinner evidence than either of the two before it, and the right response is to say so at the front rather than to write at the same confidence and let the reader assume.</p>
+      <p>The ladder is worth stating plainly. OM-001: fourteen patterns, four of them drawn from measurements on a running system. OM-002: eight patterns, two of them drawn from four measurements made while building a console, the rest from one person's practice over days. <strong>OM-003: six composites and three patterns, none of them newly measured.</strong> What is new here is arrangement and topology — and reasoning about topology is argument, not evidence.</p>
+
+      <p class="field first">What the sources actually are</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Source</th><th>What it can establish</th><th>What it cannot</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Inherited measurements.</strong> OM-002's four console findings, unchanged and not re-derived here.</td>
+            <td>That the constituent patterns are real, and that their failure modes were observed rather than imagined.</td>
+            <td>Anything about the arrangements. A measurement of a part is not evidence about the whole it sits in.</td>
+          </tr>
+          <tr>
+            <td><strong>One practitioner's working practice</strong>, four to six areas at once, days rather than months, August 2026.</td>
+            <td>Existence and cost: that these arrangements get run, and that the failures named are cheap to hit.</td>
+            <td>Frequency, distribution, or whether other people's yards behave like this one. One practitioner is an existence proof and nothing more.</td>
+          </tr>
+          <tr>
+            <td><strong>Reasoning about topology.</strong> What must be true of a shape given what OM-002 established about its parts.</td>
+            <td>Consistency, and predictions specific enough to be wrong.</td>
+            <td>Everything else. This is the largest single source in this document, and it is argument.</td>
+          </tr>
+          <tr>
+            <td><strong>Adjacent prior art</strong> — pipelines, juries, ensembles, review, queueing (§20).</td>
+            <td>That the shapes exist and have been worked out elsewhere under real constraints.</td>
+            <td>That they transfer. The party being arranged here can decide to do something else, which none of those ancestors could.</td>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <p class="field">The open slots</p>
+      <p>Eight places where an incident belongs and none is on record. They are marked here, and again in the entry each one bears on, rather than being quietly absorbed into confident prose. A later revision fills them, dated, and says which claim moved.</p>
+      <p class="slot" id="slot-1"><b>Slot 1 · Pipeline</b><br>A run where a stage's intermediate artifact was not durable and an earlier stage had to be repeated — with what the repetition cost.</p>
+      <p class="slot" id="slot-2"><b>Slot 2 · Scout then Swarm</b><br>A plain fan-out in which units duplicated the same orientation work, measured: how much of each report was the same paragraph about the same layout.</p>
+      <p class="slot" id="slot-3"><b>Slot 3 · Loop Until Dry</b><br>A run stopped at a fixed round count, restarted, and found to have missed something — with what the extra round returned.</p>
+      <p class="slot" id="slot-4"><b>Slot 4 · Panel</b><br>One panel whose disagreement changed a decision, and one whose unanimity turned out to be worthless. Both are needed; the second is the harder to notice.</p>
+      <p class="slot" id="slot-5"><b>Slot 5 · Adversarial Verify</b><br>Confirmation rates with and without the producer's reasoning in front of the verifier. This is the one claim here that could be settled cheaply and has not been.</p>
+      <p class="slot" id="slot-6"><b>Slot 6 · Standing by Readiness</b><br>How long a squad actually sat blocked on a decision while another was being watched. The claim that this is the yard's dominant loss rests on it.</p>
+      <p class="slot" id="slot-7"><b>Slot 7 · Re-entry Note</b><br>The cost of re-entering a squad cold, timed, against the cost of reading a maintained note.</p>
+      <p class="slot" id="slot-8"><b>Slot 8 · Landing Order</b><br>An instance of finished work invalidated by another squad's landing: what was lost, and when it was noticed.</p>
+
+      <p class="field">What follows from that</p>
+      <p>Every entry below carries an <strong>Evidence</strong> line saying which of the four sources it rests on. Where an entry rests on reasoning alone, it says so and points at its slot. This is not modesty as a rhetorical move: an entry that survives on topology alone is exactly the entry that should be argued out first if somebody's practice contradicts it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="forces">
+  <div class="row">
+    <div class="mark">5</div>
+    <div class="body">
+      <h2>Forces that recur</h2>
+      <p>The tensions that reappear across both levels. The first three are new; the fourth is OM-002's first force arriving at a level where it can no longer be engineered around.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Force</th><th>Pulls toward</th><th>Pulls against</th></tr></thead>
+        <tbody>
+          <tr><td><strong>The whole changes the parts</strong></td><td>naming arrangements, so a pattern's meaning is read from its position</td><td>the simplicity of one pattern, one meaning</td></tr>
+          <tr><td><strong>Duplication buys independence</strong></td><td>panels, verifiers, repeated rounds</td><td>N times the cost for one answer, and no partition of the work</td></tr>
+          <tr><td><strong>Partition is cheap; ordering is not</strong></td><td>splitting work into units that never meet</td><td>a single shared trunk through which all of it must land, in some order</td></tr>
+          <tr><td><strong>Attention does not divide, and cannot be scoped</strong></td><td>surfaces ordered by what needs a decision</td><td>everything else competing for the same person</td></tr>
+          <tr><td><strong>Finished work rots while it waits</strong></td><td>landing small and often</td><td>the coherence of a release, and the cost of each landing</td></tr>
+          <tr><td><strong>Re-entry costs more than it looks</strong></td><td>durable notes maintained for a reader who was absent</td><td>a second artifact that can go stale and lie</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section id="on-the-entries">
+  <div class="row">
+    <div class="mark">6</div>
+    <div class="body">
+      <h2>On the entries that follow</h2>
+      <p>Two kinds of entry, in one template. <strong>Composites</strong> (§7–§12) are arrangements of OM-002's eight patterns. <strong>Patterns</strong> (§15–§17) are new entries at the yard level, in the same form as OM-001's and OM-002's.</p>
+      <p>Citations: a composite is cited as <em>Pipeline</em> (Composite 2); a yard pattern as <em>Landing Order</em> (OM-003 · 3); OM-002's eight as <a href="/om-002#gather"><strong>Gather</strong></a> (OM-002 · 8); OM-001's fourteen link to the canonical entry, as <a href="/patterns#honest-gauge"><strong>Honest Gauge</strong></a> (OM-001 · 12).</p>
+
+      <p class="field">Two fields added, and why</p>
+      <p>OM-001 added one field to the Gang of Four template — Failure Signature — and named Alexander as the reason. This document adds two, for reasons it should have to defend:</p>
+      <ul>
+        <li><strong>What it changes.</strong> Composites only. A table naming each constituent pattern and how its meaning shifts inside this arrangement. It is the entry's central claim, and an arrangement whose table is empty is not a composite — it is a sequence of steps.</li>
+        <li><strong>Evidence.</strong> Every entry. One line naming which of §4's four sources it rests on, and a pointer to its open slot where it rests on reasoning. Added because this document's claims are weaker than its predecessors', and per-entry honesty is the only form in which they can be published without misleading anybody.</li>
+      </ul>
+
+      <p class="field">The candidate that was cut</p>
+      <p><strong>Long Runner with Check-Ins</strong> — one unit on a long horizon, reporting periodically — was on the list and is not an entry. It fails the test in §2. Its parts are <a href="/om-002#fleet-standing"><strong>Fleet Standing</strong></a> (OM-002 · 5) and <a href="/om-002#dispatch-without-escort"><strong>Dispatch Without Escort</strong></a> (OM-002 · 4), and neither changes meaning inside it: the standing surface reports what the channel carries, exactly as before, and the check-in is the same tension between an interrupt and a report. Its failure signature is theirs, unmodified. It is also not an arrangement of units, since there is only one — a long run is a duration, not a topology.</p>
+      <p class="aside">The cut is recorded rather than hidden because the test is only worth anything if something fails it. If a check-in turns out to change what Fleet Standing means — and the argument would have to be that a report the principal will read hours later is a different kind of object from a surface they glance at — the entry comes back, in a dated revision, with the argument attached.</p>
+    </div>
+  </div>
+</section>
+
+<section id="plain-fan-out">
+  <div class="row">
+    <div class="mark">7</div>
+    <div class="body">
+      <p class="part">Level one · Composite 1</p>
+      <h2>Plain Fan-Out</h2>
+
+      <p class="field first">Intent</p>
+      <p>Split work into units that never meet, run them at once, and reconcile their reports — the default arrangement, named so that the others read as departures from something rather than as inventions.</p>
+
+      <p class="field">Motivation</p>
+      <p>This is the arrangement OM-002 describes end to end, and it is the right one often enough that it gets chosen by default rather than on purpose. Naming it costs nothing and buys the ability to say “this is not a fan-out” about the other five.</p>
+      <p>Its own failure is specific and common: work that does not actually partition, dispatched as though it does. Units then discover they need each other's results, proceed on guesses about them, and hand the whole problem to the gather — which is where the cost lands, all at once, in the one step that cannot be parallelised.</p>
+
+      <p class="field">Applicability</p>
+      <p>When the units are genuinely independent: different files, different questions, different subsystems. When the number of units is known before starting. When each unit's result is useful on its own, so a failed unit costs one unit rather than the run.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 176" role="img" aria-label="A commission splits into three units, each in its own workspace, whose reports converge on a gather step that produces one account and a list of disagreements.">
+          <rect x="8" y="66" width="118" height="40" fill="none" stroke="currentColor"/>
+          <text x="67" y="84" text-anchor="middle" font-size="11.5" fill="currentColor">commission</text>
+          <text x="67" y="99" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">split N ways</text>
+          <rect x="214" y="18" width="150" height="32" fill="none" stroke="currentColor"/>
+          <text x="289" y="38" text-anchor="middle" font-size="11" fill="currentColor">unit · workspace</text>
+          <rect x="214" y="70" width="150" height="32" fill="none" stroke="currentColor"/>
+          <text x="289" y="90" text-anchor="middle" font-size="11" fill="currentColor">unit · workspace</text>
+          <rect x="214" y="122" width="150" height="32" fill="none" stroke="currentColor"/>
+          <text x="289" y="142" text-anchor="middle" font-size="11" fill="currentColor">unit · workspace</text>
+          <path d="M126,80 L170,80 L170,34 L208,34" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M126,86 L208,86" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M126,92 L170,92 L170,138 L208,138" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="448" y="66" width="112" height="40" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="504" y="91" text-anchor="middle" font-size="11.5" fill="currentColor">Gather</text>
+          <path d="M364,34 L410,34 L410,80 L442,80" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M364,86 L442,86" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M364,138 L410,138 L410,92 L442,92" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="560" y1="86" x2="596" y2="86" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="604" y="82" font-size="10.5" fill="currentColor" opacity=".65">one account,</text>
+          <text x="604" y="96" font-size="10.5" fill="currentColor" opacity=".65">plus conflicts</text>
+        </svg>
+        <figcaption>The baseline, drawn small on purpose. Every other figure in this half is this one deformed: the units put in series, given the same question, repeated in rounds, or preceded by a survey.</figcaption>
+      </figure>
+
+      <p class="field">What it changes</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Constituent</th><th>What it means here</th></tr></thead>
+        <tbody>
+          <tr><td>All eight of OM-002</td><td>Exactly what OM-002 says. This is the arrangement that document was written against, and the entry exists to make that visible rather than assumed.</td></tr>
+        </tbody>
+      </table></div>
+      <p>An empty table would have disqualified any other candidate. This one is admitted as the baseline against which the tables below are read, and it is the only entry in this document with that exemption.</p>
+
+      <p class="field">Participants</p>
+      <p><em>Commission</em> is split before anything runs. <em>Units</em> are peers and do not communicate. <em>Gather</em> holds the decomposition and so knows where the units were expected to touch.</p>
+
+      <p class="field">Collaborations</p>
+      <p>All eight of OM-002, in the order that document sets out: <a href="/om-002#proposed-dispatch"><strong>Proposed Dispatch</strong></a> (1), <a href="/om-002#scoped-commission"><strong>Scoped Commission</strong></a> (2) and <a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (3) at the split; <a href="/om-002#dispatch-without-escort"><strong>Dispatch Without Escort</strong></a> (4) and <a href="/om-002#fleet-standing"><strong>Fleet Standing</strong></a> (5) in flight; <a href="/om-002#the-return-path"><strong>The Return Path</strong></a> (6), <a href="/om-002#attribution-across-depth"><strong>Attribution Across Depth</strong></a> (7) and <a href="/om-002#gather"><strong>Gather</strong></a> (8) at the join.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: wall-clock time is the slowest unit rather than the sum, which is the whole reason to do any of this.</li>
+        <li><em>Gain</em>: a failed unit costs one unit.</li>
+        <li><em>Cost</em>: the gather is serialised and its work grows with the pairs, not with the units.</li>
+        <li><em>Trap</em>: partitioning work that does not partition. The units succeed, and the incoherence is discovered at the join by the one step with no slack.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Decide the partition before dispatching and write down where units are expected to meet — that list is the gather's first search. Prefer units whose results are useful alone. When two units keep needing each other's output, that is not a coordination problem to solve with more messages; it is the wrong arrangement, and Composite 2 is the right one.</p>
+
+      <p class="field">Failure signature</p>
+      <p>The same file in three units' reports. Or units that each proceeded on a guess about what another one did, producing a clean textual merge and a system that does not work — <a href="/om-002#gather"><strong>Gather</strong></a>'s signature, arriving because the arrangement was wrong rather than because the gather was.</p>
+
+      <p class="field">Evidence</p>
+      <p>Inherited measurements and practice. This is OM-002's arrangement, and its evidence is OM-002's.</p>
+
+      <p class="field">Known uses</p>
+      <p>Map-reduce's map phase. <code>make -j</code>. A CI matrix. Any batch of independent jobs against a pool of runners.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Pipeline</strong> (Composite 2), <strong>Scout then Swarm</strong> (Composite 3), <a href="/om-002#gather"><strong>Gather</strong></a> (OM-002 · 8).</p>
+    </div>
+  </div>
+</section>
+
+<section id="pipeline">
+  <div class="row">
+    <div class="mark">8</div>
+    <div class="body">
+      <p class="part">Level one · Composite 2</p>
+      <h2>Pipeline</h2>
+
+      <p class="field first">Intent</p>
+      <p>Run units in series, each one's report standing as the next one's commission, when the work does not partition but does decompose into stages.</p>
+
+      <p class="field">Motivation</p>
+      <p>Some work has parts and no partition. Design, then implement, then test, then document. Survey, then rewrite. Each stage needs what the one before it produced, so dispatching them at once produces three units guessing at each other's output and a gather that has to invent the missing order after the fact.</p>
+      <p>The arrangement is old and the interesting part is what happens at the seam. <strong>The Return Path and the next Scoped Commission are the same object.</strong> That is not a convenience; it changes what a report is for. In a fan-out a report is an account for a human or a gatherer to read. Here it is an input to a machine that will act on it without discussion, which means an under-specified report does not produce a question — it produces a wrong stage.</p>
+      <p>The second change is quieter and is the reason this arrangement fails in ways fan-out does not. In a fan-out, units make assumptions independently, and the join is where incompatible ones collide and get caught. In a pipeline nothing collides. An assumption made in stage one is inherited by stage four unexamined, because there is no second opinion anywhere in the line. Errors do not conflict here; they compound.</p>
+
+      <p class="field">Applicability</p>
+      <p>When each stage genuinely needs the previous stage's output. When the intermediate artifacts are durable and inspectable. Not applicable when stages are only conventionally ordered — “design then build” is a real dependency; “front end then back end” often is not, and pipelining it buys nothing but latency.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 186" role="img" aria-label="Three units in series. Between each pair, a heavier box marks the seam where a report is also the next commission. A note below states that assumptions made at the first stage are inherited by the last.">
+          <rect x="8" y="46" width="140" height="40" fill="none" stroke="currentColor"/>
+          <text x="78" y="64" text-anchor="middle" font-size="11" fill="currentColor">unit · stage 1</text>
+          <text x="78" y="79" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">survey</text>
+          <rect x="186" y="52" width="132" height="28" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="252" y="70" text-anchor="middle" font-size="10.5" fill="currentColor">report = commission</text>
+          <rect x="356" y="46" width="140" height="40" fill="none" stroke="currentColor"/>
+          <text x="426" y="64" text-anchor="middle" font-size="11" fill="currentColor">unit · stage 2</text>
+          <text x="426" y="79" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">rewrite</text>
+          <rect x="530" y="52" width="132" height="28" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="596" y="70" text-anchor="middle" font-size="10.5" fill="currentColor">report = commission</text>
+          <line x1="148" y1="66" x2="180" y2="66" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="318" y1="66" x2="350" y2="66" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="496" y1="66" x2="524" y2="66" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="8" y="122" width="140" height="34" fill="none" stroke="currentColor" stroke-dasharray="5 3"/>
+          <text x="78" y="143" text-anchor="middle" font-size="10.5" fill="currentColor">assumption made</text>
+          <path d="M78,122 L78,110 L596,110 L596,86" fill="none" stroke="currentColor" stroke-dasharray="4 3" opacity=".7" marker-end="url(#ah)"/>
+          <text x="330" y="102" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">inherited, unexamined, by every stage after it</text>
+          <rect x="356" y="122" width="300" height="34" fill="none" stroke="currentColor" stroke-dasharray="5 3"/>
+          <text x="506" y="143" text-anchor="middle" font-size="10.5" fill="currentColor">nothing here disagrees with it</text>
+        </svg>
+        <figcaption>There is no join in this figure, and that is the finding rather than an omission. A fan-out catches contradictions by having them; a pipeline has none to catch.</figcaption>
+      </figure>
+
+      <p class="field">What it changes</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Constituent</th><th>In plain fan-out</th><th>Here</th></tr></thead>
+        <tbody>
+          <tr><td><a href="/om-002#the-return-path"><strong>The Return Path</strong></a> (6) and <a href="/om-002#scoped-commission"><strong>Scoped Commission</strong></a> (2)</td><td>Two objects at opposite ends of the run.</td><td>One object. The report's shape is now a contract, because a machine acts on it directly.</td></tr>
+          <tr><td><a href="/om-002#dispatch-without-escort"><strong>Dispatch Without Escort</strong></a> (4)</td><td>Assumptions are made in parallel and collide at the join.</td><td>Assumptions are made in series and compound. Recording them stops being hygiene and becomes the only audit there is.</td></tr>
+          <tr><td><a href="/om-002#gather"><strong>Gather</strong></a> (8)</td><td>Reconciles N reports.</td><td>Nearly disappears — there is one lineage and nothing to reconcile. What remains is checking the last stage against the first commission, which is a different job.</td></tr>
+          <tr><td><a href="/om-002#fleet-standing"><strong>Fleet Standing</strong></a> (5)</td><td>How many are running, and what each is doing.</td><td>Which stage, and how far the line has moved. One unit runs at a time, so the useful number is position rather than count.</td></tr>
+          <tr><td><a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (3)</td><td>Keeps concurrent writes apart.</td><td>Keeps stages recoverable. The value is that stage 2 can be re-run against stage 1's artifact without repeating stage 1.</td></tr>
+        </tbody>
+      </table></div>
+
+      <p class="field">Participants</p>
+      <p><em>Stages</em> run one at a time, in a fixed order. <em>Seam</em> is a report that is also a commission. <em>Artifact</em> at each seam is durable, so any stage can be re-run without repeating its predecessors.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Depends absolutely on <a href="/om-002#the-return-path"><strong>The Return Path</strong></a> (OM-002 · 6), which stops being a convenience and becomes the mechanism. Leans on <a href="/patterns#scope-on-uncertainty"><strong>Scope-on-Uncertainty</strong></a> (OM-001 · 5) at every stage, since a stage that stops to ask stalls the line rather than one unit. <a href="/om-002#attribution-across-depth"><strong>Attribution Across Depth</strong></a> (OM-002 · 7) is what lets a defect at stage four be traced to the stage that introduced it.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: work that cannot be partitioned is still delegable, one stage at a time.</li>
+        <li><em>Gain</em>: each seam is an inspection point where a person can intervene cheaply, before the next stage acts.</li>
+        <li><em>Cost</em>: no parallelism. Wall-clock is the sum, and the arrangement buys unattendedness rather than speed.</li>
+        <li><em>Cost</em>: a defect at stage one is paid for by every stage after it.</li>
+        <li><em>Trap</em>: an under-specified report. In a fan-out it produces a vague account; here it silently produces a wrong stage, and the wrongness is inherited.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Fix the report's shape before the first dispatch and make every stage emit it — the seam is a contract, and a contract nobody wrote is discovered by breaking it. Keep every intermediate artifact durable and addressable, so re-running stage <em>n</em> does not mean re-running stage one. Carry assumptions forward explicitly in the report rather than in the work, since they are the one thing this arrangement will never catch on its own. Where a stage's assumption is load-bearing, the cheap remedy is to hang an <strong>Adversarial Verify</strong> (Composite 6) on that seam alone rather than to abandon the pipeline.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>seam · stage 1 → stage 2
+  artifact   branch survey/console-naming  (notes.md, 1 file)
+  assumed    "shell" in IPC namespaces is load-bearing
+  refused    did not touch the cargo feature name
+  commission stage 2 acts on notes.md only; may not widen scope
+  → dispatched as unit 02 with this report as its commission</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>A person pasting one unit's output into the next unit's prompt — <a href="/om-002#the-return-path"><strong>The Return Path</strong></a>'s signature in series rather than in parallel. Or a defect at the last stage traced back three stages, each of which was correct given what it was handed. Or an early stage re-run because its output was not kept.</p>
+
+      <p class="field">Evidence</p>
+      <p>Practice and adjacent prior art. The compounding-assumption claim is reasoning about topology and has no incident on record — <a href="#slot-1">slot 1</a>.</p>
+
+      <p class="field">Known uses</p>
+      <p>Unix pipes. Build DAGs. Compiler passes. Editorial workflows where a draft is commissioned, edited and then fact-checked by different hands.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Plain Fan-Out</strong> (Composite 1), <strong>Scout then Swarm</strong> (Composite 3), <a href="/om-002#the-return-path"><strong>The Return Path</strong></a> (OM-002 · 6).</p>
+    </div>
+  </div>
+</section>
+
+<section id="scout-then-swarm">
+  <div class="row">
+    <div class="mark">9</div>
+    <div class="body">
+      <p class="part">Level one · Composite 3</p>
+      <h2>Scout then Swarm</h2>
+
+      <p class="field first">Intent</p>
+      <p>Spend one read-only unit on a survey whose product is the decomposition, then fan out over it — for work nobody present knows the shape of.</p>
+
+      <p class="field">Motivation</p>
+      <p><a href="/om-002#proposed-dispatch"><strong>Proposed Dispatch</strong></a> (OM-002 · 1) assumes a primary agent that already holds the context, and it is right whenever one exists. Often none does. The work is in a part of the system nobody has touched this month, and the principal and the primary agent are equally ignorant of it.</p>
+      <p>Fanning out anyway has a specific and invisible cost: every unit spends its first minutes doing the same orientation. Five units read the same five files, form the same picture, and each writes a paragraph describing it. Nothing errors. The cost is paid five times and shows up as “agents are slow” rather than as duplicated work.</p>
+      <p>The remedy is a stage, not a pattern: one unit whose commission is to look and report, with no authority to change anything, followed by a fan-out whose partition is the scout's own map.</p>
+      <p>The map earns its keep twice. It is the decomposition, and it is also the <em>expectation</em> — so the gather at the end has something to check the results against, which a fan-out that partitioned by guesswork does not.</p>
+
+      <p class="field">Applicability</p>
+      <p>When the shape of the work is unknown to everyone present. When the cost of a bad partition is high — overlapping units, or a gap nobody notices. Not applicable when the primary agent genuinely holds the ground: then the scout is a stage that costs latency and returns what was already known.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 210" role="img" aria-label="A read-only scout unit produces a map. The map both splits into three units and is passed forward to the gather, where it serves as the expectation against which results are checked.">
+          <rect x="8" y="80" width="118" height="42" fill="none" stroke="currentColor"/>
+          <text x="67" y="98" text-anchor="middle" font-size="11" fill="currentColor">scout</text>
+          <text x="67" y="113" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">read-only scope</text>
+          <rect x="170" y="80" width="112" height="42" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="226" y="98" text-anchor="middle" font-size="11" fill="currentColor">the map</text>
+          <text x="226" y="113" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">separable jobs</text>
+          <line x1="126" y1="101" x2="164" y2="101" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="352" y="30" width="140" height="30" fill="none" stroke="currentColor"/>
+          <text x="422" y="50" text-anchor="middle" font-size="11" fill="currentColor">unit</text>
+          <rect x="352" y="86" width="140" height="30" fill="none" stroke="currentColor"/>
+          <text x="422" y="106" text-anchor="middle" font-size="11" fill="currentColor">unit</text>
+          <rect x="352" y="142" width="140" height="30" fill="none" stroke="currentColor"/>
+          <text x="422" y="162" text-anchor="middle" font-size="11" fill="currentColor">unit</text>
+          <path d="M282,95 L316,95 L316,45 L346,45" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M282,101 L346,101" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M282,107 L316,107 L316,157 L346,157" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="556" y="80" width="136" height="42" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="624" y="106" text-anchor="middle" font-size="11.5" fill="currentColor">Gather</text>
+          <path d="M492,45 L524,45 L524,95 L550,95" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M492,101 L550,101" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M492,157 L524,157 L524,107 L550,107" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M226,80 L226,16 L624,16 L624,74" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="424" y="12" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">the same map, now the expectation to check against</text>
+          <text x="67" y="150" text-anchor="middle" font-size="10" fill="currentColor" opacity=".6">one orientation,</text>
+          <text x="67" y="164" text-anchor="middle" font-size="10" fill="currentColor" opacity=".6">paid once</text>
+        </svg>
+        <figcaption>The dashed line is what distinguishes this from a two-stage pipeline that happens to fan out: the map is used twice, and its second use is what makes the gather able to find a gap rather than only a conflict.</figcaption>
+      </figure>
+
+      <p class="field">What it changes</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Constituent</th><th>In plain fan-out</th><th>Here</th></tr></thead>
+        <tbody>
+          <tr><td><a href="/om-002#proposed-dispatch"><strong>Proposed Dispatch</strong></a> (1)</td><td>The primary agent proposes, because it holds the context.</td><td>A dispatched unit proposes, because nobody holds the context. The principal still approves — the pattern's pause survives; its source moves.</td></tr>
+          <tr><td><a href="/om-002#scoped-commission"><strong>Scoped Commission</strong></a> (2)</td><td>A scope wide enough to do the work, which is where the risk is.</td><td>For the scout, read-only: the cheapest scope there is, and one whose blind grant costs nothing. Scope stops being a compromise for one stage.</td></tr>
+          <tr><td><a href="/om-002#gather"><strong>Gather</strong></a> (8)</td><td>Compares reports against each other and against a decomposition made by guess.</td><td>Compares them against a survey made by something that looked. It can now find a <em>gap</em>, not only a conflict.</td></tr>
+          <tr><td><a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (3)</td><td>Applies to every unit equally.</td><td>Asymmetric. The scout needs none — it writes nothing — which is why it can be dispatched before anything is decided.</td></tr>
+        </tbody>
+      </table></div>
+
+      <p class="field">Participants</p>
+      <p><em>Scout</em> reads and reports, and may not write. <em>Map</em> is a list of separable jobs, not prose. <em>Swarm</em> is a plain fan-out over that list. <em>Gather</em> holds the map as its expectation.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Composes <strong>Pipeline</strong> (Composite 2) and <strong>Plain Fan-Out</strong> (Composite 1), which is the first evidence in this document that composites nest. Realises <a href="/om-002#proposed-dispatch"><strong>Proposed Dispatch</strong></a> (OM-002 · 1) where no primary agent can. Its map is <a href="/patterns#constrained-choice"><strong>Constrained Choice</strong></a> (OM-001 · 6) made into a work list.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: orientation is paid once instead of N times.</li>
+        <li><em>Gain</em>: the partition is made by something that looked, and the gather inherits an expectation.</li>
+        <li><em>Gain</em>: the scout is safe to dispatch before anything is decided, because it cannot change anything.</li>
+        <li><em>Cost</em>: one unit of latency before any work starts.</li>
+        <li><em>Trap</em>: a scout that returns prose. A map that cannot be split is a briefing, and somebody must now do the decomposition by hand from it.</li>
+        <li><em>Trap</em>: trusting the map after the ground moves. It is a snapshot, and a swarm dispatched hours later may be partitioning a tree that has changed.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Commission the scout for a <em>list</em>, and say so in the commission: N jobs, each with the files it touches and what it must not touch. Give it read-only scope and nothing else, so it can be dispatched without a decision. Have the principal approve the map rather than the units — that is the moment judgement is worth most, and it is one decision instead of N. Carry the map into the gather verbatim; a gather that only sees reports cannot notice a job nobody did.</p>
+
+      <p class="field">Failure signature</p>
+      <p>Five reports containing the same paragraph about the same files. Or a fan-out where two units renamed the same thing differently because neither knew the other existed. Or a scout's output that a person has to turn into units by hand, which means the scout did half the job and handed back the half that does not scale.</p>
+
+      <p class="field">Evidence</p>
+      <p>Practice and reasoning about topology. The duplicated-orientation cost has not been measured — <a href="#slot-2">slot 2</a>.</p>
+
+      <p class="field">Known uses</p>
+      <p>A survey before a refactor. <code>git grep</code> before splitting the work. Reconnaissance in the sense the word is borrowed from. A planning step whose deliverable is a list of issues rather than a document.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Plain Fan-Out</strong> (Composite 1), <strong>Pipeline</strong> (Composite 2), <a href="/om-002#proposed-dispatch"><strong>Proposed Dispatch</strong></a> (OM-002 · 1).</p>
+    </div>
+  </div>
+</section>
+
+<section id="loop-until-dry">
+  <div class="row">
+    <div class="mark">10</div>
+    <div class="body">
+      <p class="part">Level one · Composite 4</p>
+      <h2>Loop Until Dry</h2>
+
+      <p class="field first">Intent</p>
+      <p>Repeat rounds of fan-out, deduplicating against everything seen so far, until some number of consecutive rounds return nothing new — for work whose size is not known before starting.</p>
+
+      <p class="field">Motivation</p>
+      <p>Some work has no denominator. Find the bugs. Find every place this term is used incorrectly. Find the cases this parser mishandles. There is no list to partition because the list is what you are producing, and any fixed number of units is a guess about a quantity nobody has measured.</p>
+      <p>The guess is usually made once and never examined. Ten agents are dispatched because ten felt right; they return thirty findings; the run is declared complete. Whether there were thirty-one is unknown and unknowable from inside the run, and the tail — which is where the interesting findings live, because the obvious ones were found by everybody — is systematically missed.</p>
+      <p>Convergence has to be defined by the results instead. Run a round, deduplicate against everything seen in every previous round, and stop when consecutive rounds add nothing. <strong>The stopping condition is a property of the output, not a parameter.</strong></p>
+      <p>The trap is precise and worth stating early because it is easy to build and hard to notice: <strong>deduplicate against everything seen, not against everything accepted.</strong> If findings that were examined and rejected are not in the seen-set, they will be rediscovered every round, every round will look productive, and the loop will never dry.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever the number of things to find is unknown: bug hunts, audits, sweeps for a pattern across a codebase, edge-case discovery. Not applicable where the work is enumerable — if the list can be computed, computing it is cheaper and complete.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 230" role="img" aria-label="Rounds of fan-out feed a seen-set which deduplicates their findings. Round one returns seven new findings, round two returns two, rounds three and four return none, and two consecutive empty rounds end the loop.">
+          <rect x="8" y="60" width="150" height="52" fill="none" stroke="currentColor"/>
+          <text x="83" y="82" text-anchor="middle" font-size="11" fill="currentColor">a round</text>
+          <text x="83" y="98" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">fan-out of N units</text>
+          <rect x="236" y="60" width="150" height="52" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="311" y="82" text-anchor="middle" font-size="11" fill="currentColor">seen</text>
+          <text x="311" y="98" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">everything, not only kept</text>
+          <line x1="158" y1="86" x2="230" y2="86" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="194" y="78" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">findings</text>
+          <path d="M311,112 L311,150 L83,150 L83,118" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="197" y="166" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">next round, told what is already known</text>
+          <rect x="470" y="60" width="150" height="52" fill="none" stroke="currentColor" stroke-dasharray="5 3"/>
+          <text x="545" y="82" text-anchor="middle" font-size="11" fill="currentColor">dry</text>
+          <text x="545" y="98" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">two rounds, nothing new</text>
+          <line x1="386" y1="86" x2="464" y2="86" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="8" y="196" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">ROUNDS</text>
+          <text x="110" y="196" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">1: +7 new</text>
+          <text x="230" y="196" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">2: +2 new</text>
+          <text x="350" y="196" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">3: +0</text>
+          <text x="440" y="196" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">4: +0</text>
+          <text x="530" y="196" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">stop</text>
+          <line x1="8" y1="208" x2="612" y2="208" stroke="currentColor" opacity=".25"/>
+          <text x="8" y="224" font-size="10" fill="currentColor" opacity=".6">A fixed count would have stopped at round 1 or run for six. Neither number was ever measured.</text>
+        </svg>
+        <figcaption>One empty round is noise; two is a signal, and the number is itself a guess made explicit rather than hidden inside a fleet size.</figcaption>
+      </figure>
+
+      <p class="field">What it changes</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Constituent</th><th>In plain fan-out</th><th>Here</th></tr></thead>
+        <tbody>
+          <tr><td><a href="/om-002#gather"><strong>Gather</strong></a> (8)</td><td>A final step that reconciles N reports once.</td><td>A step between every round, whose main job is deduplication and whose output feeds the next round's commissions. It runs K times and its state persists.</td></tr>
+          <tr><td><a href="/om-002#the-return-path"><strong>The Return Path</strong></a> (6)</td><td>Delivers a report to the commissioning context.</td><td>Must be durable across rounds. A report that dies with its round breaks convergence rather than losing information, because the seen-set is the stopping condition.</td></tr>
+          <tr><td><a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (3)</td><td>Isolates units from each other.</td><td>Also isolates rounds from each other, so that a round's finding is attributable to that round — which is how you know the loop is drying rather than repeating.</td></tr>
+          <tr><td><a href="/om-002#proposed-dispatch"><strong>Proposed Dispatch</strong></a> (1)</td><td>The decomposition is approved once, before the run.</td><td>Each round is a new decomposition, and asking for approval every round destroys the arrangement. Approval moves to the loop's terms — the stopping rule and the budget — not its units.</td></tr>
+        </tbody>
+      </table></div>
+
+      <p class="field">Participants</p>
+      <p><em>Round</em> is a fan-out. <em>Seen-set</em> holds every finding ever surfaced, accepted or rejected. <em>Stopping rule</em> is stated before the first round. <em>Budget</em> is the other stopping rule, and the honest one.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Contains <strong>Plain Fan-Out</strong> (Composite 1) as its round, and usually <strong>Adversarial Verify</strong> (Composite 6) as its filter — findings must be judged before they enter the kept set, though they enter the seen-set either way. <a href="/patterns#honest-gauge"><strong>Honest Gauge</strong></a> (OM-001 · 12) governs how “dry” is reported: two empty rounds is a stopping rule, not a proof of completeness, and a surface that says “all findings” has lied.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: coverage is bounded by results rather than by a number somebody guessed.</li>
+        <li><em>Gain</em>: the tail gets found, which is where the findings nobody else has live.</li>
+        <li><em>Cost</em>: unbounded in principle. Without a budget, a loop that never dries never stops.</li>
+        <li><em>Cost</em>: rounds after the first are increasingly expensive per finding, and the last productive round may cost more than everything before it.</li>
+        <li><em>Trap</em>: deduplicating against the accepted set. Rejected findings return every round, every round looks productive, and the loop cannot converge.</li>
+        <li><em>Trap</em>: calling one empty round dry. Variance between rounds is large, and a single empty round is well within it.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>State the stopping rule before the first round — K consecutive empty rounds — and state a budget alongside it, because the rule alone does not terminate. Key the seen-set on something stable enough to match near-duplicates: the same finding described in two ways is the common case, and an exact-string key will never dedupe it. Tell each round what is already known, or it will spend its budget rediscovering it. And report the rule with the result: “two consecutive rounds returned nothing new” is a true sentence, and “we found everything” is not one this arrangement can support.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>sweep · incorrect uses of "shell" in prose
+  rule    stop after 2 consecutive rounds with nothing new
+  budget  8 rounds
+  round 1  5 units   +7 new   (7 seen)
+  round 2  5 units   +2 new   (9 seen, 3 rejected — still seen)
+  round 3  5 units   +0       dry 1/2
+  round 4  5 units   +0       dry 2/2 → stop, 6 kept</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>A fleet size chosen because it felt right, and a report that says “we found N” with no account of what would have found N+1. Or the same three findings surfacing in every round, with the loop apparently productive and never converging. Or a run declared complete after one quiet round.</p>
+
+      <p class="field">Evidence</p>
+      <p>Practice and adjacent prior art. The claim that a fixed count systematically misses the tail is reasoning, and the run that would demonstrate it is <a href="#slot-3">slot 3</a>.</p>
+
+      <p class="field">Known uses</p>
+      <p>Fuzzing to coverage saturation. Capture–recapture sampling in ecology, whose entire purpose is estimating what has not been seen. Bug bashes run until the finding rate falls. Search that stops when a page of results adds nothing.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Plain Fan-Out</strong> (Composite 1), <strong>Adversarial Verify</strong> (Composite 6), <a href="/om-002#gather"><strong>Gather</strong></a> (OM-002 · 8).</p>
+    </div>
+  </div>
+</section>
+
+<section id="panel">
+  <div class="row">
+    <div class="mark">11</div>
+    <div class="body">
+      <p class="part">Level one · Composite 5</p>
+      <h2>Panel</h2>
+
+      <p class="field first">Intent</p>
+      <p>Give several units the same question, kept apart on purpose, and make the disagreement between their answers the product rather than a problem.</p>
+
+      <p class="field">Motivation</p>
+      <p>Every arrangement so far divides work. A panel duplicates it — the same question to each unit, no partition at all — and that inversion changes what the join is for.</p>
+      <p>In a fan-out, disagreement between reports is a warning: two units have contradicted each other and something must be reconciled before it reaches the artifact. In a panel, agreement is the uninformative outcome and disagreement is the finding. Where three independent answers diverge, you have learned that the question is underdetermined, which is worth more than any one of the answers.</p>
+      <p>That only holds if the units are genuinely independent. Let them see each other's drafts and they converge — not because the question was settled but because the channel carried an answer. <strong>Unanimity produced by a shared channel is indistinguishable from unanimity produced by a clear answer, and only one of them is worth anything.</strong> This is why isolation, which in a fan-out is about files, is here about judgement.</p>
+      <p>The other honest limit: a panel is for questions no test can settle. Convening three units to decide whether a function returns the right value is money spent to reproduce something a test would have told you for free.</p>
+
+      <p class="field">Applicability</p>
+      <p>Questions of design, approach, naming, risk, or interpretation — where there is no oracle and where being wrong is expensive. Where the units can be kept independent. Not applicable to anything checkable, and not applicable where the disagreement will simply be averaged, since averaging discards exactly what the arrangement was bought for.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 210" role="img" aria-label="One question goes to three units which cannot see each other, marked by a crossed-out link between them. Their answers reach an adjudication step whose outputs are a verdict and, separately, the disagreements.">
+          <rect x="8" y="82" width="118" height="42" fill="none" stroke="currentColor"/>
+          <text x="67" y="100" text-anchor="middle" font-size="11" fill="currentColor">one question</text>
+          <text x="67" y="115" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">no partition</text>
+          <rect x="212" y="26" width="140" height="30" fill="none" stroke="currentColor"/>
+          <text x="282" y="46" text-anchor="middle" font-size="11" fill="currentColor">unit · answer</text>
+          <rect x="212" y="88" width="140" height="30" fill="none" stroke="currentColor"/>
+          <text x="282" y="108" text-anchor="middle" font-size="11" fill="currentColor">unit · answer</text>
+          <rect x="212" y="150" width="140" height="30" fill="none" stroke="currentColor"/>
+          <text x="282" y="170" text-anchor="middle" font-size="11" fill="currentColor">unit · answer</text>
+          <path d="M126,97 L176,97 L176,41 L206,41" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M126,103 L206,103" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M126,109 L176,109 L176,165 L206,165" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="282" y1="56" x2="282" y2="88" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="282" y1="118" x2="282" y2="150" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="274" y1="65" x2="290" y2="79" stroke="currentColor"/>
+          <line x1="290" y1="65" x2="274" y2="79" stroke="currentColor"/>
+          <line x1="274" y1="127" x2="290" y2="141" stroke="currentColor"/>
+          <line x1="290" y1="127" x2="274" y2="141" stroke="currentColor"/>
+          <text x="300" y="76" font-size="10" fill="currentColor" opacity=".65">no cross-talk —</text>
+          <text x="300" y="136" font-size="10" fill="currentColor" opacity=".65">this is the pattern</text>
+          <rect x="414" y="82" width="122" height="42" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="475" y="100" text-anchor="middle" font-size="11" fill="currentColor">adjudication</text>
+          <text x="475" y="115" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">rule fixed first</text>
+          <path d="M352,41 L384,41 L384,97 L408,97" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M352,103 L408,103" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M352,165 L384,165 L384,109 L408,109" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="580" y="52" width="112" height="28" fill="none" stroke="currentColor"/>
+          <text x="636" y="71" text-anchor="middle" font-size="10.5" fill="currentColor">a verdict</text>
+          <rect x="580" y="120" width="112" height="34" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-width="1.6"/>
+          <text x="636" y="134" text-anchor="middle" font-size="10.5" fill="currentColor">where they</text>
+          <text x="636" y="148" text-anchor="middle" font-size="10.5" fill="currentColor">disagreed</text>
+          <path d="M536,97 L558,97 L558,66 L574,66" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M536,109 L558,109 L558,137 L574,137" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="636" y="176" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">the reason you paid</text>
+        </svg>
+        <figcaption>The crossed links carry the whole cost and the whole value. Remove them and the arrangement still runs, produces agreement, and means nothing.</figcaption>
+      </figure>
+
+      <p class="field">What it changes</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Constituent</th><th>In plain fan-out</th><th>Here</th></tr></thead>
+        <tbody>
+          <tr><td><a href="/om-002#gather"><strong>Gather</strong></a> (8)</td><td>Reconciliation. Disagreement is a hazard to be surfaced and resolved.</td><td>Adjudication. Disagreement is the product, and a panel that reports none should have to say how hard it looked.</td></tr>
+          <tr><td><a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (3)</td><td>Keeps writes apart. Its subject is a tree.</td><td>Keeps judgements apart. Its subject is a channel, and it is violated by a helpful summary rather than by a concurrent write.</td></tr>
+          <tr><td><a href="/om-002#scoped-commission"><strong>Scoped Commission</strong></a> (2)</td><td>Bounds what a unit may change; the risk is the action.</td><td>Usually read-only. The risk is the answer, so the scope is cheap and the attention moves to the question's wording, which every unit shares.</td></tr>
+          <tr><td><a href="/om-002#attribution-across-depth"><strong>Attribution Across Depth</strong></a> (7)</td><td>Lets a result be traced to an actor.</td><td>Load-bearing rather than hygienic: an opinion whose author is unknown cannot be weighed against another, and a merged panel is one voice pretending to be three.</td></tr>
+        </tbody>
+      </table></div>
+
+      <p class="field">Participants</p>
+      <p><em>Question</em> is identical for every unit, and its wording is now a shared dependency. <em>Members</em> are isolated from each other for the duration. <em>Adjudicator</em> applies a rule fixed before the answers arrived. <em>Disagreements</em> are an output in their own right.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Inverts <strong>Plain Fan-Out</strong> (Composite 1): same work to every unit rather than different work to each. Distinct from <strong>Adversarial Verify</strong> (Composite 6), which is asymmetric — a panel answers a question, a verifier attacks an answer. Depends on <a href="/om-002#attribution-across-depth"><strong>Attribution Across Depth</strong></a> (OM-002 · 7) to keep the members' voices separate.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: an underdetermined question is revealed as one, before a decision is built on it.</li>
+        <li><em>Gain</em>: the range of reasonable answers becomes visible, which no single answer shows.</li>
+        <li><em>Cost</em>: N times the work for one question, with no division of labour at all.</li>
+        <li><em>Cost</em>: someone must adjudicate, and adjudication is harder than reconciliation.</li>
+        <li><em>Trap</em>: leaked context. One member seeing another's answer produces unanimity that reads as strong evidence and is an artifact of the channel.</li>
+        <li><em>Trap</em>: convening a panel on a checkable question, which buys an expensive opinion about a fact.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Give every member the same question, verbatim, and vary nothing but the seat — a panel whose members were asked slightly different questions cannot disagree meaningfully. Keep them from each other for the duration, including from each other's artifacts; the leak is usually a shared workspace or a helpful summary, not a message. Fix the adjudication rule before the answers arrive, because a rule chosen afterwards is a preference with a quorum. Report the disagreement in the output, not only the verdict. And if a test could answer the question, run the test.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>panel · should the crate keep the name "shell"?
+  rule     3 members, independent; verdict needs 2; dissent always reported
+  member 1 rename — the word collides with the OS sense
+  member 2 rename — but keep the IPC namespace, it is load-bearing
+  member 3 keep — the collision is theoretical, the churn is not
+  verdict  rename (2 of 3)
+  dissent  member 3 names a cost the others did not price</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Unanimity you cannot account for. Or a panel report that reads as one voice, so no reader can tell whether three units agreed or one summarised. Or a decision made by panel that a five-line test would have settled.</p>
+
+      <p class="field">Evidence</p>
+      <p>Practice and adjacent prior art — juries and review panels have worked out the independence rules over centuries. The claims here about what leaked context does are reasoning; <a href="#slot-4">slot 4</a> is what would settle them.</p>
+
+      <p class="field">Known uses</p>
+      <p>Juries, and their rules against discussing the case outside the room. Blind peer review. Ensemble methods, where the diversity of the members is the source of the gain. Design reviews with independent written positions collected before discussion.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Adversarial Verify</strong> (Composite 6), <strong>Plain Fan-Out</strong> (Composite 1), <a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (OM-002 · 3).</p>
+    </div>
+  </div>
+</section>
+
+<section id="adversarial-verify">
+  <div class="row">
+    <div class="mark">12</div>
+    <div class="body">
+      <p class="part">Level one · Composite 6</p>
+      <h2>Adversarial Verify</h2>
+
+      <p class="field first">Intent</p>
+      <p>Commission units to refute a result rather than to review it, with the burden of proof on the claim and a rule fixed before the verdicts arrive.</p>
+
+      <p class="field">Motivation</p>
+      <p>A unit finishes and reports success. The report is coherent, the reasoning is legible, and it is wrong. Nothing in the fan-out will catch this: the gather compares reports against each other, and a single confident report has nothing to contradict it.</p>
+      <p>The obvious remedy — ask another unit to check it — fails in a specific way. Handed the claim and the reasoning, a checker reads the reasoning, finds it plausible, and agrees. It has been given the conclusion and a path to it, and confirming is the cheapest thing it can do. What comes back is a confirmation whose information content is close to zero, and which now reads as independent corroboration.</p>
+      <p>Two changes fix it, and both are asymmetries. The verifier's commission is <em>to refute</em>, not to check: the default outcome is that the claim fails, and surviving is the exception. And what it is given is the claim and the evidence, not the producer's reasoning — because reasoning is contagious, and a verifier that inherits it is not a second opinion but an echo.</p>
+      <p>This is where <a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (OM-002 · 3) stops being about files. What must be kept apart is not two writers but two judgements, and the boundary is informational rather than physical.</p>
+
+      <p class="field">Applicability</p>
+      <p>When a claim is expensive to be wrong about and cannot be checked mechanically. When a run's findings will be acted on without further review. Not applicable when a test exists, and not applicable to everything indiscriminately: verification costs as much as production, and verifying every result doubles the run.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 210" role="img" aria-label="A producer emits a claim and its evidence. Three refuters receive those but not the producer's reasoning, which is shown as a withheld dashed link. A rule fixed in advance turns their verdicts into a decision to keep or drop the claim.">
+          <rect x="8" y="34" width="122" height="40" fill="none" stroke="currentColor"/>
+          <text x="69" y="52" text-anchor="middle" font-size="11" fill="currentColor">producer</text>
+          <text x="69" y="67" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">a unit that finished</text>
+          <rect x="186" y="34" width="140" height="40" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="256" y="52" text-anchor="middle" font-size="11" fill="currentColor">claim + evidence</text>
+          <text x="256" y="67" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">not the reasoning</text>
+          <line x1="130" y1="54" x2="180" y2="54" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="186" y="132" width="140" height="34" fill="none" stroke="currentColor" stroke-dasharray="5 3"/>
+          <text x="256" y="153" text-anchor="middle" font-size="10.5" fill="currentColor">its reasoning</text>
+          <path d="M69,74 L69,149 L180,149" fill="none" stroke="currentColor" stroke-dasharray="4 3" opacity=".6"/>
+          <line x1="340" y1="141" x2="356" y2="157" stroke="currentColor"/>
+          <line x1="356" y1="141" x2="340" y2="157" stroke="currentColor"/>
+          <text x="372" y="153" font-size="10" fill="currentColor" opacity=".65">withheld — it is contagious</text>
+          <rect x="404" y="14" width="140" height="28" fill="none" stroke="currentColor"/>
+          <text x="474" y="32" text-anchor="middle" font-size="10.5" fill="currentColor">refuter</text>
+          <rect x="404" y="48" width="140" height="28" fill="none" stroke="currentColor"/>
+          <text x="474" y="66" text-anchor="middle" font-size="10.5" fill="currentColor">refuter</text>
+          <rect x="404" y="82" width="140" height="28" fill="none" stroke="currentColor"/>
+          <text x="474" y="100" text-anchor="middle" font-size="10.5" fill="currentColor">refuter</text>
+          <path d="M326,48 L370,48 L370,28 L398,28" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M326,54 L370,54 L370,62 L398,62" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M326,60 L370,60 L370,96 L398,96" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="474" y="126" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">commissioned to break it</text>
+          <rect x="580" y="48" width="112" height="42" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="636" y="66" text-anchor="middle" font-size="10.5" fill="currentColor">2 of 3 refute</text>
+          <text x="636" y="81" text-anchor="middle" font-size="10.5" fill="currentColor">→ dropped</text>
+          <line x1="544" y1="62" x2="574" y2="66" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="636" y="108" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">rule fixed first</text>
+        </svg>
+        <figcaption>The crossed link is the entire mechanism. Everything else in the figure is a fan-out, and a fan-out without that link produces agreement at three times the price.</figcaption>
+      </figure>
+
+      <p class="field">What it changes</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Constituent</th><th>In plain fan-out</th><th>Here</th></tr></thead>
+        <tbody>
+          <tr><td><a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (3)</td><td>Prevents collisions between writes.</td><td>Prevents one judgement inheriting another. The boundary is informational, and it is crossed by sharing a rationale, not by sharing a directory.</td></tr>
+          <tr><td><a href="/om-002#scoped-commission"><strong>Scoped Commission</strong></a> (2)</td><td>Says what a unit may do.</td><td>Also says what a unit may <em>know</em>. This is the first place a commission's contents matter as much as its permissions.</td></tr>
+          <tr><td><a href="/om-002#gather"><strong>Gather</strong></a> (8)</td><td>Reconciles reports into an account.</td><td>Applies a decision rule to verdicts. It is counting, and the counting rule must predate the count.</td></tr>
+          <tr><td><a href="/om-002#dispatch-without-escort"><strong>Dispatch Without Escort</strong></a> (4)</td><td>Units proceed rather than asking the principal.</td><td>Refuters must not ask the <em>producer</em> either. The question they would ask is exactly the reasoning being withheld.</td></tr>
+        </tbody>
+      </table></div>
+
+      <p class="field">Participants</p>
+      <p><em>Producer</em> emits a claim and the evidence for it. <em>Refuters</em> receive both, and not the rationale. <em>Rule</em> is fixed in advance and stated. <em>Verdict</em> defaults to refuted where a refuter is uncertain, because the burden sits on the claim.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Usually the filter stage inside <strong>Loop Until Dry</strong> (Composite 4), and a good repair for a load-bearing seam in a <strong>Pipeline</strong> (Composite 2). Distinct from <strong>Panel</strong> (Composite 5) by asymmetry: a panel has no incumbent answer, and here the answer is the thing under attack. Sharpens <a href="/patterns#progressive-autonomy"><strong>Progressive Autonomy</strong></a> (OM-001 · 11), since a producer whose claims survive refutation has earned something measurable.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: confident wrong results are caught by something with an incentive to catch them.</li>
+        <li><em>Gain</em>: what survives is worth more, and the survival rate is itself a signal about the producer.</li>
+        <li><em>Cost</em>: doubles or triples the cost of every claim it is applied to, which is why it is applied selectively.</li>
+        <li><em>Cost</em>: false refutations. A refuter commissioned to break things will sometimes break a correct claim, and somebody must adjudicate that.</li>
+        <li><em>Trap</em>: handing over the reasoning “for context”. It is the single change that turns this arrangement back into an expensive way to agree.</li>
+        <li><em>Trap</em>: a rule chosen after the verdicts. Deciding that one refutation is enough, once you have seen which claim it kills, is not a rule.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Word the commission as refutation — “find the input on which this is wrong”, not “review this”. Send the claim and the evidence; withhold the rationale, and check what the commission actually carries rather than what it was meant to. Default an uncertain refuter to <em>refuted</em>, since the point is to make survival mean something. Fix the rule and the number of refuters before dispatch. And prefer several verifiers with different angles — correctness, cost, does it reproduce — to several identical ones, because redundancy catches only what one lens can see.</p>
+
+      <p class="field">Failure signature</p>
+      <p>Everything verifies. A confirmation rate near one is not evidence that the work is good; it is evidence that the verification is not working, and it is the cheapest thing in this document to measure. Or verifiers whose reports restate the claim approvingly. Or a verdict rule that changed once the verdicts were in.</p>
+
+      <p class="field">Evidence</p>
+      <p>Reasoning about topology and adjacent prior art. The confirmation-rate comparison that would settle it is <a href="#slot-5">slot 5</a> — the one open slot here that could be closed in an afternoon.</p>
+
+      <p class="field">Known uses</p>
+      <p>Red teams. Adversarial review in security. Falsification in experimental design, where a hypothesis earns standing by surviving attempts to kill it. A defence that never sees the prosecution's reasoning, only its evidence.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Panel</strong> (Composite 5), <strong>Loop Until Dry</strong> (Composite 4), <a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (OM-002 · 3).</p>
+    </div>
+  </div>
+</section>
+
+<section id="a-sequence-not-a-shelf">
+  <div class="row">
+    <div class="mark">13</div>
+    <div class="body">
+      <h2>A sequence, not a shelf</h2>
+      <p>Six named arrangements are a shelf unless something says how to choose. The choice is a short sequence of questions, asked in order, each one eliminating arrangements rather than scoring them.</p>
+      <figure>
+        <svg viewBox="0 0 700 306" role="img" aria-label="A five-question decision sequence. Do the parts need each other leads to Pipeline. Do you know how it divides leads to Scout then Swarm. Is the set of known size leads to Loop Until Dry. Does every unit get the same work leads to Plain Fan-Out or onwards. Is there already an answer to attack leads to Adversarial Verify or Panel.">
+          <rect x="8" y="18" width="330" height="34" fill="none" stroke="currentColor"/>
+          <text x="20" y="40" font-size="11" fill="currentColor">1 · Do the parts need each other's results?</text>
+          <rect x="430" y="18" width="200" height="26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="530" y="36" text-anchor="middle" font-size="11" fill="currentColor">Pipeline</text>
+          <line x1="338" y1="31" x2="424" y2="31" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="352" y="25" font-size="10" fill="currentColor" opacity=".65">yes</text>
+          <rect x="8" y="76" width="330" height="34" fill="none" stroke="currentColor"/>
+          <text x="20" y="98" font-size="11" fill="currentColor">2 · Does anyone here know how it divides?</text>
+          <rect x="430" y="76" width="200" height="26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="530" y="94" text-anchor="middle" font-size="11" fill="currentColor">Scout then Swarm</text>
+          <line x1="338" y1="89" x2="424" y2="89" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="352" y="83" font-size="10" fill="currentColor" opacity=".65">no</text>
+          <rect x="8" y="134" width="330" height="34" fill="none" stroke="currentColor"/>
+          <text x="20" y="156" font-size="11" fill="currentColor">3 · Is the number of things to find known?</text>
+          <rect x="430" y="134" width="200" height="26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="530" y="152" text-anchor="middle" font-size="11" fill="currentColor">Loop Until Dry</text>
+          <line x1="338" y1="147" x2="424" y2="147" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="352" y="141" font-size="10" fill="currentColor" opacity=".65">no</text>
+          <rect x="8" y="192" width="330" height="34" fill="none" stroke="currentColor"/>
+          <text x="20" y="214" font-size="11" fill="currentColor">4 · Does each unit get different work?</text>
+          <rect x="430" y="192" width="200" height="26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="530" y="210" text-anchor="middle" font-size="11" fill="currentColor">Plain Fan-Out</text>
+          <line x1="338" y1="205" x2="424" y2="205" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="352" y="199" font-size="10" fill="currentColor" opacity=".65">yes</text>
+          <rect x="8" y="250" width="330" height="34" fill="none" stroke="currentColor"/>
+          <text x="20" y="272" font-size="11" fill="currentColor">5 · Is there already an answer to attack?</text>
+          <rect x="430" y="242" width="200" height="26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="530" y="260" text-anchor="middle" font-size="11" fill="currentColor">Adversarial Verify</text>
+          <rect x="430" y="276" width="200" height="26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="530" y="294" text-anchor="middle" font-size="11" fill="currentColor">Panel</text>
+          <path d="M338,263 L384,263 L384,255 L424,255" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M338,269 L384,269 L384,289 L424,289" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="352" y="249" font-size="10" fill="currentColor" opacity=".65">yes</text>
+          <text x="352" y="303" font-size="10" fill="currentColor" opacity=".65">no</text>
+          <path d="M173,52 L173,70" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M173,110 L173,128" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M173,168 L173,186" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M173,226 L173,244" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="182" y="66" font-size="10" fill="currentColor" opacity=".55">no</text>
+          <text x="182" y="124" font-size="10" fill="currentColor" opacity=".55">yes</text>
+          <text x="182" y="182" font-size="10" fill="currentColor" opacity=".55">yes</text>
+          <text x="182" y="240" font-size="10" fill="currentColor" opacity=".55">no</text>
+        </svg>
+        <figcaption>The order matters: question 1 asked last would send work down a fan-out that cannot be partitioned, which is the most common wrong answer and the most expensive.</figcaption>
+      </figure>
+      <p>Two things the figure cannot say. <strong>Arrangements nest</strong>, and the sequence is applied at each level: <strong>Scout then Swarm</strong> is a pipeline whose second stage is a fan-out; <strong>Loop Until Dry</strong> is a loop whose body is a fan-out and whose filter is usually an <strong>Adversarial Verify</strong>; a <strong>Panel</strong> sits comfortably inside a pipeline stage where one decision has to be made well. Ask the questions again at each level and the answers differ.</p>
+      <p>And <strong>the arrangement is a decision the principal makes, not the primary agent.</strong> <a href="/om-002#proposed-dispatch"><strong>Proposed Dispatch</strong></a> (OM-002 · 1) hands the decomposition to the party with the most context, and it is right about the units. The <em>shape</em> is different: it encodes how much the principal is willing to spend, how expensive being wrong is, and how much they trust the answer — three things the primary agent does not know.</p>
+
+      <p class="field">What this is worth against the criticism</p>
+      <p>Honestly scored: this is more than a checklist and less than what Alexander meant.</p>
+      <p>It is more, because it runs forwards. Five questions asked before the work produce an arrangement, and the arrangement says which patterns apply and what each one is for at that point — where OM-001 §10 asked fourteen questions about something already built.</p>
+      <p>It is less, in two ways worth stating rather than glossing. Alexander's sequences unfold a <em>single</em> whole, each step differentiating what the last one laid down; this is a classifier that selects a shape and then hands over. And his final test is not structural at all: it is whether the thing generated is good for the people who have to live inside it. Nothing at this level can answer that, because at this level nobody lives anywhere. The person is one level up, and that is where the rest of this document goes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="the-yard">
+  <div class="row">
+    <div class="mark">14</div>
+    <div class="body">
+      <h2>The level above: the yard</h2>
+      <p class="lede">One person, four to six areas of a product, each with its own dispatcher and its own units. The obvious move is to read that as OM-002 applied one level up — the person is a dispatcher, the fleets are units, and the eight patterns should recur. They do not, and the reason is a single asymmetry that nothing at this level can remove.</p>
+
+      <p class="aside"><strong>On the word.</strong> OM-002 spent <em>fleet</em> on the squad. The level above needed a word and did not have one, so this document proposes <strong>yard</strong>: the place where several fleets are worked at once, sharing ground, tools and one way out to the water. It is chosen rather than found, and it is the kind of decision a later document may overturn cheaply. What it must not become is a metaphor doing argumentative work — nothing below rests on the word.</p>
+
+      <p class="field">The principal cannot be commissioned</p>
+      <p>In a fleet, the dispatcher is an agent, and that is what makes OM-002's patterns possible. You can bound what it may do. You can give it a return address that resolves. You can require a report and read it. At the yard, the dispatcher is a person, who has none of those properties — not incidentally, but by construction.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th></th><th>Dispatcher in a fleet</th><th>Dispatcher in a yard</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Authority</strong></td><td>Scoped at dispatch and enforced by the environment.</td><td>Unscopable. A person may always do the thing; “may not” is advice, and the environment they act in is the one that grants everything.</td></tr>
+          <tr><td><strong>Addressing</strong></td><td>A return address that always resolves. Delivery is observable.</td><td>Best-effort. You cannot route to a person's attention on demand, and the acknowledgement is somebody noticing, which nothing reports.</td></tr>
+          <tr><td><strong>Accountability</strong></td><td>Held to a report, which can be compared with the commission.</td><td>Writes no report and answers to nothing in the system. The record of what the yard decided exists only if the person chose to write it.</td></tr>
+          <tr><td><strong>Scarce resource</strong></td><td>Compute, which is purchasable and divides.</td><td>Attention, which is neither. Adding fleets does not add capacity to look at them.</td></tr>
+          <tr><td><strong>Failure mode</strong></td><td>A unit that did not report, which is visible as such.</td><td>A squad nobody looked at, which is indistinguishable from a squad that is running quietly.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Everything difficult at this level falls out of that table. <strong>Attention scheduling</strong>: which squad you look at now is the only real decision, and nothing schedules it. <strong>Re-entry cost</strong>: switching squads means reconstructing a state that lives in a head, and it is paid on every switch. <strong>Contention isolation cannot solve</strong>: five squads, one repo, one CI, one merge target — <a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (OM-002 · 3) copies workspaces and cannot copy the trunk. <strong>Landing order</strong>: the order finished work lands is a decision no unit can make, because each knows only its own. <strong>Uneven readiness</strong>: squads finish when they finish, and the queue is never empty and never full.</p>
+      <p>Three of those have entries below. The others are named here and left as forces, because a pattern needs a stateable failure signature and these do not yet have distinct ones.</p>
+      <p class="slot"><b>Note on this half's evidence</b><br>One practitioner, four to six areas, days rather than months, and no instrument that measures where attention actually went. Every claim below is either an existence proof or reasoning; none is a frequency. Slots <a href="#slot-6">6</a>, <a href="#slot-7">7</a> and <a href="#slot-8">8</a> are the incidents that would change that.</p>
+    </div>
+  </div>
+</section>
+
+<section id="standing-by-readiness">
+  <div class="row">
+    <div class="mark">15</div>
+    <div class="body">
+      <p class="part">Level two · Pattern 1</p>
+      <h2>Standing by Readiness</h2>
+
+      <p class="field first">Intent</p>
+      <p>Order the yard's surface by what needs a person, not by what is happening, so the scarce resource is spent on decisions rather than on scanning.</p>
+
+      <p class="field">Motivation</p>
+      <p><a href="/om-002#fleet-standing"><strong>Fleet Standing</strong></a> (OM-002 · 5) answers <em>what is happening</em>, and at fleet scale that is the right question: the principal wants to know whether to intervene. At yard scale it is the wrong one. Four squads are always happening. The question is which of them needs the person next, and for what decision.</p>
+      <p>The distinction that makes this a separate pattern rather than the same surface scaled up: <strong>readiness is not status.</strong> A squad that is <em>done</em> is not necessarily ready to land, and a squad that is <em>running</em> may have been blocked on a thirty-second answer for six hours. A surface ordered by status buries the second behind three squads that are working fine, and the loss is invisible because nothing failed.</p>
+      <p>The states that matter at this level are about the person, not the work: <em>blocked on you</em>, <em>ready to land</em>, <em>running</em>, <em>finished and waiting</em>, <em>rotting</em>. Only the first demands attention now; the second demands a decision soon; the rest demand nothing, and a surface that presents all five with equal weight has made the person do the sorting.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever more than about two squads run at once. Especially where squads are long-lived and the person's attention is the constraint — which at this level it always is.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 216" role="img" aria-label="The same four squads listed twice. Ordered by status, the blocked squad appears third. Ordered by readiness, it appears first, followed by a squad ready to land, then the running ones.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">BY STATUS</text>
+          <rect x="8" y="28" width="320" height="112" fill="none" stroke="currentColor" opacity=".4"/>
+          <text x="22" y="50" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">console      running   12 steps</text>
+          <text x="22" y="72" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">voice        running    4 steps</text>
+          <text x="22" y="94" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">presence     running    2 steps</text>
+          <text x="22" y="116" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">patterns     done      18 steps</text>
+          <text x="22" y="134" font-size="10" fill="currentColor" opacity=".6">three of these need nothing at all</text>
+          <text x="372" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">BY READINESS</text>
+          <rect x="372" y="28" width="320" height="112" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="386" y="50" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">presence   BLOCKED ON YOU   6h12m</text>
+          <text x="386" y="72" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">patterns   ready to land    2 files</text>
+          <text x="386" y="94" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">console    running</text>
+          <text x="386" y="116" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">voice      running</text>
+          <text x="386" y="134" font-size="10" fill="currentColor" opacity=".6">one decision, then one landing, then nothing</text>
+          <line x1="8" y1="160" x2="692" y2="160" stroke="currentColor" opacity=".2"/>
+          <text x="8" y="182" font-size="10.5" fill="currentColor" opacity=".7">Same four squads, same moment, same underlying data.</text>
+          <text x="8" y="200" font-size="10.5" fill="currentColor" opacity=".7">The left surface is honest and costs six hours; presence was running the whole time.</text>
+        </svg>
+        <figcaption>Nothing on the left is false — which is why it survives review. It reports the work truthfully and sorts by the wrong key, and the wrong key is the one the fleet-level surface taught us to use.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Squads</em> report their own readiness, which they know and the yard does not. <em>Standing</em> orders by the decision being asked for. <em>Principal</em> works down the list and stops when nothing is asking.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Sits above <a href="/om-002#fleet-standing"><strong>Fleet Standing</strong></a> (OM-002 · 5) and inverts its sort key. Depends on <a href="/patterns#honest-gauge"><strong>Honest Gauge</strong></a> (OM-001 · 12): “blocked on you” must be wrong only when the system is wrong, or the list stops being read. <a href="/patterns#ambient-activity-channel"><strong>Ambient Activity Channel</strong></a> (OM-001 · 9) is how the one state that matters — a squad newly blocked — reaches a person who is deliberately looking elsewhere.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the person's scarce resource is spent on decisions rather than on finding which decision to make.</li>
+        <li><em>Gain</em>: a blocked squad's waiting time becomes visible, which is the yard's largest silent loss.</li>
+        <li><em>Cost</em>: squads must classify their own readiness, and a squad that overstates it teaches the person to distrust the list.</li>
+        <li><em>Trap</em>: a notification per squad. Interrupting on every state change reproduces at yard scale exactly what <a href="/om-002#dispatch-without-escort"><strong>Dispatch Without Escort</strong></a> (OM-002 · 4) solved at fleet scale, and the person must be able to not look.</li>
+        <li><em>Trap</em>: sorting by urgency rather than by readiness. Urgency is a claim about the world; readiness is a claim about the work, and only one of them is knowable by a squad.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Sort by the decision being asked for, and show the age of that decision — a squad blocked six hours reads differently from one blocked six minutes, and the age is the number that changes behaviour. Distinguish <em>done</em> from <em>ready to land</em>; they are different states and conflating them is how finished work sits unlanded. Let the list be empty, and make an empty list mean something: nothing here needs you. Keep the fleet-level surface underneath rather than replacing it, since once a squad is chosen the question reverts to what is happening.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>yard · 4 squads
+  presence   blocked on you   6h12m   "rename the capability or keep it?"
+  patterns   ready to land            2 files, no conflicts with console
+  console    running                  3 units, last event 40s ago
+  voice      running                  1 unit, quiet 22m — no news, not no progress</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>A squad that sat blocked on a small decision while the person watched one that was fine. Or the person opening each squad in turn to find out which one needs them — <a href="/om-002#fleet-standing"><strong>Fleet Standing</strong></a>'s signature one level up, with the difference that here a status surface is what produces it rather than what cures it.</p>
+
+      <p class="field">Evidence</p>
+      <p>Practice, and reasoning from the asymmetry in §14. The waiting time that would make the loss concrete has not been measured — <a href="#slot-6">slot 6</a>.</p>
+
+      <p class="field">Known uses</p>
+      <p>A code review queue sorted by “waiting on you”. Air traffic control strips, which are ordered by what needs a decision next. Kanban boards where the blocked column is read first. Triage in any sense of the word.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Landing Order</strong> (OM-003 · 3), <a href="/om-002#fleet-standing"><strong>Fleet Standing</strong></a> (OM-002 · 5), <a href="/patterns#honest-gauge"><strong>Honest Gauge</strong></a> (OM-001 · 12).</p>
+    </div>
+  </div>
+</section>
+
+<section id="re-entry-note">
+  <div class="row">
+    <div class="mark">16</div>
+    <div class="body">
+      <p class="part">Level two · Pattern 2</p>
+      <h2>Re-entry Note</h2>
+
+      <p class="field first">Intent</p>
+      <p>Have each squad maintain a short note written for the person's return, so that coming back to it costs reading rather than reconstruction.</p>
+
+      <p class="field">Motivation</p>
+      <p>The cost of running several squads is not the running. It is the switch. Returning to a squad after a day away, the person has to rebuild: what this area is for, what was decided and why, what it is waiting on, what will break if it lands after the other one. None of that is written down anywhere in that form. The transcript is a record of how the state was reached, which is the expensive way to learn what it is. The diff says what changed, not what was intended.</p>
+      <p>So the person reconstructs, and the reconstruction is the real cost of the yard — paid on every switch, invisible because it looks like working, and rising with the number of squads.</p>
+      <p>This is <a href="/patterns#continuity-as-memory"><strong>Continuity as Memory</strong></a> (OM-001 · 14) with the memory belonging to the wrong party. There, an agent keeps what matters so the principal need not restate it. Here the reader is the <em>person</em>, and what must survive is the state of an area they were absent from — which means the note has to be written by the squad, for a reader who was not there, and maintained rather than composed once.</p>
+      <p>The obvious objection is right and is the pattern's main cost: a second artifact can go stale, and a stale note is worse than no note, because it will be believed. That makes this an application of <a href="/patterns#honest-gauge"><strong>Honest Gauge</strong></a> (OM-001 · 12) as much as of memory — a note that is not maintained must be visibly not maintained.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever the gap between visits to a squad is long enough that state must be rebuilt — in practice, more than a few hours. Not applicable to a squad being worked continuously; there the note is overhead and the working context is the memory.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 200" role="img" aria-label="Above, a returning person reads a transcript, a diff and asks an agent where things stood, arriving at a reconstructed picture. Below, the same person reads a single maintained note written by the squad's gatherer.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">RECONSTRUCTED</text>
+          <rect x="8" y="30" width="96" height="34" fill="none" stroke="currentColor"/>
+          <text x="56" y="51" text-anchor="middle" font-size="10.5" fill="currentColor">returning</text>
+          <rect x="168" y="24" width="130" height="22" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="233" y="39" text-anchor="middle" font-size="10" fill="currentColor">the transcript</text>
+          <rect x="168" y="52" width="130" height="22" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="233" y="67" text-anchor="middle" font-size="10" fill="currentColor">the diff</text>
+          <rect x="168" y="80" width="130" height="22" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="233" y="95" text-anchor="middle" font-size="10" fill="currentColor">“where were we?”</text>
+          <path d="M104,44 L136,44 L136,35 L162,35" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M104,48 L136,48 L136,63 L162,63" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M104,52 L136,52 L136,91 L162,91" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="380" y="46" width="180" height="34" fill="currentColor" fill-opacity=".07" stroke="currentColor"/>
+          <text x="470" y="67" text-anchor="middle" font-size="10.5" fill="currentColor">a picture, rebuilt each time</text>
+          <path d="M298,35 L340,35 L340,60 L374,60" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M298,63 L374,63" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M298,91 L340,91 L340,68 L374,68" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="580" y="66" font-size="10" fill="currentColor" opacity=".6">paid on every switch</text>
+          <line x1="8" y1="122" x2="692" y2="122" stroke="currentColor" opacity=".2"/>
+          <text x="8" y="146" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">READ</text>
+          <rect x="8" y="156" width="96" height="34" fill="none" stroke="currentColor"/>
+          <text x="56" y="177" text-anchor="middle" font-size="10.5" fill="currentColor">returning</text>
+          <rect x="168" y="152" width="240" height="40" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="288" y="169" text-anchor="middle" font-size="10.5" fill="currentColor">the note · fixed shape</text>
+          <text x="288" y="184" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">for · state · blocked on · decided · lands after</text>
+          <line x1="104" y1="173" x2="162" y2="173" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="424" y="168" font-size="10" fill="currentColor" opacity=".6">written by the gatherer,</text>
+          <text x="424" y="182" font-size="10" fill="currentColor" opacity=".6">at the end of every gather</text>
+        </svg>
+        <figcaption>The lower path is only cheaper if the note is maintained. An unmaintained note moves the cost rather than removing it, and adds a plausible wrong answer on the way.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Gatherer</em> writes the note, because it already holds the decomposition and has just read every report. <em>Note</em> has a fixed shape and is short enough to read in full. <em>Principal</em> reads it on return and is not expected to read anything else first.</p>
+
+      <p class="field">Collaborations</p>
+      <p>An application of <a href="/patterns#continuity-as-memory"><strong>Continuity as Memory</strong></a> (OM-001 · 14) where the reader is the person. Written at the end of <a href="/om-002#gather"><strong>Gather</strong></a> (OM-002 · 8), which is the only moment the whole state is in one place. Feeds <strong>Standing by Readiness</strong> (OM-003 · 1), whose one-line summary of a squad is the note's first field. Governed by <a href="/patterns#honest-gauge"><strong>Honest Gauge</strong></a> (OM-001 · 12), because a stale note is a green light over a broken system.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: switching squads costs reading rather than rebuilding, which is what makes four to six of them possible at all.</li>
+        <li><em>Gain</em>: decisions survive with their reasons attached, so they are not re-litigated on every return.</li>
+        <li><em>Cost</em>: a second artifact to maintain, and the maintenance falls at the end of a gather when everything wants to stop.</li>
+        <li><em>Trap</em>: a note that becomes a summary of the transcript. Then it grows without bound, stops being readable in full, and the person goes back to the diff.</li>
+        <li><em>Trap</em>: staleness that does not show. A note with no date is a claim about the present made at an unknown time.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Fix the shape and keep it short: what this squad is for, where it stands, what it is blocked on, what has been decided and when, and what must land before it. Write it at the end of every gather, as part of the gather rather than as a chore after it. Date every line that is a decision, since the ones without dates are the ones that will mislead. Keep it in the squad's own workspace so it travels with the work. And prefer replacing lines to appending them — a note that only grows is a transcript with extra steps.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>re-entry · presence
+  for        the ambient light channel and its states
+  state      2 units done, 1 blocked
+  blocked    "capability" vs "affordance" in the public API — needs you
+  decided    13 Aug · states are named, not numbered (breaks the old client)
+  lands after console/docs-rename, which renames the same symbols</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Reading a diff to remember why a squad exists. Typing “where were we?” to an agent. The same context explained twice in a week to the same squad. Or a decision re-made differently, because the first one was in a transcript nobody reopened.</p>
+
+      <p class="field">Evidence</p>
+      <p>Practice. The comparison that would give the claim a number — reconstruction timed against reading — is <a href="#slot-7">slot 7</a>.</p>
+
+      <p class="field">Known uses</p>
+      <p>Handover notes at a shift change, in every trade that has shifts. A ship's log. The <code>STATUS</code> file at the top of a long-running branch. A good issue description, maintained rather than written once.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Standing by Readiness</strong> (OM-003 · 1), <a href="/patterns#continuity-as-memory"><strong>Continuity as Memory</strong></a> (OM-001 · 14), <a href="/om-002#gather"><strong>Gather</strong></a> (OM-002 · 8).</p>
+    </div>
+  </div>
+</section>
+
+<section id="landing-order">
+  <div class="row">
+    <div class="mark">17</div>
+    <div class="body">
+      <p class="part">Level two · Pattern 3</p>
+      <h2>Landing Order</h2>
+
+      <p class="field first">Intent</p>
+      <p>Decide the order in which finished work lands, explicitly and before it is finished, because the shared trunk is the one thing isolation cannot copy.</p>
+
+      <p class="field">Motivation</p>
+      <p><a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (OM-002 · 3) makes parallel work possible by giving every unit its own copy, and it says plainly that conflict is deferred rather than removed — deferred to the join, where a person can see it. At the yard, every squad's join arrives at the same place: one repository, one CI, one main branch, one release, one production database. <strong>Isolation copies workspaces. It cannot copy the trunk.</strong></p>
+      <p>Three things follow, and none of them is a fleet-level problem.</p>
+      <p>Finished work rots while it waits. A branch that is correct on Tuesday is a rebase on Thursday, because the ground moved under it. The cost of landing rises with the time held, so holding finished work for a coherent release is not free — it is a loan against a rising rate.</p>
+      <p>A landing changes other squads' ground. Squad B's finished work can be invalidated by squad A landing first, and nobody is informed, because A's units know only A's work. The failure surfaces as a CI break in a branch that nobody touched.</p>
+      <p>And the order is a decision no unit can make. Each squad knows its own readiness and nothing about the others; the ordering information exists only in the person, which is precisely the party with no capacity to spare. Uneven readiness guarantees the queue is never empty.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever two or more squads land into the same target. The pattern is worth its cost from the second squad onwards, and by four it is the yard's dominant constraint.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 210" role="img" aria-label="Four squad branches of different lengths converge on a single trunk. One lands, and a second branch is marked as invalidated by the landing, requiring rework before it can land.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">FOUR SQUADS, ONE TRUNK</text>
+          <text x="8" y="44" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">patterns</text>
+          <rect x="90" y="34" width="150" height="14" fill="currentColor" fill-opacity=".1" stroke="currentColor"/>
+          <text x="8" y="76" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">console</text>
+          <rect x="90" y="66" width="230" height="14" fill="currentColor" fill-opacity=".1" stroke="currentColor"/>
+          <text x="8" y="108" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">presence</text>
+          <rect x="90" y="98" width="120" height="14" fill="currentColor" fill-opacity=".1" stroke="currentColor"/>
+          <text x="8" y="140" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">voice</text>
+          <rect x="90" y="130" width="300" height="14" fill="currentColor" fill-opacity=".1" stroke="currentColor"/>
+          <line x1="470" y1="26" x2="470" y2="184" stroke="currentColor" stroke-width="1.6"/>
+          <text x="480" y="22" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">TRUNK</text>
+          <path d="M240,41 L464,41" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="330" y="34" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">lands first</text>
+          <path d="M320,73 L400,73" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <line x1="404" y1="66" x2="418" y2="80" stroke="currentColor"/>
+          <line x1="418" y1="66" x2="404" y2="80" stroke="currentColor"/>
+          <text x="462" y="58" text-anchor="end" font-size="10" fill="currentColor" opacity=".7">renames the same symbols</text>
+          <rect x="90" y="156" width="230" height="14" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="8" y="166" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor" opacity=".75">console′</text>
+          <text x="290" y="182" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">finished work, redone — nobody was told the ground moved</text>
+          <path d="M320,163 L464,163" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="8" y="202" font-size="10" fill="currentColor" opacity=".6">The bars are work. The gap between finishing and landing is where the cost lives.</text>
+        </svg>
+        <figcaption>Nothing in this figure is a merge conflict. The two branches merge cleanly; the second one is simply wrong afterwards, which is the failure isolation defers and the yard receives.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Squads</em> produce finished work at different times. <em>Trunk</em> is the one target, and the list of things like it — CI capacity, the release, the production database, a token with one permitted caller — is the yard's set of singletons. <em>Order</em> is stated at commission time and revised out loud. <em>Principal</em> owns it, because nothing else can.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Receives what <a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (OM-002 · 3) defers, at the level where the deferral finally has to be paid. Depends on <strong>Standing by Readiness</strong> (OM-003 · 1) to distinguish <em>done</em> from <em>ready to land</em>. A change of order is a dispatch to the squads whose ground moved, not a note — and that dispatch is a <a href="/om-002#scoped-commission"><strong>Scoped Commission</strong></a> (OM-002 · 2) like any other.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: invalidation is anticipated rather than discovered, and by the party that can act on it.</li>
+        <li><em>Gain</em>: the rot cost becomes visible as a queue rather than as a series of unexplained rebases.</li>
+        <li><em>Cost</em>: an order decided early is decided with less information than one decided late.</li>
+        <li><em>Cost</em>: landing small and often costs more landings, each with its own ceremony.</li>
+        <li><em>Trap</em>: holding finished work for a coherent release. The coherence is real and the interest is compounding, and the trade is usually made by default rather than on purpose.</li>
+        <li><em>Trap</em>: treating the order as a private plan. If it lives only in the person's head, the squads cannot warn you when it is wrong.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>State the intended order when the squads are commissioned — it is part of the decomposition, not an afterthought, and it is cheapest to get right before anything is built. Keep a written list of the yard's singletons: the trunk, CI capacity, the release channel, the production database, the domain, any token with one permitted caller, and the person. Those are what cannot be isolated, and everything that contends is contending for one of them. Prefer landing small and often, and treat a long-held branch as a cost that is accruing rather than as work that is safe. When the order changes, dispatch that fact to the squads it moves, and expect them to re-verify rather than assume.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>landing queue · 13 Aug
+  1  patterns/name-states     ready      no shared symbols
+  2  console/docs-rename      ready      renames what presence depends on
+  3  presence/capability-api  blocked    re-verify after 2 lands
+  —  voice/streaming-fix      running    lands last, touches the trunk widely
+  note: 2 before 3 was decided at commission time, not at merge time</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Two finished branches waiting on each other while a person decides from memory which goes first. Or a squad's work invalidated by another's landing, discovered by CI on a branch nobody touched. Or a rebase that costs more than the work it is rebasing.</p>
+
+      <p class="field">Evidence</p>
+      <p>Practice, and reasoning from the singleton list. The invalidation incident that would make the cost concrete is <a href="#slot-8">slot 8</a>.</p>
+
+      <p class="field">Known uses</p>
+      <p>Merge queues and landing trains. Release trains with a fixed cadence. Work-in-progress limits in kanban, which exist because finished-and-unlanded work is the expensive kind. A slipway, which admits one hull at a time regardless of how many are built.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Standing by Readiness</strong> (OM-003 · 1), <a href="/om-002#isolation-by-construction"><strong>Isolation by Construction</strong></a> (OM-002 · 3), <a href="/om-002#gather"><strong>Gather</strong></a> (OM-002 · 8).</p>
+    </div>
+  </div>
+</section>
+
+<section id="can-an-agent-run-a-yard">
+  <div class="row">
+    <div class="mark">18</div>
+    <div class="body">
+      <h2>Whether an agent can run a yard</h2>
+      <p>This is stated as open because it is open, and because the alternative — answering it from taste — is how a pattern language acquires entries that are preferences wearing the template.</p>
+      <p>The case for is straightforward. Everything in §15 to §17 is scheduling, bookkeeping and ordering: readiness, notes, a queue. Those are exactly the tasks that survive delegation well, and the person's own account of what they contribute is not any of them:</p>
+      <blockquote>
+        <p>“The whole time, you are giving the thing that the agents need, which is the taste and the direction and the choices that make this thing you're building yours.”</p>
+        <cite>Working notes, 13 August 2026 — quoted in <a href="/om-002#the-evidence">OM-002 §3</a></cite>
+      </blockquote>
+      <p>The case against is the asymmetry. A yard-running agent would need authority over the singletons — the trunk, the release, the order in which things land — which is the one place where <a href="/om-002#scoped-commission"><strong>Scoped Commission</strong></a> (OM-002 · 2) is hardest to write, because the dangerous actions are exactly the ones the job consists of. It would need a return path to a person that tolerates the person not answering, which is a channel nobody has built. And it would have to hold four to six areas well enough to know that landing A invalidates B — a judgement that currently rests on knowing why B exists.</p>
+      <p><strong>The observation that makes this more than an open question: the asymmetry does not disappear when you delegate the yard. It moves.</strong> Put an agent in charge and the person becomes the principal of that agent, and every property in §14's table reappears one level up — unscopable authority, unreliable addressing, no report, attention as the constraint. The boundary is not a level in the hierarchy. It sits wherever the person is, and it moves when they do.</p>
+      <p>What would settle it, in the direction of yes: a yard run by an agent for a week, whose landing order produced fewer invalidations than the person's, with the person still supplying direction. In the direction of no: the same trial producing more invalidations, or producing the same number while the person spent as long supervising as they had spent deciding. Neither has been run.</p>
+      <p>What can be said now is narrower and worth saying: <strong>an agent can hold the yard's state without holding its authority.</strong> Readiness, the notes, the queue and the singleton list are all things a squad or a yard-level agent can maintain, and maintaining them is most of §15 to §17. Whether the ordering decision itself can move is the open part.</p>
+    </div>
+  </div>
+</section>
+
+<section id="what-this-does-not-cover">
+  <div class="row">
+    <div class="mark">19</div>
+    <div class="body">
+      <h2>What this does not cover</h2>
+      <p>Named honestly, on the same principle as the two documents before it — and there is more to name here, because there is less evidence.</p>
+      <ul>
+        <li><strong>Frequency, everywhere.</strong> One practitioner, one yard. Everything here establishes that a failure exists and roughly what it costs. Nothing establishes how often it happens, or whether other people's yards fail the same way.</li>
+        <li><strong>Whether six is the right number of arrangements</strong>, or whether the set is closed. Tournament brackets, shadow runs, and relays that hand work to a fresh context when one is exhausted were all considered and are not here — not because they failed the §2 test but because nothing was on record either way.</li>
+        <li><strong>Cost.</strong> Still. A panel is N times the price for one answer and a verifier doubles a claim's cost, and nothing here says when either is worth it. <a href="/om-002#what-this-does-not-cover">OM-002 §14</a> named this as probably the most valuable missing pattern; it still is.</li>
+        <li><strong>More than one person in a yard.</strong> Two principals with different authority over the same squads is a real and common case, and it is not addressed at all. OM-001 named it as <em>collaborative surfaces</em> and it has now gone uncovered by three documents.</li>
+        <li><strong>Measuring attention.</strong> The yard half rests on claims about where a person's attention went, reported by the person whose attention it was. No instrument here measures it, and the one number that would matter — time a squad spent blocked while another was watched — is <a href="#slot-6">slot 6</a>.</li>
+        <li><strong>Long Runner with Check-Ins</strong>, cut in §6 for failing the composite test. If a check-in turns out to change what <a href="/om-002#fleet-standing"><strong>Fleet Standing</strong></a> means, it comes back with an argument attached.</li>
+        <li><strong>Depth, heterogeneity, and the unit that never reports.</strong> Three of OM-002's open items, untouched here.</li>
+        <li><strong>Evaluation.</strong> For the third time. There is no accepted measure of whether an arrangement outperformed another on the same work, or whether a yard of four beats two of two. Until there is, the central claims of all three documents are argued rather than demonstrated, and this one has the most arguing to do.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sources-and-lineage">
+  <div class="row">
+    <div class="mark">20</div>
+    <div class="body">
+      <h2>Sources and lineage</h2>
+
+      <p class="field first">Directly ancestral</p>
+      <ul>
+        <li><a href="/om-002">OM-002</a>, <em>Working a Fleet</em> — the eight patterns every composite here is made of, and the arrangement §7 names as the baseline.</li>
+        <li><a href="/om-001">OM-001</a>, <em>Conversational Agent Control Surfaces</em> — the template, the Failure Signature field, and the concession in its preface that §2 and §13 of this document are an answer to.</li>
+        <li>Gamma, Helm, Johnson &amp; Vlissides, <em>Design Patterns</em> (1994) — the form.</li>
+        <li>Alexander, <em>The Origins of Pattern Theory…</em>, OOPSLA 1996 keynote, published in <em>IEEE Software</em> (1999) — generativity, and the standard §13 scores itself against.</li>
+      </ul>
+
+      <p class="field">Adjacent traditions</p>
+      <ul>
+        <li>Pipelines and dataflow: Unix pipes, build DAGs, compiler passes. Composite 2 is that literature with an agent at each stage and an assumption problem the ancestors did not have.</li>
+        <li>Juries and peer review: independence rules worked out over centuries precisely because unanimity from a shared channel is worthless. Composite 5 borrows the rules and the reason for them.</li>
+        <li>Red teaming, falsification, adversarial review: Composite 6, whose whole content is where the burden of proof sits.</li>
+        <li>Sampling to saturation: fuzzing to coverage plateau, capture–recapture in ecology. Composite 4's stopping rule is theirs.</li>
+        <li>Queueing and flow: work-in-progress limits, merge queues, release trains, the theory of constraints. The yard's landing problem is an old one, with one difference — the constraint is a person's attention rather than a machine's throughput, and attention cannot be bought in units.</li>
+      </ul>
+
+      <p class="field">Primary material</p>
+      <p>One practitioner's working practice, August 2026: four to six areas of a product run at once, each with its own dispatcher, over days rather than months. The measurements quoted anywhere in this document are OM-002's and are not re-derived here. <strong>No new instrument measurements were made for this document</strong>, which is the single most important thing to know about it, and §4 lists the eight incidents that would change that.</p>
+
+      <p class="field">What is claimed</p>
+      <p>Less than OM-002 claimed, which was already less than OM-001. Fourteen patterns with four measured; then eight with two measured; now six composites and three patterns with none newly measured, resting on practice, on prior art in fields whose parts could not decide to do something else, and on reasoning about topology.</p>
+      <p>It is published in this state on the same principle as its predecessors: an argument in public gets corrected faster than one held back until it is safe, and the open slots make the corrections cheap to aim. The composites are the more confident half. The yard is a first description of a level that will look different once anybody else describes theirs.</p>
+      <p>Corrections and counter-examples: <a href="mailto:hello@organon.art">hello@organon.art</a>. An arrangement shown not to change what its parts mean should be cut, as one already has been.</p>
+    </div>
+  </div>
+</section>
+
+<div class="row">
+  <div class="mark"></div>
+  <div class="body">
+    <div class="colophon">
+      OM-003 · Organon Mind · <a href="/om-001">OM-001</a> · <a href="/om-002">OM-002</a> · <a href="/patterns">the catalogue</a> · <a href="https://organonmind.org">organonmind.org</a><br>
+      Set in the system text face; apparatus and code in monospace. Figures drawn, not generated.<br>
+      No external requests, no analytics, no trackers.
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
