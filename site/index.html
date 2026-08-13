@@ -23,6 +23,8 @@
       --paper:#ffffff;
       --ink:#0f1114;
       --faint:#8b919b;
+      --rule:#e2e5e9;
+      --link:#1440c4;
       --sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
       --mono:ui-monospace,"Cascadia Mono","SF Mono","Roboto Mono",Menlo,Consolas,monospace;
     }
@@ -34,6 +36,8 @@
       background:var(--paper);
       color:var(--ink);
       font-family:var(--sans);
+      font-size:17px;
+      line-height:1.65;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
       /* svh, not vh: mobile browser chrome must not throw off the centring. */
@@ -41,27 +45,69 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:3rem 1.5rem;
+      padding:4rem 1.5rem;
     }
+    main{width:100%;max-width:26rem}
 
-    /* The wordmark is the page. Same treatment as the masthead on every
-       publication, scaled up — monospace, uppercase, widely tracked — so the
-       identity is one element used consistently rather than a logo. */
+    /* Same treatment as the masthead on every publication — monospace,
+       uppercase, widely tracked — so the identity is one element used
+       consistently rather than a logo. */
     .wordmark{
       font-family:var(--mono);
-      font-size:clamp(.82rem,2.6vw,1.05rem);
-      letter-spacing:.42em;
+      font-size:.78rem;
+      letter-spacing:.32em;
       text-transform:uppercase;
-      margin:0;
-      /* letter-spacing adds a trailing space after the final glyph; the indent
-         puts it back so the mark is optically centred rather than measured. */
-      text-indent:.42em;
+      margin:0 0 2.6rem;
     }
+
+    /* The page says nothing about itself. It is a way in, not an explanation:
+       two documents, named, and no description of the programme around them. */
+    .index{list-style:none;margin:0;padding:0}
+    .index li{border-top:1px solid var(--rule)}
+    .index li:last-child{border-bottom:1px solid var(--rule)}
+    .index a{
+      display:block;
+      padding:.95rem 0;
+      text-decoration:none;
+      color:inherit;
+    }
+    .index a:hover .title,
+    .index a:focus-visible .title{
+      text-decoration:underline;
+      text-decoration-color:var(--link);
+      text-underline-offset:3px;
+    }
+    .index a:focus-visible{outline:2px solid var(--link);outline-offset:3px}
+    .label{
+      display:block;
+      font-family:var(--mono);
+      font-size:.68rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--faint);
+      margin-bottom:.2rem;
+    }
+    .title{font-weight:600;letter-spacing:-.008em}
   </style>
 </head>
 <body>
   <main>
     <h1 class="wordmark">Organon Mind</h1>
+
+    <ul class="index">
+      <li>
+        <a href="/patterns">
+          <span class="label">Patterns</span>
+          <span class="title">Conversational agent control surfaces</span>
+        </a>
+      </li>
+      <li>
+        <a href="/om-001">
+          <span class="label">OM-001 · Paper</span>
+          <span class="title">Conversational Agent Control Surfaces</span>
+        </a>
+      </li>
+    </ul>
   </main>
 </body>
 </html>

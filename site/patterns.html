@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patterns — Organon Mind</title>
+<meta name="description" content="Fourteen patterns for mixed-initiative, tool-using interfaces.">
+<link rel="icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Organon Mind">
+<meta property="og:title" content="Patterns">
+<meta property="og:description" content="Fourteen patterns for mixed-initiative, tool-using interfaces.">
+<meta property="og:url" content="https://organonmind.org/patterns">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --paper:#ffffff; --raise:#f7f8f9; --ink:#0f1114; --muted:#5d636c; --faint:#8b919b;
+  --rule:#e2e5e9; --rule-strong:#c9ced6; --link:#1440c4;
+  --sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --measure:34rem; --gutter:9.5rem;
+}
+/* Deliberately single-theme, as the publications are. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.65;margin:0;padding:0 1.5rem 8rem;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+.doc{max-width:calc(var(--gutter) + var(--measure));margin:0 auto}
+.row{display:grid;grid-template-columns:var(--gutter) minmax(0,1fr)}
+.row>.mark{font-family:var(--mono);font-size:.7rem;line-height:1.5;color:var(--faint);
+  letter-spacing:.04em;padding-top:.42rem;padding-right:1.5rem}
+.row>.body{min-width:0}
+@media (max-width:44rem){
+  .row{grid-template-columns:1fr}
+  .row>.mark{padding:0 0 .3rem;font-size:.66rem}
+  :root{--gutter:0rem}
+}
+
+.mast{padding:4.5rem 0 0}
+.org{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin:0}
+.org a{color:inherit;text-decoration:none}
+h1{font-weight:600;letter-spacing:-.022em;font-size:clamp(1.85rem,4.4vw,2.6rem);
+  line-height:1.14;margin:2.6rem 0 0;max-width:var(--measure);text-wrap:balance}
+.standfirst{font-size:1.1rem;color:var(--muted);margin:.85rem 0 0;max-width:var(--measure);text-wrap:balance}
+
+h2{font-weight:600;font-size:1.32rem;letter-spacing:-.012em;line-height:1.28;margin:0;text-wrap:balance}
+section{margin:3.6rem 0 0}
+p{margin:0 0 1.1rem;max-width:var(--measure)}
+p:last-child{margin-bottom:0}
+a{color:var(--link);text-underline-offset:2px;text-decoration-thickness:1px}
+a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+strong{font-weight:620}
+
+.part{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:2.9rem 0 .7rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule-strong)}
+.part:first-of-type{margin-top:1.4rem}
+
+.plist{list-style:none;margin:0;padding:0}
+.plist li{margin:0;border-bottom:1px solid var(--rule)}
+.plist a{display:grid;grid-template-columns:2.1rem 1fr;gap:0 .5rem;
+  padding:.72rem 0;text-decoration:none;color:inherit}
+.plist a:hover .pname,.plist a:focus-visible .pname{text-decoration:underline;
+  text-decoration-color:var(--link);text-underline-offset:2px}
+.plist .num{font-family:var(--mono);font-size:.72rem;color:var(--faint);padding-top:.2rem;
+  font-variant-numeric:tabular-nums}
+.pname{font-weight:600;letter-spacing:-.006em}
+.pintent{color:var(--muted);font-size:.93rem;line-height:1.5;margin-top:.1rem}
+
+figure{margin:1.5rem 0 1.8rem}
+figure svg{width:100%;height:auto;color:var(--ink);display:block}
+figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(--measure)}
+
+.note{margin:3rem 0 0;padding:.9rem 1rem;border:1px solid var(--rule);background:var(--raise);
+  font-size:.9rem;color:var(--muted);max-width:var(--measure)}
+.note a{color:var(--link)}
+
+.colophon{margin:5rem 0 0;padding-top:1.1rem;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:.72rem;line-height:1.8;color:var(--muted)}
+.colophon a{color:var(--link)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{padding:0;font-size:10.5pt}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker>
+</defs></svg>
+
+<div class="doc">
+
+<header class="mast">
+  <div class="row">
+    <div class="mark"></div>
+    <div class="body">
+      <p class="org"><a href="/">Organon Mind</a></p>
+      <h1>Patterns</h1>
+      <p class="standfirst">Fourteen patterns for mixed-initiative, tool-using interfaces.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="row">
+    <div class="mark"></div>
+    <div class="body">
+      <figure>
+        <svg viewBox="0 0 720 250" role="img" aria-label="A cycle of five stages — Orientation, Intent, Execution, Authority, Truth and continuity — with an arrow returning from the last to the first labelled next task. Turn sits apart, connected to Execution by a dashed line labelled governs every stage.">
+          <rect x="8" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="69" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Orientation</text>
+          <rect x="158" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="219" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Intent</text>
+          <rect x="308" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="369" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Execution</text>
+          <rect x="458" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="519" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Authority</text>
+          <rect x="588" y="110" width="124" height="34" fill="none" stroke="currentColor"/>
+          <text x="650" y="131" text-anchor="middle" font-size="11.5" fill="currentColor">Truth and</text>
+          <text x="650" y="118" text-anchor="middle" font-size="11.5" fill="currentColor">continuity</text>
+          <line x1="130" y1="57" x2="152" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="280" y1="57" x2="302" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="430" y1="57" x2="452" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M580,57 L650,57 L650,104" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M588,127 L520,127 L520,190 L69,190 L69,80" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="300" y="184" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">next task</text>
+          <rect x="308" y="110" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="369" y="131" text-anchor="middle" font-size="11.5" fill="currentColor">Turn</text>
+          <line x1="369" y1="106" x2="369" y2="78" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="380" y="98" font-size="10.5" fill="currentColor" opacity=".65">governs every stage</text>
+        </svg>
+        <figcaption>The patterns sit at defined points on the loop a delegated task travels. Turn is drawn apart because it is not a stage but a property of every stage.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="mark"></div>
+    <div class="body">
+
+      <p class="part">I · Orientation</p>
+      <ul class="plist">
+        <li><a href="/om-001#capability-disclosure">
+          <span class="num">1</span>
+          <span><span class="pname">Capability Disclosure</span>
+          <span class="pintent">Make the agent’s powers, position and limits legible before the principal commits to a request.</span></span>
+        </a></li>
+        <li><a href="/om-001#mode-legibility">
+          <span class="num">2</span>
+          <span><span class="pname">Mode Legibility</span>
+          <span class="pintent">Make the active mode visible at the moment of use, not merely settable at the moment of configuration.</span></span>
+        </a></li>
+      </ul>
+
+      <p class="part">II · Turn</p>
+      <ul class="plist">
+        <li><a href="/om-001#streaming-turn">
+          <span class="num">3</span>
+          <span><span class="pname">Streaming Turn</span>
+          <span class="pintent">Emit the response as it is produced, so the principal’s wait overlaps the agent’s work instead of following it.</span></span>
+        </a></li>
+        <li><a href="/om-001#barge-in">
+          <span class="num">4</span>
+          <span><span class="pname">Barge-In</span>
+          <span class="pintent">Let the principal seize the turn at any moment — and define honestly what that stops.</span></span>
+        </a></li>
+      </ul>
+
+      <p class="part">III · Intent</p>
+      <ul class="plist">
+        <li><a href="/om-001#scope-on-uncertainty">
+          <span class="num">5</span>
+          <span><span class="pname">Scope-on-Uncertainty</span>
+          <span class="pintent">Ask one question when ambiguity would change the blast radius; otherwise proceed on a stated assumption.</span></span>
+        </a></li>
+        <li><a href="/om-001#constrained-choice">
+          <span class="num">6</span>
+          <span><span class="pname">Constrained Choice</span>
+          <span class="pintent">When ambiguity is enumerable, offer the options as selectable structure rather than inviting free text.</span></span>
+        </a></li>
+      </ul>
+
+      <p class="part">IV · Execution</p>
+      <ul class="plist">
+        <li><a href="/om-001#plan-approve-execute-receipt">
+          <span class="num">7</span>
+          <span><span class="pname">Plan · Approve · Execute · Receipt</span>
+          <span class="pintent">Four phases, so that understanding, consent, action and evidence are each separately inspectable.</span></span>
+        </a></li>
+        <li><a href="/om-001#tool-call-transparency">
+          <span class="num">8</span>
+          <span><span class="pname">Tool-Call Transparency</span>
+          <span class="pintent">Expose which tool ran, against what target, why, and with what result — as structured events, not prose.</span></span>
+        </a></li>
+        <li><a href="/om-001#ambient-activity-channel">
+          <span class="num">9</span>
+          <span><span class="pname">Ambient Activity Channel</span>
+          <span class="pintent">Signal state through a channel the principal perceives without attending to it.</span></span>
+        </a></li>
+      </ul>
+
+      <p class="part">V · Authority</p>
+      <ul class="plist">
+        <li><a href="/om-001#approval-gate">
+          <span class="num">10</span>
+          <span><span class="pname">Approval Gate</span>
+          <span class="pintent">Explicit, per-action consent before anything irreversible, outward-facing, or that spends the principal’s authority.</span></span>
+        </a></li>
+        <li><a href="/om-001#progressive-autonomy">
+          <span class="num">11</span>
+          <span><span class="pname">Progressive Autonomy</span>
+          <span class="pintent">Let the scope of unattended action widen with demonstrated reliability and narrow with risk.</span></span>
+        </a></li>
+      </ul>
+
+      <p class="part">VI · Truth and continuity</p>
+      <ul class="plist">
+        <li><a href="/om-001#honest-gauge">
+          <span class="num">12</span>
+          <span><span class="pname">Honest Gauge</span>
+          <span class="pintent">A signal must be wrong only when the system is wrong. One that reads red in health tells you nothing on the day it is right.</span></span>
+        </a></li>
+        <li><a href="/om-001#recoverable-execution">
+          <span class="num">13</span>
+          <span><span class="pname">Recoverable Execution</span>
+          <span class="pintent">Every action has a visible before-state and a path back, so that being wrong is cheap.</span></span>
+        </a></li>
+        <li><a href="/om-001#continuity-as-memory">
+          <span class="num">14</span>
+          <span><span class="pname">Continuity as Memory</span>
+          <span class="pintent">Carry what matters in durable, correctable memory rather than in the length of a transcript.</span></span>
+        </a></li>
+      </ul>
+
+      <div class="note">
+        Each pattern is stated in full — intent, motivation, structure, consequences, failure signature — in
+        <a href="/om-001">OM-001, <em>Conversational Agent Control Surfaces</em></a>.
+        Also there: the <a href="/om-001#an-acceptance-checklist">acceptance checklist</a>,
+        the <a href="/om-001#forces-that-recur">recurring forces</a>, and
+        <a href="/om-001#what-this-catalogue-does-not-cover">what the catalogue does not cover</a>.
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="row">
+  <div class="mark"></div>
+  <div class="body">
+    <div class="colophon">
+      Organon Mind · <a href="https://organonmind.org">organonmind.org</a><br>
+      No external requests, no analytics, no trackers.
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
