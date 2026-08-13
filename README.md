@@ -27,8 +27,14 @@ and the design — and the pattern explorer needs design control a renderer cann
 give. One artifact, no drift.
 
 `doc/` keeps sources for things that are genuinely *not* the pages: the figure
-prompts, which are the source for any generated figure, and the writing behind
-`/why`.
+prompts, which are the source for any generated figure, the writing behind
+`/why`, and the note on how a publication came to be the way it is.
+
+`doc/om-003-report.md` is the first of those last: what was assumed while drafting
+OM-003, what was verified and how, and what was left open. It exists because the
+decisions behind a paper — one document or two, which candidate was cut and why,
+which claims are reasoning rather than measurement — are worth more written down
+than reconstructed. It is not a page and will never be served.
 
 | Page | How it is made |
 |---|---|
