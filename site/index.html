@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Organon Mind</title>
-  <meta name="description" content="Because we need to see what it&rsquo;s doing, not just what it says.">
+  <meta name="description" content="Organon Mind.">
 
   <!-- No analytics, no cookies, no external requests. One page, self-contained. -->
 
@@ -13,91 +13,55 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Organon Mind">
   <meta property="og:title" content="Organon Mind">
-  <meta property="og:description" content="Because we need to see what it&rsquo;s doing, not just what it says.">
   <meta property="og:url" content="https://organonmind.org/">
   <meta name="twitter:card" content="summary">
   <style>
-    :root {
-      --bg: #0e0d0b;
-      --ink: #ece4d6;
-      --faint: #6b6355;
-      --accent: #d9c7a0;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
-      --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
-    }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f7f3ea;
-        --ink: #1d1a15;
-        --faint: #8a8172;
-        --accent: #7a6a45;
-      }
+    /* Tokens shared with the publications (OM-001). Deliberately single-theme:
+       the pages have a canonical appearance and do not follow the reader's
+       operating system. Every colour is painted explicitly. */
+    :root{
+      --paper:#ffffff;
+      --ink:#0f1114;
+      --faint:#8b919b;
+      --sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      --mono:ui-monospace,"Cascadia Mono","SF Mono","Roboto Mono",Menlo,Consolas,monospace;
     }
 
-    * { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 20px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
       /* svh, not vh: mobile browser chrome must not throw off the centring. */
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:3rem 1.5rem;
     }
 
-    main {
-      max-width: 36rem;
-      padding: 3rem 1.5rem;
-      width: 100%;
-    }
-
-    .wordmark {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: var(--faint);
-      margin: 0 0 3.4rem;
-      text-indent: 0.42em;
-    }
-
-    /* The line. It carries the page, so it gets the weight and the room. */
-    .line {
-      font-size: clamp(1.9rem, 6.2vw, 2.9rem);
-      line-height: 1.22;
-      font-weight: 600;
-      letter-spacing: -0.011em;
-      margin: 0;
-      text-wrap: balance;
-    }
-    .line .turn {
-      display: block;
-      color: var(--accent);
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    @media (max-width: 30rem) {
-      body { font-size: 18px; }
-      .wordmark { margin-bottom: 2.6rem; }
+    /* The wordmark is the page. Same treatment as the masthead on every
+       publication, scaled up — monospace, uppercase, widely tracked — so the
+       identity is one element used consistently rather than a logo. */
+    .wordmark{
+      font-family:var(--mono);
+      font-size:clamp(.82rem,2.6vw,1.05rem);
+      letter-spacing:.42em;
+      text-transform:uppercase;
+      margin:0;
+      /* letter-spacing adds a trailing space after the final glyph; the indent
+         puts it back so the mark is optically centred rather than measured. */
+      text-indent:.42em;
     }
   </style>
 </head>
 <body>
   <main>
-    <p class="wordmark">Organon Mind</p>
-
-    <h1 class="line">
-      Because we need to see what it&rsquo;s doing,
-      <span class="turn">not just what it says.</span>
-    </h1>
+    <h1 class="wordmark">Organon Mind</h1>
   </main>
 </body>
 </html>
