@@ -11,7 +11,11 @@ lineage as `organon.art`: one page, no external requests.
 - `patterns.html` — the pattern catalogue at `/patterns`, and **canonical for
   it**: index rail, specimen detail, and Related Patterns as navigation rather
   than a dead list. One file, hand-authored, no external requests; the small
-  amount of JavaScript is the explorer itself and runs from the same file.
+  amount of JavaScript is the explorer itself and runs from the same file. The
+  Overview carries *The line this stands in* — the OM-001 preface adapted to
+  what this page does, and the reason Related Patterns is navigable at all.
+  ⚠️ It is the short version on purpose; the signed one lives in the paper, and
+  the two should not drift into competing accounts of the same debt.
 - `om-001.html` — the paper at `/om-001`. Since Rev. 3 it is the **argument** for
   the catalogue, not the catalogue: the gap, why the existing literature does not
   fill it, what the missing vocabulary costs, the evidence, and the proposed
