@@ -118,6 +118,12 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
   text-decoration-color:var(--link);text-underline-offset:3px}
 .cat a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
 
+/* The preface is the one section written in the first person, and the one
+   outside the numbering — so its mark is empty, as the masthead's is. */
+.preface .body>p{font-size:1.035rem}
+.sig{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);
+  margin:1.6rem 0 0;padding-top:.9rem;border-top:1px solid var(--rule)}
+
 .aside{font-size:.94rem;color:var(--muted);border-left:2px solid var(--rule-strong);
   padding-left:.95rem;margin:1.6rem 0;max-width:var(--measure)}
 .aside p{margin:0 0 .6rem}
@@ -160,11 +166,31 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
         <dt>Catalogue</dt><dd><a href="/patterns">organonmind.org/patterns</a></dd>
         <dt>Status</dt><dd>Current</dd>
       </dl>
+      <p class="revision">Rev. 4 — 12 Aug 2026. Preface added, signed: where the form comes from, and what carrying it forward obliges. A document that borrows the Gang of Four template this closely should acknowledge it on its own front page rather than in a sources list, and should state the criticism it is inheriting along with the method.</p>
       <p class="revision">Rev. 3 — 12 Aug 2026. Restructured from catalogue to argument. The fourteen patterns are now published at <a href="/patterns">/patterns</a>, which is canonical; this document makes the case for the language and the form it takes, and reproduces two entries as worked examples. Category changed from Reference to Argument. Every per-pattern anchor from Rev. 2 still resolves — see §9.</p>
       <p class="revision">Rev. 2 — 12 Aug 2026. <em>Honest Instrument</em> renamed <em>Honest Gauge</em> throughout; “instrument” collides with Organon’s primary sense. Superseded, not withdrawn.</p>
     </div>
   </div>
 </header>
+
+<section id="preface" class="preface">
+  <div class="row">
+    <div class="mark"></div>
+    <div class="body">
+      <h2>Preface</h2>
+      <p>I met these ideas backwards.</p>
+      <p><em>Design Patterns</em> was the first book that changed how I saw software rather than what I knew about it, and reading it remains one of the most consequential things that has happened to me in this trade. What it gave me was not twenty-three solutions — I have used perhaps half of them, and argued against several. It was the discovery that a design decision could be a <em>named thing</em>, with a context, a set of forces pulling against each other, a stated cost, and a position among other named things. Before that book, design was taste. After it, design was something you could be wrong about in public.</p>
+      <p>I came to Christopher Alexander much later, through architecture, for reasons that had nothing to do with code. So I read the adaptation a decade before I read the original, which is a strange way round and an instructive one.</p>
+      <p>The first thing you notice, arriving at Alexander from software, is how far the Gang of Four carried the form. His patterns are about where the light falls, how high a windowsill sits, where people naturally stop to talk. Ours are about object graphs. That the template survives a journey that long is not luck — it is a claim about what a pattern is: a resolution of competing forces in a context, named, so that people who did not invent it can argue about it.</p>
+      <p>The second thing you notice is that Alexander did not think the journey had carried the important part. He said so directly, to a room of object-oriented programmers, in his 1996 OOPSLA keynote. He was generous about the format — context, problem, solution — and clear that the format was not the point. What had not come across was that a pattern language is meant to be <em>generative</em>: a sequence you can follow to produce a coherent whole, rather than a catalogue of separable good ideas. And that patterns are finally judged by whether the thing they generate is good for the people who have to live inside it.</p>
+      <p>I think he was right, and I think that criticism bears on this subject more directly than it did on his audience. The artifact here is not a class hierarchy. It is a surface across which a person hands authority to a machine and then lives with what the machine does. Whether the result is good for that person is not a moral supplement to the engineering. It <em>is</em> the engineering.</p>
+      <p>So this document says out loud what it stands on. What is inherited is the template; the discipline of stating costs and non-applicability in the same breath as benefits; the insistence that patterns cite one another; and the standard that a pattern must be <em>refusable</em> or it is not a pattern. What is added is one field, and Alexander is the reason for it. A missing pattern here leaves no mark on the artifact — it shows up in someone’s irritation, and in what they blame for it. <strong>Failure Signature</strong> is where the person living in the thing gets a vote.</p>
+      <p>Whether any of this is generative in his sense — a sequence you could follow to build a whole surface, rather than fourteen things to check afterwards — I do not know. §10 is the closest it comes, and §10 is a checklist, which is precisely the weaker thing he was warning about.</p>
+      <p>Debts are not credentials. Naming this one is a way of accepting the standard, not a claim to have met it.</p>
+      <p class="sig">James Andrew Walsh · Organon Mind · 12 August 2026</p>
+    </div>
+  </div>
+</section>
 
 <section id="why-this-form">
   <div class="row">
@@ -715,6 +741,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
         <li>Microsoft Research, <em>Guidelines for Human-AI Interaction</em> — eighteen guidelines that function well as acceptance criteria; “scope services when in doubt” is the direct ancestor of pattern 5.</li>
         <li>Google, <em>Conversation Design</em> — conversation as an interaction medium.</li>
         <li>Alexander, Ishikawa &amp; Silverstein, <em>A Pattern Language</em> (1977) — the source of the word, and of the claim that patterns gain their force from citing one another rather than from being individually correct.</li>
+        <li>Alexander, <em>The Origins of Pattern Theory, the Future of the Theory, and the Generation of a Living World</em> — the 1996 OOPSLA keynote, published in <em>IEEE Software</em> (1999). The criticism the preface accepts: the format travelled to software, and generativity — a language as a sequence producing a coherent whole — largely did not, along with the concern for whether what is generated is good for the people who live in it.</li>
       </ul>
 
       <p class="field">Contemporary collections</p>
