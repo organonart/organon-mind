@@ -56,28 +56,32 @@ come to the bench.
 
 Static, no build step, served from this repo.
 
-1. In the **Organon** Vercel team, point the `organon-mind` project at the
-   `organonart/organon-mind` repo.
-2. Set **Root Directory = `site`**, Framework Preset = **Other**, no build
-   command, no install command.
-3. Domains: **`organonmind.org`** (apex) is canonical, with
-   **`www.organonmind.org`** redirecting to it.
+**The deploy configuration is not written down here, on purpose.** It lives in
+the Vercel dashboard and in DNS — outside this repo, changeable without touching
+it, and therefore impossible for any file here to keep true. Every previous
+version of this section asserted it anyway, and was wrong about the source repo,
+the build trigger and the redirect direction in turn. Prose cannot track state
+it does not own.
 
-Verified 2026-08-12 — apex serves directly, `www` sends a 308 to it, one hop,
-path preserved:
-
-```
-organonmind.org           200
-www.organonmind.org       308 → https://organonmind.org/
-www.organonmind.org/why   308 → https://organonmind.org/why
-```
-
-⚠️ **It was backwards until then**, and the line above described the intention
-while the configuration did the opposite. So check rather than read:
+What belongs here is how to **read the state**, which cannot go stale:
 
 ```
+# which repo actually builds this site — from any deployment's metadata
+#   githubRepo:  must be organon-mind
+# Vercel dashboard → the deployment → Source, or the API
+
+# which host is canonical
 curl -s -o /dev/null -w "%{redirect_url}\n" https://www.organonmind.org
+#   empty  → www is canonical
+#   an apex URL → apex is canonical (intended)
+
+# what is actually served
+curl -s -o /dev/null -w "%{http_code}\n" https://organonmind.org/patterns
 ```
+
+The intent, which *is* ours to state: apex canonical, `www` redirecting to it,
+Root Directory `site`, no build command. If a check above disagrees with that,
+the configuration drifted — not this file.
 
 ⚠️ **If you ever invert this again, order matters.** Point the apex at the
 Production environment *first*, then set `www` to redirect. Doing it the other
