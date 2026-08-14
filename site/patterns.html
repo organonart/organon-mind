@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Patterns — Organon Mind</title>
-<meta name="description" content="An explorer for fourteen patterns of mixed-initiative, tool-using interfaces.">
+<meta name="description" content="An explorer for fifteen patterns of mixed-initiative, tool-using interfaces.">
 <link rel="icon" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Organon Mind">
 <meta property="og:title" content="Patterns">
-<meta property="og:description" content="An explorer for fourteen patterns of mixed-initiative, tool-using interfaces.">
+<meta property="og:description" content="An explorer for fifteen patterns of mixed-initiative, tool-using interfaces.">
 <meta property="og:url" content="https://organonmind.org/patterns">
 <meta name="twitter:card" content="summary">
 <style>
@@ -338,7 +338,7 @@ body[data-view="overview"] .desig .tag{display:none}
 
 <p>Claude Code, Cursor’s agent mode, Aider, Devin and a dozen internal tools have each independently grown an approval prompt, a streaming renderer, a tool-activity log, and a way of saying “are you sure?” — and none of them call these things the same name. The literature that exists is either <em>conversation design</em>, mature but grown from voice assistants, or <em>agent UX</em>, current but a flat list of tips.</p>
 
-<p>What is missing is the middle: a vocabulary with enough rigour to design against, argue with, and refuse. These fourteen are a proposal for it. Each states what it costs and when it does not apply, so it can be argued out of the catalogue rather than merely admired.</p>
+<p>What is missing is the middle: a vocabulary with enough rigour to design against, argue with, and refuse. These fifteen are a proposal for it. Each states what it costs and when it does not apply, so it can be argued out of the catalogue rather than merely admired.</p>
 
 <p class="field">The line this stands in</p>
 <p>The template is inherited, deliberately. It is the Gang of Four’s, from <em>Design Patterns</em> (1994), and theirs was adapted from Christopher Alexander, who was describing towns, buildings and where the light falls. Fourteen entries in this shape are an act of inheritance, not a coincidence of formatting.</p>
@@ -381,7 +381,7 @@ body[data-view="overview"] .desig .tag{display:none}
   <figcaption>Turn is drawn apart because it is not a stage but a property of every stage. A system can have an excellent approval gate and still be intolerable because the principal cannot interrupt it.</figcaption>
 </figure>
 
-<p class="field">The fourteen</p>
+<p class="field">The fifteen</p>
 <ol class="glance">
   <li><button type="button" data-goto="capability-disclosure"><span class="gn">01</span><span><span class="gname2">Capability Disclosure</span><span class="gint">Make the agent’s powers, position and limits legible before the principal commits.</span></span></button></li>
   <li><button type="button" data-goto="mode-legibility"><span class="gn">02</span><span><span class="gname2">Mode Legibility</span><span class="gint">Make the active mode visible at the moment of use, not merely settable.</span></span></button></li>
@@ -397,18 +397,19 @@ body[data-view="overview"] .desig .tag{display:none}
   <li><button type="button" data-goto="honest-gauge"><span class="gn">12</span><span><span class="gname2">Honest Gauge</span><span class="gint">A signal must be wrong only when the system is wrong.</span></span></button></li>
   <li><button type="button" data-goto="recoverable-execution"><span class="gn">13</span><span><span class="gname2">Recoverable Execution</span><span class="gint">Every action has a visible before-state and a path back.</span></span></button></li>
   <li><button type="button" data-goto="continuity-as-memory"><span class="gn">14</span><span><span class="gname2">Continuity as Memory</span><span class="gint">What matters survives in durable, correctable memory — not transcript length.</span></span></button></li>
+  <li><button type="button" data-goto="the-scriptorium"><span class="gn">15</span><span><span class="gname2">The Scriptorium</span><span class="gint">A fast writer that may be wrong, a slow re-reader that is right, and a visible seam between them.</span></span></button></li>
 </ol>
 
 <p class="field">Reading this page</p>
 <ul>
-  <li>The <strong>index</strong> on the left holds all fourteen, grouped by stage. <span class="kbd">[</span> and <span class="kbd">]</span> step through them.</li>
+  <li>The <strong>index</strong> on the left holds all fifteen, grouped by stage. <span class="kbd">[</span> and <span class="kbd">]</span> step through them.</li>
   <li><strong>Language</strong>, at the top of the rail, changes which catalogue you are in. There are three languages and one set of compositions, and they describe different things — one agent, one fleet, and one person running several. A relation may point across them, and following it switches the rail with you.</li>
   <li><strong>Related patterns</strong> on every entry are clickable. That field has been a dead list at the foot of a page since 1994; here it is how you move.</li>
   <li><strong>Side of the seam</strong> splits them by how they fail. <em>Harness</em> patterns live in code — they fail the same way every time and a test can hold them. <em>Disposition</em> patterns live in the agent’s character — they fail stochastically, and you strengthen a tendency rather than pin a behaviour. Nine are harness, one is disposition, four are both: most of what makes an agent feel trustworthy turns out to be <em>buildable</em>.</li>
 </ul>
 
 <p class="field">Where this came from</p>
-<p>Four of the fourteen — Mode Legibility, Streaming Turn, Ambient Activity Channel and Honest Gauge — were found by hitting them on a single workstation running a voice-first agent with a resident process, local speech-to-text and synthesis, and a physical lighting channel. Every number quoted in those entries was measured on that machine rather than estimated.</p>
+<p>Five of the fifteen — Mode Legibility, Streaming Turn, Ambient Activity Channel, Honest Gauge and The Scriptorium — were found by hitting them on a single workstation running a voice-first agent with a resident process, local speech-to-text and synthesis, and a physical lighting channel. Every number quoted in those entries was measured on that machine rather than estimated.</p>
 <p>The argument for all of it — the gap, why the existing literature does not fill it, and what the missing vocabulary costs — is <a href="/om-001">OM-001</a>. You do not need it to use the catalogue.</p>
 
 </div>
@@ -416,7 +417,7 @@ body[data-view="overview"] .desig .tag{display:none}
 
 <p class="ovl">One dispatcher, many units. What changes when a delegated task is split.</p>
 
-<p>The fourteen patterns of the Turn language describe <em>one</em> delegated task, and the vocabulary says so: a turn is the unit of exchange, and the thing held by exactly one party. Put twelve agents in flight and there is no turn — nothing to hold, nothing to interrupt, and no moment at which the principal and the agent are both present.</p>
+<p>The fifteen patterns of the Turn language describe <em>one</em> delegated task, and the vocabulary says so: a turn is the unit of exchange, and the thing held by exactly one party. Put twelve agents in flight and there is no turn — nothing to hold, nothing to interrupt, and no moment at which the principal and the agent are both present.</p>
 
 <p>So this is a second language rather than an extension of the first. Its topology is a <strong>fan-out and a fan-in</strong>, and everything difficult lives at the two seams and in the space between them, where the principal is absent by design.</p>
 
@@ -1578,6 +1579,97 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
       <p class="field">Related patterns</p>
       <p><strong>Plan · Approve · Execute · Receipt</strong> (7), <strong>Honest Gauge</strong> (12), <strong>Capability Disclosure</strong> (1).</p>
+    </div>
+<div class="panel" data-pat="the-scriptorium">
+      <p class="part">Part VI · Truth and continuity</p>
+      <h2>The Scriptorium</h2>
+
+      <p class="field first">Intent</p>
+      <p>When a result must be shown while it is still forming, split the work between a fast writer that may be wrong and a slow re-reader that is authoritative — and show the principal which text is settled and which is still provisional.</p>
+
+      <p class="field">Also known as</p>
+      <p>Progressive Transcription; Draft and Verify; Speculative Rendering.</p>
+
+      <p class="field">Motivation</p>
+      <p>Speech recognition forces a trade a single model cannot escape. A model fast enough to show words as they are spoken must <em>commit</em> to guesses it cannot revoke; by the time it is wrong it is already three words on. A model accurate enough to resolve <code>harnesses.json</code> must hear the whole utterance before deciding anything, so it can show nothing while the principal talks. Choosing one gives live-but-wrong or correct-but-late.</p>
+      <p>The escape is to stop asking one component for both. Assign speed and accuracy to different components, and give the principal a third thing neither can offer alone: an honest statement of how much the system currently trusts what it has written.</p>
+
+      <p class="field">Applicability</p>
+      <p>Wherever latency and accuracy trade directly against each other and a partial result is genuinely useful before the final one exists: transcription, translation, retrieval, any decode where a cheap model can draft and an expensive one can verify. Not applicable where a provisional answer is more dangerous than a late one — a partial figure a principal may act on is worse than a spinner.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 270" role="img" aria-label="Audio feeds two paths. The scribe, drawn dashed, emits fast committing hypotheses. The corrector re-reads the entire utterance from scratch, repeatedly, with no frozen prefix, and passes through the house style. Their outputs meet at a display split left to right into settled text from the house style and a volatile tail from the scribe. Beneath both, a single exemplar feeds the corrector as hearing and the house style as spelling.">
+          <rect x="8" y="112" width="100" height="38" fill="none" stroke="currentColor"/>
+          <text x="58" y="136" text-anchor="middle" font-size="11.5" fill="currentColor">audio</text>
+          <rect x="168" y="40" width="184" height="40" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="260" y="57" text-anchor="middle" font-size="11.5" fill="currentColor">scribe</text>
+          <text x="260" y="72" text-anchor="middle" font-size="9.5" fill="currentColor" opacity=".65">fast · cannot unwrite</text>
+          <rect x="168" y="150" width="184" height="40" fill="none" stroke="currentColor"/>
+          <text x="260" y="167" text-anchor="middle" font-size="11.5" fill="currentColor">corrector</text>
+          <text x="260" y="182" text-anchor="middle" font-size="9.5" fill="currentColor" opacity=".65">re-reads all · no frozen prefix</text>
+          <path d="M108,122 L142,60 L162,60" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M108,140 L142,170 L162,170" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M200,190 L200,210 L240,210 L240,194" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="220" y="228" text-anchor="middle" font-size="9.5" fill="currentColor" opacity=".7">again, from scratch</text>
+          <rect x="398" y="150" width="112" height="40" fill="none" stroke="currentColor"/>
+          <text x="454" y="167" text-anchor="middle" font-size="11.5" fill="currentColor">house style</text>
+          <text x="454" y="182" text-anchor="middle" font-size="9.5" fill="currentColor" opacity=".65">cannot invent</text>
+          <line x1="352" y1="170" x2="392" y2="170" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="606" y="78" text-anchor="middle" font-size="9.5" fill="currentColor" opacity=".55">what the principal sees</text>
+          <rect x="520" y="86" width="172" height="48" fill="none" stroke="currentColor"/>
+          <line x1="612" y1="86" x2="612" y2="134" stroke="currentColor" opacity=".45"/>
+          <text x="566" y="114" text-anchor="middle" font-size="10.5" fill="currentColor">settled</text>
+          <text x="652" y="114" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".6">volatile</text>
+          <path d="M352,60 L652,60 L652,82" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <path d="M510,170 L566,170 L566,138" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="398" y="222" width="112" height="32" fill="none" stroke="currentColor"/>
+          <text x="454" y="242" text-anchor="middle" font-size="11.5" fill="currentColor">exemplar</text>
+          <path d="M470,222 L470,194" fill="none" stroke="currentColor" stroke-dasharray="2 3" marker-end="url(#ah)"/>
+          <text x="476" y="212" font-size="9" fill="currentColor" opacity=".7">spelling</text>
+          <path d="M420,222 L300,222 L300,194" fill="none" stroke="currentColor" stroke-dasharray="2 3" marker-end="url(#ah)"/>
+          <text x="306" y="214" font-size="9" fill="currentColor" opacity=".7">hearing</text>
+        </svg>
+        <figcaption>The corrector has no frozen prefix: a pass thirty seconds in may rewrite a word from the first sentence. That is the property lost when this is implemented as a single rescoring step at the end — rescoring once is not re-reading continuously.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p>The <em>scribe</em> is fast, commits, and is allowed to be wrong; its accuracy is explicitly not the design target. The <em>corrector</em> re-decodes the entire input from scratch, repeatedly, and its output is the record of truth — the scribe’s never is. The <em>house style</em> is a pure text-to-text pass with no model and no inference, whose defining property is negative: it cannot produce a word it was not given. The <em>exemplar</em> is one vocabulary drawn from the work itself. The <em>display</em> is a participant, not decoration: it carries the seam.</p>
+
+      <p class="field">Collaborations</p>
+      <p>The same commitment problem as <strong>Streaming Turn</strong> (3), one layer down — where that pattern governs when a turn may begin speaking, this governs whether what it has already said may be taken back. <strong>Honest Gauge</strong> (12) governs the seam, which is a gauge in the strict sense: it must read <em>provisional</em> exactly when the system is provisional. <strong>Barge-In</strong> (4) is what the seam’s honesty buys — a principal who can see that a tail is unsettled will wait rather than interrupt.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: liveness and accuracy stop competing. Each component is tuned for one property, and neither is compromised to serve the other.</li>
+        <li><em>Cost</em>: two models resident rather than one, and a seam between their outputs that is a genuine source of bugs. On the measured instance the two are deliberately placed on different processors so they never contend.</li>
+        <li><em>Trap</em>: the exemplar must be <em>one instance</em>, not one filename. Its two injection points fail asymmetrically, and only one of them can be defended by hand.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Inject the exemplar at two points for two purposes: into the corrector as acoustic bias so it <em>hears</em> the unusual word, and into the house style as substitution rules so it is <em>spelled</em> correctly. One source, two mechanisms — this is the least obvious part of the pattern and the part most worth preserving.</p>
+      <p>⚠️ But “one source” is a claim about the file, not about the filesystem. The two mechanisms have asymmetric exposure to a stale copy: the house style can be immunised by hand-listing the terms that matter, and should be, because a rule that appears and disappears with a file is worse than no rule. The corrector cannot be — a term is either present in the file it reads or it is not, and there is no hand-written fallback for hearing. So a divergent copy degrades the system <em>silently and in one direction only</em>: it goes on spelling a word correctly while having lost the ability to hear it, and the output is identical whenever it does hear it. Verify that every consumer reads the same instance, not merely a file of the same name.</p>
+      <p>⚠️ Do not locate the settled/volatile seam by counting words: that assumes both engines tokenise identically, and they do not — <code>save,</code> against <code>save</code> <code>,</code> is enough to shift it. Strip any leading run of the volatile tail that the settled text already ends with, compared case- and punctuation-insensitively. ⚠️ Do not trust word timestamps without checking them; on the measured model they arrive with correct text and placeholder times, which empties the volatile tail completely and silently deletes the scribe’s entire contribution. ⚠️ Derive substitution rules only for compound identifiers — those carrying <code>.</code>, <code>-</code>, <code>_</code> or camelCase, whose spoken form is multi-word and therefore rare in ordinary speech. Never derive case-only rules: project vocabularies are full of ordinary English, and a rule for <code>Sunshine</code> or <code>opus</code> rewrites normal sentences.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>  the bias list lives in workshop-agents and the corrector reads it
+  ┌──────────────────────────────────────── settled (corrector) ──┘
+  from the winders check out
+  └── volatile (scribe) — may be rewritten ──┘
+
+  … 280 ms later, the corrector having re-read the whole utterance:
+
+  the bias list lives in workshop-agents and the corrector reads it
+  from the Windows checkout</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>A volatile tail that restates words already shown as settled — which reads to the principal as the machine mis-hearing them, when it is really the seam being computed wrongly. Or a “two-pass” system that rescores once at the end and therefore never revises anything the principal has already read. Or, hardest to see: output that is still spelled correctly and no longer heard correctly, because one copy of the vocabulary drifted from another.</p>
+
+      <p class="field">Known uses</p>
+      <p>Speculative decoding, which is structurally near-identical — a cheap draft model proposes, an expensive one verifies and corrects, and the result has the speed of the first with the accuracy of the second. Scriptoria themselves: a scribe who wrote fast and could not unwrite, a <em>corrector</em> who read the page back against an authoritative <em>exemplar</em>, and a house style so that every copy spelled things the same way — roles separated for exactly this reason, that no one person is fast, accurate and consistent at once.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Streaming Turn</strong> (3), <strong>Honest Gauge</strong> (12), <strong>Barge-In</strong> (4).</p>
     </div></div>
 
 <script>
@@ -1598,7 +1690,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   var LANGS = [
     {id:"turn", label:"Turn", sub:"one agent", doc:"OM-001", href:"/om-001", full:true, seam:true,
      groups:[["I","Orientation"],["II","Turn"],["III","Intent"],["IV","Execution"],["V","Authority"],["VI","Truth and continuity"]],
-     foot:"14 patterns · 6 stages<br>9 harness · 1 disposition · 4 both"},
+     foot:"15 patterns · 6 stages<br>10 harness · 1 disposition · 4 both"},
     {id:"fleet", label:"Fleet", sub:"one dispatcher", doc:"OM-002", href:"/om-002", full:false, seam:false,
      groups:[["S","The split"],["F","In flight"],["J","The join"]],
      foot:"8 patterns · 3 acts<br>full entries in OM-002"},
@@ -1618,7 +1710,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     {lang:"turn",id:"mode-legibility",n:2,name:"Mode Legibility",g:"I",seam:"harness",
      rel:[["special case of","capability-disclosure"],["keys","approval-gate"],["governed by","honest-gauge"]]},
     {lang:"turn",id:"streaming-turn",n:3,name:"Streaming Turn",g:"II",seam:"harness",
-     rel:[["enables","barge-in"],["carries","tool-call-transparency"]]},
+     rel:[["enables","barge-in"],["carries","tool-call-transparency"],["deepened by","the-scriptorium"]]},
     {lang:"turn",id:"barge-in",n:4,name:"Barge-In",g:"II",seam:"harness",
      rel:[["depends on","streaming-turn"],["constrains","recoverable-execution"]]},
     {lang:"turn",id:"scope-on-uncertainty",n:5,name:"Scope-on-Uncertainty",g:"III",seam:"disposition",
@@ -1636,11 +1728,13 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     {lang:"turn",id:"progressive-autonomy",n:11,name:"Progressive Autonomy",g:"V",seam:"both",
      rel:[["positions","approval-gate"],["depends on","recoverable-execution"],["disclosed by","capability-disclosure"]]},
     {lang:"turn",id:"honest-gauge",n:12,name:"Honest Gauge",g:"VI",seam:"harness",
-     rel:[["governs","capability-disclosure"],["governs","mode-legibility"],["governs","ambient-activity-channel"],["undermines","approval-gate"]]},
+     rel:[["governs","capability-disclosure"],["governs","mode-legibility"],["governs","ambient-activity-channel"],["governs","the-scriptorium"],["undermines","approval-gate"]]},
     {lang:"turn",id:"recoverable-execution",n:13,name:"Recoverable Execution",g:"VI",seam:"harness",
      rel:[["reduces","approval-gate"],["enables","progressive-autonomy"],["unwinds","barge-in"]]},
     {lang:"turn",id:"continuity-as-memory",n:14,name:"Continuity as Memory",g:"VI",seam:"both",
      rel:[["fed by","plan-approve-execute-receipt"],["governed by","honest-gauge"],["orients","capability-disclosure"]]},
+    {lang:"turn",id:"the-scriptorium",n:15,name:"The Scriptorium",g:"VI",seam:"harness",
+     rel:[["governed by","honest-gauge"],["deepens","streaming-turn"],["supports","barge-in"]]},
 
     // ── Fleet (OM-002) ───────────────────────────────────────────────────────
     {lang:"fleet",id:"proposed-dispatch",n:1,name:"Proposed Dispatch",g:"S",
