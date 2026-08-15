@@ -5,7 +5,7 @@ set structure, the addition to the template, and the Ambient Signals half writte
 out in full. The Revised Output half is deliberately held — see §8.*
 
 Status: 2026-08-14. Evidence in `om-004-evidence-2026-08-14.md`. Nothing here has
-been published, and one earlier attempt was reverted (see §10).
+been published, and one earlier attempt was reverted (see §11).
 
 **2026-08-15 (a).** Darkness as Alarm and Cap the Decoration drafted into §7,
 from the change log and the renderer's own documentation rather than from the
@@ -17,7 +17,7 @@ complete at seven entries.**
 (`om-004-evidence-2026-08-15.md`). **The Revised Output half is unblocked** and
 §8 is rewritten around the answer. Three claims this document made are corrected,
 all of them ours and none of them cosmetic: the thirty-second revision claim it
-called falsified **is true** (§10); the configuration it called deployed was
+called falsified **is true** (§11); the configuration it called deployed was
 never deployed (§5); and the field it calls the strongest of the four template
 additions has a failure mode we walked into before publishing (§4).
 
@@ -29,7 +29,7 @@ a glossary entry has failed. Applied here — **Presence → Ambient Signals**,
 context-general pattern to one time of day. Section citations are rewritten to
 name the pattern and its paper (*Ambient Activity Channel (OM-001, Part IV)*)
 rather than a position against a mutable label — positional citations against
-section names are exactly what this rename broke. Reasoning in §10.
+section names are exactly what this rename broke. Reasoning in §11.
 
 **2026-08-15 (d) — the rename is live, and the entry audit landed with it.**
 `organon-mind#7` merged: the catalogue is *Design Patterns for AI Agents*, its
@@ -70,7 +70,7 @@ job is to say so:
 | Ambient Activity Channel says | What building it showed |
 |---|---|
 | "Give every state a time-to-live so a lost 'off' decays rather than stranding the device." | A TTL decays a stale *live cue*. It does nothing for a *resting* state, which is sent once and stays wrong forever. The lamp came up white and no timer would have fixed it. **→ Standing Assertion** |
-| "The renderer owns presentation and a priority stack." | There are **two** stacks, in two structures of different shape, neither able to see the other, with no test on the composite — and the written composite states the first step backwards. **→ Single Precedence** |
+| "The renderer owns presentation and a priority stack." | There are **two** stacks, in two structures of different shape, neither able to see the other, with no test on the composite — and the written composite states the first step backwards. **→ One Ordering, One Place** |
 
 A pattern language that can be corrected by its own practice, in public, with the
 measurement that did it, is doing the thing this programme says it is for.
@@ -189,7 +189,7 @@ thirty seconds back?* — against a corpus of three short segments, found nothin
 at that depth, and rescaled the pattern to seconds. This document then hardened
 that into "does not happen." The 2026-08-15 pass, on a corpus deliberately
 over-sampled long, found a revision **35.6 s back rewriting the first word**
-(§10).
+(§11).
 
 **A null result from a corpus incapable of exhibiting the condition is
 indistinguishable from a true negative**, and it arrives wearing the same
@@ -275,7 +275,7 @@ Channel.
 | 2 | Verified Presence | code verified, behaviour verified both directions | §7 |
 | 3 | Closed Vocabulary | code verified, incident verified by review | §7 |
 | 4 | Deference at Rest | code verified, **behaviour never observed** | §7 |
-| 5 | Single Precedence | verified, **and its own instance fails it** | §7 |
+| 5 | One Ordering, One Place | verified, **and its own instance fails it** | §7 |
 | 6 | Darkness as Alarm | reported; reasoned, with one accidental observation | §7 |
 | 7 | Cap the Decoration | reported; constants verified, **never observed at night** | §7 |
 
@@ -286,13 +286,13 @@ Revised 2026-08-15, after the commissioned measurement returned (§8).
 
 | # | Entry | Evidence | Drafted |
 |---|---|---|---|
-| 1 | Draft and Record | verified, and **stated more purely** by the result | unblocked |
-| 2 | No Frozen Prefix | verified; governs the **live view only**, whose instance is proposed for deletion | unblocked |
-| 3 | The Visible Seam | structure verified; **perception now decides an architecture**, not a preference | unblocked |
-| 4 | Churn Is Not Correction | verified twice, with a measured gradient — **the strongest in the half** | unblocked |
-| 5 | Deterministic Last Mile | verified: fires on 1.2% of utterances | unblocked |
-| 6 | One Exemplar, Two Injections | verified, with an asymmetry; **cost re-measured at α1.0** | unblocked |
-| 7 | Split the Substrate | boundary established | unblocked |
+| 1 | Draft and Record | verified, and **stated more purely** by the result | §9 |
+| 2 | No Frozen Prefix | verified; governs the **live view only**, whose instance is proposed for deletion | §9 |
+| 3 | Show the Handover | structure verified; **perception now decides an architecture**, not a preference | §9 |
+| 4 | Churn Is Not Correction | verified twice, with a measured gradient — **the strongest in the half** | §9 |
+| 5 | Deterministic Last Mile | verified: fires on 1.2% of utterances | ⚠️ needs 08-15 pass |
+| 6 | One List, Two Uses | verified, with an asymmetry; **cost re-measured at α1.0** | ⚠️ needs 08-15 pass |
+| 7 | Draft and Record Apart | boundary established | ⚠️ needs 08-15 pass |
 
 ---
 
@@ -486,7 +486,7 @@ That goes on the page.
 
 ---
 
-### 5 · Single Precedence
+### 5 · One Ordering, One Place
 
 **Intent.** A one-slot channel can show one thing, so the order of precedence
 *is* the design — and it has to live in one place a person can read in five
@@ -523,7 +523,7 @@ composite order end to end rather than each half separately.
 **How you would know this is unnecessary.** If the channel could carry more than
 one state at once without ambiguity — two devices, or a surface with room for a
 second mark. Note that this is exactly what the multi-lamp question opens, and it
-is not obviously an improvement: see §9.
+is not obviously an improvement: see §10.
 
 ⚠️ **This entry's own instance fails it.** Published that way deliberately. We
 found it by looking rather than in review, and a pattern demonstrated by its
@@ -605,8 +605,8 @@ the discipline this pattern requires of whoever holds it.
 
 **Relations.** specialises → Ambient Activity Channel · relies on → Verified
 Presence — darkness means *unreachable* only because reachability is actually
-checked · ranked by → Single Precedence · at risk from → the multi-lamp question
-(§9): one dark lamp beside one lit lamp is not an alarm, it reads as a lamp that
+checked · ranked by → One Ordering, One Place · at risk from → the multi-lamp question
+(§10): one dark lamp beside one lit lamp is not an alarm, it reads as a lamp that
 broke
 
 ---
@@ -674,7 +674,7 @@ has watched an error state arrive at 2am and judged whether it read.
 
 **Relations.** priced by → Closed Vocabulary — the cap is what that capability
 costs · shares its cut with → Deference at Rest · must not reach → Darkness as
-Alarm · ranked by → Single Precedence
+Alarm · ranked by → One Ordering, One Place
 
 ---
 
@@ -717,13 +717,13 @@ did not appear in the arrangement, and is the most expensive thing in it.
   re-reading was a third thing that was neither.
 - **Churn Is Not Correction** is now the strongest entry in the half, carrying a
   measured gradient rather than an anecdote.
-- **No Frozen Prefix** and **The Visible Seam** govern the *live view only* —
+- **No Frozen Prefix** and **Show the Handover** govern the *live view only* —
   the final text has no prefix to freeze, being one pass over complete audio. And
   the live view is precisely what the evidence proposes to delete. So both
   patterns are about to have their reference instance retired.
 
 That last point is the template addition working, and it is the **second** time in
-this paper: Single Precedence is failed by its own instance, and now two
+this paper: One Ordering, One Place is failed by its own instance, and now two
 Revised Output entries have their "how you would know this is unnecessary" condition
 answered *by their own reference implementation*. Neither pattern dies with it —
 they are claims about live-revising surfaces in general, which is why this
@@ -741,7 +741,243 @@ than a preference.
 
 ---
 
-## 9. Open questions, for the page
+## 9. The Revised Output half
+
+Four of seven drafted. **Deterministic Last Mile, One List, Two Uses and Draft and
+Record Apart are not here yet**, and the reason is stated rather than worked
+around: the measurements each rests on — the 1.2% firing rate, the α1.0 cost
+re-measure, and where the boundary actually falls — are in
+`doc/om-004-evidence-2026-08-15.md` in `workshop-machines`, which the drafting
+session could not open. Every number below is one this repository holds.
+
+⚠️ **Which evidence pass a number comes from is load-bearing here, and the two
+disagree.** The 2026-08-14 pass concluded that a thirty-second-deep revision does
+not happen; the 2026-08-15 pass observed one. Where they conflict, the later one
+governs and §11 records the correction. The 08-14 pass is still cited for what it
+alone measured and 08-15 did not overturn — the corrector curve, and the 1502
+logged utterance durations.
+
+---
+
+### 1 · Draft and Record
+
+**Intent.** Let a fast, cheap pass show the person something immediately, and let
+one authoritative pass produce the text that is kept — and never let the first
+become the second by default.
+
+**Motivation.** Two things a person wants from dictation are in direct conflict.
+They want to see words while they are still speaking, which requires a model
+small and fast enough to run at a cadence. They want the text that survives to be
+correct, which requires a model good enough to be slow. Building one thing that
+tries to be both produces a system that is neither: too slow to feel live, too
+weak to trust.
+
+The resolution is not a compromise but a division. The **scribe** streams at
+roughly 50 ms and is understood by everyone, including the person reading it, to
+be provisional. The **corrector** runs once, at release, over every captured
+sample, and its output is the record.
+
+What makes this a pattern rather than an implementation note is that the
+commissioned measurement stated it more purely than the design did. The system
+had grown a third thing — the corrector running continuously during the hold,
+producing accurate text mid-utterance. It looked like the best of both. It is
+neither the draft nor the record: at release the corrector discards any pass
+still in flight and issues one fresh pass over the whole buffer, whose text
+replaces everything the continuous stream produced. **The continuous pass cannot
+change the final text**, by construction, and measurement agreed — 51 of 51 clips
+gave one answer over three passes, and 51 of 51 were unchanged by whether a dozen
+continuous requests had preceded them.
+
+So the record has exactly one author, and anything else in the pipeline is a
+draft whatever it costs.
+
+**Applicability.** Any surface where a fast approximate result and a slow correct
+one are both wanted, and the correct one is what gets stored, sent or acted on.
+Dictation is the instance here; the shape is general.
+
+**Consequences.** *Gain:* the person sees something immediately without the
+system having to defend the accuracy of what they see. *Gain:* the record has one
+author, so "which pass produced this?" always has an answer. *Cost:* two models,
+two code paths, two failure modes. *Trap:* a third pass that is neither draft nor
+record, arriving because it looks like an improvement on both. That is exactly
+what happened here, and it cost 11.1× the corrector time to produce nothing that
+survives.
+
+**Implementation.** Give the record exactly one write site. Make the draft
+visibly provisional rather than merely labelled as such. When a pass is in flight
+at the moment of release, discard it rather than reconciling it — reconciliation
+is where a draft becomes a record by accident.
+
+**How you would know this is unnecessary.** If one model were both fast enough to
+stream at a cadence a person reads as live and good enough that its output needed
+no second pass. The corrector curve says how far away that is: roughly 6.3 ms per
+second of audio over a fixed floor near 64 ms, so a 30-second utterance costs
+245 ms — an order of magnitude past the scribe.
+
+**Relations.** elaborates → Streaming Turn · governed by → Honest Gauge ·
+requires → Churn Is Not Correction
+
+---
+
+### 2 · No Frozen Prefix
+
+**Intent.** In a surface that revises what it has already shown, never treat any
+part of the visible text as settled — because the reviser does not, and a frozen
+prefix will eventually be wrong in a way the system cannot repair.
+
+**Motivation.** The obvious optimisation for a live-revising view is to freeze
+text once it has stood for a while: past some depth or some age, stop
+re-rendering it. It saves work, it stops the display flickering, and it is the
+first thing anyone proposes.
+
+The measurement says it cannot be done safely, and the story of how it says so is
+part of the entry. A pass on 14 August, over three segments and 39 revisions,
+found nothing reaching further back than 67% of the utterance or older than 12
+seconds — and concluded that a revision thirty seconds deep does not happen. A
+pass the following day observed one reaching **35.6 s back and rewriting the
+utterance's first word**. The first corpus was not evidence of absence; it was too
+short to contain the case.
+
+So there is no depth and no age at which freezing is safe. There is only a
+frequency: from 1502 logged utterances, 0.6% run to thirty seconds at all, which
+bounds how often the deep case can arise without bounding how deep it goes.
+
+**Applicability.** Any view that displays output while it is still being revised
+— live transcription, streaming generation with correction, incremental parsing
+surfaced to a person.
+
+**Consequences.** *Gain:* the display can never contradict the buffer. *Gain:* no
+class of revision is silently undisplayable. *Cost:* the whole visible text is
+re-rendered on every pass. *Trap:* freezing introduced as a rendering
+optimisation rather than a semantic decision, by someone who does not know it is
+one.
+
+**Implementation.** Re-render from the buffer rather than patching what is on
+screen. If flicker is the real complaint, address it in presentation — see Churn
+Is Not Correction — rather than by making deep revision unrepresentable.
+
+**How you would know this is unnecessary.** If the reviser were monotonic: only
+ever appending, or only ever revising within a bounded window it declared. Neither
+is true of this corrector, and a system that claims the first should be tested
+for it rather than believed.
+
+⚠️ **This entry's reference instance is proposed for deletion.** The pattern
+governs the live view, and the live view is what the 15 August evidence
+recommends removing. The entry does not die with it — the claim is about
+live-revising surfaces generally, which is why this language is deliberately not
+named for dictation — but the exemplar goes, and saying so is what the added
+field exists to enforce.
+
+**Relations.** governs → Show the Handover · constrained by → Churn Is Not
+Correction · elaborates → Streaming Turn
+
+---
+
+### 3 · Show the Handover
+
+**Intent.** When a fast draft gives way to an authoritative pass, make the moment
+visible — because a person who cannot see the handover will read the draft's
+errors as the system's errors.
+
+**Motivation.** In a two-pass surface the text changes twice for different
+reasons. It changes *within* the draft, because the scribe is revising its own
+guess. It changes *at release*, because a different and better model has replaced
+the whole thing. These look identical on screen and mean opposite things: the
+first is a system working, the second is a system finishing.
+
+A person who cannot tell them apart draws the wrong conclusion in both
+directions. They lose confidence in a correct final pass because they watched it
+churn on the way there, and they trust a draft because it stopped moving.
+
+The handover is also where the timing argument lives. The corrector's continuous
+stream runs a cadence plus an inference behind the microphone — a median of
+0.54 s — and had reached the release pass's answer before release in only 12 of
+51 utterances, at a median 97% of the way through. Against the scribe's 50 ms
+that is a different kind of feedback, not a slower one. Presenting them as the
+same channel is the error the seam makes visible.
+
+**Applicability.** Any surface where two producers of different quality write to
+one visible region.
+
+**Consequences.** *Gain:* draft errors are attributed to the draft. *Gain:* the
+final pass gets read as final. *Cost:* a visible transition is a design problem —
+done badly it is a flash that draws the eye at the exact moment attention should
+be moving on. *Trap:* marking the handover so subtly that it satisfies a review
+and communicates nothing.
+
+**Implementation.** Distinguish the two states in the presentation itself rather
+than with a label. Make the transition legible at a glance and at the periphery
+of attention, since that is where a person reading their own dictation actually
+is.
+
+**How you would know this is unnecessary.** If the draft and the record were
+close enough in quality that mistaking one for the other cost nothing. That is a
+perception question, not a code question, and it is the one the evidence names as
+its own falsification test: someone in a blind comparison preferring the hold
+*with* continuous correction to the hold without it. Nothing here measures taste.
+
+⚠️ **Renamed 2026-08-15**, from *The Visible Seam*. *Seam* is OM-001's template
+field — which side of the harness/agent boundary a pattern sits on — and two
+meanings for one word, both ours, is exactly what a plain name is for.
+
+⚠️ **This entry's reference instance is proposed for deletion**, for the same
+reason as No Frozen Prefix and with the same consequence: the pattern survives,
+the exemplar does not.
+
+**Relations.** governed by → No Frozen Prefix · elaborates → Honest Gauge ·
+presents → Draft and Record
+
+---
+
+### 4 · Churn Is Not Correction
+
+**Intent.** Distinguish text that is being corrected from text that is merely
+oscillating, and stop showing the second — a value alternating between two
+readings is not information, it is the display leaking the model's uncertainty.
+
+**Motivation.** Watching a live-revising surface, the eye is caught by movement
+and infers meaning from it. Most of that movement carries none. Of the deepest
+revisions observed, **all six were one word alternating between `Pi` and `Py`**,
+never settling — a model equivocating between two readings of the same sound,
+rendered as though something were being fixed.
+
+The gradient is what makes the entry usable rather than an anecdote, and it runs
+the right way: a revision reaching 0–1 s back is a word returning to a value that
+position already held **1%** of the time. Beyond 10 s back, **94%**. So reach and
+churn scale together. The deep revisions that make freezing unsafe — the ones No
+Frozen Prefix exists for — are almost entirely oscillation, and the two facts
+have to be held at once: the display must be *able* to show a deep revision, and
+should usually decline to.
+
+That is why this is a separate pattern rather than a note on that one. They pull
+against each other and the resolution is not a compromise: represent everything,
+present selectively.
+
+**Applicability.** Any incremental display whose producer revises. The deeper the
+revision it must support, the more it needs this.
+
+**Consequences.** *Gain:* movement on screen means something again. *Gain:* the
+person stops proof-reading a draft that is going to be replaced. *Cost:* a
+suppression rule is a judgement, and a wrong one hides a real correction. *Trap:*
+suppressing by *rate* rather than by *return* — a fast correction is still a
+correction, and an oscillation that alternates slowly is still churn.
+
+**Implementation.** Judge by whether the value has returned to one it already
+held at that position, not by how often it changes. Hold a short history per
+position rather than a global change counter. Let the buffer record every pass;
+only the presentation suppresses.
+
+**How you would know this is unnecessary.** If the reviser's intermediate states
+were themselves worth reading — a system whose second guess is reliably better
+than its first, rather than one alternating between two guesses of equal
+confidence. That is measurable, and it was measured here: it is not the case.
+
+**Relations.** constrains → No Frozen Prefix · required by → Draft and Record ·
+governed by → Honest Gauge
+
+---
+
+## 10. Open questions, for the page
 
 **The room.** Two floor lamps behind the desk would make the *room* the surface,
 and it can then carry a composed look — red and blue key — which is taste
@@ -798,7 +1034,7 @@ architecture.
 
 ---
 
-## 10. Decisions still open, and one correction to the record
+## 11. Decisions still open, and one correction to the record
 
 - **Where the prose is canonical.** Recommendation: this set is born canonical in
   `/patterns` and OM-004 is written as an argument from the start — the shape
@@ -828,6 +1064,19 @@ architecture.
   prevent. And **it names the wrong half** — streaming ordinarily means output
   *arriving* incrementally, where the distinctive property of this set is output
   being *rewritten* after it has been shown.
+- **Four entry names.** *Settled 2026-08-15.* All four failed the plain-name rule
+  in different ways, and all four are fixed before publication rather than after,
+  because a name is permanent the moment it ships.
+
+  | was | is | why |
+  |---|---|---|
+  | The Visible Seam | **Show the Handover** | *seam* is already OM-001's template field — which side of the harness/agent boundary a pattern sits on. Two meanings, one word, both ours. |
+  | One Exemplar, Two Injections | **One List, Two Uses** | *exemplar* is not vernacular and *injections* reads as dependency injection or SQL. It means one vocabulary file used two ways. |
+  | Split the Substrate | **Draft and Record Apart** | *substrate* is pure coinage. The rule is that the draft and the record are different artifacts and must not share storage — which pairs it with the entry it depends on. |
+  | Single Precedence | **One Ordering, One Place** | the old name described the wrong rule. It is not that one thing wins; it is that the ordering must live in one place. The entry body already argued the corrected rule — only the name was wrong. |
+
+  *One Ordering, One Place* is the only one of the four already drafted, so it is
+  the only rename that touched written prose.
 - **Nothing ships until both halves exist.** Half a language on the site, with no
   paper to point at, is worse than nothing.
 
@@ -876,5 +1125,5 @@ the most fragile place a finding can live, so it is recorded here:
 > no longer able to hear it.
 
 So "one source, two mechanisms, no drift possible" is a claim about the file, not
-about the filesystem. That belongs in One Exemplar, Two Injections when the
+about the filesystem. That belongs in One List, Two Uses when the
 Revised Output half is drafted.
