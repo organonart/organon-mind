@@ -805,9 +805,13 @@ architecture.
   precedent, written to be separable.
 - **The set names.** *Settled 2026-08-15.* **Ambient Signals** and **Revised
   Output**, with `ambient` and `revised` as `lang` keys. The existing four keep
-  ids that no longer match their labels (`turn`, `fleet`, `arr`, `yard`) because
-  those are published and permanent; these two are not published, so the id can
-  match the name and there is no reason to inherit a mismatch on purpose.
+  ids that no longer match their labels (`turn`, `fleet`, `arr`, `yard`) — **not**
+  because they are published. A section id has never appeared in a URL: the hash
+  carries a *pattern* id and the section is derived from it, which is why
+  `/patterns#gather` opens Many Agents without the word `fleet` reaching the
+  address bar. They stay because they are state keys, touched in a dozen places
+  for nothing a reader can see. These two are equally unpublished, so the id can
+  match the name from the start rather than inheriting a mismatch on purpose.
 
   *Ambient Signals* was chosen over *Peripheral Signals* — which matches §3's own
   focal/peripheral axis more precisely — because it inherits from Ambient
