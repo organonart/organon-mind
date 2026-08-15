@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Design Patterns for AI Agents — Organon Mind</title>
+<title>Design Patterns for Working with Agents — Organon Mind</title>
 <meta name="description" content="A catalogue of design patterns for working with AI agents: one agent, many agents, arrangements of many, and many teams at once.">
 <link rel="icon" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Organon Mind">
-<meta property="og:title" content="Design Patterns for AI Agents">
+<meta property="og:title" content="Design Patterns for Working with Agents">
 <meta property="og:description" content="A catalogue of design patterns for working with AI agents: one agent, many agents, arrangements of many, and many teams at once.">
 <meta property="og:url" content="https://organonmind.org/patterns">
 <meta name="twitter:card" content="summary">
@@ -1845,7 +1845,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     if(l.id==='one-agent') wireStages();
     indexEl.querySelectorAll('button[data-goto]').forEach(function(b){b.setAttribute('aria-current','false');});
     document.querySelector('.railtop button').setAttribute('aria-current','true');
-    document.title=l.label+' — Design Patterns for AI Agents';
+    document.title=l.label+' — Design Patterns for Working with Agents';
     if(push!==false&&location.hash) history.pushState({id:'overview'},'',location.pathname);
     document.getElementById('detail').scrollTop=0;
     document.body.classList.remove('rail-open');
@@ -1925,7 +1925,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     indexEl.querySelectorAll('button[data-goto]').forEach(function(b){
       b.setAttribute('aria-current',String(b.getAttribute('data-goto')===id));
     });
-    document.title=p.n+' · '+p.name+' — '+LANG[p.lang].label+' — Design Patterns for AI Agents';
+    document.title=p.n+' · '+p.name+' — '+LANG[p.lang].label+' — Design Patterns for Working with Agents';
     if(push!==false&&location.hash.slice(1)!==id) history.pushState({id:id},'','#'+id);
     document.getElementById('detail').scrollTop=0;
     document.body.classList.remove('rail-open');
