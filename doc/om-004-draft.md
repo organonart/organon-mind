@@ -1,31 +1,47 @@
 # OM-004 — working draft
 
 *Not a publication. This is the drafting document for OM-004: the argument, the
-set structure, the addition to the template, and the Presence half written out
-in full. The Provisional half is deliberately held — see §8.*
+set structure, the addition to the template, and the Ambient Signals half written
+out in full. The Revised Output half is deliberately held — see §8.*
 
 Status: 2026-08-14. Evidence in `om-004-evidence-2026-08-14.md`. Nothing here has
 been published, and one earlier attempt was reverted (see §10).
 
-**2026-08-15 (a).** Darkness as Alarm and The Night Cap drafted into §7, from the
-change log and the renderer's own documentation rather than from the evidence
-pass, which left both ungathered by instruction. Both carry *reported*, and both
-state what has not been observed. **The Presence half is now complete at seven
-entries.**
+**2026-08-15 (a).** Darkness as Alarm and Cap the Decoration drafted into §7,
+from the change log and the renderer's own documentation rather than from the
+evidence pass, which left both ungathered by instruction. Both carry *reported*,
+and both state what has not been observed. **The Ambient Signals half is now
+complete at seven entries.**
 
 **2026-08-15 (b).** The commissioned measurement returned
-(`om-004-evidence-2026-08-15.md`). **The Provisional half is unblocked** and §8 is
-rewritten around the answer. Three claims this document made are corrected, all
-of them ours and none of them cosmetic: the thirty-second revision claim it called
-falsified **is true** (§10); the configuration it called deployed was never
-deployed (§5); and the field it calls the strongest of the four template additions
-has a failure mode we walked into before publishing (§4).
+(`om-004-evidence-2026-08-15.md`). **The Revised Output half is unblocked** and
+§8 is rewritten around the answer. Three claims this document made are corrected,
+all of them ours and none of them cosmetic: the thirty-second revision claim it
+called falsified **is true** (§10); the configuration it called deployed was
+never deployed (§5); and the field it calls the strongest of the four template
+additions has a failure mode we walked into before publishing (§4).
+
+**2026-08-15 (c) — naming.** The catalogue's rule is now *containers plain,
+leaves vivid*: build on vocabulary the reader already has, and a name that needs
+a glossary entry has failed. Applied here — **Presence → Ambient Signals**,
+**Provisional → Revised Output**, the working title becomes those two names, and
+**The Night Cap → Cap the Decoration** because the old name committed a
+context-general pattern to one time of day. Section citations are rewritten to
+name the pattern and its paper (*Ambient Activity Channel (OM-001, Part IV)*)
+rather than a position against a mutable label — positional citations against
+section names are exactly what this rename broke. Reasoning in §10; entry names
+otherwise held, pending the audit of the existing 31.
+
+⚠️ **The rename is not live.** `organon-mind#7` is open and still a draft, so
+`main` and the published site both still read Turn / Fleet / Arrangements / Yard.
+This document is written ahead of it deliberately; whichever of #6 and #7 lands
+second will want the other's names.
 
 ---
 
 ## 1. The finding that sets the shape
 
-**OM-001 already contains this pattern.** Ambient Activity Channel (Turn 9,
+**OM-001 already contains this pattern.** Ambient Activity Channel (OM-001,
 Part IV) proposes exactly the peripheral channel that has since been built:
 
 > Signal the agent's state through a channel the principal perceives without
@@ -44,10 +60,11 @@ So OM-004 is **not a new language beside OM-001**. It is the first paper that
 returns to a published pattern with measurements from having built it. That is a
 better thing to be, and it is what the evidence actually supports.
 
-And the return is not a victory lap. Two of Turn 9's implementation notes turn
-out to be **insufficient in practice**, and the paper's job is to say so:
+And the return is not a victory lap. Two of Ambient Activity Channel's
+implementation notes turn out to be **insufficient in practice**, and the paper's
+job is to say so:
 
-| Turn 9 says | What building it showed |
+| Ambient Activity Channel says | What building it showed |
 |---|---|
 | "Give every state a time-to-live so a lost 'off' decays rather than stranding the device." | A TTL decays a stale *live cue*. It does nothing for a *resting* state, which is sent once and stays wrong forever. The lamp came up white and no timer would have fixed it. **→ Standing Assertion** |
 | "The renderer owns presentation and a priority stack." | There are **two** stacks, in two structures of different shape, neither able to see the other, with no test on the composite — and the written composite states the first step backwards. **→ Single Precedence** |
@@ -55,7 +72,7 @@ out to be **insufficient in practice**, and the paper's job is to say so:
 A pattern language that can be corrected by its own practice, in public, with the
 measurement that did it, is doing the thing this programme says it is for.
 
-Mode Legibility (Turn 2) is the second seed, and it was resolved rather than
+Mode Legibility (OM-001) is the second seed, and it was resolved rather than
 refined: the persistent Agent/Dictation mode was **deleted** and replaced by which
 key you hold. The pattern said make the mode visible at the moment of use; the
 answer that worked was to remove the mode so there is nothing to make visible.
@@ -64,10 +81,10 @@ answer that worked was to remove the mode so there is nothing to make visible.
 
 ## 2. The claim
 
-Everything published so far grows **outward in span**: Turn → Fleet →
-Arrangements → Yard, one agent to many, seconds to days. OM-001 begins at the
-moment a turn is submitted, and every one of its fourteen patterns assumes a
-completed input and a bounded reply.
+Everything published so far grows **outward in span**: One Agent → Many Agents →
+Arrangements → Many Teams, seconds to days. OM-001 begins at the moment a turn is
+submitted, and every one of its fourteen patterns assumes a completed input and a
+bounded reply.
 
 OM-004 goes the other direction. There are two regimes the turn does not cover:
 
@@ -82,21 +99,29 @@ has to report itself outside the exchange, honestly, on channels that cannot be
 scrolled back.** The lamp is that sentence at one hue of bandwidth; the
 settled/volatile seam is the same sentence at full text bandwidth.
 
-Working title: **Presence, and the Provisional**. Two levels in one document, on
-OM-003's precedent, written to be separable — if either half grows evidence of
-its own it becomes its own numbered paper and the split is a dated revision here.
+Working title: **Ambient Signals, and Revised Output**. Two levels in one
+document, on OM-003's precedent, written to be separable — if either half grows
+evidence of its own it becomes its own numbered paper and the split is a dated
+revision here.
+
+*Named 2026-08-15, under the catalogue's naming rule: containers plain, leaves
+vivid. The title is simply the two set names, which is OM-003's shape
+(*Arrangements, and the Yard* names its two levels) and makes the paper's
+relationship to the sets legible without a glossary. The previous working title,
+*Presence, and the Provisional*, failed the test it should have been held to —
+two abstractions, one of them a nominalised adjective, neither guessable cold.*
 
 ---
 
 ## 3. Two sets, and the axis nobody had named
 
-Explorer sets: **Presence** and **Provisional**, beside Turn / Fleet /
-Arrangements / Yard.
+Explorer sets: **Ambient Signals** and **Revised Output**, beside One Agent /
+Many Agents / Arrangements / Many Teams.
 
 OM-001, 002 and 003 are implicitly **focal and single-channel** — they assume a
 surface you are looking at. Nobody wrote that down because there was no
-alternative to contrast it with. Turn 9 introduced the alternative in one entry;
-this is what it looks like as a set.
+alternative to contrast it with. Ambient Activity Channel introduced the
+alternative in one entry; this is what it looks like as a set.
 
 | | Focal surface | Peripheral surface |
 |---|---|---|
@@ -106,7 +131,7 @@ this is what it looks like as a set.
 | History | scrollback | none. The light has no log |
 | Audience | you | the room |
 
-Every rule in the Presence set falls out of that table, which is the evidence
+Every rule in the Ambient Signals set falls out of that table, which is the evidence
 that it is the right axis. *No history* is why re-assertion beats change
 detection. *One slot* is why precedence is the entire safety model. *The room* is
 why two more lamps break darkness-as-alarm.
@@ -132,7 +157,7 @@ precisely enough to be checked.
 
 This is not a formatting choice. It recovers Alexander's *forces*: each answer
 names the pressure that generates the pattern rather than restating the
-solution. Four worked examples, all from the Presence half:
+solution. Four worked examples, all from the Ambient Signals half:
 
 - re-assertion is unnecessary if the transport were reliable **and** a consumer
   could ask for current state on connect
@@ -143,7 +168,7 @@ solution. Four worked examples, all from the Presence half:
 - deference is unnecessary if the renderer were the only controller of the device
 
 And it gives the language something the Gang of Four form has no slot for at all:
-a pattern that specifies the test that retires it. The Provisional half ran one.
+a pattern that specifies the test that retires it. The Revised Output half ran one.
 *Whether the scribe is still needed* was a running experiment with a measurable
 outcome rather than a matter of taste, and on 2026-08-15 it returned: the scribe
 stays, and the corrector's continuous cadence is what the evidence deletes (§8).
@@ -238,7 +263,8 @@ should be the last time one cannot.
 
 ## 6. Entry roster
 
-**Presence** — the peripheral channel. Elaborates Turn 9.
+**Ambient Signals** — the peripheral channel. Elaborates Ambient Activity
+Channel.
 
 | # | Entry | Evidence | Drafted |
 |---|---|---|---|
@@ -248,9 +274,10 @@ should be the last time one cannot.
 | 4 | Deference at Rest | code verified, **behaviour never observed** | §7 |
 | 5 | Single Precedence | verified, **and its own instance fails it** | §7 |
 | 6 | Darkness as Alarm | reported; reasoned, with one accidental observation | §7 |
-| 7 | The Night Cap | reported; constants verified, **never observed at night** | §7 |
+| 7 | Cap the Decoration | reported; constants verified, **never observed at night** | §7 |
 
-**Provisional** — the sub-turn. Elaborates Streaming Turn and Honest Gauge.
+**Revised Output** — inside one exchange, before it settles. Elaborates Streaming
+Turn and Honest Gauge.
 
 Revised 2026-08-15, after the commissioned measurement returned (§8).
 
@@ -266,7 +293,7 @@ Revised 2026-08-15, after the commissioned measurement returned (§8).
 
 ---
 
-## 7. The Presence half
+## 7. The Ambient Signals half
 
 ### 1 · Standing Assertion
 
@@ -308,8 +335,9 @@ a lamp protocol with acknowledgements would not need the re-assert timer. The
 rule is a consequence of fire-and-forget datagrams to a device that can
 power-cycle underneath you, plus consumers that restart independently.
 
-**Corrects.** Turn 9's implementation note that a time-to-live is sufficient. It
-is sufficient for a live cue and does nothing for a resting state.
+**Corrects.** Ambient Activity Channel's implementation note that a time-to-live
+is sufficient. It is sufficient for a live cue and does nothing for a resting
+state.
 
 **Relations.** corrects → Ambient Activity Channel · governed by → Honest Gauge ·
 enables → Verified Presence
@@ -372,8 +400,9 @@ agent-generated strobing" stops being a rule anyone enforces and becomes a fact
 about what is sayable. The agent asks for `focus` or `evening`; pigment, ramp and
 dynamics never leave the renderer.
 
-This is Turn 9's *"the channel reports state, never instructions"* promoted from
-a design note to the thing that makes the layer safe to leave unsupervised.
+This is Ambient Activity Channel's *"the channel reports state, never
+instructions"* promoted from a design note to the thing that makes the layer safe
+to leave unsupervised.
 
 **Applicability.** Whenever an unsupervised agent drives an actuator in a shared
 physical space, and the harmful states are a describable class.
@@ -460,8 +489,9 @@ That goes on the page.
 *is* the design — and it has to live in one place a person can read in five
 seconds, or it is not a safety property at all.
 
-**Motivation.** Turn 9 says the renderer owns "a priority stack", singular. What
-was built has two, in two structures of different shape: an if/else chain over
+**Motivation.** Ambient Activity Channel says the renderer owns "a priority
+stack", singular. What was built has two, in two structures of different shape:
+an if/else chain over
 time-to-lived live cues, and a separate sequence of early returns for the resting
 look, reached only when no live cue is active. Neither can see the other. No test
 asserts the composite.
@@ -578,7 +608,7 @@ broke
 
 ---
 
-### 7 · The Night Cap
+### 7 · Cap the Decoration
 
 **Intent.** Bound the layer's *taste* by context and leave its *instruments*
 alone, so that a decorative capability never becomes a reason to switch the whole
@@ -645,7 +675,7 @@ Alarm · ranked by → Single Precedence
 
 ---
 
-## 8. The Provisional half was held, and the measurement has returned
+## 8. The Revised Output half was held, and the measurement has returned
 
 **2026-08-15.** The commissioned test is in (`om-004-evidence-2026-08-15.md`).
 The half is unblocked, and the answer is sharper than the question.
@@ -691,7 +721,7 @@ did not appear in the arrangement, and is the most expensive thing in it.
 
 That last point is the template addition working, and it is the **second** time in
 this paper: Single Precedence is failed by its own instance, and now two
-Provisional entries have their "how you would know this is unnecessary" condition
+Revised Output entries have their "how you would know this is unnecessary" condition
 answered *by their own reference implementation*. Neither pattern dies with it —
 they are claims about live-revising surfaces in general, which is why this
 language is deliberately not named for the modality. But the exemplar goes, and
@@ -769,12 +799,28 @@ architecture.
 
 - **Where the prose is canonical.** Recommendation: this set is born canonical in
   `/patterns` and OM-004 is written as an argument from the start — the shape
-  OM-001 only reached at Rev. 3. Free if decided now, expensive if not. Fleet,
-  Arrangements and Yard are already committed to that migration.
+  OM-001 only reached at Rev. 3. Free if decided now, expensive if not. Many
+  Agents, Arrangements and Many Teams are already committed to that migration.
 - **Whether this is one paper or two.** Recommendation: one, on OM-003's
   precedent, written to be separable.
-- **The set names.** Presence and Provisional. `presence` and `provisional` as
-  `lang` keys.
+- **The set names.** *Settled 2026-08-15.* **Ambient Signals** and **Revised
+  Output**, with `ambient` and `revised` as `lang` keys. The existing four keep
+  ids that no longer match their labels (`turn`, `fleet`, `arr`, `yard`) because
+  those are published and permanent; these two are not published, so the id can
+  match the name and there is no reason to inherit a mismatch on purpose.
+
+  *Ambient Signals* was chosen over *Peripheral Signals* — which matches §3's own
+  focal/peripheral axis more precisely — because it inherits from Ambient
+  Activity Channel, the published pattern this set elaborates, so it is not a new
+  word the reader has to hold.
+
+  *Revised Output* was chosen over *Streaming* on two counts. **Streaming
+  collides with a leaf**: `streaming-turn` is a published pattern in One Agent,
+  and a section named Streaming sitting beside a pattern named Streaming Turn in
+  a different section is exactly the confusion a plain container name exists to
+  prevent. And **it names the wrong half** — streaming ordinarily means output
+  *arriving* incrementally, where the distinctive property of this set is output
+  being *rewritten* after it has been shown.
 - **Nothing ships until both halves exist.** Half a language on the site, with no
   paper to point at, is worse than nothing.
 
@@ -824,4 +870,4 @@ the most fragile place a finding can live, so it is recorded here:
 
 So "one source, two mechanisms, no drift possible" is a claim about the file, not
 about the filesystem. That belongs in One Exemplar, Two Injections when the
-Provisional half is drafted.
+Revised Output half is drafted.
