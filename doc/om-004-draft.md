@@ -109,7 +109,7 @@ revision here.
 
 *Named 2026-08-15, under the catalogue's naming rule: containers plain, leaves
 vivid. The title is simply the two set names, which is OM-003's shape
-(*Arrangements, and the Yard* names its two levels) and makes the paper's
+(*Arrangements, and Many Teams* names its two levels) and makes the paper's
 relationship to the sets legible without a glossary. The previous working title,
 *Presence, and the Provisional*, failed the test it should have been held to —
 two abstractions, one of them a nominalised adjective, neither guessable cold.*

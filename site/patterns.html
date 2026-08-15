@@ -439,7 +439,7 @@ body[data-view="overview"] .desig .tag{display:none}
 </ol>
 
 <p class="field">Where the full entries are</p>
-<p>In <a href="/om-002">OM-002 · <em>Working a Fleet</em></a>, which is canonical for them. This explorer holds their position and their relations so the set can be moved through; the paper holds the argument, the figures and the evidence. There is exactly one copy of each entry, and it is there.</p>
+<p>In <a href="/om-002">OM-002 · <em>Working with Many Agents</em></a>, which is canonical for them. This explorer holds their position and their relations so the set can be moved through; the paper holds the argument, the figures and the evidence. There is exactly one copy of each entry, and it is there.</p>
 
 </div>
 <div class="panel" data-pat="overview-arrangements">
@@ -470,7 +470,7 @@ body[data-view="overview"] .desig .tag{display:none}
 </ol>
 
 <p class="field">Where the full entries are</p>
-<p>In <a href="/om-003">OM-003 · <em>Arrangements, and the Yard</em></a>, §7–§12, which is canonical for them.</p>
+<p>In <a href="/om-003">OM-003 · <em>Arrangements, and Many Teams</em></a>, §7–§12, which is canonical for them.</p>
 
 </div>
 <div class="panel" data-pat="overview-many-teams">
@@ -1707,6 +1707,25 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   ];
 
   var BY={}; P.forEach(function(p){BY[p.id]=p;});
+
+  // Ids these entries were published under before the Aug 2026 rename. A
+  // fragment is a citation, and a citation that stops resolving is a broken
+  // promise — the entry is still here, only its name moved. Old ids therefore
+  // keep working and land on the entry that replaced them. Never delete a row:
+  // once an id has been published, it is owed forever.
+  var LEGACY={
+    'mode-legibility':'mode-visibility',
+    'scope-on-uncertainty':'assume-or-ask',
+    'continuity-as-memory':'durable-memory',
+    'attribution-across-depth':'nested-attribution',
+    'dispatch-without-escort':'fire-and-forget',
+    'fleet-standing':'status-board',
+    'scoped-commission':'authority-at-dispatch',
+    'standing-by-readiness':'ordered-by-readiness'
+  };
+  // A live id always wins, so a future entry may reuse a retired name without
+  // being hijacked by this table.
+  function resolveId(id){ return BY[id] ? id : (LEGACY[id] || id); }
   var SEAM={harness:"harness",disposition:"disposition",both:"harness + disposition"};
   var pad=function(n){return (n<10?"0":"")+n;};
 
@@ -1934,7 +1953,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     document.body.classList.toggle('rail-open');
   });
   window.addEventListener('popstate',function(){
-    var id=location.hash.slice(1);
+    var id=resolveId(location.hash.slice(1));
     if(BY[id]) show(id,false); else showOverview(false);
   });
   document.addEventListener('keydown',function(e){
@@ -1969,7 +1988,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   // A citation written before this page held four sets still resolves: the id
   // decides the section, so /patterns#gather lands in Many Agents without
   // anybody having to know the sections exist.
-  var initial=location.hash.slice(1);
+  var initial=resolveId(location.hash.slice(1));
   if(BY[initial]){ setLang(BY[initial].lang,false); show(initial,false); }
   else { setLang('one-agent',false); showOverview(false); }
 })();
