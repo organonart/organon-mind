@@ -1,24 +1,47 @@
 # OM-004 — working draft
 
 *Not a publication. This is the drafting document for OM-004: the argument, the
-set structure, the addition to the template, and the Presence half written out
-in full. The Provisional half is deliberately held — see §8.*
+set structure, the addition to the template, and the Ambient Signals half written
+out in full. The Revised Output half is deliberately held — see §8.*
 
 Status: 2026-08-14. Evidence in `om-004-evidence-2026-08-14.md`. Nothing here has
 been published, and one earlier attempt was reverted (see §10).
 
-**2026-08-15.** Darkness as Alarm and The Night Cap drafted into §7, from the
-change log and the renderer's own documentation rather than from the evidence
-pass, which left both ungathered by instruction. Both carry *reported*, and both
-state what has not been observed. **The Presence half is now complete at seven
-entries.** The Provisional half remains held on the commissioned measurement,
-which has not returned — see §8.
+**2026-08-15 (a).** Darkness as Alarm and Cap the Decoration drafted into §7,
+from the change log and the renderer's own documentation rather than from the
+evidence pass, which left both ungathered by instruction. Both carry *reported*,
+and both state what has not been observed. **The Ambient Signals half is now
+complete at seven entries.**
+
+**2026-08-15 (b).** The commissioned measurement returned
+(`om-004-evidence-2026-08-15.md`). **The Revised Output half is unblocked** and
+§8 is rewritten around the answer. Three claims this document made are corrected,
+all of them ours and none of them cosmetic: the thirty-second revision claim it
+called falsified **is true** (§10); the configuration it called deployed was
+never deployed (§5); and the field it calls the strongest of the four template
+additions has a failure mode we walked into before publishing (§4).
+
+**2026-08-15 (c) — naming.** The catalogue's rule is now *containers plain,
+leaves vivid*: build on vocabulary the reader already has, and a name that needs
+a glossary entry has failed. Applied here — **Presence → Ambient Signals**,
+**Provisional → Revised Output**, the working title becomes those two names, and
+**The Night Cap → Cap the Decoration** because the old name committed a
+context-general pattern to one time of day. Section citations are rewritten to
+name the pattern and its paper (*Ambient Activity Channel (OM-001, Part IV)*)
+rather than a position against a mutable label — positional citations against
+section names are exactly what this rename broke. Reasoning in §10; entry names
+otherwise held, pending the audit of the existing 31.
+
+⚠️ **The rename is not live.** `organon-mind#7` is open and still a draft, so
+`main` and the published site both still read Turn / Fleet / Arrangements / Yard.
+This document is written ahead of it deliberately; whichever of #6 and #7 lands
+second will want the other's names.
 
 ---
 
 ## 1. The finding that sets the shape
 
-**OM-001 already contains this pattern.** Ambient Activity Channel (Turn 9,
+**OM-001 already contains this pattern.** Ambient Activity Channel (OM-001,
 Part IV) proposes exactly the peripheral channel that has since been built:
 
 > Signal the agent's state through a channel the principal perceives without
@@ -37,10 +60,11 @@ So OM-004 is **not a new language beside OM-001**. It is the first paper that
 returns to a published pattern with measurements from having built it. That is a
 better thing to be, and it is what the evidence actually supports.
 
-And the return is not a victory lap. Two of Turn 9's implementation notes turn
-out to be **insufficient in practice**, and the paper's job is to say so:
+And the return is not a victory lap. Two of Ambient Activity Channel's
+implementation notes turn out to be **insufficient in practice**, and the paper's
+job is to say so:
 
-| Turn 9 says | What building it showed |
+| Ambient Activity Channel says | What building it showed |
 |---|---|
 | "Give every state a time-to-live so a lost 'off' decays rather than stranding the device." | A TTL decays a stale *live cue*. It does nothing for a *resting* state, which is sent once and stays wrong forever. The lamp came up white and no timer would have fixed it. **→ Standing Assertion** |
 | "The renderer owns presentation and a priority stack." | There are **two** stacks, in two structures of different shape, neither able to see the other, with no test on the composite — and the written composite states the first step backwards. **→ Single Precedence** |
@@ -48,7 +72,7 @@ out to be **insufficient in practice**, and the paper's job is to say so:
 A pattern language that can be corrected by its own practice, in public, with the
 measurement that did it, is doing the thing this programme says it is for.
 
-Mode Legibility (Turn 2) is the second seed, and it was resolved rather than
+Mode Legibility (OM-001) is the second seed, and it was resolved rather than
 refined: the persistent Agent/Dictation mode was **deleted** and replaced by which
 key you hold. The pattern said make the mode visible at the moment of use; the
 answer that worked was to remove the mode so there is nothing to make visible.
@@ -57,10 +81,10 @@ answer that worked was to remove the mode so there is nothing to make visible.
 
 ## 2. The claim
 
-Everything published so far grows **outward in span**: Turn → Fleet →
-Arrangements → Yard, one agent to many, seconds to days. OM-001 begins at the
-moment a turn is submitted, and every one of its fourteen patterns assumes a
-completed input and a bounded reply.
+Everything published so far grows **outward in span**: One Agent → Many Agents →
+Arrangements → Many Teams, seconds to days. OM-001 begins at the moment a turn is
+submitted, and every one of its fourteen patterns assumes a completed input and a
+bounded reply.
 
 OM-004 goes the other direction. There are two regimes the turn does not cover:
 
@@ -75,21 +99,29 @@ has to report itself outside the exchange, honestly, on channels that cannot be
 scrolled back.** The lamp is that sentence at one hue of bandwidth; the
 settled/volatile seam is the same sentence at full text bandwidth.
 
-Working title: **Presence, and the Provisional**. Two levels in one document, on
-OM-003's precedent, written to be separable — if either half grows evidence of
-its own it becomes its own numbered paper and the split is a dated revision here.
+Working title: **Ambient Signals, and Revised Output**. Two levels in one
+document, on OM-003's precedent, written to be separable — if either half grows
+evidence of its own it becomes its own numbered paper and the split is a dated
+revision here.
+
+*Named 2026-08-15, under the catalogue's naming rule: containers plain, leaves
+vivid. The title is simply the two set names, which is OM-003's shape
+(*Arrangements, and the Yard* names its two levels) and makes the paper's
+relationship to the sets legible without a glossary. The previous working title,
+*Presence, and the Provisional*, failed the test it should have been held to —
+two abstractions, one of them a nominalised adjective, neither guessable cold.*
 
 ---
 
 ## 3. Two sets, and the axis nobody had named
 
-Explorer sets: **Presence** and **Provisional**, beside Turn / Fleet /
-Arrangements / Yard.
+Explorer sets: **Ambient Signals** and **Revised Output**, beside One Agent /
+Many Agents / Arrangements / Many Teams.
 
 OM-001, 002 and 003 are implicitly **focal and single-channel** — they assume a
 surface you are looking at. Nobody wrote that down because there was no
-alternative to contrast it with. Turn 9 introduced the alternative in one entry;
-this is what it looks like as a set.
+alternative to contrast it with. Ambient Activity Channel introduced the
+alternative in one entry; this is what it looks like as a set.
 
 | | Focal surface | Peripheral surface |
 |---|---|---|
@@ -99,7 +131,7 @@ this is what it looks like as a set.
 | History | scrollback | none. The light has no log |
 | Audience | you | the room |
 
-Every rule in the Presence set falls out of that table, which is the evidence
+Every rule in the Ambient Signals set falls out of that table, which is the evidence
 that it is the right axis. *No history* is why re-assertion beats change
 detection. *One slot* is why precedence is the entire safety model. *The room* is
 why two more lamps break darkness-as-alarm.
@@ -125,7 +157,7 @@ precisely enough to be checked.
 
 This is not a formatting choice. It recovers Alexander's *forces*: each answer
 names the pressure that generates the pattern rather than restating the
-solution. Four worked examples, all from the Presence half:
+solution. Four worked examples, all from the Ambient Signals half:
 
 - re-assertion is unnecessary if the transport were reliable **and** a consumer
   could ask for current state on connect
@@ -136,11 +168,37 @@ solution. Four worked examples, all from the Presence half:
 - deference is unnecessary if the renderer were the only controller of the device
 
 And it gives the language something the Gang of Four form has no slot for at all:
-a pattern that specifies the test that retires it. The Provisional half has a
-live instance — whether the scribe is still needed is a running experiment with a
-measurable outcome, not a matter of taste.
+a pattern that specifies the test that retires it. The Revised Output half ran one.
+*Whether the scribe is still needed* was a running experiment with a measurable
+outcome rather than a matter of taste, and on 2026-08-15 it returned: the scribe
+stays, and the corrector's continuous cadence is what the evidence deletes (§8).
 
 Where we cannot state the condition, the entry says so.
+
+### ⚠️ The field has a failure mode, and we hit it before publishing
+
+Naming a retirement condition makes it checkable. It does not make the check
+sound, and the two are easy to confuse — a fact this paper established the
+expensive way, against itself.
+
+The 2026-08-14 pass checked one such condition — *does a revision ever reach
+thirty seconds back?* — against a corpus of three short segments, found nothing
+at that depth, and rescaled the pattern to seconds. This document then hardened
+that into "does not happen." The 2026-08-15 pass, on a corpus deliberately
+over-sampled long, found a revision **35.6 s back rewriting the first word**
+(§10).
+
+**A null result from a corpus incapable of exhibiting the condition is
+indistinguishable from a true negative**, and it arrives wearing the same
+authority — a measurement, a method, a number. The field's whole value is that it
+lets a pattern be retired on evidence; that is exactly what makes a false
+retirement cheap to act on and expensive to notice.
+
+So the field carries an obligation the other five do not: **state the condition,
+and state what a corpus would have to contain to test it.** An entry whose
+retirement condition has been checked should say against what, and whether that
+corpus could have produced the other answer. This is the strongest of the four
+template additions across the language, and it is the one that can do harm.
 
 ---
 
@@ -170,11 +228,43 @@ then disagree with us. That is not a workaround for a small sample — it is the
 programme's own stated position about public capability, applied to our own
 claims, and it is a better answer than hedging.
 
+### ⚠️ 2026-08-15 — three corrections, and the commitment stops being aspirational
+
+**The deployed configuration was α1.0, not α2.0.** The 2026-08-14 pass labelled
+its α2.0 column *"(deployed)"* and this document repeated it. Nothing sets α2.0:
+the dictation path hardcodes `1.0`, both other paths default to `1.0`, and the
+live service reports `alpha: 1` with 47 seed terms. The accuracy consequence sits
+inside the bias sweep's own declared noise, so no conclusion moves — but the word
+*deployed* was doing real work in a paper whose argument is that you should
+measure what runs, and it was wrong.
+
+**The n=1502 corpus cannot be re-measured.** The tray log retains final text and a
+refinement count; samples are dropped at end of utterance. So the largest number
+in our evidence base supports *duration* claims and can never support an acoustic
+one. Every WER and revision figure rests on the single 229-second read.
+
+**The instrument that produced the 2026-08-14 revision-depth figures no longer
+exists.** It was built in a session scratchpad — a directory designed to be
+discarded — and went with it. The document was rescued into this repo; the rig was
+not. The consequence is not hypothetical: the two passes' depth numbers **cannot
+be reconciled**, because the earlier definition of "back" is unrecoverable, and
+the disagreement has to be recorded as open rather than resolved.
+
+That converts the acceptance-corpus commitment from a good intention into a
+**precondition**. A number whose instrument is unreproducible is testimony
+wearing the costume of measurement, however carefully it was taken — and it stays
+in the record forever, uncontestable, until someone spends a day rebuilding a rig
+to disagree with it. The 2026-08-15 pass committed its instrument
+(`prefix_replay.py`, with six of its own defects documented in the source where
+they bit), which is the first time a figure in this paper can be argued with. It
+should be the last time one cannot.
+
 ---
 
 ## 6. Entry roster
 
-**Presence** — the peripheral channel. Elaborates Turn 9.
+**Ambient Signals** — the peripheral channel. Elaborates Ambient Activity
+Channel.
 
 | # | Entry | Evidence | Drafted |
 |---|---|---|---|
@@ -184,23 +274,26 @@ claims, and it is a better answer than hedging.
 | 4 | Deference at Rest | code verified, **behaviour never observed** | §7 |
 | 5 | Single Precedence | verified, **and its own instance fails it** | §7 |
 | 6 | Darkness as Alarm | reported; reasoned, with one accidental observation | §7 |
-| 7 | The Night Cap | reported; constants verified, **never observed at night** | §7 |
+| 7 | Cap the Decoration | reported; constants verified, **never observed at night** | §7 |
 
-**Provisional** — the sub-turn. Elaborates Streaming Turn and Honest Gauge.
+**Revised Output** — inside one exchange, before it settles. Elaborates Streaming
+Turn and Honest Gauge.
+
+Revised 2026-08-15, after the commissioned measurement returned (§8).
 
 | # | Entry | Evidence | Drafted |
 |---|---|---|---|
-| 1 | Draft and Record | WER tables reported | held |
-| 2 | No Frozen Prefix | **verified, and rescaled** | held |
-| 3 | The Visible Seam | structure verified; perception untested | held |
-| 4 | Churn Is Not Correction | verified — the finding nobody went looking for | held |
-| 5 | Deterministic Last Mile | verified: fires on 1.2% of utterances | held |
-| 6 | One Exemplar, Two Injections | verified, with a measured cost and an asymmetry | held |
-| 7 | Split the Substrate | boundary established | held |
+| 1 | Draft and Record | verified, and **stated more purely** by the result | unblocked |
+| 2 | No Frozen Prefix | verified; governs the **live view only**, whose instance is proposed for deletion | unblocked |
+| 3 | The Visible Seam | structure verified; **perception now decides an architecture**, not a preference | unblocked |
+| 4 | Churn Is Not Correction | verified twice, with a measured gradient — **the strongest in the half** | unblocked |
+| 5 | Deterministic Last Mile | verified: fires on 1.2% of utterances | unblocked |
+| 6 | One Exemplar, Two Injections | verified, with an asymmetry; **cost re-measured at α1.0** | unblocked |
+| 7 | Split the Substrate | boundary established | unblocked |
 
 ---
 
-## 7. The Presence half
+## 7. The Ambient Signals half
 
 ### 1 · Standing Assertion
 
@@ -242,8 +335,9 @@ a lamp protocol with acknowledgements would not need the re-assert timer. The
 rule is a consequence of fire-and-forget datagrams to a device that can
 power-cycle underneath you, plus consumers that restart independently.
 
-**Corrects.** Turn 9's implementation note that a time-to-live is sufficient. It
-is sufficient for a live cue and does nothing for a resting state.
+**Corrects.** Ambient Activity Channel's implementation note that a time-to-live
+is sufficient. It is sufficient for a live cue and does nothing for a resting
+state.
 
 **Relations.** corrects → Ambient Activity Channel · governed by → Honest Gauge ·
 enables → Verified Presence
@@ -306,8 +400,9 @@ agent-generated strobing" stops being a rule anyone enforces and becomes a fact
 about what is sayable. The agent asks for `focus` or `evening`; pigment, ramp and
 dynamics never leave the renderer.
 
-This is Turn 9's *"the channel reports state, never instructions"* promoted from
-a design note to the thing that makes the layer safe to leave unsupervised.
+This is Ambient Activity Channel's *"the channel reports state, never
+instructions"* promoted from a design note to the thing that makes the layer safe
+to leave unsupervised.
 
 **Applicability.** Whenever an unsupervised agent drives an actuator in a shared
 physical space, and the harmful states are a describable class.
@@ -394,8 +489,9 @@ That goes on the page.
 *is* the design — and it has to live in one place a person can read in five
 seconds, or it is not a safety property at all.
 
-**Motivation.** Turn 9 says the renderer owns "a priority stack", singular. What
-was built has two, in two structures of different shape: an if/else chain over
+**Motivation.** Ambient Activity Channel says the renderer owns "a priority
+stack", singular. What was built has two, in two structures of different shape:
+an if/else chain over
 time-to-lived live cues, and a separate sequence of early returns for the resting
 look, reached only when no live cue is active. Neither can see the other. No test
 asserts the composite.
@@ -512,7 +608,7 @@ broke
 
 ---
 
-### 7 · The Night Cap
+### 7 · Cap the Decoration
 
 **Intent.** Bound the layer's *taste* by context and leave its *instruments*
 alone, so that a decorative capability never becomes a reason to switch the whole
@@ -579,20 +675,66 @@ Alarm · ranked by → Single Precedence
 
 ---
 
-## 8. The Provisional half is held, and why
+## 8. The Revised Output half was held, and the measurement has returned
 
-One measurement can restructure it. If only 2 of 39 deep revisions are
-unambiguous improvements, then continuous re-reading may be buying **liveness
-only** in the final transcript — which is precisely what the scribe exists for,
-and two of the four roles would be doing one job.
+**2026-08-15.** The commissioned test is in (`om-004-evidence-2026-08-15.md`).
+The half is unblocked, and the answer is sharper than the question.
 
-That test is commissioned: run a single corrector pass over each complete
-utterance in the logged corpus and diff it against what continuous re-reading
-produced. Until it returns, drafting the Provisional entries risks writing an
-arrangement that is about to lose a role.
+**Continuous re-reading cannot change the final text.** Not "did not" — *cannot*,
+by construction. The captured audio buffer has exactly one write site, inside the
+hold loop; at release the corrector waits for any pass still in flight, **discards
+it**, and issues one fresh pass over every captured sample whose text replaces
+everything the continuous stream produced. The diff the commission asked for is
+zero before it is measured. The empirical half supplies what the structural
+argument needs: the corrector is a function of its input — 51/51 clips gave one
+answer over three passes, and 51/51 were unchanged by whether a dozen continuous
+requests had preceded them.
 
-Everything else needed for that half is a gathering task, not a decision:
-incidents for the six entries, and the two remaining Presence rules.
+So the commission's framing survives: continuous re-reading buys **liveness
+only**, at 11.1× the corrector time the release pass costs.
+
+**But the deletion is the other one.** The expectation was that the scribe would
+go. It should not. The corrector's stream runs a cadence plus an inference behind
+the microphone — median 0.54 s — and had reached the release pass's answer before
+release in only 12 of 51 utterances, at a median 97% of the way through. Against
+the scribe's 50 ms that is *a different kind of feedback, not a slower one*.
+Delete the continuous re-reading; keep the scribe.
+
+### What that does to the seven entries
+
+**No role dies.** That is the finding's real shape and it is worth stating
+carefully, because the commission was framed as "two of four roles doing one job"
+and the resolution is not a role at all. Scribe, corrector, house style and
+exemplar all survive. What turns out to do nothing for the artifact of record is
+the corrector's **cadence** — a mode of operation that was never named as a role,
+did not appear in the arrangement, and is the most expensive thing in it.
+
+- **Draft and Record** is stated more purely, not weakened: the record is one
+  authoritative pass at release, the draft is the scribe, and the continuous
+  re-reading was a third thing that was neither.
+- **Churn Is Not Correction** is now the strongest entry in the half, carrying a
+  measured gradient rather than an anecdote.
+- **No Frozen Prefix** and **The Visible Seam** govern the *live view only* —
+  the final text has no prefix to freeze, being one pass over complete audio. And
+  the live view is precisely what the evidence proposes to delete. So both
+  patterns are about to have their reference instance retired.
+
+That last point is the template addition working, and it is the **second** time in
+this paper: Single Precedence is failed by its own instance, and now two
+Revised Output entries have their "how you would know this is unnecessary" condition
+answered *by their own reference implementation*. Neither pattern dies with it —
+they are claims about live-revising surfaces in general, which is why this
+language is deliberately not named for the modality. But the exemplar goes, and
+saying so is the discipline the field exists to enforce.
+
+### What still needs a person
+
+The evidence names its own falsification test and it is not a rig question:
+**§5 flips if someone, in a blind comparison, prefers the hold with continuous
+correction to the hold without it.** Eleven times the corrector time may be worth
+it for accurate text appearing while you hold. Nothing measures taste. That is
+the deferred perception experiment, and it now decides an architecture rather
+than a preference.
 
 ---
 
@@ -627,13 +769,29 @@ lamp. That keeps precedence single, keeps the room speaking with one voice, and
 gives presence somewhere to land without the protocol learning about topology.
 Untested.
 
-**Whether the amber highlight survives contact with churn.** The display marks a
-corrected word amber for one refinement cycle, and has never been evaluated. On
-the measured revision behaviour it would flash repeatedly on `15`/`fifteen` while
-carrying no information.
+**Whether the amber highlight survives contact with churn.** *Answered, and the
+answer is unpublished.* The display marked a word amber whenever it differed from
+the previous pass, so every `15`↔`fifteen` flip fired it again on the same word,
+alternating, carrying nothing — a signal firing often enough to be ignored, after
+which the real corrections it exists to show go past unseen. The repair is a
+clean one and belongs in the half: **a word returning to a value that position
+has already held is not a correction.** The first transition still shows, because
+that one is news; a word finding genuinely new readings keeps reporting.
+Suppression is keyed on *returning to something known*, not on having changed
+before.
 
-**Whether the scribe is still needed** — and the fact that this is *measurable*
-rather than a matter of taste is the point.
+⚠️ It is committed on an unpushed branch and is not in the running binary, so it
+is **not** citable yet — a measurement proves the code you measured, and this
+paper has now been caught once on exactly that distinction (§5). It also
+decorates the live view, which §8's evidence proposes to delete; if that deletion
+happens, this is a fix to something that goes away.
+
+**Whether the scribe is still needed.** *Answered 2026-08-15: yes* — and the
+evidence deletes the corrector's continuous cadence instead (§8). The point stands
+and is strengthened: it was settled by measurement rather than taste. What
+remains open is the half of it that is **not** measurable by rig — whether anyone
+prefers the hold with continuous correction — and that now decides an
+architecture.
 
 ---
 
@@ -641,23 +799,63 @@ rather than a matter of taste is the point.
 
 - **Where the prose is canonical.** Recommendation: this set is born canonical in
   `/patterns` and OM-004 is written as an argument from the start — the shape
-  OM-001 only reached at Rev. 3. Free if decided now, expensive if not. Fleet,
-  Arrangements and Yard are already committed to that migration.
+  OM-001 only reached at Rev. 3. Free if decided now, expensive if not. Many
+  Agents, Arrangements and Many Teams are already committed to that migration.
 - **Whether this is one paper or two.** Recommendation: one, on OM-003's
   precedent, written to be separable.
-- **The set names.** Presence and Provisional. `presence` and `provisional` as
-  `lang` keys.
+- **The set names.** *Settled 2026-08-15.* **Ambient Signals** and **Revised
+  Output**, with `ambient` and `revised` as `lang` keys. The existing four keep
+  ids that no longer match their labels (`turn`, `fleet`, `arr`, `yard`) because
+  those are published and permanent; these two are not published, so the id can
+  match the name and there is no reason to inherit a mismatch on purpose.
+
+  *Ambient Signals* was chosen over *Peripheral Signals* — which matches §3's own
+  focal/peripheral axis more precisely — because it inherits from Ambient
+  Activity Channel, the published pattern this set elaborates, so it is not a new
+  word the reader has to hold.
+
+  *Revised Output* was chosen over *Streaming* on two counts. **Streaming
+  collides with a leaf**: `streaming-turn` is a published pattern in One Agent,
+  and a section named Streaming sitting beside a pattern named Streaming Turn in
+  a different section is exactly the confusion a plain container name exists to
+  prevent. And **it names the wrong half** — streaming ordinarily means output
+  *arriving* incrementally, where the distinctive property of this set is output
+  being *rewritten* after it has been shown.
 - **Nothing ships until both halves exist.** Half a language on the site, with no
   paper to point at, is worse than nothing.
 
 ⚠️ **A previous attempt was published and reverted.** On 2026-08-14 the
 Scriptorium was merged into `/patterns` as Turn pattern 15 in Part VI and
 reverted two minutes later; the live site never carried it for any meaningful
-interval. That entry is superseded on two counts and both should be recorded
-rather than quietly dropped: it placed an arrangement of six patterns as a single
-Turn pattern, and it asserted *"a pass thirty seconds in may rewrite a word from
-the first sentence"*, which the evidence pass has since shown does not happen and
-cannot happen in 99.4% of real utterances.
+interval. It placed an arrangement of six patterns as a single Turn pattern,
+which is the reason it was reverted and remains a good one.
+
+⚠️ **2026-08-15 — the second charge against it was wrong, and this document made
+it twice.** Rev. 1 of this section said the entry "asserted *'a pass thirty
+seconds in may rewrite a word from the first sentence'*, which the evidence pass
+has since shown does not happen and cannot happen in 99.4% of real utterances."
+**The sentence is true.** The 2026-08-15 pass observed a revision reaching
+**35.6 s back, rewriting the utterance's first word.**
+
+Two claims had been fused, and only one of them was ever supported:
+
+- *"does not happen"* — inferred from absence in a three-segment corpus that was
+  too short to contain the case. A possibility claim cannot be refuted by a
+  corpus incapable of exhibiting it. **Falsified by direct observation.**
+- *"cannot happen in 99.4% of real utterances"* — a frequency claim off n=1502
+  logged durations. **Still true, and untouched.**
+
+What fails is the *implication*, and the repair is better than either version:
+**churn scales with reach.** A revision reaching 0–1 s back is a word returning
+to a value that position already held 1% of the time; beyond 10 s, 94%. All six
+of the deepest events were one word alternating `Pi`↔`Py` and never settling. So
+the reach is real and its content is almost entirely oscillation, and the two
+facts scale against each other.
+
+The source document is corrected in place with that table rather than deleted.
+The two passes' depth numbers **cannot be reconciled** — the 2026-08-14
+instrument was built in a session scratchpad and no longer exists, so its
+definition of "back" cannot be inspected. That is recorded as open, not resolved.
 
 One finding from that attempt survives and is **not** in the evidence pass or in
 the source document — it exists only in the reverted commit's message, which is
@@ -672,4 +870,4 @@ the most fragile place a finding can live, so it is recorded here:
 
 So "one source, two mechanisms, no drift possible" is a claim about the file, not
 about the filesystem. That belongs in One Exemplar, Two Injections when the
-Provisional half is drafted.
+Revised Output half is drafted.
