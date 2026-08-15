@@ -1618,7 +1618,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   var LANG={}; LANGS.forEach(function(l){LANG[l.id]=l;});
 
   var P = [
-    // ── Turn (OM-001) ────────────────────────────────────────────────────────
+    // ── One Agent (OM-001) ────────────────────────────────────────────────────────
     {lang:"one-agent",id:"capability-disclosure",n:1,name:"Capability Disclosure",g:"I",seam:"harness",
      rel:[["feeds","mode-visibility"],["loads","assume-or-ask"],["governed by","honest-gauge"],["discloses rung of","progressive-autonomy"]]},
     {lang:"one-agent",id:"mode-visibility",n:2,name:"Mode Visibility",g:"I",seam:"harness",
@@ -1648,7 +1648,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     {lang:"one-agent",id:"durable-memory",n:14,name:"Durable Memory",g:"VI",seam:"both",
      rel:[["fed by","plan-approve-execute-receipt"],["governed by","honest-gauge"],["orients","capability-disclosure"]]},
 
-    // ── Fleet (OM-002) ───────────────────────────────────────────────────────
+    // ── Many Agents (OM-002) ───────────────────────────────────────────────────────
     {lang:"many-agents",id:"proposed-dispatch",n:1,name:"Proposed Dispatch",g:"S",
      intent:"Let the context that already holds the work propose the units, so the principal approves a decomposition rather than authoring one from memory.",
      rel:[["hands to","authority-at-dispatch"],["takes its form from","constrained-choice"],["is gated by","approval-gate"]]},
@@ -1694,7 +1694,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
      intent:"Commission units to refute a result rather than to review it, with the burden of proof on the claim and a rule fixed before the verdicts arrive.",
      rel:[["inverts","panel"],["rounds with","loop-until-dry"],["needs","isolation-by-construction"],["built from","authority-at-dispatch"],["built from","fire-and-forget"],["built from","gather"]]},
 
-    // ── Yard (OM-003, level two) ─────────────────────────────────────────────
+    // ── Many Teams (OM-003, level two) ─────────────────────────────────────────────
     {lang:"many-teams",id:"ordered-by-readiness",n:1,name:"Ordered by Readiness",g:"Y",
      intent:"Order the surface by what needs a person, not by what is happening, so the scarce resource is spent on decisions rather than on scanning.",
      rel:[["ordered by","landing-order"],["sits above","status-board"],["obeys","honest-gauge"]]},
