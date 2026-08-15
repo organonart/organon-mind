@@ -81,11 +81,10 @@ lineage as `organon.art`: one page, no external requests.
   evidence than either predecessor and says so in §4 — do not "tidy" that section
   into confidence.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
-  `/why`. **Linked from the index since 15 Aug 2026**, having been served and
-  unlinked before that. It was linked as part of the same change that moved the
-  papers' arguments into OM-005: a reader arriving at a bare catalogue needs the
-  programme's position reachable in one click, and this is it. **Generated**, do
-  not hand-edit. Run
+  `/why`. **Served and unlinked**, deliberately: it is reachable by direct URL and
+  is not on the index. It was briefly linked on 15 Aug 2026 and unlinked the same
+  day — the essay is not current, and the index is not the place to work that out.
+  **Generated**, do not hand-edit. Run
   `python3 scripts/generate_mind_why.py` from the repo root; the source is
   `doc/not_just_what_it_says.md`. Regenerate whenever that document changes.
 - `vercel.json` — static config (`cleanUrls`, so `/why` serves `why.html`).
