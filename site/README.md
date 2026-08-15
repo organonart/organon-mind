@@ -40,16 +40,28 @@ lineage as `organon.art`: one page, no external requests.
   set, and `[`/`]` deliberately step only within the set you are reading. Deep
   links are unchanged and set-agnostic: the id decides the set, so
   `/patterns#gather` lands in Many Agents without a caller knowing it exists.
-- `om-001.html` — the paper at `/om-001`. Since Rev. 5 it is the **presentation**
-  of the One Agent section: §7 introduces it and §§8–21 are the fourteen entries
-  in full, in the same template and markup OM-002 and OM-003 use. §§1–6 are still
-  the argument — the gap, the literature, the cost, the evidence, the form and the
-  map — and move to OM-005, which the Rev. 5 note says on the page. ⚠️ Its
-  per-pattern anchors (`/om-001#approval-gate` and the other thirteen) are
-  **load-bearing** and now land on the entry itself. So do `#example-honest-gauge`
-  and `#example-streaming-turn`, the two Rev. 3 reproduced as worked examples,
-  carried as `legacy-anchor` spans. Do not remove them to tidy the markup; a
-  published fragment is as permanent as a published number.
+- `om-001.html` — the paper at `/om-001`. Since Rev. 6 it is the **presentation**
+  of the One Agent section and nothing else: §1 introduces it and §§2–15 are the
+  fourteen entries in full, in the same template and markup OM-002 and OM-003 use.
+  The argument that used to precede them is `om-005.html`. ⚠️ Its per-pattern
+  anchors (`/om-001#approval-gate` and the other thirteen) are **load-bearing** and
+  land on the entry itself. So do `#example-honest-gauge` and
+  `#example-streaming-turn`, the two Rev. 3 reproduced as worked examples, carried
+  as `legacy-anchor` spans — and the ten ids whose sections left for OM-005, held
+  in **§18, *Where the argument went***, each landing on a line naming where it
+  went. Do not remove any of them to tidy the markup; a published fragment is as
+  permanent as a published number.
+- `om-005.html` — *On the First Four Papers*, at `/om-005`. Where the programme's
+  argument lives: the gap, the literature, the cost, the evidence, the form and
+  the field added to it, the map — plus, as they arrive, OM-002's and OM-003's
+  evidence and gap sections (Rev. 2) and OM-004's method notes (Rev. 3).
+  ⚠️ **Sections moved here are re-anchored `om-00N-<original-id>`**, and that
+  prefix is not decoration: all three papers had a section called *The evidence*
+  and one called *Forces that recur*, so unprefixed ids would collide on arrival
+  and two of the three would have to be renamed — which a published fragment does
+  not permit. The rule is mechanical and stated on the page: `/om-001#x` is
+  `/om-005#om-001-x`. The preface is the one exception and keeps its bare id; it
+  prefaces this argument, and this is now the argument's paper.
 - `om-002.html` — *Working with Many Agents*, at `/om-002`. Eight patterns for delegating
   to more than one agent at once, in three acts: the split, in flight, the join.
   Published in full in the paper, like all three sets since Aug 2026 — there is
@@ -69,7 +81,11 @@ lineage as `organon.art`: one page, no external requests.
   evidence than either predecessor and says so in §4 — do not "tidy" that section
   into confidence.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
-  `/why`. **Generated**, do not hand-edit. Run
+  `/why`. **Linked from the index since 15 Aug 2026**, having been served and
+  unlinked before that. It was linked as part of the same change that moved the
+  papers' arguments into OM-005: a reader arriving at a bare catalogue needs the
+  programme's position reachable in one click, and this is it. **Generated**, do
+  not hand-edit. Run
   `python3 scripts/generate_mind_why.py` from the repo root; the source is
   `doc/not_just_what_it_says.md`. Regenerate whenever that document changes.
 - `vercel.json` — static config (`cleanUrls`, so `/why` serves `why.html`).
