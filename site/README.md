@@ -49,14 +49,14 @@ lineage as `organon.art`: one page, no external requests.
   §9 keeps every one of them as a stub linking to the canonical entry. Do not
   remove them to tidy the markup; a published fragment is as permanent as a
   published number.
-- `om-002.html` — *Working a Fleet*, at `/om-002`. Eight patterns for delegating
+- `om-002.html` — *Working with Many Agents*, at `/om-002`. Eight patterns for delegating
   to more than one agent at once, in three acts: the split, in flight, the join.
   ⚠️ **Unlike the first fourteen, these are published in full in the paper**,
   because the explorer holds only the first language. That is stated on the page
   (§5) along with what happens when they move: this becomes the argument, with a
   dated revision saying so. Until then there is exactly one copy of each — do not
   create a second by adding them to `/patterns` without moving them.
-- `om-003.html` — *Arrangements, and the Yard*, at `/om-003`. Two levels in one
+- `om-003.html` — *Arrangements, and Many Teams*, at `/om-003`. Two levels in one
   document: six named arrangements of OM-002's eight patterns (§7–§12), and the
   level above a fleet — one person working four to six squads at once (§14–§17).
   ⚠️ **The two halves are written to be separable.** If the yard half grows

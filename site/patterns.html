@@ -439,7 +439,7 @@ body[data-view="overview"] .desig .tag{display:none}
 </ol>
 
 <p class="field">Where the full entries are</p>
-<p>In <a href="/om-002">OM-002 · <em>Working a Fleet</em></a>, which is canonical for them. This explorer holds their position and their relations so the set can be moved through; the paper holds the argument, the figures and the evidence. There is exactly one copy of each entry, and it is there.</p>
+<p>In <a href="/om-002">OM-002 · <em>Working with Many Agents</em></a>, which is canonical for them. This explorer holds their position and their relations so the set can be moved through; the paper holds the argument, the figures and the evidence. There is exactly one copy of each entry, and it is there.</p>
 
 </div>
 <div class="panel" data-pat="overview-arrangements">
@@ -470,7 +470,7 @@ body[data-view="overview"] .desig .tag{display:none}
 </ol>
 
 <p class="field">Where the full entries are</p>
-<p>In <a href="/om-003">OM-003 · <em>Arrangements, and the Yard</em></a>, §7–§12, which is canonical for them.</p>
+<p>In <a href="/om-003">OM-003 · <em>Arrangements, and Many Teams</em></a>, §7–§12, which is canonical for them.</p>
 
 </div>
 <div class="panel" data-pat="overview-many-teams">
@@ -1618,7 +1618,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   var LANG={}; LANGS.forEach(function(l){LANG[l.id]=l;});
 
   var P = [
-    // ── Turn (OM-001) ────────────────────────────────────────────────────────
+    // ── One Agent (OM-001) ────────────────────────────────────────────────────────
     {lang:"one-agent",id:"capability-disclosure",n:1,name:"Capability Disclosure",g:"I",seam:"harness",
      rel:[["feeds","mode-visibility"],["loads","assume-or-ask"],["governed by","honest-gauge"],["discloses rung of","progressive-autonomy"]]},
     {lang:"one-agent",id:"mode-visibility",n:2,name:"Mode Visibility",g:"I",seam:"harness",
@@ -1648,7 +1648,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     {lang:"one-agent",id:"durable-memory",n:14,name:"Durable Memory",g:"VI",seam:"both",
      rel:[["fed by","plan-approve-execute-receipt"],["governed by","honest-gauge"],["orients","capability-disclosure"]]},
 
-    // ── Fleet (OM-002) ───────────────────────────────────────────────────────
+    // ── Many Agents (OM-002) ───────────────────────────────────────────────────────
     {lang:"many-agents",id:"proposed-dispatch",n:1,name:"Proposed Dispatch",g:"S",
      intent:"Let the context that already holds the work propose the units, so the principal approves a decomposition rather than authoring one from memory.",
      rel:[["hands to","authority-at-dispatch"],["takes its form from","constrained-choice"],["is gated by","approval-gate"]]},
@@ -1677,24 +1677,24 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     // ── Arrangements (OM-003, level one) ─────────────────────────────────────
     {lang:"arrangements",id:"plain-fan-out",n:1,name:"Plain Fan-Out",g:"A",
      intent:"Split work into units that never meet, run them at once, and reconcile their reports — the default arrangement, named so that the others read as departures from something rather than as inventions.",
-     rel:[["departs to","pipeline"],["departs to","scout-then-swarm"],["joins with","gather"]]},
+     rel:[["departs to","pipeline"],["departs to","scout-then-swarm"],["joins with","gather"],["built from","proposed-dispatch"],["built from","authority-at-dispatch"],["built from","isolation-by-construction"],["built from","fire-and-forget"],["built from","status-board"],["built from","the-return-path"],["built from","nested-attribution"]]},
     {lang:"arrangements",id:"pipeline",n:2,name:"Pipeline",g:"A",
      intent:"Run units in series, each one's report standing as the next one's commission, when the work does not partition but does decompose into stages.",
-     rel:[["departs from","plain-fan-out"],["pairs with","scout-then-swarm"],["collapses","the-return-path"]]},
+     rel:[["departs from","plain-fan-out"],["pairs with","scout-then-swarm"],["collapses","the-return-path"],["built from","authority-at-dispatch"],["built from","fire-and-forget"],["built from","gather"],["built from","isolation-by-construction"],["built from","status-board"]]},
     {lang:"arrangements",id:"scout-then-swarm",n:3,name:"Scout then Swarm",g:"A",
      intent:"Spend one read-only unit on a survey whose product is the decomposition, then fan out over it — for work nobody present knows the shape of.",
-     rel:[["feeds","plain-fan-out"],["pairs with","pipeline"],["uses","proposed-dispatch"]]},
+     rel:[["feeds","plain-fan-out"],["pairs with","pipeline"],["uses","proposed-dispatch"],["built from","authority-at-dispatch"],["built from","gather"],["built from","isolation-by-construction"]]},
     {lang:"arrangements",id:"loop-until-dry",n:4,name:"Loop Until Dry",g:"A",
      intent:"Repeat rounds of fan-out, deduplicating against everything seen so far, until some number of consecutive rounds return nothing new — for work whose size is not known before starting.",
-     rel:[["repeats","plain-fan-out"],["pairs with","adversarial-verify"],["dedupes at","gather"]]},
+     rel:[["repeats","plain-fan-out"],["pairs with","adversarial-verify"],["dedupes at","gather"],["built from","isolation-by-construction"],["built from","proposed-dispatch"],["built from","the-return-path"]]},
     {lang:"arrangements",id:"panel",n:5,name:"Panel",g:"A",
      intent:"Give several units the same question, kept apart on purpose, and make the disagreement between their answers the product rather than a problem.",
-     rel:[["inverts with","adversarial-verify"],["departs from","plain-fan-out"],["needs","isolation-by-construction"]]},
+     rel:[["inverts with","adversarial-verify"],["departs from","plain-fan-out"],["needs","isolation-by-construction"],["built from","authority-at-dispatch"],["built from","gather"],["built from","nested-attribution"]]},
     {lang:"arrangements",id:"adversarial-verify",n:6,name:"Adversarial Verify",g:"A",
      intent:"Commission units to refute a result rather than to review it, with the burden of proof on the claim and a rule fixed before the verdicts arrive.",
-     rel:[["inverts","panel"],["rounds with","loop-until-dry"],["needs","isolation-by-construction"]]},
+     rel:[["inverts","panel"],["rounds with","loop-until-dry"],["needs","isolation-by-construction"],["built from","authority-at-dispatch"],["built from","fire-and-forget"],["built from","gather"]]},
 
-    // ── Yard (OM-003, level two) ─────────────────────────────────────────────
+    // ── Many Teams (OM-003, level two) ─────────────────────────────────────────────
     {lang:"many-teams",id:"ordered-by-readiness",n:1,name:"Ordered by Readiness",g:"Y",
      intent:"Order the surface by what needs a person, not by what is happening, so the scarce resource is spent on decisions rather than on scanning.",
      rel:[["ordered by","landing-order"],["sits above","status-board"],["obeys","honest-gauge"]]},
@@ -1707,6 +1707,25 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   ];
 
   var BY={}; P.forEach(function(p){BY[p.id]=p;});
+
+  // Ids these entries were published under before the Aug 2026 rename. A
+  // fragment is a citation, and a citation that stops resolving is a broken
+  // promise — the entry is still here, only its name moved. Old ids therefore
+  // keep working and land on the entry that replaced them. Never delete a row:
+  // once an id has been published, it is owed forever.
+  var LEGACY={
+    'mode-legibility':'mode-visibility',
+    'scope-on-uncertainty':'assume-or-ask',
+    'continuity-as-memory':'durable-memory',
+    'attribution-across-depth':'nested-attribution',
+    'dispatch-without-escort':'fire-and-forget',
+    'fleet-standing':'status-board',
+    'scoped-commission':'authority-at-dispatch',
+    'standing-by-readiness':'ordered-by-readiness'
+  };
+  // A live id always wins, so a future entry may reuse a retired name without
+  // being hijacked by this table.
+  function resolveId(id){ return BY[id] ? id : (LEGACY[id] || id); }
   var SEAM={harness:"harness",disposition:"disposition",both:"harness + disposition"};
   var pad=function(n){return (n<10?"0":"")+n;};
 
@@ -1934,7 +1953,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     document.body.classList.toggle('rail-open');
   });
   window.addEventListener('popstate',function(){
-    var id=location.hash.slice(1);
+    var id=resolveId(location.hash.slice(1));
     if(BY[id]) show(id,false); else showOverview(false);
   });
   document.addEventListener('keydown',function(e){
@@ -1969,7 +1988,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   // A citation written before this page held four sets still resolves: the id
   // decides the section, so /patterns#gather lands in Many Agents without
   // anybody having to know the sections exist.
-  var initial=location.hash.slice(1);
+  var initial=resolveId(location.hash.slice(1));
   if(BY[initial]){ setLang(BY[initial].lang,false); show(initial,false); }
   else { setLang('one-agent',false); showOverview(false); }
 })();
