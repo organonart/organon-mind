@@ -336,7 +336,7 @@ body[data-view="overview"] .desig .tag{display:none}
 
 </div>
 
-<div id="store" hidden><div class="panel" data-pat="overview-turn">
+<div id="store" hidden><div class="panel" data-pat="overview-one-agent">
 
 <p class="ovl">One agent, one task, from the moment you ask to what survives afterwards.</p>
 
@@ -390,19 +390,19 @@ body[data-view="overview"] .desig .tag{display:none}
 <p class="field">The fourteen</p>
 <ol class="glance">
   <li><button type="button" data-goto="capability-disclosure"><span class="gn">01</span><span><span class="gname2">Capability Disclosure</span><span class="gint">Make the agent’s powers, position and limits legible before the principal commits.</span></span></button></li>
-  <li><button type="button" data-goto="mode-legibility"><span class="gn">02</span><span><span class="gname2">Mode Legibility</span><span class="gint">Make the active mode visible at the moment of use, not merely settable.</span></span></button></li>
+  <li><button type="button" data-goto="mode-visibility"><span class="gn">02</span><span><span class="gname2">Mode Visibility</span><span class="gint">Make the active mode visible at the moment of use, not merely settable.</span></span></button></li>
   <li><button type="button" data-goto="streaming-turn"><span class="gn">03</span><span><span class="gname2">Streaming Turn</span><span class="gint">Emit as you produce, so the wait overlaps the work instead of following it.</span></span></button></li>
   <li><button type="button" data-goto="barge-in"><span class="gn">04</span><span><span class="gname2">Barge-In</span><span class="gint">Let the principal seize the turn — and say honestly what that stops.</span></span></button></li>
-  <li><button type="button" data-goto="scope-on-uncertainty"><span class="gn">05</span><span><span class="gname2">Scope-on-Uncertainty</span><span class="gint">Ask only when ambiguity changes the blast radius; otherwise state an assumption.</span></span></button></li>
+  <li><button type="button" data-goto="assume-or-ask"><span class="gn">05</span><span><span class="gname2">Assume or Ask</span><span class="gint">Ask only when ambiguity changes the blast radius; otherwise state an assumption.</span></span></button></li>
   <li><button type="button" data-goto="constrained-choice"><span class="gn">06</span><span><span class="gname2">Constrained Choice</span><span class="gint">When ambiguity is enumerable, offer structure rather than free text.</span></span></button></li>
-  <li><button type="button" data-goto="plan-approve-execute-receipt"><span class="gn">07</span><span><span class="gname2">Plan · Approve · Execute · Receipt</span><span class="gint">Four phases, so consent happens where judgement is still useful.</span></span></button></li>
+  <li><button type="button" data-goto="plan-approve-execute-receipt"><span class="gn">07</span><span><span class="gname2">Plan, Approve, Execute, Receipt</span><span class="gint">Four phases, so consent happens where judgement is still useful.</span></span></button></li>
   <li><button type="button" data-goto="tool-call-transparency"><span class="gn">08</span><span><span class="gname2">Tool-Call Transparency</span><span class="gint">Which tool, against what, why, and with what result — as structure, not prose.</span></span></button></li>
   <li><button type="button" data-goto="ambient-activity-channel"><span class="gn">09</span><span><span class="gname2">Ambient Activity Channel</span><span class="gint">Signal state through a channel perceived without being attended to.</span></span></button></li>
   <li><button type="button" data-goto="approval-gate"><span class="gn">10</span><span><span class="gname2">Approval Gate</span><span class="gint">Explicit, per-action consent before anything irreversible or outward-facing.</span></span></button></li>
   <li><button type="button" data-goto="progressive-autonomy"><span class="gn">11</span><span><span class="gname2">Progressive Autonomy</span><span class="gint">Scope widens with demonstrated reliability and narrows with risk.</span></span></button></li>
   <li><button type="button" data-goto="honest-gauge"><span class="gn">12</span><span><span class="gname2">Honest Gauge</span><span class="gint">A signal must be wrong only when the system is wrong.</span></span></button></li>
   <li><button type="button" data-goto="recoverable-execution"><span class="gn">13</span><span><span class="gname2">Recoverable Execution</span><span class="gint">Every action has a visible before-state and a path back.</span></span></button></li>
-  <li><button type="button" data-goto="continuity-as-memory"><span class="gn">14</span><span><span class="gname2">Continuity as Memory</span><span class="gint">What matters survives in durable, correctable memory — not transcript length.</span></span></button></li>
+  <li><button type="button" data-goto="durable-memory"><span class="gn">14</span><span><span class="gname2">Durable Memory</span><span class="gint">What matters survives in durable, correctable memory — not transcript length.</span></span></button></li>
 </ol>
 
 <p class="field">Reading this page</p>
@@ -414,11 +414,11 @@ body[data-view="overview"] .desig .tag{display:none}
 </ul>
 
 <p class="field">Where this came from</p>
-<p>Four of the fourteen — Mode Legibility, Streaming Turn, Ambient Activity Channel and Honest Gauge — were found by hitting them on a single workstation running a voice-first agent with a resident process, local speech-to-text and synthesis, and a physical lighting channel. Every number quoted in those entries was measured on that machine rather than estimated.</p>
+<p>Four of the fourteen — Mode Visibility, Streaming Turn, Ambient Activity Channel and Honest Gauge — were found by hitting them on a single workstation running a voice-first agent with a resident process, local speech-to-text and synthesis, and a physical lighting channel. Every number quoted in those entries was measured on that machine rather than estimated.</p>
 <p>The argument for all of it — the gap, why the existing literature does not fill it, and what the missing vocabulary costs — is <a href="/om-001">OM-001</a>. You do not need it to use the catalogue.</p>
 
 </div>
-<div class="panel" data-pat="overview-fleet">
+<div class="panel" data-pat="overview-many-agents">
 
 <p class="ovl">One dispatcher, many units. What changes when a delegated task is split.</p>
 
@@ -429,12 +429,12 @@ body[data-view="overview"] .desig .tag{display:none}
 <p class="field">The eight</p>
 <ol class="glance">
   <li><button type="button" data-goto="proposed-dispatch"><span class="gn">01</span><span><span class="gname2">Proposed Dispatch</span><span class="gint">The context that holds the work proposes the units; the principal approves rather than authors.</span></span></button></li>
-  <li><button type="button" data-goto="scoped-commission"><span class="gn">02</span><span><span class="gname2">Scoped Commission</span><span class="gint">Authority granted at dispatch, because per-action approval does not survive N.</span></span></button></li>
+  <li><button type="button" data-goto="authority-at-dispatch"><span class="gn">02</span><span><span class="gname2">Authority at Dispatch</span><span class="gint">Authority granted at dispatch, because per-action approval does not survive N.</span></span></button></li>
   <li><button type="button" data-goto="isolation-by-construction"><span class="gn">03</span><span><span class="gname2">Isolation by Construction</span><span class="gint">A workspace per unit, so collision is impossible rather than unlikely.</span></span></button></li>
-  <li><button type="button" data-goto="dispatch-without-escort"><span class="gn">04</span><span><span class="gname2">Dispatch Without Escort</span><span class="gint">A dispatch that needs watching cannot be followed by another.</span></span></button></li>
-  <li><button type="button" data-goto="fleet-standing"><span class="gn">05</span><span><span class="gname2">Fleet Standing</span><span class="gint">Every unit's state on one surface, at the granularity the channel carries.</span></span></button></li>
+  <li><button type="button" data-goto="fire-and-forget"><span class="gn">04</span><span><span class="gname2">Fire and Forget</span><span class="gint">A dispatch that needs watching cannot be followed by another.</span></span></button></li>
+  <li><button type="button" data-goto="status-board"><span class="gn">05</span><span><span class="gname2">Status Board</span><span class="gint">Every unit's state on one surface, at the granularity the channel carries.</span></span></button></li>
   <li><button type="button" data-goto="the-return-path"><span class="gn">06</span><span><span class="gname2">The Return Path</span><span class="gint">A result routes back to what commissioned it, without a human as transport.</span></span></button></li>
-  <li><button type="button" data-goto="attribution-across-depth"><span class="gn">07</span><span><span class="gname2">Attribution Across Depth</span><span class="gint">A receipt names who acted, and how far down.</span></span></button></li>
+  <li><button type="button" data-goto="nested-attribution"><span class="gn">07</span><span><span class="gname2">Nested Attribution</span><span class="gint">A receipt names who acted, and how far down.</span></span></button></li>
   <li><button type="button" data-goto="gather"><span class="gn">08</span><span><span class="gname2">Gather</span><span class="gint">N reports reconciled into one account, with disagreement surfaced.</span></span></button></li>
 </ol>
 
@@ -442,7 +442,7 @@ body[data-view="overview"] .desig .tag{display:none}
 <p>In <a href="/om-002">OM-002 · <em>Working a Fleet</em></a>, which is canonical for them. This explorer holds their position and their relations so the set can be moved through; the paper holds the argument, the figures and the evidence. There is exactly one copy of each entry, and it is there.</p>
 
 </div>
-<div class="panel" data-pat="overview-arr">
+<div class="panel" data-pat="overview-arrangements">
 
 <p class="ovl">Named ways to arrange many agents. Not patterns, but compositions of them.</p>
 
@@ -473,7 +473,7 @@ body[data-view="overview"] .desig .tag{display:none}
 <p>In <a href="/om-003">OM-003 · <em>Arrangements, and the Yard</em></a>, §7–§12, which is canonical for them.</p>
 
 </div>
-<div class="panel" data-pat="overview-yard">
+<div class="panel" data-pat="overview-many-teams">
 
 <p class="ovl">One person, several teams. The level where the dispatcher is human.</p>
 
@@ -483,7 +483,7 @@ body[data-view="overview"] .desig .tag{display:none}
 
 <p class="field">The three</p>
 <ol class="glance">
-  <li><button type="button" data-goto="standing-by-readiness"><span class="gn">01</span><span><span class="gname2">Standing by Readiness</span><span class="gint">Order the surface by what needs a person, not by what is happening.</span></span></button></li>
+  <li><button type="button" data-goto="ordered-by-readiness"><span class="gn">01</span><span><span class="gname2">Ordered by Readiness</span><span class="gint">Order the surface by what needs a person, not by what is happening.</span></span></button></li>
   <li><button type="button" data-goto="re-entry-note"><span class="gn">02</span><span><span class="gname2">Re-entry Note</span><span class="gint">Coming back to a team should cost reading rather than reconstruction.</span></span></button></li>
   <li><button type="button" data-goto="landing-order"><span class="gn">03</span><span><span class="gname2">Landing Order</span><span class="gint">The shared trunk is the one thing isolation cannot copy.</span></span></button></li>
 </ol>
@@ -534,7 +534,7 @@ body[data-view="overview"] .desig .tag{display:none}
       <p><em>Agent</em> resolves and states its own position. <em>Environment</em> supplies ground truth. <em>Principal</em> calibrates.</p>
 
       <p class="field">Collaborations</p>
-      <p>Feeds <strong>Mode Legibility</strong> (2), disclosure of the variable most likely to change underfoot. Weak disclosure increases load on <strong>Scope-on-Uncertainty</strong> (5), because the agent must ask about things it could have stated.</p>
+      <p>Feeds <strong>Mode Visibility</strong> (2), disclosure of the variable most likely to change underfoot. Weak disclosure increases load on <strong>Assume or Ask</strong> (5), because the agent must ask about things it could have stated.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -561,11 +561,11 @@ tools: read, write, bash, powershell   ·   no network
       <p>Claude Code’s startup banner. Cursor’s workspace indicator. <code>git status</code> — the oldest and still one of the best capability-disclosure surfaces in software, worth studying precisely because it is not conversational.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Mode Legibility</strong> (2) is its highest-frequency special case. <strong>Honest Gauge</strong> (12) governs its correctness.</p>
+      <p><strong>Mode Visibility</strong> (2) is its highest-frequency special case. <strong>Honest Gauge</strong> (12) governs its correctness.</p>
     </div>
-<div class="panel" data-pat="mode-legibility">
+<div class="panel" data-pat="mode-visibility">
       <p class="part">Part I · Orientation</p>
-      <h2>Mode Legibility</h2>
+      <h2>Mode Visibility</h2>
 
       <p class="field first">Intent</p>
       <p>When a surface has modes that change the meaning of the same input, make the active mode visible <em>at the moment of use</em>, not merely settable at the moment of configuration.</p>
@@ -796,9 +796,9 @@ tools: read, write, bash, powershell   ·   no network
       <p class="field">Related patterns</p>
       <p><strong>Streaming Turn</strong> (3), <strong>Recoverable Execution</strong> (13).</p>
     </div>
-<div class="panel" data-pat="scope-on-uncertainty">
+<div class="panel" data-pat="assume-or-ask">
       <p class="part">Part III · Intent</p>
-      <h2>Scope-on-Uncertainty</h2>
+      <h2>Assume or Ask</h2>
 
       <p class="field first">Intent</p>
       <p>Ask exactly one high-value question when ambiguity would change the blast radius; otherwise proceed on a stated assumption.</p>
@@ -901,7 +901,7 @@ I've built and tested the artifact (common to both). Which target?</code></pre>
       <p><em>Option set</em> is finite. <em>Recommendation</em> carries the agent’s judgement. <em>Escape hatch</em> preserves free text for the case you did not anticipate.</p>
 
       <p class="field">Collaborations</p>
-      <p>Supplies the presentation layer for <strong>Scope-on-Uncertainty</strong> (5) and <strong>Approval Gate</strong> (10).</p>
+      <p>Supplies the presentation layer for <strong>Assume or Ask</strong> (5) and <strong>Approval Gate</strong> (10).</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -930,11 +930,11 @@ I've built and tested the artifact (common to both). Which target?</code></pre>
       <p>Slack’s interactive messages. Claude Code’s permission prompt — allow once, allow always, deny. <code>git rebase -i</code>’s verb list.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Scope-on-Uncertainty</strong> (5), <strong>Approval Gate</strong> (10).</p>
+      <p><strong>Assume or Ask</strong> (5), <strong>Approval Gate</strong> (10).</p>
     </div>
 <div class="panel" data-pat="plan-approve-execute-receipt">
       <p class="part">Part IV · Execution</p>
-      <h2>Plan · Approve · Execute · Receipt</h2>
+      <h2>Plan, Approve, Execute, Receipt</h2>
 
       <p class="field first">Intent</p>
       <p>Structure delegated work as four distinct phases so that understanding, consent, action and evidence are each separately inspectable.</p>
@@ -980,7 +980,7 @@ I've built and tested the artifact (common to both). Which target?</code></pre>
       <p><em>Plan</em> is an editable artifact. <em>Gate</em> is the consent boundary. <em>Trace</em> is live evidence. <em>Receipt</em> is durable evidence.</p>
 
       <p class="field">Collaborations</p>
-      <p>The gate is <strong>Approval Gate</strong> (10), placed by <strong>Progressive Autonomy</strong> (11). The trace is <strong>Tool-Call Transparency</strong> (8). The receipt feeds <strong>Continuity as Memory</strong> (14).</p>
+      <p>The gate is <strong>Approval Gate</strong> (10), placed by <strong>Progressive Autonomy</strong> (11). The trace is <strong>Tool-Call Transparency</strong> (8). The receipt feeds <strong>Durable Memory</strong> (14).</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -1168,7 +1168,7 @@ RECEIPT
       <p>Build-status lamps and CI orbs. IDE gutter activity indicators. The terminal bell on completion. Networked lamps driven from a voice agent’s turn lifecycle.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Tool-Call Transparency</strong> (8), <strong>Honest Gauge</strong> (12), <strong>Mode Legibility</strong> (2).</p>
+      <p><strong>Tool-Call Transparency</strong> (8), <strong>Honest Gauge</strong> (12), <strong>Mode Visibility</strong> (2).</p>
     </div>
 <div class="panel" data-pat="approval-gate">
       <p class="part">Part V · Authority</p>
@@ -1254,7 +1254,7 @@ context is lost. I'll wait — nothing else I'm doing depends on it.</code></pre
       <p>Claude Code’s permission modes. <code>sudo</code>. OAuth consent screens. Deployment approvals in CI. <code>git push --force-with-lease</code> as a gate encoded in a flag.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Progressive Autonomy</strong> (11), <strong>Scope-on-Uncertainty</strong> (5), <strong>Recoverable Execution</strong> (13).</p>
+      <p><strong>Progressive Autonomy</strong> (11), <strong>Assume or Ask</strong> (5), <strong>Recoverable Execution</strong> (13).</p>
     </div>
 <div class="panel" data-pat="progressive-autonomy">
       <p class="part">Part V · Authority</p>
@@ -1387,7 +1387,7 @@ context is lost. I'll wait — nothing else I'm doing depends on it.</code></pre
       <p><em>Gauge</em> reports. <em>Healthy steady state</em> must map to OK. <em>Principal</em> must be able to act on the difference.</p>
 
       <p class="field">Collaborations</p>
-      <p>Governs <strong>Capability Disclosure</strong> (1), <strong>Mode Legibility</strong> (2) and <strong>Ambient Activity Channel</strong> (9). Undermines <strong>Approval Gate</strong> (10) when violated: a gate whose stated effect comes from a lying gauge obtains uninformed consent.</p>
+      <p>Governs <strong>Capability Disclosure</strong> (1), <strong>Mode Visibility</strong> (2) and <strong>Ambient Activity Channel</strong> (9). Undermines <strong>Approval Gate</strong> (10) when violated: a gate whose stated effect comes from a lying gauge obtains uninformed consent.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -1501,9 +1501,9 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       <p class="field">Related patterns</p>
       <p><strong>Approval Gate</strong> (10), <strong>Progressive Autonomy</strong> (11), <strong>Barge-In</strong> (4).</p>
     </div>
-<div class="panel" data-pat="continuity-as-memory">
+<div class="panel" data-pat="durable-memory">
       <p class="part">Part VI · Truth and continuity</p>
-      <h2>Continuity as Memory</h2>
+      <h2>Durable Memory</h2>
 
       <p class="field first">Intent</p>
       <p>Carry what matters across sessions in durable, inspectable memory rather than in the length of a transcript, so restarting is cheap and context is a chosen artifact rather than an accident of scrollback.</p>
@@ -1551,7 +1551,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       <p><em>Transcript</em> is ephemeral. <em>Memory</em> is durable and editable. <em>Promotion</em> decides what crosses. <em>Correction</em> keeps memory true.</p>
 
       <p class="field">Collaborations</p>
-      <p>Fed by the receipts of <strong>Plan · Approve · Execute · Receipt</strong> (7). Governed by <strong>Honest Gauge</strong> (12): stale memory is a lying gauge with a long half-life.</p>
+      <p>Fed by the receipts of <strong>Plan, Approve, Execute, Receipt</strong> (7). Governed by <strong>Honest Gauge</strong> (12): stale memory is a lying gauge with a long half-life.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -1583,7 +1583,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       <p>Project instruction files such as <code>CLAUDE.md</code>. Claude Code’s <code>/compact</code>. Cursor’s rules files. Architecture decision records, which are this pattern applied to teams rather than agents.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Plan · Approve · Execute · Receipt</strong> (7), <strong>Honest Gauge</strong> (12), <strong>Capability Disclosure</strong> (1).</p>
+      <p><strong>Plan, Approve, Execute, Receipt</strong> (7), <strong>Honest Gauge</strong> (12), <strong>Capability Disclosure</strong> (1).</p>
     </div></div>
 
 <script>
@@ -1602,16 +1602,16 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   // other three carry position, intent and relations, and name the paper that
   // holds their argument. One copy of each entry, never two.
   var LANGS = [
-    {id:"turn", label:"One Agent", sub:"one task, start to finish", doc:"OM-001", href:"/om-001", full:true, seam:true,
+    {id:"one-agent", label:"One Agent", sub:"one task, start to finish", doc:"OM-001", href:"/om-001", full:true, seam:true,
      groups:[["I","Orientation"],["II","Turn"],["III","Intent"],["IV","Execution"],["V","Authority"],["VI","Truth and continuity"]],
      foot:"14 patterns · 6 stages<br>9 harness · 1 disposition · 4 both"},
-    {id:"fleet", label:"Many Agents", sub:"several at once", doc:"OM-002", href:"/om-002", full:false, seam:false,
+    {id:"many-agents", label:"Many Agents", sub:"several at once", doc:"OM-002", href:"/om-002", full:false, seam:false,
      groups:[["S","The split"],["F","In flight"],["J","The join"]],
      foot:"8 patterns · 3 stages<br>full entries in OM-002"},
-    {id:"arr", label:"Arrangements", sub:"ways to arrange many", doc:"OM-003", href:"/om-003", full:false, seam:false,
+    {id:"arrangements", label:"Arrangements", sub:"ways to arrange many", doc:"OM-003", href:"/om-003", full:false, seam:false,
      groups:[["A","Arrangements of many agents"]],
      foot:"6 arrangements<br>compositions of the Many Agents patterns"},
-    {id:"yard", label:"Many Teams", sub:"one person, several groups", doc:"OM-003", href:"/om-003", full:false, seam:false,
+    {id:"many-teams", label:"Many Teams", sub:"one person, several groups", doc:"OM-003", href:"/om-003", full:false, seam:false,
      groups:[["Y","Many teams"]],
      foot:"3 patterns · full entries in OM-003"}
   ];
@@ -1619,91 +1619,91 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
   var P = [
     // ── Turn (OM-001) ────────────────────────────────────────────────────────
-    {lang:"turn",id:"capability-disclosure",n:1,name:"Capability Disclosure",g:"I",seam:"harness",
-     rel:[["feeds","mode-legibility"],["loads","scope-on-uncertainty"],["governed by","honest-gauge"],["discloses rung of","progressive-autonomy"]]},
-    {lang:"turn",id:"mode-legibility",n:2,name:"Mode Legibility",g:"I",seam:"harness",
+    {lang:"one-agent",id:"capability-disclosure",n:1,name:"Capability Disclosure",g:"I",seam:"harness",
+     rel:[["feeds","mode-visibility"],["loads","assume-or-ask"],["governed by","honest-gauge"],["discloses rung of","progressive-autonomy"]]},
+    {lang:"one-agent",id:"mode-visibility",n:2,name:"Mode Visibility",g:"I",seam:"harness",
      rel:[["special case of","capability-disclosure"],["keys","approval-gate"],["governed by","honest-gauge"]]},
-    {lang:"turn",id:"streaming-turn",n:3,name:"Streaming Turn",g:"II",seam:"harness",
+    {lang:"one-agent",id:"streaming-turn",n:3,name:"Streaming Turn",g:"II",seam:"harness",
      rel:[["enables","barge-in"],["carries","tool-call-transparency"]]},
-    {lang:"turn",id:"barge-in",n:4,name:"Barge-In",g:"II",seam:"harness",
+    {lang:"one-agent",id:"barge-in",n:4,name:"Barge-In",g:"II",seam:"harness",
      rel:[["depends on","streaming-turn"],["constrains","recoverable-execution"]]},
-    {lang:"turn",id:"scope-on-uncertainty",n:5,name:"Scope-on-Uncertainty",g:"III",seam:"disposition",
+    {lang:"one-agent",id:"assume-or-ask",n:5,name:"Assume or Ask",g:"III",seam:"disposition",
      rel:[["escalates to","approval-gate"],["presented by","constrained-choice"],["loaded by","capability-disclosure"]]},
-    {lang:"turn",id:"constrained-choice",n:6,name:"Constrained Choice",g:"III",seam:"both",
-     rel:[["presents","scope-on-uncertainty"],["presents","approval-gate"]]},
-    {lang:"turn",id:"plan-approve-execute-receipt",n:7,name:"Plan · Approve · Execute · Receipt",g:"IV",seam:"both",
-     rel:[["gated by","approval-gate"],["placed by","progressive-autonomy"],["traced by","tool-call-transparency"],["feeds","continuity-as-memory"]]},
-    {lang:"turn",id:"tool-call-transparency",n:8,name:"Tool-Call Transparency",g:"IV",seam:"harness",
+    {lang:"one-agent",id:"constrained-choice",n:6,name:"Constrained Choice",g:"III",seam:"both",
+     rel:[["presents","assume-or-ask"],["presents","approval-gate"]]},
+    {lang:"one-agent",id:"plan-approve-execute-receipt",n:7,name:"Plan, Approve, Execute, Receipt",g:"IV",seam:"both",
+     rel:[["gated by","approval-gate"],["placed by","progressive-autonomy"],["traced by","tool-call-transparency"],["feeds","durable-memory"]]},
+    {lang:"one-agent",id:"tool-call-transparency",n:8,name:"Tool-Call Transparency",g:"IV",seam:"harness",
      rel:[["rides","streaming-turn"],["feeds","ambient-activity-channel"],["evidences","recoverable-execution"]]},
-    {lang:"turn",id:"ambient-activity-channel",n:9,name:"Ambient Activity Channel",g:"IV",seam:"harness",
-     rel:[["consumes","tool-call-transparency"],["obeys","honest-gauge"],["relates to","mode-legibility"]]},
-    {lang:"turn",id:"approval-gate",n:10,name:"Approval Gate",g:"V",seam:"harness",
+    {lang:"one-agent",id:"ambient-activity-channel",n:9,name:"Ambient Activity Channel",g:"IV",seam:"harness",
+     rel:[["consumes","tool-call-transparency"],["obeys","honest-gauge"],["relates to","mode-visibility"]]},
+    {lang:"one-agent",id:"approval-gate",n:10,name:"Approval Gate",g:"V",seam:"harness",
      rel:[["positioned by","progressive-autonomy"],["presented via","constrained-choice"],["cheapened by","recoverable-execution"],["undermined by","honest-gauge"]]},
-    {lang:"turn",id:"progressive-autonomy",n:11,name:"Progressive Autonomy",g:"V",seam:"both",
+    {lang:"one-agent",id:"progressive-autonomy",n:11,name:"Progressive Autonomy",g:"V",seam:"both",
      rel:[["positions","approval-gate"],["depends on","recoverable-execution"],["disclosed by","capability-disclosure"]]},
-    {lang:"turn",id:"honest-gauge",n:12,name:"Honest Gauge",g:"VI",seam:"harness",
-     rel:[["governs","capability-disclosure"],["governs","mode-legibility"],["governs","ambient-activity-channel"],["undermines","approval-gate"]]},
-    {lang:"turn",id:"recoverable-execution",n:13,name:"Recoverable Execution",g:"VI",seam:"harness",
+    {lang:"one-agent",id:"honest-gauge",n:12,name:"Honest Gauge",g:"VI",seam:"harness",
+     rel:[["governs","capability-disclosure"],["governs","mode-visibility"],["governs","ambient-activity-channel"],["undermines","approval-gate"]]},
+    {lang:"one-agent",id:"recoverable-execution",n:13,name:"Recoverable Execution",g:"VI",seam:"harness",
      rel:[["reduces","approval-gate"],["enables","progressive-autonomy"],["unwinds","barge-in"]]},
-    {lang:"turn",id:"continuity-as-memory",n:14,name:"Continuity as Memory",g:"VI",seam:"both",
+    {lang:"one-agent",id:"durable-memory",n:14,name:"Durable Memory",g:"VI",seam:"both",
      rel:[["fed by","plan-approve-execute-receipt"],["governed by","honest-gauge"],["orients","capability-disclosure"]]},
 
     // ── Fleet (OM-002) ───────────────────────────────────────────────────────
-    {lang:"fleet",id:"proposed-dispatch",n:1,name:"Proposed Dispatch",g:"S",
+    {lang:"many-agents",id:"proposed-dispatch",n:1,name:"Proposed Dispatch",g:"S",
      intent:"Let the context that already holds the work propose the units, so the principal approves a decomposition rather than authoring one from memory.",
-     rel:[["hands to","scoped-commission"],["takes its form from","constrained-choice"],["is gated by","approval-gate"]]},
-    {lang:"fleet",id:"scoped-commission",n:2,name:"Scoped Commission",g:"S",
+     rel:[["hands to","authority-at-dispatch"],["takes its form from","constrained-choice"],["is gated by","approval-gate"]]},
+    {lang:"many-agents",id:"authority-at-dispatch",n:2,name:"Authority at Dispatch",g:"S",
      intent:"Grant a dispatched agent its authority once, at dispatch, in a form the environment enforces — because per-action approval does not survive more than one agent.",
      rel:[["realised by","isolation-by-construction"],["replaces","approval-gate"],["widened by","progressive-autonomy"]]},
-    {lang:"fleet",id:"isolation-by-construction",n:3,name:"Isolation by Construction",g:"S",
+    {lang:"many-agents",id:"isolation-by-construction",n:3,name:"Isolation by Construction",g:"S",
      intent:"Give each unit a workspace in which collision is impossible, so parallelism does not depend on the units being careful.",
-     rel:[["bounds","scoped-commission"],["feeds","gather"],["is before-state for","recoverable-execution"]]},
-    {lang:"fleet",id:"dispatch-without-escort",n:4,name:"Dispatch Without Escort",g:"F",
+     rel:[["bounds","authority-at-dispatch"],["feeds","gather"],["is before-state for","recoverable-execution"]]},
+    {lang:"many-agents",id:"fire-and-forget",n:4,name:"Fire and Forget",g:"F",
      intent:"Make a dispatch complete at the moment it is made, so the principal can turn immediately to the next thing rather than staying to shepherd the last one.",
-     rel:[["needs","fleet-standing"],["leans on","scope-on-uncertainty"],["depends on","scoped-commission"]]},
-    {lang:"fleet",id:"fleet-standing",n:5,name:"Fleet Standing",g:"F",
+     rel:[["needs","status-board"],["leans on","assume-or-ask"],["depends on","authority-at-dispatch"]]},
+    {lang:"many-agents",id:"status-board",n:5,name:"Status Board",g:"F",
      intent:"Show every unit's state on one surface, at the granularity the channel actually carries, and never at a granularity it does not.",
-     rel:[["obeys","honest-gauge"],["reaches via","ambient-activity-channel"],["enables","dispatch-without-escort"]]},
-    {lang:"fleet",id:"the-return-path",n:6,name:"The Return Path",g:"J",
+     rel:[["obeys","honest-gauge"],["reaches via","ambient-activity-channel"],["enables","fire-and-forget"]]},
+    {lang:"many-agents",id:"the-return-path",n:6,name:"The Return Path",g:"J",
      intent:"Route a completed unit's result back to the context that commissioned it, so no human has to carry it there.",
-     rel:[["feeds","gather"],["carries","attribution-across-depth"],["is the receipt for","plan-approve-execute-receipt"]]},
-    {lang:"fleet",id:"attribution-across-depth",n:7,name:"Attribution Across Depth",g:"J",
+     rel:[["feeds","gather"],["carries","nested-attribution"],["is the receipt for","plan-approve-execute-receipt"]]},
+    {lang:"many-agents",id:"nested-attribution",n:7,name:"Nested Attribution",g:"J",
      intent:"Make every result name who produced it and how far down, so no context ever reports another's work in its own voice.",
      rel:[["rides","the-return-path"],["extends","tool-call-transparency"],["informs","progressive-autonomy"]]},
-    {lang:"fleet",id:"gather",n:8,name:"Gather",g:"J",
+    {lang:"many-agents",id:"gather",n:8,name:"Gather",g:"J",
      intent:"Reconcile N reports into one account, surfacing where they disagree rather than letting the disagreement land in the artifact.",
-     rel:[["consumes","the-return-path"],["needs","attribution-across-depth"],["reconciles","isolation-by-construction"]]},
+     rel:[["consumes","the-return-path"],["needs","nested-attribution"],["reconciles","isolation-by-construction"]]},
 
     // ── Arrangements (OM-003, level one) ─────────────────────────────────────
-    {lang:"arr",id:"plain-fan-out",n:1,name:"Plain Fan-Out",g:"A",
+    {lang:"arrangements",id:"plain-fan-out",n:1,name:"Plain Fan-Out",g:"A",
      intent:"Split work into units that never meet, run them at once, and reconcile their reports — the default arrangement, named so that the others read as departures from something rather than as inventions.",
      rel:[["departs to","pipeline"],["departs to","scout-then-swarm"],["joins with","gather"]]},
-    {lang:"arr",id:"pipeline",n:2,name:"Pipeline",g:"A",
+    {lang:"arrangements",id:"pipeline",n:2,name:"Pipeline",g:"A",
      intent:"Run units in series, each one's report standing as the next one's commission, when the work does not partition but does decompose into stages.",
      rel:[["departs from","plain-fan-out"],["pairs with","scout-then-swarm"],["collapses","the-return-path"]]},
-    {lang:"arr",id:"scout-then-swarm",n:3,name:"Scout then Swarm",g:"A",
+    {lang:"arrangements",id:"scout-then-swarm",n:3,name:"Scout then Swarm",g:"A",
      intent:"Spend one read-only unit on a survey whose product is the decomposition, then fan out over it — for work nobody present knows the shape of.",
      rel:[["feeds","plain-fan-out"],["pairs with","pipeline"],["uses","proposed-dispatch"]]},
-    {lang:"arr",id:"loop-until-dry",n:4,name:"Loop Until Dry",g:"A",
+    {lang:"arrangements",id:"loop-until-dry",n:4,name:"Loop Until Dry",g:"A",
      intent:"Repeat rounds of fan-out, deduplicating against everything seen so far, until some number of consecutive rounds return nothing new — for work whose size is not known before starting.",
      rel:[["repeats","plain-fan-out"],["pairs with","adversarial-verify"],["dedupes at","gather"]]},
-    {lang:"arr",id:"panel",n:5,name:"Panel",g:"A",
+    {lang:"arrangements",id:"panel",n:5,name:"Panel",g:"A",
      intent:"Give several units the same question, kept apart on purpose, and make the disagreement between their answers the product rather than a problem.",
      rel:[["inverts with","adversarial-verify"],["departs from","plain-fan-out"],["needs","isolation-by-construction"]]},
-    {lang:"arr",id:"adversarial-verify",n:6,name:"Adversarial Verify",g:"A",
+    {lang:"arrangements",id:"adversarial-verify",n:6,name:"Adversarial Verify",g:"A",
      intent:"Commission units to refute a result rather than to review it, with the burden of proof on the claim and a rule fixed before the verdicts arrive.",
      rel:[["inverts","panel"],["rounds with","loop-until-dry"],["needs","isolation-by-construction"]]},
 
     // ── Yard (OM-003, level two) ─────────────────────────────────────────────
-    {lang:"yard",id:"standing-by-readiness",n:1,name:"Standing by Readiness",g:"Y",
+    {lang:"many-teams",id:"ordered-by-readiness",n:1,name:"Ordered by Readiness",g:"Y",
      intent:"Order the surface by what needs a person, not by what is happening, so the scarce resource is spent on decisions rather than on scanning.",
-     rel:[["ordered by","landing-order"],["sits above","fleet-standing"],["obeys","honest-gauge"]]},
-    {lang:"yard",id:"re-entry-note",n:2,name:"Re-entry Note",g:"Y",
+     rel:[["ordered by","landing-order"],["sits above","status-board"],["obeys","honest-gauge"]]},
+    {lang:"many-teams",id:"re-entry-note",n:2,name:"Re-entry Note",g:"Y",
      intent:"Have each team maintain a short note written for the person's return, so that coming back to it costs reading rather than reconstruction.",
-     rel:[["feeds","standing-by-readiness"],["is","continuity-as-memory"],["summarises","gather"]]},
-    {lang:"yard",id:"landing-order",n:3,name:"Landing Order",g:"Y",
+     rel:[["feeds","ordered-by-readiness"],["is","durable-memory"],["summarises","gather"]]},
+    {lang:"many-teams",id:"landing-order",n:3,name:"Landing Order",g:"Y",
      intent:"Decide the order in which finished work lands, explicitly and before it is finished, because the shared trunk is the one thing isolation cannot copy.",
-     rel:[["surfaces in","standing-by-readiness"],["limits","isolation-by-construction"],["sequences","gather"]]}
+     rel:[["surfaces in","ordered-by-readiness"],["limits","isolation-by-construction"],["sequences","gather"]]}
   ];
 
   var BY={}; P.forEach(function(p){BY[p.id]=p;});
@@ -1716,7 +1716,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       stageRow=document.getElementById('frow-stage'),
       seamRow=document.getElementById('frow-seam'),
       railFoot=document.getElementById('railfoot'),
-      state={lang:'turn',part:'all',seam:'all',cur:null};
+      state={lang:'one-agent',part:'all',seam:'all',cur:null};
 
   // Citation counts are computed across every section, because a relation that
   // crosses one is still a citation — and the cross-section ones are the whole
@@ -1823,7 +1823,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     document.getElementById('d-name').textContent=l.label;
     var src=store.querySelector('[data-pat="overview-'+l.id+'"]');
     document.getElementById('d-prose').innerHTML=src?src.innerHTML:'';
-    if(l.id==='turn') wireStages();
+    if(l.id==='one-agent') wireStages();
     indexEl.querySelectorAll('button[data-goto]').forEach(function(b){b.setAttribute('aria-current','false');});
     document.querySelector('.railtop button').setAttribute('aria-current','true');
     document.title=l.label+' — Design Patterns for AI Agents';
@@ -1971,7 +1971,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   // anybody having to know the sections exist.
   var initial=location.hash.slice(1);
   if(BY[initial]){ setLang(BY[initial].lang,false); show(initial,false); }
-  else { setLang('turn',false); showOverview(false); }
+  else { setLang('one-agent',false); showOverview(false); }
 })();
 </script>
 </body>
