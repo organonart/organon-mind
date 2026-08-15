@@ -116,6 +116,20 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 .toc .g{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
   color:var(--muted);margin:1rem 0 .35rem}
 
+/* Ids published against sections that have moved to OM-005. Every one is
+   kept and lands on the line naming where its section went — a published
+   fragment is owed forever, and moving text does not retire a citation. */
+.retired{list-style:none;margin:1.3rem 0 0;padding:0;max-width:var(--measure)}
+.retired li{border-top:1px solid var(--rule);margin:0}
+.retired li:last-child{border-bottom:1px solid var(--rule)}
+.retired li:target{background:var(--raise);box-shadow:-.7rem 0 0 var(--raise),.7rem 0 0 var(--raise)}
+.retired a{display:block;padding:.55rem 0;text-decoration:none;color:inherit}
+.retired .rn{display:block;font-weight:600;letter-spacing:-.006em}
+.retired .rd{display:block;color:var(--muted);font-size:.88rem;line-height:1.5}
+.retired a:hover .rn,.retired a:focus-visible .rn{text-decoration:underline;
+  text-decoration-color:var(--link);text-underline-offset:3px}
+.retired a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+
 .colophon{margin:5.5rem 0 0;padding-top:1.1rem;border-top:1px solid var(--rule);
   font-family:var(--mono);font-size:.72rem;line-height:1.8;color:var(--muted)}
 .colophon a{color:var(--link)}
@@ -157,33 +171,18 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p class="revision">Rev. 2 — 15 Aug 2026. Retitled from <em>Arrangements, and the Yard</em>. The title is now its two sections exactly — Arrangements, and Many Teams — following the same rule as the rename of the catalogue itself. The URL, the number and every anchor are unchanged: <code>/om-003</code> is what a citation hangs on. Ids published under the old pattern names still resolve.</p>
     </div>
       <p class="revision">Rev. 3 — 15 Aug 2026. <em>Yard</em> and <em>fleet</em> are both gone. Rev. 1 proposed <em>yard</em> while noting it was chosen rather than found and could be overturned cheaply by a later document; this is that overturning, and §14's aside now records it. The level is described plainly — several squads, worked at once — and no replacement term is coined. <em>Squad</em> stays, and OM-002 now uses it too. The section ids <code>#the-yard</code> and <code>#can-an-agent-run-a-yard</code> are <strong>unchanged</strong>: headings move, published anchors do not.</p>
+      <p class="revision">Rev. 5 — 15 Aug 2026. The argument moves out. §1 <em>Two gaps, one of them our own</em> and §5 <em>Forces that recur</em> are now <a href="/om-005">OM-005 · <em>On the First Four Papers</em></a> §§11 and 13. §4, <em>The evidence, which is weaker than OM-002’s</em>, was <strong>split</strong>: the assessment went to OM-005 §12, and the four-source table with its eight open slots stayed here as §3, retitled <em>The four sources, and eight open slots</em> — twelve links from ten sections of this document point into those slots, eight of them from entries, and an entry should not have to leave its own paper to say what it rests on. <code>#the-evidence</code> therefore still resolves here, and all eight <code>#slot-N</code> anchors are untouched. The two retired ids are kept in §18. This document is now what it is called: six arrangements and three patterns, presented. Every section number in the body has been renumbered to match; numbers inside the dated notes above describe the structure of their own day and have been left.</p>
       <p class="revision">Rev. 4 — 15 Aug 2026. One citation of OM-001 repointed: its acceptance checklist was §10 and is now §16, after OM-001 gave its fourteen entries their own numbered sections and moved its argument to <a href="/om-005">OM-005</a>. The Rev. 1 note above still cites <code>/om-001#preface</code>, which still resolves — that anchor is kept in OM-001 §18 and lands on the line naming where the preface went. Dated notes are records and are not rewritten. Nothing else in this document changed.</p>
   </div>
 </header>
 
-<section id="the-gap">
+<section id="what-a-composite-is">
   <div class="row">
     <div class="mark">1</div>
     <div class="body">
-      <h2>Two gaps, one of them our own</h2>
-      <p class="lede">OM-002 described a squad as though it had one shape. A commission is split, units run in isolation, reports come back, a gather reconciles them. That is a real shape and the most common one, but it is a shape — a choice among several — and the document never said so. Reading it back, the eight patterns look like a fixed sequence rather than a set of parts that can be assembled more than one way.</p>
-      <p>They can be assembled more than one way, and the assemblies are not variations. They are different enough that the same pattern means a different thing inside each one. That is the first half of this document.</p>
-      <p>The second half is a level up. OM-002's principal ran one squad. In practice one person runs four to six areas of a product at once, each with its own dispatcher and its own units, and the difficulties there are not the difficulties of a larger squad. They come from a single asymmetry, stated in §14 and worth putting early: <strong>the recursion fails at the top, because the principal cannot be commissioned.</strong> Everything else at that level falls out of it.</p>
-
-      <p class="field">What this closes, and what it does not</p>
-      <p>OM-002 listed six things it did not cover. This document takes up exactly one of them — <em>contention for things that cannot be isolated</em> — and only at the level where it bites hardest, which is the shared trunk rather than the shared port. Depth beyond two, heterogeneous squads, cost, the unit that never reports, and evaluation are all still open, and §19 says so again rather than letting them fade.</p>
-      <p>It also takes up something OM-001 said about itself. That document's preface conceded that its acceptance checklist was “a checklist, which is precisely the weaker thing he was warning about”. §2 is the attempt to do better, and §13 is where the attempt is scored.</p>
-    </div>
-  </div>
-</section>
-
-<section id="what-a-composite-is">
-  <div class="row">
-    <div class="mark">2</div>
-    <div class="body">
       <h2>A composite changes what its parts mean</h2>
       <p>The reason to name an arrangement is not tidiness. If a composite were only its constituents run in a particular order, the name would be a convenience and the honest thing would be to describe the order and move on.</p>
-      <p><strong>A composite is worth a name when it changes what its constituent patterns mean.</strong> That is the test applied throughout this document, and it is not a low bar — one candidate failed it and was cut (§6).</p>
+      <p><strong>A composite is worth a name when it changes what its constituent patterns mean.</strong> That is the test applied throughout this document, and it is not a low bar — one candidate failed it and was cut (§4).</p>
       <p>Four examples, before any of the entries:</p>
       <div class="tablewrap"><table>
         <thead><tr><th>Pattern</th><th>In plain fan-out</th><th>Inside another arrangement</th></tr></thead>
@@ -213,21 +212,21 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
       <p class="field">Why this is the answer to a criticism, and not a taxonomy</p>
       <p>Alexander told a room of object-oriented programmers in 1996 that the format had travelled to software and the important part had not. A pattern language was meant to be <em>generative</em>: a sequence you follow that produces a coherent whole, each step differentiating what the previous step laid down. What arrived instead was a shelf of separable good ideas, each individually defensible, with nothing saying how to go from one to a building.</p>
-      <p>OM-001 accepted the criticism and then demonstrated it. Its §10 turned fourteen patterns into fourteen questions to ask about a finished interface — useful, and exactly the weaker thing: a checklist is applied <em>afterwards</em>, to something already made.</p>
+      <p>OM-001 accepted the criticism and then demonstrated it. Its §8 turned fourteen patterns into fourteen questions to ask about a finished interface — useful, and exactly the weaker thing: a checklist is applied <em>afterwards</em>, to something already made.</p>
       <p>A catalogue of composites is the stronger thing, or the nearest this subject has come to it, for three reasons:</p>
       <ul>
         <li>Its entries are <strong>sequences rather than items</strong>. Each says which patterns apply, in what order, and what each one is for at that point.</li>
         <li>Its entries are <strong>not decomposable without loss</strong>. Given the table above, “Panel” cannot be replaced by “fan-out plus Gather”, because Gather does something else there.</li>
-        <li>They can be <strong>chosen before the work</strong> rather than checked after it. §13 is the selection sequence, and a sequence you follow forwards is the shape of the claim Alexander was making.</li>
+        <li>They can be <strong>chosen before the work</strong> rather than checked after it. §11 is the selection sequence, and a sequence you follow forwards is the shape of the claim Alexander was making.</li>
       </ul>
-      <p><strong>This is a partial discharge and should not be sold as more.</strong> Six named composites are still a shelf if nothing orders them, which is why §13 exists; and Alexander's real test was never structural. It was whether what gets generated is good for the people who have to live inside it. The person lives at the level above — which is the second half of this document, and the reason the two halves are one document.</p>
+      <p><strong>This is a partial discharge and should not be sold as more.</strong> Six named composites are still a shelf if nothing orders them, which is why §11 exists; and Alexander's real test was never structural. It was whether what gets generated is good for the people who have to live inside it. The person lives at the level above — which is the second half of this document, and the reason the two halves are one document.</p>
     </div>
   </div>
 </section>
 
 <section id="the-shape">
   <div class="row">
-    <div class="mark">3</div>
+    <div class="mark">2</div>
     <div class="body">
       <h2>The shape of the work</h2>
       <p>Two levels, and they are not the same problem repeated. Below, a squad takes one of several shapes, each an arrangement of OM-002's eight patterns. Above, a person works several such squads at once, and the constraints there come from the person rather than from the topology.</p>
@@ -326,11 +325,11 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="the-evidence">
   <div class="row">
-    <div class="mark">4</div>
+    <div class="mark">3</div>
     <div class="body">
-      <h2>The evidence, which is weaker than OM-002's</h2>
-      <p class="lede">This document has thinner evidence than either of the two before it, and the right response is to say so at the front rather than to write at the same confidence and let the reader assume.</p>
-      <p>The ladder is worth stating plainly. OM-001: fourteen patterns, four of them drawn from measurements on a running system. OM-002: eight patterns, two of them drawn from four measurements made while building a console, the rest from one person's practice over days. <strong>OM-003: six composites and three patterns, none of them newly measured.</strong> What is new here is arrangement and topology — and reasoning about topology is argument, not evidence.</p>
+      <h2>The four sources, and eight open slots</h2>
+      <p class="lede">Every entry below names which of four sources it rests on, and eight of them link to one of eight places where an incident belongs and none is on record. Both are here, with the entries that cite them.</p>
+      <p>How this document’s evidence compares with OM-001’s and OM-002’s — thinner than either, and why that is said at the front rather than at the end — is <a href="/om-005#om-003-the-evidence">OM-005 §12</a>.</p>
 
       <p class="field first">What the sources actually are</p>
       <div class="tablewrap"><table>
@@ -352,7 +351,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
             <td>Everything else. This is the largest single source in this document, and it is argument.</td>
           </tr>
           <tr>
-            <td><strong>Adjacent prior art</strong> — pipelines, juries, ensembles, review, queueing (§20).</td>
+            <td><strong>Adjacent prior art</strong> — pipelines, juries, ensembles, review, queueing (§19).</td>
             <td>That the shapes exist and have been worked out elsewhere under real constraints.</td>
             <td>That they transfer. The party being arranged here can decide to do something else, which none of those ancestors could.</td>
           </tr>
@@ -376,44 +375,23 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
   </div>
 </section>
 
-<section id="forces">
-  <div class="row">
-    <div class="mark">5</div>
-    <div class="body">
-      <h2>Forces that recur</h2>
-      <p>The tensions that reappear across both levels. The first three are new; the fourth is OM-002's first force arriving at a level where it can no longer be engineered around.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Force</th><th>Pulls toward</th><th>Pulls against</th></tr></thead>
-        <tbody>
-          <tr><td><strong>The whole changes the parts</strong></td><td>naming arrangements, so a pattern's meaning is read from its position</td><td>the simplicity of one pattern, one meaning</td></tr>
-          <tr><td><strong>Duplication buys independence</strong></td><td>panels, verifiers, repeated rounds</td><td>N times the cost for one answer, and no partition of the work</td></tr>
-          <tr><td><strong>Partition is cheap; ordering is not</strong></td><td>splitting work into units that never meet</td><td>a single shared trunk through which all of it must land, in some order</td></tr>
-          <tr><td><strong>Attention does not divide, and cannot be scoped</strong></td><td>surfaces ordered by what needs a decision</td><td>everything else competing for the same person</td></tr>
-          <tr><td><strong>Finished work rots while it waits</strong></td><td>landing small and often</td><td>the coherence of a release, and the cost of each landing</td></tr>
-          <tr><td><strong>Re-entry costs more than it looks</strong></td><td>durable notes maintained for a reader who was absent</td><td>a second artifact that can go stale and lie</td></tr>
-        </tbody>
-      </table></div>
-    </div>
-  </div>
-</section>
-
 <section id="on-the-entries">
   <div class="row">
-    <div class="mark">6</div>
+    <div class="mark">4</div>
     <div class="body">
       <h2>On the entries that follow</h2>
-      <p>Two kinds of entry, in one template. <strong>Composites</strong> (§7–§12) are arrangements of OM-002's eight patterns. <strong>Patterns</strong> (§15–§17) are new entries at this level, in the same form as OM-001's and OM-002's.</p>
+      <p>Two kinds of entry, in one template. <strong>Composites</strong> (§5–§10) are arrangements of OM-002's eight patterns. <strong>Patterns</strong> (§13–§15) are new entries at this level, in the same form as OM-001's and OM-002's.</p>
       <p>Citations: a composite is cited as <em>Pipeline</em> (Composite 2); a level-two pattern as <em>Landing Order</em> (OM-003 · 3); OM-002's eight as <a href="/om-002#gather"><strong>Gather</strong></a> (OM-002 · 8); OM-001's fourteen link to the canonical entry, as <a href="/patterns#honest-gauge"><strong>Honest Gauge</strong></a> (OM-001 · 12).</p>
 
       <p class="field">Two fields added, and why</p>
       <p>OM-001 added one field to the Gang of Four template — Failure Signature — and named Alexander as the reason. This document adds two, for reasons it should have to defend:</p>
       <ul>
         <li><strong>What it changes.</strong> Composites only. A table naming each constituent pattern and how its meaning shifts inside this arrangement. It is the entry's central claim, and an arrangement whose table is empty is not a composite — it is a sequence of steps.</li>
-        <li><strong>Evidence.</strong> Every entry. One line naming which of §4's four sources it rests on, and a pointer to its open slot where it rests on reasoning. Added because this document's claims are weaker than its predecessors', and per-entry honesty is the only form in which they can be published without misleading anybody.</li>
+        <li><strong>Evidence.</strong> Every entry. One line naming which of §3's four sources it rests on, and a pointer to its open slot where it rests on reasoning. Added because this document's claims are weaker than its predecessors', and per-entry honesty is the only form in which they can be published without misleading anybody.</li>
       </ul>
 
       <p class="field">The candidate that was cut</p>
-      <p><strong>Long Runner with Check-Ins</strong> — one unit on a long horizon, reporting periodically — was on the list and is not an entry. It fails the test in §2. Its parts are <a href="/om-002#status-board"><strong>Status Board</strong></a> (OM-002 · 5) and <a href="/om-002#fire-and-forget"><strong>Fire and Forget</strong></a> (OM-002 · 4), and neither changes meaning inside it: the status board reports what the channel carries, exactly as before, and the check-in is the same tension between an interrupt and a report. Its failure signature is theirs, unmodified. It is also not an arrangement of units, since there is only one — a long run is a duration, not a topology.</p>
+      <p><strong>Long Runner with Check-Ins</strong> — one unit on a long horizon, reporting periodically — was on the list and is not an entry. It fails the test in §1. Its parts are <a href="/om-002#status-board"><strong>Status Board</strong></a> (OM-002 · 5) and <a href="/om-002#fire-and-forget"><strong>Fire and Forget</strong></a> (OM-002 · 4), and neither changes meaning inside it: the status board reports what the channel carries, exactly as before, and the check-in is the same tension between an interrupt and a report. Its failure signature is theirs, unmodified. It is also not an arrangement of units, since there is only one — a long run is a duration, not a topology.</p>
       <p class="aside">The cut is recorded rather than hidden because the test is only worth anything if something fails it. If a check-in turns out to change what Status Board means — and the argument would have to be that a report the principal will read hours later is a different kind of object from a surface they glance at — the entry comes back, in a dated revision, with the argument attached.</p>
     </div>
   </div>
@@ -421,7 +399,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="plain-fan-out">
   <div class="row">
-    <div class="mark">7</div>
+    <div class="mark">5</div>
     <div class="body">
       <p class="part">Level one · Composite 1</p>
       <h2>Plain Fan-Out</h2>
@@ -506,7 +484,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="pipeline">
   <div class="row">
-    <div class="mark">8</div>
+    <div class="mark">6</div>
     <div class="body">
       <p class="part">Level one · Composite 2</p>
       <h2>Pipeline</h2>
@@ -603,7 +581,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="scout-then-swarm">
   <div class="row">
-    <div class="mark">9</div>
+    <div class="mark">7</div>
     <div class="body">
       <p class="part">Level one · Composite 3</p>
       <h2>Scout then Swarm</h2>
@@ -699,7 +677,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="loop-until-dry">
   <div class="row">
-    <div class="mark">10</div>
+    <div class="mark">8</div>
     <div class="body">
       <p class="part">Level one · Composite 4</p>
       <h2>Loop Until Dry</h2>
@@ -801,7 +779,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="panel">
   <div class="row">
-    <div class="mark">11</div>
+    <div class="mark">9</div>
     <div class="body">
       <p class="part">Level one · Composite 5</p>
       <h2>Panel</h2>
@@ -915,7 +893,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="adversarial-verify">
   <div class="row">
-    <div class="mark">12</div>
+    <div class="mark">10</div>
     <div class="body">
       <p class="part">Level one · Composite 6</p>
       <h2>Adversarial Verify</h2>
@@ -1014,7 +992,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="a-sequence-not-a-shelf">
   <div class="row">
-    <div class="mark">13</div>
+    <div class="mark">11</div>
     <div class="body">
       <h2>A sequence, not a shelf</h2>
       <p>Six named arrangements are a shelf unless something says how to choose. The choice is a short sequence of questions, asked in order, each one eliminating arrangements rather than scoring them.</p>
@@ -1078,7 +1056,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="the-yard">
   <div class="row">
-    <div class="mark">14</div>
+    <div class="mark">12</div>
     <div class="body">
       <h2>The level above: many squads</h2>
       <p class="lede">One person, four to six areas of a product, each with its own dispatcher and its own units. The obvious move is to read that as OM-002 applied one level up — the person is a dispatcher, the squads are units, and the eight patterns should recur. They do not, and the reason is a single asymmetry that nothing at this level can remove.</p>
@@ -1107,7 +1085,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 <span id="standing-by-readiness" class="legacy-anchor"></span>
 <section id="ordered-by-readiness">
   <div class="row">
-    <div class="mark">15</div>
+    <div class="mark">13</div>
     <div class="body">
       <p class="part">Level two · Pattern 1</p>
       <h2>Ordered by Readiness</h2>
@@ -1176,7 +1154,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p>A squad that sat blocked on a small decision while the person watched one that was fine. Or the person opening each squad in turn to find out which one needs them — <a href="/om-002#status-board"><strong>Status Board</strong></a>'s signature one level up, with the difference that here a status surface is what produces it rather than what cures it.</p>
 
       <p class="field">Evidence</p>
-      <p>Practice, and reasoning from the asymmetry in §14. The waiting time that would make the loss concrete has not been measured — <a href="#slot-6">slot 6</a>.</p>
+      <p>Practice, and reasoning from the asymmetry in §12. The waiting time that would make the loss concrete has not been measured — <a href="#slot-6">slot 6</a>.</p>
 
       <p class="field">Known uses</p>
       <p>A code review queue sorted by “waiting on you”. Air traffic control strips, which are ordered by what needs a decision next. Kanban boards where the blocked column is read first. Triage in any sense of the word.</p>
@@ -1189,7 +1167,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="re-entry-note">
   <div class="row">
-    <div class="mark">16</div>
+    <div class="mark">14</div>
     <div class="body">
       <p class="part">Level two · Pattern 2</p>
       <h2>Re-entry Note</h2>
@@ -1284,7 +1262,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="landing-order">
   <div class="row">
-    <div class="mark">17</div>
+    <div class="mark">15</div>
     <div class="body">
       <p class="part">Level two · Pattern 3</p>
       <h2>Landing Order</h2>
@@ -1375,36 +1353,36 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="can-an-agent-run-a-yard">
   <div class="row">
-    <div class="mark">18</div>
+    <div class="mark">16</div>
     <div class="body">
       <h2>Whether an agent can run this level</h2>
       <p>This is stated as open because it is open, and because the alternative — answering it from taste — is how a pattern language acquires entries that are preferences wearing the template.</p>
-      <p>The case for is straightforward. Everything in §15 to §17 is scheduling, bookkeeping and ordering: readiness, notes, a queue. Those are exactly the tasks that survive delegation well, and the person's own account of what they contribute is not any of them:</p>
+      <p>The case for is straightforward. Everything in §13 to §15 is scheduling, bookkeeping and ordering: readiness, notes, a queue. Those are exactly the tasks that survive delegation well, and the person's own account of what they contribute is not any of them:</p>
       <blockquote>
         <p>“The whole time, you are giving the thing that the agents need, which is the taste and the direction and the choices that make this thing you're building yours.”</p>
         <cite>Working notes, 13 August 2026 — quoted in <a href="/om-002#the-evidence">OM-002 §3</a></cite>
       </blockquote>
       <p>The case against is the asymmetry. An agent running this level would need authority over the singletons — the trunk, the release, the order in which things land — which is the one place where <a href="/om-002#authority-at-dispatch"><strong>Authority at Dispatch</strong></a> (OM-002 · 2) is hardest to write, because the dangerous actions are exactly the ones the job consists of. It would need a return path to a person that tolerates the person not answering, which is a channel nobody has built. And it would have to hold four to six areas well enough to know that landing A invalidates B — a judgement that currently rests on knowing why B exists.</p>
-      <p><strong>The observation that makes this more than an open question: the asymmetry does not disappear when you delegate this level. It moves.</strong> Put an agent in charge and the person becomes the principal of that agent, and every property in §14's table reappears one level up — unscopable authority, unreliable addressing, no report, attention as the constraint. The boundary is not a level in the hierarchy. It sits wherever the person is, and it moves when they do.</p>
+      <p><strong>The observation that makes this more than an open question: the asymmetry does not disappear when you delegate this level. It moves.</strong> Put an agent in charge and the person becomes the principal of that agent, and every property in §12's table reappears one level up — unscopable authority, unreliable addressing, no report, attention as the constraint. The boundary is not a level in the hierarchy. It sits wherever the person is, and it moves when they do.</p>
       <p>What would settle it, in the direction of yes: this level run by an agent for a week, whose landing order produced fewer invalidations than the person's, with the person still supplying direction. In the direction of no: the same trial producing more invalidations, or producing the same number while the person spent as long supervising as they had spent deciding. Neither has been run.</p>
-      <p>What can be said now is narrower and worth saying: <strong>an agent can hold this level's state without holding its authority.</strong> Readiness, the notes, the queue and the singleton list are all things a squad or a level-two agent can maintain, and maintaining them is most of §15 to §17. Whether the ordering decision itself can move is the open part.</p>
+      <p>What can be said now is narrower and worth saying: <strong>an agent can hold this level's state without holding its authority.</strong> Readiness, the notes, the queue and the singleton list are all things a squad or a level-two agent can maintain, and maintaining them is most of §13 to §15. Whether the ordering decision itself can move is the open part.</p>
     </div>
   </div>
 </section>
 
 <section id="what-this-does-not-cover">
   <div class="row">
-    <div class="mark">19</div>
+    <div class="mark">17</div>
     <div class="body">
       <h2>What this does not cover</h2>
       <p>Named honestly, on the same principle as the two documents before it — and there is more to name here, because there is less evidence.</p>
       <ul>
         <li><strong>Frequency, everywhere.</strong> One practitioner, one set of squads. Everything here establishes that a failure exists and roughly what it costs. Nothing establishes how often it happens, or whether other people's yards fail the same way.</li>
-        <li><strong>Whether six is the right number of arrangements</strong>, or whether the set is closed. Tournament brackets, shadow runs, and relays that hand work to a fresh context when one is exhausted were all considered and are not here — not because they failed the §2 test but because nothing was on record either way.</li>
+        <li><strong>Whether six is the right number of arrangements</strong>, or whether the set is closed. Tournament brackets, shadow runs, and relays that hand work to a fresh context when one is exhausted were all considered and are not here — not because they failed the §1 test but because nothing was on record either way.</li>
         <li><strong>Cost.</strong> Still. A panel is N times the price for one answer and a verifier doubles a claim's cost, and nothing here says when either is worth it. <a href="/om-002#what-this-does-not-cover">OM-002 §14</a> named this as probably the most valuable missing pattern; it still is.</li>
         <li><strong>More than one person at this level.</strong> Two principals with different authority over the same squads is a real and common case, and it is not addressed at all. OM-001 named it as <em>collaborative surfaces</em> and it has now gone uncovered by three documents.</li>
         <li><strong>Measuring attention.</strong> The second half rests on claims about where a person's attention went, reported by the person whose attention it was. No instrument here measures it, and the one number that would matter — time a squad spent blocked while another was watched — is <a href="#slot-6">slot 6</a>.</li>
-        <li><strong>Long Runner with Check-Ins</strong>, cut in §6 for failing the composite test. If a check-in turns out to change what <a href="/om-002#status-board"><strong>Status Board</strong></a> means, it comes back with an argument attached.</li>
+        <li><strong>Long Runner with Check-Ins</strong>, cut in §4 for failing the composite test. If a check-in turns out to change what <a href="/om-002#status-board"><strong>Status Board</strong></a> means, it comes back with an argument attached.</li>
         <li><strong>Depth, heterogeneity, and the unit that never reports.</strong> Three of OM-002's open items, untouched here.</li>
         <li><strong>Evaluation.</strong> For the third time. There is no accepted measure of whether an arrangement outperformed another on the same work, or whether four squads beat two of two. Until there is, the central claims of all three documents are argued rather than demonstrated, and this one has the most arguing to do.</li>
       </ul>
@@ -1412,18 +1390,34 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
   </div>
 </section>
 
+<section id="where-the-argument-went">
+  <div class="row">
+    <div class="mark">18</div>
+    <div class="body">
+      <h2>Where the argument went</h2>
+      <p>Rev. 1 of this document opened with the two gaps it fills, an assessment of its own evidence, and the forces its entries trade off. Rev. 5 moved them to <a href="/om-005">OM-005 · <em>On the First Four Papers</em></a> so that this document could be what it is called — six arrangements and three patterns for many teams, presented.</p>
+      <p>Each id published here is kept and lands on its own line below. The rule is mechanical: <code>/om-003#x</code> became <code>/om-005#om-003-x</code>. One of the three was <strong>split</strong> rather than moved, and that is the exception worth reading.</p>
+      <ul class="retired">
+        <li id="the-gap"><a href="/om-005#om-003-the-gap"><span class="rn">Two gaps, one of them our own</span><span class="rd">The gap OM-002 left by describing a squad as though it had one shape, and the level above it. <em>OM-005 §11.</em></span></a></li>
+        <li id="forces"><a href="/om-005#om-003-forces"><span class="rn">Forces that recur</span><span class="rd">The tensions the arrangements trade off against each other. <em>OM-005 §13, retitled</em> Forces that recur across arrangements — <em>all three papers had a section by the old name.</em></span></a></li>
+      </ul>
+      <p class="aside"><strong><code>#the-evidence</code> did not move, and still resolves here.</strong> That section was doing two jobs under one heading. The <em>assessment</em> — that this document’s evidence is thinner than either of its predecessors, and the ladder showing how much — is <a href="/om-005#om-003-the-evidence">OM-005 §12</a>. The <em>instrument</em> — the four sources with what each can and cannot establish, and the eight open slots — stayed as <a href="#the-evidence">§3</a>, because twelve links from ten sections of this document point into those slots — eight of them from entries — and an entry should not have to leave its own paper to say what it rests on. All eight <code>#slot-N</code> anchors are untouched.</p>
+    </div>
+  </div>
+</section>
+
 <section id="sources-and-lineage">
   <div class="row">
-    <div class="mark">20</div>
+    <div class="mark">19</div>
     <div class="body">
       <h2>Sources and lineage</h2>
 
       <p class="field first">Directly ancestral</p>
       <ul>
-        <li><a href="/om-002">OM-002</a>, <em>Working with Many Agents</em> — the eight patterns every composite here is made of, and the arrangement §7 names as the baseline.</li>
-        <li><a href="/om-001">OM-001</a>, <em>Conversational Agent Control Surfaces</em> — the template, the Failure Signature field, and the concession in its preface that §2 and §13 of this document are an answer to.</li>
+        <li><a href="/om-002">OM-002</a>, <em>Working with Many Agents</em> — the eight patterns every composite here is made of, and the arrangement §5 names as the baseline.</li>
+        <li><a href="/om-001">OM-001</a>, <em>Conversational Agent Control Surfaces</em> — the template, the Failure Signature field, and the concession in its preface that §1 and §11 of this document are an answer to.</li>
         <li>Gamma, Helm, Johnson &amp; Vlissides, <em>Design Patterns</em> (1994) — the form.</li>
-        <li>Alexander, <em>The Origins of Pattern Theory…</em>, OOPSLA 1996 keynote, published in <em>IEEE Software</em> (1999) — generativity, and the standard §13 scores itself against.</li>
+        <li>Alexander, <em>The Origins of Pattern Theory…</em>, OOPSLA 1996 keynote, published in <em>IEEE Software</em> (1999) — generativity, and the standard §11 scores itself against.</li>
       </ul>
 
       <p class="field">Adjacent traditions</p>
@@ -1436,7 +1430,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       </ul>
 
       <p class="field">Primary material</p>
-      <p>One practitioner's working practice, August 2026: four to six areas of a product run at once, each with its own dispatcher, over days rather than months. The measurements quoted anywhere in this document are OM-002's and are not re-derived here. <strong>No new instrument measurements were made for this document</strong>, which is the single most important thing to know about it, and §4 lists the eight incidents that would change that.</p>
+      <p>One practitioner's working practice, August 2026: four to six areas of a product run at once, each with its own dispatcher, over days rather than months. The measurements quoted anywhere in this document are OM-002's and are not re-derived here. <strong>No new instrument measurements were made for this document</strong>, which is the single most important thing to know about it, and §3 lists the eight incidents that would change that.</p>
 
       <p class="field">What is claimed</p>
       <p>Less than OM-002 claimed, which was already less than OM-001. Fourteen patterns with four measured; then eight with two measured; now six composites and three patterns with none newly measured, resting on practice, on prior art in fields whose parts could not decide to do something else, and on reasoning about topology.</p>

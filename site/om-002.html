@@ -108,6 +108,20 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 .toc .g{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
   color:var(--muted);margin:1rem 0 .35rem}
 
+/* Ids published against sections that have moved to OM-005. Every one is
+   kept and lands on the line naming where its section went — a published
+   fragment is owed forever, and moving text does not retire a citation. */
+.retired{list-style:none;margin:1.3rem 0 0;padding:0;max-width:var(--measure)}
+.retired li{border-top:1px solid var(--rule);margin:0}
+.retired li:last-child{border-bottom:1px solid var(--rule)}
+.retired li:target{background:var(--raise);box-shadow:-.7rem 0 0 var(--raise),.7rem 0 0 var(--raise)}
+.retired a{display:block;padding:.55rem 0;text-decoration:none;color:inherit}
+.retired .rn{display:block;font-weight:600;letter-spacing:-.006em}
+.retired .rd{display:block;color:var(--muted);font-size:.88rem;line-height:1.5}
+.retired a:hover .rn,.retired a:focus-visible .rn{text-decoration:underline;
+  text-decoration-color:var(--link);text-underline-offset:3px}
+.retired a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+
 .colophon{margin:5.5rem 0 0;padding-top:1.1rem;border-top:1px solid var(--rule);
   font-family:var(--mono);font-size:.72rem;line-height:1.8;color:var(--muted)}
 .colophon a{color:var(--link)}
@@ -148,31 +162,15 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p class="revision">Rev. 1 — 13 Aug 2026. First publication. Fills the gap <a href="/om-001#what-this-catalogue-does-not-cover">OM-001 §17</a> named first among the things it did not cover.</p>
       <p class="revision">Rev. 2 — 15 Aug 2026. Retitled from <em>Working a Fleet</em>. The catalogue's sections were renamed to words a reader already owns — containers plain, leaves vivid — and this title carried a metaphor that no longer names anything in it. The URL, the number and every anchor are unchanged: <code>/om-002</code> is what a citation hangs on, and it has not moved. Nine pattern names changed with it; ids published under the old names still resolve.</p>
       <p class="revision">Rev. 3 — 15 Aug 2026. <em>Fleet</em> is gone, replaced throughout by <em>squad</em>. This is an alignment rather than a loss: OM-003 has called the same thing a squad since publication, so the two documents had been using two words for one idea. The retired term survives in one place only — the published anchor <code>#fleet-standing</code>, kept because a citation is owed forever.</p>
+      <p class="revision">Rev. 5 — 15 Aug 2026. The argument moves out. §1 <em>The gap this fills is one we named</em>, §3 <em>The evidence</em> and §4 <em>Forces that recur</em> are now <a href="/om-005">OM-005 · <em>On the First Four Papers</em></a> §§8–10, unchanged. This document is the eight patterns, presented: §1 is the shape of the work, §2 is on the entries, §§3–10 are the entries. All three retired ids are kept in §12 and land on a line naming where each section went — <code>/om-002#x</code> is now <code>/om-005#om-002-x</code>. §2 also loses a claim that had become false: it said these eight were published in full here <em>unlike the first fourteen</em>, and that when they moved to the explorer this would become their argument. OM-001 went the other way, and the explorer now holds no prose for any set. The sources list stays — its adjacent traditions are prior art for these patterns rather than apparatus for the case. Section numbers in the notes above describe the structure at the time each was written.</p>
       <p class="revision">Rev. 4 — 15 Aug 2026. Two citations of OM-001 repointed. This document cited <em>What this does not cover</em> as OM-001 §11 twice; that section is now §17, because OM-001 gave its fourteen entries their own numbered sections and then moved its argument to <a href="/om-005">OM-005</a>. Both links were by id and never broke — only the printed number was wrong, and a number a reader can check is worth keeping correct. Nothing else in this document changed.</p>
     </div>
   </div>
 </header>
 
-<section id="the-gap">
-  <div class="row">
-    <div class="mark">1</div>
-    <div class="body">
-      <h2>The gap this fills is one we named</h2>
-      <p class="lede">OM-001 closed with a list of what its fourteen patterns did not cover. First on that list: <em>multi-agent choreography — delegation between agents, and what a receipt means when the actor was itself an agent.</em> It was excluded honestly. Nothing had been built, and a pattern with no observed failure is a preference wearing the template.</p>
-      <p>That changed quickly, and in two places at once. A console was built that spawns agents and renders what they do, which forced a series of measurements about what is actually knowable about a dispatched agent. And a working practice appeared alongside it: propose the units, approve them, dispatch them into isolated workspaces, and come back later to what they left.</p>
-      <p>Both produced failures. This document names eight of them.</p>
-
-      <p class="field">Why these are not patterns 15 to 22</p>
-      <p>The first fourteen describe <strong>one delegated task</strong> travelling a loop: orientation, intent, execution, authority, and what survives. Every one of them assumes a single agent, and the vocabulary says so — <em>Turn</em> is defined as “the unit of exchange, and the thing that is <em>held</em> by exactly one party.”</p>
-      <p>Put twelve agents in flight and there is no turn. There is no single thread of exchange to hold, nothing to interrupt, and no moment at which the principal and the agent are both present. The topology is not a longer cycle. It is a <strong>fan-out and a fan-in</strong>, and everything difficult lives at the two seams and in the space between them.</p>
-      <p>So this is a second language rather than an extension of the first. It cites the first constantly, and several of its patterns are the first language's patterns discovering that they do not survive multiplication.</p>
-    </div>
-  </div>
-</section>
-
 <section id="the-shape">
   <div class="row">
-    <div class="mark">2</div>
+    <div class="mark">1</div>
     <div class="body">
       <h2>The shape of the work</h2>
       <p>Three acts, and the eight patterns sit in them. The principal's role changes across the three, which is most of why this is hard: at the split they are deciding, in flight they are absent, and at the join they are reconciling work they did not watch.</p>
@@ -231,89 +229,13 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
   </div>
 </section>
 
-<section id="the-evidence">
-  <div class="row">
-    <div class="mark">3</div>
-    <div class="body">
-      <h2>The evidence</h2>
-      <p>Two sources, of different quality, and the difference is worth stating rather than blending.</p>
-
-      <p class="field first">Measured, while building a console that watches agents</p>
-      <p>A console was built whose second front-end spawns an agent over pipes and renders its structured event stream as native elements rather than as printed text. Rendering a <em>dispatched</em> agent forced four findings, each of which is a pattern in this document arriving as a bug.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Finding</th><th>What it cost</th><th>Pattern</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>A dispatch card sat on <code>running</code> for <strong>eight to sixteen minutes</strong>, then produced a wall of text. The events had been arriving the whole time and were being dropped.</td>
-            <td>One reading for a range of states that could have been distinguished.</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>The harness <strong>never forwards token-level deltas from a subagent</strong>. A step is always a completed burst, and the gaps between bursts are real.</td>
-            <td>A hard granularity floor. Any surface implying live progress is lying, and the lie is available and tempting.</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>The five lifecycle events key on <code>task_id</code>, <strong>not</strong> <code>tool_use_id</code> — and two of the five carry no <code>tool_use_id</code> at all.</td>
-            <td>Keying on the obvious field drops every status transition <em>while appearing to work</em>.</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>Depth-2 lifecycle lines were declined and counted rather than merged, because a card holds one progress value with nowhere to record a depth.</td>
-            <td>Merging “would put the grandchild's work in the parent's voice.”</td>
-            <td>7</td>
-          </tr>
-        </tbody>
-      </table></div>
-
-      <p class="field">Observed, in one morning's practice</p>
-      <p>The second source is a working session, recorded as it happened:</p>
-      <blockquote>
-        <p>“This morning I woke up to four such dispatch agents and I gave them that prompt. And then I took all of the replies and pasted them in series back to the agent that dispatched them.”</p>
-        <cite>Working notes, 13 August 2026</cite>
-      </blockquote>
-      <p>Every unit succeeded. Nothing errored. The whole cost of the missing mechanism landed in one person's morning, as clerical work — and that is precisely why it is easy not to notice. Pattern 6 is that sentence, named.</p>
-      <p>The same session produced the frame the patterns are arranged around:</p>
-      <blockquote>
-        <p>“A flow state when creating involves doing this very quickly: dispatch an agent, then immediately get back to doing something else and dispatch another agent. And the whole time, you are giving the thing that the agents need, which is the taste and the direction and the choices that make this thing you're building yours.”</p>
-        <cite>Working notes, 13 August 2026</cite>
-      </blockquote>
-
-      <p class="field">What this establishes, and what it does not</p>
-      <p>The console findings are <strong>measurements</strong>: they were made against a real harness, they are reproducible, and three of the four were discovered by a surface being wrong in a way somebody noticed. The practice is <strong>one person, over days</strong>. It establishes that these failures are real and cheap to hit. It establishes nothing about their frequency, nothing about whether eight is the right number, and nothing about whether the boundaries fall in the right places.</p>
-      <p>As with OM-001: patterns that survive contact with other people's fleets are worth keeping, and the rest should be argued out.</p>
-    </div>
-  </div>
-</section>
-
-<section id="forces">
-  <div class="row">
-    <div class="mark">4</div>
-    <div class="body">
-      <h2>Forces that recur</h2>
-      <p>The tensions that reappear across the eight. They are different from OM-001's, which is itself evidence that this is a second language rather than an extension.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Force</th><th>Pulls toward</th><th>Pulls against</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Attention does not divide</strong></td><td>unattended work, pre-granted authority</td><td>informed consent at the moment of action</td></tr>
-          <tr><td><strong>Isolation costs setup; collision costs correctness</strong></td><td>a workspace per unit</td><td>the time and disk each one takes</td></tr>
-          <tr><td><strong>You can only see what the channel carries</strong></td><td>reporting exactly the granularity you have</td><td>the surface that would be nicer to look at</td></tr>
-          <tr><td><strong>Authority granted early is granted blind</strong></td><td>scopes an environment enforces</td><td>the specificity of per-action consent</td></tr>
-          <tr><td><strong>Synthesis is not concatenation</strong></td><td>reconciling, and surfacing disagreement</td><td>the cost of actually reading N reports</td></tr>
-          <tr><td><strong>A finished unit that nobody routed has not finished</strong></td><td>return addresses, durable reports</td><td>the simplicity of leaving work where it lies</td></tr>
-        </tbody>
-      </table></div>
-    </div>
-  </div>
-</section>
-
 <section id="on-the-entries">
   <div class="row">
-    <div class="mark">5</div>
+    <div class="mark">2</div>
     <div class="body">
       <h2>On the entries that follow</h2>
       <p>Same template as OM-001, including the added field. <strong>Failure Signature</strong> earns its place harder here than it did there: a squad failure is even further from its cause than a single-agent one, because the principal was not present when it happened and is reading a report about it afterwards.</p>
-      <p class="aside">These eight are published <em>in full</em> here, unlike the first fourteen, because the explorer at <a href="/patterns">/patterns</a> holds only the first language. When they move there, this document becomes the argument for them in the way OM-001 did, and a dated revision will say so. Until then this is the canonical text, and the catalogue is the one place that will ever hold two.</p>
+      <p class="aside">These eight are published <em>in full</em> here, and so is every other set in the catalogue. Rev. 1 of this document expected the reverse — that the entries would move to <a href="/patterns">/patterns</a> and this would become the argument for them, the way OM-001 had gone. OM-001 came back instead. The explorer now carries every set’s position and citations and no set’s prose, so the rule is one rule: the paper is canonical, the catalogue is the graph, and there is exactly one copy of each entry.</p>
       <p><em>Also known as</em> is omitted where no name is genuinely in circulation. These are new enough that inventing synonyms would be dressing.</p>
     </div>
   </div>
@@ -321,7 +243,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="proposed-dispatch">
   <div class="row">
-    <div class="mark">6</div>
+    <div class="mark">3</div>
     <div class="body">
       <p class="part">The split · Pattern 1</p>
       <h2>Proposed Dispatch</h2>
@@ -404,7 +326,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 <span id="scoped-commission" class="legacy-anchor"></span>
 <section id="authority-at-dispatch">
   <div class="row">
-    <div class="mark">7</div>
+    <div class="mark">4</div>
     <div class="body">
       <p class="part">The split · Pattern 2</p>
       <h2>Authority at Dispatch</h2>
@@ -499,7 +421,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="isolation-by-construction">
   <div class="row">
-    <div class="mark">8</div>
+    <div class="mark">5</div>
     <div class="body">
       <p class="part">The split · Pattern 3</p>
       <h2>Isolation by Construction</h2>
@@ -589,7 +511,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 <span id="dispatch-without-escort" class="legacy-anchor"></span>
 <section id="fire-and-forget">
   <div class="row">
-    <div class="mark">9</div>
+    <div class="mark">6</div>
     <div class="body">
       <p class="part">In flight · Pattern 4</p>
       <h2>Fire and Forget</h2>
@@ -678,7 +600,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 <span id="fleet-standing" class="legacy-anchor"></span>
 <section id="status-board">
   <div class="row">
-    <div class="mark">10</div>
+    <div class="mark">7</div>
     <div class="body">
       <p class="part">In flight · Pattern 5</p>
       <h2>Status Board</h2>
@@ -765,7 +687,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="the-return-path">
   <div class="row">
-    <div class="mark">11</div>
+    <div class="mark">8</div>
     <div class="body">
       <p class="part">The join · Pattern 6</p>
       <h2>The Return Path</h2>
@@ -861,7 +783,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 <span id="attribution-across-depth" class="legacy-anchor"></span>
 <section id="nested-attribution">
   <div class="row">
-    <div class="mark">12</div>
+    <div class="mark">9</div>
     <div class="body">
       <p class="part">The join · Pattern 7</p>
       <h2>Nested Attribution</h2>
@@ -944,7 +866,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="gather">
   <div class="row">
-    <div class="mark">13</div>
+    <div class="mark">10</div>
     <div class="body">
       <p class="part">The join · Pattern 8</p>
       <h2>Gather</h2>
@@ -1023,7 +945,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
 <section id="what-this-does-not-cover">
   <div class="row">
-    <div class="mark">14</div>
+    <div class="mark">11</div>
     <div class="body">
       <h2>What this does not cover</h2>
       <p>Named honestly, on the same principle as OM-001: a pattern language that pretends to completeness is its own dishonest gauge.</p>
@@ -1039,9 +961,26 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
   </div>
 </section>
 
+<section id="where-the-argument-went">
+  <div class="row">
+    <div class="mark">12</div>
+    <div class="body">
+      <h2>Where the argument went</h2>
+      <p>Rev. 1 of this document opened by making the case for a second language: the gap it fills, the evidence behind it, and the forces its eight entries trade off. Rev. 5 moved all three to <a href="/om-005">OM-005 · <em>On the First Four Papers</em></a>, unchanged, so that this document could be what it is called — eight patterns for working with many agents, presented.</p>
+      <p>Each id published here is kept and lands on its own line below. A published fragment is owed forever, and moving text is not a reason to break a link someone else wrote. The rule is mechanical: <code>/om-002#x</code> became <code>/om-005#om-002-x</code>.</p>
+      <ul class="retired">
+        <li id="the-gap"><a href="/om-005#om-002-the-gap"><span class="rn">The gap this fills is one we named</span><span class="rd">Why one turn does not survive being multiplied, and why this is a second language rather than an extension of the first. <em>OM-005 §8.</em></span></a></li>
+        <li id="the-evidence"><a href="/om-005#om-002-the-evidence"><span class="rn">The evidence</span><span class="rd">One morning’s practice, what it establishes and what it cannot. <em>OM-005 §9, retitled</em> The evidence for Many Agents — <em>all three papers had a section by the old name.</em></span></a></li>
+        <li id="forces"><a href="/om-005#om-002-forces"><span class="rn">Forces that recur</span><span class="rd">The tensions the eight entries trade off against each other. <em>OM-005 §10, retitled</em> Forces that recur in Many Agents, <em>for the same reason.</em></span></a></li>
+      </ul>
+      <p class="aside">The sources list stayed. Its adjacent traditions are prior art for <em>these patterns</em> — the ones this document still carries — rather than apparatus for the case, which is the line the split was drawn on. <code>#sources-and-lineage</code> resolves here as it always did.</p>
+    </div>
+  </div>
+</section>
+
 <section id="sources-and-lineage">
   <div class="row">
-    <div class="mark">15</div>
+    <div class="mark">13</div>
     <div class="body">
       <h2>Sources and lineage</h2>
 

@@ -153,6 +153,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
         <dt>Catalogue</dt><dd><a href="/patterns">organonmind.org/patterns</a></dd>
         <dt>Status</dt><dd>Current</dd>
       </dl>
+      <p class="revision">Rev. 2 — 15 Aug 2026. OM-002’s and OM-003’s arguments arrive, as Rev. 1 said they would: their gap sections, their evidence sections and their <em>Forces that recur</em> (§§8–13). The three papers are now presentations of their entries and nothing else. OM-003’s evidence section was <strong>split</strong> rather than moved whole — the assessment of how thin the evidence is came here as §12, and the four-source table with its eight open slots stayed in OM-003, because twelve links from within that paper point into those slots and an entry should not have to leave its own document to say what it rests on. The <code>om-00N-</code> prefix set in Rev. 1 did its job: all six sections arrived without a rename, and three of them would have collided on <code>the-evidence</code> and <code>forces</code> without it.</p>
       <p class="revision">Rev. 1 — 15 Aug 2026. First published. Assembled rather than written: §§2–7 and the preface are OM-001’s, moved here unchanged in the same revision that removed them there. The four numbered papers are becoming plain presentations of their patterns, and everything about how those patterns were arrived at — the gap, the evidence, the form, the corrections — belongs together in one document rather than as front matter on four. OM-002’s and OM-003’s evidence and gap sections follow in Rev. 2; OM-004’s method notes when that paper publishes.</p>
     </div>
   </div>
@@ -185,7 +186,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <h2>What this paper is</h2>
       <p class="lede">The other papers present patterns. This one says why there are any, what the evidence behind them is worth, why they are written in a thirty-year-old template with one field added, and where the programme has been wrong in public.</p>
       <p>It exists because of a decision made on 15 August 2026 and worth stating plainly: a catalogue is most useful as a plain presentation of its patterns. Until then each paper opened with its own case — the gap it filled, the evidence it rested on, the forces its entries traded off — and a reader wanting a pattern had to walk past an argument to reach it. Those sections were not wrong. They were in the way, and they were saying overlapping things in four places.</p>
-      <p>So they are here, and the papers are catalogues again. <a href="/om-001">OM-001</a>, <a href="/om-002">OM-002</a> and <a href="/om-003">OM-003</a> now open with a short orientation and go straight to their entries. Nothing was deleted to achieve that; every section that moved is reproduced here in full.</p>
+      <p>So they are here, and the papers are catalogues again. <a href="/om-001">OM-001</a>, <a href="/om-002">OM-002</a> and <a href="/om-003">OM-003</a> now open with a short orientation and go straight to their entries. Nothing was deleted to achieve that; every section that moved is reproduced here in full. One was split rather than moved — OM-003’s evidence section, whose four-source table and eight open slots are cited twelve times from within that document and stayed there. §12 says so on the page.</p>
       <p class="field">Following a citation that landed here</p>
       <p>A fragment published against one of those papers still resolves, and each retired id lands on a line naming where its section went. The rule is mechanical: <code>/om-001#the-evidence</code> is <code>/om-005#om-001-the-evidence</code>, and the same for OM-002 and OM-003 when their sections arrive. The prefix exists because all three papers had a section called <em>The evidence</em> and a section called <em>Forces that recur</em>; without it, two of the three would have had to be renamed on arrival, and a published fragment is owed forever.</p>
       <p class="field">What this does not do</p>
@@ -465,9 +466,151 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
   </div>
 </section>
 
-<section id="sources-and-lineage">
+<section id="om-002-the-gap">
   <div class="row">
     <div class="mark">8</div>
+    <div class="body">
+      <h2>The gap this fills is one we named</h2>
+      <p class="lede">OM-001 closed with a list of what its fourteen patterns did not cover. First on that list: <em>multi-agent choreography — delegation between agents, and what a receipt means when the actor was itself an agent.</em> It was excluded honestly. Nothing had been built, and a pattern with no observed failure is a preference wearing the template.</p>
+      <p>That changed quickly, and in two places at once. A console was built that spawns agents and renders what they do, which forced a series of measurements about what is actually knowable about a dispatched agent. And a working practice appeared alongside it: propose the units, approve them, dispatch them into isolated workspaces, and come back later to what they left.</p>
+      <p>Both produced failures. This document names eight of them.</p>
+
+      <p class="field">Why these are not patterns 15 to 22</p>
+      <p>The first fourteen describe <strong>one delegated task</strong> travelling a loop: orientation, intent, execution, authority, and what survives. Every one of them assumes a single agent, and the vocabulary says so — <em>Turn</em> is defined as “the unit of exchange, and the thing that is <em>held</em> by exactly one party.”</p>
+      <p>Put twelve agents in flight and there is no turn. There is no single thread of exchange to hold, nothing to interrupt, and no moment at which the principal and the agent are both present. The topology is not a longer cycle. It is a <strong>fan-out and a fan-in</strong>, and everything difficult lives at the two seams and in the space between them.</p>
+      <p>So this is a second language rather than an extension of the first. It cites the first constantly, and several of its patterns are the first language's patterns discovering that they do not survive multiplication.</p>
+    </div>
+  </div>
+</section>
+
+<section id="om-002-the-evidence">
+  <div class="row">
+    <div class="mark">9</div>
+    <div class="body">
+      <h2>The evidence for Many Agents</h2>
+      <p>Two sources, of different quality, and the difference is worth stating rather than blending.</p>
+
+      <p class="field first">Measured, while building a console that watches agents</p>
+      <p>A console was built whose second front-end spawns an agent over pipes and renders its structured event stream as native elements rather than as printed text. Rendering a <em>dispatched</em> agent forced four findings, each of which is a pattern in this document arriving as a bug.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Finding</th><th>What it cost</th><th>Pattern</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>A dispatch card sat on <code>running</code> for <strong>eight to sixteen minutes</strong>, then produced a wall of text. The events had been arriving the whole time and were being dropped.</td>
+            <td>One reading for a range of states that could have been distinguished.</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>The harness <strong>never forwards token-level deltas from a subagent</strong>. A step is always a completed burst, and the gaps between bursts are real.</td>
+            <td>A hard granularity floor. Any surface implying live progress is lying, and the lie is available and tempting.</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>The five lifecycle events key on <code>task_id</code>, <strong>not</strong> <code>tool_use_id</code> — and two of the five carry no <code>tool_use_id</code> at all.</td>
+            <td>Keying on the obvious field drops every status transition <em>while appearing to work</em>.</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Depth-2 lifecycle lines were declined and counted rather than merged, because a card holds one progress value with nowhere to record a depth.</td>
+            <td>Merging “would put the grandchild's work in the parent's voice.”</td>
+            <td>7</td>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <p class="field">Observed, in one morning's practice</p>
+      <p>The second source is a working session, recorded as it happened:</p>
+      <blockquote>
+        <p>“This morning I woke up to four such dispatch agents and I gave them that prompt. And then I took all of the replies and pasted them in series back to the agent that dispatched them.”</p>
+        <cite>Working notes, 13 August 2026</cite>
+      </blockquote>
+      <p>Every unit succeeded. Nothing errored. The whole cost of the missing mechanism landed in one person's morning, as clerical work — and that is precisely why it is easy not to notice. Pattern 6 is that sentence, named.</p>
+      <p>The same session produced the frame the patterns are arranged around:</p>
+      <blockquote>
+        <p>“A flow state when creating involves doing this very quickly: dispatch an agent, then immediately get back to doing something else and dispatch another agent. And the whole time, you are giving the thing that the agents need, which is the taste and the direction and the choices that make this thing you're building yours.”</p>
+        <cite>Working notes, 13 August 2026</cite>
+      </blockquote>
+
+      <p class="field">What this establishes, and what it does not</p>
+      <p>The console findings are <strong>measurements</strong>: they were made against a real harness, they are reproducible, and three of the four were discovered by a surface being wrong in a way somebody noticed. The practice is <strong>one person, over days</strong>. It establishes that these failures are real and cheap to hit. It establishes nothing about their frequency, nothing about whether eight is the right number, and nothing about whether the boundaries fall in the right places.</p>
+      <p>As with OM-001: patterns that survive contact with other people's fleets are worth keeping, and the rest should be argued out.</p>
+    </div>
+  </div>
+</section>
+
+<section id="om-002-forces">
+  <div class="row">
+    <div class="mark">10</div>
+    <div class="body">
+      <h2>Forces that recur in Many Agents</h2>
+      <p>The tensions that reappear across the eight. They are different from OM-001's, which is itself evidence that this is a second language rather than an extension.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Force</th><th>Pulls toward</th><th>Pulls against</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Attention does not divide</strong></td><td>unattended work, pre-granted authority</td><td>informed consent at the moment of action</td></tr>
+          <tr><td><strong>Isolation costs setup; collision costs correctness</strong></td><td>a workspace per unit</td><td>the time and disk each one takes</td></tr>
+          <tr><td><strong>You can only see what the channel carries</strong></td><td>reporting exactly the granularity you have</td><td>the surface that would be nicer to look at</td></tr>
+          <tr><td><strong>Authority granted early is granted blind</strong></td><td>scopes an environment enforces</td><td>the specificity of per-action consent</td></tr>
+          <tr><td><strong>Synthesis is not concatenation</strong></td><td>reconciling, and surfacing disagreement</td><td>the cost of actually reading N reports</td></tr>
+          <tr><td><strong>A finished unit that nobody routed has not finished</strong></td><td>return addresses, durable reports</td><td>the simplicity of leaving work where it lies</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section id="om-003-the-gap">
+  <div class="row">
+    <div class="mark">11</div>
+    <div class="body">
+      <h2>Two gaps, one of them our own</h2>
+      <p class="lede">OM-002 described a squad as though it had one shape. A commission is split, units run in isolation, reports come back, a gather reconciles them. That is a real shape and the most common one, but it is a shape — a choice among several — and the document never said so. Reading it back, the eight patterns look like a fixed sequence rather than a set of parts that can be assembled more than one way.</p>
+      <p>They can be assembled more than one way, and the assemblies are not variations. They are different enough that the same pattern means a different thing inside each one. That is the first half of this document.</p>
+      <p>The second half is a level up. OM-002's principal ran one squad. In practice one person runs four to six areas of a product at once, each with its own dispatcher and its own units, and the difficulties there are not the difficulties of a larger squad. They come from a single asymmetry, stated in OM-003 §12 and worth putting early: <strong>the recursion fails at the top, because the principal cannot be commissioned.</strong> Everything else at that level falls out of it.</p>
+
+      <p class="field">What this closes, and what it does not</p>
+      <p>OM-002 listed six things it did not cover. This document takes up exactly one of them — <em>contention for things that cannot be isolated</em> — and only at the level where it bites hardest, which is the shared trunk rather than the shared port. Depth beyond two, heterogeneous squads, cost, the unit that never reports, and evaluation are all still open, and OM-003 §17 says so again rather than letting them fade.</p>
+      <p>It also takes up something OM-001 said about itself. That document's preface conceded that its acceptance checklist was “a checklist, which is precisely the weaker thing he was warning about”. OM-003 §1 is the attempt to do better, and OM-003 §11 is where the attempt is scored.</p>
+    </div>
+  </div>
+</section>
+
+<section id="om-003-the-evidence">
+  <div class="row">
+    <div class="mark">12</div>
+    <div class="body">
+      <h2>The evidence for Arrangements and Many Teams, and why it is thinner</h2>
+      <p class="lede">This document has thinner evidence than either of the two before it, and the right response is to say so at the front rather than to write at the same confidence and let the reader assume.</p>
+      <p>The ladder is worth stating plainly. OM-001: fourteen patterns, four of them drawn from measurements on a running system. OM-002: eight patterns, two of them drawn from four measurements made while building a console, the rest from one person's practice over days. <strong>OM-003: six composites and three patterns, none of them newly measured.</strong> What is new here is arrangement and topology — and reasoning about topology is argument, not evidence.</p>
+      <p class="aside">The four sources themselves, what each can and cannot establish, and the eight places where an incident belongs and none is on record, stay with the entries that cite them: <a href="/om-003#the-evidence">OM-003 §3</a>. Every entry there names which source it rests on, and twelve links from ten of its sections point at a numbered slot. That table is an instrument the entries use, not part of this case, and separating them was the point of the split.</p>
+    </div>
+  </div>
+</section>
+
+<section id="om-003-forces">
+  <div class="row">
+    <div class="mark">13</div>
+    <div class="body">
+      <h2>Forces that recur across arrangements</h2>
+      <p>The tensions that reappear across both levels. The first three are new; the fourth is OM-002's first force arriving at a level where it can no longer be engineered around.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Force</th><th>Pulls toward</th><th>Pulls against</th></tr></thead>
+        <tbody>
+          <tr><td><strong>The whole changes the parts</strong></td><td>naming arrangements, so a pattern's meaning is read from its position</td><td>the simplicity of one pattern, one meaning</td></tr>
+          <tr><td><strong>Duplication buys independence</strong></td><td>panels, verifiers, repeated rounds</td><td>N times the cost for one answer, and no partition of the work</td></tr>
+          <tr><td><strong>Partition is cheap; ordering is not</strong></td><td>splitting work into units that never meet</td><td>a single shared trunk through which all of it must land, in some order</td></tr>
+          <tr><td><strong>Attention does not divide, and cannot be scoped</strong></td><td>surfaces ordered by what needs a decision</td><td>everything else competing for the same person</td></tr>
+          <tr><td><strong>Finished work rots while it waits</strong></td><td>landing small and often</td><td>the coherence of a release, and the cost of each landing</td></tr>
+          <tr><td><strong>Re-entry costs more than it looks</strong></td><td>durable notes maintained for a reader who was absent</td><td>a second artifact that can go stale and lie</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section id="sources-and-lineage">
+  <div class="row">
+    <div class="mark">14</div>
     <div class="body">
       <h2>Sources and lineage</h2>
 
