@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OM-001 · Conversational Agent Control Surfaces — Organon Mind</title>
-<meta name="description" content="The case for a pattern language for mixed-initiative, tool-using interfaces, and for the one field the existing form is missing.">
+<meta name="description" content="Fourteen design patterns for one agent taking one task: orientation, the turn, intent, execution, authority, and what survives the session.">
 <link rel="icon" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Organon Mind">
 <meta property="og:title" content="Conversational Agent Control Surfaces">
-<meta property="og:description" content="The case for a pattern language for mixed-initiative, tool-using interfaces.">
+<meta property="og:description" content="Fourteen design patterns for one agent taking one task.">
 <meta property="og:url" content="https://organonmind.org/om-001">
 <meta name="twitter:card" content="summary">
 <style>
@@ -95,6 +95,20 @@ figure{margin:1.5rem 0 1.8rem}
 figure svg{width:100%;height:auto;color:var(--ink);display:block}
 figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(--measure)}
 
+/* Ids published against sections that have moved to OM-005. Every one is
+   kept and lands on the line naming where its section went — a published
+   fragment is owed forever, and moving text does not retire a citation. */
+.retired{list-style:none;margin:1.3rem 0 0;padding:0;max-width:var(--measure)}
+.retired li{border-top:1px solid var(--rule);margin:0}
+.retired li:last-child{border-bottom:1px solid var(--rule)}
+.retired li:target{background:var(--raise);box-shadow:-.7rem 0 0 var(--raise),.7rem 0 0 var(--raise)}
+.retired a{display:block;padding:.55rem 0;text-decoration:none;color:inherit}
+.retired .rn{display:block;font-weight:600;letter-spacing:-.006em}
+.retired .rd{display:block;color:var(--muted);font-size:.88rem;line-height:1.5}
+.retired a:hover .rn,.retired a:focus-visible .rn{text-decoration:underline;
+  text-decoration-color:var(--link);text-underline-offset:3px}
+.retired a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+
 /* The contents list for the fourteen entries that follow. Plain text, not
    links: every entry is a section of this same document, and the ids belong
    on the sections rather than on a list about them. Shared with OM-002. */
@@ -139,7 +153,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
     <div class="body">
       <p class="org"><a href="/">Organon Mind</a></p>
       <h1>Conversational Agent Control Surfaces</h1>
-      <p class="standfirst">The case for a pattern language for mixed-initiative, tool-using interfaces — and for the one field the existing form is missing.</p>
+      <p class="standfirst">Fourteen patterns for one agent taking one task — from the moment a person asks for something to whatever is left when it is done.</p>
     </div>
   </div>
   <div class="row">
@@ -153,6 +167,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
         <dt>Catalogue</dt><dd><a href="/patterns">organonmind.org/patterns</a></dd>
         <dt>Status</dt><dd>Current</dd>
       </dl>
+      <p class="revision">Rev. 6 — 15 Aug 2026. The argument moves out. The preface and §§1–6 — the gap, why the existing literature does not fill it, what the missing vocabulary costs, the evidence, the proposed form and the map — are now <a href="/om-005">OM-005 · <em>On the First Four Papers</em></a>, unchanged. What Rev. 5 announced, this revision does. This document is the fourteen patterns, presented: §1 introduces them and §§2–15 are the entries. Every id those sections were published under is kept, in §18, and lands on a line naming where its section went — the rule is that <code>/om-001#x</code> is now <code>/om-005#om-001-x</code>. The sources list went with the argument except <em>Primary material</em>, which is about these entries. Nothing was deleted; every moved section is reproduced in OM-005 in full.</p>
       <p class="revision">Rev. 5 — 15 Aug 2026. The fourteen patterns return to this document, in full. Rev. 3 moved them out to <a href="/patterns">/patterns</a> and made this an argument; that decision is being reversed knowingly. A catalogue is most useful as a plain presentation of its patterns, and the case for it reads better once it is not interleaved with them. §7 introduces the section and §§8–21 are the entries, in the same template and the same order they have always had. The two entries Rev. 3 reproduced as worked examples are now simply entries 12 and 3, under their own names; <code>#example-honest-gauge</code> and <code>#example-streaming-turn</code> still resolve, as does every per-pattern anchor published since Rev. 2. <a href="/patterns">/patterns</a> keeps each entry’s position and citations and carries no prose, so there is still exactly one copy of every entry. Category changed from Argument back to Reference. §§1–6 — the gap, the literature, the cost, the evidence, the form and the map — move to OM-005 in the next revision, which is where the argument will live.</p>
       <p class="revision">Rev. 4 — 12 Aug 2026. Preface added, signed: where the form comes from, and what carrying it forward obliges. A document that borrows the Gang of Four template this closely should acknowledge it on its own front page rather than in a sources list, and should state the criticism it is inheriting along with the method.</p>
       <p class="revision">Rev. 3 — 12 Aug 2026. Restructured from catalogue to argument. The fourteen patterns are now published at <a href="/patterns">/patterns</a>, which is canonical; this document makes the case for the language and the form it takes, and reproduces two entries as worked examples. Category changed from Reference to Argument. Every per-pattern anchor from Rev. 2 still resolves — see §9.</p>
@@ -161,303 +176,13 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
   </div>
 </header>
 
-<section id="preface" class="preface">
-  <div class="row">
-    <div class="mark"></div>
-    <div class="body">
-      <h2>Preface</h2>
-      <p>I met these ideas backwards.</p>
-      <p><em>Design Patterns</em> was the first book that changed how I saw software rather than what I knew about it, and reading it remains one of the most consequential things that has happened to me in this trade. What it gave me was not twenty-three solutions — I have used perhaps half of them, and argued against several. It was the discovery that a design decision could be a <em>named thing</em>, with a context, a set of forces pulling against each other, a stated cost, and a position among other named things. Before that book, design was taste. After it, design was something you could be wrong about in public.</p>
-      <p>I came to Christopher Alexander much later, through architecture, for reasons that had nothing to do with code. So I read the adaptation a decade before I read the original, which is a strange way round and an instructive one.</p>
-      <p>The first thing you notice, arriving at Alexander from software, is how far the Gang of Four carried the form. His patterns are about where the light falls, how high a windowsill sits, where people naturally stop to talk. Ours are about object graphs. That the template survives a journey that long is not luck — it is a claim about what a pattern is: a resolution of competing forces in a context, named, so that people who did not invent it can argue about it.</p>
-      <p>The second thing you notice is that Alexander did not think the journey had carried the important part. He said so directly, to a room of object-oriented programmers, in his 1996 OOPSLA keynote. He was generous about the format — context, problem, solution — and clear that the format was not the point. What had not come across was that a pattern language is meant to be <em>generative</em>: a sequence you can follow to produce a coherent whole, rather than a catalogue of separable good ideas. And that patterns are finally judged by whether the thing they generate is good for the people who have to live inside it.</p>
-      <p>I think he was right, and I think that criticism bears on this subject more directly than it did on his audience. The artifact here is not a class hierarchy. It is a surface across which a person hands authority to a machine and then lives with what the machine does. Whether the result is good for that person is not a moral supplement to the engineering. It <em>is</em> the engineering.</p>
-      <p>So this document says out loud what it stands on. What is inherited is the template; the discipline of stating costs and non-applicability in the same breath as benefits; the insistence that patterns cite one another; and the standard that a pattern must be <em>refusable</em> or it is not a pattern. What is added is one field, and Alexander is the reason for it. A missing pattern here leaves no mark on the artifact — it shows up in someone’s irritation, and in what they blame for it. <strong>Failure Signature</strong> is where the person living in the thing gets a vote.</p>
-      <p>Whether any of this is generative in his sense — a sequence you could follow to build a whole surface, rather than fourteen things to check afterwards — I do not know. §22 is the closest it comes, and §22 is a checklist, which is precisely the weaker thing he was warning about.</p>
-      <p>Debts are not credentials. Naming this one is a way of accepting the standard, not a claim to have met it.</p>
-      <p class="sig">James Andrew Walsh · Organon Mind · 12 August 2026</p>
-    </div>
-  </div>
-</section>
-
-<section id="why-this-form">
+<section id="the-catalogue">
   <div class="row">
     <div class="mark">1</div>
     <div class="body">
-      <h2>The gap</h2>
-      <p class="lede">The <em>Design Patterns</em> catalogue worked because it named things practitioners were already building badly and inconsistently. Nobody invented the Observer; its authors noticed that four codebases had each grown a different half-solution to the same problem, and gave the shared shape a name so it could be argued about.</p>
-      <p>Conversational agent interfaces are at exactly that moment. Coding agents, agent modes inside editors, terminal assistants, voice-first agents and a dozen internal tools have each independently grown an approval prompt, a streaming renderer, a tool-activity log, a plan the principal can amend, and a way of saying “are you sure?” The mechanisms have converged. The names have not.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>The mechanism</th><th>Names it goes by</th></tr></thead>
-        <tbody>
-          <tr><td>A point where the agent stops and asks before acting</td><td>approval prompt · permission dialog · confirmation · trust prompt · allowlist decision · “are you sure?”</td></tr>
-          <tr><td>A statement of intent issued before the work</td><td>plan · steps · todo list · proposal · dry run · preview</td></tr>
-          <tr><td>Output appearing before the answer is finished</td><td>streaming · token streaming · incremental rendering · progressive response</td></tr>
-          <tr><td>A record of which tool ran, against what, and what came back</td><td>tool call · function call · action log · activity feed · trace · step card</td></tr>
-          <tr><td>A durable output lifted out of the transcript</td><td>artifact · canvas · document · file · card</td></tr>
-        </tbody>
-      </table></div>
-      <p>Every row is one thing. Five names for it is not a naming problem; it is the absence of a vocabulary, and the absence has consequences that this document is about.</p>
-      <blockquote><p><strong>The transcript is not the interface.</strong> In a tool-using agent, conversation is the control and negotiation layer. Plans, diffs, approvals, tool calls and artifacts are first-class structured objects that the conversation refers to, commands, and takes responsibility for.</p></blockquote>
-      <p>That is the claim the whole catalogue follows from, and a system that treats the transcript as the whole interface will reimplement each of these mechanisms badly, as prose.</p>
-      <p class="aside">The catalogue itself — fourteen patterns in full, with an index, a map and relations you can navigate — is published at <a href="/patterns">/patterns</a>. It is canonical, and it does not require this document. What follows is the argument for it: why the vocabulary is missing, what its absence costs, what the evidence is, and what form the entries should take.</p>
-    </div>
-  </div>
-</section>
-
-<section id="the-literature">
-  <div class="row">
-    <div class="mark">2</div>
-    <div class="body">
-      <h2>Why the existing literature does not fill it</h2>
-      <p>The gap is not that nothing has been written. Five bodies of work bear on this surface, each strong in its own frame, and none of them lands in the middle.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Tradition</th><th>What it brings</th><th>Why it does not close the gap</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>Conversation design</strong></td>
-            <td>A mature, rigorous vocabulary for turn-taking, repair, grounding and sequence.</td>
-            <td>Grown from voice assistants and customer-service bots. No tools with effects outside the conversation, no borrowed authority, no irreversibility. Its unit is the utterance; here the unit is the delegated task.</td>
-          </tr>
-          <tr>
-            <td><strong>Agent UX collections</strong></td>
-            <td>Current, correctly aimed, and the broadest inventory of what shipping systems actually do.</td>
-            <td>The form is a list of tips. No applicability, no consequences, no stated cost — and therefore nothing that can be <em>refused</em>. “Show tool calls” cannot be argued with, only obeyed or ignored.</td>
-          </tr>
-          <tr>
-            <td><strong>Human–AI interaction guidelines</strong></td>
-            <td>Empirically grounded, and excellent as acceptance criteria.</td>
-            <td>Evaluative rather than generative. A guideline tells you whether a design is good; it does not tell you what to build, or what the thing you build is called.</td>
-          </tr>
-          <tr>
-            <td><strong>Software design patterns</strong></td>
-            <td>Exactly the right form, and the discipline of stating consequences rather than only benefits.</td>
-            <td>The artifact under discussion is code. <em>Structure</em> means class relations, <em>Sample Code</em> means code, and neither survives contact with an exchange.</td>
-          </tr>
-          <tr>
-            <td><strong>Safety and alignment work</strong></td>
-            <td>The sharpest thinking on what an agent should be permitted to do at all.</td>
-            <td>Almost silent on the surface: how permission is asked for, how consent is made specific, how the principal is shown what they authorised.</td>
-          </tr>
-        </tbody>
-      </table></div>
-      <p>What is missing is the middle: a vocabulary with enough rigour to design against, argue with, and refuse. Not a checklist and not a taxonomy — a <em>language</em>, meaning named things with stated relations between them, so that a design decision can be located rather than merely defended.</p>
-    </div>
-  </div>
-</section>
-
-<section id="the-cost">
-  <div class="row">
-    <div class="mark">3</div>
-    <div class="body">
-      <h2>What the missing vocabulary costs</h2>
-      <p>The cost is not that people write imprecise documentation. It is paid four ways, and every one of them is expensive.</p>
-
-      <p class="field first">Defects present as feelings</p>
-      <p>A missing design pattern in code announces itself in the artifact: duplication you can point at, a switch statement that grows a case per type. A missing conversational pattern announces itself as an <em>impression</em> — the tool is annoying, the agent is untrustworthy, the thing “doesn’t work”. Impressions get attributed to the model’s intelligence, because that is the only named component in the system. The actual defect is usually structural and usually cheap, and it goes unfixed because nobody has a word for it.</p>
-
-      <p class="field">Arguments cannot be had</p>
-      <p>Two engineers disagreeing about whether to add a confirmation step are really disagreeing about blast radius against attention budget. With no names for either force, the disagreement is about taste, and taste arguments are settled by seniority rather than by evidence. Naming the forces does not resolve the argument — it makes it an argument about something, with a shape that lets one side be shown to be wrong.</p>
-
-      <p class="field">Nothing can be refused</p>
-      <p>A vocabulary that names only good things is marketing. The property that makes a pattern usable is that it states when it does <em>not</em> apply and what it costs, so a team can say “not here, and here is why” and have that be a defensible engineering position rather than laziness. Tips have no such property. This is the single largest difference between a pattern language and a best-practices list, and it is why the form matters as much as the content.</p>
-
-      <p class="field">Every team pays the discovery cost again</p>
-      <p>Absent a shared name, each of these mechanisms is rediscovered by hitting it. That is not hypothetical: four of the fourteen patterns in the catalogue were found exactly that way, on one workstation, in about a week (§4). The cost of rediscovery is not the fix — the fixes are mostly small — it is the hours spent diagnosing a symptom that pointed somewhere else.</p>
-    </div>
-  </div>
-</section>
-
-<section id="shared-vocabulary">
-  <div class="row">
-    <div class="mark">3.1</div>
-    <div class="body">
-      <h3>The minimum shared terms</h3>
-      <p>Eight words, used consistently throughout the catalogue. They are listed here because the argument above is that the words are the deliverable, and it would be strange to make that case without stating them.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Principal</strong></td><td>the human whose authority the agent borrows. Not “the user” — the word carries the delegation</td></tr>
-          <tr><td><strong>Agent</strong></td><td>the system that plans, decides and acts</td></tr>
-          <tr><td><strong>Turn</strong></td><td>the unit of exchange, and the thing that is <em>held</em> by exactly one party</td></tr>
-          <tr><td><strong>Tool</strong></td><td>a capability with effects outside the conversation</td></tr>
-          <tr><td><strong>Artifact</strong></td><td>a durable output promoted out of the transcript into an inspectable object</td></tr>
-          <tr><td><strong>Gate</strong></td><td>a point where authority must be re-granted before proceeding</td></tr>
-          <tr><td><strong>Gauge</strong></td><td>a signal reporting system state to the principal</td></tr>
-          <tr><td><strong>Blast radius</strong></td><td>the set of things a step can change, weighted by reversibility</td></tr>
-        </tbody>
-      </table></div>
-      <p><strong>Principal</strong> is the one worth defending. “User” describes someone operating a machine. It cannot express the fact that the agent is acting <em>as</em> someone, on borrowed authority, and that authority is exactly what a gate re-grants and a receipt accounts for. Half the catalogue is unstatable in the language of users.</p>
-    </div>
-  </div>
-</section>
-
-<section id="the-evidence">
-  <div class="row">
-    <div class="mark">4</div>
-    <div class="body">
-      <h2>The evidence</h2>
-      <p>Four of the fourteen patterns are not derived from the literature. They were found by hitting them on a single workstation running a voice-first agent: push-to-talk capture, local speech-to-text, local synthesis, a resident agent process with no window of its own, and a physical lighting channel in the room. Each began as a complaint and ended as a structural fix.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Pattern</th><th>How it presented</th><th>What it actually was</th><th>Measured</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>Mode Visibility</strong> (2)</td>
-            <td>“the interface is broken”</td>
-            <td>The binary was started in its headless mode, which has no interface by design. Nothing errored; everything worked.</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Streaming Turn</strong> (3)</td>
-            <td>“she is slow to answer”</td>
-            <td>Generation and speech synthesis ran strictly in series, because the synthesiser was handed the reply only when the reply was finished.</td>
-            <td>11.8 s to first spoken word, decomposing to ~7 s generation and ~4.9 s synthesis. After streaming: first speakable fragment at <strong>1.14 s</strong>.</td>
-          </tr>
-          <tr>
-            <td><strong>Ambient Activity Channel</strong> (9)</td>
-            <td>“is it still going?”</td>
-            <td>A delegated task has no state channel outside the screen, so delegation costs either attention or a late discovery.</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Honest Gauge</strong> (12)</td>
-            <td>“that one is always red”</td>
-            <td>A boot service ran a bare <code>swapon</code>, which exits non-zero when swap is already active — so the unit reported failure in its healthy steady state.</td>
-            <td>Status surface read <code>failed</code> with 27 GB of swap demonstrably active.</td>
-          </tr>
-        </tbody>
-      </table></div>
-      <p>Two of these have numbers attached and two do not, which is itself worth stating plainly rather than hiding behind uniform prose. Latency is measurable; “is it still going?” is a question someone asked out loud.</p>
-
-      <p class="field">What one machine can and cannot establish</p>
-      <p>This is <em>n</em> = 1. It is not a study, and no claim here rests on frequency. What a single system establishes is <strong>existence and cost</strong>: that these failure modes are real, that they are cheap to hit, that each presented as something other than what it was, and that the diagnosis in every case ran through a wrong hypothesis first. What it cannot establish is that these are the fourteen most important patterns, that the boundaries are drawn in the right places, or that the names will survive other people’s systems.</p>
-      <p>The remaining ten come from the literature in §2, from published agent surfaces, and from the structure the four demanded once they were named. They are proposals on the same terms.</p>
-    </div>
-  </div>
-</section>
-
-<section id="the-proposed-form">
-  <div class="row">
-    <div class="mark">5</div>
-    <div class="body">
-      <h2>The proposed form</h2>
-      <p>The Gang of Four template is the right instrument, for a reason that is easy to miss: it is the only widely-used design form that requires an author to state <em>costs</em> and <em>non-applicability</em> in the same breath as benefits. That is what makes a pattern arguable, and arguable is the whole point.</p>
-      <p>It needs adapting, because the original assumed the artifact under discussion was code. Here the artifact is an exchange, so two fields change meaning and one is added.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Gang of Four</th><th>Here</th><th>Why</th></tr></thead>
-        <tbody>
-          <tr><td>Structure</td><td><strong>Structure</strong></td><td>turn and authority flow, not class inheritance</td></tr>
-          <tr><td>Participants</td><td><strong>Participants</strong></td><td>roles in the exchange, not objects</td></tr>
-          <tr><td>Sample Code</td><td><strong>Sample Interaction</strong></td><td><em>the artifact is a dialogue</em></td></tr>
-          <tr><td>—</td><td><strong>Failure Signature</strong></td><td><em>added</em></td></tr>
-        </tbody>
-      </table></div>
-      <p>Everything else survives intact: Intent, Also Known As, Motivation, Applicability, Collaborations, Consequences, Implementation, Known Uses, Related Patterns. The template is not the contribution. The added field is.</p>
-    </div>
-  </div>
-</section>
-
-<section id="failure-signature">
-  <div class="row">
-    <div class="mark">5.1</div>
-    <div class="body">
-      <h3>Failure Signature, and why it earns its place</h3>
-      <p>In code, the absence of a pattern is visible in the artifact. Duplication is there in the file; you can point at it, and the diagnosis runs forward from defect to symptom. That is why the original template never needed a field for symptoms — the defect was already the observable.</p>
-      <p>In an exchange, the artifact is gone the moment it happens, and the only durable observable is what the principal says and does afterwards. The symptom is affective: irritation, distrust, the vague sense that the tool is fighting you. It does not name its own cause, and the natural attribution — the model is not smart enough — is almost always wrong.</p>
-      <figure>
-        <svg viewBox="0 0 700 210" role="img" aria-label="Two boxes. On the left, the missing pattern, which is the defect. On the right, what the principal reports, which is a feeling. A solid arrow runs from left to right, labelled: in code the defect is visible in the artifact. A dashed arrow runs back from right to left, labelled: in an exchange only the symptom is visible, and the Failure Signature names it so the diagnosis can run backwards.">
-          <rect x="8" y="76" width="186" height="46" fill="none" stroke="currentColor"/>
-          <text x="101" y="97" text-anchor="middle" font-size="11.5" fill="currentColor">the missing pattern</text>
-          <text x="101" y="112" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">the defect</text>
-          <rect x="486" y="76" width="206" height="46" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          <text x="589" y="97" text-anchor="middle" font-size="11.5" fill="currentColor">what the principal reports</text>
-          <text x="589" y="112" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">“annoying” · “I don’t trust it”</text>
-          <path d="M101,74 L101,32 L589,32 L589,72" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
-          <text x="345" y="24" text-anchor="middle" font-size="10.5" fill="currentColor">in code — the defect is visible, and the symptom follows from it</text>
-          <path d="M589,124 L589,168 L101,168 L101,126" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
-          <text x="345" y="186" text-anchor="middle" font-size="10.5" fill="currentColor">in an exchange — only the symptom is observable</text>
-          <text x="345" y="200" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".7">Failure Signature names it, so the diagnosis can run backwards</text>
-        </svg>
-        <figcaption>The field exists because the arrow points the wrong way. Diagnosis has to start from the complaint, so the complaint is what a pattern must name.</figcaption>
-      </figure>
-      <p>Naming the observable symptom does three things a conventional pattern entry does not.</p>
-      <ul>
-        <li><strong>It makes the pattern actionable rather than aesthetic.</strong> “Oh, that’s always red” is a sentence people say. Once it is written down as the signature of a specific defect, hearing it becomes a diagnosis instead of a shrug.</li>
-        <li><strong>It makes the pattern falsifiable in the field.</strong> You can go and look for a signature. If no real system ever exhibits it, the pattern is not describing anything and should be argued out of the catalogue.</li>
-        <li><strong>It gives the author a test.</strong> A pattern whose Failure Signature cannot be stated is probably not a pattern — it is a preference wearing the template. This is the most useful thing the field does, and it did cut entries from this catalogue.</li>
-      </ul>
-      <p>The signatures also compose. Read the fourteen of them end to end and you have a review pass — which is what §22 is, and it was assembled by reading them rather than written separately.</p>
-    </div>
-  </div>
-</section>
-
-<section id="the-map">
-  <div class="row">
-    <div class="mark">6</div>
-    <div class="body">
-      <h2>A language, not a list</h2>
-      <p>The last claim the form has to earn is the word <em>language</em>. A list has entries; a language has entries with relations, and the relations are where most of the design argument lives. Two structures carry it.</p>
-      <p>The first is position. The patterns sit at defined points on the loop a delegated task travels — and most arguments about agent design turn out to be arguments about which arc you are on.</p>
-      <figure>
-        <svg viewBox="0 0 720 250" role="img" aria-label="A cycle of five stages — Orientation, Intent, Execution, Authority, Truth and continuity — with an arrow returning from the last to the first labelled next task. Turn sits apart, connected to Execution by a dashed line labelled governs every stage.">
-          <rect x="8" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="69" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Orientation</text>
-          <rect x="158" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="219" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Intent</text>
-          <rect x="308" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="369" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Execution</text>
-          <rect x="458" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="519" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Authority</text>
-          <rect x="588" y="110" width="124" height="34" fill="none" stroke="currentColor"/>
-          <text x="650" y="126" text-anchor="middle" font-size="11.5" fill="currentColor">Truth and</text>
-          <text x="650" y="139" text-anchor="middle" font-size="11.5" fill="currentColor">continuity</text>
-          <line x1="130" y1="57" x2="152" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
-          <line x1="280" y1="57" x2="302" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
-          <line x1="430" y1="57" x2="452" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
-          <path d="M580,57 L650,57 L650,104" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
-          <path d="M588,127 L520,127 L520,190 L69,190 L69,80" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
-          <text x="300" y="184" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">next task</text>
-          <rect x="308" y="110" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="369" y="131" text-anchor="middle" font-size="11.5" fill="currentColor">Turn</text>
-          <line x1="369" y1="106" x2="369" y2="78" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
-          <text x="380" y="98" font-size="10.5" fill="currentColor" opacity=".65">governs every stage</text>
-        </svg>
-        <figcaption>Turn is drawn apart deliberately: it is not a stage but a property of every stage. A system can have an excellent approval gate and still be intolerable because the principal cannot interrupt it. On <a href="/patterns">/patterns</a> this same map is the filter — a stage is a thing you click, not only a thing you read.</figcaption>
-      </figure>
-      <p>The second is citation. Every entry names the patterns it feeds, loads, governs, cheapens or undermines, with the verb stated rather than implied. In the printed catalogues that field has been a dead list at the foot of a page since 1994. In the explorer at <a href="/patterns">/patterns</a> it is how you move through the language, which is the difference the word was always claiming.</p>
-    </div>
-  </div>
-</section>
-
-<section id="forces-that-recur">
-  <div class="row">
-    <div class="mark">6.1</div>
-    <div class="body">
-      <h3>Forces that recur</h3>
-      <p>The strongest evidence that these fourteen belong together is that the same tensions surface in entry after entry, at different points on the loop. They are worth naming because most concrete design arguments are instances of them.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Force</th><th>Pulls toward</th><th>Pulls against</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Attention is finite</strong></td><td>fewer prompts, peripheral channels, collapsed detail</td><td>disclosure, transparency, confirmation</td></tr>
-          <tr><td><strong>Reversibility is purchasable</strong></td><td>investing in undo to buy down ceremony</td><td>the irreducible set that cannot be undone</td></tr>
-          <tr><td><strong>Prose is expressive, structure is precise</strong></td><td>free text for intent</td><td>structured objects for selection and review</td></tr>
-          <tr><td><strong>Trust is earned and revocable</strong></td><td>widening autonomy with evidence</td><td>automatic descent on surprise</td></tr>
-          <tr><td><strong>Latency is felt, not measured</strong></td><td>streaming, early partial output</td><td>correctness of fragments</td></tr>
-          <tr><td><strong>Memory decays into lies</strong></td><td>promoting less, correcting eagerly</td><td>the cost of re-explanation</td></tr>
-        </tbody>
-      </table></div>
-      <p>A team that can name the force it is trading against is having a different conversation from one arguing about whether a dialog box is annoying.</p>
-    </div>
-  </div>
-</section>
-
-<section id="the-catalogue">
-  <div class="row">
-    <div class="mark">7</div>
-    <div class="body">
       <h2>The fourteen</h2>
-      <p class="lede">What follows is the One Agent section in full: fourteen patterns for one agent taking one task, from the moment a person asks for something to whatever is left when it is done.</p>
-      <p>They are not a list. Each sits at a defined point on the loop that task travels — the map in §6 — and most arguments about agent design turn out to be arguments about which arc you are on. Nine of the fourteen live in the harness, where they fail the same way every time and a test can hold them; one lives in the agent’s character, where it fails stochastically and you strengthen a tendency rather than pin a behaviour; four are both. Most of what makes an agent feel trustworthy is <em>buildable</em>.</p>
+      <p class="lede">This document is the One Agent section of the catalogue: fourteen patterns for one agent taking one task, from the moment a person asks for something to whatever is left when it is done.</p>
+      <p>They are not a list. Each sits at a defined point on the loop that task travels — orientation, then the turn, then intent, execution, authority, and what survives — and most arguments about agent design turn out to be arguments about which arc you are on. Nine of the fourteen live in the harness, where they fail the same way every time and a test can hold them; one lives in the agent’s character, where it fails stochastically and you strengthen a tendency rather than pin a behaviour; four are both. Most of what makes an agent feel trustworthy is <em>buildable</em>.</p>
       <p>Every entry is in the same template and can be read alone. <strong>Related patterns</strong> names the entries each one bears on, with the verb stated rather than implied; the same relations are walkable at <a href="/patterns">/patterns</a>, which carries this section’s position and citations without repeating its text.</p>
       <div class="toc">
         <p class="g">Orientation</p>
@@ -493,15 +218,14 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
           <li><span class="n">14</span>Durable Memory</li>
         </ol>
       </div>
-      <p class="aside">Every entry carries an <em>Applicability</em> paragraph stating when it does not apply, a <em>Consequences</em> list with costs and a trap, and a <em>Failure signature</em> naming the complaint you hear when it is missing. Strike those three and what remains is a tip. That is the case for the form, made by exhibit rather than assertion.</p>
-      <p class="aside"><strong>On citations made against Rev. 2 and Rev. 3.</strong> Rev. 2 carried all fourteen at anchors on this page; Rev. 3 moved the text to <a href="/patterns">/patterns</a> and kept each anchor as a stub pointing there. Both still resolve, and now land on the entry itself rather than on a line about it. <code>/om-001#approval-gate</code> has meant the same thing throughout. So do <code>/om-001#example-honest-gauge</code> and <code>/om-001#example-streaming-turn</code>, the two entries Rev. 3 reproduced as worked examples, which are now simply entries 12 and 3.</p>
+      <p class="aside">Every entry carries an <em>Applicability</em> paragraph stating when it does not apply, a <em>Consequences</em> list with costs and a trap, and a <em>Failure signature</em> naming the complaint you hear when it is missing. Strike those three and what remains is a tip. The case for the form, and for there being a vocabulary here at all, is <a href="/om-005">OM-005</a>. You do not need it to use the catalogue.</p>
     </div>
   </div>
 </section>
 
 <section id="capability-disclosure">
   <div class="row">
-    <div class="mark">8</div>
+    <div class="mark">2</div>
     <div class="body">
       <p class="part">Orientation · Pattern 1</p>
       <h2>Capability Disclosure</h2>
@@ -579,7 +303,7 @@ tools: read, write, bash, powershell   ·   no network
 <span id="mode-legibility" class="legacy-anchor"></span>
 <section id="mode-visibility">
   <div class="row">
-    <div class="mark">9</div>
+    <div class="mark">3</div>
     <div class="body">
       <p class="part">Orientation · Pattern 2</p>
       <h2>Mode Visibility</h2>
@@ -656,7 +380,7 @@ tools: read, write, bash, powershell   ·   no network
 <span id="example-streaming-turn" class="legacy-anchor"></span>
 <section id="streaming-turn">
   <div class="row">
-    <div class="mark">10</div>
+    <div class="mark">4</div>
     <div class="body">
       <p class="part">Turn · Pattern 3</p>
       <h2>Streaming Turn</h2>
@@ -747,7 +471,7 @@ tools: read, write, bash, powershell   ·   no network
 
 <section id="barge-in">
   <div class="row">
-    <div class="mark">11</div>
+    <div class="mark">5</div>
     <div class="body">
       <p class="part">Turn · Pattern 4</p>
       <h2>Barge-In</h2>
@@ -832,7 +556,7 @@ tools: read, write, bash, powershell   ·   no network
 <span id="scope-on-uncertainty" class="legacy-anchor"></span>
 <section id="assume-or-ask">
   <div class="row">
-    <div class="mark">12</div>
+    <div class="mark">6</div>
     <div class="body">
       <p class="part">Intent · Pattern 5</p>
       <h2>Assume or Ask</h2>
@@ -922,7 +646,7 @@ I've built and tested the artifact (common to both). Which target?</code></pre>
 
 <section id="constrained-choice">
   <div class="row">
-    <div class="mark">13</div>
+    <div class="mark">7</div>
     <div class="body">
       <p class="part">Intent · Pattern 6</p>
       <h2>Constrained Choice</h2>
@@ -980,7 +704,7 @@ I've built and tested the artifact (common to both). Which target?</code></pre>
 
 <section id="plan-approve-execute-receipt">
   <div class="row">
-    <div class="mark">14</div>
+    <div class="mark">8</div>
     <div class="body">
       <p class="part">Execution · Pattern 7</p>
       <h2>Plan, Approve, Execute, Receipt</h2>
@@ -1073,7 +797,7 @@ RECEIPT
 
 <section id="tool-call-transparency">
   <div class="row">
-    <div class="mark">15</div>
+    <div class="mark">9</div>
     <div class="body">
       <p class="part">Execution · Pattern 8</p>
       <h2>Tool-Call Transparency</h2>
@@ -1155,7 +879,7 @@ RECEIPT
 
 <section id="ambient-activity-channel">
   <div class="row">
-    <div class="mark">16</div>
+    <div class="mark">10</div>
     <div class="body">
       <p class="part">Execution · Pattern 9</p>
       <h2>Ambient Activity Channel</h2>
@@ -1236,7 +960,7 @@ RECEIPT
 
 <section id="approval-gate">
   <div class="row">
-    <div class="mark">17</div>
+    <div class="mark">11</div>
     <div class="body">
       <p class="part">Authority · Pattern 10</p>
       <h2>Approval Gate</h2>
@@ -1328,7 +1052,7 @@ context is lost. I'll wait — nothing else I'm doing depends on it.</code></pre
 
 <section id="progressive-autonomy">
   <div class="row">
-    <div class="mark">18</div>
+    <div class="mark">12</div>
     <div class="body">
       <p class="part">Authority · Pattern 11</p>
       <h2>Progressive Autonomy</h2>
@@ -1414,7 +1138,7 @@ context is lost. I'll wait — nothing else I'm doing depends on it.</code></pre
 <span id="example-honest-gauge" class="legacy-anchor"></span>
 <section id="honest-gauge">
   <div class="row">
-    <div class="mark">19</div>
+    <div class="mark">13</div>
     <div class="body">
       <p class="part">Truth and continuity · Pattern 12</p>
       <h2>Honest Gauge</h2>
@@ -1506,7 +1230,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
 <section id="recoverable-execution">
   <div class="row">
-    <div class="mark">20</div>
+    <div class="mark">14</div>
     <div class="body">
       <p class="part">Truth and continuity · Pattern 13</p>
       <h2>Recoverable Execution</h2>
@@ -1593,7 +1317,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 <span id="continuity-as-memory" class="legacy-anchor"></span>
 <section id="durable-memory">
   <div class="row">
-    <div class="mark">21</div>
+    <div class="mark">15</div>
     <div class="body">
       <p class="part">Truth and continuity · Pattern 14</p>
       <h2>Durable Memory</h2>
@@ -1683,7 +1407,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
 <section id="an-acceptance-checklist">
   <div class="row">
-    <div class="mark">22</div>
+    <div class="mark">16</div>
     <div class="body">
       <h2>An acceptance checklist</h2>
       <p>This is what the vocabulary buys, stated as work you can do on a Tuesday. Each line is a pattern turned into a question the interface must be able to answer — and each was written by reading a Failure Signature backwards.</p>
@@ -1706,14 +1430,14 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
           <tr><td>Does what matters survive the session, correctably?</td><td><a href="#durable-memory">14</a></td></tr>
         </tbody>
       </table></div>
-      <p>Fourteen questions that could not be asked before the fourteen names existed. That is the entire argument, in the shortest form it takes.</p>
+      <p>Fourteen questions that could not be asked before the fourteen names existed. Why that is worth anything is <a href="/om-005">OM-005</a>.</p>
     </div>
   </div>
 </section>
 
 <section id="what-this-catalogue-does-not-cover">
   <div class="row">
-    <div class="mark">23</div>
+    <div class="mark">17</div>
     <div class="body">
       <h2>What this does not cover</h2>
       <p>Named honestly, because a pattern language that pretends to completeness is its own dishonest gauge.</p>
@@ -1728,35 +1452,44 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
   </div>
 </section>
 
+<section id="where-the-argument-went">
+  <div class="row">
+    <div class="mark">18</div>
+    <div class="body">
+      <h2>Where the argument went</h2>
+      <p>Rev. 3 and Rev. 4 of this document made the case for the language before presenting it: the gap, why the existing literature does not fill it, what the missing vocabulary costs, the evidence, the proposed form, and the map. Rev. 6 moved all of it to <a href="/om-005">OM-005 · <em>On the First Four Papers</em></a>, unchanged, so that this document could be what it is called — the fourteen patterns, presented.</p>
+      <p>Each id published here is kept and lands on its own line below. A published fragment is owed forever, and moving text is not a reason to break a link someone else wrote. The rule is mechanical: <code>/om-001#x</code> became <code>/om-005#om-001-x</code>.</p>
+      <ul class="retired">
+        <li id="preface"><a href="/om-005#preface"><span class="rn">Preface</span><span class="rd">Where the form comes from, and what carrying it forward obliges. Signed. It prefaces the argument, so it moved with it.</span></a></li>
+        <li id="why-this-form"><a href="/om-005#om-001-why-this-form"><span class="rn">The gap</span><span class="rd">Why a vocabulary is missing, and what a pattern has to be to fill it. <em>OM-005 §2.</em></span></a></li>
+        <li id="the-literature"><a href="/om-005#om-001-the-literature"><span class="rn">Why the existing literature does not fill it</span><span class="rd">Conversation design, agent UX, and what falls between them. <em>OM-005 §3.</em></span></a></li>
+        <li id="the-cost"><a href="/om-005#om-001-the-cost"><span class="rn">What the missing vocabulary costs</span><span class="rd">Arguments that cannot be had, nothing that can be refused, every team paying the discovery cost again. <em>OM-005 §4.</em></span></a></li>
+        <li id="shared-vocabulary"><a href="/om-005#om-001-shared-vocabulary"><span class="rn">The minimum shared terms</span><span class="rd">Principal, agent, harness, turn, commission. <em>OM-005 §4.1.</em></span></a></li>
+        <li id="the-evidence"><a href="/om-005#om-001-the-evidence"><span class="rn">The evidence</span><span class="rd">What one workstation establishes and what it cannot. <em>OM-005 §5, retitled</em> The evidence for One Agent — <em>OM-002’s and OM-003’s evidence sections join it there, and all three could not keep the same name.</em></span></a></li>
+        <li id="the-proposed-form"><a href="/om-005#om-001-the-proposed-form"><span class="rn">The proposed form</span><span class="rd">The Gang of Four template, and the one field added to it. <em>OM-005 §6.</em></span></a></li>
+        <li id="failure-signature"><a href="/om-005#om-001-failure-signature"><span class="rn">Failure Signature, and why it earns its place</span><span class="rd">The added field, and the argument that a missing pattern here leaves its mark on a person rather than on an artifact. <em>OM-005 §6.1.</em></span></a></li>
+        <li id="the-map"><a href="/om-005#om-001-the-map"><span class="rn">A language, not a list</span><span class="rd">Citation and position, and why Related Patterns is navigation. <em>OM-005 §7.</em></span></a></li>
+        <li id="forces-that-recur"><a href="/om-005#om-001-forces-that-recur"><span class="rn">Forces that recur</span><span class="rd">The tensions the entries trade off against each other. <em>OM-005 §7.1, retitled</em> Forces that recur in One Agent, <em>for the same reason.</em></span></a></li>
+      </ul>
+      <p class="aside">The sources list moved with the argument too, except <em>Primary material</em> — which is about these fourteen entries rather than about the case for them, and is in §19 below. <code>#sources-and-lineage</code> still resolves here.</p>
+    </div>
+  </div>
+</section>
+
 <section id="sources-and-lineage">
   <div class="row">
-    <div class="mark">24</div>
+    <div class="mark">19</div>
     <div class="body">
       <h2>Sources and lineage</h2>
 
-      <p class="field first">Directly ancestral</p>
-      <ul>
-        <li>Gamma, Helm, Johnson &amp; Vlissides, <em>Design Patterns</em> (1994) — the template, and the discipline of stating consequences rather than only benefits.</li>
-        <li>Moore, Szymanski, Arar &amp; Ren, <em>Conversational UX Design: A Practitioner’s Guide to the Natural Conversation Framework</em> — rigorous vocabulary for turn-taking, repair and grounding.</li>
-        <li>Shevat, <em>Designing Bots: Creating Conversational Experiences</em> — the closest existing practical pattern book, and the free-text-versus-controls tradeoff.</li>
-        <li>Microsoft Research, <em>Guidelines for Human-AI Interaction</em> — eighteen guidelines that function well as acceptance criteria; “scope services when in doubt” is the direct ancestor of pattern 5.</li>
-        <li>Google, <em>Conversation Design</em> — conversation as an interaction medium.</li>
-        <li>Alexander, Ishikawa &amp; Silverstein, <em>A Pattern Language</em> (1977) — the source of the word, and of the claim that patterns gain their force from citing one another rather than from being individually correct.</li>
-        <li>Alexander, <em>The Origins of Pattern Theory, the Future of the Theory, and the Generation of a Living World</em> — the 1996 OOPSLA keynote, published in <em>IEEE Software</em> (1999). The criticism the preface accepts: the format travelled to software, and generativity — a language as a sequence producing a coherent whole — largely did not, along with the concern for whether what is generated is good for the people who live in it.</li>
-      </ul>
+      <p class="field first">Primary material</p>
+      <p>Patterns 2, 3, 9 and 12 are drawn from direct observation on a single workstation — a voice-first agent surface with a headless resident agent, local speech-to-text and synthesis, and a physical lighting channel. The measurements quoted in those entries are from that system, and what one machine can and cannot establish is set out in <a href="/om-005#om-001-the-evidence">OM-005 §5</a>.</p>
 
-      <p class="field">Contemporary collections</p>
-      <ul>
-        <li>AI UX Playground’s pattern catalogue — the broadest current inventory of LLM and agent UI conventions.</li>
-        <li>Conversation Design Institute’s pattern library — production dialog mechanics.</li>
-        <li><em>Designing Agentic AI: Practical UX Patterns</em> — the suggest → supervise → autonomous continuum behind pattern 11.</li>
-      </ul>
-
-      <p class="field">Primary material</p>
-      <p>Patterns 2, 3, 9 and 12 are drawn from direct observation on a single workstation — a voice-first agent surface with a headless resident agent, local speech-to-text and synthesis, and a physical lighting channel. The measurements quoted are from that system and are set out in §4.</p>
+      <p class="field">Where the rest of the lineage is</p>
+      <p>The debts this catalogue is built on — the Gang of Four’s template, Alexander’s <em>A Pattern Language</em> and his 1996 criticism of what software took from it, the conversation-design literature, and the contemporary agent-UX collections — moved to <a href="/om-005#sources-and-lineage">OM-005 §8</a> with the argument that cites them. They are apparatus for the case, not for the entries.</p>
 
       <p class="field">What is claimed, and what is not</p>
-      <p>This is a proposed language, not a settled one. The value of the Gang of Four form is that it makes a design argument <em>falsifiable</em>: each pattern states when it does not apply and what it costs, and Failure Signature adds a symptom you can go and look for. Patterns that survive contact with other people’s systems are worth keeping; the rest should be argued out of the catalogue, and this document is written to make that easy rather than embarrassing.</p>
+      <p>This is a proposed language, not a settled one. Each entry states when it does not apply and what it costs, and Failure Signature adds a symptom you can go and look for, so a pattern here is meant to be arguable rather than admired. Patterns that survive contact with other people’s systems are worth keeping; the rest should be argued out of the catalogue.</p>
       <p>Corrections and counter-examples: <a href="mailto:hello@organon.art">hello@organon.art</a>. A pattern shown not to exist in the wild is a useful result and will be recorded as one.</p>
     </div>
   </div>
