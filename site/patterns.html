@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Patterns — Organon Mind</title>
-<meta name="description" content="An explorer for fourteen patterns of mixed-initiative, tool-using interfaces.">
+<title>Design Patterns for AI Agents — Organon Mind</title>
+<meta name="description" content="A catalogue of design patterns for working with AI agents: one agent, many agents, arrangements of many, and many teams at once.">
 <link rel="icon" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Organon Mind">
-<meta property="og:title" content="Patterns">
-<meta property="og:description" content="An explorer for fourteen patterns of mixed-initiative, tool-using interfaces.">
+<meta property="og:title" content="Design Patterns for AI Agents">
+<meta property="og:description" content="A catalogue of design patterns for working with AI agents: one agent, many agents, arrangements of many, and many teams at once.">
 <meta property="og:url" content="https://organonmind.org/patterns">
 <meta name="twitter:card" content="summary">
 <style>
@@ -76,11 +76,17 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--live);outline-offse
 .chip:hover{border-color:var(--ink);color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 
-/* ── the language switch ──
-   Above the filters, and deliberately heavier than a chip: choosing a language
+/* ── the section switch ──
+   Above the filters, and deliberately heavier than a chip: choosing a section
    is not filtering one list, it is changing which list you are looking at. The
-   catalogue holds three languages and one set of compositions, and flattening
-   them into a single index is exactly what this control exists to refuse. */
+   catalogue holds three sets of patterns and one set of compositions, and
+   flattening them into a single index is exactly what this control exists to
+   refuse.
+
+   The internal ids stay turn/fleet/arr/yard: they are the state keys and were
+   never displayed, and renaming them would only churn the file. What changed in
+   Aug 2026 is the labels, which were metaphors — Turn, Fleet, Yard — that asked
+   a first-time reader to learn a vocabulary before reading a single pattern. */
 .langs{padding:.85rem .95rem .8rem;border-bottom:1px solid var(--rule-strong);background:var(--raise)}
 .langlab{font-family:var(--mono);font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;
   color:var(--faint);margin:0 0 .45rem}
@@ -273,16 +279,16 @@ body[data-view="overview"] .desig .tag{display:none}
   <button class="railtoggle" id="railtoggle" aria-label="Show index">Index</button>
   <a class="org" href="/">Organon Mind</a>
   <span class="sep">/</span>
-  <span class="here">Patterns</span>
+  <span class="here">Catalogue</span>
   <span class="spacer"></span>
-  <a class="out" href="/om-001">OM-001 · the paper →</a>
+  <a class="out" id="out" href="/om-001">OM-001 · the paper →</a>
 </div>
 
 <div class="shell">
 
   <nav class="rail" id="rail" aria-label="Pattern index">
     <div class="langs">
-      <p class="langlab">Language</p>
+      <p class="langlab">Patterns</p>
       <div class="langrow" id="langrow"></div>
     </div>
     <div class="filters" id="filters">
@@ -402,7 +408,7 @@ body[data-view="overview"] .desig .tag{display:none}
 <p class="field">Reading this page</p>
 <ul>
   <li>The <strong>index</strong> on the left holds all fourteen, grouped by stage. <span class="kbd">[</span> and <span class="kbd">]</span> step through them.</li>
-  <li><strong>Language</strong>, at the top of the rail, changes which catalogue you are in. There are three languages and one set of compositions, and they describe different things — one agent, one fleet, and one person running several. A relation may point across them, and following it switches the rail with you.</li>
+  <li><strong>Patterns</strong>, at the top of the rail, changes which section you are in. There are four — one agent, many agents, arrangements of many, and one person running several teams — and they describe different things. A relation may point across them, and following it switches the rail with you.</li>
   <li><strong>Related patterns</strong> on every entry are clickable. That field has been a dead list at the foot of a page since 1994; here it is how you move.</li>
   <li><strong>Side of the seam</strong> splits them by how they fail. <em>Harness</em> patterns live in code — they fail the same way every time and a test can hold them. <em>Disposition</em> patterns live in the agent’s character — they fail stochastically, and you strengthen a tendency rather than pin a behaviour. Nine are harness, one is disposition, four are both: most of what makes an agent feel trustworthy turns out to be <em>buildable</em>.</li>
 </ul>
@@ -416,7 +422,7 @@ body[data-view="overview"] .desig .tag{display:none}
 
 <p class="ovl">One dispatcher, many units. What changes when a delegated task is split.</p>
 
-<p>The fourteen patterns of the Turn language describe <em>one</em> delegated task, and the vocabulary says so: a turn is the unit of exchange, and the thing held by exactly one party. Put twelve agents in flight and there is no turn — nothing to hold, nothing to interrupt, and no moment at which the principal and the agent are both present.</p>
+<p>The fourteen One Agent patterns describe <em>one</em> delegated task, and the vocabulary says so: a turn is the unit of exchange, and the thing held by exactly one party. Put twelve agents in flight and there is no turn — nothing to hold, nothing to interrupt, and no moment at which the principal and the agent are both present.</p>
 
 <p>So this is a second language rather than an extension of the first. Its topology is a <strong>fan-out and a fan-in</strong>, and everything difficult lives at the two seams and in the space between them, where the principal is absent by design.</p>
 
@@ -433,14 +439,14 @@ body[data-view="overview"] .desig .tag{display:none}
 </ol>
 
 <p class="field">Where the full entries are</p>
-<p>In <a href="/om-002">OM-002 · <em>Working a Fleet</em></a>, which is canonical for them. This explorer holds their position and their relations so the language can be moved through; the paper holds the argument, the figures and the evidence. There is exactly one copy of each entry, and it is there.</p>
+<p>In <a href="/om-002">OM-002 · <em>Working a Fleet</em></a>, which is canonical for them. This explorer holds their position and their relations so the set can be moved through; the paper holds the argument, the figures and the evidence. There is exactly one copy of each entry, and it is there.</p>
 
 </div>
 <div class="panel" data-pat="overview-arr">
 
-<p class="ovl">Named ways to arrange a fleet. Not patterns, but compositions of them.</p>
+<p class="ovl">Named ways to arrange many agents. Not patterns, but compositions of them.</p>
 
-<p>The Fleet language's eight patterns can be assembled into different wholes, and an arrangement earns a name only when it passes one test: <strong>a composite is worth naming when it changes what its constituent patterns mean.</strong></p>
+<p>The eight Many Agents patterns can be assembled into different wholes, and an arrangement earns a name only when it passes one test: <strong>a composite is worth naming when it changes what its constituent patterns mean.</strong></p>
 
 <div class="tablewrap"><table>
   <thead><tr><th>Pattern</th><th>In plain fan-out</th><th>Inside another arrangement</th></tr></thead>
@@ -469,21 +475,21 @@ body[data-view="overview"] .desig .tag{display:none}
 </div>
 <div class="panel" data-pat="overview-yard">
 
-<p class="ovl">One person, several fleets. The level where the dispatcher is human.</p>
+<p class="ovl">One person, several teams. The level where the dispatcher is human.</p>
 
-<p>The recursion stops here, and that is the whole finding. In the Fleet language the dispatcher is an agent: you can scope its authority, give it a return address, and hold it to a report. At the level above, the dispatcher is a person, who has none of those properties — <strong>a human cannot be commissioned.</strong></p>
+<p>The recursion stops here, and that is the whole finding. Among the Many Agents patterns the dispatcher is an agent: you can scope its authority, give it a return address, and hold it to a report. At the level above, the dispatcher is a person, who has none of those properties — <strong>a human cannot be commissioned.</strong></p>
 
 <p>Everything difficult at this level falls out of that asymmetry. Authority that cannot be scoped, no address that resolves, no report, and a scarce resource that is attention rather than compute — attention does not divide, and cannot be bought.</p>
 
 <p class="field">The three</p>
 <ol class="glance">
   <li><button type="button" data-goto="standing-by-readiness"><span class="gn">01</span><span><span class="gname2">Standing by Readiness</span><span class="gint">Order the surface by what needs a person, not by what is happening.</span></span></button></li>
-  <li><button type="button" data-goto="re-entry-note"><span class="gn">02</span><span><span class="gname2">Re-entry Note</span><span class="gint">Coming back to a squad should cost reading rather than reconstruction.</span></span></button></li>
+  <li><button type="button" data-goto="re-entry-note"><span class="gn">02</span><span><span class="gname2">Re-entry Note</span><span class="gint">Coming back to a team should cost reading rather than reconstruction.</span></span></button></li>
   <li><button type="button" data-goto="landing-order"><span class="gn">03</span><span><span class="gname2">Landing Order</span><span class="gint">The shared trunk is the one thing isolation cannot copy.</span></span></button></li>
 </ol>
 
 <p class="field">Where the full entries are</p>
-<p>In <a href="/om-003">OM-003</a>, §14–§17, which is canonical for them. That document also leaves one question open on its face: whether an agent can run a yard at all.</p>
+<p>In <a href="/om-003">OM-003</a>, §14–§17, which is canonical for them. That document also leaves one question open on its face: whether an agent can run this level at all.</p>
 
 </div>
 <div class="panel" data-pat="capability-disclosure">
@@ -1582,31 +1588,31 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
 <script>
 (function(){
-  // ── The catalogue holds more than one language ──────────────────────────────
+  // ── The catalogue holds more than one set ───────────────────────────────────
   //
-  // Three languages and one set of compositions. They are NOT one long list, and
-  // the switch above the rail exists to say so: each describes a different
-  // object — one agent, one fleet, one person running several — with its own
-  // stages, its own map and its own idea of what a stage even is. Pouring them
-  // into a single index would leave "Stage: Execution" printed next to an entry
-  // about which squad's work lands first, which is how a catalogue stops meaning
-  // anything.
+  // Three sets of patterns and one set of compositions. They are NOT one long
+  // list, and the switch above the rail exists to say so: each describes a
+  // different object — one agent, many agents, one person running several teams
+  // — with its own stages, its own map and its own idea of what a stage even is.
+  // Pouring them into a single index would leave "Stage: Execution" printed next
+  // to an entry about which team's work lands first, which is how a catalogue
+  // stops meaning anything.
   //
-  // Only the Turn language's full text lives here; it is canonical for it. The
+  // Only the One Agent set's full text lives here; it is canonical for it. The
   // other three carry position, intent and relations, and name the paper that
   // holds their argument. One copy of each entry, never two.
   var LANGS = [
-    {id:"turn", label:"Turn", sub:"one agent", doc:"OM-001", href:"/om-001", full:true, seam:true,
+    {id:"turn", label:"One Agent", sub:"one task, start to finish", doc:"OM-001", href:"/om-001", full:true, seam:true,
      groups:[["I","Orientation"],["II","Turn"],["III","Intent"],["IV","Execution"],["V","Authority"],["VI","Truth and continuity"]],
      foot:"14 patterns · 6 stages<br>9 harness · 1 disposition · 4 both"},
-    {id:"fleet", label:"Fleet", sub:"one dispatcher", doc:"OM-002", href:"/om-002", full:false, seam:false,
+    {id:"fleet", label:"Many Agents", sub:"several at once", doc:"OM-002", href:"/om-002", full:false, seam:false,
      groups:[["S","The split"],["F","In flight"],["J","The join"]],
-     foot:"8 patterns · 3 acts<br>full entries in OM-002"},
-    {id:"arr", label:"Arrangements", sub:"compositions", doc:"OM-003", href:"/om-003", full:false, seam:false,
-     groups:[["A","Arrangements of a fleet"]],
-     foot:"6 arrangements<br>compositions of the Fleet patterns"},
-    {id:"yard", label:"Yard", sub:"many fleets", doc:"OM-003", href:"/om-003", full:false, seam:false,
-     groups:[["Y","The yard"]],
+     foot:"8 patterns · 3 stages<br>full entries in OM-002"},
+    {id:"arr", label:"Arrangements", sub:"ways to arrange many", doc:"OM-003", href:"/om-003", full:false, seam:false,
+     groups:[["A","Arrangements of many agents"]],
+     foot:"6 arrangements<br>compositions of the Many Agents patterns"},
+    {id:"yard", label:"Many Teams", sub:"one person, several groups", doc:"OM-003", href:"/om-003", full:false, seam:false,
+     groups:[["Y","Many teams"]],
      foot:"3 patterns · full entries in OM-003"}
   ];
   var LANG={}; LANGS.forEach(function(l){LANG[l.id]=l;});
@@ -1690,10 +1696,10 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
     // ── Yard (OM-003, level two) ─────────────────────────────────────────────
     {lang:"yard",id:"standing-by-readiness",n:1,name:"Standing by Readiness",g:"Y",
-     intent:"Order the yard's surface by what needs a person, not by what is happening, so the scarce resource is spent on decisions rather than on scanning.",
+     intent:"Order the surface by what needs a person, not by what is happening, so the scarce resource is spent on decisions rather than on scanning.",
      rel:[["ordered by","landing-order"],["sits above","fleet-standing"],["obeys","honest-gauge"]]},
     {lang:"yard",id:"re-entry-note",n:2,name:"Re-entry Note",g:"Y",
-     intent:"Have each squad maintain a short note written for the person's return, so that coming back to it costs reading rather than reconstruction.",
+     intent:"Have each team maintain a short note written for the person's return, so that coming back to it costs reading rather than reconstruction.",
      rel:[["feeds","standing-by-readiness"],["is","continuity-as-memory"],["summarises","gather"]]},
     {lang:"yard",id:"landing-order",n:3,name:"Landing Order",g:"Y",
      intent:"Decide the order in which finished work lands, explicitly and before it is finished, because the shared trunk is the one thing isolation cannot copy.",
@@ -1712,15 +1718,15 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       railFoot=document.getElementById('railfoot'),
       state={lang:'turn',part:'all',seam:'all',cur:null};
 
-  // Citation counts are computed across every language, because a relation that
-  // crosses one is still a citation — and the cross-language ones are the whole
+  // Citation counts are computed across every section, because a relation that
+  // crosses one is still a citation — and the cross-section ones are the whole
   // reason this catalogue is not four separate pages.
   var inbound={}; P.forEach(function(p){inbound[p.id]=0;});
   P.forEach(function(p){p.rel.forEach(function(r){if(inbound[r[1]]!==undefined)inbound[r[1]]++;});});
 
   function inLang(id){return P.filter(function(p){return p.lang===id;});}
 
-  // ── the language switch ─────────────────────────────────────────────────────
+  // ── the section switch ─────────────────────────────────────────────────────
   LANGS.forEach(function(l){
     var b=document.createElement('button');
     b.type='button'; b.className='lang'; b.setAttribute('data-lang',l.id);
@@ -1794,6 +1800,11 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       x.setAttribute('aria-pressed',String(x.getAttribute('data-seam')===state.seam));});
     buildStageChips(LANG[id]);
     buildIndex(LANG[id]);
+    // The way out follows the section. Each one's full argument is in a
+    // different paper, and a bar that always said OM-001 was wrong three
+    // times out of four.
+    var out=document.getElementById('out');
+    out.href=LANG[id].href; out.textContent=LANG[id].doc+' · the paper →';
     applyFilters();
   }
 
@@ -1952,9 +1963,9 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     });
   }
 
-  // A citation written before this page held four languages still resolves: the
-  // id decides the language, so /patterns#gather lands in Fleet without anybody
-  // having to know that Fleet exists.
+  // A citation written before this page held four sets still resolves: the id
+  // decides the section, so /patterns#gather lands in Many Agents without
+  // anybody having to know the sections exist.
   var initial=location.hash.slice(1);
   if(BY[initial]){ setLang(BY[initial].lang,false); show(initial,false); }
   else { setLang('turn',false); showOverview(false); }
