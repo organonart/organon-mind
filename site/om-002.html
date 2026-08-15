@@ -209,18 +209,18 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
         <p class="g">The split</p>
         <ol>
           <li><span class="n">1</span>Proposed Dispatch</li>
-          <li><span class="n">2</span>Scoped Commission</li>
+          <li><span class="n">2</span>Authority at Dispatch</li>
           <li><span class="n">3</span>Isolation by Construction</li>
         </ol>
         <p class="g">In flight</p>
         <ol start="4">
-          <li><span class="n">4</span>Dispatch Without Escort</li>
-          <li><span class="n">5</span>Fleet Standing</li>
+          <li><span class="n">4</span>Fire and Forget</li>
+          <li><span class="n">5</span>Status Board</li>
         </ol>
         <p class="g">The join</p>
         <ol start="6">
           <li><span class="n">6</span>The Return Path</li>
-          <li><span class="n">7</span>Attribution Across Depth</li>
+          <li><span class="n">7</span>Nested Attribution</li>
           <li><span class="n">8</span>Gather</li>
         </ol>
       </div>
@@ -365,7 +365,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p><em>Primary agent</em> proposes and states each unit's scope. <em>Principal</em> approves, edits or refuses. <em>Units</em> carry the proposal forward as their commission.</p>
 
       <p class="field">Collaborations</p>
-      <p>Takes its form from <strong>Constrained Choice</strong> (OM-001 · 6) — enumerated units, not free text. Approving one is <strong>Approval Gate</strong> (10) applied to a decomposition rather than an action. What it hands to <strong>Scoped Commission</strong> (2) determines whether the unit can be dispatched unattended at all.</p>
+      <p>Takes its form from <strong>Constrained Choice</strong> (OM-001 · 6) — enumerated units, not free text. Approving one is <strong>Approval Gate</strong> (10) applied to a decomposition rather than an action. What it hands to <strong>Authority at Dispatch</strong> (2) determines whether the unit can be dispatched unattended at all.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -393,17 +393,17 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p>Suggested-task surfaces that offer a worktree, a local run or a cloud run. Agents that file their own issues for later work. A planning step whose output is a list of separable jobs rather than prose.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Scoped Commission</strong> (2), <strong>Constrained Choice</strong> (OM-001 · 6), <strong>Approval Gate</strong> (OM-001 · 10).</p>
+      <p><strong>Authority at Dispatch</strong> (2), <strong>Constrained Choice</strong> (OM-001 · 6), <strong>Approval Gate</strong> (OM-001 · 10).</p>
     </div>
   </div>
 </section>
 
-<section id="scoped-commission">
+<section id="authority-at-dispatch">
   <div class="row">
     <div class="mark">7</div>
     <div class="body">
       <p class="part">The split · Pattern 2</p>
-      <h2>Scoped Commission</h2>
+      <h2>Authority at Dispatch</h2>
 
       <p class="field first">Intent</p>
       <p>Grant a dispatched agent its authority once, at dispatch, in a form the environment enforces — because per-action approval does not survive more than one agent.</p>
@@ -556,7 +556,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p><em>Workspace</em> is the unit's own. <em>Result</em> leaves it as a durable artifact — a branch, an image, a file. <em>Join</em> is where results meet, and the only place they may.</p>
 
       <p class="field">Collaborations</p>
-      <p>Realises the boundary <strong>Scoped Commission</strong> (2) declares. Its artifact is what <strong>The Return Path</strong> (6) carries and what <strong>Gather</strong> (8) reconciles. The workspace boundary is also the before-state <strong>Recoverable Execution</strong> (OM-001 · 13) needs: discarding a unit is discarding its workspace.</p>
+      <p>Realises the boundary <strong>Authority at Dispatch</strong> (2) declares. Its artifact is what <strong>The Return Path</strong> (6) carries and what <strong>Gather</strong> (8) reconciles. The workspace boundary is also the before-state <strong>Recoverable Execution</strong> (OM-001 · 13) needs: discarding a unit is discarding its workspace.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -577,17 +577,17 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p>Git worktrees and branches. Containers. CI runners, one per job. Database transactions. Any build system with a per-target sandbox.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Scoped Commission</strong> (2), <strong>Gather</strong> (8), <strong>Recoverable Execution</strong> (OM-001 · 13).</p>
+      <p><strong>Authority at Dispatch</strong> (2), <strong>Gather</strong> (8), <strong>Recoverable Execution</strong> (OM-001 · 13).</p>
     </div>
   </div>
 </section>
 
-<section id="dispatch-without-escort">
+<section id="fire-and-forget">
   <div class="row">
     <div class="mark">9</div>
     <div class="body">
       <p class="part">In flight · Pattern 4</p>
-      <h2>Dispatch Without Escort</h2>
+      <h2>Fire and Forget</h2>
 
       <p class="field first">Intent</p>
       <p>Make a dispatch complete at the moment it is made, so the principal can turn immediately to the next thing rather than staying to shepherd the last one.</p>
@@ -595,7 +595,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p class="field">Motivation</p>
       <p>This is the pattern that makes every other one worth having, and it is best stated as the behaviour it enables:</p>
       <blockquote><p>“Dispatch an agent, then immediately get back to doing something else and dispatch another agent. And the whole time, you are giving the thing that the agents need, which is the taste and the direction and the choices that make this thing you're building yours.”</p></blockquote>
-      <p>Now suppose each dispatch asks one clarifying question thirty seconds in. Nothing is broken; each question is reasonable; the agent is being careful. But the principal cannot leave, so they cannot dispatch the next one, and throughput is pinned at one agent no matter how many the system can run. <strong>A dispatch that needs escorting is a dispatch that cannot be followed by another.</strong></p>
+      <p>Now suppose each dispatch asks one clarifying question thirty seconds in. Nothing is broken; each question is reasonable; the agent is being careful. But the principal cannot leave, so they cannot dispatch the next one, and throughput is pinned at one agent no matter how many the system can run. <strong>A dispatch you have to watch is a dispatch that cannot be followed by another.</strong></p>
       <p>The arithmetic is unforgiving. A unit that is ninety-five per cent unattended is not unattended; the five per cent lands on a single serialised human.</p>
 
       <p class="field">Applicability</p>
@@ -603,7 +603,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
 
       <p class="field">Structure</p>
       <figure>
-        <svg viewBox="0 0 700 200" role="img" aria-label="Two timelines. Escorted: the principal dispatches, waits, answers a question, waits again, and only then dispatches a second unit. Unescorted: the principal dispatches three units in quick succession while all three run in parallel.">
+        <svg viewBox="0 0 700 200" role="img" aria-label="Two timelines. Watched: the principal dispatches, waits, answers a question, waits again, and only then dispatches a second unit. Unwatched: the principal dispatches three units in quick succession while all three run in parallel.">
           <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">ESCORTED</text>
           <rect x="8" y="30" width="80" height="28" fill="none" stroke="currentColor"/>
           <text x="48" y="49" text-anchor="middle" font-size="10.5" fill="currentColor">dispatch</text>
@@ -644,7 +644,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p><em>Commission</em> carries everything the unit needs. <em>Unit</em> proceeds on stated assumptions rather than stopping. <em>Principal</em> leaves and does not return until the join.</p>
 
       <p class="field">Collaborations</p>
-      <p>Puts the whole weight on <strong>Scope-on-Uncertainty</strong> (OM-001 · 5): a unit that cannot ask must be very good at deciding when ambiguity actually changes the blast radius, and at proceeding under a stated assumption when it does not. Depends on <strong>Scoped Commission</strong> (2), which is what makes proceeding safe. <strong>Fleet Standing</strong> (5) is what lets the principal leave without anxiety.</p>
+      <p>Puts the whole weight on <strong>Assume or Ask</strong> (OM-001 · 5): a unit that cannot ask must be very good at deciding when ambiguity actually changes the blast radius, and at proceeding under a stated assumption when it does not. Depends on <strong>Authority at Dispatch</strong> (2), which is what makes proceeding safe. <strong>Status Board</strong> (5) is what lets the principal leave without anxiety.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -665,17 +665,17 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p>Batch jobs with all inputs supplied up front. <code>make -j</code>. Anything designed to be run overnight, where asking is not an option and the design absorbed that constraint.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Fleet Standing</strong> (5), <strong>Scope-on-Uncertainty</strong> (OM-001 · 5), <strong>Scoped Commission</strong> (2).</p>
+      <p><strong>Status Board</strong> (5), <strong>Assume or Ask</strong> (OM-001 · 5), <strong>Authority at Dispatch</strong> (2).</p>
     </div>
   </div>
 </section>
 
-<section id="fleet-standing">
+<section id="status-board">
   <div class="row">
     <div class="mark">10</div>
     <div class="body">
       <p class="part">In flight · Pattern 5</p>
-      <h2>Fleet Standing</h2>
+      <h2>Status Board</h2>
 
       <p class="field first">Intent</p>
       <p>Show every unit's state on one surface, at the granularity the channel actually carries, and never at a granularity it does not.</p>
@@ -710,7 +710,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
           <line x1="86" y1="146" x2="330" y2="146" stroke="currentColor" opacity=".25"/>
           <text x="212" y="172" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">completed bursts — nothing streams between them</text>
           <rect x="404" y="60" width="180" height="72" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          <text x="494" y="82" text-anchor="middle" font-size="11" fill="currentColor">fleet standing</text>
+          <text x="494" y="82" text-anchor="middle" font-size="11" fill="currentColor">status board</text>
           <text x="494" y="99" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">3 running · 7 steps</text>
           <text x="494" y="114" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">last: Bash · 4m12s</text>
           <line x1="340" y1="96" x2="398" y2="96" stroke="currentColor" marker-end="url(#ah)"/>
@@ -721,10 +721,10 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       </figure>
 
       <p class="field">Participants</p>
-      <p><em>Units</em> emit whatever the harness forwards. <em>Standing</em> aggregates without inventing. <em>Principal</em> reads it at a glance and decides whether to intervene.</p>
+      <p><em>Units</em> emit whatever the harness forwards. <em>Status Board</em> aggregates without inventing. <em>Principal</em> reads it at a glance and decides whether to intervene.</p>
 
       <p class="field">Collaborations</p>
-      <p>A direct application of <strong>Honest Gauge</strong> (OM-001 · 12); every rule there applies unchanged and matters more, because there are N of them. <strong>Ambient Activity Channel</strong> (OM-001 · 9) is how this reaches a principal who is not looking at the screen. It is what makes <strong>Dispatch Without Escort</strong> (4) psychologically possible.</p>
+      <p>A direct application of <strong>Honest Gauge</strong> (OM-001 · 12); every rule there applies unchanged and matters more, because there are N of them. <strong>Ambient Activity Channel</strong> (OM-001 · 9) is how this reaches a principal who is not looking at the screen. It is what makes <strong>Fire and Forget</strong> (4) psychologically possible.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -746,13 +746,13 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
   04  bench-sweep      halted    2 steps   awaiting a human  0m31s</code></pre>
 
       <p class="field">Failure signature</p>
-      <p>“Is it still going?” asked about a fleet. Or a principal opening each session in turn to find out what finished — the manual scan a standing surface exists to make unnecessary.</p>
+      <p>“Is it still going?” asked about a fleet. Or a principal opening each session in turn to find out what finished — the manual scan a status board exists to make unnecessary.</p>
 
       <p class="field">Known uses</p>
       <p>CI dashboards. <code>jobs</code> and process supervisors. Build farm views. A console's subagent cards folded onto the card that spawned them.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Honest Gauge</strong> (OM-001 · 12), <strong>Ambient Activity Channel</strong> (OM-001 · 9), <strong>Dispatch Without Escort</strong> (4).</p>
+      <p><strong>Honest Gauge</strong> (OM-001 · 12), <strong>Ambient Activity Channel</strong> (OM-001 · 9), <strong>Fire and Forget</strong> (4).</p>
     </div>
   </div>
 </section>
@@ -817,7 +817,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p><em>Commission</em> carries the return address. <em>Report</em> is the account, distinct from the artifact. <em>Artifact</em> is the durable work. <em>Commissioning context</em> receives both without a human relay.</p>
 
       <p class="field">Collaborations</p>
-      <p>Feeds <strong>Gather</strong> (8), which cannot happen at all without it. Carries what <strong>Attribution Across Depth</strong> (7) requires. It is <strong>Plan · Approve · Execute · Receipt</strong> (OM-001 · 7)'s receipt, arriving from an actor who was itself an agent — which is the precise question OM-001 §11 said it could not answer.</p>
+      <p>Feeds <strong>Gather</strong> (8), which cannot happen at all without it. Carries what <strong>Nested Attribution</strong> (7) requires. It is <strong>Plan, Approve, Execute, Receipt</strong> (OM-001 · 7)'s receipt, arriving from an actor who was itself an agent — which is the precise question OM-001 §11 said it could not answer.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -847,17 +847,17 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p>Exit codes and stdout. Callbacks and reply-to addresses on a message queue. A pull request that closes the issue that commissioned it. Distributed tracing, where a span reports to its parent by construction.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>Gather</strong> (8), <strong>Attribution Across Depth</strong> (7), <strong>Plan · Approve · Execute · Receipt</strong> (OM-001 · 7).</p>
+      <p><strong>Gather</strong> (8), <strong>Nested Attribution</strong> (7), <strong>Plan, Approve, Execute, Receipt</strong> (OM-001 · 7).</p>
     </div>
   </div>
 </section>
 
-<section id="attribution-across-depth">
+<section id="nested-attribution">
   <div class="row">
     <div class="mark">12</div>
     <div class="body">
       <p class="part">The join · Pattern 7</p>
-      <h2>Attribution Across Depth</h2>
+      <h2>Nested Attribution</h2>
 
       <p class="field first">Intent</p>
       <p>Make every result name who produced it and how far down, so no context ever reports another's work in its own voice.</p>
@@ -988,7 +988,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p><em>Reports</em> arrive with their assumptions declared. <em>Gatherer</em> holds the original decomposition and so knows where units were expected to meet. <em>Account</em> is one narrative. <em>Disagreements</em> are a first-class output, not a footnote.</p>
 
       <p class="field">Collaborations</p>
-      <p>Consumes <strong>The Return Path</strong> (6) and is impossible without it. Relies on <strong>Attribution Across Depth</strong> (7) so a conflict can be traced to an actor. The assumptions it reconciles are the ones <strong>Dispatch Without Escort</strong> (4) required units to make and record.</p>
+      <p>Consumes <strong>The Return Path</strong> (6) and is impossible without it. Relies on <strong>Nested Attribution</strong> (7) so a conflict can be traced to an actor. The assumptions it reconciles are the ones <strong>Fire and Forget</strong> (4) required units to make and record.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -1009,7 +1009,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p>Map-reduce's reduce step. Editorial synthesis of several drafts. Code review across parallel branches. Meta-analysis, whose entire discipline is reconciling studies that each concluded something.</p>
 
       <p class="field">Related patterns</p>
-      <p><strong>The Return Path</strong> (6), <strong>Attribution Across Depth</strong> (7), <strong>Isolation by Construction</strong> (3).</p>
+      <p><strong>The Return Path</strong> (6), <strong>Nested Attribution</strong> (7), <strong>Isolation by Construction</strong> (3).</p>
     </div>
   </div>
 </section>

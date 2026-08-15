@@ -314,7 +314,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
         <thead><tr><th>Pattern</th><th>How it presented</th><th>What it actually was</th><th>Measured</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong>Mode Legibility</strong> (2)</td>
+            <td><strong>Mode Visibility</strong> (2)</td>
             <td>“the interface is broken”</td>
             <td>The binary was started in its headless mode, which has no interface by design. Nothing errored; everything worked.</td>
             <td>—</td>
@@ -461,7 +461,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p><em>Gauge</em> reports. <em>Healthy steady state</em> must map to OK. <em>Principal</em> must be able to act on the difference.</p>
 
       <p class="field">Collaborations</p>
-      <p>Governs <strong>Capability Disclosure</strong> (1), <strong>Mode Legibility</strong> (2) and <strong>Ambient Activity Channel</strong> (9). Undermines <strong>Approval Gate</strong> (10) when violated: a gate whose stated effect comes from a lying gauge obtains uninformed consent.</p>
+      <p>Governs <strong>Capability Disclosure</strong> (1), <strong>Mode Visibility</strong> (2) and <strong>Ambient Activity Channel</strong> (9). Undermines <strong>Approval Gate</strong> (10) when violated: a gate whose stated effect comes from a lying gauge obtains uninformed consent.</p>
 
       <p class="field">Consequences</p>
       <ul>
@@ -661,19 +661,19 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       <p>All fourteen, in full, are at <a href="/patterns">/patterns</a>. Each line below links to its canonical entry.</p>
       <ul class="cat">
         <li id="capability-disclosure"><a href="/patterns#capability-disclosure"><span class="cn">01</span><span><span class="cname">Capability Disclosure</span><span class="cint">Make the agent’s powers, position and limits legible before the principal commits.</span></span></a></li>
-        <li id="mode-legibility"><a href="/patterns#mode-legibility"><span class="cn">02</span><span><span class="cname">Mode Legibility</span><span class="cint">Make the active mode visible at the moment of use, not merely settable.</span></span></a></li>
+        <li id="mode-visibility"><a href="/patterns#mode-visibility"><span class="cn">02</span><span><span class="cname">Mode Visibility</span><span class="cint">Make the active mode visible at the moment of use, not merely settable.</span></span></a></li>
         <li id="streaming-turn"><a href="/patterns#streaming-turn"><span class="cn">03</span><span><span class="cname">Streaming Turn</span><span class="cint">Emit as you produce, so the wait overlaps the work instead of following it. <em>Reproduced in §7.</em></span></span></a></li>
         <li id="barge-in"><a href="/patterns#barge-in"><span class="cn">04</span><span><span class="cname">Barge-In</span><span class="cint">Let the principal seize the turn — and say honestly what that stops.</span></span></a></li>
-        <li id="scope-on-uncertainty"><a href="/patterns#scope-on-uncertainty"><span class="cn">05</span><span><span class="cname">Scope-on-Uncertainty</span><span class="cint">Ask only when ambiguity changes the blast radius; otherwise state an assumption.</span></span></a></li>
+        <li id="assume-or-ask"><a href="/patterns#assume-or-ask"><span class="cn">05</span><span><span class="cname">Assume or Ask</span><span class="cint">Ask only when ambiguity changes the blast radius; otherwise state an assumption.</span></span></a></li>
         <li id="constrained-choice"><a href="/patterns#constrained-choice"><span class="cn">06</span><span><span class="cname">Constrained Choice</span><span class="cint">When ambiguity is enumerable, offer structure rather than free text.</span></span></a></li>
-        <li id="plan-approve-execute-receipt"><a href="/patterns#plan-approve-execute-receipt"><span class="cn">07</span><span><span class="cname">Plan · Approve · Execute · Receipt</span><span class="cint">Four phases, so consent happens where judgement is still useful.</span></span></a></li>
+        <li id="plan-approve-execute-receipt"><a href="/patterns#plan-approve-execute-receipt"><span class="cn">07</span><span><span class="cname">Plan, Approve, Execute, Receipt</span><span class="cint">Four phases, so consent happens where judgement is still useful.</span></span></a></li>
         <li id="tool-call-transparency"><a href="/patterns#tool-call-transparency"><span class="cn">08</span><span><span class="cname">Tool-Call Transparency</span><span class="cint">Which tool, against what, why, and with what result — as structure, not prose.</span></span></a></li>
         <li id="ambient-activity-channel"><a href="/patterns#ambient-activity-channel"><span class="cn">09</span><span><span class="cname">Ambient Activity Channel</span><span class="cint">Signal state through a channel perceived without being attended to.</span></span></a></li>
         <li id="approval-gate"><a href="/patterns#approval-gate"><span class="cn">10</span><span><span class="cname">Approval Gate</span><span class="cint">Explicit, per-action consent before anything irreversible or outward-facing.</span></span></a></li>
         <li id="progressive-autonomy"><a href="/patterns#progressive-autonomy"><span class="cn">11</span><span><span class="cname">Progressive Autonomy</span><span class="cint">Scope widens with demonstrated reliability and narrows with risk.</span></span></a></li>
         <li id="honest-gauge"><a href="/patterns#honest-gauge"><span class="cn">12</span><span><span class="cname">Honest Gauge</span><span class="cint">A signal must be wrong only when the system is wrong. <em>Reproduced in §6.</em></span></span></a></li>
         <li id="recoverable-execution"><a href="/patterns#recoverable-execution"><span class="cn">13</span><span><span class="cname">Recoverable Execution</span><span class="cint">Every action has a visible before-state and a path back.</span></span></a></li>
-        <li id="continuity-as-memory"><a href="/patterns#continuity-as-memory"><span class="cn">14</span><span><span class="cname">Continuity as Memory</span><span class="cint">What matters survives in durable, correctable memory — not transcript length.</span></span></a></li>
+        <li id="durable-memory"><a href="/patterns#durable-memory"><span class="cn">14</span><span><span class="cname">Durable Memory</span><span class="cint">What matters survives in durable, correctable memory — not transcript length.</span></span></a></li>
       </ul>
       <p class="aside"><strong>On citations made against Rev. 2.</strong> That revision carried all fourteen patterns in full at anchors on this page. Those anchors are preserved above: <code>/om-001#approval-gate</code> still resolves, and lands on the line pointing at the canonical entry. A published number is permanent, and so is a published fragment — moving text is not a reason to break a link someone else wrote.</p>
     </div>
@@ -690,10 +690,10 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
         <thead><tr><th>Question</th><th>Pattern</th></tr></thead>
         <tbody>
           <tr><td>Can the principal see what the agent can do and where it stands?</td><td><a href="/patterns#capability-disclosure">1</a></td></tr>
-          <tr><td>Is the active mode visible at the moment of use?</td><td><a href="/patterns#mode-legibility">2</a></td></tr>
+          <tr><td>Is the active mode visible at the moment of use?</td><td><a href="/patterns#mode-visibility">2</a></td></tr>
           <tr><td>Does output begin before generation completes?</td><td><a href="/patterns#streaming-turn">3</a></td></tr>
           <tr><td>Can the principal interrupt — and is the scope stated truthfully?</td><td><a href="/patterns#barge-in">4</a></td></tr>
-          <tr><td>Does the agent ask only when ambiguity changes the blast radius?</td><td><a href="/patterns#scope-on-uncertainty">5</a></td></tr>
+          <tr><td>Does the agent ask only when ambiguity changes the blast radius?</td><td><a href="/patterns#assume-or-ask">5</a></td></tr>
           <tr><td>Are enumerable choices offered as structure rather than prose?</td><td><a href="/patterns#constrained-choice">6</a></td></tr>
           <tr><td>Is there a plan before action, and a receipt that can differ from it?</td><td><a href="/patterns#plan-approve-execute-receipt">7</a></td></tr>
           <tr><td>Is every tool call visible with target and result?</td><td><a href="/patterns#tool-call-transparency">8</a></td></tr>
@@ -702,7 +702,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
           <tr><td>Does autonomy widen and narrow with demonstrated risk?</td><td><a href="/patterns#progressive-autonomy">11</a></td></tr>
           <tr><td>Is every green light honest — and does red mean exactly one thing?</td><td><a href="/patterns#honest-gauge">12</a></td></tr>
           <tr><td>Does every action have a before-state and a path back?</td><td><a href="/patterns#recoverable-execution">13</a></td></tr>
-          <tr><td>Does what matters survive the session, correctably?</td><td><a href="/patterns#continuity-as-memory">14</a></td></tr>
+          <tr><td>Does what matters survive the session, correctably?</td><td><a href="/patterns#durable-memory">14</a></td></tr>
         </tbody>
       </table></div>
       <p>Fourteen questions that could not be asked before the fourteen names existed. That is the entire argument, in the shortest form it takes.</p>

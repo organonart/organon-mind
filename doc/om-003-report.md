@@ -53,10 +53,10 @@ made into a table. Four examples, before any entry, in §2:
 | Gather | surfacing disagreement is a *safety property* | in a Panel it is adjudication, and disagreement is the product |
 | Isolation by Construction | makes collision unrepresentable — about trees | under Adversarial Verify it is independence of judgement — about a channel |
 | The Return Path | carries a report back to the commissioning context | in a Pipeline it *is* the next unit's commission; two patterns, one object |
-| Dispatch Without Escort | assumptions are made in parallel and collide at the join | in a Pipeline nothing collides; assumptions compound down the line |
+| Fire and Forget | assumptions are made in parallel and collide at the join | in a Pipeline nothing collides; assumptions compound down the line |
 
 **One candidate cut: Long Runner with Check-Ins.** It fails the test — its parts
-(Fleet Standing, Dispatch Without Escort) do not change meaning inside it, its failure
+(Status Board, Fire and Forget) do not change meaning inside it, its failure
 signature is theirs unmodified, and a long run is a duration rather than a topology.
 §6 records the cut, and what argument would bring it back. The test is worth nothing
 if nothing fails it.
@@ -74,7 +74,7 @@ return address that resolves), accountability (no report), scarce resource (atte
 which does not divide and cannot be bought), failure mode (a squad nobody looked at is
 indistinguishable from a squad running quietly).
 
-Three patterns follow: **Standing by Readiness**, **Re-entry Note**, **Landing Order**.
+Three patterns follow: **Ordered by Readiness**, **Re-entry Note**, **Landing Order**.
 
 Attention scheduling, contention beyond isolation, and uneven readiness are named as
 forces and *not* promoted to patterns, because they do not yet have failure signatures
@@ -104,7 +104,7 @@ The eight slots:
 | 3 | Loop Until Dry | a run stopped at a fixed count that missed something, and what the extra round found |
 | 4 | Panel | one panel whose disagreement changed a decision; one whose unanimity was worthless |
 | 5 | Adversarial Verify | confirmation rates with and without the producer's reasoning |
-| 6 | Standing by Readiness | how long a squad sat blocked while another was watched |
+| 6 | Ordered by Readiness | how long a squad sat blocked while another was watched |
 | 7 | Re-entry Note | reconstruction timed against reading a maintained note |
 | 8 | Landing Order | finished work invalidated by another squad's landing: what was lost, when noticed |
 

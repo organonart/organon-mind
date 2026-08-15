@@ -29,13 +29,16 @@ a glossary entry has failed. Applied here — **Presence → Ambient Signals**,
 context-general pattern to one time of day. Section citations are rewritten to
 name the pattern and its paper (*Ambient Activity Channel (OM-001, Part IV)*)
 rather than a position against a mutable label — positional citations against
-section names are exactly what this rename broke. Reasoning in §10; entry names
-otherwise held, pending the audit of the existing 31.
+section names are exactly what this rename broke. Reasoning in §10.
 
-⚠️ **The rename is not live.** `organon-mind#7` is open and still a draft, so
-`main` and the published site both still read Turn / Fleet / Arrangements / Yard.
-This document is written ahead of it deliberately; whichever of #6 and #7 lands
-second will want the other's names.
+**2026-08-15 (d) — the rename is live, and the entry audit landed with it.**
+`organon-mind#7` merged: the catalogue is *Design Patterns for AI Agents*, its
+sections are One Agent / Many Agents / Arrangements / Many Teams, and nine entry
+names that leaned on the old metaphors were replaced rather than aliased — the
+site has no readers yet, so there was nothing to keep compatible. Of those, three
+appear in this document: **Mode Legibility → Mode Visibility**, **Fleet Standing →
+Status Board**, **Scoped Commission → Authority at Dispatch**. Ids moved with the
+names, so a citation is now written against the current name and nothing else.
 
 ---
 
@@ -72,7 +75,7 @@ job is to say so:
 A pattern language that can be corrected by its own practice, in public, with the
 measurement that did it, is doing the thing this programme says it is for.
 
-Mode Legibility (OM-001) is the second seed, and it was resolved rather than
+Mode Visibility (OM-001) is the second seed, and it was resolved rather than
 refined: the persistent Agent/Dictation mode was **deleted** and replaced by which
 key you hold. The pattern said make the mode visible at the moment of use; the
 answer that worked was to remove the mode so there is nothing to make visible.
