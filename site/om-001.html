@@ -95,28 +95,15 @@ figure{margin:1.5rem 0 1.8rem}
 figure svg{width:100%;height:auto;color:var(--ink);display:block}
 figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(--measure)}
 
-/* A reproduction carries its own provenance. These two patterns are published
-   canonically at /patterns; the text here is a copy, and says so. */
-.repro{font-family:var(--mono);font-size:.715rem;line-height:1.8;color:var(--muted);
-  border:1px solid var(--rule-strong);border-radius:2px;padding:.7rem .9rem;
-  margin:1.15rem 0 .4rem;max-width:var(--measure)}
-.repro b{color:var(--ink);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.68rem}
-.repro a{color:var(--link)}
-
-/* The catalogue stubs. Rev. 2 carried all fourteen patterns in full at these
-   anchors, so every id here is load-bearing: an old citation must still land. */
-.cat{list-style:none;margin:1.3rem 0 0;padding:0;max-width:var(--measure)}
-.cat li{border-top:1px solid var(--rule);margin:0}
-.cat li:last-child{border-bottom:1px solid var(--rule)}
-.cat li:target{background:var(--raise);box-shadow:-.7rem 0 0 var(--raise),.7rem 0 0 var(--raise)}
-.cat a{display:grid;grid-template-columns:1.9rem minmax(0,1fr);padding:.5rem 0;
-  text-decoration:none;color:inherit}
-.cat .cn{font-family:var(--mono);font-size:.72rem;color:var(--faint);padding-top:.16rem}
-.cat .cname{font-weight:600;letter-spacing:-.006em}
-.cat .cint{display:block;color:var(--muted);font-size:.88rem;line-height:1.5}
-.cat a:hover .cname,.cat a:focus-visible .cname{text-decoration:underline;
-  text-decoration-color:var(--link);text-underline-offset:3px}
-.cat a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+/* The contents list for the fourteen entries that follow. Plain text, not
+   links: every entry is a section of this same document, and the ids belong
+   on the sections rather than on a list about them. Shared with OM-002. */
+.toc{font-size:.92rem;margin:1.2rem 0 0}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:.22rem 0}
+.toc .n{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-right:.5rem}
+.toc .g{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin:1rem 0 .35rem}
 
 /* The preface is the one section written in the first person, and the one
    outside the numbering — so its mark is empty, as the masthead's is. */
@@ -160,12 +147,13 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
     <div class="body">
       <dl class="meta">
         <dt>Document</dt><dd>OM-001</dd>
-        <dt>Category</dt><dd>Argument</dd>
+        <dt>Category</dt><dd>Reference</dd>
         <dt>Published</dt><dd>12 August 2026</dd>
         <dt>Author</dt><dd>James Andrew Walsh, Organon Mind</dd>
         <dt>Catalogue</dt><dd><a href="/patterns">organonmind.org/patterns</a></dd>
         <dt>Status</dt><dd>Current</dd>
       </dl>
+      <p class="revision">Rev. 5 — 15 Aug 2026. The fourteen patterns return to this document, in full. Rev. 3 moved them out to <a href="/patterns">/patterns</a> and made this an argument; that decision is being reversed knowingly. A catalogue is most useful as a plain presentation of its patterns, and the case for it reads better once it is not interleaved with them. §7 introduces the section and §§8–21 are the entries, in the same template and the same order they have always had. The two entries Rev. 3 reproduced as worked examples are now simply entries 12 and 3, under their own names; <code>#example-honest-gauge</code> and <code>#example-streaming-turn</code> still resolve, as does every per-pattern anchor published since Rev. 2. <a href="/patterns">/patterns</a> keeps each entry’s position and citations and carries no prose, so there is still exactly one copy of every entry. Category changed from Argument back to Reference. §§1–6 — the gap, the literature, the cost, the evidence, the form and the map — move to OM-005 in the next revision, which is where the argument will live.</p>
       <p class="revision">Rev. 4 — 12 Aug 2026. Preface added, signed: where the form comes from, and what carrying it forward obliges. A document that borrows the Gang of Four template this closely should acknowledge it on its own front page rather than in a sources list, and should state the criticism it is inheriting along with the method.</p>
       <p class="revision">Rev. 3 — 12 Aug 2026. Restructured from catalogue to argument. The fourteen patterns are now published at <a href="/patterns">/patterns</a>, which is canonical; this document makes the case for the language and the form it takes, and reproduces two entries as worked examples. Category changed from Reference to Argument. Every per-pattern anchor from Rev. 2 still resolves — see §9.</p>
       <p class="revision">Rev. 2 — 12 Aug 2026. <em>Honest Instrument</em> renamed <em>Honest Gauge</em> throughout; “instrument” collides with Organon’s primary sense. Superseded, not withdrawn.</p>
@@ -185,7 +173,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p>The second thing you notice is that Alexander did not think the journey had carried the important part. He said so directly, to a room of object-oriented programmers, in his 1996 OOPSLA keynote. He was generous about the format — context, problem, solution — and clear that the format was not the point. What had not come across was that a pattern language is meant to be <em>generative</em>: a sequence you can follow to produce a coherent whole, rather than a catalogue of separable good ideas. And that patterns are finally judged by whether the thing they generate is good for the people who have to live inside it.</p>
       <p>I think he was right, and I think that criticism bears on this subject more directly than it did on his audience. The artifact here is not a class hierarchy. It is a surface across which a person hands authority to a machine and then lives with what the machine does. Whether the result is good for that person is not a moral supplement to the engineering. It <em>is</em> the engineering.</p>
       <p>So this document says out loud what it stands on. What is inherited is the template; the discipline of stating costs and non-applicability in the same breath as benefits; the insistence that patterns cite one another; and the standard that a pattern must be <em>refusable</em> or it is not a pattern. What is added is one field, and Alexander is the reason for it. A missing pattern here leaves no mark on the artifact — it shows up in someone’s irritation, and in what they blame for it. <strong>Failure Signature</strong> is where the person living in the thing gets a vote.</p>
-      <p>Whether any of this is generative in his sense — a sequence you could follow to build a whole surface, rather than fourteen things to check afterwards — I do not know. §10 is the closest it comes, and §10 is a checklist, which is precisely the weaker thing he was warning about.</p>
+      <p>Whether any of this is generative in his sense — a sequence you could follow to build a whole surface, rather than fourteen things to check afterwards — I do not know. §22 is the closest it comes, and §22 is a checklist, which is precisely the weaker thing he was warning about.</p>
       <p>Debts are not credentials. Naming this one is a way of accepting the standard, not a claim to have met it.</p>
       <p class="sig">James Andrew Walsh · Organon Mind · 12 August 2026</p>
     </div>
@@ -398,20 +386,1038 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
         <li><strong>It makes the pattern falsifiable in the field.</strong> You can go and look for a signature. If no real system ever exhibits it, the pattern is not describing anything and should be argued out of the catalogue.</li>
         <li><strong>It gives the author a test.</strong> A pattern whose Failure Signature cannot be stated is probably not a pattern — it is a preference wearing the template. This is the most useful thing the field does, and it did cut entries from this catalogue.</li>
       </ul>
-      <p>The signatures also compose. Read the fourteen of them end to end and you have a review pass — which is what §10 is, and it was assembled by reading them rather than written separately.</p>
+      <p>The signatures also compose. Read the fourteen of them end to end and you have a review pass — which is what §22 is, and it was assembled by reading them rather than written separately.</p>
     </div>
   </div>
 </section>
 
-<section id="example-honest-gauge">
+<section id="the-map">
   <div class="row">
     <div class="mark">6</div>
     <div class="body">
-      <h2>Worked example · Honest Gauge</h2>
-      <p>An argument for a form has to show the form working. Two entries are reproduced in full: this one, whose absence is <em>felt</em> and whose signature is a sentence people say out loud, and Streaming Turn (§7), whose absence is <em>measurable</em>. Between them they exercise every field, including the added one.</p>
-      <p class="repro"><b>Reproduced</b><br>Pattern 12 · Honest Gauge. Canonical entry: <a href="/patterns#honest-gauge">/patterns#honest-gauge</a>.<br>Copied verbatim as a worked example; only Related Patterns differs, linking out. If the two texts ever diverge, the catalogue is correct.</p>
+      <h2>A language, not a list</h2>
+      <p>The last claim the form has to earn is the word <em>language</em>. A list has entries; a language has entries with relations, and the relations are where most of the design argument lives. Two structures carry it.</p>
+      <p>The first is position. The patterns sit at defined points on the loop a delegated task travels — and most arguments about agent design turn out to be arguments about which arc you are on.</p>
+      <figure>
+        <svg viewBox="0 0 720 250" role="img" aria-label="A cycle of five stages — Orientation, Intent, Execution, Authority, Truth and continuity — with an arrow returning from the last to the first labelled next task. Turn sits apart, connected to Execution by a dashed line labelled governs every stage.">
+          <rect x="8" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="69" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Orientation</text>
+          <rect x="158" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="219" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Intent</text>
+          <rect x="308" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="369" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Execution</text>
+          <rect x="458" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="519" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Authority</text>
+          <rect x="588" y="110" width="124" height="34" fill="none" stroke="currentColor"/>
+          <text x="650" y="126" text-anchor="middle" font-size="11.5" fill="currentColor">Truth and</text>
+          <text x="650" y="139" text-anchor="middle" font-size="11.5" fill="currentColor">continuity</text>
+          <line x1="130" y1="57" x2="152" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="280" y1="57" x2="302" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="430" y1="57" x2="452" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M580,57 L650,57 L650,104" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M588,127 L520,127 L520,190 L69,190 L69,80" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="300" y="184" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">next task</text>
+          <rect x="308" y="110" width="122" height="34" fill="none" stroke="currentColor"/>
+          <text x="369" y="131" text-anchor="middle" font-size="11.5" fill="currentColor">Turn</text>
+          <line x1="369" y1="106" x2="369" y2="78" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="380" y="98" font-size="10.5" fill="currentColor" opacity=".65">governs every stage</text>
+        </svg>
+        <figcaption>Turn is drawn apart deliberately: it is not a stage but a property of every stage. A system can have an excellent approval gate and still be intolerable because the principal cannot interrupt it. On <a href="/patterns">/patterns</a> this same map is the filter — a stage is a thing you click, not only a thing you read.</figcaption>
+      </figure>
+      <p>The second is citation. Every entry names the patterns it feeds, loads, governs, cheapens or undermines, with the verb stated rather than implied. In the printed catalogues that field has been a dead list at the foot of a page since 1994. In the explorer at <a href="/patterns">/patterns</a> it is how you move through the language, which is the difference the word was always claiming.</p>
+    </div>
+  </div>
+</section>
 
-      <p class="part">Part VI · Truth and continuity</p>
+<section id="forces-that-recur">
+  <div class="row">
+    <div class="mark">6.1</div>
+    <div class="body">
+      <h3>Forces that recur</h3>
+      <p>The strongest evidence that these fourteen belong together is that the same tensions surface in entry after entry, at different points on the loop. They are worth naming because most concrete design arguments are instances of them.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Force</th><th>Pulls toward</th><th>Pulls against</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Attention is finite</strong></td><td>fewer prompts, peripheral channels, collapsed detail</td><td>disclosure, transparency, confirmation</td></tr>
+          <tr><td><strong>Reversibility is purchasable</strong></td><td>investing in undo to buy down ceremony</td><td>the irreducible set that cannot be undone</td></tr>
+          <tr><td><strong>Prose is expressive, structure is precise</strong></td><td>free text for intent</td><td>structured objects for selection and review</td></tr>
+          <tr><td><strong>Trust is earned and revocable</strong></td><td>widening autonomy with evidence</td><td>automatic descent on surprise</td></tr>
+          <tr><td><strong>Latency is felt, not measured</strong></td><td>streaming, early partial output</td><td>correctness of fragments</td></tr>
+          <tr><td><strong>Memory decays into lies</strong></td><td>promoting less, correcting eagerly</td><td>the cost of re-explanation</td></tr>
+        </tbody>
+      </table></div>
+      <p>A team that can name the force it is trading against is having a different conversation from one arguing about whether a dialog box is annoying.</p>
+    </div>
+  </div>
+</section>
+
+<section id="the-catalogue">
+  <div class="row">
+    <div class="mark">7</div>
+    <div class="body">
+      <h2>The fourteen</h2>
+      <p class="lede">What follows is the One Agent section in full: fourteen patterns for one agent taking one task, from the moment a person asks for something to whatever is left when it is done.</p>
+      <p>They are not a list. Each sits at a defined point on the loop that task travels — the map in §6 — and most arguments about agent design turn out to be arguments about which arc you are on. Nine of the fourteen live in the harness, where they fail the same way every time and a test can hold them; one lives in the agent’s character, where it fails stochastically and you strengthen a tendency rather than pin a behaviour; four are both. Most of what makes an agent feel trustworthy is <em>buildable</em>.</p>
+      <p>Every entry is in the same template and can be read alone. <strong>Related patterns</strong> names the entries each one bears on, with the verb stated rather than implied; the same relations are walkable at <a href="/patterns">/patterns</a>, which carries this section’s position and citations without repeating its text.</p>
+      <div class="toc">
+        <p class="g">Orientation</p>
+        <ol>
+          <li><span class="n">1</span>Capability Disclosure</li>
+          <li><span class="n">2</span>Mode Visibility</li>
+        </ol>
+        <p class="g">Turn</p>
+        <ol start="3">
+          <li><span class="n">3</span>Streaming Turn</li>
+          <li><span class="n">4</span>Barge-In</li>
+        </ol>
+        <p class="g">Intent</p>
+        <ol start="5">
+          <li><span class="n">5</span>Assume or Ask</li>
+          <li><span class="n">6</span>Constrained Choice</li>
+        </ol>
+        <p class="g">Execution</p>
+        <ol start="7">
+          <li><span class="n">7</span>Plan, Approve, Execute, Receipt</li>
+          <li><span class="n">8</span>Tool-Call Transparency</li>
+          <li><span class="n">9</span>Ambient Activity Channel</li>
+        </ol>
+        <p class="g">Authority</p>
+        <ol start="10">
+          <li><span class="n">10</span>Approval Gate</li>
+          <li><span class="n">11</span>Progressive Autonomy</li>
+        </ol>
+        <p class="g">Truth and continuity</p>
+        <ol start="12">
+          <li><span class="n">12</span>Honest Gauge</li>
+          <li><span class="n">13</span>Recoverable Execution</li>
+          <li><span class="n">14</span>Durable Memory</li>
+        </ol>
+      </div>
+      <p class="aside">Every entry carries an <em>Applicability</em> paragraph stating when it does not apply, a <em>Consequences</em> list with costs and a trap, and a <em>Failure signature</em> naming the complaint you hear when it is missing. Strike those three and what remains is a tip. That is the case for the form, made by exhibit rather than assertion.</p>
+      <p class="aside"><strong>On citations made against Rev. 2 and Rev. 3.</strong> Rev. 2 carried all fourteen at anchors on this page; Rev. 3 moved the text to <a href="/patterns">/patterns</a> and kept each anchor as a stub pointing there. Both still resolve, and now land on the entry itself rather than on a line about it. <code>/om-001#approval-gate</code> has meant the same thing throughout. So do <code>/om-001#example-honest-gauge</code> and <code>/om-001#example-streaming-turn</code>, the two entries Rev. 3 reproduced as worked examples, which are now simply entries 12 and 3.</p>
+    </div>
+  </div>
+</section>
+
+<section id="capability-disclosure">
+  <div class="row">
+    <div class="mark">8</div>
+    <div class="body">
+      <p class="part">Orientation · Pattern 1</p>
+      <h2>Capability Disclosure</h2>
+
+      <p class="field first">Intent</p>
+      <p>Make the agent’s powers, position and limits legible before the principal commits to a request, so expectations are formed from evidence rather than optimism.</p>
+
+      <p class="field">Also known as</p>
+      <p>Onboarding Surface; Working-Context Banner; Affordance Advertisement.</p>
+
+      <p class="field">Motivation</p>
+      <p>A principal opens a terminal agent and types “fix the tests.” The agent can read files, run commands and edit code — but it is rooted in the wrong directory, has no network access, and is looking at a different branch than the principal assumes. Every one of those facts is knowable at startup. None is shown. The failure surfaces ten minutes later as a confusing wrong answer, and the principal blames the model’s intelligence rather than its position.</p>
+      <p>Disclosure is not a help screen. A help screen answers <em>what commands exist</em>; disclosure answers <em>what is true right now</em>.</p>
+
+      <p class="field">Applicability</p>
+      <p>Use when effective capability varies by context — directory, credentials, connected services, mode; when the cost of a wrong assumption is paid late; or when one surface serves principals with different mental models.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 210" role="img" aria-label="A sequence between Principal, Agent and Environment. The agent resolves its position from the environment, receives the actual state, discloses capability and limits to the principal, who then makes a correctly scoped first request.">
+          <text x="60" y="18" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">Principal</text>
+          <text x="350" y="18" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">Agent</text>
+          <text x="630" y="18" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">Environment</text>
+          <line x1="60" y1="30" x2="60" y2="195" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="350" y1="30" x2="350" y2="195" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="630" y1="30" x2="630" y2="195" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="352" y1="58" x2="626" y2="58" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="489" y="50" text-anchor="middle" font-size="10.5" fill="currentColor">resolve position</text>
+          <line x1="628" y1="94" x2="354" y2="94" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="489" y="86" text-anchor="middle" font-size="10.5" fill="currentColor">actual state</text>
+          <line x1="348" y1="130" x2="64" y2="130" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="206" y="122" text-anchor="middle" font-size="10.5" fill="currentColor">disclose capability and limits</text>
+          <line x1="62" y1="172" x2="346" y2="172" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="206" y="164" text-anchor="middle" font-size="10.5" fill="currentColor">first request, correctly scoped</text>
+        </svg>
+        <figcaption>Disclosure is derived from the environment at the moment of disclosure — never authored by hand.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Agent</em> resolves and states its own position. <em>Environment</em> supplies ground truth. <em>Principal</em> calibrates.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Feeds <strong>Mode Visibility</strong> (2), disclosure of the variable most likely to change underfoot. Weak disclosure increases load on <strong>Assume or Ask</strong> (5), because the agent must ask about things it could have stated.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: mis-scoped requests are prevented rather than debugged.</li>
+        <li><em>Gain</em>: the principal’s model stays accurate as context changes.</li>
+        <li><em>Cost</em>: screen real estate. Disclosure that scrolls past unread is decoration.</li>
+        <li><em>Cost</em>: it must be <strong>derived, never authored</strong>. A hand-written capability list is a lie with a delay fuse.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Derive every disclosed fact from the live system. Prefer a persistent, low-noise surface over a one-time splash. Disclose <em>limits</em> alongside powers — “no network” is more useful than ten available tools. When a disclosed fact changes mid-session, say so; an unannounced change is worse than never disclosing.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>organon-one · master · claude-opus-5
+tools: read, write, bash, powershell   ·   no network
+⚠ this is a git worktree — added directories are not inherited
+
+&gt; fix the failing test</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>The principal periodically asks questions whose answers the system already knows — “are you in the right folder?”, “can you see the database?” Repeated orientation questions are the tax on absent disclosure.</p>
+
+      <p class="field">Known uses</p>
+      <p>Claude Code’s startup banner. Cursor’s workspace indicator. <code>git status</code> — the oldest and still one of the best capability-disclosure surfaces in software, worth studying precisely because it is not conversational.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Mode Visibility</strong> (2) is its highest-frequency special case. <strong>Honest Gauge</strong> (12) governs its correctness.</p>
+    </div>
+  </div>
+</section>
+
+<span id="mode-legibility" class="legacy-anchor"></span>
+<section id="mode-visibility">
+  <div class="row">
+    <div class="mark">9</div>
+    <div class="body">
+      <p class="part">Orientation · Pattern 2</p>
+      <h2>Mode Visibility</h2>
+
+      <p class="field first">Intent</p>
+      <p>When a surface has modes that change the meaning of the same input, make the active mode visible <em>at the moment of use</em>, not merely settable at the moment of configuration.</p>
+
+      <p class="field">Also known as</p>
+      <p>Modal Feedback; Mode Indicator; State Visibility.</p>
+
+      <p class="field">Motivation</p>
+      <p>A push-to-talk surface has two modes: <em>dictation</em>, where speech becomes text at the cursor, and <em>agent</em>, where speech goes to an assistant who answers aloud. The mode is chosen from a menu and persists. A principal who left it in dictation, then returns expecting conversation, holds the key, speaks, and gets text pasted into a code fence. Nothing errored. Everything worked. The system is behaving perfectly and appears broken.</p>
+      <p>The sharper version, observed directly: the same binary exposes <code>--tray</code> (icon, overlay, push-to-talk) and <code>--listen</code> (identical capture loop, no interface at all). Launched with the wrong flag, the voice loop works flawlessly and the entire visible interface is simply absent — a failure that reads as “the UI is broken” and is actually “you asked for the headless mode.”</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever identical input produces materially different effects depending on state; when a mode persists across sessions; or when a mode is set in one place and used in another.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 190" role="img" aria-label="One identical input feeds a decision of active mode, which branches to text at cursor under dictation or spoken reply under agent. A dashed arrow returns from the mode to the input, labelled must be visible here, at the point of use.">
+          <rect x="8" y="72" width="150" height="40" fill="none" stroke="currentColor"/>
+          <text x="83" y="90" text-anchor="middle" font-size="11.5" fill="currentColor">identical input</text>
+          <text x="83" y="105" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">(hold key, speak)</text>
+          <path d="M300,60 L360,92 L300,124 L240,92 z" fill="none" stroke="currentColor"/>
+          <text x="300" y="96" text-anchor="middle" font-size="11.5" fill="currentColor">active mode</text>
+          <line x1="158" y1="92" x2="236" y2="92" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="500" y="18" width="192" height="36" fill="none" stroke="currentColor"/>
+          <text x="596" y="41" text-anchor="middle" font-size="11.5" fill="currentColor">text at cursor</text>
+          <rect x="500" y="130" width="192" height="36" fill="none" stroke="currentColor"/>
+          <text x="596" y="153" text-anchor="middle" font-size="11.5" fill="currentColor">spoken reply</text>
+          <path d="M330,72 L430,36 L494,36" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="410" y="28" text-anchor="middle" font-size="10.5" fill="currentColor">dictation</text>
+          <path d="M330,112 L430,148 L494,148" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="410" y="168" text-anchor="middle" font-size="10.5" fill="currentColor">agent</text>
+          <path d="M262,110 L200,150 L92,150 L92,116" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="200" y="168" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".7">must be visible here</text>
+        </svg>
+        <figcaption>The indicator must sit where the input is given. One that exists but is distant — a tray tooltip, a menu checkmark — does not satisfy the pattern.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Mode</em> is the hidden variable. <em>Input</em> is ambiguous without it. <em>Indicator</em> resolves the ambiguity where the input is given.</p>
+
+      <p class="field">Collaborations</p>
+      <p>A special case of <strong>Capability Disclosure</strong> (1) with a much higher refresh rate. Where modes carry different blast radii, <strong>Approval Gate</strong> (10) should key off the mode, not merely the action.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the class of bug where “it works but appears broken” disappears.</li>
+        <li><em>Cost</em>: an indicator at the point of use competes for the most valuable space on the surface.</li>
+        <li><em>Trap</em>: the test is whether the principal sees it <em>while acting</em>, not whether it exists.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Bind the indicator to the same state the behaviour reads from, never a parallel copy. Prefer encoding mode in a channel the principal already attends to — the cursor, the prompt, the colour of the thing they are holding. Where a mode defaults at startup to something other than last-used, say so loudly; silently reverting to a default is the most common instance of this failure.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>◉ AGENT   hold the chord, speak — she answers aloud
+○ dictate hold the chord, speak — text lands at your cursor
+          ^ shown in the overlay while you hold, not only in a menu</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>“It stopped working” for a system that is fully operational. Reports that cannot be reproduced by the maintainer, because the maintainer’s mode differs.</p>
+
+      <p class="field">Known uses</p>
+      <p>vim’s <code>-- INSERT --</code>. Caps-lock indicators. Cursor’s agent/ask toggle. Terminal agents that print the active model in the prompt.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Capability Disclosure</strong> (1), <strong>Honest Gauge</strong> (12).</p>
+    </div>
+  </div>
+</section>
+
+<span id="example-streaming-turn" class="legacy-anchor"></span>
+<section id="streaming-turn">
+  <div class="row">
+    <div class="mark">10</div>
+    <div class="body">
+      <p class="part">Turn · Pattern 3</p>
+      <h2>Streaming Turn</h2>
+
+      <p class="field first">Intent</p>
+      <p>Emit the response as it is produced rather than when it is complete, so the principal’s wait overlaps the agent’s work instead of following it.</p>
+
+      <p class="field">Also known as</p>
+      <p>Incremental Rendering; Token Streaming; Progressive Response.</p>
+
+      <p class="field">Motivation</p>
+      <p>A voice agent’s reply took 11.8 seconds from the end of the principal’s speech to the first spoken word. Decomposed: roughly 7 seconds of model generation, then roughly 4.9 seconds of speech synthesis — strictly in series, because the synthesiser was handed the reply only when the reply was finished. Neither component was slow for what it did. The architecture simply declined to overlap them.</p>
+      <p>The fix is not optimisation. It is refusing to treat “the response” as an atomic object. Once the response is a <em>stream of complete-enough fragments</em>, synthesis of sentence one proceeds while sentence two is still being written. Measured on the same system after the change: the first speakable sentence was available at <strong>+1.14 s</strong> where the previous path returned nothing until <strong>+3.94 s</strong>.</p>
+
+      <p class="field">Applicability</p>
+      <p>Use when generation is incremental and a downstream stage can begin on a prefix; when perceived latency matters more than total latency. Do <em>not</em> use when the consumer cannot act on a prefix without risk of acting on a fragment the remainder contradicts.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 230" role="img" aria-label="Two rows compared. Batched runs generate then synthesise in series, giving a first word at 11.8 seconds. Streamed generates and synthesises the first sentence while the second sentence is still generating, giving a first word at 1.1 seconds.">
+          <text x="8" y="18" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.2" fill="currentColor" opacity=".6">BATCHED</text>
+          <rect x="8" y="30" width="150" height="34" fill="none" stroke="currentColor"/>
+          <text x="83" y="51" text-anchor="middle" font-size="11.5" fill="currentColor">generate · 7s</text>
+          <rect x="200" y="30" width="164" height="34" fill="none" stroke="currentColor"/>
+          <text x="282" y="51" text-anchor="middle" font-size="11.5" fill="currentColor">synthesise · 4.9s</text>
+          <rect x="406" y="30" width="180" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="496" y="51" text-anchor="middle" font-size="11.5" fill="currentColor">first word · 11.8s</text>
+          <line x1="158" y1="47" x2="194" y2="47" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="364" y1="47" x2="400" y2="47" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="8" y1="92" x2="692" y2="92" stroke="currentColor" opacity=".18"/>
+          <text x="8" y="118" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.2" fill="currentColor" opacity=".6">STREAMED</text>
+          <rect x="8" y="130" width="128" height="34" fill="none" stroke="currentColor"/>
+          <text x="72" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">generate s1</text>
+          <rect x="176" y="130" width="138" height="34" fill="none" stroke="currentColor"/>
+          <text x="245" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">synthesise s1</text>
+          <rect x="354" y="130" width="170" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="439" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">first word · 1.1s</text>
+          <line x1="136" y1="147" x2="170" y2="147" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="314" y1="147" x2="348" y2="147" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="176" y="184" width="128" height="30" fill="none" stroke="currentColor" opacity=".75"/>
+          <text x="240" y="203" text-anchor="middle" font-size="10.5" fill="currentColor">generate s2</text>
+          <rect x="330" y="184" width="138" height="30" fill="none" stroke="currentColor" opacity=".75"/>
+          <text x="399" y="203" text-anchor="middle" font-size="10.5" fill="currentColor">synthesise s2</text>
+          <line x1="245" y1="166" x2="245" y2="182" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="490" y="203" font-size="10.5" fill="currentColor" opacity=".65">overlaps</text>
+          <line x1="470" y1="199" x2="484" y2="199" stroke="currentColor" stroke-dasharray="4 3"/>
+        </svg>
+        <figcaption>The same two components, the same total work. The only difference is whether the second stage may begin on a prefix of the first.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Producer</em> emits fragments. <em>Splitter</em> decides what constitutes a complete-enough fragment. <em>Consumer</em> acts on each in order.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Makes <strong>Barge-In</strong> (4) meaningful — there is nothing to interrupt until something has started. Tool events from <strong>Tool-Call Transparency</strong> (8) belong in the same stream, in order.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: perceived latency collapses toward the cost of the first fragment.</li>
+        <li><em>Gain</em>: the principal can begin evaluating — and interrupting — early.</li>
+        <li><em>Cost</em>: fragment boundaries become a design surface with their own failure modes. Too small starves the consumer; too large reintroduces the stall.</li>
+        <li><em>Cost</em>: partial output may be contradicted by what follows.</li>
+        <li><em>Trap</em>: <strong>the invariant is that streaming changes only <em>when</em> content appears, never <em>what</em> it is.</strong> This is testable and should be tested: streamed fragments concatenated must equal batched output, across arbitrary boundaries down to one character.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Keep fragmentation policy at the <em>consumer</em>, which alone knows its own costs; a producer that guesses chunk sizes will drift from the consumer that measures them. Negotiate streaming explicitly — a header, a capability flag — so a non-streaming consumer still works and the change reverts without a rebuild. Hold fragments back across structures meaningless in half: code fences, quotations, negations.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>[+0.28s] {"type":"transcript","text":"…","stt_ms":260}
+[+0.59s] {"type":"delta","text":"Yes, that's the swap unit."}
+[+1.29s] {"type":"delta","text":" It was reporting failed while swap was active,"}
+[+1.99s] {"type":"tool","on":true,"name":"bash"}
+[+2.69s] {"type":"delta","text":" which is worse than cosmetic."}
+[+3.39s] {"type":"end","reply":"Yes, that's the swap unit. It was …"}</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>A progress spinner with no content behind it. A response arriving all at once after a pause whose length correlates with the answer’s length — the signature of a system paying for its own verbosity before showing any of it.</p>
+
+      <p class="field">Known uses</p>
+      <p>ChatGPT and Claude token streaming. Compiler diagnostics per file. <code>git clone</code> progress. A sentence pipeline that streams to a synthesiser rather than a screen.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Barge-In</strong> (4), <strong>Tool-Call Transparency</strong> (8).</p>
+    </div>
+  </div>
+</section>
+
+<section id="barge-in">
+  <div class="row">
+    <div class="mark">11</div>
+    <div class="body">
+      <p class="part">Turn · Pattern 4</p>
+      <h2>Barge-In</h2>
+
+      <p class="field first">Intent</p>
+      <p>Let the principal seize the turn at any moment, and define precisely — and honestly — what that stops.</p>
+
+      <p class="field">Also known as</p>
+      <p>Interrupt; Cancel; Stop Generation; Push-to-Talk Override.</p>
+
+      <p class="field">Motivation</p>
+      <p>The agent is thirty seconds into explaining something the principal understood at second three. Without interruption the only options are to wait or kill the session, and both teach the principal to ask smaller questions than they have. Interruption is not a convenience; it is what makes it safe to let the agent try.</p>
+      <p>But interruption has a <em>scope</em>, and the scope is usually misrepresented. Stopping audio is not stopping thought. Stopping the display is not stopping the tool call already writing to disk. A system that says “stopped” while a turn continues in the background has lied about the one thing the principal was trying to control.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any surface with long-running output. Essential where output is time-based — speech, animation — and the principal cannot skim ahead.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="A state machine. Idle leads to Thinking, then Speaking, then back to Idle. Barge-in from either Thinking or Speaking leads to Cancelled, which leads to Listening and back to Thinking.">
+          <rect x="8" y="20" width="110" height="34" fill="none" stroke="currentColor"/>
+          <text x="63" y="41" text-anchor="middle" font-size="11.5" fill="currentColor">Idle</text>
+          <rect x="180" y="20" width="120" height="34" fill="none" stroke="currentColor"/>
+          <text x="240" y="41" text-anchor="middle" font-size="11.5" fill="currentColor">Thinking</text>
+          <rect x="362" y="20" width="120" height="34" fill="none" stroke="currentColor"/>
+          <text x="422" y="41" text-anchor="middle" font-size="11.5" fill="currentColor">Speaking</text>
+          <line x1="118" y1="37" x2="174" y2="37" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="300" y1="37" x2="356" y2="37" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M482,37 L560,37 L560,90 L63,90 L63,58" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="300" y="84" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">complete</text>
+          <rect x="240" y="130" width="130" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="305" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">Cancelled</text>
+          <path d="M240,58 L240,110 L285,110 L285,126" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M422,58 L422,110 L330,110 L330,126" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="382" y="106" font-size="10.5" fill="currentColor">barge-in</text>
+          <rect x="452" y="130" width="130" height="34" fill="none" stroke="currentColor"/>
+          <text x="517" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">Listening</text>
+          <line x1="370" y1="147" x2="446" y2="147" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="408" y="140" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">capture next</text>
+          <path d="M582,147 L640,147 L640,200 L240,200 L240,58" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="440" y="194" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">principal sends</text>
+        </svg>
+        <figcaption>The cancellation scope is a contract. Most systems stop the visible layer and imply they stopped the work: audio stops, generation may not, and an in-flight tool write almost certainly does not.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Principal</em> seizes. <em>Turn</em> is relinquished. <em>Cancellation scope</em> is the contract about what ceased.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Depends on <strong>Streaming Turn</strong> (3). Constrains <strong>Recoverable Execution</strong> (13): whatever cannot be stopped must be undoable.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the principal lets the agent attempt more, because attempts are cheap to abandon.</li>
+        <li><em>Gain</em>: one motion — interrupt and redirect — beats stop, wait, retype.</li>
+        <li><em>Cost</em>: cancellation must thread through every layer, including ones that do not naturally support it.</li>
+        <li><em>Trap</em>: partially-completed side effects. An interrupted turn that wrote three of five files has left the world in a state nobody designed.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Make the interrupt the same gesture as the next request where possible. Check cancellation at every stage boundary, and drop queued work rather than hiding it — generating speech nobody will hear wastes the resource that made the system fast. State the scope in the principal’s language.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>← agent: The swap unit was reporting failed while swap was actually
+         active, which is worse than cosmetic because —
+[principal holds the chord]
+  ⏹ audio stopped (18 ms) · turn still completing in background
+◉ listening…</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Principals waiting out responses they stopped reading. Or killing and restarting the process to regain control — the strongest possible signal that interruption is absent or untrusted.</p>
+
+      <p class="field">Known uses</p>
+      <p>ChatGPT’s stop button. Claude Code’s Esc. Voice assistants’ wake-word barge-in. A cancellation predicate threaded through a synthesis pipeline and checked at every chunk boundary.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Streaming Turn</strong> (3), <strong>Recoverable Execution</strong> (13).</p>
+    </div>
+  </div>
+</section>
+
+<span id="scope-on-uncertainty" class="legacy-anchor"></span>
+<section id="assume-or-ask">
+  <div class="row">
+    <div class="mark">12</div>
+    <div class="body">
+      <p class="part">Intent · Pattern 5</p>
+      <h2>Assume or Ask</h2>
+
+      <p class="field first">Intent</p>
+      <p>Ask exactly one high-value question when ambiguity would change the blast radius; otherwise proceed on a stated assumption.</p>
+
+      <p class="field">Also known as</p>
+      <p>Clarifying Question; Disambiguation Turn; “scope services when in doubt.”</p>
+
+      <p class="field">Motivation</p>
+      <p>Two failure modes bracket this pattern, and most systems pick one and suffer it. The over-asking agent confirms everything, and the principal learns to skim and approve blindly — destroying the value of the questions that mattered. The under-asking agent guesses silently, and is right often enough that the one time it deletes the wrong branch is a genuine shock.</p>
+      <p>The resolution is not “ask when uncertain.” It is <strong>ask when uncertainty changes what can be damaged.</strong> Ambiguity about formatting is not ambiguity about which database.</p>
+
+      <p class="field">Applicability</p>
+      <p>When multiple readings lead to materially different work; when the cheap reading is reversible and the expensive one is not; when a read-only inspection could resolve the ambiguity without asking at all.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 250" role="img" aria-label="A decision tree. An ambiguous request asks whether the readings differ in blast radius. If no, proceed while stating the assumption. If yes, ask whether inspection can resolve it: if so do a read-only inspection first, otherwise ask one question with concrete options. Both paths rejoin proceed.">
+          <rect x="8" y="14" width="160" height="34" fill="none" stroke="currentColor"/>
+          <text x="88" y="35" text-anchor="middle" font-size="11.5" fill="currentColor">ambiguous request</text>
+          <path d="M300,58 L440,96 L300,134 L160,96 z" fill="none" stroke="currentColor"/>
+          <text x="300" y="93" text-anchor="middle" font-size="10.5" fill="currentColor">do the readings differ</text>
+          <text x="300" y="107" text-anchor="middle" font-size="10.5" fill="currentColor">in blast radius?</text>
+          <path d="M88,48 L88,96 L156,96" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="470" y="196" width="222" height="34" fill="none" stroke="currentColor"/>
+          <text x="581" y="217" text-anchor="middle" font-size="11.5" fill="currentColor">proceed · state the assumption</text>
+          <path d="M300,134 L300,168 L120,168 L120,213 L464,213" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="270" y="152" font-size="10.5" fill="currentColor">no</text>
+          <path d="M540,80 L636,110 L540,140 L444,110 z" fill="none" stroke="currentColor"/>
+          <text x="540" y="107" text-anchor="middle" font-size="10.5" fill="currentColor">can inspection</text>
+          <text x="540" y="121" text-anchor="middle" font-size="10.5" fill="currentColor">resolve it?</text>
+          <line x1="440" y1="100" x2="448" y2="104" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="446" y="76" font-size="10.5" fill="currentColor">yes</text>
+          <rect x="470" y="14" width="222" height="34" fill="none" stroke="currentColor"/>
+          <text x="581" y="35" text-anchor="middle" font-size="11.5" fill="currentColor">read-only inspection first</text>
+          <path d="M560,82 L560,52" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="568" y="70" font-size="10.5" fill="currentColor">yes</text>
+          <rect x="470" y="150" width="222" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="581" y="171" text-anchor="middle" font-size="11.5" fill="currentColor">ask ONE question</text>
+          <path d="M560,140 L560,146" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="568" y="147" font-size="10.5" fill="currentColor">no</text>
+          <path d="M692,31 L700,31" fill="none" stroke="currentColor" opacity="0"/>
+          <line x1="581" y1="184" x2="581" y2="192" stroke="currentColor" marker-end="url(#ah)"/>
+        </svg>
+        <figcaption>Inspection is preferred to interrogation. Asking a question the agent could have answered by looking is not caution; it is delegation back to the principal.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Request</em> carries the ambiguity. <em>Blast-radius estimate</em> is the decision function. <em>Inspection</em> is the preferred resolution. <em>Question</em> is the fallback.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Where the answer determines authority rather than direction, escalate to <strong>Approval Gate</strong> (10). Options offered should follow <strong>Constrained Choice</strong> (6).</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: questions become rare and therefore heeded.</li>
+        <li><em>Gain</em>: the principal’s attention goes to decisions only they can make.</li>
+        <li><em>Cost</em>: requires a blast-radius model, which is real engineering, not a prompt.</li>
+        <li><em>Trap</em>: asking what the agent could have discovered by looking.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Prefer inspection to interrogation. When you must ask, ask once, with concrete alternatives and a recommendation. Do everything that does <em>not</em> depend on the answer first, so the question arrives alongside progress rather than instead of it. Reserve blocking questions for cases where proceeding under any assumption would be unsafe or would waste the work.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>&gt; deploy the new build
+
+Two readings, and they differ in what they touch:
+  · staging    — reversible, no customer traffic
+  · production — irreversible for ~4 min, customer-visible
+
+I've built and tested the artifact (common to both). Which target?</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Confirmation fatigue: the principal answers “yes” without reading. Or its opposite: a class of incident whose post-mortem always begins “it assumed I meant…”.</p>
+
+      <p class="field">Known uses</p>
+      <p>Microsoft’s HAI Guideline 8, “scope services when in doubt.” <code>rm -i</code>. Package managers that show a resolution plan before acting.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Constrained Choice</strong> (6), <strong>Approval Gate</strong> (10).</p>
+    </div>
+  </div>
+</section>
+
+<section id="constrained-choice">
+  <div class="row">
+    <div class="mark">13</div>
+    <div class="body">
+      <p class="part">Intent · Pattern 6</p>
+      <h2>Constrained Choice</h2>
+
+      <p class="field first">Intent</p>
+      <p>When ambiguity is enumerable, offer the options as selectable structure rather than inviting free text.</p>
+
+      <p class="field">Also known as</p>
+      <p>Quick Replies; Suggestion Chips; Numbered Options; Slot Filling.</p>
+
+      <p class="field">Motivation</p>
+      <p>“How would you like me to handle the migration?” costs the principal a paragraph to answer and the agent another turn to interpret. If there are three viable approaches, saying so — and letting one be chosen — converts an essay into a keystroke and removes the interpretation step entirely.</p>
+      <p>This is where conversational purism does damage. Natural language is the right input for <em>expressing intent</em>; it is a poor input for <em>selecting among known alternatives</em>. Modern practice is explicitly hybrid.</p>
+
+      <p class="field">Applicability</p>
+      <p>When the option set is known, small — two to five — and clearly exclusive or multi-select. Not when the set is long, when the principal’s own framing carries information you would discard, or when options would prematurely narrow a genuinely open question.</p>
+
+      <p class="field">Participants</p>
+      <p><em>Option set</em> is finite. <em>Recommendation</em> carries the agent’s judgement. <em>Escape hatch</em> preserves free text for the case you did not anticipate.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Supplies the presentation layer for <strong>Assume or Ask</strong> (5) and <strong>Approval Gate</strong> (10).</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the cost of answering drops to near zero.</li>
+        <li><em>Gain</em>: the agent receives an unambiguous token rather than prose to parse.</li>
+        <li><em>Cost</em>: enumerating is a commitment; a missing option is now the agent’s fault rather than the principal’s oversight.</li>
+        <li><em>Trap</em>: options that are not really distinct. Three phrasings of one action read as a system pretending to consult.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Always include an escape to free text. Order by recommendation and say which is recommended and why. Make the <em>consequences</em> of each option visible in the option itself — the principal chooses from the list, and whatever is not in the list is not read.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>Where should this start?
+
+  1  Streaming the reply  (recommended) — biggest measured win, ~11.8s → ~3s
+  2  Verify the chord first — 30 seconds of your time, gates everything else
+  3  The small true things — four closures, all reversible
+
+  …or tell me something else.</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Long principal replies mostly re-stating options the agent already had. Repeated clarification loops on the same axis.</p>
+
+      <p class="field">Known uses</p>
+      <p>Slack’s interactive messages. Claude Code’s permission prompt — allow once, allow always, deny. <code>git rebase -i</code>’s verb list.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Assume or Ask</strong> (5), <strong>Approval Gate</strong> (10).</p>
+    </div>
+  </div>
+</section>
+
+<section id="plan-approve-execute-receipt">
+  <div class="row">
+    <div class="mark">14</div>
+    <div class="body">
+      <p class="part">Execution · Pattern 7</p>
+      <h2>Plan, Approve, Execute, Receipt</h2>
+
+      <p class="field first">Intent</p>
+      <p>Structure delegated work as four distinct phases so that understanding, consent, action and evidence are each separately inspectable.</p>
+
+      <p class="field">Also known as</p>
+      <p>Propose-Confirm-Act; Dry-Run-Then-Apply; The Agent Loop.</p>
+
+      <p class="field">Motivation</p>
+      <p>The two degenerate forms are familiar. An agent that acts immediately produces work the principal must audit after the fact, when the cost of being wrong has already been paid. An agent that only proposes produces documents the principal must execute themselves, which is most of the work.</p>
+      <p>The pattern’s real content is <em>where the seam goes</em>. Approval after planning but before execution is the only position where the principal’s judgement is both informed and still useful. Approval sought before a plan exists asks for consent to an unknown; approval sought after execution is not approval.</p>
+      <p>The fourth phase is the one most often dropped. A receipt — what actually happened, as distinct from what was planned — is what makes the next turn honest.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any multi-step task with side effects. Scale ceremony to blast radius: a reversible one-step change needs no plan document, and the pattern degrades gracefully to “act, then receipt.”</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 230" role="img" aria-label="A sequence between Principal, Agent and Tools. The principal states intent; the agent returns a plan; the principal approves; the agent executes each step against tools and receives results; the agent returns a receipt.">
+          <text x="62" y="18" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">Principal</text>
+          <text x="350" y="18" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">Agent</text>
+          <text x="640" y="18" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">Tools</text>
+          <line x1="62" y1="30" x2="62" y2="215" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="350" y1="30" x2="350" y2="215" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="640" y1="30" x2="640" y2="215" stroke="currentColor" stroke-dasharray="3 4" opacity=".5"/>
+          <line x1="64" y1="52" x2="346" y2="52" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="205" y="45" text-anchor="middle" font-size="10.5" fill="currentColor">intent</text>
+          <line x1="348" y1="84" x2="66" y2="84" stroke="currentColor" stroke-width="1.6" marker-end="url(#ah)"/>
+          <text x="205" y="77" text-anchor="middle" font-size="10.5" fill="currentColor">plan — steps, blast radius, assumptions</text>
+          <line x1="64" y1="116" x2="346" y2="116" stroke="currentColor" stroke-width="1.6" marker-end="url(#ah)"/>
+          <text x="205" y="109" text-anchor="middle" font-size="10.5" fill="currentColor">approve (or amend)</text>
+          <line x1="352" y1="148" x2="636" y2="148" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="494" y="141" text-anchor="middle" font-size="10.5" fill="currentColor">execute</text>
+          <line x1="638" y1="176" x2="354" y2="176" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="494" y="169" text-anchor="middle" font-size="10.5" fill="currentColor">result</text>
+          <text x="494" y="196" text-anchor="middle" font-size="10" fill="currentColor" opacity=".6">each step</text>
+          <line x1="348" y1="208" x2="66" y2="208" stroke="currentColor" stroke-width="1.6" marker-end="url(#ah)"/>
+          <text x="205" y="201" text-anchor="middle" font-size="10.5" fill="currentColor">receipt — what happened, what differed</text>
+        </svg>
+        <figcaption>If the receipt cannot differ from the plan, it is not a receipt. The steps that did <em>not</em> go as planned are its entire value.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Plan</em> is an editable artifact. <em>Gate</em> is the consent boundary. <em>Trace</em> is live evidence. <em>Receipt</em> is durable evidence.</p>
+
+      <p class="field">Collaborations</p>
+      <p>The gate is <strong>Approval Gate</strong> (10), placed by <strong>Progressive Autonomy</strong> (11). The trace is <strong>Tool-Call Transparency</strong> (8). The receipt feeds <strong>Durable Memory</strong> (14).</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: review happens when it can still change the outcome.</li>
+        <li><em>Gain</em>: plans become reusable, quotable, correctable artifacts.</li>
+        <li><em>Cost</em>: four phases on trivial work is bureaucracy that trains people to skip the phases on non-trivial work.</li>
+        <li><em>Trap</em>: a receipt that restates the plan rather than reporting reality.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Make the plan editable in place rather than something to reject and regenerate. Report divergence loudly. Never mark a step complete on the basis of having started it: record the artifact, not the intent.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>PLAN
+  1  commit 13 files to the working branch
+  2  merge to master (branched off master — not stacked)
+  3  rebuild in the main checkout        ← durable path, not the worktree
+  4  re-point the login shim             ← standing change, survives reboot
+  none of these need elevation.
+
+&gt; go
+
+RECEIPT
+  ✓ 1  b9574b2 · 13 files, +1036 −135
+  ✓ 2  870e197 · merged, pushed to origin
+  ✓ 3  rebuilt · warnings only
+  ✓ 4  shim now points at the main checkout
+  ⚠ noted: one directory left untracked — your call, not mine</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>The principal reads diffs after the fact to discover what was done. “What did you change?” asked <em>after</em> an agent turn is the diagnostic.</p>
+
+      <p class="field">Known uses</p>
+      <p>Terraform’s <code>plan</code> / <code>apply</code>. Claude Code’s plan mode. Aider’s diff-then-commit. <code>apt</code>’s package plan.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Approval Gate</strong> (10), <strong>Tool-Call Transparency</strong> (8), <strong>Recoverable Execution</strong> (13).</p>
+    </div>
+  </div>
+</section>
+
+<section id="tool-call-transparency">
+  <div class="row">
+    <div class="mark">15</div>
+    <div class="body">
+      <p class="part">Execution · Pattern 8</p>
+      <h2>Tool-Call Transparency</h2>
+
+      <p class="field first">Intent</p>
+      <p>Expose which tool ran, against what target, why, and with what result — as structured events, not as prose and not as raw reasoning.</p>
+
+      <p class="field">Also known as</p>
+      <p>Activity Trace; Tool Receipt; Action Log.</p>
+
+      <p class="field">Motivation</p>
+      <p>An agent that says “I checked the configuration” has told the principal nothing checkable. An agent that shows the command and its output has told them something they can verify, correct and reuse. The difference is not verbosity; it is whether the claim is <em>anchored</em>.</p>
+      <p>The boundary matters in both directions. Exposing the tool call is necessary. Exposing raw chain-of-thought is neither necessary nor generally desirable — it is long, it is not a commitment, and treating it as one trains principals to audit the wrong artifact. What the principal needs is the <em>action</em>, its <em>target</em> and its <em>result</em>.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever a tool has effects outside the conversation, or whenever a claim in the response depends on something the agent observed.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 170" role="img" aria-label="A chain: the agent states why, a tool event states what and where, the tool returns a result to the event, and the event carries an anchored claim to the principal, who can verify it against the tool directly.">
+          <rect x="8" y="56" width="110" height="36" fill="none" stroke="currentColor"/>
+          <text x="63" y="79" text-anchor="middle" font-size="11.5" fill="currentColor">Agent</text>
+          <rect x="200" y="56" width="140" height="36" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <text x="270" y="79" text-anchor="middle" font-size="11.5" fill="currentColor">tool event</text>
+          <rect x="422" y="56" width="110" height="36" fill="none" stroke="currentColor"/>
+          <text x="477" y="79" text-anchor="middle" font-size="11.5" fill="currentColor">Tool</text>
+          <rect x="586" y="56" width="106" height="36" fill="none" stroke="currentColor"/>
+          <text x="639" y="79" text-anchor="middle" font-size="11.5" fill="currentColor">Principal</text>
+          <line x1="118" y1="74" x2="194" y2="74" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="156" y="66" text-anchor="middle" font-size="10" fill="currentColor">why</text>
+          <path d="M340,66 L416,66" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="378" y="58" text-anchor="middle" font-size="10" fill="currentColor">what, where</text>
+          <path d="M422,84 L346,84" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="384" y="99" text-anchor="middle" font-size="10" fill="currentColor">result</text>
+          <path d="M270,92 L270,128 L639,128 L639,96" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="452" y="122" text-anchor="middle" font-size="10" fill="currentColor">anchored claim</text>
+          <path d="M639,52 L639,24 L477,24 L477,52" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="558" y="18" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">can verify, correct, reuse</text>
+        </svg>
+        <figcaption>Four parts, and the third is the one most often dropped: showing the call without the result is the appearance of transparency without the substance.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Tool event</em> carries intent, target and result as structure. <em>Claim</em> in the prose references the event.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Rides the channel of <strong>Streaming Turn</strong> (3), in order. Feeds <strong>Ambient Activity Channel</strong> (9) and <strong>Recoverable Execution</strong> (13).</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: claims become verifiable, errors locatable.</li>
+        <li><em>Gain</em>: the principal learns the system’s actual competence rather than guessing at it.</li>
+        <li><em>Cost</em>: volume. Forty tools produce forty events, and an undifferentiated wall of them is its own opacity.</li>
+        <li><em>Trap</em>: showing the call but not the result.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Emit tool activity as <em>typed events in the response stream</em>, not as text the model composed — a model describing its own tool use can be wrong about it. Collapse routine reads by default; expose writes always. Make targets addressable (<code>file:line</code>) so the trace is a navigation surface, not just a record.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>⏺ Bash · why: confirm the renderer's bind address
+  grep -rn "bind" services/lighting/src/main.rs
+  → main.rs:508  UdpSocket::bind(SocketAddr::from(([127,0,0,1], port)))
+
+  Loopback only — so the sandbox cannot reach it. That rules out
+  the direct route.</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>The principal cannot tell whether the agent actually looked or is recalling. Claims that turn out to be plausible reconstructions of files never read.</p>
+
+      <p class="field">Known uses</p>
+      <p>Claude Code’s tool-call cards. Cursor’s file-edit list. Devin’s terminal pane. CI logs, the pre-agent ancestor of the whole pattern.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Ambient Activity Channel</strong> (9), <strong>Honest Gauge</strong> (12).</p>
+    </div>
+  </div>
+</section>
+
+<section id="ambient-activity-channel">
+  <div class="row">
+    <div class="mark">16</div>
+    <div class="body">
+      <p class="part">Execution · Pattern 9</p>
+      <h2>Ambient Activity Channel</h2>
+
+      <p class="field first">Intent</p>
+      <p>Signal the agent’s state through a channel the principal perceives without attending to it, so presence and progress cost no screen and no focus.</p>
+
+      <p class="field">Also known as</p>
+      <p>Peripheral Awareness; Presence Layer; Calm Signalling.</p>
+
+      <p class="field">Motivation</p>
+      <p>A principal who delegates a two-minute task does one of two things: watches the transcript, which wastes the delegation, or leaves, which means discovering the outcome late. Both are bad, and the on-screen middle ground — spinners, progress bars — still demands the eye.</p>
+      <p>Peripheral channels solve this. A lamp that reads violet while the agent thinks, cyan while it runs a tool, warm while it speaks and amber while it waits for consent conveys state continuously to someone looking at something else entirely. It costs no pixels, competes with no content, and is legible across a room.</p>
+      <p>The distinction that makes this a pattern rather than a gimmick: <strong>the channel reports state, never instructions.</strong> The renderer is told <em>what is happening</em> and decides <em>what that looks like</em>, so the palette can be retuned without touching the agent.</p>
+
+      <p class="field">Applicability</p>
+      <p>When tasks are long enough to walk away from; when attention is genuinely elsewhere; when a peripheral channel exists. Especially valuable where the agent has no visible surface at all — headless or voice-first systems.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 180" role="img" aria-label="A sandboxed agent sends typed state events to a loopback-only renderer, which drives a peripheral device in colour and motion, which the principal perceives without attending to it. A dashed line notes that the agent never sends colour, only what is happening.">
+          <rect x="8" y="52" width="146" height="42" fill="none" stroke="currentColor"/>
+          <text x="81" y="70" text-anchor="middle" font-size="11.5" fill="currentColor">Agent</text>
+          <text x="81" y="85" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">in a sandbox</text>
+          <rect x="248" y="52" width="152" height="42" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <text x="324" y="70" text-anchor="middle" font-size="11.5" fill="currentColor">Renderer</text>
+          <text x="324" y="85" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">loopback only</text>
+          <rect x="470" y="52" width="140" height="42" fill="none" stroke="currentColor"/>
+          <text x="540" y="78" text-anchor="middle" font-size="11.5" fill="currentColor">Peripheral device</text>
+          <line x1="154" y1="73" x2="242" y2="73" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="198" y="65" text-anchor="middle" font-size="10" fill="currentColor">state events</text>
+          <line x1="400" y1="73" x2="464" y2="73" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="432" y="65" text-anchor="middle" font-size="10" fill="currentColor">colour, motion</text>
+          <path d="M610,73 L660,73 L660,26 L340,26" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="500" y="20" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">perceived without being attended to</text>
+          <path d="M81,94 L81,140 L324,140 L324,98" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="202" y="156" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">never sends colour — only what is happening</text>
+        </svg>
+        <figcaption>Semantics travel; presentation stays with the renderer. Where the agent is sandboxed it frequently cannot reach a loopback-bound renderer at all — relaying through a channel already open beats opening the renderer to the network.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>State events</em> are semantic. <em>Renderer</em> owns presentation and a priority stack. <em>Device</em> is peripheral. <em>Principal</em> perceives without attending.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Consumes <strong>Tool-Call Transparency</strong> (8) events. Must obey <strong>Honest Gauge</strong> (12) — a peripheral signal that lies is worse than a transcript that lies, because it is trusted without being read.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: presence at zero attentional and zero screen cost.</li>
+        <li><em>Gain</em>: otherwise-invisible states become legible — a tool-heavy turn returning no text.</li>
+        <li><em>Cost</em>: a second rendering surface to keep true, on a channel with no error reporting.</li>
+        <li><em>Cost</em>: ambiguity. More than about six states is a colour-memory quiz.</li>
+        <li><em>Trap</em>: network topology. A sandboxed agent often cannot reach a host-loopback renderer.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Send state, not presentation. Give every state a time-to-live so a lost “off” decays rather than stranding the device. Establish a priority order — a failure interrupts a completion flourish rather than queueing behind it. Make the channel opt-in and fire-and-forget: a lamp must never block the path that captures audio or applies a patch.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>{"t":"listening","on":true}                 → teal, rising
+{"t":"thinking","on":true}                  → violet, slow drift (never repeats)
+{"t":"tool","on":true,"name":"bash"}        → cyan, crisper scan
+{"t":"speaking","on":true,"ms":4200}        → warm white, speech cadence
+{"t":"error","msg":"agent unreachable"}     → red, brief, then decays</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>The principal watches a transcript for a task they had delegated. Or, revealingly, asks “is it still going?” — the question a peripheral channel exists to make unnecessary.</p>
+
+      <p class="field">Known uses</p>
+      <p>Build-status lamps and CI orbs. IDE gutter activity indicators. The terminal bell on completion. Networked lamps driven from a voice agent’s turn lifecycle.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Tool-Call Transparency</strong> (8), <strong>Honest Gauge</strong> (12), <strong>Mode Visibility</strong> (2).</p>
+    </div>
+  </div>
+</section>
+
+<section id="approval-gate">
+  <div class="row">
+    <div class="mark">17</div>
+    <div class="body">
+      <p class="part">Authority · Pattern 10</p>
+      <h2>Approval Gate</h2>
+
+      <p class="field first">Intent</p>
+      <p>Require explicit, per-action consent before any step that is irreversible, outward-facing, or spends the principal’s authority in a way they would want to know about.</p>
+
+      <p class="field">Also known as</p>
+      <p>Confirmation; Permission Prompt; Human-in-the-Loop Checkpoint.</p>
+
+      <p class="field">Motivation</p>
+      <p>Delegation is not transfer. A principal who says “clean up the old branches” has delegated judgement about <em>which</em> branches, not authority to force-delete on a shared remote. The gap between those is where every agent horror story lives.</p>
+      <p>The difficulty is that gates are expensive: each costs attention, and attention spent on a low-stakes gate is unavailable for a high-stakes one. A system that confirms everything has, in practice, confirmed nothing.</p>
+      <p>The organising principle is <strong>reversibility, not danger</strong>. A frightening-sounding but trivially revertible action needs no gate. A boring-sounding one that sends mail to a customer needs one, every time.</p>
+
+      <p class="field">Applicability</p>
+      <p>Gate: irreversible deletion, outward-facing communication, spending money, publishing, granting access, changing standing configuration that outlives the session. Do not gate: reads, reversible local edits under version control, anything covered by a broader consent given knowingly.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 250" role="img" aria-label="A decision flow. A proposed step is tested for reversibility; if reversible it proceeds and is recorded. If not, it is tested for being outward-facing or spending authority; if not, it proceeds but is stated plainly first. If so, it reaches a gate requiring explicit consent naming the exact effect, which either proceeds or stops and offers the nearest reversible alternative.">
+          <rect x="8" y="14" width="140" height="34" fill="none" stroke="currentColor"/>
+          <text x="78" y="35" text-anchor="middle" font-size="11.5" fill="currentColor">proposed step</text>
+          <path d="M270,52 L370,84 L270,116 L170,84 z" fill="none" stroke="currentColor"/>
+          <text x="270" y="88" text-anchor="middle" font-size="11.5" fill="currentColor">reversible?</text>
+          <path d="M78,48 L78,84 L166,84" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="480" y="14" width="212" height="34" fill="none" stroke="currentColor"/>
+          <text x="586" y="35" text-anchor="middle" font-size="11.5" fill="currentColor">proceed · record in receipt</text>
+          <path d="M320,66 L420,31 L474,31" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="392" y="55" font-size="10.5" fill="currentColor">yes</text>
+          <path d="M270,116 L270,142" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="278" y="136" font-size="10.5" fill="currentColor">no</text>
+          <path d="M270,146 L390,178 L270,210 L150,178 z" fill="none" stroke="currentColor"/>
+          <text x="270" y="175" text-anchor="middle" font-size="10.5" fill="currentColor">outward-facing or</text>
+          <text x="270" y="189" text-anchor="middle" font-size="10.5" fill="currentColor">spends authority?</text>
+          <rect x="480" y="96" width="212" height="34" fill="none" stroke="currentColor"/>
+          <text x="586" y="117" text-anchor="middle" font-size="11.5" fill="currentColor">proceed · stated plainly</text>
+          <path d="M150,178 L110,178 L110,113 L474,113" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="118" y="150" font-size="10.5" fill="currentColor">no</text>
+          <rect x="480" y="160" width="212" height="38" fill="none" stroke="currentColor" stroke-width="2"/>
+          <text x="586" y="176" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">GATE</text>
+          <text x="586" y="191" text-anchor="middle" font-size="10" fill="currentColor">explicit consent, exact effect</text>
+          <path d="M390,178 L474,178" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="424" y="171" text-anchor="middle" font-size="10.5" fill="currentColor">yes</text>
+          <path d="M586,198 L586,230 L430,230" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="500" y="244" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">refused → stop, offer the nearest reversible thing</text>
+        </svg>
+        <figcaption>Reversibility is the first test, not danger. The frightening-sounding reversible action passes; the boring irreversible one does not.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Blast-radius test</em> decides. <em>Gate</em> names the specific effect. <em>Consent</em> is per-action and does not generalise.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Positioned by <strong>Progressive Autonomy</strong> (11), presented via <strong>Constrained Choice</strong> (6), made cheaper by <strong>Recoverable Execution</strong> (13): the more that is undoable, the fewer gates are needed.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: the principal retains authority over exactly the actions carrying it.</li>
+        <li><em>Gain</em>: gates are rare enough to be read.</li>
+        <li><em>Cost</em>: latency at precisely the moments the principal is least present.</li>
+        <li><em>Trap</em>: <strong>consent laundering</strong> — approval obtained once, in one context, silently reused in another.</li>
+        <li><em>Trap</em>: a gate that cannot be satisfied. If the agent lacks the capability anyway, asking is theatre.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Name the specific effect, not the category: “push to <code>origin/master</code>, force” rather than “perform a git operation.” Where the agent genuinely cannot act — an unelevated shell facing a root-owned unit — do not route around it; say plainly that a prompt is coming, what it is for, and hand over the exact command. Make refusal cheap: offer the nearest reversible thing rather than stopping dead.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>This one needs your password — sudo is not passwordless here, and a
+capability must never sit on a hidden prompt.
+
+    sudo systemctl restart organon-vera
+
+It reloads the rewritten extension. Her memory carries; only live
+context is lost. I'll wait — nothing else I'm doing depends on it.</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Principals discovering completed actions they would have declined. Or the inverse: a confirm dialog answered reflexively, which means the gate has become furniture.</p>
+
+      <p class="field">Known uses</p>
+      <p>Claude Code’s permission modes. <code>sudo</code>. OAuth consent screens. Deployment approvals in CI. <code>git push --force-with-lease</code> as a gate encoded in a flag.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Progressive Autonomy</strong> (11), <strong>Assume or Ask</strong> (5), <strong>Recoverable Execution</strong> (13).</p>
+    </div>
+  </div>
+</section>
+
+<section id="progressive-autonomy">
+  <div class="row">
+    <div class="mark">18</div>
+    <div class="body">
+      <p class="part">Authority · Pattern 11</p>
+      <h2>Progressive Autonomy</h2>
+
+      <p class="field first">Intent</p>
+      <p>Let the scope of unattended action widen with demonstrated reliability and narrow with risk, rather than fixing it once at design time.</p>
+
+      <p class="field">Also known as</p>
+      <p>Autonomy Budget; Trust Ladder; Supervised → Autonomous.</p>
+
+      <p class="field">Motivation</p>
+      <p>A single autonomy setting is wrong in both directions. Set conservatively, the agent asks permission to read a file for the thousandth time. Set permissively, it inherits authority over actions the principal never considered.</p>
+      <p>Autonomy is better modelled as a <em>ladder</em> whose rungs are defined by reversibility, and on which position is negotiated: the principal grants a rung for a session, a repository or a class of action, and the agent falls back a rung when it meets something it did not anticipate.</p>
+
+      <p class="field">Applicability</p>
+      <p>Where one agent performs work spanning several orders of blast radius; where a long session would otherwise accumulate identical prompts; where different contexts warrant different defaults.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 200" role="img" aria-label="Five ascending rungs — read, propose, reversible write, local irreversible, outward-facing — each higher than the last. A dashed arrow returns from the top rung to the second, labelled surprise, drop a rung.">
+          <text x="46" y="150" text-anchor="middle" font-size="10" font-family="ui-monospace,monospace" fill="currentColor" opacity=".5">1</text>
+          <rect x="8" y="156" width="118" height="32" fill="none" stroke="currentColor"/>
+          <text x="67" y="176" text-anchor="middle" font-size="10.5" fill="currentColor">read</text>
+          <text x="182" y="118" text-anchor="middle" font-size="10" font-family="ui-monospace,monospace" fill="currentColor" opacity=".5">2</text>
+          <rect x="144" y="124" width="118" height="32" fill="none" stroke="currentColor"/>
+          <text x="203" y="144" text-anchor="middle" font-size="10.5" fill="currentColor">propose</text>
+          <text x="318" y="86" text-anchor="middle" font-size="10" font-family="ui-monospace,monospace" fill="currentColor" opacity=".5">3</text>
+          <rect x="280" y="92" width="130" height="32" fill="none" stroke="currentColor"/>
+          <text x="345" y="112" text-anchor="middle" font-size="10.5" fill="currentColor">reversible write</text>
+          <text x="466" y="54" text-anchor="middle" font-size="10" font-family="ui-monospace,monospace" fill="currentColor" opacity=".5">4</text>
+          <rect x="428" y="60" width="130" height="32" fill="none" stroke="currentColor"/>
+          <text x="493" y="80" text-anchor="middle" font-size="10.5" fill="currentColor">local irreversible</text>
+          <text x="614" y="22" text-anchor="middle" font-size="10" font-family="ui-monospace,monospace" fill="currentColor" opacity=".5">5</text>
+          <rect x="576" y="28" width="116" height="32" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <text x="634" y="48" text-anchor="middle" font-size="10.5" fill="currentColor">outward-facing</text>
+          <line x1="126" y1="166" x2="140" y2="150" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="262" y1="134" x2="276" y2="118" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="410" y1="102" x2="424" y2="86" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="558" y1="70" x2="572" y2="54" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M576,44 L540,20 L230,20 L203,120" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="390" y="14" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">surprise · drop a rung</text>
+        </svg>
+        <figcaption>Rungs are defined by reversibility, never by tool name — the same tool spans several rungs depending on its target. Descent on surprise is what makes ascent safe.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><em>Rungs</em> defined by reversibility. <em>Grant</em> has scope and expiry. <em>Fallback</em> is automatic on surprise.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Determines where <strong>Approval Gate</strong> (10) sits. Depends on <strong>Recoverable Execution</strong> (13) to make middle rungs safe.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: prompt volume falls without authority quietly expanding.</li>
+        <li><em>Gain</em>: one agent is usable in a scratch repo and against production.</li>
+        <li><em>Cost</em>: the rung model must be explicit and legible, or it becomes invisible policy.</li>
+        <li><em>Trap</em>: ratchets. Autonomy that only ever increases is a slow-motion incident.</li>
+      </ul>
+
+      <p class="field">Implementation</p>
+      <p>Define rungs by reversibility. Scope grants explicitly — this session, this repo, this class — and show the current rung as part of <strong>Capability Disclosure</strong> (1). Fall back automatically when something unanticipated appears, and say that you did.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>Working at rung 3 — reversible writes, this repo, this session.
+
+  ⚠ dropping to rung 2: the change touches the login shim, which
+    outlives the session. Standing configuration is a gate, not a write.
+
+  Here is the diff. Say go and I'll apply it.</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Long sessions accumulating identical approvals. Or permissions that, once granted, are never revisited even as the work moves from a sandbox to something real.</p>
+
+      <p class="field">Known uses</p>
+      <p>Claude Code’s plan mode → accept-edits → bypass ladder. <code>sudoers</code> scoping. CI environments with per-branch deploy rights.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Approval Gate</strong> (10), <strong>Capability Disclosure</strong> (1).</p>
+    </div>
+  </div>
+</section>
+
+<span id="example-honest-gauge" class="legacy-anchor"></span>
+<section id="honest-gauge">
+  <div class="row">
+    <div class="mark">19</div>
+    <div class="body">
+      <p class="part">Truth and continuity · Pattern 12</p>
+      <h2>Honest Gauge</h2>
 
       <p class="field first">Intent</p>
       <p>Ensure every status signal is wrong <em>only</em> when the system is wrong; a signal that reports failure in its healthy steady state destroys its own value on the day it is right.</p>
@@ -493,216 +1499,211 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       <p>Idempotent health checks. Configuration management’s converge-to-desired-state model. Flaky-test quarantine, which exists precisely because a suite that is always red is not a suite.</p>
 
       <p class="field">Related patterns</p>
-      <p><a href="/patterns#capability-disclosure"><strong>Capability Disclosure</strong> (1)</a>, <a href="/patterns#ambient-activity-channel"><strong>Ambient Activity Channel</strong> (9)</a>.</p>
+      <p><strong>Capability Disclosure</strong> (1), <strong>Ambient Activity Channel</strong> (9).</p>
     </div>
   </div>
 </section>
 
-<section id="example-streaming-turn">
+<section id="recoverable-execution">
   <div class="row">
-    <div class="mark">7</div>
+    <div class="mark">20</div>
     <div class="body">
-      <h2>Worked example · Streaming Turn</h2>
-      <p class="repro"><b>Reproduced</b><br>Pattern 3 · Streaming Turn. Canonical entry: <a href="/patterns#streaming-turn">/patterns#streaming-turn</a>.<br>Copied verbatim as a worked example; only Related Patterns differs, linking out. If the two texts ever diverge, the catalogue is correct.</p>
-
-      <p class="part">Part II · Turn</p>
+      <p class="part">Truth and continuity · Pattern 13</p>
+      <h2>Recoverable Execution</h2>
 
       <p class="field first">Intent</p>
-      <p>Emit the response as it is produced rather than when it is complete, so the principal’s wait overlaps the agent’s work instead of following it.</p>
+      <p>Ensure every action has a visible before-state and a path back, so that being wrong is cheap.</p>
 
       <p class="field">Also known as</p>
-      <p>Incremental Rendering; Token Streaming; Progressive Response.</p>
+      <p>Undo; Checkpoint; Diff-Before-Apply; Rollback.</p>
 
       <p class="field">Motivation</p>
-      <p>A voice agent’s reply took 11.8 seconds from the end of the principal’s speech to the first spoken word. Decomposed: roughly 7 seconds of model generation, then roughly 4.9 seconds of speech synthesis — strictly in series, because the synthesiser was handed the reply only when the reply was finished. Neither component was slow for what it did. The architecture simply declined to overlap them.</p>
-      <p>The fix is not optimisation. It is refusing to treat “the response” as an atomic object. Once the response is a <em>stream of complete-enough fragments</em>, synthesis of sentence one proceeds while sentence two is still being written. Measured on the same system after the change: the first speakable sentence was available at <strong>+1.14 s</strong> where the previous path returned nothing until <strong>+3.94 s</strong>.</p>
+      <p>Recoverability is what makes every other pattern affordable. <strong>Approval Gate</strong> (10) can be rare only because ungated actions are reversible. <strong>Progressive Autonomy</strong> (11) can climb only because the middle rungs are safe. <strong>Barge-In</strong> (4) is only truly safe when a half-finished turn can be unwound.</p>
+      <p>The corollary is the design rule: <em>the ceremony an action needs is inversely proportional to how easily it can be undone.</em> Invest in reversibility and you buy down the interaction cost of everything else.</p>
 
       <p class="field">Applicability</p>
-      <p>Use when generation is incremental and a downstream stage can begin on a prefix; when perceived latency matters more than total latency. Do <em>not</em> use when the consumer cannot act on a prefix without risk of acting on a fragment the remainder contradicts.</p>
+      <p>All state-changing work. Especially where the agent operates faster than the principal can review — the normal case.</p>
 
       <p class="field">Structure</p>
       <figure>
-        <svg viewBox="0 0 700 230" role="img" aria-label="Two rows compared. Batched runs generate then synthesise in series, giving a first word at 11.8 seconds. Streamed generates and synthesises the first sentence while the second sentence is still generating, giving a first word at 1.1 seconds.">
-          <text x="8" y="18" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.2" fill="currentColor" opacity=".6">BATCHED</text>
-          <rect x="8" y="30" width="150" height="34" fill="none" stroke="currentColor"/>
-          <text x="83" y="51" text-anchor="middle" font-size="11.5" fill="currentColor">generate · 7s</text>
-          <rect x="200" y="30" width="164" height="34" fill="none" stroke="currentColor"/>
-          <text x="282" y="51" text-anchor="middle" font-size="11.5" fill="currentColor">synthesise · 4.9s</text>
-          <rect x="406" y="30" width="180" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          <text x="496" y="51" text-anchor="middle" font-size="11.5" fill="currentColor">first word · 11.8s</text>
-          <line x1="158" y1="47" x2="194" y2="47" stroke="currentColor" marker-end="url(#ah)"/>
-          <line x1="364" y1="47" x2="400" y2="47" stroke="currentColor" marker-end="url(#ah)"/>
-          <line x1="8" y1="92" x2="692" y2="92" stroke="currentColor" opacity=".18"/>
-          <text x="8" y="118" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.2" fill="currentColor" opacity=".6">STREAMED</text>
-          <rect x="8" y="130" width="128" height="34" fill="none" stroke="currentColor"/>
-          <text x="72" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">generate s1</text>
-          <rect x="176" y="130" width="138" height="34" fill="none" stroke="currentColor"/>
-          <text x="245" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">synthesise s1</text>
-          <rect x="354" y="130" width="170" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          <text x="439" y="151" text-anchor="middle" font-size="11.5" fill="currentColor">first word · 1.1s</text>
-          <line x1="136" y1="147" x2="170" y2="147" stroke="currentColor" marker-end="url(#ah)"/>
-          <line x1="314" y1="147" x2="348" y2="147" stroke="currentColor" marker-end="url(#ah)"/>
-          <rect x="176" y="184" width="128" height="30" fill="none" stroke="currentColor" opacity=".75"/>
-          <text x="240" y="203" text-anchor="middle" font-size="10.5" fill="currentColor">generate s2</text>
-          <rect x="330" y="184" width="138" height="30" fill="none" stroke="currentColor" opacity=".75"/>
-          <text x="399" y="203" text-anchor="middle" font-size="10.5" fill="currentColor">synthesise s2</text>
-          <line x1="245" y1="166" x2="245" y2="182" stroke="currentColor" stroke-dasharray="4 3"/>
-          <text x="490" y="203" font-size="10.5" fill="currentColor" opacity=".65">overlaps</text>
-          <line x1="470" y1="199" x2="484" y2="199" stroke="currentColor" stroke-dasharray="4 3"/>
+        <svg viewBox="0 0 700 190" role="img" aria-label="A before-state is captured, an action produces an after-state, and the difference between them becomes a diff. Accepting the diff keeps it; rejecting it restores the before-state, and a dashed return path notes that the task survives the undo.">
+          <rect x="8" y="60" width="150" height="34" fill="none" stroke="currentColor"/>
+          <text x="83" y="81" text-anchor="middle" font-size="11" fill="currentColor">before-state captured</text>
+          <rect x="196" y="60" width="86" height="34" fill="none" stroke="currentColor"/>
+          <text x="239" y="81" text-anchor="middle" font-size="11.5" fill="currentColor">action</text>
+          <rect x="320" y="60" width="104" height="34" fill="none" stroke="currentColor"/>
+          <text x="372" y="81" text-anchor="middle" font-size="11.5" fill="currentColor">after-state</text>
+          <rect x="462" y="60" width="86" height="34" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="505" y="81" text-anchor="middle" font-size="11.5" fill="currentColor">diff</text>
+          <line x1="158" y1="77" x2="190" y2="77" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="282" y1="77" x2="314" y2="77" stroke="currentColor" marker-end="url(#ah)"/>
+          <line x1="424" y1="77" x2="456" y2="77" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="600" y="18" width="92" height="32" fill="none" stroke="currentColor"/>
+          <text x="646" y="38" text-anchor="middle" font-size="11.5" fill="currentColor">keep</text>
+          <rect x="600" y="104" width="92" height="32" fill="none" stroke="currentColor"/>
+          <text x="646" y="124" text-anchor="middle" font-size="11.5" fill="currentColor">restore</text>
+          <path d="M548,70 L575,34 L594,34" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="568" y="60" font-size="10" fill="currentColor">accept</text>
+          <path d="M548,86 L575,120 L594,120" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="568" y="108" font-size="10" fill="currentColor">reject</text>
+          <path d="M646,136 L646,166 L83,166 L83,98" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="360" y="182" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">context preserved — the task survives the undo</text>
         </svg>
-        <figcaption>The same two components, the same total work. The only difference is whether the second stage may begin on a prefix of the first.</figcaption>
+        <figcaption>Undo that discards the task along with the change forces the principal to re-explain. Recovery must preserve context.</figcaption>
       </figure>
 
       <p class="field">Participants</p>
-      <p><em>Producer</em> emits fragments. <em>Splitter</em> decides what constitutes a complete-enough fragment. <em>Consumer</em> acts on each in order.</p>
+      <p><em>Before-state</em> is captured before acting, not reconstructed after. <em>Diff</em> is the reviewable artifact. <em>Restore</em> returns without losing the task.</p>
 
       <p class="field">Collaborations</p>
-      <p>Makes <strong>Barge-In</strong> (4) meaningful — there is nothing to interrupt until something has started. Tool events from <strong>Tool-Call Transparency</strong> (8) belong in the same stream, in order.</p>
+      <p>Reduces the gates <strong>Approval Gate</strong> (10) needs. Enables <strong>Progressive Autonomy</strong> (11). Its evidence is <strong>Tool-Call Transparency</strong> (8).</p>
 
       <p class="field">Consequences</p>
       <ul>
-        <li><em>Gain</em>: perceived latency collapses toward the cost of the first fragment.</li>
-        <li><em>Gain</em>: the principal can begin evaluating — and interrupting — early.</li>
-        <li><em>Cost</em>: fragment boundaries become a design surface with their own failure modes. Too small starves the consumer; too large reintroduces the stall.</li>
-        <li><em>Cost</em>: partial output may be contradicted by what follows.</li>
-        <li><em>Trap</em>: <strong>the invariant is that streaming changes only <em>when</em> content appears, never <em>what</em> it is.</strong> This is testable and should be tested: streamed fragments concatenated must equal batched output, across arbitrary boundaries down to one character.</li>
+        <li><em>Gain</em>: exploration becomes cheap, which is the point of delegation.</li>
+        <li><em>Gain</em>: review shifts from prose to diffs — precise, and skimmable.</li>
+        <li><em>Cost</em>: capturing before-state has real overhead.</li>
+        <li><em>Trap</em>: the irreducible set — sent mail, published posts, deleted remote branches, spent money. These cannot be made reversible, which is exactly why they must be gated.</li>
       </ul>
 
       <p class="field">Implementation</p>
-      <p>Keep fragmentation policy at the <em>consumer</em>, which alone knows its own costs; a producer that guesses chunk sizes will drift from the consumer that measures them. Negotiate streaming explicitly — a header, a capability flag — so a non-streaming consumer still works and the change reverts without a rebuild. Hold fragments back across structures meaningless in half: code fences, quotations, negations.</p>
+      <p>Prefer the substrate’s own mechanisms — version control, transactions, snapshots — over bespoke undo stacks. Capture before-state at the boundary of the action, not the session. Make the diff the primary review surface. For genuinely irreversible steps, be explicit that this is where recoverability ends; that is what elevates them to gates.</p>
 
       <p class="field">Sample interaction</p>
-<pre><code>[+0.28s] {"type":"transcript","text":"…","stt_ms":260}
-[+0.59s] {"type":"delta","text":"Yes, that's the swap unit."}
-[+1.29s] {"type":"delta","text":" It was reporting failed while swap was active,"}
-[+1.99s] {"type":"tool","on":true,"name":"bash"}
-[+2.69s] {"type":"delta","text":" which is worse than cosmetic."}
-[+3.39s] {"type":"end","reply":"Yes, that's the swap unit. It was …"}</code></pre>
+<pre><code>Applied to 3 files · nothing committed yet
+
+  chord.rs      +18 −6      default chord → Ctrl+Win
+  main.rs       +4  −2      derive the label instead of hardcoding it
+  GUIDE.md      +9  −6      the docs said Alt+Win; they were stale
+
+  [d] review diff   [k] keep   [u] undo all   [c] commit</code></pre>
 
       <p class="field">Failure signature</p>
-      <p>A progress spinner with no content behind it. A response arriving all at once after a pause whose length correlates with the answer’s length — the signature of a system paying for its own verbosity before showing any of it.</p>
+      <p>Principals copying files aside before letting the agent work. Manual backups are the tax on absent recoverability, and a precise measure of how much the agent is trusted.</p>
 
       <p class="field">Known uses</p>
-      <p>ChatGPT and Claude token streaming. Compiler diagnostics per file. <code>git clone</code> progress. A sentence pipeline that streams to a synthesiser rather than a screen.</p>
+      <p>Git as the universal substrate. Cursor’s checkpoint-and-restore. Aider’s per-change commits. Database transactions.</p>
 
       <p class="field">Related patterns</p>
-      <p><a href="/patterns#barge-in"><strong>Barge-In</strong> (4)</a>, <a href="/patterns#tool-call-transparency"><strong>Tool-Call Transparency</strong> (8)</a>.</p>
-
-      <p class="aside">Both entries carry an <em>Applicability</em> paragraph stating when not to use them, a <em>Consequences</em> list with costs and a trap, and a signature that names the complaint. Strike those three and what remains is a tip. That is the case for the form, made by exhibit rather than assertion.</p>
+      <p><strong>Approval Gate</strong> (10), <strong>Progressive Autonomy</strong> (11), <strong>Barge-In</strong> (4).</p>
     </div>
   </div>
 </section>
 
-<section id="the-map">
+<span id="continuity-as-memory" class="legacy-anchor"></span>
+<section id="durable-memory">
   <div class="row">
-    <div class="mark">8</div>
+    <div class="mark">21</div>
     <div class="body">
-      <h2>A language, not a list</h2>
-      <p>The last claim the form has to earn is the word <em>language</em>. A list has entries; a language has entries with relations, and the relations are where most of the design argument lives. Two structures carry it.</p>
-      <p>The first is position. The patterns sit at defined points on the loop a delegated task travels — and most arguments about agent design turn out to be arguments about which arc you are on.</p>
+      <p class="part">Truth and continuity · Pattern 14</p>
+      <h2>Durable Memory</h2>
+
+      <p class="field first">Intent</p>
+      <p>Carry what matters across sessions in durable, inspectable memory rather than in the length of a transcript, so restarting is cheap and context is a chosen artifact rather than an accident of scrollback.</p>
+
+      <p class="field">Also known as</p>
+      <p>Working Memory; Persistent Context; Project Memory; Compaction.</p>
+
+      <p class="field">Motivation</p>
+      <p>Two failure modes again bracket the pattern. Systems that keep everything drown: context fills with resolved detail, signal-to-noise falls, cost rises. Systems that keep nothing make every session begin with re-explanation, which teaches principals to keep sessions alive far past their useful life — hoarding a transcript as a substitute for memory.</p>
+      <p>The reframing: <strong>continuity is memory, not session length.</strong> If durable memory is good, restarting is a normal operation rather than a loss. If it is bad, no session is ever long enough.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any agent used repeatedly against the same project; essential where the agent is a long-lived service rather than a session.</p>
+
+      <p class="field">Structure</p>
       <figure>
-        <svg viewBox="0 0 720 250" role="img" aria-label="A cycle of five stages — Orientation, Intent, Execution, Authority, Truth and continuity — with an arrow returning from the last to the first labelled next task. Turn sits apart, connected to Execution by a dashed line labelled governs every stage.">
-          <rect x="8" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="69" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Orientation</text>
-          <rect x="158" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="219" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Intent</text>
-          <rect x="308" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="369" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Execution</text>
-          <rect x="458" y="40" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="519" y="61" text-anchor="middle" font-size="11.5" fill="currentColor">Authority</text>
-          <rect x="588" y="110" width="124" height="34" fill="none" stroke="currentColor"/>
-          <text x="650" y="126" text-anchor="middle" font-size="11.5" fill="currentColor">Truth and</text>
-          <text x="650" y="139" text-anchor="middle" font-size="11.5" fill="currentColor">continuity</text>
-          <line x1="130" y1="57" x2="152" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
-          <line x1="280" y1="57" x2="302" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
-          <line x1="430" y1="57" x2="452" y2="57" stroke="currentColor" marker-end="url(#ah)"/>
-          <path d="M580,57 L650,57 L650,104" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
-          <path d="M588,127 L520,127 L520,190 L69,190 L69,80" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
-          <text x="300" y="184" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65">next task</text>
-          <rect x="308" y="110" width="122" height="34" fill="none" stroke="currentColor"/>
-          <text x="369" y="131" text-anchor="middle" font-size="11.5" fill="currentColor">Turn</text>
-          <line x1="369" y1="106" x2="369" y2="78" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
-          <text x="380" y="98" font-size="10.5" fill="currentColor" opacity=".65">governs every stage</text>
+        <svg viewBox="0 0 700 230" role="img" aria-label="An ephemeral transcript is filtered by whether something is worth keeping. Resolved detail is let go; decisions and hard-won traps are promoted to durable, editable memory, which orients the next session, which produces the next transcript. Memory must remain correctable.">
+          <rect x="8" y="14" width="176" height="38" fill="none" stroke="currentColor"/>
+          <text x="96" y="32" text-anchor="middle" font-size="11.5" fill="currentColor">transcript</text>
+          <text x="96" y="46" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">ephemeral, grows</text>
+          <path d="M300,58 L400,92 L300,126 L200,92 z" fill="none" stroke="currentColor"/>
+          <text x="300" y="96" text-anchor="middle" font-size="11" fill="currentColor">worth keeping?</text>
+          <path d="M96,52 L96,92 L196,92" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="8" y="150" width="176" height="34" fill="none" stroke="currentColor"/>
+          <text x="96" y="171" text-anchor="middle" font-size="11.5" fill="currentColor">let it go</text>
+          <path d="M260,116 L160,150" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="180" y="128" font-size="10" fill="currentColor" opacity=".75">resolved detail</text>
+          <rect x="462" y="60" width="230" height="42" fill="none" stroke="currentColor" stroke-width="2"/>
+          <text x="577" y="78" text-anchor="middle" font-size="11.5" fill="currentColor" font-weight="600">MEMORY</text>
+          <text x="577" y="93" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">durable · inspectable · editable</text>
+          <path d="M400,92 L456,84" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="424" y="118" text-anchor="middle" font-size="10" fill="currentColor" opacity=".75">decision or trap</text>
+          <rect x="462" y="150" width="230" height="34" fill="none" stroke="currentColor"/>
+          <text x="577" y="171" text-anchor="middle" font-size="11" fill="currentColor">next session starts oriented</text>
+          <line x1="577" y1="102" x2="577" y2="146" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M462,167 L430,167 L430,206 L96,206 L96,56" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M692,74 L712,74" fill="none" stroke="currentColor" opacity="0"/>
+          <path d="M577,56 L577,36 L470,36" fill="none" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+          <text x="524" y="30" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">must stay correctable</text>
         </svg>
-        <figcaption>Turn is drawn apart deliberately: it is not a stage but a property of every stage. A system can have an excellent approval gate and still be intolerable because the principal cannot interrupt it. On <a href="/patterns">/patterns</a> this same map is the filter — a stage is a thing you click, not only a thing you read.</figcaption>
+        <figcaption>Promotion is the judgement call. Stale memory is worse than none, because it is trusted and nobody re-reads it looking for errors.</figcaption>
       </figure>
-      <p>The second is citation. Every entry names the patterns it feeds, loads, governs, cheapens or undermines, with the verb stated rather than implied. In the printed catalogues that field has been a dead list at the foot of a page since 1994. In the explorer at <a href="/patterns">/patterns</a> it is how you move through the language, which is the difference the word was always claiming.</p>
-    </div>
-  </div>
-</section>
 
-<section id="forces-that-recur">
-  <div class="row">
-    <div class="mark">8.1</div>
-    <div class="body">
-      <h3>Forces that recur</h3>
-      <p>The strongest evidence that these fourteen belong together is that the same tensions surface in entry after entry, at different points on the loop. They are worth naming because most concrete design arguments are instances of them.</p>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Force</th><th>Pulls toward</th><th>Pulls against</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Attention is finite</strong></td><td>fewer prompts, peripheral channels, collapsed detail</td><td>disclosure, transparency, confirmation</td></tr>
-          <tr><td><strong>Reversibility is purchasable</strong></td><td>investing in undo to buy down ceremony</td><td>the irreducible set that cannot be undone</td></tr>
-          <tr><td><strong>Prose is expressive, structure is precise</strong></td><td>free text for intent</td><td>structured objects for selection and review</td></tr>
-          <tr><td><strong>Trust is earned and revocable</strong></td><td>widening autonomy with evidence</td><td>automatic descent on surprise</td></tr>
-          <tr><td><strong>Latency is felt, not measured</strong></td><td>streaming, early partial output</td><td>correctness of fragments</td></tr>
-          <tr><td><strong>Memory decays into lies</strong></td><td>promoting less, correcting eagerly</td><td>the cost of re-explanation</td></tr>
-        </tbody>
-      </table></div>
-      <p>A team that can name the force it is trading against is having a different conversation from one arguing about whether a dialog box is annoying.</p>
-    </div>
-  </div>
-</section>
+      <p class="field">Participants</p>
+      <p><em>Transcript</em> is ephemeral. <em>Memory</em> is durable and editable. <em>Promotion</em> decides what crosses. <em>Correction</em> keeps memory true.</p>
 
-<section id="the-catalogue">
-  <div class="row">
-    <div class="mark">9</div>
-    <div class="body">
-      <h2>The catalogue</h2>
-      <p>All fourteen, in full, are at <a href="/patterns">/patterns</a>. Each line below links to its canonical entry.</p>
-      <ul class="cat">
-        <li id="capability-disclosure"><a href="/patterns#capability-disclosure"><span class="cn">01</span><span><span class="cname">Capability Disclosure</span><span class="cint">Make the agent’s powers, position and limits legible before the principal commits.</span></span></a></li>
-        <li id="mode-visibility"><span id="mode-legibility" class="legacy-anchor"></span><a href="/patterns#mode-visibility"><span class="cn">02</span><span><span class="cname">Mode Visibility</span><span class="cint">Make the active mode visible at the moment of use, not merely settable.</span></span></a></li>
-        <li id="streaming-turn"><a href="/patterns#streaming-turn"><span class="cn">03</span><span><span class="cname">Streaming Turn</span><span class="cint">Emit as you produce, so the wait overlaps the work instead of following it. <em>Reproduced in §7.</em></span></span></a></li>
-        <li id="barge-in"><a href="/patterns#barge-in"><span class="cn">04</span><span><span class="cname">Barge-In</span><span class="cint">Let the principal seize the turn — and say honestly what that stops.</span></span></a></li>
-        <li id="assume-or-ask"><span id="scope-on-uncertainty" class="legacy-anchor"></span><a href="/patterns#assume-or-ask"><span class="cn">05</span><span><span class="cname">Assume or Ask</span><span class="cint">Ask only when ambiguity changes the blast radius; otherwise state an assumption.</span></span></a></li>
-        <li id="constrained-choice"><a href="/patterns#constrained-choice"><span class="cn">06</span><span><span class="cname">Constrained Choice</span><span class="cint">When ambiguity is enumerable, offer structure rather than free text.</span></span></a></li>
-        <li id="plan-approve-execute-receipt"><a href="/patterns#plan-approve-execute-receipt"><span class="cn">07</span><span><span class="cname">Plan, Approve, Execute, Receipt</span><span class="cint">Four phases, so consent happens where judgement is still useful.</span></span></a></li>
-        <li id="tool-call-transparency"><a href="/patterns#tool-call-transparency"><span class="cn">08</span><span><span class="cname">Tool-Call Transparency</span><span class="cint">Which tool, against what, why, and with what result — as structure, not prose.</span></span></a></li>
-        <li id="ambient-activity-channel"><a href="/patterns#ambient-activity-channel"><span class="cn">09</span><span><span class="cname">Ambient Activity Channel</span><span class="cint">Signal state through a channel perceived without being attended to.</span></span></a></li>
-        <li id="approval-gate"><a href="/patterns#approval-gate"><span class="cn">10</span><span><span class="cname">Approval Gate</span><span class="cint">Explicit, per-action consent before anything irreversible or outward-facing.</span></span></a></li>
-        <li id="progressive-autonomy"><a href="/patterns#progressive-autonomy"><span class="cn">11</span><span><span class="cname">Progressive Autonomy</span><span class="cint">Scope widens with demonstrated reliability and narrows with risk.</span></span></a></li>
-        <li id="honest-gauge"><a href="/patterns#honest-gauge"><span class="cn">12</span><span><span class="cname">Honest Gauge</span><span class="cint">A signal must be wrong only when the system is wrong. <em>Reproduced in §6.</em></span></span></a></li>
-        <li id="recoverable-execution"><a href="/patterns#recoverable-execution"><span class="cn">13</span><span><span class="cname">Recoverable Execution</span><span class="cint">Every action has a visible before-state and a path back.</span></span></a></li>
-        <li id="durable-memory"><span id="continuity-as-memory" class="legacy-anchor"></span><a href="/patterns#durable-memory"><span class="cn">14</span><span><span class="cname">Durable Memory</span><span class="cint">What matters survives in durable, correctable memory — not transcript length.</span></span></a></li>
+      <p class="field">Collaborations</p>
+      <p>Fed by the receipts of <strong>Plan, Approve, Execute, Receipt</strong> (7). Governed by <strong>Honest Gauge</strong> (12): stale memory is a lying gauge with a long half-life.</p>
+
+      <p class="field">Consequences</p>
+      <ul>
+        <li><em>Gain</em>: restarting is normal, which makes upgrades, crashes and context limits non-events.</li>
+        <li><em>Gain</em>: the principal can read and correct what the agent believes.</li>
+        <li><em>Cost</em>: promotion is a judgement call, and both over- and under-promotion have real costs.</li>
+        <li><em>Trap</em>: <strong>stale memory is worse than none.</strong> A memory recording a keybinding that has since changed will actively mislead.</li>
+        <li><em>Trap</em>: memory that records <em>what</em> without <em>why</em>. The reason is the part that survives contact with a changed system.</li>
       </ul>
-      <p class="aside"><strong>On citations made against Rev. 2.</strong> That revision carried all fourteen patterns in full at anchors on this page. Those anchors are preserved above: <code>/om-001#approval-gate</code> still resolves, and lands on the line pointing at the canonical entry. A published number is permanent, and so is a published fragment — moving text is not a reason to break a link someone else wrote.</p>
+
+      <p class="field">Implementation</p>
+      <p>Promote decisions, constraints and hard-won traps; let resolved detail go. Record the <em>why</em>, and prefer absolute dates to relative ones. Make memory a first-class artifact the principal can read, edit and delete — not a hidden embedding. Re-verify on read: if a memory names a file, flag or key, confirm it still exists before acting on it. When a fact changes, correct the memory in the same motion as the change, or the next session inherits the error with full confidence.</p>
+
+      <p class="field">Sample interaction</p>
+<pre><code>CURRENT as of 2026-08-11 ~21:10 (merged 870e197, deployed from main)
+
+  · Chord is Ctrl+Win. The competing tool is DISABLED — that is what
+    freed it. Four chords were tried in one day; every move was forced
+    by coexisting with that tool. Removing it solved the problem in one step.
+  · ⚠ --tray is the flag, not --listen. --listen is headless: no icon,
+    no overlay, everything else identical. Cost real debugging time.
+
+(Chord history — superseded, see CURRENT above.)</code></pre>
+
+      <p class="field">Failure signature</p>
+      <p>Principals refusing to restart a degraded session because “it knows too much.” Or an agent confidently acting on a fact that was true last month.</p>
+
+      <p class="field">Known uses</p>
+      <p>Project instruction files such as <code>CLAUDE.md</code>. Claude Code’s <code>/compact</code>. Cursor’s rules files. Architecture decision records, which are this pattern applied to teams rather than agents.</p>
+
+      <p class="field">Related patterns</p>
+      <p><strong>Plan, Approve, Execute, Receipt</strong> (7), <strong>Honest Gauge</strong> (12), <strong>Capability Disclosure</strong> (1).</p>
     </div>
   </div>
 </section>
 
 <section id="an-acceptance-checklist">
   <div class="row">
-    <div class="mark">10</div>
+    <div class="mark">22</div>
     <div class="body">
       <h2>An acceptance checklist</h2>
       <p>This is what the vocabulary buys, stated as work you can do on a Tuesday. Each line is a pattern turned into a question the interface must be able to answer — and each was written by reading a Failure Signature backwards.</p>
       <div class="tablewrap"><table>
         <thead><tr><th>Question</th><th>Pattern</th></tr></thead>
         <tbody>
-          <tr><td>Can the principal see what the agent can do and where it stands?</td><td><a href="/patterns#capability-disclosure">1</a></td></tr>
-          <tr><td>Is the active mode visible at the moment of use?</td><td><a href="/patterns#mode-visibility">2</a></td></tr>
-          <tr><td>Does output begin before generation completes?</td><td><a href="/patterns#streaming-turn">3</a></td></tr>
-          <tr><td>Can the principal interrupt — and is the scope stated truthfully?</td><td><a href="/patterns#barge-in">4</a></td></tr>
-          <tr><td>Does the agent ask only when ambiguity changes the blast radius?</td><td><a href="/patterns#assume-or-ask">5</a></td></tr>
-          <tr><td>Are enumerable choices offered as structure rather than prose?</td><td><a href="/patterns#constrained-choice">6</a></td></tr>
-          <tr><td>Is there a plan before action, and a receipt that can differ from it?</td><td><a href="/patterns#plan-approve-execute-receipt">7</a></td></tr>
-          <tr><td>Is every tool call visible with target and result?</td><td><a href="/patterns#tool-call-transparency">8</a></td></tr>
-          <tr><td>Is state legible without attending to a screen?</td><td><a href="/patterns#ambient-activity-channel">9</a></td></tr>
-          <tr><td>Is consent required, specific and per-action for irreversible work?</td><td><a href="/patterns#approval-gate">10</a></td></tr>
-          <tr><td>Does autonomy widen and narrow with demonstrated risk?</td><td><a href="/patterns#progressive-autonomy">11</a></td></tr>
-          <tr><td>Is every green light honest — and does red mean exactly one thing?</td><td><a href="/patterns#honest-gauge">12</a></td></tr>
-          <tr><td>Does every action have a before-state and a path back?</td><td><a href="/patterns#recoverable-execution">13</a></td></tr>
-          <tr><td>Does what matters survive the session, correctably?</td><td><a href="/patterns#durable-memory">14</a></td></tr>
+          <tr><td>Can the principal see what the agent can do and where it stands?</td><td><a href="#capability-disclosure">1</a></td></tr>
+          <tr><td>Is the active mode visible at the moment of use?</td><td><a href="#mode-visibility">2</a></td></tr>
+          <tr><td>Does output begin before generation completes?</td><td><a href="#streaming-turn">3</a></td></tr>
+          <tr><td>Can the principal interrupt — and is the scope stated truthfully?</td><td><a href="#barge-in">4</a></td></tr>
+          <tr><td>Does the agent ask only when ambiguity changes the blast radius?</td><td><a href="#assume-or-ask">5</a></td></tr>
+          <tr><td>Are enumerable choices offered as structure rather than prose?</td><td><a href="#constrained-choice">6</a></td></tr>
+          <tr><td>Is there a plan before action, and a receipt that can differ from it?</td><td><a href="#plan-approve-execute-receipt">7</a></td></tr>
+          <tr><td>Is every tool call visible with target and result?</td><td><a href="#tool-call-transparency">8</a></td></tr>
+          <tr><td>Is state legible without attending to a screen?</td><td><a href="#ambient-activity-channel">9</a></td></tr>
+          <tr><td>Is consent required, specific and per-action for irreversible work?</td><td><a href="#approval-gate">10</a></td></tr>
+          <tr><td>Does autonomy widen and narrow with demonstrated risk?</td><td><a href="#progressive-autonomy">11</a></td></tr>
+          <tr><td>Is every green light honest — and does red mean exactly one thing?</td><td><a href="#honest-gauge">12</a></td></tr>
+          <tr><td>Does every action have a before-state and a path back?</td><td><a href="#recoverable-execution">13</a></td></tr>
+          <tr><td>Does what matters survive the session, correctably?</td><td><a href="#durable-memory">14</a></td></tr>
         </tbody>
       </table></div>
       <p>Fourteen questions that could not be asked before the fourteen names existed. That is the entire argument, in the shortest form it takes.</p>
@@ -712,7 +1713,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
 <section id="what-this-catalogue-does-not-cover">
   <div class="row">
-    <div class="mark">11</div>
+    <div class="mark">23</div>
     <div class="body">
       <h2>What this does not cover</h2>
       <p>Named honestly, because a pattern language that pretends to completeness is its own dishonest gauge.</p>
@@ -729,7 +1730,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
 
 <section id="sources-and-lineage">
   <div class="row">
-    <div class="mark">12</div>
+    <div class="mark">24</div>
     <div class="body">
       <h2>Sources and lineage</h2>
 
