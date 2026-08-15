@@ -8,58 +8,57 @@ lineage as `organon.art`: one page, no external requests.
   publications: white ground, system sans, and the wordmark in tracked monospace
   — the same treatment as a publication masthead, scaled up, so the identity is
   one element used consistently rather than a logo.
-- `patterns.html` — the pattern catalogue at `/patterns`: index rail, specimen
-  detail, and Related Patterns as navigation rather than a dead list. One file,
-  hand-authored, no external requests; the small amount of JavaScript is the
-  explorer itself and runs from the same file. The Turn overview carries *The
-  line this stands in* — the OM-001 preface adapted to what this page does, and
-  the reason Related Patterns is navigable at all. ⚠️ It is the short version on
-  purpose; the signed one lives in the paper, and the two should not drift into
-  competing accounts of the same debt.
+- `patterns.html` — *Design Patterns for Working with Agents*, the catalogue at
+  `/patterns`: index rail, specimen detail, and Related Patterns as navigation
+  rather than a dead list. One file, hand-authored, no external requests; the
+  small amount of JavaScript is the explorer itself and runs from the same file.
+  The One Agent overview carries *The line this stands in* — the OM-001 preface
+  adapted to what this page does, and the reason Related Patterns is navigable at
+  all. ⚠️ It is the short version on purpose; the signed one lives in the paper,
+  and the two should not drift into competing accounts of the same debt.
 
-  **It holds four sets, chosen by the Language switch above the rail**, and this
-  is the answer to "where do OM-002's and OM-003's entries go" — *not* one longer
-  list. Turn (14, OM-001), Fleet (8, OM-002), Arrangements (6, OM-003 level one)
-  and Yard (3, OM-003 level two) each bring their own groups, their own stage
-  filter and their own overview. ⚠️ **They are not filters over one catalogue.**
-  A stage is a different kind of thing in each, and "Stage: Execution" beside an
-  entry about which squad's work lands first is how a catalogue stops meaning
-  anything. The Side-of-seam filter is Turn-only and hides elsewhere; a set with
-  one group hides the stage row entirely, because "All" against one option is a
-  control that cannot do anything.
+  **It holds four sets, chosen by the Patterns switch above the rail**, and this
+  is the answer to "where do the papers' entries go" — *not* one longer list. One
+  Agent (14, OM-001), Many Agents (8, OM-002), Arrangements (6, OM-003 level one)
+  and Many Teams (3, OM-003 level two) each bring their own groups, their own
+  stage filter and their own overview. ⚠️ **They are not filters over one
+  catalogue.** A stage is a different kind of thing in each, and "Stage:
+  Execution" beside an entry about which squad's work lands first is how a
+  catalogue stops meaning anything. The Side-of-seam filter is One Agent-only and
+  hides elsewhere; a set with one group hides the stage row entirely, because
+  "All" against one option is a control that cannot do anything.
 
-  ⚠️ **Only Turn's full text lives here, and that is the one-copy rule holding.**
-  Fleet, Arrangements and Yard entries carry position, intent and relations, and
-  name the paper that is canonical for them — there is still exactly one copy of
-  every entry. Moving a set's prose into this page is the revision described for
-  each paper, and it makes that paper an argument the way OM-001 became one. Do
-  not add prose here without removing it there.
+  ⚠️ **No entry's full text lives here, and that is the one-copy rule holding.**
+  Every set carries position, intent and relations, and names the paper that is
+  canonical for it. One Agent was the exception until Aug 2026, because Rev. 3 of
+  OM-001 had made that paper an argument with nowhere to put its fourteen; they
+  are back in OM-001 and the rule is now uniform — papers hold entries, this page
+  holds the graph. Do not add prose here without removing it there.
 
-  Relations cross the sets freely and **say so** (`→ Fleet` on the citation), and
-  following one switches the rail with you. `Cited by` counts every language, and
-  `[`/`]` deliberately step only within the set you are reading. Deep links are
-  unchanged and set-agnostic: the id decides the language, so `/patterns#gather`
-  lands in Fleet without a caller knowing Fleet exists.
-- `om-001.html` — the paper at `/om-001`. Since Rev. 3 it is the **argument** for
-  the catalogue, not the catalogue: the gap, why the existing literature does not
-  fill it, what the missing vocabulary costs, the evidence, and the proposed
-  form. Two patterns are reproduced in it as worked examples and say so on the
-  page. ⚠️ Its per-pattern anchors (`/om-001#approval-gate` and the other
-  thirteen) are **load-bearing** — Rev. 2 carried all fourteen at those ids, so
-  §9 keeps every one of them as a stub linking to the canonical entry. Do not
-  remove them to tidy the markup; a published fragment is as permanent as a
-  published number.
+  Relations cross the sets freely and **say so** (`→ Many Agents` on the
+  citation), and following one switches the rail with you. `Cited by` counts every
+  set, and `[`/`]` deliberately step only within the set you are reading. Deep
+  links are unchanged and set-agnostic: the id decides the set, so
+  `/patterns#gather` lands in Many Agents without a caller knowing it exists.
+- `om-001.html` — the paper at `/om-001`. Since Rev. 5 it is the **presentation**
+  of the One Agent section: §7 introduces it and §§8–21 are the fourteen entries
+  in full, in the same template and markup OM-002 and OM-003 use. §§1–6 are still
+  the argument — the gap, the literature, the cost, the evidence, the form and the
+  map — and move to OM-005, which the Rev. 5 note says on the page. ⚠️ Its
+  per-pattern anchors (`/om-001#approval-gate` and the other thirteen) are
+  **load-bearing** and now land on the entry itself. So do `#example-honest-gauge`
+  and `#example-streaming-turn`, the two Rev. 3 reproduced as worked examples,
+  carried as `legacy-anchor` spans. Do not remove them to tidy the markup; a
+  published fragment is as permanent as a published number.
 - `om-002.html` — *Working with Many Agents*, at `/om-002`. Eight patterns for delegating
   to more than one agent at once, in three acts: the split, in flight, the join.
-  ⚠️ **Unlike the first fourteen, these are published in full in the paper**,
-  because the explorer holds only the first language. That is stated on the page
-  (§5) along with what happens when they move: this becomes the argument, with a
-  dated revision saying so. Until then there is exactly one copy of each — do not
-  create a second by adding them to `/patterns` without moving them.
+  Published in full in the paper, like all three sets since Aug 2026 — there is
+  exactly one copy of each, and do not create a second by adding them to
+  `/patterns`.
 - `om-003.html` — *Arrangements, and Many Teams*, at `/om-003`. Two levels in one
   document: six named arrangements of OM-002's eight patterns (§7–§12), and the
-  level above a fleet — one person working four to six squads at once (§14–§17).
-  ⚠️ **The two halves are written to be separable.** If the yard half grows
+  level above a squad — one person working four to six squads at once (§14–§17).
+  ⚠️ **The two halves are written to be separable.** If the Many Teams half grows
   evidence of its own it becomes its own numbered document, and the split is a
   dated revision here saying so; §3 states that on the page. Two fields are added
   to the template and both are defended in §6 — *What it changes*, which is a
