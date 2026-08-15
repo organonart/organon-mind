@@ -66,20 +66,30 @@ lineage as `organon.art`: one page, no external requests.
   to more than one agent at once, in three acts: the split, in flight, the join.
   Published in full in the paper, like all three sets since Aug 2026 — there is
   exactly one copy of each, and do not create a second by adding them to
-  `/patterns`.
+  `/patterns`. Since Rev. 5 the argument is gone: the gap, the evidence and
+  *Forces that recur* are OM-005 §§8–10, and their three ids are kept in **§12,
+  *Where the argument went***.
 - `om-003.html` — *Arrangements, and Many Teams*, at `/om-003`. Two levels in one
-  document: six named arrangements of OM-002's eight patterns (§7–§12), and the
-  level above a squad — one person working four to six squads at once (§14–§17).
+  document: six named arrangements of OM-002's eight patterns (§5–§10), and the
+  level above a squad — one person working four to six squads at once (§12–§15).
   ⚠️ **The two halves are written to be separable.** If the Many Teams half grows
   evidence of its own it becomes its own numbered document, and the split is a
-  dated revision here saying so; §3 states that on the page. Two fields are added
-  to the template and both are defended in §6 — *What it changes*, which is a
-  composite's central claim, and *Evidence*, which names per entry which of §4's
-  four sources it rests on. ⚠️ **The eight `#slot-N` anchors in §4 are
-  load-bearing**: entries link to them, and closing a slot means editing the slot
-  in place with a dated revision, not deleting it. This document has weaker
-  evidence than either predecessor and says so in §4 — do not "tidy" that section
-  into confidence.
+  dated revision here saying so; §2 states that on the page. Two fields are added
+  to the template and both are defended in §4 — *What it changes*, which is a
+  composite's central claim, and *Evidence*, which names per entry which of §3's
+  four sources it rests on. ⚠️ **The eight `#slot-N` anchors in §3 are
+  load-bearing**: twelve links from ten sections point at them, eight of those
+  from entries. Closing a slot means editing the slot in place with a dated
+  revision, not deleting it.
+
+  ⚠️ **§3 is the one section that was split rather than moved when the arguments
+  left for OM-005 (Rev. 5), and the reason is those anchors.** The *assessment* —
+  that this document's evidence is thinner than either predecessor — is OM-005
+  §12. The *instrument* — the four sources and the eight slots — stayed, because
+  sending it away would make every entry leave its own paper to say what it rests
+  on. So `#the-evidence` resolves **here**, not in OM-005, which is the single
+  exception to the `/om-00N#x` → `/om-005#om-00N-x` rule. Do not "tidy" the
+  remaining half into confidence, and do not finish the move.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
   `/why`. **Served and unlinked**, deliberately: it is reachable by direct URL and
   is not on the index. It was briefly linked on 15 Aug 2026 and unlinked the same
