@@ -338,7 +338,7 @@ body[data-view="overview"] .desig .tag{display:none}
 
 <div id="store" hidden><div class="panel" data-pat="overview-turn">
 
-<p class="ovl">A pattern language for mixed-initiative, tool-using interfaces.</p>
+<p class="ovl">One agent, one task, from the moment you ask to what survives afterwards.</p>
 
 <blockquote class="claim"><p><strong>The transcript is not the interface.</strong> In a tool-using agent, conversation is the control and negotiation layer. Plans, diffs, approvals, tool calls and artifacts are first-class structured objects that the conversation refers to, commands, and takes responsibility for.</p></blockquote>
 
@@ -1817,13 +1817,16 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     var l=LANG[state.lang];
     state.cur='overview';
     document.body.setAttribute('data-view','overview');
-    document.getElementById('d-name').textContent='Patterns';
+    // The overview heading is the SECTION's name, not the page's. It read
+    // "Patterns" in all four, which told a reader nothing they had not already
+    // read in the bar, and left the section they had just chosen unnamed.
+    document.getElementById('d-name').textContent=l.label;
     var src=store.querySelector('[data-pat="overview-'+l.id+'"]');
     document.getElementById('d-prose').innerHTML=src?src.innerHTML:'';
     if(l.id==='turn') wireStages();
     indexEl.querySelectorAll('button[data-goto]').forEach(function(b){b.setAttribute('aria-current','false');});
     document.querySelector('.railtop button').setAttribute('aria-current','true');
-    document.title='Patterns — Organon Mind';
+    document.title=l.label+' — Design Patterns for AI Agents';
     if(push!==false&&location.hash) history.pushState({id:'overview'},'',location.pathname);
     document.getElementById('detail').scrollTop=0;
     document.body.classList.remove('rail-open');
@@ -1853,7 +1856,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     var spec=document.getElementById('d-spec'); spec.innerHTML='';
     var rows=[[l.groups.length>1?'Stage':'Set',groupName(l,p.g)]];
     if(l.seam) rows.push(['Side of the seam',SEAM[p.seam]]);
-    else rows.push(['Language',l.label]);
+    else rows.push(['Section',l.label]);
     rows.push(['Links out',String(p.rel.length)]);
     rows.push(['Cited by',String(inbound[p.id])]);
     rows.forEach(function(row){
@@ -1903,7 +1906,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
     indexEl.querySelectorAll('button[data-goto]').forEach(function(b){
       b.setAttribute('aria-current',String(b.getAttribute('data-goto')===id));
     });
-    document.title=p.n+' · '+p.name+' — '+LANG[p.lang].label+' — Organon Mind';
+    document.title=p.n+' · '+p.name+' — '+LANG[p.lang].label+' — Design Patterns for AI Agents';
     if(push!==false&&location.hash.slice(1)!==id) history.pushState({id:id},'','#'+id);
     document.getElementById('detail').scrollTop=0;
     document.body.classList.remove('rail-open');
