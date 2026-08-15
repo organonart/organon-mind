@@ -7,6 +7,13 @@ in full. The Provisional half is deliberately held — see §8.*
 Status: 2026-08-14. Evidence in `om-004-evidence-2026-08-14.md`. Nothing here has
 been published, and one earlier attempt was reverted (see §10).
 
+**2026-08-15.** Darkness as Alarm and The Night Cap drafted into §7, from the
+change log and the renderer's own documentation rather than from the evidence
+pass, which left both ungathered by instruction. Both carry *reported*, and both
+state what has not been observed. **The Presence half is now complete at seven
+entries.** The Provisional half remains held on the commissioned measurement,
+which has not returned — see §8.
+
 ---
 
 ## 1. The finding that sets the shape
@@ -176,8 +183,8 @@ claims, and it is a better answer than hedging.
 | 3 | Closed Vocabulary | code verified, incident verified by review | §7 |
 | 4 | Deference at Rest | code verified, **behaviour never observed** | §7 |
 | 5 | Single Precedence | verified, **and its own instance fails it** | §7 |
-| 6 | Darkness as Alarm | not gathered — reasoned or observed is unanswered | — |
-| 7 | The Night Cap | not gathered | — |
+| 6 | Darkness as Alarm | reported; reasoned, with one accidental observation | §7 |
+| 7 | The Night Cap | reported; constants verified, **never observed at night** | §7 |
 
 **Provisional** — the sub-turn. Elaborates Streaming Turn and Honest Gauge.
 
@@ -426,6 +433,149 @@ tidy listing.
 
 **Relations.** corrects → Ambient Activity Channel · bounds → Closed Vocabulary ·
 ranks → Verified Presence
+
+---
+
+### 6 · Darkness as Alarm
+
+**Intent.** Keep the resting state *lit*, so that the channel's most perceptible
+transition — to zero — is reserved for the one condition worth interrupting for.
+
+**Motivation.** Peripheral vision is rod-dominated: acutely sensitive to
+luminance change, poor at hue. A violet-versus-amber distinction beside the
+monitor has to be *looked at*, which is the one thing a peripheral channel is
+supposed not to require. Brightness is also the only **ordered** dimension the
+channel has — more is more, with no legend to learn. So the largest signal
+available is going dark, and there is exactly one of it to spend.
+
+What made it spendable was **deleting the mode**. While the resting glow meant
+"Agent mode is selected", dark meant *Dictation* far more often than it meant
+*broken*: the commonest state in the day occupied the loudest signal on the
+channel and drowned the only one worth having. Once the chord carried the intent
+— one chord dictates, another talks to the agent — there was no mode to be in,
+presence became "reachable and not paused", and the lamp is normally on. Darkness
+became rare, and rare is the whole mechanism.
+
+The question the glow answers moved with it, from "is she listening?" to **"could
+I talk to her right now?"** — which is the question you have *before* pressing a
+key, and therefore the one an always-on surface should be answering.
+
+**Applicability.** A peripheral channel with one ordered dimension, in a space
+that is normally lit, where exactly one condition warrants interruption.
+
+**Consequences.** *Gain:* the alarm needs no legend, no colour memory and no
+focus; it works from across the room and out of the corner of the eye. *Gain:* it
+costs nothing extra — no second device, no second mark, no screen. *Cost:* the
+resting state must be on, continuously, which makes the resting look a real
+constraint rather than a flourish — it has to be quiet enough to live beside all
+day (here: a dim violet-white slow breath at brightness 1). *Cost:* you get
+**one** alarm. A second condition deserving interruption has nowhere to go.
+*Trap:* the room must be normally lit; the signal is a luminance *change*, so in
+a dark room it inverts and there is nothing to spend. *Trap:* silence must not
+be darkness — see below, because this is the one that would quietly destroy it.
+
+**Implementation.** Presence is three-valued, not boolean. *No producer has ever
+reported* — an older tray, a scripted replay — falls back to ambient exactly as
+before; *presence reported and off* goes dark. That distinction is what lets
+darkness carry meaning while staying backward compatible, and it has a safety
+consequence beyond compatibility: **darkness is only ever asserted, never
+defaulted into.** Had silence resolved to dark, the alarm would fire on a missing
+producer rather than on the condition it names, and the first thing anyone would
+learn is to ignore it.
+
+**How you would know this is unnecessary.** If a second condition deserved
+interruption. The moment there are two alarms the loudest signal has to be
+shared, darkness stops naming one thing, and a legend comes back. Also
+unnecessary where the resting state cannot be on — a channel that is off by
+default has no darkness to spend — or in a room that is normally dark.
+
+⚠️ **Evidence.** *Reported.* The physiology and the design reasoning are stated
+in the renderer's own documentation and the change log; the mode deletion that
+made darkness rare is verified. **The claim that a real presence-off is
+unmissable has not been tested** — nobody has been in the room, not expecting it,
+when the channel actually died.
+
+One observation points the right way and is offered as no more than that. The
+thinking state was originally ended when the reply arrived rather than when
+playback did; because a reply exists 5.1–5.4 s before it is audible, the lamp
+went dark for five seconds at precisely the moment it should have been saying
+*nearly there*. It was noticed at once in live use, treated as a defect, and
+closed by adding a state to cover the gap. That is not evidence that darkness
+alarms. It is evidence that **a spurious darkness is not tolerated**, which is
+the discipline this pattern requires of whoever holds it.
+
+**Relations.** specialises → Ambient Activity Channel · relies on → Verified
+Presence — darkness means *unreachable* only because reachability is actually
+checked · ranked by → Single Precedence · at risk from → the multi-lamp question
+(§9): one dark lamp beside one lit lamp is not an alarm, it reads as a lamp that
+broke
+
+---
+
+### 7 · The Night Cap
+
+**Intent.** Bound the layer's *taste* by context and leave its *instruments*
+alone, so that a decorative capability never becomes a reason to switch the whole
+channel off.
+
+**Motivation.** An agent that can name a scene can name a bright one at 2am. The
+obvious defence is a global brightness ceiling by hour — simple, and wrong,
+because it caps the alarm too. **Capping taste is protective; capping an
+instrument is just breaking it quietly.** An error you cannot see at 2am is
+exactly the failure this layer exists to prevent.
+
+So the clamp is applied at one point — a scene's brightness on its way to the
+device — and conversation cues pass it untouched. They last seconds, they are
+responses to something you just did, and they are the entire reason the channel
+is trusted at all.
+
+This is the same cut as Deference at Rest, one axis over. A hand on the lamp
+silences taste and leaves the instrument alone; the hour silences taste and
+leaves the instrument alone. Two unrelated pressures, and the boundary lands in
+the same place both times — which is the best evidence available that it is the
+right boundary and not a convenience.
+
+**Applicability.** Any ambient layer carrying both decoration and signal, whose
+acceptable intensity varies with a context the layer can observe — hour,
+occupancy, a presentation, a meeting.
+
+**Consequences.** *Gain:* the layer stays on at night. Without the cap the honest
+choice is to disable the whole thing after hours, which disables the alarm — the
+capability would have cost the instrument. *Cost:* two classes of output now
+exist and every new state must be classified, silently wrong in both directions:
+a capped instrument is unreadable at night, an uncapped decoration is a light in
+your eyes. *Trap:* the failure direction of the clock. *Trap:* the boundaries are
+guesses — 22:00, 07:00 and brightness 30 are unmeasured, and a fixed window is
+wrong for a household on other hours and wrong twice a year.
+
+**Implementation.** Clamp scene brightness to 30 between 22:00 and 07:00 local,
+on the scene path only. The window wraps midnight, so it is a union and not a
+range. Local hour comes from a six-line `GetLocalTime` binding rather than a date
+crate, because that crate commits to exactly one dependency and pulling a
+calendar library in to read one integer is the worse trade.
+
+The detail worth copying is the failure direction: the FFI struct is zeroed
+before the call, and a zeroed struct reads as **hour 0 — inside the night
+window**. If the call does nothing whatsoever, the cap engages rather than lifts.
+A cap that fails open is not a cap. (The non-deployed platform stub deliberately
+does *not* cap, on the stated grounds that a guessed timezone offset is worse
+than none — a different judgement, applying only where the renderer does not
+run.)
+
+**How you would know this is unnecessary.** If the layer carried no decoration.
+A channel that only ever reports state has nothing to cap, because everything on
+it is an instrument and an instrument you cannot see is broken. The cap exists
+**because** Closed Vocabulary let taste onto the channel; it is the price of that
+capability, and the whole design is that the price is charged to taste alone.
+
+⚠️ **Evidence.** *Reported*, with the constants read from source. **Never
+observed at night.** Nobody has recorded whether 30 is the right ceiling, and the
+uncapped-cue decision is untested in precisely the case it exists for — no one
+has watched an error state arrive at 2am and judged whether it read.
+
+**Relations.** priced by → Closed Vocabulary — the cap is what that capability
+costs · shares its cut with → Deference at Rest · must not reach → Darkness as
+Alarm · ranked by → Single Precedence
 
 ---
 
