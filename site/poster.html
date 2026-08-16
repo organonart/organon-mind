@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The whole language, on one sheet — Organon Mind</title>
+<meta name="description" content="A taxonomy poster of Design Patterns for Working with Agents: every section, every pattern, and every relation between them.">
+<link rel="icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Organon Mind">
+<meta property="og:title" content="The whole language, on one sheet">
+<meta property="og:url" content="https://organonmind.org/poster">
+<meta name="twitter:card" content="summary">
+<style>
+/* GENERATED — do not hand-edit. scripts/build_poster.mjs writes this file from
+   site/patterns.html, which is the one place the graph lives. An edit here is
+   lost at the next run, and worse, it is an edit to a copy. */
+:root{
+  --paper:#ffffff;--ink:#0d0f12;--muted:#5c626b;--faint:#9aa1a9;--rule:#e6e9ec;--live:#1440c4;
+  --sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono","Roboto Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f4f5f7;color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+header{max-width:74rem;margin:0 auto;padding:1.6rem 1.5rem .9rem;display:flex;flex-wrap:wrap;gap:.8rem;align-items:baseline}
+header a.org{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+header .sep{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
+header .here{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+header .spacer{flex:1}
+header .out{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+header .out:hover{color:var(--live)}
+.sheet{max-width:74rem;margin:0 auto 2rem;padding:0 1.5rem}
+.sheet svg{display:block;width:100%;height:auto;background:#fff;box-shadow:0 1px 2px rgba(13,15,18,.08),0 10px 40px rgba(13,15,18,.09)}
+.note{max-width:74rem;margin:0 auto;padding:0 1.5rem 2.4rem;color:var(--muted);font-size:.9rem}
+.note code{font-family:var(--mono);font-size:.85em}
+.note a{color:var(--live)}
+/* A1 portrait. Print, or print to PDF, and it is the sheet. */
+@page{size:594mm 841mm;margin:0}
+@media print{
+  body{background:#fff}
+  header,.note{display:none}
+  .sheet{max-width:none;margin:0;padding:0}
+  .sheet svg{box-shadow:none;width:594mm;height:841mm}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="org" href="/">Organon Mind</a>
+  <span class="sep">/</span>
+  <span class="here">Poster</span>
+  <span class="spacer"></span>
+  <a class="out" href="/patterns">The catalogue</a>
+</header>
+
+<div class="sheet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1485 2102.5" width="594mm" height="841mm" role="img" aria-label="Taxonomy of Design Patterns for Working with Agents">
+<rect width="1485" height="2102.5" fill="#ffffff"/>
+<g stroke="#b9c0c7" stroke-width="1"><line x1="24" y1="33" x2="42" y2="33"/><line x1="33" y1="24" x2="33" y2="42"/></g>
+<g stroke="#b9c0c7" stroke-width="1"><line x1="1443" y1="33" x2="1461" y2="33"/><line x1="1452" y1="24" x2="1452" y2="42"/></g>
+<g stroke="#b9c0c7" stroke-width="1"><line x1="24" y1="2069.5" x2="42" y2="2069.5"/><line x1="33" y1="2060.5" x2="33" y2="2078.5"/></g>
+<g stroke="#b9c0c7" stroke-width="1"><line x1="1443" y1="2069.5" x2="1461" y2="2069.5"/><line x1="1452" y1="2060.5" x2="1452" y2="2078.5"/></g>
+<text x="66" y="112" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="15" letter-spacing="5.4" fill="#0d0f12">ORGANON MIND</text>
+<text x="1419" y="112" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="13" letter-spacing="2.4" fill="#5c626b">ORGANONMIND.ORG/PATTERNS</text>
+<line x1="66" y1="130" x2="1419" y2="130" stroke="#cdd2d8" stroke-width="1"/>
+<text x="66" y="196" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="46" font-weight="600" letter-spacing="-0.9" fill="#0d0f12">Design Patterns for Working with Agents</text>
+<text x="66" y="232" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="19" fill="#5c626b">6 sections · 45 patterns · 174 relations · the whole language on one sheet</text>
+<text x="66" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">RELATIONS</text>
+<text x="66" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">174</text>
+<text x="292" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">WITHIN A SECTION</text>
+<text x="292" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">106</text>
+<text x="518" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">CROSSING A SECTION</text>
+<text x="518" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">68</text>
+<text x="744" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">DOWN THE SPINE</text>
+<text x="744" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">47</text>
+<text x="970" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">UP THE SPINE</text>
+<text x="970" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">11</text>
+<text x="1196" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">BAND TO SPINE</text>
+<text x="1196" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">10</text>
+<line x1="66" y1="322" x2="1419" y2="322" stroke="#e6e9ec" stroke-width="1"/>
+<path d="M83 344L101 344L93.5 1824.5000000000018L90.5 1824.5000000000018Z" fill="#e6e9ec"/>
+<line x1="92" y1="344" x2="92" y2="1824.5000000000018" stroke="#cdd2d8" stroke-width="1"/>
+<g transform="translate(76 1084.250000000001) rotate(-90)"><text text-anchor="middle" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" letter-spacing="4.2" fill="#5c626b">SPAN &#183; WIDER ABOVE &#183; FINER BELOW</text></g>
+<text x="92" y="330" text-anchor="middle" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="12" fill="#b9c0c7">&#9650;</text>
+<text x="92" y="1848.5000000000018" text-anchor="middle" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="12" fill="#b9c0c7">&#9660;</text>
+<rect x="372" y="356" width="566" height="135.4" fill="#fafbfc"/>
+<rect x="372" y="533.4" width="566" height="216.7" fill="#fafbfc"/>
+<rect x="372" y="792.1" width="566" height="270.9" fill="#fafbfc"/>
+<rect x="372" y="1105" width="566" height="433.7" fill="#fafbfc"/>
+<rect x="372" y="1580.7" width="566" height="243.8" fill="#fafbfc"/>
+<rect x="1106" y="356" width="313" height="1468.5" fill="#6f5cc4" fill-opacity="0.045"/>
+<line x1="1106" y1="356" x2="1106" y2="1824.5" stroke="#6f5cc4" stroke-width="1" stroke-opacity="0.35"/>
+<line x1="1419" y1="356" x2="1419" y2="1824.5" stroke="#6f5cc4" stroke-width="1" stroke-opacity="0.35"/>
+<g fill="none" stroke="#9aa1a9" stroke-width="0.85" stroke-opacity="0.42">
+<path d="M372 1172.6C333.5 1172.6 333.5 1199.7 372 1199.7"/>
+<path d="M372 1172.6C316.6 1172.6 316.6 1281 372 1281"/>
+<path d="M372 1172.6C290.9 1172.6 290.9 1470.9 372 1470.9"/>
+<path d="M372 1172.6C294 1172.6 294 1443.8 372 1443.8"/>
+<path d="M372 1199.7C324.5 1199.7 324.5 1172.6 372 1172.6"/>
+<path d="M372 1199.7C300.8 1199.7 300.8 1416.6 372 1416.6"/>
+<path d="M372 1199.7C294 1199.7 294 1470.9 372 1470.9"/>
+<path d="M372 1226.8C333.5 1226.8 333.5 1253.9 372 1253.9"/>
+<path d="M372 1226.8C312.2 1226.8 312.2 1362.4 372 1362.4"/>
+<path d="M372 1253.9C324.5 1253.9 324.5 1226.8 372 1226.8"/>
+<path d="M372 1253.9C297.3 1253.9 297.3 1498 372 1498"/>
+<path d="M372 1281C312.2 1281 312.2 1416.6 372 1416.6"/>
+<path d="M372 1281C333.5 1281 333.5 1308.2 372 1308.2"/>
+<path d="M372 1281C307.6 1281 307.6 1172.6 372 1172.6"/>
+<path d="M372 1308.2C324.5 1308.2 324.5 1281 372 1281"/>
+<path d="M372 1308.2C316.6 1308.2 316.6 1416.6 372 1416.6"/>
+<path d="M372 1335.3C321.4 1335.3 321.4 1416.6 372 1416.6"/>
+<path d="M372 1335.3C316.6 1335.3 316.6 1443.8 372 1443.8"/>
+<path d="M372 1335.3C333.5 1335.3 333.5 1362.4 372 1362.4"/>
+<path d="M372 1335.3C304.4 1335.3 304.4 1525.1 372 1525.1"/>
+<path d="M372 1362.4C303.2 1362.4 303.2 1226.8 372 1226.8"/>
+<path d="M372 1362.4C333.5 1362.4 333.5 1389.5 372 1389.5"/>
+<path d="M372 1362.4C312.2 1362.4 312.2 1498 372 1498"/>
+<path d="M372 1389.5C324.5 1389.5 324.5 1362.4 372 1362.4"/>
+<path d="M372 1389.5C321.4 1389.5 321.4 1470.9 372 1470.9"/>
+<path d="M372 1389.5C304.4 1389.5 304.4 1199.7 372 1199.7"/>
+<path d="M372 1416.6C333.5 1416.6 333.5 1443.8 372 1443.8"/>
+<path d="M372 1416.6C307.6 1416.6 307.6 1308.2 372 1308.2"/>
+<path d="M372 1416.6C321.4 1416.6 321.4 1498 372 1498"/>
+<path d="M372 1416.6C326.8 1416.6 326.8 1470.9 372 1470.9"/>
+<path d="M372 1443.8C324.5 1443.8 324.5 1416.6 372 1416.6"/>
+<path d="M372 1443.8C326.8 1443.8 326.8 1498 372 1498"/>
+<path d="M372 1443.8C285 1443.8 285 1172.6 372 1172.6"/>
+<path d="M372 1470.9C281.9 1470.9 281.9 1172.6 372 1172.6"/>
+<path d="M372 1470.9C285 1470.9 285 1199.7 372 1199.7"/>
+<path d="M372 1470.9C312.4 1470.9 312.4 1389.5 372 1389.5"/>
+<path d="M372 1470.9C317.8 1470.9 317.8 1416.6 372 1416.6"/>
+<path d="M372 1498C312.4 1498 312.4 1416.6 372 1416.6"/>
+<path d="M372 1498C317.8 1498 317.8 1443.8 372 1443.8"/>
+<path d="M372 1498C288.3 1498 288.3 1253.9 372 1253.9"/>
+<path d="M372 1525.1C295.4 1525.1 295.4 1335.3 372 1335.3"/>
+<path d="M372 1525.1C326.8 1525.1 326.8 1470.9 372 1470.9"/>
+<path d="M372 1525.1C284.9 1525.1 284.9 1172.6 372 1172.6"/>
+<path d="M372 859.6C333.5 859.6 333.5 886.7 372 886.7"/>
+<path d="M372 886.7C333.5 886.7 333.5 913.9 372 913.9"/>
+<path d="M372 913.9C324.5 913.9 324.5 886.7 372 886.7"/>
+<path d="M372 913.9C312.2 913.9 312.2 1049.5 372 1049.5"/>
+<path d="M372 941C333.5 941 333.5 968.1 372 968.1"/>
+<path d="M372 941C326.8 941 326.8 886.7 372 886.7"/>
+<path d="M372 968.1C324.5 968.1 324.5 941 372 941"/>
+<path d="M372 995.2C326.8 995.2 326.8 1049.5 372 1049.5"/>
+<path d="M372 995.2C333.5 995.2 333.5 1022.3 372 1022.3"/>
+<path d="M372 1022.3C324.5 1022.3 324.5 995.2 372 995.2"/>
+<path d="M372 1049.5C317.8 1049.5 317.8 995.2 372 995.2"/>
+<path d="M372 1049.5C333.5 1049.5 333.5 1022.3 372 1022.3"/>
+<path d="M372 1049.5C303.2 1049.5 303.2 913.9 372 913.9"/>
+<path d="M372 600.9C333.5 600.9 333.5 628 372 628"/>
+<path d="M372 600.9C326.8 600.9 326.8 655.2 372 655.2"/>
+<path d="M372 628C324.5 628 324.5 600.9 372 600.9"/>
+<path d="M372 628C333.5 628 333.5 655.2 372 655.2"/>
+<path d="M372 655.2C317.8 655.2 317.8 600.9 372 600.9"/>
+<path d="M372 655.2C324.5 655.2 324.5 628 372 628"/>
+<path d="M372 682.3C321.4 682.3 321.4 600.9 372 600.9"/>
+<path d="M372 682.3C326.8 682.3 326.8 736.5 372 736.5"/>
+<path d="M372 709.4C333.5 709.4 333.5 736.5 372 736.5"/>
+<path d="M372 709.4C316.6 709.4 316.6 600.9 372 600.9"/>
+<path d="M372 736.5C324.5 736.5 324.5 709.4 372 709.4"/>
+<path d="M372 736.5C317.8 736.5 317.8 682.3 372 682.3"/>
+<path d="M372 423.6C326.8 423.6 326.8 477.8 372 477.8"/>
+<path d="M372 450.7C333.5 450.7 333.5 423.6 372 423.6"/>
+<path d="M372 477.8C317.8 477.8 317.8 423.6 372 423.6"/>
+<path d="M372 1648.2C321.4 1648.2 321.4 1729.6 372 1729.6"/>
+<path d="M372 1648.2C308.1 1648.2 308.1 1810.9 372 1810.9"/>
+<path d="M372 1675.3C333.5 1675.3 333.5 1702.5 372 1702.5"/>
+<path d="M372 1675.3C326.8 1675.3 326.8 1729.6 372 1729.6"/>
+<path d="M372 1702.5C324.5 1702.5 324.5 1675.3 372 1675.3"/>
+<path d="M372 1702.5C326.8 1702.5 326.8 1648.2 372 1648.2"/>
+<path d="M372 1702.5C316.6 1702.5 316.6 1810.9 372 1810.9"/>
+<path d="M372 1729.6C317.8 1729.6 317.8 1675.3 372 1675.3"/>
+<path d="M372 1729.6C312.4 1729.6 312.4 1648.2 372 1648.2"/>
+<path d="M372 1756.7C333.5 1756.7 333.5 1783.8 372 1783.8"/>
+<path d="M372 1756.7C316.6 1756.7 316.6 1648.2 372 1648.2"/>
+<path d="M372 1783.8C324.5 1783.8 324.5 1756.7 372 1756.7"/>
+<path d="M372 1810.9C299.1 1810.9 299.1 1648.2 372 1648.2"/>
+<path d="M372 1810.9C307.6 1810.9 307.6 1702.5 372 1702.5"/>
+</g>
+<g fill="none" stroke="#0d0f12" stroke-width="1.25" stroke-opacity="0.5">
+<path d="M372 859.6C181.4 859.6 181.4 1308.2 372 1308.2"/>
+<path d="M372 859.6C160.3 859.6 160.3 1416.6 372 1416.6"/>
+<path d="M372 886.7C165.4 886.7 165.4 1416.6 372 1416.6"/>
+<path d="M372 886.7C160.3 886.7 160.3 1443.8 372 1443.8"/>
+<path d="M372 913.9C155.3 913.9 155.3 1498 372 1498"/>
+<path d="M372 941C204.5 941 204.5 1281 372 1281"/>
+<path d="M372 968.1C170.6 968.1 170.6 1470.9 372 1470.9"/>
+<path d="M372 968.1C186.9 968.1 186.9 1389.5 372 1389.5"/>
+<path d="M372 995.2C204.5 995.2 204.5 1335.3 372 1335.3"/>
+<path d="M372 1022.3C204.5 1022.3 204.5 1362.4 372 1362.4"/>
+<path d="M372 1022.3C186.9 1022.3 186.9 1443.8 372 1443.8"/>
+<path d="M372 600.9C181.4 600.9 181.4 1049.5 372 1049.5"/>
+<path d="M372 628C198.5 628 198.5 995.2 372 995.2"/>
+<path d="M372 655.2C237.9 655.2 237.9 859.6 372 859.6"/>
+<path d="M372 682.3C198.5 682.3 198.5 1049.5 372 1049.5"/>
+<path d="M372 709.4C237.9 709.4 237.9 913.9 372 913.9"/>
+<path d="M372 736.5C245.5 736.5 245.5 913.9 372 913.9"/>
+<path d="M372 423.6C162.6 423.6 162.6 968.1 372 968.1"/>
+<path d="M372 423.6C80 423.6 80 1470.9 372 1470.9"/>
+<path d="M372 450.7C76 450.7 76 1525.1 372 1525.1"/>
+<path d="M372 450.7C152.6 450.7 152.6 1049.5 372 1049.5"/>
+<path d="M372 477.8C183.9 477.8 183.9 913.9 372 913.9"/>
+<path d="M372 477.8C157.6 477.8 157.6 1049.5 372 1049.5"/>
+</g>
+<g fill="none" stroke="#1440c4" stroke-width="1.3" stroke-opacity="0.62">
+<path d="M372 600.9C223.8 600.9 223.8 859.6 372 859.6"/>
+<path d="M372 600.9C217.1 600.9 217.1 886.7 372 886.7"/>
+<path d="M372 600.9C210.7 600.9 210.7 913.9 372 913.9"/>
+<path d="M372 600.9C204.5 600.9 204.5 941 372 941"/>
+<path d="M372 600.9C198.5 600.9 198.5 968.1 372 968.1"/>
+<path d="M372 600.9C192.6 600.9 192.6 995.2 372 995.2"/>
+<path d="M372 600.9C186.9 600.9 186.9 1022.3 372 1022.3"/>
+<path d="M372 628C223.8 628 223.8 886.7 372 886.7"/>
+<path d="M372 628C210.7 628 210.7 941 372 941"/>
+<path d="M372 628C186.9 628 186.9 1049.5 372 1049.5"/>
+<path d="M372 628C217.1 628 217.1 913.9 372 913.9"/>
+<path d="M372 628C204.5 628 204.5 968.1 372 968.1"/>
+<path d="M372 655.2C230.7 655.2 230.7 886.7 372 886.7"/>
+<path d="M372 655.2C192.6 655.2 192.6 1049.5 372 1049.5"/>
+<path d="M372 655.2C223.8 655.2 223.8 913.9 372 913.9"/>
+<path d="M372 682.3C230.7 682.3 230.7 913.9 372 913.9"/>
+<path d="M372 682.3C245.5 682.3 245.5 859.6 372 859.6"/>
+<path d="M372 682.3C210.7 682.3 210.7 995.2 372 995.2"/>
+<path d="M372 709.4C245.5 709.4 245.5 886.7 372 886.7"/>
+<path d="M372 709.4C204.5 709.4 204.5 1049.5 372 1049.5"/>
+<path d="M372 709.4C210.7 709.4 210.7 1022.3 372 1022.3"/>
+<path d="M372 736.5C253.6 736.5 253.6 886.7 372 886.7"/>
+<path d="M372 736.5C237.9 736.5 237.9 941 372 941"/>
+<path d="M372 736.5C210.7 736.5 210.7 1049.5 372 1049.5"/>
+</g>
+<g fill="none" stroke="#9a5b1f" stroke-width="1.3" stroke-opacity="0.7">
+<path d="M372 1648.2C186.9 1648.2 186.9 1226.8 372 1226.8"/>
+<path d="M372 1648.2C245.5 1648.2 245.5 1470.9 372 1470.9"/>
+<path d="M372 1675.3C181.4 1675.3 181.4 1226.8 372 1226.8"/>
+<path d="M372 1675.3C237.9 1675.3 237.9 1470.9 372 1470.9"/>
+<path d="M372 1702.5C230.7 1702.5 230.7 1470.9 372 1470.9"/>
+<path d="M372 1729.6C223.8 1729.6 223.8 1470.9 372 1470.9"/>
+<path d="M372 1756.7C217.1 1756.7 217.1 1470.9 372 1470.9"/>
+<path d="M372 1783.8C223.8 1783.8 223.8 1525.1 372 1525.1"/>
+<path d="M372 1783.8C210.7 1783.8 210.7 1470.9 372 1470.9"/>
+<path d="M372 1810.9C204.5 1810.9 204.5 1470.9 372 1470.9"/>
+<path d="M372 1810.9C210.7 1810.9 210.7 1498 372 1498"/>
+</g>
+<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M355 1303.2L360.5 1309.2L366 1303.2" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1411.6L360.5 1417.6L366 1411.6" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1411.6L360.5 1417.6L366 1411.6" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1438.8L360.5 1444.8L366 1438.8" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1493L360.5 1499L366 1493" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1276L360.5 1282L366 1276" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1465.9L360.5 1471.9L366 1465.9" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1384.5L360.5 1390.5L366 1384.5" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1330.3L360.5 1336.3L366 1330.3" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1357.4L360.5 1363.4L366 1357.4" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1438.8L360.5 1444.8L366 1438.8" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1044.5L360.5 1050.5L366 1044.5" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 990.2L360.5 996.2L366 990.2" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 854.6L360.5 860.6L366 854.6" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1044.5L360.5 1050.5L366 1044.5" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 908.9L360.5 914.9L366 908.9" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 908.9L360.5 914.9L366 908.9" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 963.1L360.5 969.1L366 963.1" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1465.9L360.5 1471.9L366 1465.9" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1520.1L360.5 1526.1L366 1520.1" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1044.5L360.5 1050.5L366 1044.5" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 908.9L360.5 914.9L366 908.9" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 1044.5L360.5 1050.5L366 1044.5" stroke="#0d0f12" stroke-opacity="0.55"/>
+<path d="M355 854.6L360.5 860.6L366 854.6" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 881.7L360.5 887.7L366 881.7" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 908.9L360.5 914.9L366 908.9" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 936L360.5 942L366 936" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 963.1L360.5 969.1L366 963.1" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 990.2L360.5 996.2L366 990.2" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 1017.3L360.5 1023.3L366 1017.3" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 881.7L360.5 887.7L366 881.7" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 936L360.5 942L366 936" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 1044.5L360.5 1050.5L366 1044.5" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 908.9L360.5 914.9L366 908.9" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 963.1L360.5 969.1L366 963.1" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 881.7L360.5 887.7L366 881.7" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 1044.5L360.5 1050.5L366 1044.5" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 908.9L360.5 914.9L366 908.9" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 908.9L360.5 914.9L366 908.9" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 854.6L360.5 860.6L366 854.6" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 990.2L360.5 996.2L366 990.2" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 881.7L360.5 887.7L366 881.7" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 1044.5L360.5 1050.5L366 1044.5" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 1017.3L360.5 1023.3L366 1017.3" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 881.7L360.5 887.7L366 881.7" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 936L360.5 942L366 936" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 1044.5L360.5 1050.5L366 1044.5" stroke="#1440c4" stroke-opacity="0.7"/>
+<path d="M355 1231.8L360.5 1225.8L366 1231.8" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1475.9L360.5 1469.9L366 1475.9" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1231.8L360.5 1225.8L366 1231.8" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1475.9L360.5 1469.9L366 1475.9" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1475.9L360.5 1469.9L366 1475.9" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1475.9L360.5 1469.9L366 1475.9" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1475.9L360.5 1469.9L366 1475.9" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1530.1L360.5 1524.1L366 1530.1" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1475.9L360.5 1469.9L366 1475.9" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1475.9L360.5 1469.9L366 1475.9" stroke="#9a5b1f" stroke-opacity="0.85"/>
+<path d="M355 1503L360.5 1497L366 1503" stroke="#9a5b1f" stroke-opacity="0.85"/>
+</g>
+<g fill="none" stroke="#6f5cc4" stroke-width="0.85" stroke-opacity="0.4">
+<path d="M1140 504.5C1121.2 504.5 1121.2 657.4 1140 657.4"/>
+<path d="M1140 657.4C1112.2 657.4 1112.2 504.5 1140 504.5"/>
+<path d="M1140 657.4C1116.6 657.4 1116.6 1116.2 1140 1116.2"/>
+<path d="M1140 810.3C1118.7 810.3 1118.7 1116.2 1140 1116.2"/>
+<path d="M1140 810.3C1121.2 810.3 1121.2 963.3 1140 963.3"/>
+<path d="M1140 810.3C1114.7 810.3 1114.7 1422 1140 1422"/>
+<path d="M1140 963.3C1112.2 963.3 1112.2 810.3 1140 810.3"/>
+<path d="M1140 963.3C1116.6 963.3 1116.6 1422 1140 1422"/>
+<path d="M1140 963.3C1121.2 963.3 1121.2 1116.2 1140 1116.2"/>
+<path d="M1140 1116.2C1109.7 1116.2 1109.7 810.3 1140 810.3"/>
+<path d="M1140 1116.2C1107.6 1116.2 1107.6 657.4 1140 657.4"/>
+<path d="M1140 1116.2C1121.2 1116.2 1121.2 1269.1 1140 1269.1"/>
+<path d="M1140 1116.2C1112.2 1116.2 1112.2 963.3 1140 963.3"/>
+<path d="M1140 1116.2C1118.7 1116.2 1118.7 1422 1140 1422"/>
+<path d="M1140 1269.1C1114.7 1269.1 1114.7 657.4 1140 657.4"/>
+<path d="M1140 1269.1C1112.2 1269.1 1112.2 1116.2 1140 1116.2"/>
+<path d="M1140 1269.1C1121.2 1269.1 1121.2 1422 1140 1422"/>
+<path d="M1140 1422C1105.7 1422 1105.7 810.3 1140 810.3"/>
+<path d="M1140 1422C1107.6 1422 1107.6 963.3 1140 963.3"/>
+<path d="M1140 1422C1112.2 1422 1112.2 1269.1 1140 1269.1"/>
+<path d="M1140 1422C1109.7 1422 1109.7 1116.2 1140 1116.2"/>
+</g>
+<g fill="none" stroke="#6f5cc4" stroke-width="1.15" stroke-opacity="0.5">
+<path d="M1140 504.5C1041 504.5 1061 1470.9 962 1470.9"/>
+<path d="M1140 657.4C1048.4 657.4 1053.6 1470.9 962 1470.9"/>
+<path d="M1140 810.3C1065.6 810.3 1036.4 1308.2 962 1308.2"/>
+<path d="M1140 963.3C1068.3 963.3 1033.7 1416.6 962 1416.6"/>
+<path d="M1140 1269.1C1099.7 1269.1 1002.3 1199.7 962 1199.7"/>
+</g>
+<g fill="none" stroke="#6f5cc4" stroke-width="2.4" stroke-opacity="0.95">
+<path d="M1140 504.5C1044.8 504.5 1057.2 1389.5 962 1389.5"/>
+<path d="M1140 657.4C1052.5 657.4 1049.5 1389.5 962 1389.5"/>
+<path d="M1140 810.3C1060.8 810.3 1041.2 1389.5 962 1389.5"/>
+<path d="M1140 1116.2C1080.6 1116.2 1021.4 1389.5 962 1389.5"/>
+<path d="M1140 1269.1C1093.9 1269.1 1008.1 1389.5 962 1389.5"/>
+</g>
+<g fill="#6f5cc4" fill-opacity="0.8">
+<path d="M971 1385.7L963.5 1389.5L971 1393.3Z"/>
+<path d="M971 1467.1L963.5 1470.9L971 1474.7Z"/>
+<path d="M971 1467.1L963.5 1470.9L971 1474.7Z"/>
+<path d="M971 1385.7L963.5 1389.5L971 1393.3Z"/>
+<path d="M971 1385.7L963.5 1389.5L971 1393.3Z"/>
+<path d="M971 1304.4L963.5 1308.2L971 1312Z"/>
+<path d="M971 1412.8L963.5 1416.6L971 1420.4Z"/>
+<path d="M971 1385.7L963.5 1389.5L971 1393.3Z"/>
+<path d="M971 1385.7L963.5 1389.5L971 1393.3Z"/>
+<path d="M971 1195.9L963.5 1199.7L971 1203.5Z"/>
+</g>
+<line x1="372" y1="356" x2="938" y2="356" stroke="#0d0f12" stroke-width="1.6"/>
+<text x="372" y="394" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" letter-spacing="4.4" fill="#0d0f12">MANY TEAMS</text>
+<text x="938" y="394" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" fill="#0d0f12">03</text>
+<text x="372" y="415" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">one person, several groups</text>
+<text x="938" y="415" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.6" fill="#9aa1a9">OM-003</text>
+<line x1="372" y1="414" x2="372" y2="487.3552631578947" stroke="#cdd2d8" stroke-width="1"/>
+<circle cx="372" cy="423.6" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="428.2" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">01</text>
+<a href="/patterns#ordered-by-readiness"><text x="418" y="429" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Ordered by Readiness</text></a>
+<circle cx="372" cy="450.7" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="455.3" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">02</text>
+<a href="/patterns#re-entry-note"><text x="418" y="456.1" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Re-entry Note</text></a>
+<circle cx="372" cy="477.8" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="482.4" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">03</text>
+<a href="/patterns#landing-order"><text x="418" y="483.2" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Landing Order</text></a>
+<line x1="372" y1="533.3552631578947" x2="938" y2="533.3552631578947" stroke="#0d0f12" stroke-width="1.6"/>
+<text x="372" y="571.3552631578947" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" letter-spacing="4.4" fill="#0d0f12">ARRANGEMENTS</text>
+<text x="938" y="571.3552631578947" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" fill="#0d0f12">06</text>
+<text x="372" y="592.3552631578947" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">ways to arrange many</text>
+<text x="938" y="592.3552631578947" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.6" fill="#9aa1a9">OM-003</text>
+<line x1="372" y1="591.3552631578947" x2="372" y2="746.065789473684" stroke="#cdd2d8" stroke-width="1"/>
+<circle cx="372" cy="600.9" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="605.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">01</text>
+<a href="/patterns#plain-fan-out"><text x="418" y="606.3" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Plain Fan-Out</text></a>
+<circle cx="372" cy="628" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="632.6" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">02</text>
+<a href="/patterns#pipeline"><text x="418" y="633.4" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Pipeline</text></a>
+<circle cx="372" cy="655.2" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="659.8" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">03</text>
+<a href="/patterns#scout-then-swarm"><text x="418" y="660.6" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Scout then Swarm</text></a>
+<circle cx="372" cy="682.3" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="686.9" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">04</text>
+<a href="/patterns#loop-until-dry"><text x="418" y="687.7" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Loop Until Dry</text></a>
+<circle cx="372" cy="709.4" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="714" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">05</text>
+<a href="/patterns#panel"><text x="418" y="714.8" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Panel</text></a>
+<circle cx="372" cy="736.5" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="741.1" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">06</text>
+<a href="/patterns#adversarial-verify"><text x="418" y="741.9" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Adversarial Verify</text></a>
+<line x1="372" y1="792.065789473684" x2="938" y2="792.065789473684" stroke="#0d0f12" stroke-width="1.6"/>
+<text x="372" y="830.065789473684" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" letter-spacing="4.4" fill="#0d0f12">MANY AGENTS</text>
+<text x="938" y="830.065789473684" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" fill="#0d0f12">08</text>
+<text x="372" y="851.065789473684" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">several at once</text>
+<text x="938" y="851.065789473684" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.6" fill="#9aa1a9">OM-002</text>
+<line x1="372" y1="850.065789473684" x2="372" y2="1059.0131578947367" stroke="#cdd2d8" stroke-width="1"/>
+<text x="938" y="863.6" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#b9c0c7">THE SPLIT</text>
+<circle cx="372" cy="859.6" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="864.2" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">01</text>
+<a href="/patterns#proposed-dispatch"><text x="418" y="865" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Proposed Dispatch</text></a>
+<circle cx="372" cy="886.7" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="891.3" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">02</text>
+<a href="/patterns#authority-at-dispatch"><text x="418" y="892.1" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Authority at Dispatch</text></a>
+<circle cx="372" cy="913.9" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="918.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">03</text>
+<a href="/patterns#isolation-by-construction"><text x="418" y="919.3" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Isolation by Construction</text></a>
+<text x="938" y="945" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#b9c0c7">IN FLIGHT</text>
+<circle cx="372" cy="941" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="945.6" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">04</text>
+<a href="/patterns#fire-and-forget"><text x="418" y="946.4" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Fire and Forget</text></a>
+<circle cx="372" cy="968.1" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="972.7" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">05</text>
+<a href="/patterns#status-board"><text x="418" y="973.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Status Board</text></a>
+<text x="938" y="999.2" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#b9c0c7">THE JOIN</text>
+<circle cx="372" cy="995.2" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="999.8" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">06</text>
+<a href="/patterns#the-return-path"><text x="418" y="1000.6" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">The Return Path</text></a>
+<circle cx="372" cy="1022.3" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1026.9" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">07</text>
+<a href="/patterns#nested-attribution"><text x="418" y="1027.7" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Nested Attribution</text></a>
+<circle cx="372" cy="1049.5" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1054.1" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">08</text>
+<a href="/patterns#gather"><text x="418" y="1054.9" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Gather</text></a>
+<line x1="372" y1="1105.0131578947367" x2="938" y2="1105.0131578947367" stroke="#0d0f12" stroke-width="1.6"/>
+<text x="372" y="1143.0131578947367" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" letter-spacing="4.4" fill="#0d0f12">ONE AGENT</text>
+<text x="938" y="1143.0131578947367" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" fill="#0d0f12">14</text>
+<text x="372" y="1164.0131578947367" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">one task, start to finish</text>
+<text x="938" y="1164.0131578947367" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.6" fill="#9aa1a9">OM-001</text>
+<line x1="372" y1="1163.0131578947367" x2="372" y2="1534.67105263158" stroke="#cdd2d8" stroke-width="1"/>
+<text x="938" y="1176.6" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#b9c0c7">ORIENTATION</text>
+<circle cx="372" cy="1172.6" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1177.2" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">01</text>
+<a href="/patterns#capability-disclosure"><text x="418" y="1178" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Capability Disclosure</text></a>
+<circle cx="372" cy="1199.7" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1204.3" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">02</text>
+<a href="/patterns#mode-visibility"><text x="418" y="1205.1" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Mode Visibility</text></a>
+<circle cx="962" cy="1199.7" r="2.8" fill="#6f5cc4"/>
+<text x="938" y="1230.8" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#b9c0c7">TURN</text>
+<circle cx="372" cy="1226.8" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1231.4" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">03</text>
+<a href="/patterns#streaming-turn"><text x="418" y="1232.2" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Streaming Turn</text></a>
+<circle cx="372" cy="1253.9" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1258.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">04</text>
+<a href="/patterns#barge-in"><text x="418" y="1259.3" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Barge-In</text></a>
+<text x="938" y="1285" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#b9c0c7">INTENT</text>
+<circle cx="372" cy="1281" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1285.6" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">05</text>
+<a href="/patterns#assume-or-ask"><text x="418" y="1286.4" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Assume or Ask</text></a>
+<circle cx="372" cy="1308.2" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1312.8" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">06</text>
+<a href="/patterns#constrained-choice"><text x="418" y="1313.6" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Constrained Choice</text></a>
+<circle cx="962" cy="1308.2" r="2.8" fill="#6f5cc4"/>
+<text x="938" y="1339.3" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#b9c0c7">EXECUTION</text>
+<circle cx="372" cy="1335.3" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1339.9" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">07</text>
+<a href="/patterns#plan-approve-execute-receipt"><text x="418" y="1340.7" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Plan, Approve, Execute, Receipt</text></a>
+<circle cx="372" cy="1362.4" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1367" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">08</text>
+<a href="/patterns#tool-call-transparency"><text x="418" y="1367.8" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Tool-Call Transparency</text></a>
+<circle cx="372" cy="1389.5" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1394.1" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">09</text>
+<a href="/patterns#ambient-activity-channel"><text x="418" y="1394.9" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Ambient Activity Channel</text></a>
+<circle cx="962" cy="1389.5" r="2.8" fill="#6f5cc4"/>
+<text x="938" y="1420.6" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#b9c0c7">AUTHORITY</text>
+<circle cx="372" cy="1416.6" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1421.2" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">10</text>
+<a href="/patterns#approval-gate"><text x="418" y="1422" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Approval Gate</text></a>
+<circle cx="962" cy="1416.6" r="2.8" fill="#6f5cc4"/>
+<circle cx="372" cy="1443.8" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1448.4" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">11</text>
+<a href="/patterns#progressive-autonomy"><text x="418" y="1449.2" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Progressive Autonomy</text></a>
+<text x="938" y="1474.9" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#b9c0c7">TRUTH AND CONTINUITY</text>
+<circle cx="372" cy="1470.9" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1475.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">12</text>
+<a href="/patterns#honest-gauge"><text x="418" y="1476.3" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Honest Gauge</text></a>
+<circle cx="962" cy="1470.9" r="2.8" fill="#6f5cc4"/>
+<circle cx="372" cy="1498" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1502.6" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">13</text>
+<a href="/patterns#recoverable-execution"><text x="418" y="1503.4" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Recoverable Execution</text></a>
+<circle cx="372" cy="1525.1" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1529.7" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">14</text>
+<a href="/patterns#durable-memory"><text x="418" y="1530.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Durable Memory</text></a>
+<line x1="372" y1="1580.67105263158" x2="938" y2="1580.67105263158" stroke="#0d0f12" stroke-width="1.6"/>
+<text x="372" y="1618.67105263158" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" letter-spacing="4.4" fill="#0d0f12">REVISED OUTPUT</text>
+<text x="938" y="1618.67105263158" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" fill="#0d0f12">07</text>
+<text x="372" y="1639.67105263158" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">before it settles</text>
+<text x="938" y="1639.67105263158" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.6" fill="#9aa1a9">OM-004</text>
+<line x1="372" y1="1638.67105263158" x2="372" y2="1820.5000000000018" stroke="#cdd2d8" stroke-width="1"/>
+<circle cx="372" cy="1648.2" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1652.8" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">01</text>
+<a href="/patterns#draft-and-record"><text x="418" y="1653.6" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Draft and Record</text></a>
+<circle cx="372" cy="1675.3" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1679.9" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">02</text>
+<a href="/patterns#no-frozen-prefix"><text x="418" y="1680.7" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">No Frozen Prefix</text></a>
+<circle cx="372" cy="1702.5" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1707.1" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">03</text>
+<a href="/patterns#show-the-handover"><text x="418" y="1707.9" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Show the Handover</text></a>
+<circle cx="372" cy="1729.6" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1734.2" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">04</text>
+<a href="/patterns#churn-is-not-correction"><text x="418" y="1735" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Churn Is Not Correction</text></a>
+<circle cx="372" cy="1756.7" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1761.3" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">05</text>
+<a href="/patterns#deterministic-last-mile"><text x="418" y="1762.1" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Deterministic Last Mile</text></a>
+<circle cx="372" cy="1783.8" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1788.4" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">06</text>
+<a href="/patterns#one-list-two-uses"><text x="418" y="1789.2" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">One List, Two Uses</text></a>
+<circle cx="372" cy="1810.9" r="3.4" fill="#ffffff" stroke="#0d0f12" stroke-width="1.4"/>
+<text x="387" y="1815.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">07</text>
+<a href="/patterns#draft-and-record-apart"><text x="418" y="1816.3" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="16.5" fill="#0d0f12">Draft and Record Apart</text></a>
+<line x1="1106" y1="356" x2="1419" y2="356" stroke="#6f5cc4" stroke-width="1.6"/>
+<text x="1106" y="394" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" letter-spacing="4.4" fill="#6f5cc4">AMBIENT SIGNALS</text>
+<text x="1419" y="394" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="23" fill="#6f5cc4">07</text>
+<text x="1106" y="415" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">the peripheral channel</text>
+<text x="1419" y="415" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.6" fill="#9aa1a9">OM-004</text>
+<text x="1106" y="1524.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="2.8" fill="#6f5cc4">NOT A LEVEL</text>
+<text x="1106" y="1550.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" fill="#5c626b">Not a rung on the ladder, and drawn</text>
+<text x="1106" y="1571.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" fill="#5c626b">beside it rather than below it. The column</text>
+<text x="1106" y="1592.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" fill="#5c626b">is focal and single-channel: a turn is taken,</text>
+<text x="1106" y="1613.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" fill="#5c626b">attended to, and answered. This is the</text>
+<text x="1106" y="1634.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" fill="#5c626b">peripheral alternative — it reports when no</text>
+<text x="1106" y="1655.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" fill="#5c626b">turn is in progress, and there may never be</text>
+<text x="1106" y="1676.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" fill="#5c626b">one. Stacked as a sixth level it would read</text>
+<text x="1106" y="1697.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" fill="#5c626b">as a finer grain of the same thing. It is not.</text>
+<text x="1106" y="1718.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" fill="#5c626b">It runs alongside every one of them.</text>
+<text x="1106" y="1769.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" font-style="italic" fill="#6f5cc4">5 of the 7 cite One Agent 09, Ambient</text>
+<text x="1106" y="1790.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="13.5" font-style="italic" fill="#6f5cc4">Activity Channel, by name — the heavy threads.</text>
+<circle cx="1140" cy="504.5" r="3.4" fill="#ffffff" stroke="#6f5cc4" stroke-width="1.4"/>
+<text x="1155" y="509.1" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">01</text>
+<a href="/patterns#standing-assertion"><text x="1186" y="509.9" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="15.5" fill="#0d0f12">Standing Assertion</text></a>
+<circle cx="1140" cy="657.4" r="3.4" fill="#ffffff" stroke="#6f5cc4" stroke-width="1.4"/>
+<text x="1155" y="662" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">02</text>
+<a href="/patterns#verified-presence"><text x="1186" y="662.8" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="15.5" fill="#0d0f12">Verified Presence</text></a>
+<circle cx="1140" cy="810.3" r="3.4" fill="#ffffff" stroke="#6f5cc4" stroke-width="1.4"/>
+<text x="1155" y="814.9" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">03</text>
+<a href="/patterns#closed-vocabulary"><text x="1186" y="815.7" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="15.5" fill="#0d0f12">Closed Vocabulary</text></a>
+<circle cx="1140" cy="963.3" r="3.4" fill="#ffffff" stroke="#6f5cc4" stroke-width="1.4"/>
+<text x="1155" y="967.9" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">04</text>
+<a href="/patterns#deference-at-rest"><text x="1186" y="968.7" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="15.5" fill="#0d0f12">Deference at Rest</text></a>
+<circle cx="1140" cy="1116.2" r="3.4" fill="#ffffff" stroke="#6f5cc4" stroke-width="1.4"/>
+<text x="1155" y="1120.8" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">05</text>
+<a href="/patterns#one-ordering-one-place"><text x="1186" y="1121.6" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="15.5" fill="#0d0f12">One Ordering, One Place</text></a>
+<circle cx="1140" cy="1269.1" r="3.4" fill="#ffffff" stroke="#6f5cc4" stroke-width="1.4"/>
+<text x="1155" y="1273.7" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">06</text>
+<a href="/patterns#darkness-as-alarm"><text x="1186" y="1274.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="15.5" fill="#0d0f12">Darkness as Alarm</text></a>
+<circle cx="1140" cy="1422" r="3.4" fill="#ffffff" stroke="#6f5cc4" stroke-width="1.4"/>
+<text x="1155" y="1426.6" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" fill="#9aa1a9">07</text>
+<a href="/patterns#cap-the-decoration"><text x="1186" y="1427.4" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="15.5" fill="#0d0f12">Cap the Decoration</text></a>
+<line x1="66" y1="1868.5" x2="1419" y2="1868.5" stroke="#cdd2d8" stroke-width="1"/>
+<path d="M66 1898.5C88 1886.5 100 1910.5 122 1898.5" fill="none" stroke="#9aa1a9" stroke-width="0.85" stroke-opacity="0.42"/>
+<text x="136" y="1903.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="14" fill="#0d0f12">85</text>
+<text x="172" y="1903.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#0d0f12">within a section</text>
+<path d="M66 1925.5C88 1913.5 100 1937.5 122 1925.5" fill="none" stroke="#0d0f12" stroke-width="1.25" stroke-opacity="0.5"/>
+<text x="136" y="1930.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="14" fill="#0d0f12">23</text>
+<text x="172" y="1930.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#0d0f12">down the spine</text>
+<path d="M66 1952.5C88 1940.5 100 1964.5 122 1952.5" fill="none" stroke="#1440c4" stroke-width="1.3" stroke-opacity="0.62"/>
+<text x="136" y="1957.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="14" fill="#0d0f12">24</text>
+<text x="172" y="1957.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#0d0f12">&#8220;built from&#8221; &#8212; Arrangements over Many Agents</text>
+<path d="M518 1898.5C540 1886.5 552 1910.5 574 1898.5" fill="none" stroke="#9a5b1f" stroke-width="1.3" stroke-opacity="0.7"/>
+<text x="588" y="1903.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="14" fill="#0d0f12">11</text>
+<text x="624" y="1903.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#0d0f12">up the spine &#8212; all of them Revised Output</text>
+<path d="M518 1925.5C540 1913.5 552 1937.5 574 1925.5" fill="none" stroke="#6f5cc4" stroke-width="1.15" stroke-opacity="0.5"/>
+<text x="588" y="1930.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="14" fill="#0d0f12">10</text>
+<text x="624" y="1930.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#0d0f12">band to spine</text>
+<path d="M518 1952.5C540 1940.5 552 1964.5 574 1952.5" fill="none" stroke="#6f5cc4" stroke-width="0.85" stroke-opacity="0.4"/>
+<text x="588" y="1957.5" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="14" fill="#0d0f12">21</text>
+<text x="624" y="1957.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#0d0f12">within the band</text>
+<g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M105 1980.5L110.5 1986.5L116 1980.5" stroke="#0d0f12" stroke-opacity="0.55"/><path d="M145 1990.5L150.5 1984.5L156 1990.5" stroke="#9a5b1f" stroke-opacity="0.85"/></g>
+<text x="172" y="1990.5" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">a chevron marks the target of a crossing, and points the way it runs on the spine</text>
+<text x="1419" y="1903.5" text-anchor="end" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">45 patterns and 174 typed relations, read from the catalogue&#8217;s own data.</text>
+<text x="1419" y="1925.5" text-anchor="end" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">68 relations cross a section. 47 run down the spine, 11 run up, 10 leave the band.</text>
+<text x="1419" y="1947.5" text-anchor="end" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#0d0f12">Every one of the 68 points at a pattern published in an earlier paper. None points at a later one.</text>
+<text x="1419" y="1969.5" text-anchor="end" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="14.5" fill="#5c626b">Generated by scripts/build_poster.mjs from site/patterns.html. Nothing is drawn that is not in the data.</text>
+<text x="1419" y="2001.5" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" letter-spacing="2.2" fill="#9aa1a9">ORGANON MIND &#183; 2026-08-16</text>
+</svg>
+</div>
+
+<p class="note">A1 portrait, 594&#215;841&#8239;mm. Every name and every relation is read from
+<a href="/patterns">the catalogue</a>; each name on the sheet links to its entry there.
+Print, or print to PDF, for the wall.</p>
+</body>
+</html>

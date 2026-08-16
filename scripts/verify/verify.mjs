@@ -107,7 +107,11 @@ const noise = [];
 page.on('pageerror', e => noise.push(`pageerror: ${e.message}`));
 page.on('console', m => { if (m.type() === 'error') noise.push(`console.error: ${m.text()}`); });
 
-const PAGES = ['/', '/patterns', '/om-001', '/om-002', '/om-003', '/om-004', '/om-005', '/why'];
+// /poster is a third view of the same graph. It is on this list because check 5
+// then resolves each of its forty-five `/patterns#…` links against the
+// catalogue's own ids, which is the property that keeps a drawing honest: a
+// node whose name or id it invented cannot pass.
+const PAGES = ['/', '/patterns', '/om-001', '/om-002', '/om-003', '/om-004', '/om-005', '/why', '/poster'];
 const papers = ['om-001', 'om-002', 'om-003', 'om-004', 'om-005'];
 
 // 6 · every page loads with no script noise, and collect its ids for check 5.
