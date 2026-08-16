@@ -153,6 +153,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
         <dt>Catalogue</dt><dd><a href="/patterns">organonmind.org/patterns</a></dd>
         <dt>Status</dt><dd>Current</dd>
       </dl>
+      <p class="revision">Rev. 3 — 15 Aug 2026. <a href="/om-004">OM-004</a>’s method notes arrive, as Rev. 1 said they would: §§14–18, and sources becomes §19. They are a different kind of material from §§2–13, which were moved out of papers that had grown them as front matter — these were written for this document, because OM-004 published as a presentation of its entries from the start rather than becoming one. §14 is the one worth reading if you read only one: it is the first time this programme has gone back to a published pattern with measurements from having built it, and two of that pattern’s implementation notes did not survive. §18 collects four corrections, including a firing rate asserted in six places that <strong>no measurement had ever produced</strong>. Section numbers in the notes below describe the structure at the time each was written.</p>
       <p class="revision">Rev. 2 — 15 Aug 2026. OM-002’s and OM-003’s arguments arrive, as Rev. 1 said they would: their gap sections, their evidence sections and their <em>Forces that recur</em> (§§8–13). The three papers are now presentations of their entries and nothing else. OM-003’s evidence section was <strong>split</strong> rather than moved whole — the assessment of how thin the evidence is came here as §12, and the four-source table with its eight open slots stayed in OM-003, because twelve links from within that paper point into those slots and an entry should not have to leave its own document to say what it rests on. The <code>om-00N-</code> prefix set in Rev. 1 did its job: all six sections arrived without a rename, and three of them would have collided on <code>the-evidence</code> and <code>forces</code> without it.</p>
       <p class="revision">Rev. 1 — 15 Aug 2026. First published. Assembled rather than written: §§2–7 and the preface are OM-001’s, moved here unchanged in the same revision that removed them there. The four numbered papers are becoming plain presentations of their patterns, and everything about how those patterns were arrived at — the gap, the evidence, the form, the corrections — belongs together in one document rather than as front matter on four. OM-002’s and OM-003’s evidence and gap sections follow in Rev. 2; OM-004’s method notes when that paper publishes.</p>
     </div>
@@ -186,7 +187,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <h2>What this paper is</h2>
       <p class="lede">The other papers present patterns. This one says why there are any, what the evidence behind them is worth, why they are written in a thirty-year-old template with one field added, and where the programme has been wrong in public.</p>
       <p>It exists because of a decision made on 15 August 2026 and worth stating plainly: a catalogue is most useful as a plain presentation of its patterns. Until then each paper opened with its own case — the gap it filled, the evidence it rested on, the forces its entries traded off — and a reader wanting a pattern had to walk past an argument to reach it. Those sections were not wrong. They were in the way, and they were saying overlapping things in four places.</p>
-      <p>So they are here, and the papers are catalogues again. <a href="/om-001">OM-001</a>, <a href="/om-002">OM-002</a> and <a href="/om-003">OM-003</a> now open with a short orientation and go straight to their entries. Nothing was deleted to achieve that; every section that moved is reproduced here in full. One was split rather than moved — OM-003’s evidence section, whose four-source table and eight open slots are cited twelve times from within that document and stayed there. §12 says so on the page.</p>
+      <p>So they are here, and the papers are catalogues again. <a href="/om-001">OM-001</a>, <a href="/om-002">OM-002</a> and <a href="/om-003">OM-003</a> now open with a short orientation and go straight to their entries. <a href="/om-004">OM-004</a> never had to be converted — it published in that shape, and its method notes were written directly into this document as §§14–18. Nothing was deleted to achieve that; every section that moved is reproduced here in full. One was split rather than moved — OM-003’s evidence section, whose four-source table and eight open slots are cited twelve times from within that document and stayed there. §12 says so on the page.</p>
       <p class="field">Following a citation that landed here</p>
       <p>A fragment published against one of those papers still resolves, and each retired id lands on a line naming where its section went. The rule is mechanical: <code>/om-001#the-evidence</code> is <code>/om-005#om-001-the-evidence</code>, and the same for OM-002 and OM-003 when their sections arrive. The prefix exists because all three papers had a section called <em>The evidence</em> and a section called <em>Forces that recur</em>; without it, two of the three would have had to be renamed on arrival, and a published fragment is owed forever.</p>
       <p class="field">What this does not do</p>
@@ -608,9 +609,135 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
   </div>
 </section>
 
-<section id="sources-and-lineage">
+<section id="om-004-the-return">
   <div class="row">
     <div class="mark">14</div>
+    <div class="body">
+      <h2>The first return to a published pattern</h2>
+      <p class="lede">OM-004 is not a new language beside OM-001. It is the first paper in this programme that goes back to a pattern already published and reports what building it taught — including the parts of it that were wrong.</p>
+      <p><a href="/om-001#ambient-activity-channel">Ambient Activity Channel</a> proposes exactly the peripheral channel that has since been built:</p>
+      <blockquote><p>Signal the agent's state through a channel the principal perceives without attending to it, so presence and progress cost no screen and no focus.</p></blockquote>
+      <p>It even names the palette that was eventually built — violet thinking, cyan tool, warm speaking, amber consent — and states three of the rules OM-004 was going to claim as new: that the channel reports state and never instructions; that the renderer owns presentation and a priority stack; and that it must obey <strong>Honest Gauge</strong>, because a peripheral signal that lies is worse than a transcript that lies, being trusted without being read.</p>
+      <p>That is a better thing for a paper to be than a new language, and it is what the evidence actually supports. But the return is not a victory lap. Two of that entry's implementation notes turn out to be <strong>insufficient in practice</strong>, and saying so is the paper's job.</p>
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th>Ambient Activity Channel says</th><th>What building it showed</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>“Give every state a time-to-live so a lost ‘off’ decays rather than stranding the device.”</td>
+            <td>A time-to-live decays a stale <em>live cue</em>. It does nothing for a <em>resting</em> state, which is sent once and stays wrong forever. The lamp came up white and no timer would have fixed it. → <strong>Standing Assertion</strong></td>
+          </tr>
+          <tr>
+            <td>“The renderer owns presentation and a priority stack.”</td>
+            <td>There are <strong>two</strong> stacks, in two structures of different shape, neither able to see the other, with no test on the composite — and the written composite states its first step backwards. → <strong>One Ordering, One Place</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p>A pattern language that can be corrected by its own practice, in public, with the measurement that did it, is doing the thing this programme says it is for. A language that only ever accreted would be evidence of nothing except that nobody had tried to use it.</p>
+      <p><strong>Mode Visibility</strong> is the second seed, and it was <em>resolved</em> rather than refined. The persistent mode was deleted and replaced by which key you hold. The pattern said make the mode visible at the moment of use; the answer that worked was to remove the mode, so there is nothing to make visible. That is a legitimate outcome for a pattern and the catalogue should be able to record it — the entry stands, because most surfaces cannot delete their modes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="om-004-the-added-field">
+  <div class="row">
+    <div class="mark">15</div>
+    <div class="body">
+      <h2>The field OM-004 adds, and the failure mode it has</h2>
+      <p>OM-001 adds one field to the Gang of Four form — <em>the seam</em>, which side of the harness/agent boundary a pattern is implemented on. OM-003 adds two: <em>What it changes</em> and <em>Evidence</em>. OM-004 adds one, and it is the strongest of the four:</p>
+      <blockquote><p>How you would know this is unnecessary.</p></blockquote>
+      <p>Every entry states the condition under which it should be deleted. Not <em>when not to use it</em> — the condition that would make the pattern <em>pointless</em>, named precisely enough to be checked.</p>
+      <p>This is not a formatting choice. It recovers Alexander's <em>forces</em>: each answer names the pressure that generates the pattern rather than restating the solution. Four worked examples, all from the first half of OM-004:</p>
+      <ul>
+        <li>re-assertion is unnecessary if the transport were reliable <strong>and</strong> a consumer could ask for current state on connect</li>
+        <li>a presence indicator is unnecessary if failure were visible at the moment of acting — it exists because push-to-talk costs you a whole utterance before you learn the channel is dead</li>
+        <li>a closed vocabulary is unnecessary if the actuator were incapable of harm</li>
+        <li>deference is unnecessary if the renderer were the only controller of the device</li>
+      </ul>
+      <p>And it gives the language something the Gang of Four form has no slot for at all: <strong>a pattern that specifies the test that retires it.</strong> OM-004's second half ran one. <em>Whether the fast draft pass is still needed</em> was a running experiment with a measurable outcome rather than a matter of taste, and it returned — the draft stays, and what the evidence deletes is something that was never named as a role at all.</p>
+
+      <p class="field">The failure mode, which we walked into before publishing</p>
+      <p>Naming a retirement condition makes it checkable. It does not make the check <em>sound</em>, and the two are easy to confuse — a fact this programme established the expensive way, against itself.</p>
+      <p>An evidence pass on 14 August checked one such condition — <em>does a revision ever reach thirty seconds back?</em> — against a corpus of three short segments, found nothing at that depth, and rescaled the pattern to seconds. The drafting document then hardened that into <em>does not happen</em>. The pass of the following day, on a corpus deliberately over-sampled long, found a revision <strong>35.6 s back rewriting the first word of the utterance</strong>.</p>
+      <p><strong>A null result from a corpus incapable of exhibiting the condition is indistinguishable from a true negative</strong>, and it arrives wearing the same authority — a measurement, a method, a number. The field's whole value is that it lets a pattern be retired on evidence; that is exactly what makes a false retirement cheap to act on and expensive to notice.</p>
+      <p>So the field carries an obligation the other five do not: <strong>state the condition, and state what a corpus would have to contain to test it.</strong> An entry whose retirement condition has been checked should say against what, and whether that corpus could have produced the other answer. This is the strongest of the four template additions across the language, and it is the one that can do harm.</p>
+    </div>
+  </div>
+</section>
+
+<section id="om-004-evidence-position">
+  <div class="row">
+    <div class="mark">16</div>
+    <div class="body">
+      <h2>The evidence for Ambient Signals and Revised Output</h2>
+      <p>This is the first language in the programme with <strong>designed</strong> evidence — measurements commissioned to answer a question rather than incidents noticed in passing — and the <strong>narrowest base</strong> of any of them. Both facts go on the page.</p>
+      <ul>
+        <li>One machine, one speaker, one microphone, one room.</li>
+        <li>Every word-error figure derives from a single 229-second read of a 24-line script.</li>
+        <li>The large utterance corpora are one person's real dictation over roughly a day.</li>
+        <li>Nothing is cross-speaker or cross-device.</li>
+      </ul>
+      <p>Entries carry the evidence passes' own labels, mapped onto this programme's provenance vocabulary: <em>verified</em> — measured on the machine, method stated — becomes <em>measured</em>; <em>testimony</em> — from a change log or a doc comment, not re-derived — becomes <em>reported</em>. Anything scaled from a measurement at a different magnitude is <em>derived</em> and says so.</p>
+
+      <p class="field">The commitment that gets us out of n=1</p>
+      <p>Publish the read-aloud script, the term list and the scoring method alongside the paper as a reproducible acceptance corpus, with our numbers on it as the reference. Anyone with a microphone can then disagree with us. That is not a workaround for a small sample — it is this programme's own stated position about public capability, applied to its own claims, and it is a better answer than hedging.</p>
+
+      <p class="field">Why that stopped being aspirational</p>
+      <p>The instrument that produced the 14 August revision-depth figures <strong>no longer exists</strong>. It was built in a session scratchpad — a directory designed to be discarded — and went with it. The document it produced was rescued; the rig was not. The consequence is not hypothetical: the two passes' depth numbers <strong>cannot be reconciled</strong>, because the earlier definition of <em>how far back</em> is unrecoverable, and the disagreement has to be recorded as open rather than resolved.</p>
+      <p>That converts the acceptance-corpus commitment from a good intention into a <strong>precondition</strong>. A number whose instrument is unreproducible is testimony wearing the costume of measurement, however carefully it was taken — and it stays in the record forever, uncontestable, until someone spends a day rebuilding a rig to disagree with it. The 15 August pass committed its instrument, with six of its own defects documented in the source where they bit. That is the first time a figure in OM-004 can be argued with. It should be the last time one cannot.</p>
+    </div>
+  </div>
+</section>
+
+<section id="om-004-the-held-half">
+  <div class="row">
+    <div class="mark">17</div>
+    <div class="body">
+      <h2>A half held back, and the measurement that released it</h2>
+      <p>OM-004's second half was drafted and then deliberately withheld, because it rested on a question nobody had answered: the arrangement appeared to have two components doing one job, and publishing patterns that describe an arrangement about to lose a component would have been publishing a description of the past.</p>
+      <p>The commissioned test returned on 15 August, and the answer is sharper than the question.</p>
+      <p><strong>The continuous re-reading cannot change the final text.</strong> Not <em>did not</em> — <em>cannot</em>, by construction. The captured audio buffer has exactly one write site; at release the corrector waits for any pass still in flight, <strong>discards it</strong>, and issues one fresh pass over every captured sample whose text replaces everything the continuous stream produced. The diff the commission asked for is zero before it is measured. The empirical half supplies what the structural argument needs: 51 of 51 clips gave one answer over three passes, and 51 of 51 were unchanged by whether a dozen continuous requests had preceded them.</p>
+      <p><strong>But the deletion is the other one.</strong> The expectation was that the fast draft pass would go. It should not. The corrector's stream runs a cadence plus an inference behind the microphone — a median of 0.54 s — and had reached the release pass's answer before release in only 12 of 51 utterances, at a median 97% of the way through. Against the draft's 50 ms that is <em>a different kind of feedback, not a slower one</em>.</p>
+
+      <p class="field">What that did to the entries</p>
+      <p><strong>No role dies</strong>, and that is the finding's real shape. The commission was framed as two of four roles doing one job; the resolution is not a role at all. What turns out to do nothing for the artifact of record is the corrector's <em>cadence</em> — a mode of operation that was never named as a role, did not appear in the arrangement, and is the most expensive thing in it, at 11.1× the corrector time of the release pass alone.</p>
+      <p>Two entries govern the live view, and the live view is precisely what the evidence proposes to delete. So both patterns are about to have their reference instance retired. Neither dies with it — they are claims about live-revising surfaces in general, which is why this language is deliberately not named for the modality — but the exemplar goes, and saying so is the discipline the added field exists to enforce.</p>
+
+      <p class="field">What still needs a person</p>
+      <p>The evidence names its own falsification test and it is not a rig question: <strong>the recommendation flips if someone, in a blind comparison, prefers the hold with continuous correction to the hold without it.</strong> Eleven times the corrector time may be worth accurate text appearing while you hold. Nothing measures taste. That deferred perception experiment now decides an architecture rather than a preference, which is a better position for it to be in than the one it was in a week ago.</p>
+    </div>
+  </div>
+</section>
+
+<section id="om-004-corrections">
+  <div class="row">
+    <div class="mark">18</div>
+    <div class="body">
+      <h2>Corrections to the record</h2>
+      <p>Four, all of them this programme's own, none of them cosmetic. They are here rather than in a revision note because a correction that is only recorded in the document it corrects is not much of a correction.</p>
+
+      <p class="field">A thirty-second revision does happen</p>
+      <p>The drafting record for OM-004 stated that a pattern candidate had asserted <em>“a pass thirty seconds in may rewrite a word from the first sentence”</em>, which the evidence had shown “does not happen and cannot happen in 99.4% of real utterances.” <strong>The sentence is true.</strong> A revision was observed reaching 35.6 s back and rewriting the utterance's first word.</p>
+      <p>Two claims had been fused, and only one was ever supported. <em>Does not happen</em> was inferred from absence in a corpus too short to contain the case — and a possibility claim cannot be refuted by a corpus incapable of exhibiting it. <strong>Falsified by direct observation.</strong> <em>Cannot happen in 99.4% of real utterances</em> is a frequency claim off more than fifteen hundred logged durations, and is <strong>still true and untouched.</strong></p>
+      <p>What fails is the implication, and the repair is better than either version: <strong>churn scales with reach.</strong> A revision reaching 0–1 s back is a word returning to a value that position already held 1% of the time; beyond 10 s, 94%. All six of the deepest events were one word alternating between two spellings and never settling. The reach is real and its content is almost entirely oscillation, and the two facts scale against each other.</p>
+
+      <p class="field">The configuration described as deployed was never deployed</p>
+      <p>The 14 August pass labelled one column of its bias sweep <em>(deployed)</em> and the drafting document repeated it. Nothing set that value: the dictation path hardcodes the other one, both remaining paths default to it, and the live service reports it. The accuracy consequence sits inside the sweep's own declared noise, so no conclusion moves — but the word <em>deployed</em> was doing real work in a paper whose argument is that you should measure what runs, and it was wrong.</p>
+
+      <p class="field">A firing rate that no measurement ever produced</p>
+      <p>The drafting roster asserted that OM-004's deterministic text pass fires on 1.2% of utterances, in six places, and no derivation for that figure existed anywhere. Measured over the 1520 dictated utterances since the pass was deployed, it fires on <strong>five — 0.33%</strong>. The 1.2% appears to be a numerator and a denominator taken from different measurements: at the point where 405 utterances had accumulated, only three of the five edits had yet occurred. <strong>No point in time ever produced 1.2%.</strong></p>
+      <p>The lesson is the cheap one and it keeps having to be relearned: divide the two numbers before writing the third.</p>
+
+      <p class="field">A previous attempt was published and reverted</p>
+      <p>On 14 August an earlier form of this material was merged into <a href="/patterns">the catalogue</a> as a fifteenth One Agent pattern and reverted two minutes later; the live site never carried it for any meaningful interval. It placed an arrangement of six patterns as a single pattern, which is why it was reverted and remains a good reason. The material returned as OM-004, at the level it belongs to.</p>
+    </div>
+  </div>
+</section>
+
+<section id="sources-and-lineage">
+  <div class="row">
+    <div class="mark">19</div>
     <div class="body">
       <h2>Sources and lineage</h2>
 
