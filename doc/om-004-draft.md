@@ -40,6 +40,15 @@ appear in this document: **Mode Legibility → Mode Visibility**, **Fleet Standi
 Status Board**, **Scoped Commission → Authority at Dispatch**. Ids moved with the
 names, so a citation is now written against the current name and nothing else.
 
+**2026-08-15 (e) — the half is complete, from a local session.** The three
+entries that were blocked on `workshop-machines` are drafted (§9), and drafting
+them required three measurements the evidence pass had not gathered. All three
+are in §12 with their method. One of them **overturns a number this document
+asserted**: the house-style pass fires on 0.33% of utterances, not 1.2%, and the
+1.2% has no derivation anywhere in either repository. Two of them are
+unflattering to entries they support, which is the fourth and fifth time in this
+paper and is the added field doing its work rather than a run of bad luck.
+
 ---
 
 ## 1. The finding that sets the shape
@@ -290,9 +299,9 @@ Revised 2026-08-15, after the commissioned measurement returned (§8).
 | 2 | No Frozen Prefix | verified; governs the **live view only**, whose instance is proposed for deletion | §9 |
 | 3 | Show the Handover | structure verified; **perception now decides an architecture**, not a preference | §9 |
 | 4 | Churn Is Not Correction | verified twice, with a measured gradient — **the strongest in the half** | §9 |
-| 5 | Deterministic Last Mile | verified: fires on 1.2% of utterances | ⚠️ needs 08-15 pass |
-| 6 | One List, Two Uses | verified, with an asymmetry; **cost re-measured at α1.0** | ⚠️ needs 08-15 pass |
-| 7 | Draft and Record Apart | boundary established | ⚠️ needs 08-15 pass |
+| 5 | Deterministic Last Mile | measured: fires on **0.33%** of utterances, not the 1.2% asserted here before (§12) | §9 |
+| 6 | One List, Two Uses | verified, with the asymmetry; cost re-measured at α1.0 — **and its own instance fails it** | §9 |
+| 7 | Draft and Record Apart | boundary established, and found already crossed | §9 |
 
 ---
 
@@ -743,12 +752,10 @@ than a preference.
 
 ## 9. The Revised Output half
 
-Four of seven drafted. **Deterministic Last Mile, One List, Two Uses and Draft and
-Record Apart are not here yet**, and the reason is stated rather than worked
-around: the measurements each rests on — the 1.2% firing rate, the α1.0 cost
-re-measure, and where the boundary actually falls — are in
-`doc/om-004-evidence-2026-08-15.md` in `workshop-machines`, which the drafting
-session could not open. Every number below is one this repository holds.
+**All seven drafted.** The last three were written on 2026-08-15 (e) from
+`docs/om-004-evidence-2026-08-15.md` in `workshop-machines`, which a local
+session can read, plus three facts measured on the machine that day and recorded
+in §12 because the evidence pass did not gather them.
 
 ⚠️ **Which evidence pass a number comes from is load-bearing here, and the two
 disagree.** The 2026-08-14 pass concluded that a thirty-second-deep revision does
@@ -977,6 +984,210 @@ governed by → Honest Gauge
 
 ---
 
+### 5 · Deterministic Last Mile
+
+**Intent.** Put the last corrections in a table rather than in a model, because
+the last corrections are not about accuracy at all — they are about convention,
+and a convention has no uncertainty for a model to resolve.
+
+**Motivation.** After a biased recogniser has done its work, two kinds of error
+remain, and they are not the same kind of thing.
+
+The first is acoustic. `direnv`, `venv` and `pi-personae` were missed at every
+boost weight and on both a synthesised and a human voice — words the model does
+not resolve from the signal, where no amount of weighting invents audio that is
+not there. Nothing downstream can repair those, because the information never
+arrived.
+
+The second is orthographic, and it is not an error the model could have avoided.
+A speaker says *workshop machines*; the house writes `workshop-machines`. Both
+are correct English renderings of the same sound. The model has no way to prefer
+one, because the preference is not in the audio — it is a house decision, made
+once, that applies every time. That is the last mile, and it is deterministic by
+its nature rather than by an optimisation.
+
+So the pass that closes it should be a substitution table: 82 µs over a
+317-word input, identical every time, incapable of inventing anything, and
+printable in full.
+
+**Applicability.** Any pipeline where a probabilistic stage is followed by a
+house convention the stage cannot know — orthography, casing, project
+vocabulary, units, citation style.
+
+**Consequences.** *Gain:* the whole behaviour can be read as a list rather than
+inferred from outputs, which is why the table has a flag that prints it.
+*Gain:* no latency and no new failure mode; a table cannot hallucinate. *Gain:*
+adding a term is a data change, not a retraining. *Cost:* it is silent, and a
+rule firing on the wrong word produces a wrong edit that looks like a correct
+one. *Trap:* a case-only rule on an ordinary English word — *the sunshine
+outside* becoming *the Sunshine outside*. Half the project vocabulary here is
+ordinary English, so case-only rules are refused by derivation and hand-written
+one at a time instead.
+
+**Implementation.** Match whole words only. Only ever upgrade case, never
+downgrade. Never let the pass empty an utterance — typing nothing is
+indistinguishable from a dead microphone. Print every edit that fires, so the
+pass is reviewable from its output and not only from its source.
+
+**How you would know this is unnecessary.** If the convention were already in
+the recogniser's output — which is what would happen if the vocabulary were
+boosted *as written* rather than as spoken, or if the surface it types into
+applied the convention itself. Both are real alternatives and neither was tried.
+
+⚠️ **It fires on one utterance in three hundred, and that is the honest headline.**
+Measured over the 1520 dictated utterances since the pass was deployed: **5
+utterances carried an edit, 0.33%** — six edits in total, four of them a repo
+name, one a doubled function word, one a filler. An earlier draft of this roster
+asserted 1.2% and no derivation for it exists anywhere in either repository; §12
+records the measurement and the correction.
+
+This does not retire the pattern, and the reason matters more than the number. A
+rule that fires rarely is not thereby unnecessary — the four repo-name edits are
+in text that went into commit messages and issue titles, where the difference
+between `workshop machines` and `workshop-machines` is the difference between
+prose and a link. But it does mean the pattern's cost-benefit cannot be argued
+from frequency, and an entry that quoted a firing rate as though the rate were
+the case for it would have been arguing the wrong thing with a wrong number.
+
+**Relations.** elaborates → Draft and Record · requires → One List, Two Uses ·
+governed by → Honest Gauge
+
+---
+
+### 6 · One List, Two Uses
+
+**Intent.** Keep one vocabulary file and let both the thing that *hears* and the
+thing that *writes* read it, so a term learned once is learned in both places
+and cannot be half-learned.
+
+**Motivation.** A project's jargon has to reach two consumers that look
+unrelated. The recogniser needs it as bias terms, so `Govee` and `swapfile` are
+candidates it will consider. The house style needs it as substitutions, so
+`workshop machines` is written `workshop-machines`. Maintained separately, the
+two drift, and the drift is invisible because each is individually correct.
+
+The list earns its place at the deployed configuration, which is **α1.0 over 47
+terms** — not the α2.0 that two earlier documents called deployed. On the 347-word
+human read, biasing takes 30 errors to 23, about 23% relative, and term recall
+from 13 of 29 to 19. The spread between α0.5, α1.0 and α2.0 is 25/23/22 errors on
+one sample: one to three words, which is noise and not a ranking. What is not
+noise is the far end — **α4.0 scores 54 errors, worse than no biasing at all.**
+Over-boosting does not plateau and decay; it inverts.
+
+**The two uses fail asymmetrically, and that is the whole of the pattern's
+danger.** The house style can be hand-immunised against a stale list, because a
+substitution is a decision someone can write down. The recogniser cannot: a term
+is either in the file it reads or it is not, and there is no hand-written
+fallback for *hearing*. So a divergent copy degrades the system in exactly one
+direction and reports nothing — still spelling the word correctly, no longer able
+to hear it. The transcript looks identical on every utterance where it still
+hears.
+
+**Applicability.** Any system where the same domain vocabulary is needed by a
+recogniser, a generator and a formatter — speech, OCR, autocomplete, a linter and
+the model it corrects.
+
+**Consequences.** *Gain:* one place to add a term. *Gain:* the two consumers
+cannot disagree about what the vocabulary *is*, only about what to do with it.
+*Cost:* one file becomes load-bearing for two subsystems with different failure
+modes and different tolerances — the formatter wants the list complete, the
+recogniser wants it short, since boosting has a cliff. *Trap:* the file is a
+source, not a deployment. One source with two copies on disk is two lists.
+
+**Implementation.** Derive rather than duplicate: a term containing `.` or `-`
+has exactly one plausible spoken form, so the substitution can be computed from
+the entry instead of written beside it. Refuse to derive case-only rules. Make
+the effective table printable, so what actually fires can be compared against
+what the file says.
+
+**How you would know this is unnecessary.** If the two consumers wanted different
+vocabularies — the recogniser wants what is *said*, the house style wants what is
+*written*, and those coincide only while a project's jargon and its orthography
+are the same words. The moment the boost list needs entries that are never
+written, or the style needs rules for words never spoken, one list is a
+coincidence being maintained as a principle.
+
+⚠️ **The immunisation ate the pattern, and it is visible on the machine today.**
+Of the 18 rules the deployed binary reports, **exactly one is derived from the
+shared list.** The other seventeen are hand-written. The source says why, and
+was right when it was written: which terms are derivable depended on which
+checkout's bias file was present, and *a rule that appears and disappears with a
+file is worse than no rule.*
+
+That justification has since expired — both checkouts now carry the same 47
+terms — and what it left behind is a hand table that still rewrites
+`pi personae` into `pi-personae`, **a repository renamed on 2026-08-13**, which
+the shared list has correctly dropped. The defence against drift is now the only
+thing drifting.
+
+So the entry publishes with its own instance failing it, which is the third time
+in this paper. The claim survives the failure and is sharpened by it: *one source,
+two mechanisms, no drift possible* is a claim about the file, never about the
+filesystem — and a hand-written fallback added to protect one consumer from a
+stale list will outlive the staleness and become the stale thing.
+
+**Relations.** required by → Deterministic Last Mile · elaborates → Durable
+Memory · governed by → Honest Gauge
+
+---
+
+### 7 · Draft and Record Apart
+
+**Intent.** Give the draft and the record separate storage, and make the boundary
+explicit — because the moment they share a buffer, the cheap one becomes the
+authoritative one by accident rather than by decision.
+
+**Motivation.** Draft and Record says the record has exactly one author. This is
+the structural half of that, and it is a different claim: not *one pass writes
+the record*, but *the two passes do not read the same thing*.
+
+Here they do not. The scribe consumes a stream as it arrives; the corrector
+consumes a captured sample buffer with exactly one write site, inside the hold
+loop. **The boundary falls at the buffer, not at the model** — which is not where
+anyone looking at a two-model pipeline would expect to find it, and is why it
+can be crossed without touching either model.
+
+It was crossed. A 300 ms pad of trailing room tone was added because it recovered
+dropped final words 6 times out of 6, and it is fed to the scribe's stream and
+never to the corrector's buffer. So the release pass — the only thing that
+produces the text that gets typed — sees audio up to the last in-loop drain and
+nothing after it. The measurement that justified the pad was taken on the path
+whose output is discarded whenever the corrector succeeds.
+
+That single fact is the pattern's justification and its indictment at once. The
+separation is exactly what stopped a draft-side change leaking into the record.
+It is also exactly what let a fix land on the wrong side of the line and stay
+there, with a measurement attached, looking done.
+
+**Applicability.** Any two-tier pipeline where a fast stage and an authoritative
+stage consume the same upstream source — transcription, incremental compilation,
+preview renderers, any cache in front of a system of record.
+
+**Consequences.** *Gain:* no accidental promotion, ever, and the question *which
+pass produced this?* has a structural answer rather than a conventional one.
+*Gain:* you can reason about what each consumer actually saw, which is what makes
+the pad defect statable at all. *Cost:* anything that must reach both has to be
+written twice, and nothing checks that it was. *Trap:* an improvement applied to
+whichever buffer is easiest to reach from where the change is being made.
+
+**Implementation.** One write site per artifact, and keep it that way, because
+the count is the invariant and it is checkable in a line. When something must
+reach both, make the two writes visible at the same call site rather than in two
+files. And name the crossing you do allow: here the release pass falls back to
+the scribe's text when it fails, which is the one deliberate place the record is
+written by the draft — a decision that currently reads as a default.
+
+**How you would know this is unnecessary.** If the draft and the record consumed
+the same input by construction — one buffer with two readers, so there is nothing
+to keep in step. That is available here and was not chosen, and the reason it was
+not is worth being honest about: nobody decided. The two buffers grew from the
+two libraries' interfaces.
+
+**Relations.** elaborates → Draft and Record · required by → Show the Handover ·
+governed by → Honest Gauge
+
+---
+
 ## 10. Open questions, for the page
 
 **The room.** Two floor lamps behind the desk would make the *room* the surface,
@@ -1125,5 +1336,111 @@ the most fragile place a finding can live, so it is recorded here:
 > no longer able to hear it.
 
 So "one source, two mechanisms, no drift possible" is a claim about the file, not
-about the filesystem. That belongs in One List, Two Uses when the
-Revised Output half is drafted.
+about the filesystem. *Placed in One List, Two Uses on 2026-08-15 (e), where it
+turned out to have a live instance rather than only a history — see §9 entry 6
+and §12.3.*
+
+---
+
+## 12. Three measurements taken while drafting, 2026-08-15 (e)
+
+The last three entries needed facts the commissioned pass had not been asked
+for. They were taken on organon-one from a local session, and they are recorded
+here rather than only cited, because §5 of this document argues that a figure
+whose derivation cannot be inspected is testimony wearing the costume of
+measurement. Each is a count over a file that still exists, reproducible in one
+command.
+
+⚠️ **These belong in `workshop-machines` as well as here.** That repository holds
+the machine's evidence record and the committed instrument
+(`prefix_replay.py`); this one holds the paper. A session rooted there should
+fold §12.1 and §12.3 into its own evidence doc — the derivations below are
+complete enough to re-run without this document.
+
+### 12.1 The house style fires on 0.33% of utterances, not 1.2%
+
+**Source.** `%LOCALAPPDATA%\organon\voice-tray\voice-tray.log`, the tray's own
+log, 6750 lines spanning 2026-08-10 to 2026-08-15. Each completed dictation
+prints a `✓` line; each utterance the house style edited prints a following `✎`
+line naming every substitution.
+
+**Window.** The log covers builds before and after the pass shipped. The window
+starts at the first run that demonstrably had it — line 2709, the run whose
+seventeenth utterance produced the first `✎` — and continues to the end of the
+log.
+
+**Result.** 1520 utterances in the window. **5 carried an edit: 0.33%.** Six
+edits in total, since one utterance carried two:
+
+```
+✎ "workshop machines"→"workshop-machines"
+✎ "workshop agents"→"workshop-agents"  "workshop machines"→"workshop-machines"
+✎ "workshop machines"→"workshop-machines"
+✎ -"with"
+✎ -"uh"
+```
+
+Four repo-name substitutions, one doubled function word, one filler. They fall at
+utterances 3, 4, 116, 954 and 1486 of the window, so they are spread across it
+rather than clustered in one session.
+
+⚠️ **Where 1.2% probably came from, and why it could never have been right.**
+5/405 is 1.23%, and 405 is one of the utterance-corpus sizes this document cites
+in §5. But all five edits were not in evidence until utterance 1486; at
+utterance 405 only three had occurred, which is 0.74%. So the figure is not a
+stale measurement that has since moved — it is a numerator and a denominator from
+different measurements, and no point in time ever produced it. This is the
+handoff's *count anything before publishing it* trap, and it reached six places
+in a roster before anyone divided one number by the other.
+
+⚠️ **Two limits.** Earlier runs may also have had the pass and fired nothing; they
+cannot be identified from the log, and including them would only lower the rate
+further. And this is one speaker's real dictation, so a low rate is partly a fact
+about what he says — the same caveat the 08-14 pass attached to finding 0 fillers
+in 494 utterances. That finding is refined rather than overturned here: over
+1520, one filler arrived.
+
+### 12.2 The duration distribution, corroborated
+
+The same window gives 1520 speech durations, which is very nearly the n=1502
+corpus the 08-15 pass cites as testimony, one day later. It agrees:
+
+| | 08-15 pass (n=1502) | here (n=1520) |
+|---|---|---|
+| median | 5.6 s | 5.2 s |
+| reach 30 s | 0.6% | 0.72% (11 utterances) |
+
+Mean 6.6 s, p90 13.2 s, max 60.5 s. This matters because *0.6% reach thirty
+seconds* is load-bearing in No Frozen Prefix — it is the frequency bound that
+survived when the possibility claim was falsified — and it had been carried as
+testimony from a corpus with no audio. It is still a duration claim off a log,
+but it is now a duration claim two independent windows agree on.
+
+### 12.3 One of eighteen house-style rules comes from the shared list
+
+**Method.** `voice-tray.exe --postpass-table` on the deployed binary (built
+2026-08-15 16:49 from `main` at `ac0769a`, clean tree), against both copies of
+the bias file.
+
+**Result.** The binary reports *18 rules (47 bias terms in view)*. Of the 18, nine
+are hyphenated or dotted forms and nine are acronym casings. The bias file
+contains exactly six terms carrying `.` or `-` — `harnesses.json`,
+`fish-speech`, `workshop-agents`, `moonshine-voice`, `organon-one`, `voice-tray` —
+and five of those six are *also* listed by hand in `postpass.rs`'s `HOUSE` table,
+which holds seventeen rules and is deduped against the derived set. So **exactly
+one live rule, `harnesses.json`, exists because the shared list contains it.**
+
+**And the hand table has outlived its reason.** Its own comment gives one: which
+terms are derivable depended on which checkout's bias file was present, since the
+two carried different lists. Checked today, **both carry the same 47 terms** —
+Windows on `main`, WSL on Vera's branch, identical content, `workshop-agents`
+present and `pi-personae` absent. The divergence recorded on 2026-08-14 is
+closed. What remains is `("pi personae", "pi-personae")` in the hand table,
+rewriting speech into a repository renamed on 2026-08-13, which the shared list
+has correctly dropped.
+
+Not fixed from here — it is `workshop-machines` code and belongs to a session
+rooted there. Recorded because it is the pattern's own reference instance
+failing it, and because a hand-written defence against a stale file becoming the
+stale thing is a better argument for the pattern than a clean instance would
+have been.
