@@ -1,0 +1,13 @@
+{
+  "name": "organon-mind-verify",
+  "private": true,
+  "type": "module",
+  "description": "Anchor and link verification for organonmind.org. Not part of the site build; site/ is served as-is.",
+  "scripts": {
+    "verify": "node verify.mjs",
+    "verify:live": "node verify.mjs --live"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}
