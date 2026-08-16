@@ -1,5 +1,38 @@
 # Handoff — Organon Mind, finishing OM-004
 
+> ## ✅ SPENT — 2026-08-15, local session. Everything below was done.
+>
+> `origin/main` @ `1391123`. **OM-004 is published and live**, both halves, and
+> OM-005 is at Rev. 3 with §§14–18. The catalogue is 45 patterns across six sets.
+>
+> - **§6's curl sweep ran, and the answer was clean** — all seven pages 200, all
+>   byte-identical to `main`. Routing and DNS were never the problem.
+> - **§6's harness is rebuilt and tracked**, at `scripts/verify/`, because it had
+>   been lost from a scratchpad twice. 669 assertions, passing against
+>   `organonmind.org` as well as `site/`. It has a negative control.
+> - **§2.1's three entries** are drafted from the 08-15 pass, and §2.2 is shipped.
+> - **§0's four decisions and §3's three shapes were kept.** No disagreement.
+>
+> **Two things this card got wrong, both worth carrying forward.**
+>
+> 1. **The 1.2% firing rate in §2.1 was never a real number.** It appears to be a
+>    numerator and a denominator from different measurements; at the point where
+>    405 utterances had accumulated, only three of the five edits had occurred.
+>    The measured figure is **0.33%**, derived in `doc/om-004-draft.md` §12.
+>    This is §5's own *count anything before publishing it* trap, and the card
+>    repeated the figure rather than checking it.
+> 2. **§6's suggested port 8765 is the resident agent's voice channel** on
+>    organon-one. The collision does not present as a bind error — every request
+>    404s and the run reads as a site with no pages on it. The harness defaults
+>    to 8791.
+>
+> **Still open, and not this card's fault:** `doc/om-004-draft.md` §12.1 and §12.3
+> are measurements taken on organon-one that belong in `workshop-machines`'
+> evidence record too, and §12.3 describes a live defect in that repository's
+> code — a hand-written rule that rewrites speech into a repository renamed on
+> 2026-08-13. Both belong to a session rooted there.
+
+
 **Successor to `doc/handoff-om-004.md`, which is now largely spent.** Read that one
 only for §6 (conventions) and §7 (traps); its §0 decisions are made, its §2 state is
 stale, and its §4.1, §4.2 and §4.5 are done and deployed. Written 2026-08-15 from a
