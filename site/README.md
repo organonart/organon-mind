@@ -108,6 +108,30 @@ lineage as `organon.art`: one page, no external requests.
   and the notes saying so are the point rather than an embarrassment to tidy: it is
   the added field doing its work. Do not soften them, and do not remove one because
   the instance was later fixed — date it instead.
+- `poster.html` — the taxonomy poster at `/poster`. One A1 sheet carrying the
+  whole language: five sections as a column ordered by span, Ambient Signals as a
+  band beside it, and every relation between them drawn as an arc. **Generated**,
+  do not hand-edit. Run `node scripts/build_poster.mjs` from the repo root; the
+  source is `site/patterns.html` and nothing else. **Served and unlinked**, on
+  `/why`'s precedent: the index is the name plus the catalogue and the papers, and
+  a poster is neither. Linking it is a decision about the front page, not about
+  this file.
+
+  ⚠️ **It is a third view of the graph, and it holds no prose from any entry.**
+  Names, numbers and relations only. The captions on it describe the *drawing* —
+  why the band is beside the column, what a chevron means — and must not grow into
+  a summary of what the patterns say. That is the one-copy rule at the edge where
+  it is easiest to fray, because a poster looks like it wants an explanation.
+
+  ⚠️ **Every number on it is counted at build time, and one is asserted.** The
+  builder throws rather than draws if the sheet's claim that every crossing points
+  at an earlier paper stops being true. `node scripts/pattern_graph.mjs` prints the
+  same audit without writing anything.
+
+  ⚠️ **Six edge classes, not four**, and the reason is worth keeping: OM-004 added
+  the first relations that run *up* the spine — eleven of them, all Revised Output
+  citing One Agent — so "everything points down", true of the first four sections,
+  is not true of the language. See the poster's own readout.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
   `/why`. **Served and unlinked**, deliberately: it is reachable by direct URL and
   is not on the index. It was briefly linked on 15 Aug 2026 and unlinked the same
