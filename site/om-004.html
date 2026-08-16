@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OM-004 · Ambient Signals, and Revised Output — Organon Mind</title>
+<meta name="description" content="Fourteen patterns for a machine that runs alongside you: what it reports when there is no turn, and what it shows while a turn is still changing.">
+<link rel="icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Organon Mind">
+<meta property="og:title" content="Ambient Signals, and Revised Output">
+<meta property="og:description" content="Fourteen patterns for a machine that reports itself outside the exchange.">
+<meta property="og:url" content="https://organonmind.org/om-004">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --paper:#ffffff; --raise:#f7f8f9; --ink:#0f1114; --muted:#5d636c; --faint:#8b919b;
+  --rule:#e2e5e9; --rule-strong:#c9ced6; --link:#1440c4;
+  --sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --measure:34rem; --gutter:9.5rem;
+}
+/* Deliberately single-theme. A publication has a canonical appearance; it does
+   not follow the reader's operating system. Every colour is painted explicitly. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.65;margin:0;padding:0 1.5rem 8rem;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+.doc{max-width:calc(var(--gutter) + var(--measure));margin:0 auto}
+.row{display:grid;grid-template-columns:var(--gutter) minmax(0,1fr)}
+.row>.mark{font-family:var(--mono);font-size:.7rem;line-height:1.5;color:var(--faint);
+  letter-spacing:.04em;padding-top:.42rem;padding-right:1.5rem}
+.row>.body{min-width:0}
+@media (max-width:44rem){
+  .row{grid-template-columns:1fr}
+  .row>.mark{padding:0 0 .3rem;font-size:.66rem}
+  :root{--gutter:0rem}
+}
+
+.mast{padding:4.5rem 0 0}
+.org{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin:0}
+.org a{color:inherit;text-decoration:none}
+h1{font-weight:600;letter-spacing:-.022em;font-size:clamp(1.85rem,4.4vw,2.6rem);
+  line-height:1.14;margin:2.6rem 0 0;max-width:var(--measure);text-wrap:balance}
+.standfirst{font-size:1.1rem;color:var(--muted);margin:.85rem 0 0;max-width:var(--measure);text-wrap:balance}
+
+.meta{font-family:var(--mono);font-size:.735rem;line-height:1.85;
+  border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule);
+  margin:2.75rem 0 0;padding:.9rem 0;display:grid;grid-template-columns:max-content 1fr;gap:0 1.6rem}
+.meta dt{color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+.meta dd{margin:0}
+.meta a{color:var(--link)}
+.revision{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin:.85rem 0 0;
+  padding-left:.9rem;border-left:2px solid var(--rule-strong)}
+
+h2{font-weight:600;font-size:1.32rem;letter-spacing:-.012em;line-height:1.28;margin:0;text-wrap:balance}
+h3{font-weight:600;font-size:1.05rem;letter-spacing:-.006em;margin:0;text-wrap:balance}
+.part{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 .3rem}
+section{margin:3.6rem 0 0}
+p{margin:0 0 1.1rem;max-width:var(--measure)}
+p:last-child{margin-bottom:0}
+a{color:var(--link);text-underline-offset:2px;text-decoration-thickness:1px}
+a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+strong{font-weight:620}
+ul{margin:0 0 1.1rem;padding-left:1.15rem;max-width:var(--measure)}
+li{margin:.3rem 0}
+li::marker{color:var(--faint)}
+.lede{font-size:1.06rem}
+blockquote{margin:1.9rem 0;padding:0 0 0 1.15rem;border-left:2px solid var(--ink);
+  font-size:1.06rem;max-width:var(--measure)}
+blockquote p{margin:0}
+blockquote cite{display:block;font-style:normal;font-family:var(--mono);font-size:.72rem;
+  color:var(--muted);margin-top:.6rem}
+
+.field{font-family:var(--mono);font-size:.685rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin:1.75rem 0 .4rem}
+.field.first{margin-top:1.1rem}
+
+pre{font-family:var(--mono);font-size:.78rem;line-height:1.6;background:var(--raise);
+  border:1px solid var(--rule);border-radius:2px;padding:.85rem 1rem;margin:1.15rem 0;overflow-x:auto}
+code{font-family:var(--mono);font-size:.87em}
+p code,li code,td code{background:var(--raise);border:1px solid var(--rule);border-radius:2px;padding:.05em .3em}
+pre code{background:none;border:0;padding:0}
+
+.tablewrap{overflow-x:auto;margin:1.4rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.5rem .8rem .5rem 0;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--faint);font-weight:500;border-bottom:1px solid var(--rule-strong)}
+
+figure{margin:1.5rem 0 1.8rem}
+figure svg{width:100%;height:auto;color:var(--ink);display:block}
+figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(--measure)}
+
+.aside{font-size:.94rem;color:var(--muted);border-left:2px solid var(--rule-strong);
+  padding-left:.95rem;margin:1.6rem 0;max-width:var(--measure)}
+.aside p{margin:0 0 .6rem}
+.aside p:last-child{margin:0}
+
+.toc{font-size:.92rem;margin:1.2rem 0 0}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:.22rem 0}
+.toc .n{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-right:.5rem}
+.toc .g{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin:1rem 0 .35rem}
+
+/* Ids published against sections that have moved to OM-005. Every one is
+   kept and lands on the line naming where its section went — a published
+   fragment is owed forever, and moving text does not retire a citation. */
+.retired{list-style:none;margin:1.3rem 0 0;padding:0;max-width:var(--measure)}
+.retired li{border-top:1px solid var(--rule);margin:0}
+.retired li:last-child{border-bottom:1px solid var(--rule)}
+.retired li:target{background:var(--raise);box-shadow:-.7rem 0 0 var(--raise),.7rem 0 0 var(--raise)}
+.retired a{display:block;padding:.55rem 0;text-decoration:none;color:inherit}
+.retired .rn{display:block;font-weight:600;letter-spacing:-.006em}
+.retired .rd{display:block;color:var(--muted);font-size:.88rem;line-height:1.5}
+.retired a:hover .rn,.retired a:focus-visible .rn{text-decoration:underline;
+  text-decoration-color:var(--link);text-underline-offset:3px}
+.retired a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+
+.colophon{margin:5.5rem 0 0;padding-top:1.1rem;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:.72rem;line-height:1.8;color:var(--muted)}
+.colophon a{color:var(--link)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{padding:0;font-size:10.5pt}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker>
+</defs></svg>
+
+<div class="doc">
+
+<header class="mast">
+  <div class="row">
+    <div class="mark">OM-004</div>
+    <div class="body">
+      <p class="org"><a href="/">Organon Mind</a></p>
+      <h1>Ambient Signals, and Revised Output</h1>
+      <p class="standfirst">Fourteen patterns for a machine that runs alongside you: what it reports when there is no turn, and what it shows while a turn is still changing.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mark"></div>
+    <div class="body">
+      <dl class="meta">
+        <dt>Document</dt><dd>OM-004</dd>
+        <dt>Category</dt><dd>Pattern language</dd>
+        <dt>Published</dt><dd>15 August 2026</dd>
+        <dt>Author</dt><dd>James Andrew Walsh, Organon Mind</dd>
+        <dt>Follows</dt><dd><a href="/om-001">OM-001</a> · <a href="/om-002">OM-002</a> · <a href="/om-003">OM-003</a> · <a href="/patterns">the catalogue</a></dd>
+        <dt>Status</dt><dd>Current</dd>
+      </dl>
+      <p class="revision">Rev. 1 — 15 Aug 2026. First publication. The case for this paper — what it corrects in <a href="/om-001">OM-001</a>, the field it adds to the template and the failure mode that field has, the evidence position, and the claims this programme has had to withdraw — is <a href="/om-005">OM-005 · <em>On the First Four Papers</em></a> §§14–18. This document is the fourteen patterns, presented.</p>
+    </div>
+  </div>
+</header>
+
+<section id="the-claim">
+  <div class="row">
+    <div class="mark">1</div>
+    <div class="body">
+      <h2>Outside the exchange</h2>
+      <p class="lede">Everything published so far grows outward in span — one agent, many agents, arrangements, many teams; seconds to days. This paper goes the other direction, into two regimes a turn does not cover.</p>
+      <p><strong>Before you address the machine at all.</strong> Is anyone there, and what are they doing? A lamp answers this, and it answers it when there is no turn in progress and may never be one.</p>
+      <p><strong>While you are still forming the input.</strong> The machine is already responding, its output is provisional, and both are changing at once.</p>
+      <p>Both are the same discipline. <strong>A machine running continuously alongside a person has to report itself outside the exchange, honestly, on channels that cannot be scrolled back.</strong> The lamp is that sentence at one hue of bandwidth; a transcript revising itself under your eye is the same sentence at full text bandwidth.</p>
+      <p>The two halves are written to be separable. If either grows evidence of its own it becomes its own numbered paper, and the split is a dated revision here.</p>
+    </div>
+  </div>
+</section>
+
+<section id="the-axis">
+  <div class="row">
+    <div class="mark">2</div>
+    <div class="body">
+      <h2>The axis nobody had named</h2>
+      <p>OM-001, OM-002 and OM-003 are implicitly <strong>focal and single-channel</strong> — they assume a surface you are looking at. Nobody wrote that down, because there was no alternative to contrast it with. <a href="/om-001#ambient-activity-channel">Ambient Activity Channel</a> introduced the alternative in one entry. This is what it looks like as a set.</p>
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th></th><th>Focal surface</th><th>Peripheral surface</th></tr></thead>
+        <tbody>
+          <tr><td>Bandwidth</td><td>High</td><td>One hue, one rhythm, one brightness</td></tr>
+          <tr><td>Cost to consult</td><td>A focus shift</td><td>None — already in the eye</td></tr>
+          <tr><td>Persistence</td><td>Scrolls away</td><td>Always on</td></tr>
+          <tr><td>History</td><td>Scrollback</td><td>None. The light has no log</td></tr>
+          <tr><td>Audience</td><td>You</td><td>The room</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p>Every rule in the first half falls out of that table, which is the evidence that it is the right axis. <em>No history</em> is why re-assertion beats change detection. <em>One slot</em> is why precedence is the entire safety model. <em>The room</em> is why two more lamps would break darkness-as-alarm.</p>
+      <p>The second half sits on a different axis again — not where the output is, but <em>when</em>. Streaming ordinarily means output arriving incrementally. These seven are about output being <strong>rewritten after it has been shown</strong>, which is a harder thing to display honestly, and much harder to display honestly at speed.</p>
+      <p>Patterns whose forces are about <strong>attention</strong> rather than code structure are precisely what the Gang of Four template has no slot for, which is why both halves lean on the fields this programme has added rather than the ones it inherited.</p>
+      <div class="toc">
+        <p class="g">Ambient Signals · the peripheral channel</p>
+        <ol>
+          <li><span class="n">1</span>Standing Assertion</li>
+          <li><span class="n">2</span>Verified Presence</li>
+          <li><span class="n">3</span>Closed Vocabulary</li>
+          <li><span class="n">4</span>Deference at Rest</li>
+          <li><span class="n">5</span>One Ordering, One Place</li>
+          <li><span class="n">6</span>Darkness as Alarm</li>
+          <li><span class="n">7</span>Cap the Decoration</li>
+        </ol>
+        <p class="g">Revised Output · inside one exchange, before it settles</p>
+        <ol>
+          <li><span class="n">1</span>Draft and Record</li>
+          <li><span class="n">2</span>No Frozen Prefix</li>
+          <li><span class="n">3</span>Show the Handover</li>
+          <li><span class="n">4</span>Churn Is Not Correction</li>
+          <li><span class="n">5</span>Deterministic Last Mile</li>
+          <li><span class="n">6</span>One List, Two Uses</li>
+          <li><span class="n">7</span>Draft and Record Apart</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="on-the-entries">
+  <div class="row">
+    <div class="mark">3</div>
+    <div class="body">
+      <h2>On the entries that follow</h2>
+      <p>The template is OM-001's, carrying OM-003's <strong>Evidence</strong> field and one addition of this paper's own:</p>
+      <blockquote><p>How you would know this is unnecessary.</p></blockquote>
+      <p>Every entry states the condition under which it should be deleted. Not <em>when not to use it</em> — the condition that would make the pattern pointless, named precisely enough to be checked. The argument for the field, and the failure mode we walked into while using it, are <a href="/om-005#om-004-the-added-field">OM-005 §15</a>. One consequence belongs here, because it governs how the field should be read: <strong>a null result from a corpus incapable of exhibiting the condition is indistinguishable from a true negative</strong>, and it arrives wearing the same authority — a measurement, a method, a number. So an entry whose retirement condition has been checked says what it was checked against.</p>
+      <p><em>Sample interaction</em> and <em>Known uses</em> are omitted throughout, and the reason is the same for both. A sample interaction for a lamp is a colour, which Structure already shows. And the known use of every entry here is one workstation in one room — the evidence position, which is stated once in <a href="/om-005#om-004-evidence-position">OM-005 §16</a> rather than fourteen times in a field.</p>
+      <p class="aside"><strong>Five of the fourteen are published with their own reference instance failing them.</strong> One Ordering, One Place is contradicted by the implementation it was drawn from. No Frozen Prefix and Show the Handover govern a live view the evidence recommends deleting. One List, Two Uses has been almost entirely displaced by the hand-written defence it warns about. Draft and Record Apart found its boundary already crossed. That is the added field working rather than a run of bad luck — an entry that could not embarrass its own exemplar would not have earned the slot.</p>
+    </div>
+  </div>
+</section>
+
+<section id="standing-assertion">
+  <div class="row">
+    <div class="mark">4</div>
+    <div class="body">
+      <p class="part">Ambient Signals · Pattern 1</p>
+      <h2>Standing Assertion</h2>
+
+      <p class="field first">Intent</p>
+      <p>Re-send a resting state on a timer rather than on change, because an ambient channel has no history and no acknowledgement, and both of its failure modes are silent.</p>
+
+      <p class="field">Motivation</p>
+      <p>A live cue repaints every frame, so a lost packet self-corrects in 66 ms and nobody notices. A <em>resting</em> state is sent once. If that single datagram is lost, or arrives before the device is ready, or the consumer restarts afterwards, the state is wrong forever — and the producer believes it succeeded, because as far as it knows nothing failed.</p>
+      <p>Both failures happened, one layer apart, within a single session. A lamp restores its own default on power-cycle; the renderer's colour frame went out microseconds later in the same tick; the emit path sent only on change. The lamp sat white while every log line said violet. Diagnosing it required querying the device directly, which itself only works with the renderer stopped, because the renderer holds the fixed reply port. Fixing it exposed the identical bug one level up: the tray also announced presence only on change, so a renderer started <em>after</em> the tray never learned there was anyone to be present.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any state that is long-lived, ambient, and sent over a transport without acknowledgement, to a consumer that can restart independently of the producer.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 210" role="img" aria-label="Two timelines. In the upper one, a producer sends a resting state once; the datagram is lost and the device stays wrong indefinitely while the producer reports success. In the lower one, the producer re-asserts on a period, so a lost datagram is corrected at the next tick.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">ON CHANGE</text>
+          <line x1="8" y1="56" x2="600" y2="56" stroke="currentColor" opacity=".35"/>
+          <line x1="120" y1="42" x2="120" y2="70" stroke="currentColor" stroke-width="1.6"/>
+          <text x="120" y="36" text-anchor="middle" font-size="10" fill="currentColor">send</text>
+          <text x="150" y="50" font-size="10.5" fill="currentColor" opacity=".7">✗ lost</text>
+          <text x="330" y="76" font-size="10.5" fill="currentColor" opacity=".7">wrong from here on, and nothing says so</text>
+          <path d="M180,66 L600,66" fill="none" stroke="currentColor" stroke-dasharray="3 4" opacity=".45"/>
+          <rect x="612" y="42" width="80" height="28" fill="none" stroke="currentColor"/>
+          <text x="652" y="61" text-anchor="middle" font-size="11" fill="currentColor">device</text>
+
+          <text x="8" y="130" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">RE-ASSERTED</text>
+          <line x1="8" y1="170" x2="600" y2="170" stroke="currentColor" opacity=".35"/>
+          <line x1="120" y1="156" x2="120" y2="184" stroke="currentColor" stroke-width="1.6"/>
+          <text x="150" y="164" font-size="10.5" fill="currentColor" opacity=".7">✗ lost</text>
+          <line x1="240" y1="156" x2="240" y2="184" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="360" y1="156" x2="360" y2="184" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="480" y1="156" x2="480" y2="184" stroke="currentColor" stroke-width="1.6"/>
+          <text x="300" y="150" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">every period, changed or not</text>
+          <path d="M240,176 L600,176" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="330" y="196" font-size="10.5" fill="currentColor" opacity=".7">correct one period later</text>
+          <rect x="612" y="156" width="80" height="28" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="652" y="175" text-anchor="middle" font-size="11" fill="currentColor">device</text>
+        </svg>
+        <figcaption>The period is the whole mechanism. Nothing here is a retry, because from the producer's side nothing failed — there was no acknowledgement to be missing.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><strong>The producer</strong>, which holds the state and can restart. <strong>The transport</strong>, unacknowledged and unordered. <strong>The consumer</strong>, which renders and can restart independently. <strong>The device</strong>, which has its own power state and its own defaults and can revert underneath both of them.</p>
+
+      <p class="field">Collaborations</p>
+      <p>The producer re-asserts on a period by clearing its own last-sent cache rather than by tracking what the consumer knows — the consumer's knowledge is exactly what is not observable. Live cues are exempt: they repaint anyway, and re-asserting them would double the traffic to fix a problem they do not have.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> both silent failures become self-healing within one period, including the one nobody anticipated — a consumer that starts later than the producer. <em>Cost:</em> traffic proportional to time rather than to events, and a period that is a guess. <em>Trap:</em> it reads as belt-and-braces until you have watched a resting state be wrong for an hour while the producer reported success, and then it reads as the minimum.</p>
+
+      <p class="field">Implementation</p>
+      <p>Here the renderer re-asserts colour and brightness every 3 s and the tray heartbeats presence every 5 s. Two producers, two periods, because they are separate processes with separate restart behaviour and a shared constant would only imply a coupling that does not exist.</p>
+
+      <p class="field">Failure signature</p>
+      <p>A resting state that is confidently wrong, with a clean log. The person has no reason to doubt what they see, and the only way to find it is to ask the device — which, on this hardware, first requires stopping the thing that is lying about it.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured</em> for the mechanism: the re-assert period and the heartbeat are read from source and their effect confirmed live — a renderer started after the tray learns the resting state within seconds with no mode change. <em>Reported</em> for both originating incidents, which are recorded in the machine's change log rather than re-derived.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the transport were reliable and ordered <strong>and</strong> a consumer could ask for current state on connect. Either alone is insufficient, and that is the useful part: a renderer that issued <em>what is the present state?</em> at startup would not need the heartbeat, and a protocol with acknowledgements would not need the re-assert timer. The rule is a consequence of fire-and-forget datagrams to a device that can power-cycle underneath you, plus consumers that restart independently. Remove any one of those three and check again.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Corrects <strong>Ambient Activity Channel</strong> (<a href="/om-001#ambient-activity-channel">OM-001, 9</a>), whose implementation note says a time-to-live is sufficient — it is sufficient for a live cue and does nothing for a resting state. Governed by <strong>Honest Gauge</strong> (<a href="/om-001#honest-gauge">OM-001, 12</a>). Enables <strong>Verified Presence</strong> (2), which has nothing to assert with until a resting state can be trusted to arrive.</p>
+    </div>
+  </div>
+</section>
+
+<section id="verified-presence">
+  <div class="row">
+    <div class="mark">5</div>
+    <div class="body">
+      <p class="part">Ambient Signals · Pattern 2</p>
+      <h2>Verified Presence</h2>
+
+      <p class="field first">Intent</p>
+      <p>An indicator asserts only what it has actually checked — because adding a confident signal makes you responsible for everything it appears to claim, including things nobody was measuring before you added it.</p>
+
+      <p class="field">Motivation</p>
+      <p>The resting glow originally meant <em>Agent mode is selected</em>. It read as <em>she can hear you</em>. Those two diverge the moment the channel dies — service restarted, port lost, session gone — and a dead agent looked identical to a live one until you had spoken an entire sentence into nothing.</p>
+      <p>While the surface was silent about reachability, this was a <strong>gap</strong>. The moment the lamp began asserting a confident resting glow, the same gap became a <strong>lie</strong>. The indicator did not create the blindness. It made it load-bearing, and that is the general lesson: <strong>a new signal inherits responsibility for everything it appears to assert</strong>, including conditions that were previously nobody's job because nothing depended on them.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever a signal is added to a surface a person will trust without reading — which is every peripheral channel, by definition, since not being read is what peripheral means.</p>
+
+      <p class="field">Structure</p>
+      <p>Three things that are easy to conflate, and the pattern is the insistence that they are three: <strong>what the system intends</strong> (a mode, a setting, a configuration), <strong>what the system has verified</strong> (a probe that completed), and <strong>what the indicator says</strong>. The indicator is wired to the second, never the first. The probe runs on its own schedule and its own thread, and its result — not the intention behind it — is what reaches the channel.</p>
+
+      <p class="field">Participants</p>
+      <p><strong>The indicator</strong>, which must not assert ahead of evidence. <strong>The prober</strong>, on a thread of its own. <strong>The subject</strong>, which may be unreachable in ways that hang rather than refuse. <strong>The principal</strong>, who reads the indicator without deciding to.</p>
+
+      <p class="field">Collaborations</p>
+      <p>The probe result is published through <strong>Standing Assertion</strong> rather than emitted once on change, so a consumer that restarts learns the current answer rather than the last transition. A flip in reachability re-announces immediately rather than waiting for the next heartbeat, because the whole value is in the flip.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> the question you have <em>before</em> pressing a key gets an answer, from across the room. <em>Cost:</em> a probe, a cadence, and a new set of failure modes belonging to the probe itself. <em>Trap:</em> the probe must not run on the thread that draws the interface. The health check has a 2 s timeout and the surface's loop is the message pump; probing inline freezes the icon and the overlay for two seconds every time the channel accepts a connection and then hangs — which is the exact condition being probed for.</p>
+
+      <p class="field">Implementation</p>
+      <p>Probe every 10 s, on a dedicated thread, <strong>unconditionally</strong>. That last word is load-bearing and was nearly lost: the probe originally ran only while a particular mode was selected, and when modes were deleted it would never have run again — leaving the lamp asserting something nothing was checking. A conditional probe behind a condition that later disappears is worse than no probe, because the indicator does not go with it.</p>
+
+      <p class="field">Failure signature</p>
+      <p>The person speaks a complete utterance into a channel that is not there, and learns only when they stop. The cost of the discovery is one whole interaction, every time, and it is paid before any feedback exists — which is why an ambient answer is worth a thread of its own.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured</em>, both directions: pointed at a dead endpoint the surface reports nobody listening; pointed at the live one it reports the agent listening, with the health endpoint confirming the channel's own configuration. The 2 s timeout and the 10 s cadence are read from source.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If failure were immediate and visible at the moment of acting. This indicator exists because push-to-talk gives no feedback until after you have spoken. On a surface where the attempt itself reports failure synchronously — a button that greys out, a send that errors — an ambient reachability signal is redundant, and adding one would only create a second thing that can be wrong.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Obeys <strong>Honest Gauge</strong> (<a href="/om-001#honest-gauge">OM-001, 12</a>), of which this is the peripheral case and the harder one — a gauge that lies is worse when it is trusted without being read. Specialises <strong>Ambient Activity Channel</strong> (<a href="/om-001#ambient-activity-channel">OM-001, 9</a>). Needs <strong>Standing Assertion</strong> (1). Ranked by <strong>One Ordering, One Place</strong> (5).</p>
+    </div>
+  </div>
+</section>
+
+<section id="closed-vocabulary">
+  <div class="row">
+    <div class="mark">6</div>
+    <div class="body">
+      <p class="part">Ambient Signals · Pattern 3</p>
+      <h2>Closed Vocabulary</h2>
+
+      <p class="field first">Intent</p>
+      <p>Let the agent name a state from a fixed list and let the renderer own what that looks like, so unsafe output is not <em>rejected</em> but <strong>inexpressible</strong>.</p>
+
+      <p class="field">Motivation</p>
+      <p>An agent that can ask a light for a colour, a brightness and a waveform can ask it to strobe. The obvious defence is a validator — and a validator is a check somebody has to remember to write, can be bypassed by a second code path, and drifts the moment it is duplicated.</p>
+      <p>A vocabulary with no field for a waveform cannot carry one. So <em>never allow agent-generated strobing</em> stops being a rule anyone enforces and becomes a fact about what is sayable. The agent asks for <code>focus</code> or <code>evening</code>; pigment, ramp and dynamics never leave the renderer.</p>
+      <p>This is Ambient Activity Channel's <em>the channel reports state, never instructions</em> promoted from a design note to the thing that makes the layer safe to leave unsupervised.</p>
+
+      <p class="field">Applicability</p>
+      <p>Whenever an unsupervised agent drives an actuator in a shared physical space, and the harmful states are a describable class.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 160" role="img" aria-label="An agent emits a name on the wire. A relay passes it through without validating. The renderer looks the name up in a static table and is the only party that produces colour, brightness and dynamics for the device. An unknown name is refused and logged rather than approximated.">
+          <rect x="8" y="52" width="104" height="40" fill="none" stroke="currentColor"/>
+          <text x="60" y="70" text-anchor="middle" font-size="11.5" fill="currentColor">Agent</text>
+          <text x="60" y="84" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">unsupervised</text>
+          <line x1="112" y1="72" x2="188" y2="72" stroke="currentColor" marker-end="url(#ah)"/>
+          <text x="150" y="64" text-anchor="middle" font-size="10" font-family="ui-monospace,monospace" fill="currentColor">"focus"</text>
+          <rect x="194" y="52" width="104" height="40" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="246" y="70" text-anchor="middle" font-size="11.5" fill="currentColor">Relay</text>
+          <text x="246" y="84" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">does not validate</text>
+          <line x1="298" y1="72" x2="374" y2="72" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="380" y="42" width="150" height="60" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="455" y="63" text-anchor="middle" font-size="11.5" fill="currentColor">Renderer</text>
+          <text x="455" y="78" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">the only choke point</text>
+          <text x="455" y="92" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">name → pigment, ramp</text>
+          <line x1="530" y1="72" x2="606" y2="72" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="612" y="52" width="80" height="40" fill="none" stroke="currentColor"/>
+          <text x="652" y="76" text-anchor="middle" font-size="11" fill="currentColor">device</text>
+          <path d="M455,102 L455,132" fill="none" stroke="currentColor" stroke-dasharray="3 3" marker-end="url(#ah)"/>
+          <text x="455" y="148" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".7">unknown name → refused, known list logged</text>
+          <text x="150" y="136" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".7">no colour on the wire, ever</text>
+        </svg>
+        <figcaption>The relay's dashed border is the point of the pattern rather than a detail of it: a second copy of the policy would drift from the first, so the party in the middle is deliberately given none.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><strong>The agent</strong>, which may name but never specify. <strong>The relay</strong>, which forwards and does not judge. <strong>The renderer</strong>, sole owner of presentation and the single choke point at the hardware. <strong>The static table</strong>, which is the vocabulary and is the only place a new state can be added.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Bounded by <strong>One Ordering, One Place</strong>: a named state still has to lose to an instrument, and the vocabulary says nothing about rank. Priced by <strong>Cap the Decoration</strong>, which is what this capability costs.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> the safety property is a property of the protocol, so it holds for every producer including ones written later by someone who never read this. <em>Gain:</em> the palette can be retuned without touching the agent. <em>Cost:</em> the agent cannot express something the vocabulary lacks, and adding a word is a deliberate act with a review attached. <em>Trap:</em> the relay must <strong>not</strong> re-validate — a second copy of the policy is a second thing to keep in step, and it will not be kept in step.</p>
+
+      <p class="field">Implementation</p>
+      <p>Lookup returns an optional over a static table; an unknown name is refused and the known list logged, never approximated to the nearest match. Treat the obvious near-misses as clears — <code>off</code>, <code>none</code>, <code>clear</code>, <code>normal</code>, <code>default</code> — because the agent side maps a model's word onto the wire, and a missed mapping would see a literal <code>off</code> refused as unknown while both halves believed they had agreed.</p>
+
+      <p class="field">Failure signature</p>
+      <p>Nothing at all. The relay here shipped matching the wrong key — <code>type</code> where the contract, written in the same session, specified <code>t</code>. The line arrived, matched nothing, fell into the catch-all and did nothing: no error, no log, no lamp. It was found by review rather than by test, and the reason there was no test is worth carrying: the renderer-facing wire is pinned byte-for-byte, but the agent-facing wire is a different boundary and had none. <strong>A pass-through event is precisely the kind that cannot report its own absence.</strong></p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured</em> for the mechanism — the lookup, the refusal path and the clear-synonyms are read from source and exercised. <em>Verified by review</em> for the incident, which is a weaker provenance than a test and is named as such: the defect was real, and the thing that caught it was a person reading two files side by side.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the actuator were incapable of harm — a display that physically cannot strobe — or if agent output were reviewed by a person before reaching the hardware. The rule exists because the actuator is in the room, the agent is unsupervised, and the failure mode is not recoverable by noticing it afterwards.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Realises <strong>Ambient Activity Channel</strong> (<a href="/om-001#ambient-activity-channel">OM-001, 9</a>). Bounded by <strong>One Ordering, One Place</strong> (5). Priced by <strong>Cap the Decoration</strong> (7). Shares its logic with <strong>Constrained Choice</strong> (<a href="/om-001#constrained-choice">OM-001, 6</a>), one level down: there the closed set protects the person from an unbounded prompt, here it protects the room from an unbounded actuator.</p>
+    </div>
+  </div>
+</section>
+
+<section id="deference-at-rest">
+  <div class="row">
+    <div class="mark">7</div>
+    <div class="body">
+      <p class="part">Ambient Signals · Pattern 4</p>
+      <h2>Deference at Rest</h2>
+
+      <p class="field first">Intent</p>
+      <p>A person's hand on the device always wins — implemented only where <em>wins</em> is decidable, which is when nothing is moving.</p>
+
+      <p class="field">Motivation</p>
+      <p>The lamp has other controllers: a vendor app, a schedule, a switch. One was observed changing state on its own mid-session, which is also why capture-and-restore was rejected — it would have fought whatever else was driving it, and a renderer restoring what it captured is indistinguishable from a renderer with a bug.</p>
+      <p>So the renderer watches for its commanded state and the device's actual state disagreeing, and treats the disagreement as a person. But it can only do that at rest. A live cue repaints every frame; comparing observed state against a moving target registers a mismatch almost immediately, and agent control would suspend itself permanently within seconds of the first conversation. <strong>The at-rest restriction is not a shortcut — it is what makes the feature possible at all.</strong></p>
+
+      <p class="field">Applicability</p>
+      <p>Any actuator with more than one controller, where one of them is a person and cannot be asked what they meant.</p>
+
+      <p class="field">Structure</p>
+      <p>A poll compares the device's reported state against the renderer's last commanded state, but only through an accessor that returns nothing unless the renderer is idle. That accessor is the pattern: the comparison is not <em>disabled</em> during activity so much as <em>undefined</em>, because during activity there is no single commanded state to compare against. A mismatch drops the current decorative state and refuses new ones for a cooldown.</p>
+
+      <p class="field">Participants</p>
+      <p><strong>The renderer</strong>, which yields. <strong>The device</strong>, which reports its own state and is the only witness. <strong>Other controllers</strong> — a vendor app, a schedule, a switch — which are not observable and do not announce themselves. <strong>The person</strong>, who is inferred rather than detected.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Bounds <strong>Closed Vocabulary</strong>: a named state can be dropped by a hand, so the vocabulary's guarantee is about what may be <em>asked for</em> rather than what will be shown. Deliberately does <strong>not</strong> bound <strong>Verified Presence</strong> or any live cue, for the reason under Consequences.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> the agent yields without needing to be told, and without the person learning a gesture. <em>Cost:</em> a poll, and a cooldown that is a guess. <em>Trap:</em> scope. The suspension covers decoration only. Dimming a lamp by hand is a preference about the room; it is not a wish to stop being told the agent is unreachable. <strong>A hand silences taste and leaves the instrument alone</strong> — the same cut <strong>Cap the Decoration</strong> makes along a different axis, which is the best available evidence that the cut is in the right place.</p>
+
+      <p class="field">Implementation</p>
+      <p>Poll device status every 20 s against the last commanded state; a mismatch drops the current scene and refuses new ones for 30 minutes. Gate the comparison on an accessor that yields nothing unless the renderer is at rest, and put the gate in the accessor rather than at each call site, so a future caller inherits it without knowing it exists.</p>
+
+      <p class="field">Failure signature</p>
+      <p>Two outcomes, and they look nothing alike. Without the pattern: a person turns the lamp down and the agent turns it back up, which reads as the machine arguing. With the pattern but without the at-rest gate: agent control switches itself off permanently a few seconds into the first conversation, and the layer appears to have died of its own accord.</p>
+
+      <p class="field">Evidence</p>
+      <p>⚠️ <strong>This is the weakest-evidenced entry in the paper, and it is published saying so.</strong> The mechanism is <em>measured</em> in the sense that it is read from source and unit-tested, and the constants are real. It has <strong>never been confirmed against a real hand on the device.</strong> Everything above is what the code does, not what has been observed to happen — and the specific untested claim is the one that matters: that a person's intervention is reliably distinguishable from the device's own drift.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the renderer were the only controller — no vendor app, no schedules, no physical switch. Worth checking rather than assuming, since the second controller is usually the one nobody remembers installing.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Bounds <strong>Closed Vocabulary</strong> (3). Shares its cut with <strong>Cap the Decoration</strong> (7). Ranked by <strong>One Ordering, One Place</strong> (5). Yields to the principal in the sense <strong>Approval Gate</strong> (<a href="/om-001#approval-gate">OM-001, 10</a>) formalises, with the difference that there is no gate to pass through — the person acts on the world and the machine notices.</p>
+    </div>
+  </div>
+</section>
+
+<section id="one-ordering-one-place">
+  <div class="row">
+    <div class="mark">8</div>
+    <div class="body">
+      <p class="part">Ambient Signals · Pattern 5</p>
+      <h2>One Ordering, One Place</h2>
+
+      <p class="field first">Intent</p>
+      <p>A one-slot channel can show one thing, so the order of precedence <em>is</em> the design — and it has to live in one place a person can read in five seconds, or it is not a safety property at all.</p>
+
+      <p class="field">Motivation</p>
+      <p>Ambient Activity Channel says the renderer owns <em>a priority stack</em>, singular. What was built has two, in two structures of different shape: an if/else chain over time-to-lived live cues, and a separate sequence of early returns for the resting look, reached only when no live cue is active. Neither can see the other. No test asserts the composite.</p>
+      <p>And the written composite is wrong at its first step. The documentation recorded <code>presence-off &gt; live cue</code>; the code executes <code>live cue &gt; presence-off</code>, because the resting chain is never reached while a cue is live.</p>
+      <p>The code is probably right — if a cue is arriving then something is demonstrably happening, so <em>nobody is listening</em> is stale information. That is not the point. The point is that <strong>two people could each change one structure, each preserve their own invariant, and break the joint one, and nothing would say so.</strong></p>
+
+      <p class="field">Applicability</p>
+      <p>Any channel narrow enough that states compete for the only slot — which is every peripheral channel, since having one slot is close to the definition.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="Two separate orderings drawn side by side. On the left, a chain of live cues from Confirm down to Idle. On the right, a resting chain from presence-off through scene to ambient. A dashed box between them, labelled the composite, is marked as existing nowhere and asserted by no test.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">ORDERING A · LIVE CUES</text>
+          <text x="430" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">ORDERING B · AT REST</text>
+          <rect x="8" y="30" width="230" height="176" fill="none" stroke="currentColor" opacity=".45"/>
+          <text x="24" y="52" font-size="11" fill="currentColor">Confirm</text>
+          <text x="24" y="72" font-size="11" fill="currentColor">Error</text>
+          <text x="24" y="92" font-size="11" fill="currentColor">Listening</text>
+          <text x="24" y="112" font-size="11" fill="currentColor">Speaking</text>
+          <text x="24" y="132" font-size="11" fill="currentColor">Synthesising</text>
+          <text x="24" y="152" font-size="11" fill="currentColor">Tool</text>
+          <text x="24" y="172" font-size="11" fill="currentColor">Thinking</text>
+          <text x="24" y="192" font-size="11" fill="currentColor" opacity=".6">Idle</text>
+          <path d="M200,44 L200,188" fill="none" stroke="currentColor" opacity=".5" marker-end="url(#ah)"/>
+          <text x="212" y="120" font-size="10" fill="currentColor" opacity=".55" transform="rotate(90 212 120)">if / else</text>
+          <rect x="430" y="30" width="230" height="176" fill="none" stroke="currentColor" opacity=".45"/>
+          <text x="446" y="62" font-size="11" fill="currentColor">presence-off (dark)</text>
+          <text x="446" y="92" font-size="11" fill="currentColor">scene</text>
+          <text x="446" y="122" font-size="11" fill="currentColor">presence-on</text>
+          <text x="446" y="152" font-size="11" fill="currentColor" opacity=".6">ambient</text>
+          <path d="M634,52 L634,164" fill="none" stroke="currentColor" opacity=".5" marker-end="url(#ah)"/>
+          <text x="646" y="108" font-size="10" fill="currentColor" opacity=".55" transform="rotate(90 646 108)">early returns</text>
+          <path d="M238,118 L424,118" fill="none" stroke="currentColor" stroke-dasharray="4 4" opacity=".5"/>
+          <rect x="266" y="98" width="130" height="40" fill="var(--paper)" stroke="currentColor" stroke-dasharray="4 4"/>
+          <text x="331" y="115" text-anchor="middle" font-size="10.5" fill="currentColor">the composite</text>
+          <text x="331" y="129" text-anchor="middle" font-size="10" fill="currentColor" opacity=".65">exists nowhere</text>
+        </svg>
+        <figcaption>Ordering B executes only when A resolves to Idle, so the real relation at the seam is <code>live cue &gt; presence-off</code> — the reverse of what the documentation said for a fortnight. The dashed box is the pattern: the thing that needs to be true is the one thing not written down.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><strong>The states</strong>, which compete. <strong>The ordering</strong>, which should be one artifact and here is two. <strong>The test</strong>, which should assert the composite and here asserts each half. <strong>The document</strong>, which described a composite nobody could check against the code.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Ranks everything on the channel: <strong>Verified Presence</strong>, <strong>Closed Vocabulary</strong>'s named states, <strong>Darkness as Alarm</strong> and the live cues alike. <strong>Darkness as Alarm</strong> depends on this ordering specifically — it is only an alarm if nothing decorative can outrank it.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> an alarm cannot queue behind a flourish. <em>Gain:</em> taste cannot outrank an instrument, which is precisely what makes a decorative layer safe to add at all. <em>Cost:</em> every new state must be placed, and placing it is a safety decision rather than a formatting one. <em>Trap:</em> the ranking split across two structures — which is the state this instance is actually in.</p>
+
+      <p class="field">Implementation</p>
+      <p>One ordering, one expression, and one test that asserts the composite order end to end rather than each half separately. The test is the part that is easy to skip and is the whole pattern: two correct halves with no joint assertion is exactly the configuration that fails silently.</p>
+
+      <p class="field">Failure signature</p>
+      <p>Nothing visible for a long time, then a state that should have been unmissable does not appear, and the reason is in neither structure. Both halves review cleanly. The person's experience is an instrument that was reliable until the day it was not, with no change to the code that owns it.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured.</em> Both orderings were read from source, the discrepancy at the seam confirmed against the documented composite, and the absence of a joint test confirmed. The documentation has since been corrected in place; the two structures have not been merged, which is why this entry appears as it does.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the channel could carry more than one state at once without ambiguity — two devices, or a surface with room for a second mark. That is exactly what the multi-lamp question opens, and it is <em>not</em> obviously an improvement: see <a href="#open-questions">§18</a>, where the first thing a second lamp breaks is this pattern's guarantee.</p>
+
+      <p class="aside">⚠️ <strong>This entry's own instance fails it</strong>, and it is published that way deliberately. The split was found by looking rather than in review, and the documented composite had been wrong at its first step for a fortnight while every party believed the ranking was the safety model. A pattern demonstrated by its reference implementation falling short of it is worth more than one demonstrated by a tidy listing.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Corrects <strong>Ambient Activity Channel</strong> (<a href="/om-001#ambient-activity-channel">OM-001, 9</a>), whose <em>a priority stack</em> is singular in the prose and plural in the practice. Bounds <strong>Closed Vocabulary</strong> (3). Ranks <strong>Verified Presence</strong> (2) and <strong>Darkness as Alarm</strong> (6).</p>
+    </div>
+  </div>
+</section>
+
+<section id="darkness-as-alarm">
+  <div class="row">
+    <div class="mark">9</div>
+    <div class="body">
+      <p class="part">Ambient Signals · Pattern 6</p>
+      <h2>Darkness as Alarm</h2>
+
+      <p class="field first">Intent</p>
+      <p>Keep the resting state <em>lit</em>, so that the channel's most perceptible transition — to zero — is reserved for the one condition worth interrupting for.</p>
+
+      <p class="field">Motivation</p>
+      <p>Peripheral vision is rod-dominated: acutely sensitive to luminance change, poor at hue. A violet-versus-amber distinction beside the monitor has to be <em>looked at</em>, which is the one thing a peripheral channel is supposed not to require. Brightness is also the only <strong>ordered</strong> dimension the channel has — more is more, with no legend to learn. So the largest signal available is going dark, and there is exactly one of it to spend.</p>
+      <p>What made it spendable was <strong>deleting the mode</strong>. While the resting glow meant <em>Agent mode is selected</em>, dark meant <em>dictation</em> far more often than it meant <em>broken</em>: the commonest state in the day occupied the loudest signal on the channel and drowned the only one worth having. Once the chord carried the intent — one chord dictates, another talks to the agent — there was no mode to be in, presence became <em>reachable and not paused</em>, and the lamp is normally on. Darkness became rare, and rare is the whole mechanism.</p>
+      <p>The question the glow answers moved with it, from <em>is she listening?</em> to <strong>could I talk to her right now?</strong> — which is the question you have <em>before</em> pressing a key, and therefore the one an always-on surface should be answering.</p>
+
+      <p class="field">Applicability</p>
+      <p>A peripheral channel with one ordered dimension, in a space that is normally lit, where exactly one condition warrants interruption.</p>
+
+      <p class="field">Structure</p>
+      <p>Presence is <strong>three-valued, not boolean</strong>, and the third value is what makes the pattern work. <em>No producer has ever reported</em> — an older client, a scripted replay — falls back to the configured ambient behaviour exactly as before. <em>Reported and off</em> goes dark. <em>Reported and on</em> is the resting glow. So darkness is only ever <strong>asserted</strong>, never defaulted into, and silence is a distinct state from absence.</p>
+
+      <p class="field">Participants</p>
+      <p><strong>The resting glow</strong>, which must be quiet enough to live beside all day. <strong>Darkness</strong>, the single spendable signal. <strong>Silence</strong> — no producer — which must not resolve to darkness. <strong>The room</strong>, whose ambient light level the signal is measured against.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Relies on <strong>Verified Presence</strong>: darkness means <em>unreachable</em> only because reachability is actually checked, and without that probe this pattern asserts something nobody measured. Ranked by <strong>One Ordering, One Place</strong>, since an alarm that can be outranked is not one. Protected by <strong>Cap the Decoration</strong>, which is why a scene cannot paint over an unreachable agent and leave the room looking healthy.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> the alarm needs no legend, no colour memory and no focus; it works from across the room and out of the corner of the eye. <em>Gain:</em> it costs nothing extra — no second device, no second mark, no screen. <em>Cost:</em> the resting state must be on, continuously, which makes the resting look a real constraint rather than a flourish; here a dim violet-white slow breath at the lowest brightness the device offers. <em>Cost:</em> you get <strong>one</strong> alarm, and a second condition deserving interruption has nowhere to go. <em>Trap:</em> the room must be normally lit — the signal is a luminance <em>change</em>, so in a dark room it inverts and there is nothing to spend. <em>Trap:</em> silence must not be darkness.</p>
+
+      <p class="field">Implementation</p>
+      <p>Make the third value explicit in the protocol rather than inferring it from a timeout. That distinction is what lets darkness carry meaning while staying backward compatible, and it has a safety consequence beyond compatibility: had silence resolved to dark, the alarm would fire on a missing producer rather than on the condition it names, and the first thing anyone would learn is to ignore it.</p>
+
+      <p class="field">Failure signature</p>
+      <p>An alarm that has been taught to mean nothing. Every spurious darkness spends a little of the only signal there is, and the spending is invisible — nobody records the moment they stopped looking.</p>
+
+      <p class="field">Evidence</p>
+      <p>⚠️ <em>Reported.</em> The physiology and the design reasoning are stated in the renderer's own documentation; the mode deletion that made darkness rare is <em>measured</em>. <strong>The claim that a real presence-off is unmissable has not been tested</strong> — nobody has been in the room, not expecting it, when the channel actually died.</p>
+      <p>One observation points the right way and is offered as no more than that. The thinking state was originally ended when the reply arrived rather than when playback did; because a reply exists several seconds before it is audible, the lamp went dark at precisely the moment it should have been saying <em>nearly there</em>. It was noticed at once in live use, treated as a defect, and closed by adding a state to cover the gap. That is not evidence that darkness alarms. It is evidence that <strong>a spurious darkness is not tolerated</strong>, which is the discipline this pattern demands of whoever holds it.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If a second condition deserved interruption. The moment there are two alarms, the loudest signal has to be shared, darkness stops naming one thing, and a legend comes back. Also unnecessary where the resting state cannot be on — a channel that is off by default has no darkness to spend — or in a room that is normally dark, where the whole polarity inverts.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Specialises <strong>Ambient Activity Channel</strong> (<a href="/om-001#ambient-activity-channel">OM-001, 9</a>). Relies on <strong>Verified Presence</strong> (2). Ranked by <strong>One Ordering, One Place</strong> (5). Protected by <strong>Cap the Decoration</strong> (7). Resolves <strong>Mode Visibility</strong> (<a href="/om-001#mode-visibility">OM-001, 2</a>) by removing the mode rather than displaying it — the pattern asked that a mode be visible at the moment of use, and the answer that worked was to have no mode.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cap-the-decoration">
+  <div class="row">
+    <div class="mark">10</div>
+    <div class="body">
+      <p class="part">Ambient Signals · Pattern 7</p>
+      <h2>Cap the Decoration</h2>
+
+      <p class="field first">Intent</p>
+      <p>Bound the layer's <em>taste</em> by context and leave its <em>instruments</em> alone, so that a decorative capability never becomes a reason to switch the whole channel off.</p>
+
+      <p class="field">Motivation</p>
+      <p>An agent that can name a scene can name a bright one at 2am. The obvious defence is a global brightness ceiling by hour — simple, and wrong, because it caps the alarm too. <strong>Capping taste is protective; capping an instrument is just breaking it quietly.</strong> An error you cannot see at 2am is exactly the failure this layer exists to prevent.</p>
+      <p>So the clamp is applied at one point — a decorative state's brightness on its way to the device — and conversation cues pass it untouched. They last seconds, they are responses to something you just did, and they are the entire reason the channel is trusted at all.</p>
+      <p>This is the same cut <strong>Deference at Rest</strong> makes, one axis over. A hand on the lamp silences taste and leaves the instrument alone; the hour silences taste and leaves the instrument alone. Two unrelated pressures, and the boundary lands in the same place both times — which is the best evidence available that it is the right boundary and not a convenience.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any ambient layer carrying both decoration and signal, whose acceptable intensity varies with a context the layer can observe — hour, occupancy, a presentation, a meeting.</p>
+
+      <p class="field">Structure</p>
+      <p>One clamp, on one path. Decorative states pass through a brightness ceiling that is a function of context; instrument states reach the device by a route that has no ceiling on it. The two paths are separated at the point where a state is classified, not at the point where it is drawn, so a new state cannot reach the device without someone having decided which kind it is.</p>
+
+      <p class="field">Participants</p>
+      <p><strong>Decoration</strong>, which is capped. <strong>Instruments</strong>, which are not. <strong>The context</strong> — here the local hour — which is read rather than configured. <strong>The classifier</strong>, which is the only place the distinction exists and therefore the only place it can be got wrong.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Prices <strong>Closed Vocabulary</strong>: this cap is what that capability costs, and the design is that the price is charged to taste alone. Must not reach <strong>Darkness as Alarm</strong> or any live cue. Shares its cut with <strong>Deference at Rest</strong>.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> the layer stays on at night. Without the cap the honest choice is to disable the whole thing after hours, which disables the alarm — the decorative capability would have cost the instrument. <em>Cost:</em> two classes of output now exist and every new state must be classified, silently wrong in both directions: a capped instrument is unreadable at night, an uncapped decoration is a light in your eyes. <em>Trap:</em> the failure direction of the clock. <em>Trap:</em> the boundaries are guesses — the hours and the ceiling are unmeasured, a fixed window is wrong for a household on other hours, and wrong twice a year.</p>
+
+      <p class="field">Implementation</p>
+      <p>Clamp decorative brightness between 22:00 and 07:00 local, on the decorative path only. The window wraps midnight, so it is a union rather than a range, and writing it as a range is the obvious bug.</p>
+      <p>The detail worth copying is the <strong>failure direction</strong>. The structure the clock is read into is zeroed before the call, and a zeroed structure reads as hour 0 — inside the night window. If the call does nothing whatsoever, the cap engages rather than lifts. <em>A cap that fails open is not a cap.</em></p>
+
+      <p class="field">Failure signature</p>
+      <p>Not a bright light at 2am — that one announces itself. The failure that costs you is the other direction: someone reasonably decides the layer is too much at night, switches it off wholesale, and the alarm goes with it. Nothing then reports that the channel has stopped being an instrument, because a channel that is off reports nothing by definition.</p>
+
+      <p class="field">Evidence</p>
+      <p>⚠️ <em>Reported</em>, with the constants read from source. <strong>Never observed at night.</strong> Nobody has recorded whether the ceiling is right, and the uncapped-cue decision is untested in precisely the case it exists for — no one has watched an error state arrive at 2am and judged whether it read.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the layer carried no decoration. A channel that only ever reports state has nothing to cap, because everything on it is an instrument and an instrument you cannot see is broken. The cap exists <strong>because</strong> Closed Vocabulary let taste onto the channel — so the test is not <em>is the cap working</em> but <em>is there anything decorative here at all</em>, and if the answer is no, both patterns go together.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Prices <strong>Closed Vocabulary</strong> (3) — this cap is what that capability costs. Shares its cut with <strong>Deference at Rest</strong> (4). Must not reach <strong>Darkness as Alarm</strong> (6). Ranked by <strong>One Ordering, One Place</strong> (5).</p>
+    </div>
+  </div>
+</section>
+
+<section id="draft-and-record">
+  <div class="row">
+    <div class="mark">11</div>
+    <div class="body">
+      <p class="part">Revised Output · Pattern 1</p>
+      <h2>Draft and Record</h2>
+
+      <p class="field first">Intent</p>
+      <p>Let a fast, cheap pass show the person something immediately, and let one authoritative pass produce the text that is kept — and never let the first become the second by default.</p>
+
+      <p class="field">Motivation</p>
+      <p>Two things a person wants from a live transcription are in direct conflict. They want to see words while they are still speaking, which requires a model small and fast enough to run at a cadence. They want the text that survives to be correct, which requires a model good enough to be slow. Building one thing that tries to be both produces a system that is neither: too slow to feel live, too weak to trust.</p>
+      <p>The resolution is not a compromise but a division. The <strong>scribe</strong> streams at roughly 50 ms and is understood by everyone, including the person reading it, to be provisional. The <strong>corrector</strong> runs once, at release, over every captured sample, and its output is the record.</p>
+      <p>What makes this a pattern rather than an implementation note is that a commissioned measurement stated it more purely than the design did. The system had grown a third thing — the corrector running continuously during the hold, producing accurate text mid-utterance. It looked like the best of both. It is neither the draft nor the record: at release the corrector discards any pass still in flight and issues one fresh pass over the whole buffer, whose text replaces everything the continuous stream produced. <strong>The continuous pass cannot change the final text</strong>, by construction — and measurement agreed, 51 of 51 clips giving one answer over three passes, and 51 of 51 unchanged by whether a dozen continuous requests had preceded them.</p>
+      <p>So the record has exactly one author, and anything else in the pipeline is a draft whatever it costs.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any surface where a fast approximate result and a slow correct one are both wanted, and the correct one is what gets stored, sent or acted on.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="Audio feeds two paths. The scribe streams to a provisional view at fifty milliseconds. Captured samples accumulate in a buffer which, at release, is read once by the corrector, whose output is the record. A third path, the corrector running continuously during the hold, is drawn dashed and is discarded at release.">
+          <rect x="8" y="90" width="86" height="36" fill="none" stroke="currentColor"/>
+          <text x="51" y="113" text-anchor="middle" font-size="11" fill="currentColor">audio</text>
+          <path d="M94,102 L140,102 L140,44 L176,44" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <path d="M94,114 L140,114 L140,168 L176,168" fill="none" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="182" y="26" width="130" height="36" fill="none" stroke="currentColor"/>
+          <text x="247" y="49" text-anchor="middle" font-size="11" fill="currentColor">scribe · ~50 ms</text>
+          <line x1="312" y1="44" x2="452" y2="44" stroke="currentColor" marker-end="url(#ah)"/>
+          <rect x="458" y="26" width="150" height="36" fill="none" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="533" y="49" text-anchor="middle" font-size="11" fill="currentColor">provisional view</text>
+          <rect x="182" y="150" width="130" height="36" fill="none" stroke="currentColor"/>
+          <text x="247" y="167" text-anchor="middle" font-size="11" fill="currentColor">sample buffer</text>
+          <text x="247" y="180" text-anchor="middle" font-size="9.5" fill="currentColor" opacity=".65">one write site</text>
+          <line x1="312" y1="168" x2="452" y2="168" stroke="currentColor" stroke-width="1.6" marker-end="url(#ah)"/>
+          <text x="382" y="161" text-anchor="middle" font-size="10" fill="currentColor" opacity=".7">at release</text>
+          <rect x="458" y="150" width="150" height="36" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="533" y="173" text-anchor="middle" font-size="11" fill="currentColor">the record</text>
+          <path d="M247,150 L247,110 L400,110 L400,80" fill="none" stroke="currentColor" stroke-dasharray="3 4" opacity=".55"/>
+          <text x="404" y="76" font-size="10.5" fill="currentColor" opacity=".65">continuous passes — discarded at release, 11.1× the cost</text>
+          <text x="8" y="208" font-size="10.5" fill="currentColor" opacity=".7">Two producers, two artifacts. The third path is neither, which is why it took a measurement to see.</text>
+        </svg>
+        <figcaption>The dashed path was not in the design. It arrived because it looked like an improvement on both halves, and it survived for months because its output was always plausible and never load-bearing.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><strong>The scribe</strong>, fast and provisional. <strong>The corrector</strong>, slow and authoritative, run once. <strong>The buffer</strong>, which is what the corrector reads. <strong>The record</strong>, which has one author by construction rather than by convention.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Requires <strong>Churn Is Not Correction</strong>, because a provisional view that shows every revision is unreadable. Presented by <strong>Show the Handover</strong>. Structurally enforced by <strong>Draft and Record Apart</strong>, which is the storage half of the same rule.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> the person sees something immediately without the system having to defend the accuracy of what they see. <em>Gain:</em> the record has one author, so <em>which pass produced this?</em> always has an answer. <em>Cost:</em> two models, two code paths, two failure modes. <em>Trap:</em> a third pass that is neither draft nor record, arriving because it looks like an improvement on both. That is exactly what happened here, and it cost 11.1× the corrector time to produce nothing that survives.</p>
+
+      <p class="field">Implementation</p>
+      <p>Give the record exactly one write site. Make the draft visibly provisional rather than merely labelled as such. When a pass is in flight at the moment of release, <strong>discard it rather than reconciling it</strong> — reconciliation is where a draft becomes a record by accident, and it is always the more reasonable-looking of the two options.</p>
+
+      <p class="field">Failure signature</p>
+      <p>The person proof-reads a draft that is about to be replaced, and edits it. They are correcting text that will not survive, and the system gives them no reason to suspect it.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured.</em> The structural claim is read from source — one write site, and a release pass that waits for any in-flight pass, discards it, and replaces the text wholesale. The determinism the argument needs was measured over 51 replayed utterances of one speaker's own voice, 619 continuous passes: 51/51 identical over three passes on identical bytes, and 51/51 unchanged by preceding continuous requests. The 11.1× figure is server-reported inference time, network excluded.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If one model were both fast enough to stream at a cadence a person reads as live and good enough that its output needed no second pass. The corrector's own curve says how far away that is: roughly 6.3 ms per second of audio over a fixed floor near 64 ms, so a thirty-second utterance costs around 245 ms — an order of magnitude past the scribe. That is a number to re-check rather than a permanent condition.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Elaborates <strong>Streaming Turn</strong> (<a href="/om-001#streaming-turn">OM-001, 3</a>). Governed by <strong>Honest Gauge</strong> (<a href="/om-001#honest-gauge">OM-001, 12</a>). Requires <strong>Churn Is Not Correction</strong> (4). Enforced by <strong>Draft and Record Apart</strong> (7).</p>
+    </div>
+  </div>
+</section>
+
+<section id="no-frozen-prefix">
+  <div class="row">
+    <div class="mark">12</div>
+    <div class="body">
+      <p class="part">Revised Output · Pattern 2</p>
+      <h2>No Frozen Prefix</h2>
+
+      <p class="field first">Intent</p>
+      <p>In a surface that revises what it has already shown, never treat any part of the visible text as settled — because the reviser does not, and a frozen prefix will eventually be wrong in a way the system cannot repair.</p>
+
+      <p class="field">Motivation</p>
+      <p>The obvious optimisation for a live-revising view is to freeze text once it has stood for a while: past some depth or some age, stop re-rendering it. It saves work, it stops the display flickering, and it is the first thing anyone proposes.</p>
+      <p>The measurement says it cannot be done safely, and the story of how it says so is part of the entry. A pass on 14 August, over three segments and 39 revisions, found nothing reaching further back than 67% of the utterance or older than 12 seconds — and concluded that a revision thirty seconds deep does not happen. A pass the following day, on a corpus deliberately over-sampled long, observed one reaching <strong>35.6 s back and rewriting the utterance's first word</strong>. The first corpus was not evidence of absence; it was too short to contain the case.</p>
+      <p>So there is no depth and no age at which freezing is safe. There is only a frequency: from more than fifteen hundred logged utterances, well under one percent run to thirty seconds at all, which bounds how often the deep case can arise without bounding how deep it goes.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any view that displays output while it is still being revised — live transcription, streaming generation with correction, incremental parsing surfaced to a person.</p>
+
+      <p class="field">Structure</p>
+      <p>The buffer is the truth and the view is a function of it, recomputed. There is no incremental patch path, because a patch path is where a freeze rule would live even if nobody meant to write one. Suppression of visual churn belongs in presentation and is <strong>Churn Is Not Correction</strong>'s job; it must not be implemented by making a revision unrepresentable.</p>
+
+      <p class="field">Participants</p>
+      <p><strong>The reviser</strong>, whose reach is unbounded in principle. <strong>The buffer</strong>, which records every pass. <strong>The view</strong>, which is recomputed rather than patched. <strong>The optimisation</strong>, which is the antagonist and arrives as a rendering concern rather than a semantic one.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Governs <strong>Show the Handover</strong>. Constrained by <strong>Churn Is Not Correction</strong>, and the two pull against each other on purpose: the display must be <em>able</em> to show a deep revision, and should usually decline to.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> the display can never contradict the buffer. <em>Gain:</em> no class of revision is silently undisplayable. <em>Cost:</em> the whole visible text is re-rendered on every pass. <em>Trap:</em> freezing introduced as a rendering optimisation rather than a semantic decision, by someone who does not know it is one — which is the normal case, since it looks like a performance change.</p>
+
+      <p class="field">Implementation</p>
+      <p>Re-render from the buffer rather than patching what is on screen. If flicker is the real complaint, address it in presentation rather than by bounding what the reviser is allowed to say.</p>
+
+      <p class="field">Failure signature</p>
+      <p>A rare, unreproducible wrongness. The visible text and the system's own record disagree, in the small fraction of cases where the reviser reached past the freeze line — and because the case is rare and long, it is the hardest kind to reproduce deliberately and the easiest to dismiss as a mistranscription.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured</em>, and the measurement is the entry. Deepest observed revision 35.6 s back, rewriting the utterance's first word, from 236 revision events over 51 replayed utterances. <em>Reported</em> for the frequency bound, from more than fifteen hundred logged durations with no retained audio — a duration claim that cannot be re-derived acoustically, corroborated by a second window of 1520 utterances a day later at 0.72%.</p>
+      <p>⚠️ The two passes' depth figures <strong>cannot be reconciled</strong>. The 14 August instrument was built in a session scratchpad and no longer exists, so its definition of <em>back</em> cannot be inspected. That is recorded as open rather than resolved, and it is the reason this programme now treats a committed instrument as a precondition rather than a courtesy.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the reviser were monotonic: only ever appending, or only ever revising within a bounded window it declared. Neither is true of this corrector — and a system that claims the first should be <em>tested</em> for it rather than believed, because the test is cheap and the failure is silent. Note what the corpus for that test has to contain: utterances long enough to exhibit a deep revision. A corpus of short ones will return a clean null and mean nothing.</p>
+
+      <p class="aside">⚠️ <strong>This entry's reference instance is proposed for deletion.</strong> The pattern governs the live view, and the live view is what the 15 August evidence recommends removing. The entry does not die with it — the claim is about live-revising surfaces generally, which is why this language is deliberately not named for dictation — but the exemplar goes, and saying so is what the added field exists to enforce.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Governs <strong>Show the Handover</strong> (3). Constrained by <strong>Churn Is Not Correction</strong> (4). Elaborates <strong>Streaming Turn</strong> (<a href="/om-001#streaming-turn">OM-001, 3</a>) and <strong>Honest Gauge</strong> (<a href="/om-001#honest-gauge">OM-001, 12</a>).</p>
+    </div>
+  </div>
+</section>
+
+<section id="show-the-handover">
+  <div class="row">
+    <div class="mark">13</div>
+    <div class="body">
+      <p class="part">Revised Output · Pattern 3</p>
+      <h2>Show the Handover</h2>
+
+      <p class="field first">Intent</p>
+      <p>When a fast draft gives way to an authoritative pass, make the moment visible — because a person who cannot see the handover will read the draft's errors as the system's errors.</p>
+
+      <p class="field">Motivation</p>
+      <p>In a two-pass surface the text changes twice for different reasons. It changes <em>within</em> the draft, because the scribe is revising its own guess. It changes <em>at release</em>, because a different and better model has replaced the whole thing. These look identical on screen and mean opposite things: the first is a system working, the second is a system finishing.</p>
+      <p>A person who cannot tell them apart draws the wrong conclusion in both directions. They lose confidence in a correct final pass because they watched it churn on the way there, and they trust a draft because it stopped moving.</p>
+      <p>The handover is also where the timing argument lives. The corrector's continuous stream runs a cadence plus an inference behind the microphone — a median of 0.54 s — and had reached the release pass's answer before release in only 12 of 51 utterances, at a median 97% of the way through. Against the scribe's 50 ms that is <em>a different kind of feedback, not a slower one</em>. Presenting them as the same channel is the error this seam makes visible.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any surface where two producers of different quality write to one visible region.</p>
+
+      <p class="field">Structure</p>
+      <p>One visible region, two producers, and a presentational distinction that is a property of the region rather than an annotation on it. The distinction has to survive being seen at the periphery of attention, because that is where a person reading their own dictation actually is — they are speaking, not reading.</p>
+
+      <p class="field">Participants</p>
+      <p><strong>The draft</strong> and <strong>the record</strong>, which write to the same place. <strong>The seam</strong>, which is the presentational fact that they are different. <strong>The person</strong>, who is not looking directly at any of it.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Governed by <strong>No Frozen Prefix</strong> — there is no point marking a handover in a view that cannot honestly show what changed. Presents <strong>Draft and Record</strong>. Requires <strong>Draft and Record Apart</strong>, in the strict sense that you cannot show a handover between two things that are the same thing.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> draft errors are attributed to the draft. <em>Gain:</em> the final pass gets read as final. <em>Cost:</em> a visible transition is a design problem — done badly it is a flash that draws the eye at the exact moment attention should be moving on. <em>Trap:</em> marking the handover so subtly that it satisfies a review and communicates nothing.</p>
+
+      <p class="field">Implementation</p>
+      <p>Distinguish the two states in the presentation itself rather than with a label. Make the transition legible at a glance and at the periphery of attention.</p>
+
+      <p class="field">Failure signature</p>
+      <p>A person who has quietly stopped trusting a system that is working correctly. They watched it churn, drew a conclusion about its accuracy, and the conclusion is wrong — and because nothing failed, there is no incident, no report, and nothing to investigate.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured</em> for the structure and the timing — the two-producer arrangement is read from source, and the lag figures come from 51 replayed utterances with server-reported inference time. <em>Not measured</em> for the claim that matters most: whether a person, seeing the seam, attributes errors correctly. That is a perception question and no rig answers it.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the draft and the record were close enough in quality that mistaking one for the other cost nothing. That is the perception question again, and it is the one the evidence names as its own falsification test: someone in a blind comparison preferring the hold <em>with</em> continuous correction to the hold without it. Nothing here measures taste, and this entry is honest that its central claim rests on it.</p>
+
+      <p class="aside">⚠️ <strong>Renamed before publication</strong>, from <em>The Visible Seam</em>. <em>Seam</em> is already OM-001's template field — which side of the harness/agent boundary a pattern sits on — and two meanings for one word, both ours, is exactly what a plain name is for. ⚠️ <strong>This entry's reference instance is proposed for deletion</strong>, for the same reason as No Frozen Prefix and with the same consequence: the pattern survives, the exemplar does not.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Governed by <strong>No Frozen Prefix</strong> (2). Presents <strong>Draft and Record</strong> (1). Requires <strong>Draft and Record Apart</strong> (7). Elaborates <strong>Honest Gauge</strong> (<a href="/om-001#honest-gauge">OM-001, 12</a>).</p>
+    </div>
+  </div>
+</section>
+
+<section id="churn-is-not-correction">
+  <div class="row">
+    <div class="mark">14</div>
+    <div class="body">
+      <p class="part">Revised Output · Pattern 4</p>
+      <h2>Churn Is Not Correction</h2>
+
+      <p class="field first">Intent</p>
+      <p>Distinguish text that is being corrected from text that is merely oscillating, and stop showing the second — a value alternating between two readings is not information, it is the display leaking the model's uncertainty.</p>
+
+      <p class="field">Motivation</p>
+      <p>Watching a live-revising surface, the eye is caught by movement and infers meaning from it. Most of that movement carries none. Of the deepest revisions observed, <strong>all six were one word alternating between two spellings of the same sound</strong>, never settling — a model equivocating, rendered as though something were being fixed.</p>
+      <p>The gradient is what makes the entry usable rather than an anecdote, and it runs the right way: a revision reaching 0–1 s back is a word returning to a value that position already held <strong>1%</strong> of the time. Beyond 10 s back, <strong>94%</strong>. So reach and churn scale together. The deep revisions that make freezing unsafe — the ones No Frozen Prefix exists for — are almost entirely oscillation, and the two facts have to be held at once: <em>the display must be able to show a deep revision, and should usually decline to.</em></p>
+      <p>That is why this is a separate pattern rather than a note on that one. They pull against each other and the resolution is not a compromise: <strong>represent everything, present selectively.</strong></p>
+
+      <p class="field">Applicability</p>
+      <p>Any incremental display whose producer revises. The deeper the revision it must support, the more it needs this.</p>
+
+      <p class="field">Structure</p>
+      <figure>
+        <svg viewBox="0 0 700 200" role="img" aria-label="A bar chart. For revisions reaching zero to one second back, one percent are a word returning to a value that position already held. One to five seconds, twenty-nine percent. Five to ten seconds, eighty-six percent. Beyond ten seconds, ninety-four percent.">
+          <text x="8" y="16" font-size="10.5" font-family="ui-monospace,monospace" letter-spacing="1.4" fill="currentColor" opacity=".55">SHARE OF REVISIONS THAT ARE A RETURN TO A KNOWN VALUE</text>
+          <line x1="96" y1="36" x2="96" y2="164" stroke="currentColor" opacity=".45"/>
+          <line x1="96" y1="164" x2="660" y2="164" stroke="currentColor" opacity=".45"/>
+          <text x="88" y="54" text-anchor="end" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">0–1 s</text>
+          <rect x="98" y="42" width="6" height="14" fill="currentColor" opacity=".85"/>
+          <text x="116" y="54" font-size="10.5" fill="currentColor">1%</text>
+          <text x="88" y="86" text-anchor="end" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">1–5 s</text>
+          <rect x="98" y="74" width="157" height="14" fill="currentColor" opacity=".85"/>
+          <text x="267" y="86" font-size="10.5" fill="currentColor">29%</text>
+          <text x="88" y="118" text-anchor="end" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">5–10 s</text>
+          <rect x="98" y="106" width="464" height="14" fill="currentColor" opacity=".85"/>
+          <text x="574" y="118" font-size="10.5" fill="currentColor">86%</text>
+          <text x="88" y="150" text-anchor="end" font-size="10.5" font-family="ui-monospace,monospace" fill="currentColor">10 s +</text>
+          <rect x="98" y="138" width="508" height="14" fill="currentColor" opacity=".85"/>
+          <text x="618" y="150" font-size="10.5" fill="currentColor">94%</text>
+          <text x="96" y="188" font-size="10.5" fill="currentColor" opacity=".7">Reach and churn scale together — which is why the deepest revisions are the least worth showing.</text>
+        </svg>
+        <figcaption>236 revision events over 51 replayed utterances. The corpus was deliberately over-sampled long, so these are not population proportions; the gradient is the finding, not the levels.</figcaption>
+      </figure>
+
+      <p class="field">Participants</p>
+      <p><strong>The buffer</strong>, which records every pass including the ones nobody sees. <strong>The per-position history</strong>, which is what makes a return detectable. <strong>The presentation</strong>, which is the only thing that suppresses.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Constrains <strong>No Frozen Prefix</strong> and is constrained by it in turn. Required by <strong>Draft and Record</strong>, whose provisional view is unreadable without it.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> movement on screen means something again. <em>Gain:</em> the person stops proof-reading a draft that is going to be replaced. <em>Cost:</em> a suppression rule is a judgement, and a wrong one hides a real correction. <em>Trap:</em> suppressing by <em>rate</em> rather than by <em>return</em> — a fast correction is still a correction, and an oscillation that alternates slowly is still churn.</p>
+
+      <p class="field">Implementation</p>
+      <p>Judge by whether the value has returned to one it already held <em>at that position</em>, not by how often it changes. Hold a short history per position rather than a global change counter. Let the buffer record every pass; only the presentation suppresses. The first transition still shows, because that one is news; a word finding genuinely new readings keeps reporting.</p>
+
+      <p class="field">Failure signature</p>
+      <p>A signal fired often enough to be ignored, after which the real corrections it exists to show go past unseen. This is the general failure of any highlight keyed on <em>changed</em> rather than on <em>changed to something new</em>, and it degrades quietly — the indicator keeps working exactly as specified while ceasing to communicate.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured</em>, twice, with the instrument committed. 236 revision events, the gradient as drawn, and the six deepest events audited verbatim before the headline number was reported — which is what turned a striking depth figure into a statement about churn. Two full replay runs agree on the text findings.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the reviser's intermediate states were themselves worth reading — a system whose second guess is reliably better than its first, rather than one alternating between two guesses of equal confidence. That is measurable, and it was measured here: it is not the case.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Constrains <strong>No Frozen Prefix</strong> (2). Required by <strong>Draft and Record</strong> (1). Governed by <strong>Honest Gauge</strong> (<a href="/om-001#honest-gauge">OM-001, 12</a>).</p>
+    </div>
+  </div>
+</section>
+
+<section id="deterministic-last-mile">
+  <div class="row">
+    <div class="mark">15</div>
+    <div class="body">
+      <p class="part">Revised Output · Pattern 5</p>
+      <h2>Deterministic Last Mile</h2>
+
+      <p class="field first">Intent</p>
+      <p>Put the last corrections in a table rather than in a model, because the last corrections are not about accuracy at all — they are about convention, and a convention has no uncertainty for a model to resolve.</p>
+
+      <p class="field">Motivation</p>
+      <p>After a biased recogniser has done its work, two kinds of error remain, and they are not the same kind of thing.</p>
+      <p>The first is <strong>acoustic</strong>. Several project terms were missed at every boost weight and on both a synthesised and a human voice — words the model does not resolve from the signal, where no amount of weighting invents audio that is not there. Nothing downstream can repair those, because the information never arrived.</p>
+      <p>The second is <strong>orthographic</strong>, and it is not an error the model could have avoided. A speaker says <em>workshop machines</em>; the house writes <code>workshop-machines</code>. Both are correct English renderings of the same sound. The model has no way to prefer one, because the preference is not in the audio — it is a house decision, made once, that applies every time. That is the last mile, and it is deterministic by its nature rather than by an optimisation.</p>
+      <p>So the pass that closes it should be a substitution table: 82 µs over a 317-word input, identical every time, incapable of inventing anything, and printable in full.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any pipeline where a probabilistic stage is followed by a house convention the stage cannot know — orthography, casing, project vocabulary, units, citation style.</p>
+
+      <p class="field">Structure</p>
+      <p>A pure function between the model's output and the destination. It holds no state, consults nothing, and its entire behaviour is a list that can be printed on demand — which is the property that makes it reviewable without reading the source, and is worth building in from the start rather than adding when someone asks what it does.</p>
+
+      <p class="field">Participants</p>
+      <p><strong>The table</strong>, half derived and half hand-written. <strong>The matcher</strong>, which is whole-word and case-upgrading only. <strong>The log</strong>, which prints every edit that fires.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Requires <strong>One List, Two Uses</strong> — the derived half of the table comes from the same vocabulary the recogniser is biased with. Runs strictly after the record exists, so it is inside <strong>Draft and Record</strong>'s record path and never touches the draft.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> the whole behaviour can be read as a list rather than inferred from outputs. <em>Gain:</em> no latency and no new failure mode; a table cannot hallucinate. <em>Gain:</em> adding a term is a data change. <em>Cost:</em> it is silent, and a rule firing on the wrong word produces a wrong edit that looks like a correct one. <em>Trap:</em> a case-only rule on an ordinary English word — <em>the sunshine outside</em> becoming <em>the Sunshine outside</em>. Half the project vocabulary here is ordinary English, so case-only rules are refused by derivation and hand-written one at a time instead.</p>
+
+      <p class="field">Implementation</p>
+      <p>Match whole words only. Only ever upgrade case, never downgrade. <strong>Never let the pass empty an utterance</strong> — typing nothing is indistinguishable from a dead microphone. Print every edit that fires, so the pass is reviewable from its output and not only from its source.</p>
+
+      <p class="field">Failure signature</p>
+      <p>An invisible wrong edit. The text is fluent, plausible and not what was said, and it appears at the cursor in someone else's document. Unlike a mistranscription it carries no acoustic excuse, so the reader attributes it to the writer.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured.</em> 82 µs over a 317-word input. And measured for frequency, which is the unflattering part: over the 1520 dictated utterances since the pass was deployed, <strong>5 carried an edit — 0.33%</strong>. Six edits in total: four a repo name, one a doubled function word, one a filler.</p>
+      <p>⚠️ An earlier draft of this paper asserted 1.2%, and no derivation for that figure existed. It appears to be a numerator and a denominator from different measurements — at the point where 405 utterances had accumulated, only three of the five edits had occurred. <strong>No point in time ever produced 1.2%.</strong> It had reached six places in a roster before anyone divided one number by the other.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the convention were already in the recogniser's output — which is what would happen if the vocabulary were boosted <em>as written</em> rather than as spoken, or if the surface being typed into applied the convention itself. Both are real alternatives and neither was tried.</p>
+      <p>Note what the 0.33% does and does not settle. A rule that fires rarely is not thereby unnecessary: the four repo-name edits were in text that became commit messages and issue titles, where the difference between two spellings is the difference between prose and a link. But the pattern's case cannot be argued from frequency, and an entry quoting a firing rate as though the rate were the argument would have been arguing the wrong thing — with a wrong number.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Requires <strong>One List, Two Uses</strong> (6). Elaborates <strong>Draft and Record</strong> (1). Governed by <strong>Honest Gauge</strong> (<a href="/om-001#honest-gauge">OM-001, 12</a>).</p>
+    </div>
+  </div>
+</section>
+
+<section id="one-list-two-uses">
+  <div class="row">
+    <div class="mark">16</div>
+    <div class="body">
+      <p class="part">Revised Output · Pattern 6</p>
+      <h2>One List, Two Uses</h2>
+
+      <p class="field first">Intent</p>
+      <p>Keep one vocabulary file and let both the thing that <em>hears</em> and the thing that <em>writes</em> read it, so a term learned once is learned in both places and cannot be half-learned.</p>
+
+      <p class="field">Motivation</p>
+      <p>A project's jargon has to reach two consumers that look unrelated. The recogniser needs it as bias terms, so the domain words are candidates it will consider. The house style needs it as substitutions, so those words are written the way the house writes them. Maintained separately, the two drift — and the drift is invisible, because each list is individually correct.</p>
+      <p>The list earns its place at the deployed configuration, which is <strong>α1.0 over 47 terms</strong> — not the α2.0 that two earlier documents called deployed. On a 347-word human read, biasing takes 30 errors to 23, about a quarter of them; term recall goes from 13 of 29 to 19. The spread between α0.5, α1.0 and α2.0 is 25/23/22 errors on one sample: one to three words, which is noise and not a ranking. What is <em>not</em> noise is the far end — <strong>α4.0 scores 54 errors, worse than no biasing at all.</strong> Over-boosting does not plateau and decay; it inverts.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any system where the same domain vocabulary is needed by a recogniser, a generator and a formatter — speech, OCR, autocomplete, a linter and the model it corrects.</p>
+
+      <p class="field">Structure</p>
+      <p>One file, two derivations. A term containing a separator has exactly one plausible spoken form, so the substitution rule can be <em>computed</em> from the entry rather than written beside it; a term that is an ordinary English word yields no safe rule and must be refused. The effective table is printable, so what actually fires can be compared against what the file says — which is the only way to notice that the two have parted company.</p>
+
+      <p class="field">Participants</p>
+      <p><strong>The list</strong>, which is a source rather than a deployment. <strong>The recogniser</strong>, which wants it short, because boosting has a cliff. <strong>The formatter</strong>, which wants it complete. <strong>The copies on disk</strong>, which are the actual failure surface.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Required by <strong>Deterministic Last Mile</strong>, whose derived rules are exactly this list's separator-bearing terms. Elaborates <strong>Durable Memory</strong>: a shared vocabulary is the system remembering what its domain is called, and it decays the same way.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> one place to add a term. <em>Gain:</em> the two consumers cannot disagree about what the vocabulary <em>is</em>, only about what to do with it. <em>Cost:</em> one file becomes load-bearing for two subsystems with different failure modes and different tolerances. <em>Trap:</em> the file is a source, not a deployment. <strong>One source with two copies on disk is two lists.</strong></p>
+
+      <p class="field">Implementation</p>
+      <p>Derive rather than duplicate. Refuse to derive case-only rules. Make the effective table printable. And resist the obvious defence discussed below — a hand-written duplicate of the derivable half — or if you must, put an expiry on it.</p>
+
+      <p class="field">Failure signature</p>
+      <p><strong>The two uses fail asymmetrically, and that is the whole of the pattern's danger.</strong> The house style can be hand-immunised against a stale list, because a substitution is a decision someone can write down. The recogniser cannot: a term is either in the file it reads or it is not, and there is no hand-written fallback for <em>hearing</em>. So a divergent copy degrades the system in exactly one direction and reports nothing — still spelling the word correctly, no longer able to hear it. The transcript is identical on every utterance where it still hears, which is most of them.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured.</em> The accuracy figures come from a six-condition sweep over bit-identical audio, and the deployed α and term count were read from three source files and confirmed against the running service's own health endpoint. The rule table was printed from the deployed binary.</p>
+
+      <p class="aside">⚠️ <strong>The immunisation ate the pattern, and it is visible on the machine today.</strong> Of the 18 rules the deployed binary reports, <strong>exactly one is derived from the shared list</strong>. The other seventeen are hand-written. The source explains why, and was right when it was written: which terms were derivable depended on which checkout's copy of the file was present, and <em>a rule that appears and disappears with a file is worse than no rule.</em></p>
+      <p class="aside">That justification has since expired — both checkouts now carry the same 47 terms — and what it left behind is a hand table that still rewrites speech into the name of a repository renamed two days before publication, which the shared list has correctly dropped. <strong>The defence against drift is now the only thing drifting.</strong> The claim survives its instance and is sharpened by it: <em>one source, two mechanisms, no drift possible</em> is a claim about the file, never about the filesystem — and a hand-written fallback added to protect one consumer from a stale list will outlive the staleness and become the stale thing.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the two consumers wanted different vocabularies. The recogniser wants what is <em>said</em>; the house style wants what is <em>written</em>. Those coincide only while a project's jargon and its orthography are the same words. The moment the boost list needs entries that are never written, or the style needs rules for words never spoken, one list is a coincidence being maintained as a principle.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Required by <strong>Deterministic Last Mile</strong> (5). Elaborates <strong>Durable Memory</strong> (<a href="/om-001#durable-memory">OM-001, 14</a>). Governed by <strong>Honest Gauge</strong> (<a href="/om-001#honest-gauge">OM-001, 12</a>).</p>
+    </div>
+  </div>
+</section>
+
+<section id="draft-and-record-apart">
+  <div class="row">
+    <div class="mark">17</div>
+    <div class="body">
+      <p class="part">Revised Output · Pattern 7</p>
+      <h2>Draft and Record Apart</h2>
+
+      <p class="field first">Intent</p>
+      <p>Give the draft and the record separate storage, and make the boundary explicit — because the moment they share a buffer, the cheap one becomes the authoritative one by accident rather than by decision.</p>
+
+      <p class="field">Motivation</p>
+      <p>Draft and Record says the record has exactly one author. This is the structural half of that, and it is a different claim: not <em>one pass writes the record</em>, but <em>the two passes do not read the same thing</em>.</p>
+      <p>Here they do not. The scribe consumes a stream as it arrives; the corrector consumes a captured sample buffer with exactly one write site, inside the hold loop. <strong>The boundary falls at the buffer, not at the model</strong> — which is not where anyone looking at a two-model pipeline would expect to find it, and is why it can be crossed without touching either model.</p>
+      <p>It was crossed. A 300 ms pad of trailing room tone was added because it recovered dropped final words 6 times out of 6, and it is fed to the scribe's stream and <strong>never</strong> to the corrector's buffer. So the release pass — the only thing that produces the text that gets typed — sees audio up to the last in-loop drain and nothing after it. The measurement that justified the pad was taken on the path whose output is discarded whenever the corrector succeeds.</p>
+      <p>That single fact is the pattern's justification and its indictment at once. The separation is exactly what stopped a draft-side change leaking into the record. It is also exactly what let a fix land on the wrong side of the line and stay there, with a measurement attached, looking done.</p>
+
+      <p class="field">Applicability</p>
+      <p>Any two-tier pipeline where a fast stage and an authoritative stage consume the same upstream source — transcription, incremental compilation, preview renderers, any cache in front of a system of record.</p>
+
+      <p class="field">Structure</p>
+      <p>Two artifacts, one write site each, and the count is the invariant. Everything that must reach both is written twice, deliberately and visibly; everything that reaches one by accident is a defect that the structure makes findable and the absence of the structure would make invisible.</p>
+
+      <p class="field">Participants</p>
+      <p><strong>The upstream source</strong>, which both consume. <strong>Two buffers</strong>, which are the pattern. <strong>The fallback</strong>, which is the one sanctioned crossing and deserves to be named as one.</p>
+
+      <p class="field">Collaborations</p>
+      <p>Elaborates <strong>Draft and Record</strong>. Required by <strong>Show the Handover</strong> — you cannot show a handover between two things that are the same thing.</p>
+
+      <p class="field">Consequences</p>
+      <p><em>Gain:</em> no accidental promotion, ever, and <em>which pass produced this?</em> has a structural answer rather than a conventional one. <em>Gain:</em> you can reason about what each consumer actually saw, which is what makes the pad defect statable at all. <em>Cost:</em> anything that must reach both has to be written twice, and nothing checks that it was. <em>Trap:</em> an improvement applied to whichever buffer is easiest to reach from where the change is being made.</p>
+
+      <p class="field">Implementation</p>
+      <p>One write site per artifact, and keep it that way — the count is checkable in a line. When something must reach both, make the two writes visible at the same call site rather than in two files. And name the crossing you do allow: here the release pass falls back to the scribe's text when it fails, which is the one deliberate place the record is written by the draft. It currently reads as a default rather than a decision, and the two are worth distinguishing, because the fallback is a real trade — the draft is complete but worse, the last good corrector pass is better but missing the tail.</p>
+
+      <p class="field">Failure signature</p>
+      <p>A fix that works, is measured, is shipped, and changes nothing — because it landed on the path whose output is discarded. Nothing fails. The measurement is real. The improvement simply never reaches the artifact anyone keeps, and the only way to notice is to trace which buffer the change touched.</p>
+
+      <p class="field">Evidence</p>
+      <p><em>Measured</em> for the structure: the single write site, and the two paths the pad and the tail chunk take, are read from source. <em>Not measured</em> for the consequence — nobody has yet tested end to end whether feeding the pad to the corrector changes the last word of every utterance. It is cheap to test, it is flagged in the evidence pass, and it is the obvious next experiment.</p>
+
+      <p class="field">How you would know this is unnecessary</p>
+      <p>If the draft and the record consumed the same input by construction — one buffer with two readers, so there is nothing to keep in step. That is available here and was not chosen, and the reason is worth being honest about: <strong>nobody decided.</strong> The two buffers grew out of the two libraries' interfaces, and the pattern is a description of an accident that turned out to be right for reasons its authors had not considered.</p>
+
+      <p class="field">Related patterns</p>
+      <p>Elaborates <strong>Draft and Record</strong> (1). Required by <strong>Show the Handover</strong> (3). Governed by <strong>Honest Gauge</strong> (<a href="/om-001#honest-gauge">OM-001, 12</a>). Related to <strong>Recoverable Execution</strong> (<a href="/om-001#recoverable-execution">OM-001, 13</a>), which is the same instinct about state one level out.</p>
+    </div>
+  </div>
+</section>
+
+<section id="open-questions">
+  <div class="row">
+    <div class="mark">18</div>
+    <div class="body">
+      <h2>Open questions</h2>
+      <p>Three, stated because they are live rather than because they are tidy.</p>
+
+      <p class="field first">The room</p>
+      <p>Two more lamps would make the <em>room</em> the surface, and it could then carry a composed look — which is taste occupying the slot the alarm needs. Not built. Four failure modes, in the order they are expected to bite:</p>
+      <ul>
+        <li><strong>Presence has no addressee.</strong> The event says <em>who</em> is present, not <em>where</em>. With two lamps you must decide whether presence is a property of the room or of a surface, and there is nowhere to put that. An agent-to-lamp mapping would put topology into the protocol, which is the thing <strong>Closed Vocabulary</strong> exists to keep out.</li>
+        <li><strong>Precedence is per-renderer, not per-room.</strong> Two renderers resolving independently can disagree, and the room then asserts two contradictory things at once. This breaks <strong>Darkness as Alarm</strong> specifically: that signal depends on <em>the room</em> going dark. One dark lamp beside one lit lamp is not an alarm — it reads as a lamp that broke.</li>
+        <li><strong>Deference becomes ambiguous.</strong> A hand on lamp A should suspend agent control of lamp A. Should it suspend lamp B? If yes, one touch silences an instrument across the room. If no, <em>a person always wins</em> is true of a bulb and not of the room.</li>
+        <li><strong>The reply port is a single resource.</strong> Replies arrive on a fixed port whatever port the request left from, so two renderers on one host contend directly.</li>
+      </ul>
+      <p>Offered as a hypothesis and not more: one renderer driving many lamps, with lamps carrying <strong>roles</strong> — instrument versus ambience — rather than one renderer per lamp. That keeps precedence single, keeps the room speaking with one voice, and gives presence somewhere to land without the protocol learning about topology. Untested.</p>
+
+      <p class="field">Whether the amber highlight survives contact with churn</p>
+      <p>Answered, and the answer is unpublished. The display marked a word amber whenever it differed from the previous pass, so every alternation fired it again on the same word, carrying nothing — a signal firing often enough to be ignored, after which the real corrections it exists to show go past unseen. The repair is clean and belongs to <strong>Churn Is Not Correction</strong>: a word returning to a value that position has already held is not a correction.</p>
+      <p>It is committed on an unpushed branch and is not in the running binary, so it is <strong>not citable</strong> — a measurement proves the code you measured, and this programme has been caught on exactly that distinction. It also decorates the live view, which the evidence proposes to delete; if that deletion happens, this is a fix to something that goes away.</p>
+
+      <p class="field">Whether anyone prefers the hold with continuous correction</p>
+      <p>This is the one that now decides an architecture rather than a preference. The evidence names its own falsification test and it is not a rig question: <strong>the recommendation to delete the corrector's continuous cadence flips if a person, in a blind comparison, prefers the hold with it.</strong> Eleven times the corrector time may be worth accurate text appearing while you hold. Nothing here measures taste, and nothing here can.</p>
+    </div>
+  </div>
+</section>
+
+<section id="what-this-does-not-cover">
+  <div class="row">
+    <div class="mark">19</div>
+    <div class="body">
+      <h2>What this does not cover</h2>
+      <p>Named honestly, on the same principle as its predecessors: a pattern language that pretends to completeness is its own dishonest gauge.</p>
+      <ul>
+        <li><strong>Any peripheral channel that is not light.</strong> Sound, haptics and a screen's own periphery are all ambient surfaces with different physiology, and <strong>Darkness as Alarm</strong> in particular is an argument about rods that does not transfer. A language named for the modality would have been the wrong shape, but that is not the same as having tested another one.</li>
+        <li><strong>More than one person in the room.</strong> Every entry in the first half assumes the ambient audience is one principal. A shared office makes presence a broadcast, the alarm everyone's business, and the night cap somebody else's call.</li>
+        <li><strong>Revision by more than one producer.</strong> Two models writing to one region is <strong>Show the Handover</strong>; <em>n</em> models, or a model and a person editing concurrently, is a different problem and none of these seven address it.</li>
+        <li><strong>Whether the seam should be shown at all.</strong> Four of the second half's entries rest on a perception claim that has never been tested on anyone. They are written as though a person benefits from seeing revision honestly. That is a hypothesis with a design attached.</li>
+        <li><strong>Cost.</strong> The continuous cadence costs 11.1× the corrector time and nothing here says whether that is expensive. There is no pattern for <em>when the ambient layer is not worth its complexity</em>, which is probably the most valuable one missing.</li>
+        <li><strong>Anyone else's hardware, room, voice or eyes.</strong> The evidence position, stated in <a href="/om-005#om-004-evidence-position">OM-005 §16</a>, is the narrowest of any paper in this programme.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sources-and-lineage">
+  <div class="row">
+    <div class="mark">20</div>
+    <div class="body">
+      <h2>Sources and lineage</h2>
+
+      <p class="field first">Directly ancestral</p>
+      <ul>
+        <li><a href="/om-001">OM-001</a>, <em>Conversational Agent Control Surfaces</em> — the template, the vocabulary, and above all <strong>Ambient Activity Channel</strong>, which proposed the peripheral channel this paper spent a fortnight building and then correcting. Two of its implementation notes are corrected here; the rest of it held.</li>
+        <li>Gamma, Helm, Johnson &amp; Vlissides, <em>Design Patterns</em> (1994) — the form.</li>
+        <li>Alexander, <em>The Origins of Pattern Theory…</em>, OOPSLA 1996 keynote — the standard the form is held to, and the source of the idea that each answer should name the pressure that generates it. <em>How you would know this is unnecessary</em> is an attempt to recover that.</li>
+      </ul>
+
+      <p class="field">Adjacent traditions</p>
+      <ul>
+        <li>Calm technology and ambient displays — Weiser and Brown's periphery, and the ambient-information literature that followed. The first half is that tradition meeting an actuator that can be wrong, in a room, unsupervised.</li>
+        <li>Interactive speech interfaces: partial hypotheses, stability detection, endpointing. <strong>No Frozen Prefix</strong> is a negative result against the stability heuristics that literature usually reaches for.</li>
+        <li>Safety-critical annunciator design: reserving the loudest signal, alarm flooding, the discipline that a spurious alarm spends the alarm. <strong>Darkness as Alarm</strong> is that argument with one bulb.</li>
+        <li>Optimistic UI and eventual consistency. <strong>Draft and Record</strong> is the same shape as an optimistic write reconciled against a server, with the difference that reconciliation here is forbidden rather than required.</li>
+      </ul>
+
+      <p class="field">Primary material</p>
+      <p>One workstation, one speaker, one microphone, one room, over roughly a fortnight in August 2026. The first half is drawn from building and repeatedly repairing a physical lighting channel; the second from two commissioned evidence passes over a local speech pipeline, the later of which committed its instrument and is therefore the first figure in this paper that can be argued with. What one machine establishes and what it cannot is set out in <a href="/om-005#om-004-evidence-position">OM-005 §16</a>.</p>
+
+      <p class="field">What is claimed</p>
+      <p>Less than any of the three papers before it, on a narrower base, with more of its entries carrying an explicit note that a claim is untested. Four entries rest on perception claims nobody has tested; one has never been confirmed against a real hand on the device; one has never been observed at the hour it exists for. Five are published with their own reference instance failing them.</p>
+      <p>That is not modesty and it is not a disclaimer. This is the first paper in the programme to return to a published pattern with measurements from having built it, and the return found two of that pattern's implementation notes insufficient. A language that can be corrected by its own practice, in public, with the measurement that did it, is doing the thing this programme says it is for — and a paper that reported only the parts that worked would have been evidence of nothing except editing.</p>
+      <p>Corrections and counter-examples: <a href="mailto:hello@organon.art">hello@organon.art</a>. A pattern shown not to hold in someone else's room is a useful result and will be recorded as one.</p>
+    </div>
+  </div>
+</section>
+
+<div class="row">
+  <div class="mark"></div>
+  <div class="body">
+    <div class="colophon">
+      OM-004 · Organon Mind · <a href="/om-001">OM-001</a> · <a href="/om-002">OM-002</a> · <a href="/om-003">OM-003</a> · <a href="/om-005">OM-005</a> · <a href="/patterns">the catalogue</a> · <a href="https://organonmind.org">organonmind.org</a><br>
+      Set in the system text face; apparatus and code in monospace. Figures drawn, not generated.<br>
+      No external requests, no analytics, no trackers.
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

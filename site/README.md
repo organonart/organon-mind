@@ -90,6 +90,24 @@ lineage as `organon.art`: one page, no external requests.
   on. So `#the-evidence` resolves **here**, not in OM-005, which is the single
   exception to the `/om-00N#x` → `/om-005#om-00N-x` rule. Do not "tidy" the
   remaining half into confidence, and do not finish the move.
+- `om-004.html` — *Ambient Signals, and Revised Output*, at `/om-004`. Two sets in
+  one document, on OM-003's precedent and separable the same way: seven patterns
+  for a peripheral channel (§4–§10) and seven for output that is rewritten after
+  it has been shown (§11–§17). One field is added to the template —
+  ***How you would know this is unnecessary***, the condition that would make each
+  pattern pointless — and its argument is in OM-005 rather than here.
+
+  ⚠️ **Ambient Signals is not a further step outward and must not be drawn as
+  one.** OM-001/2/3 grow in span, seconds to days; this set runs *alongside* all
+  of them, because it is the peripheral alternative to a focal surface rather than
+  a wider one. Revised Output goes the other way, beneath One Agent, inside a
+  single exchange. §2 states the axis on the page and the two `lang` keys —
+  `ambient` and `revised` — match their names, unlike the older four.
+
+  ⚠️ **Five entries are published with their own reference instance failing them**,
+  and the notes saying so are the point rather than an embarrassment to tidy: it is
+  the added field doing its work. Do not soften them, and do not remove one because
+  the instance was later fixed — date it instead.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
   `/why`. **Served and unlinked**, deliberately: it is reachable by direct URL and
   is not on the index. It was briefly linked on 15 Aug 2026 and unlinked the same

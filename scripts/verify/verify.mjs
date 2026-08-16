@@ -107,8 +107,8 @@ const noise = [];
 page.on('pageerror', e => noise.push(`pageerror: ${e.message}`));
 page.on('console', m => { if (m.type() === 'error') noise.push(`console.error: ${m.text()}`); });
 
-const PAGES = ['/', '/patterns', '/om-001', '/om-002', '/om-003', '/om-005', '/why'];
-const papers = ['om-001', 'om-002', 'om-003', 'om-005'];
+const PAGES = ['/', '/patterns', '/om-001', '/om-002', '/om-003', '/om-004', '/om-005', '/why'];
+const papers = ['om-001', 'om-002', 'om-003', 'om-004', 'om-005'];
 
 // 6 · every page loads with no script noise, and collect its ids for check 5.
 const idsByPath = new Map();
