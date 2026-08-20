@@ -6,8 +6,8 @@ labels: pattern proposal
 ---
 
 New patterns start here rather than as a pull request, and CONTRIBUTING.md says
-why: an entry is a signed, dated claim with a stated evidence base, and the
-provenance labels mean something because one person is accountable for them. If
+why: an entry is a signed, dated claim, and it is refusable because one person is
+accountable for what it says. Almost nothing here is formally verified, and that is fine — what matters is that you have seen it. If
 this lands it gets written into the paper it belongs to, and you are credited
 for the proposal.
 
