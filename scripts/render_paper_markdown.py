@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """Render a publication's HTML as markdown.
 
-    python3 scripts/render_paper_markdown.py site/om-003.html doc/om-003.md
+    python3 scripts/render_paper_markdown.py site/om-003.html > om-003.md
 
-**This generator runs the safe way round.** `generate_mind_why.py` produces a
-page, so hand-editing its output loses the change. This one produces a
-*rendering of* a page: the HTML in `site/` stays canonical, and the markdown is
-disposable — regenerate it whenever the paper is revised. Nothing here can ever
-overwrite a publication.
+**This generator runs the safe way round.** A generator that produces a *page*
+makes hand-editing its output a silent mistake. This one produces a *rendering
+of* a page: the HTML in `site/` stays canonical and the markdown is disposable.
+Nothing here can ever overwrite a publication.
 
-The point of keeping it is that a rendering nobody can reproduce is a second
-copy waiting to drift. This way a divergence is one command to fix rather than a
-diff to reconcile by hand.
+Nothing it writes is committed, either, and that is deliberate: a rendering kept
+in the repo is a second copy of a publication waiting to drift. Produce one when
+somebody needs it, and throw it away.
 
 The eleven figures are hand-drawn inline SVG and do not survive the trip. Each
 becomes its `aria-label` — which is written as a description of the diagram, so
@@ -179,9 +178,15 @@ def render(src):
 
 def main(argv):
     src_path = argv[1] if len(argv) > 1 else "site/om-003.html"
-    out_path = argv[2] if len(argv) > 2 else "doc/om-003.md"
+    # No default output path. There is nowhere in this repo a rendering belongs:
+    # the publication is canonical, and a committed copy of one is a second copy
+    # waiting to drift. Give it a path or take it on stdout.
+    out_path = argv[2] if len(argv) > 2 else None
     text = render(open(src_path).read())
-    open(out_path, "w").write(text)
+    if out_path:
+        open(out_path, "w").write(text)
+    else:
+        sys.stdout.write(text)
     leaked = re.findall(r"<[a-z/][^>]*>", text)
     print("%s → %s  (%d words%s)" % (src_path, out_path, len(text.split()),
                                      ", %d LEAKED TAGS" % len(leaked) if leaked else ""))
