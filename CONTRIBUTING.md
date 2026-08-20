@@ -1,7 +1,7 @@
 # Contributing
 
-Short version: **corrections, counter-examples and evidence are welcome as pull
-requests. New patterns start as an issue.** The rest of this explains why, and
+Short version: **corrections, counter-examples and experience from elsewhere are
+welcome as pull requests. New patterns start as an issue.** The rest of this explains why, and
 lists the four things a well-meaning change breaks most often.
 
 ## What is most useful
@@ -10,13 +10,15 @@ lists the four things a well-meaning change breaks most often.
 a real result and will be recorded as one, with credit. The papers say this on
 their own faces; it is not a formality.
 
-**Evidence.** Every claim here carries its provenance — *measured*, *reported*,
-or *derived* — and the base is narrow: one workstation, one speaker, one room.
-A measurement from a different machine, a different voice or a different team is
-worth more to this programme than a new pattern.
+**Experience from somewhere else.** Almost nothing here is formally verified, and
+the catalogue does not pretend otherwise — these are things noticed while building
+and using this stuff, written down so other people can recognise them or refuse
+them. The base is narrow: largely one workstation and one person. Somebody else's
+practice, on other hardware or with a bigger team, is worth more to this programme
+than a new pattern.
 
-**Corrections.** A wrong number, a broken anchor, a claim that does not survive
-contact with your practice. The programme has withdrawn several of its own
+**Corrections.** A broken anchor, a claim that does not survive contact with your
+practice, a name that misleads. The programme has withdrawn several of its own
 claims in public and will withdraw more.
 
 **Code.** The generators and the verification harness are MIT and ordinary
@@ -26,11 +28,11 @@ software. Fix them freely.
 
 Not a rule about process. A rule about what an entry is.
 
-Every entry in this catalogue is a signed, dated claim with a stated evidence
-base, a stated cost, a failure signature, and — since OM-004 — the condition
-under which it should be deleted. The papers are authored documents with
-revision histories, and the provenance labels on every line mean something
-because one person is accountable for them.
+Every entry in this catalogue is a signed, dated claim: what it is for, what it
+costs, what it looks like when it is missing, and — since OM-004 — the condition
+under which it should be deleted. The papers are authored documents with revision
+histories, and they are refusable because one person is accountable for what they
+say. That is what an entry is, and it is why a pattern cannot arrive as a diff.
 
 So the model is **editorial**. You propose; if it lands, it gets written into
 the paper it belongs to and **you are credited for the proposal**. What a
@@ -112,8 +114,9 @@ it does not use a word where a shorter one works. Names follow one rule:
 **containers plain, leaves vivid** — build on vocabulary the reader already has,
 and a name that needs a glossary entry has failed.
 
-Numbers are counted, not estimated. If you cannot say where a figure came from,
-it does not go in.
+Where a number does appear it should be one somebody actually counted, and it
+should say where it came from. Most entries need no numbers at all, and one that
+reaches for a figure to sound more certain than it is has gone wrong.
 
 ## Licence of contributions
 
