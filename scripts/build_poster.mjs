@@ -26,12 +26,14 @@ import { writeFile, readFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { load, classify, SPINE, BAND } from './pattern_graph.mjs';
-import { landingPage } from './landing.mjs';
+import { landingPage, NAV, SWITCH_CSS } from './landing.mjs';
+import { contentsPage } from './contents.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = join(ROOT, 'site');
 const OUT = join(SITE, 'poster.html');
 const OUT_INDEX = join(SITE, 'index.html');
+const OUT_CONTENTS = join(SITE, 'contents.html');
 
 // ── the sheet ────────────────────────────────────────────────────────────────
 // A1 portrait: 594 × 841 mm at 2.5 user units per mm. Fixed, because a poster
@@ -627,7 +629,10 @@ console.log(report.join('\n'));
 // disk supplies its own number and its own title, read from its masthead, and
 // the builder refuses to write a front page that has silently dropped one.
 const paperFiles = (await readdir(SITE)).filter(f => /^om-\d+\.html$/.test(f)).sort();
-const papers = [{ href: '/patterns', label: 'Catalogue', title: 'Design Patterns for Working with Agents' }];
+const papers = [
+  { href: '/patterns', label: 'Catalogue', title: 'Design Patterns for Working with Agents' },
+  { href: '/poster', label: 'Sheet', title: 'The whole language, on one sheet' },
+];
 for (const f of paperFiles) {
   const html = await readFile(join(SITE, f), 'utf8');
   const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
@@ -655,6 +660,7 @@ const crop = {
   w: (BAND_R + CROP_PAD) - (AXIS_X - 28 - CROP_PAD),
   h: (H - M / 2 - CROP_PAD) - (CROP_TOP - CROP_PAD),
 };
+const contents = contentsPage({ papers, nav: NAV('contents'), switchCss: SWITCH_CSS });
 const landing = landingPage({
   sheetBody: svg.slice(CHROME_END), crop, spine, band, of, whyText: WHY_TEXT,
   papers, nodes, title: 'Design Patterns for Working with Agents',
@@ -662,14 +668,16 @@ const landing = landingPage({
 });
 for (const f of paperFiles) {
   const slug = f.replace(/\.html$/, '');
-  if (!landing.includes(`href="/${slug}"`))
-    throw new Error(`${slug} is on disk but not linked from the index`);
+  if (!landing.includes(`href="/${slug}"`) || !contents.includes(`href="/${slug}"`))
+    throw new Error(`${slug} is on disk but missing from a front door`);
 }
 
 if (!process.argv.includes('--dry')) {
   await writeFile(OUT, page, 'utf8');
   console.log(`\nwrote ${OUT.replace(ROOT, '.')}  (${(page.length / 1024).toFixed(1)} kB)`);
   await writeFile(OUT_INDEX, landing, 'utf8');
+  await writeFile(OUT_CONTENTS, contents, 'utf8');
   console.log(`wrote ${OUT_INDEX.replace(ROOT, '.')}  (${(landing.length / 1024).toFixed(1)} kB)  ` +
     `${papers.length} publications, ladder + sheet`);
+  console.log(`wrote ${OUT_CONTENTS.replace(ROOT, '.')}  (${(contents.length / 1024).toFixed(1)} kB)`);
 }

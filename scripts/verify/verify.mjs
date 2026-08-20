@@ -111,7 +111,7 @@ page.on('console', m => { if (m.type() === 'error') noise.push(`console.error: $
 // then resolves each of its forty-five `/patterns#…` links against the
 // catalogue's own ids, which is the property that keeps a drawing honest: a
 // node whose name or id it invented cannot pass.
-const PAGES = ['/', '/patterns', '/om-001', '/om-002', '/om-003', '/om-004', '/om-005', '/why', '/poster'];
+const PAGES = ['/', '/patterns', '/om-001', '/om-002', '/om-003', '/om-004', '/om-005', '/why', '/poster', '/contents'];
 const papers = ['om-001', 'om-002', 'om-003', 'om-004', 'om-005'];
 
 // 6 · every page loads with no script noise, and collect its ids for check 5.
@@ -122,6 +122,19 @@ for (const path of PAGES) {
   ok(res.status() === 200, `${path}: HTTP ${res?.status()}`);
   ok(noise.length === before, `${path}: ${noise.slice(before).join(' | ')}`);
   idsByPath.set(path, new Set(await page.$$eval('[id]', els => els.map(e => e.id))));
+}
+
+// 0 · the two front doors reach each other. Neither may be a dead end, and the
+// switch must mark the page it is on — a control that silently stops saying
+// where you are is worse than no control.
+for (const [path, other] of [['/', '/contents'], ['/contents', '/']]) {
+  await page.goto(BASE + path, { waitUntil: 'networkidle' });
+  const sw = await page.$$eval('nav.switch a',
+    els => els.map(e => ({ href: e.getAttribute('href'), cur: e.hasAttribute('aria-current') })));
+  ok(sw.length === 2, path + ': switch has ' + sw.length + ' views, expected 2');
+  ok(sw.some(a => a.href === other), path + ': switch does not reach ' + other);
+  ok(sw.filter(a => a.cur).length === 1, path + ': switch marks ' + sw.filter(a => a.cur).length + ' current pages');
+  ok(sw.find(a => a.cur)?.href === path, path + ': switch marks the wrong page current');
 }
 
 // 1 · every retired id resolves, scrolls, and names the exact fragment it claims.

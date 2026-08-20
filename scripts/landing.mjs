@@ -42,6 +42,25 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 // this down and the front page starts lying about being legible.
 const BREAK = 1080;
 
+// Two front doors, and each says so. The chart catches attention and the
+// contents page is how you actually get somewhere — so neither may be a dead
+// end, and the way across must be visible without scrolling. It sits on the
+// wordmark line on both pages, in the same place, with the page you are on
+// marked rather than removed: a control that changes shape between pages is a
+// control people stop trusting.
+export const NAV = here => `<nav class="switch" aria-label="Views"><a href="/"${here === 'chart' ? ' aria-current="page"' : ''}>Chart</a><a href="/contents"${here === 'contents' ? ' aria-current="page"' : ''}>Contents</a></nav>`;
+
+export const SWITCH_CSS = `
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.switch{display:flex;gap:.1rem;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.16em;text-transform:uppercase;flex:none}
+.switch a{padding:.34rem .7rem;text-decoration:none;color:var(--muted);
+  border:1px solid var(--rule2)}
+.switch a+a{border-left:0}
+.switch a:hover{color:var(--ink);background:#f6f7f9}
+.switch a[aria-current]{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+`;
+
 export function landingPage({
   sheetBody, crop, spine, band, of, whyText, papers, nodes, title, standfirst, readout,
 }) {
@@ -114,7 +133,9 @@ a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
    so the drawing below begins where the printed sheet's drawing begins, and the
    page reads as one thing rather than as a poster pinned to another poster. */
 .org{font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.34em;
-  text-transform:uppercase;color:var(--ink);margin:0 0 .8rem}
+  text-transform:uppercase;color:var(--ink);margin:0}
+.top{margin:0 0 .9rem}
+${SWITCH_CSS}
 .mast{border-top:1px solid var(--rule2);padding-top:clamp(1.1rem,2vw,1.6rem)}
 h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
   font-size:clamp(1.8rem,4.4vw,2.9rem);text-wrap:balance}
@@ -180,7 +201,7 @@ h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
 </head>
 <body>
 <main>
-  <p class="org">Organon Mind</p>
+  <div class="top"><p class="org">Organon Mind</p>${NAV('chart')}</div>
   <div class="mast">
     <h1>${esc(title)}</h1>
     <p class="sub">${esc(standfirst)}</p>
