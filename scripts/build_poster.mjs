@@ -45,6 +45,25 @@ const RAIL_R = 962;         // the column's right rail; ambient relations anchor
 const BAND_X = 1140;        // the band's rail
 const BAND_L = BAND_X - 34; // its field's left edge
 const BAND_R = W - M;
+// COPY inside the field sits on its own measure, centred in the field, rather
+// than starting on the border. The pattern rows were always inset — their rail
+// is BAND_X, 34 in — so the caption was the only thing touching the edge, which
+// read as an overflow rather than as a choice.
+//
+// The measure is centred in the field AND its left edge is the band's own rail,
+// which is the same line the pattern dots sit on. Those two wants agree here only
+// because the rail is 34 in from the left edge and the field has 34 to spare on
+// the right — if that ever stops being true, keep the rail: a copy edge that
+// misses a structural line by four units reads as a mistake, where one that
+// misses it by forty reads as a decision.
+//
+// The title line is deliberately NOT inset. It belongs to the rule it sits on and
+// spans the field the way each column section header spans its own — and at this
+// letter-spacing it fills 268 of a 273-unit padded measure, so inset it would sit
+// five units off the edge, which is a squeeze rather than a margin.
+const BAND_TL = BAND_X;                     // copy aligns to the rail
+const BAND_TR = BAND_R - (BAND_X - BAND_L); // and leaves the same air on the right
+const COPY_W = BAND_TR - BAND_TL;           // the measure the copy is set on
 
 const COL_TOP = 344;
 const FOOT_H = 168;
@@ -119,23 +138,38 @@ const BAND_TOP = STACK_TOP + 12, BAND_BOT = STACK_BOT;
 // here because the rows have to be placed below it, and it is a caption about
 // the drawing rather than a copy of any entry — the poster carries names and
 // relations only, and the prose stays in the paper.
-// Kept to ~44 characters a line: the field is 313 units wide and the type is
-// 13.5, so anything longer runs off the sheet. Measured, not guessed.
-const WHY = [
-  'Not a rung on the ladder, and drawn',
-  'beside it rather than below it. The column',
-  'is focal and single-channel: a turn is taken,',
-  'attended to, and answered. This is the',
-  'peripheral alternative — it reports when no',
-  'turn is in progress, and there may never be',
-  'one. Stacked as a sixth level it would read',
-  'as a finer grain of the same thing. It is not.',
-  'It runs alongside every one of them.',
-];
+// Wrapped to the measure rather than hand-broken. The field is 313 units wide,
+// the type is 13.5, and 44 characters was measured to fit edge to edge — so
+// 7.1 units a character, and the usable measure is whatever the padding leaves.
+// Hand-broken lines were correct until the padding changed and would have been
+// silently wrong after it; a wrapper cannot be.
+const CH = 7.1;
+const wrap = (s, width) => {
+  const max = Math.floor(width / CH), out = [];
+  let line = '';
+  for (const word of s.split(/\s+/)) {
+    const next = line ? line + ' ' + word : word;
+    if (next.length > max && line) { out.push(line); line = word; } else line = next;
+  }
+  if (line) out.push(line);
+  return out;
+};
+const WHY = wrap(
+  'Not a rung on the ladder, and drawn beside it rather than below it. ' +
+  'The column is focal and single-channel: a turn is taken, attended to, ' +
+  'and answered. This is the peripheral alternative — it reports when no ' +
+  'turn is in progress, and there may never be one. Stacked as a sixth ' +
+  'level it would read as a finer grain of the same thing. It is not. ' +
+  'It runs alongside every one of them.', BAND_TR - BAND_TL);
 // The caption goes at the FOOT of the field, so the seven patterns get the
 // height instead of it. They are what has to run alongside the whole ladder.
 const WHY_LH = 21;
-const SEED_Y = BAND_BOT - 34 - 21;
+// The seed caption wraps too, so its height is reserved rather than assumed.
+// Its only variables are two small integers, so three lines is stable at this
+// measure — and the builder throws if a wrap ever exceeds it rather than
+// drawing a caption that runs off the foot of the field.
+const SEED_LINES = 3;
+const SEED_Y = BAND_BOT - 34 - (SEED_LINES - 1) * 21;
 const WHY_Y = SEED_Y - 30 - WHY.length * WHY_LH;
 const BAND_ROWS_TOP = BAND_TOP + HDR + 6;   // clear of the header, as in the column
 const BAND_ROWS_BOT = WHY_Y - 52;
@@ -395,16 +429,20 @@ if (band) {
   put(`<text x="${BAND_R}" y="${r1(hb)}" text-anchor="end" font-family="${MONO}" font-size="23" fill="${AMB}">${pad(bandRows.length)}</text>`);
   put(`<text x="${BAND_L}" y="${r1(hb + 21)}" font-family="${SANS}" font-size="14.5" fill="${MUTED}">${esc(band.sub)}</text>`);
   put(`<text x="${BAND_R}" y="${r1(hb + 21)}" text-anchor="end" font-family="${MONO}" font-size="12" letter-spacing="1.6" fill="${FAINT}">${esc(band.doc)}</text>`);
-  put(`<text x="${BAND_L}" y="${r1(WHY_Y - 26)}" font-family="${MONO}" font-size="10.5" letter-spacing="2.8" fill="${AMB}">NOT A LEVEL</text>`);
+  put(`<text x="${BAND_TL}" y="${r1(WHY_Y - 26)}" font-family="${MONO}" font-size="10.5" letter-spacing="2.8" fill="${AMB}">NOT A LEVEL</text>`);
   WHY.forEach((t, i) =>
-    put(`<text x="${BAND_L}" y="${r1(WHY_Y + i * WHY_LH)}" font-family="${SANS}" font-size="13.5" fill="${MUTED}">${esc(t)}</text>`));
+    put(`<text x="${BAND_TL}" y="${r1(WHY_Y + i * WHY_LH)}" font-family="${SANS}" font-size="13.5" fill="${MUTED}">${esc(t)}</text>`));
 
   if (seed.length) {
     const ncite = new Set(seed.map(e => (e.fromLang === BAND ? e.from : e.to))).size;
-    put(`<text x="${BAND_L}" y="${r1(SEED_Y)}" font-family="${SANS}" font-size="13.5" font-style="italic" fill="${AMB}">` +
-        `${esc(`${ncite} of the ${bandRows.length} cite One Agent ${pad(byId.get(AAC).n)}, Ambient`)}</text>`);
-    put(`<text x="${BAND_L}" y="${r1(SEED_Y + 21)}" font-family="${SANS}" font-size="13.5" font-style="italic" fill="${AMB}">` +
-        `${esc('Activity Channel, by name — the heavy threads.')}</text>`);
+    const lines = wrap(
+      ncite + " of the " + bandRows.length + " cite One Agent " + pad(byId.get(AAC).n) +
+      ", Ambient Activity Channel, by name " + String.fromCharCode(8212) + " the heavy threads.",
+      BAND_TR - BAND_TL);
+    if (lines.length > SEED_LINES)
+      throw new Error(`seed caption wrapped to ${lines.length} lines, ${SEED_LINES} reserved`);
+    lines.forEach((t, i) =>
+      put(`<text x="${BAND_TL}" y="${r1(SEED_Y + i * 21)}" font-family="${SANS}" font-size="13.5" font-style="italic" fill="${AMB}">${esc(t)}</text>`));
   }
 
   for (const p of bandRows) {
