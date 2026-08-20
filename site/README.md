@@ -189,9 +189,9 @@ lineage as `organon.art`: one page, no external requests.
   `/why`. **Served and unlinked**, deliberately: it is reachable by direct URL and
   is not on the index. It was briefly linked on 15 Aug 2026 and unlinked the same
   day — the essay is not current, and the index is not the place to work that out.
-  **Generated**, do not hand-edit. Run
-  `python3 scripts/generate_mind_why.py` from the repo root; the source is
-  `doc/not_just_what_it_says.md`. Regenerate whenever that document changes.
+  **Hand-authored since 20 Aug 2026.** It was generated from a markdown source
+  until then; the source and its generator are gone, and the page is now edited
+  directly like every other publication here.
 - `vercel.json` — static config (`cleanUrls`, so `/why` serves `why.html`).
 - `favicon.svg`, `apple-touch-icon.png` — the same marks as `organon.art`.
   **Deliberately identical**: this is Organon's branch, not a separate outfit.
@@ -201,7 +201,7 @@ lineage as `organon.art`: one page, no external requests.
 The page carried a line — *"Because we need to see what it's doing, not just what
 it says."* — until 2026-08-12, when the front page was reset to the name alone.
 The line is not gone as a position; it is simply no longer the front door. What
-stands behind it is `doc/not_just_what_it_says.md`, served at `/why`.
+stands behind it is the page served at `/why`.
 
 That document is a **declaration, not an argument**, and the distinction is
 load-bearing for anyone editing it. It states the position and what follows from
@@ -326,8 +326,7 @@ spam folder or nowhere. `organon.art` already has those records;
 lands in an inbox, and only then switch.
 
 This still applies to `why.html`'s footer, which carries `hello@organon.art`
-today and gets it from `scripts/generate_mind_why.py`, not from this page — so
-the swap there is an edit to the generator followed by a regenerate.
+today. That page is hand-authored now, so the swap there is an ordinary edit.
 
 ## Still open
 

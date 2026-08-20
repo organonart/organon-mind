@@ -19,9 +19,8 @@
 // and neither can a person typing a hundred and fifty bezier curves without
 // making a mistake.
 //
-// Same standing as scripts/generate_mind_why.py: the committed artifact is the
-// page, it is served with no build step, and it is regenerated rather than
-// hand-edited.
+// The committed artifact is the page: it is served with no build step, and it
+// is regenerated rather than hand-edited.
 import { writeFile, readFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
