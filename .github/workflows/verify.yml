@@ -1,0 +1,61 @@
+# Every pull request, and every push to main.
+#
+# Two jobs, and the second one is the one people will not expect. Four pages are
+# generated from site/patterns.html; a contributor who edits the catalogue and
+# does not re-run the builder leaves the chart, the sheet and both front doors
+# describing a catalogue that no longer exists — and a contributor who edits a
+# generated page directly loses the change at the next build. Neither shows up
+# in review as anything other than a plausible diff.
+#
+# So: rebuild, and fail if the tree moved.
+name: verify
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  harness:
+    name: anchors, links and the graph
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install
+        working-directory: scripts/verify
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        working-directory: scripts/verify
+        run: npx playwright install --with-deps chromium
+      - name: Verify
+        working-directory: scripts/verify
+        run: node verify.mjs
+
+  generated:
+    name: generated pages are up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rebuild
+        run: node scripts/build_poster.mjs
+      # git diff, not git status. diff compares content after the .gitattributes
+      # normalisation; status also trips on a line-ending change, which is what a
+      # Windows contributor sees locally after a rebuild and is not a real diff.
+      - name: Fail if the tree moved
+        run: |
+          if ! git diff --quiet; then
+            echo "::error::A generated page is out of date. Run 'node scripts/build_poster.mjs' and commit what it writes."
+            echo
+            echo "Changed by the rebuild:"
+            git diff --name-only
+            echo
+            git diff --stat
+            exit 1
+          fi
+          echo "index.html, contents.html and poster.html match the catalogue."

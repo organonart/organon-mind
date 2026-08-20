@@ -20,3 +20,9 @@
 # and BOMs, the Bright Star Catalog — lives in `organonart/organon`. None of it
 # applies to a repo of markdown and static HTML, and copying it here would be
 # cargo-culting a document that argues against cargo-culting.
+
+# CI shell blocks are bash. A CRLF `run:` script fails on the runner with an
+# error naming the last word of the line, which reads like a typo rather than a
+# line ending. Pin it rather than diagnose it once a year.
+*.yml text eol=lf
+*.yaml text eol=lf
