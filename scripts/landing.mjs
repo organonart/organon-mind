@@ -7,6 +7,19 @@
 // papers, and a hand-kept list on the front page is the one copy nobody notices
 // has gone stale.
 //
+// ⚠️ THIS IS A PAGE, NOT A PLATE. The first version inlined the whole sheet —
+// frame, crop marks, printed masthead and all — under the page's own wordmark,
+// and it read as a photograph of a poster rather than as a front page: two
+// mastheads, the words ORGANON MIND twice, and the sheet's printed credit line
+// announcing `organonmind.org/patterns` to a reader already standing on
+// organonmind.org.
+//
+// So the sheet is split. Its printed chrome stays on /poster, where a sheet
+// that will be pinned to a wall does need to say what it is and where it came
+// from. Here the page supplies that chrome in HTML — same words, same order,
+// real type — and the SVG is cropped to the drawing itself and set on the page
+// with no card and no shadow. One masthead, then the picture it belongs to.
+//
 // TWO COMPOSITIONS, ONE SOURCE. The sheet is sized for A1 paper, so its body
 // copy is 13.5 units on a 1485-unit sheet — legible at a desk, a grey texture on
 // a phone. Measured: at 375px the pattern names render at about 4px. So below
@@ -18,7 +31,7 @@
 // the poster exists to say — five sections grow outward in span, and Ambient
 // Signals runs alongside all of them rather than beneath the last. A vertical
 // list is exactly the shape that flattens it, so the band is drawn as its own
-// block, outside the numbered ladder, carrying the caption that says why.
+// block, outside the ladder, carrying the caption that says why.
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -29,7 +42,9 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 // this down and the front page starts lying about being legible.
 const BREAK = 1080;
 
-export function landingPage({ svg, W, H, spine, band, of, whyText, papers, nodes }) {
+export function landingPage({
+  sheetBody, crop, spine, band, of, whyText, papers, nodes, title, standfirst, readout,
+}) {
   // No ordinals. A number beside "One Agent" reads as its document number, and
   // One Agent is OM-001 while sitting fourth in span order — so the two would
   // contradict each other on the same line. The rule and its dots carry the
@@ -53,6 +68,9 @@ export function landingPage({ svg, W, H, spine, band, of, whyText, papers, nodes
         `<li><a href="/patterns#${esc(p.id)}">${esc(p.name)}</a></li>`).join('')}</ul>
     </div>` : '';
 
+  const stats = readout.map(([k, v]) =>
+    `      <div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join('\n');
+
   const pubs = papers.map(p => `      <li>
         <a href="${p.href}">
           <span class="label">${esc(p.label)}</span>
@@ -65,14 +83,14 @@ export function landingPage({ svg, W, H, spine, band, of, whyText, papers, nodes
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Organon Mind</title>
-<meta name="description" content="A pattern language for working with agents: ${nodes.length} patterns across ${spine.length + 1} sections, and every relation between them.">
+<title>Organon Mind — ${esc(title)}</title>
+<meta name="description" content="${esc(title)}: ${esc(standfirst)}">
 <link rel="icon" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Organon Mind">
-<meta property="og:title" content="Organon Mind">
-<meta property="og:description" content="A pattern language for working with agents: ${nodes.length} patterns across ${spine.length + 1} sections, and every relation between them.">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(standfirst)}">
 <meta property="og:url" content="https://organonmind.org/">
 <meta name="twitter:card" content="summary">
 <style>
@@ -88,25 +106,34 @@ export function landingPage({ svg, W, H, spine, band, of, whyText, papers, nodes
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
-  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
-main{max-width:96rem;margin:0 auto;padding:clamp(2.2rem,5vw,4rem) 1.5rem 6rem}
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+main{max-width:94rem;margin:0 auto;padding:clamp(2.4rem,4.5vw,3.6rem) clamp(1.25rem,3vw,2.5rem) 6rem}
 a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
 
-.wordmark{font-family:var(--mono);font-weight:500;
-  font-size:clamp(1.05rem,2.6vw,1.5rem);letter-spacing:.2em;text-transform:uppercase;
-  margin:0}
-/* One line. The front page says what the thing is and stops — the argument is a
-   document, and a front page that starts making it is competing with OM-005. */
-.framing{color:var(--muted);margin:.7rem 0 0;max-width:44rem;
-  font-size:clamp(.98rem,1.6vw,1.1rem);text-wrap:balance}
+/* The masthead the sheet used to carry, in real type. Same words, same order —
+   so the drawing below begins where the printed sheet's drawing begins, and the
+   page reads as one thing rather than as a poster pinned to another poster. */
+.org{font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--ink);margin:0 0 .8rem}
+.mast{border-top:1px solid var(--rule2);padding-top:clamp(1.1rem,2vw,1.6rem)}
+h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
+  font-size:clamp(1.8rem,4.4vw,2.9rem);text-wrap:balance}
+.sub{color:var(--muted);margin:.6rem 0 0;font-size:clamp(.98rem,1.5vw,1.16rem)}
 
-.sheet{margin:2.6rem 0 0}
-.sheet svg{display:block;width:100%;height:auto;background:#fff;
-  box-shadow:0 1px 2px rgba(13,15,18,.07),0 12px 44px rgba(13,15,18,.10)}
-.after{margin:1rem 0 0;font-size:.9rem;color:var(--muted)}
+.readout{display:flex;flex-wrap:wrap;gap:1.1rem 2.6rem;margin:clamp(1.3rem,2.4vw,1.9rem) 0 0;
+  padding:0 0 clamp(1rem,2vw,1.4rem);border-bottom:1px solid var(--rule)}
+.readout div{margin:0}
+.readout dt{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--faint)}
+.readout dd{font-family:var(--mono);font-size:clamp(1.1rem,1.9vw,1.55rem);margin:.15rem 0 0}
+
+/* No card, no shadow. The drawing sits on the page; the plate is /poster. */
+.sheet{margin:clamp(1.2rem,2.4vw,2rem) 0 0}
+.sheet svg{display:block;width:100%;height:auto}
+.after{margin:1.2rem 0 0;font-size:.9rem;color:var(--muted)}
 
 /* The ladder — the same graph in type, for anything the sheet is too fine for. */
-.stack{margin:2.4rem 0 0}
+.stack{margin:1.8rem 0 0}
 .axis{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--faint);margin:0 0 .5rem}
 .ladder{list-style:none;margin:0;padding:0;border-left:1px solid var(--rule2)}
@@ -132,7 +159,7 @@ a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
 .bwhy{margin:.1rem 0 .7rem;color:var(--muted);font-size:.9rem;max-width:40rem}
 .band .rpats a:hover{color:var(--amb);border-color:var(--amb)}
 
-.index{list-style:none;margin:3.2rem 0 0;padding:1.4rem 0 0;border-top:1px solid var(--rule)}
+.index{list-style:none;margin:3.4rem 0 0;padding:1.4rem 0 0;border-top:1px solid var(--rule2)}
 .index li{border-bottom:1px solid var(--rule)}
 .index a{display:block;padding:.85rem 0;text-decoration:none;color:inherit}
 .index a:hover .title{text-decoration:underline;text-decoration-color:var(--live);
@@ -153,17 +180,23 @@ a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
 </head>
 <body>
 <main>
-  <h1 class="wordmark">Organon Mind</h1>
-  <p class="framing">A pattern language for working with agents: ${nodes.length} patterns
-    across ${spine.length + 1} sections, and every relation between them.</p>
+  <p class="org">Organon Mind</p>
+  <div class="mast">
+    <h1>${esc(title)}</h1>
+    <p class="sub">${esc(standfirst)}</p>
+    <dl class="readout">
+${stats}
+    </dl>
+  </div>
 
   <div class="sheet">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Taxonomy of Design Patterns for Working with Agents: ${spine.length} sections in a column ordered by span, Ambient Signals as a band beside it, and every relation drawn as an arc.">
-${svg.join('\n')}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="${crop.x} ${crop.y} ${crop.w} ${crop.h}" role="img" aria-label="Taxonomy of ${esc(title)}: ${spine.length} sections in a column ordered by span, Ambient Signals as a band beside it, and every relation drawn as an arc.">
+${sheetBody.join('\n')}
 </svg>
   </div>
-  <p class="after">Every name on the sheet opens its entry in <a href="/patterns">the catalogue</a>.
-    The sheet alone, at A1 and ready to print: <a href="/poster">the poster</a>.</p>
+  <p class="after">Every name opens its entry in <a href="/patterns">the catalogue</a>.
+    The same drawing as a sheet, with its own masthead and ready to print at A1:
+    <a href="/poster">the poster</a>.</p>
 
   <div class="stack">
     <p class="axis">Outward in span — a turn at the bottom, days at the top</p>

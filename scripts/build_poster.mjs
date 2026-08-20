@@ -261,6 +261,9 @@ put(`<line x1="${M}" y1="130" x2="${W - M}" y2="130" stroke="${RULE2}" stroke-wi
 const sectionsHeld = spine.length + (band ? 1 : 0);
 const sectionsAll = SPINE.length + 1;
 put(`<text x="${M}" y="196" font-family="${SANS}" font-size="46" font-weight="600" letter-spacing="-0.9" fill="${INK}">Design Patterns for Working with Agents</text>`);
+const STANDFIRST = sectionsHeld === sectionsAll
+  ? `${sectionsHeld} sections · ${tot} patterns · ${rels} relations · the whole language on one sheet`
+  : `${sectionsHeld} of ${sectionsAll} sections · ${tot} patterns · ${rels} relations · the rest is not published yet`;
 put(`<text x="${M}" y="232" font-family="${SANS}" font-size="19" fill="${MUTED}">` +
     (sectionsHeld === sectionsAll
       ? `${sectionsHeld} sections · ${tot} patterns · ${rels} relations · the whole language on one sheet`
@@ -285,6 +288,13 @@ readout.forEach(([k, v], i) => {
   put(`<text x="${x}" y="306" font-family="${MONO}" font-size="27" fill="${v === 0 ? MUTED : INK}">${pad(v)}</text>`);
 });
 put(`<line x1="${M}" y1="322" x2="${W - M}" y2="322" stroke="${RULE}" stroke-width="1"/>`);
+
+// Everything pushed up to here is the SHEET'S OWN printed chrome: the white
+// ground, the registration marks, the masthead and the readout. /poster keeps
+// all of it, because a sheet going on a wall has to say what it is. The
+// landing page carries the same words in HTML instead and inlines only what
+// follows — see scripts/landing.mjs.
+const CHROME_END = svg.length;
 
 // ── the span axis ────────────────────────────────────────────────────────────
 // A wedge, wide at the top and fine at the bottom. It is the only part of the
@@ -629,7 +639,27 @@ for (const f of paperFiles) {
     title: h1[1].replace(/<[^>]+>/g, '').trim(),
   });
 }
-const landing = landingPage({ svg, W, H, spine, band, of, whyText: WHY_TEXT, papers, nodes });
+// The crop. Content runs from the span axis on the left to the band's right
+// edge, and from the top of the column to the foot of the colophon. Derived
+// from the same constants that placed them, so it cannot drift out of step
+// with the drawing the way a hand-typed viewBox would.
+const CROP_PAD = 16;
+// The span axis carries a marker above the column at STACK_TOP - 14, and a
+// 12pt glyph reaches about 12 above its own baseline. Cropping to COL_TOP
+// sliced its tip off — the one thing above the columns, and the easiest to
+// miss, since it is four pixels of grey.
+const CROP_TOP = COL_TOP - 14 - 16;
+const crop = {
+  x: AXIS_X - 28 - CROP_PAD,
+  y: CROP_TOP - CROP_PAD,
+  w: (BAND_R + CROP_PAD) - (AXIS_X - 28 - CROP_PAD),
+  h: (H - M / 2 - CROP_PAD) - (CROP_TOP - CROP_PAD),
+};
+const landing = landingPage({
+  sheetBody: svg.slice(CHROME_END), crop, spine, band, of, whyText: WHY_TEXT,
+  papers, nodes, title: 'Design Patterns for Working with Agents',
+  standfirst: STANDFIRST, readout,
+});
 for (const f of paperFiles) {
   const slug = f.replace(/\.html$/, '');
   if (!landing.includes(`href="/${slug}"`))

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Organon Mind</title>
-<meta name="description" content="A pattern language for working with agents: 45 patterns across 6 sections, and every relation between them.">
+<title>Organon Mind — Design Patterns for Working with Agents</title>
+<meta name="description" content="Design Patterns for Working with Agents: 6 sections · 45 patterns · 174 relations · the whole language on one sheet">
 <link rel="icon" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Organon Mind">
-<meta property="og:title" content="Organon Mind">
-<meta property="og:description" content="A pattern language for working with agents: 45 patterns across 6 sections, and every relation between them.">
+<meta property="og:title" content="Design Patterns for Working with Agents">
+<meta property="og:description" content="6 sections · 45 patterns · 174 relations · the whole language on one sheet">
 <meta property="og:url" content="https://organonmind.org/">
 <meta name="twitter:card" content="summary">
 <style>
@@ -26,25 +26,34 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
-  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
-main{max-width:96rem;margin:0 auto;padding:clamp(2.2rem,5vw,4rem) 1.5rem 6rem}
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+main{max-width:94rem;margin:0 auto;padding:clamp(2.4rem,4.5vw,3.6rem) clamp(1.25rem,3vw,2.5rem) 6rem}
 a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
 
-.wordmark{font-family:var(--mono);font-weight:500;
-  font-size:clamp(1.05rem,2.6vw,1.5rem);letter-spacing:.2em;text-transform:uppercase;
-  margin:0}
-/* One line. The front page says what the thing is and stops — the argument is a
-   document, and a front page that starts making it is competing with OM-005. */
-.framing{color:var(--muted);margin:.7rem 0 0;max-width:44rem;
-  font-size:clamp(.98rem,1.6vw,1.1rem);text-wrap:balance}
+/* The masthead the sheet used to carry, in real type. Same words, same order —
+   so the drawing below begins where the printed sheet's drawing begins, and the
+   page reads as one thing rather than as a poster pinned to another poster. */
+.org{font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--ink);margin:0 0 .8rem}
+.mast{border-top:1px solid var(--rule2);padding-top:clamp(1.1rem,2vw,1.6rem)}
+h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
+  font-size:clamp(1.8rem,4.4vw,2.9rem);text-wrap:balance}
+.sub{color:var(--muted);margin:.6rem 0 0;font-size:clamp(.98rem,1.5vw,1.16rem)}
 
-.sheet{margin:2.6rem 0 0}
-.sheet svg{display:block;width:100%;height:auto;background:#fff;
-  box-shadow:0 1px 2px rgba(13,15,18,.07),0 12px 44px rgba(13,15,18,.10)}
-.after{margin:1rem 0 0;font-size:.9rem;color:var(--muted)}
+.readout{display:flex;flex-wrap:wrap;gap:1.1rem 2.6rem;margin:clamp(1.3rem,2.4vw,1.9rem) 0 0;
+  padding:0 0 clamp(1rem,2vw,1.4rem);border-bottom:1px solid var(--rule)}
+.readout div{margin:0}
+.readout dt{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--faint)}
+.readout dd{font-family:var(--mono);font-size:clamp(1.1rem,1.9vw,1.55rem);margin:.15rem 0 0}
+
+/* No card, no shadow. The drawing sits on the page; the plate is /poster. */
+.sheet{margin:clamp(1.2rem,2.4vw,2rem) 0 0}
+.sheet svg{display:block;width:100%;height:auto}
+.after{margin:1.2rem 0 0;font-size:.9rem;color:var(--muted)}
 
 /* The ladder — the same graph in type, for anything the sheet is too fine for. */
-.stack{margin:2.4rem 0 0}
+.stack{margin:1.8rem 0 0}
 .axis{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--faint);margin:0 0 .5rem}
 .ladder{list-style:none;margin:0;padding:0;border-left:1px solid var(--rule2)}
@@ -70,7 +79,7 @@ a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
 .bwhy{margin:.1rem 0 .7rem;color:var(--muted);font-size:.9rem;max-width:40rem}
 .band .rpats a:hover{color:var(--amb);border-color:var(--amb)}
 
-.index{list-style:none;margin:3.2rem 0 0;padding:1.4rem 0 0;border-top:1px solid var(--rule)}
+.index{list-style:none;margin:3.4rem 0 0;padding:1.4rem 0 0;border-top:1px solid var(--rule2)}
 .index li{border-bottom:1px solid var(--rule)}
 .index a{display:block;padding:.85rem 0;text-decoration:none;color:inherit}
 .index a:hover .title{text-decoration:underline;text-decoration-color:var(--live);
@@ -91,35 +100,22 @@ a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
 </head>
 <body>
 <main>
-  <h1 class="wordmark">Organon Mind</h1>
-  <p class="framing">A pattern language for working with agents: 45 patterns
-    across 6 sections, and every relation between them.</p>
+  <p class="org">Organon Mind</p>
+  <div class="mast">
+    <h1>Design Patterns for Working with Agents</h1>
+    <p class="sub">6 sections · 45 patterns · 174 relations · the whole language on one sheet</p>
+    <dl class="readout">
+      <div><dt>RELATIONS</dt><dd>174</dd></div>
+      <div><dt>WITHIN A SECTION</dt><dd>106</dd></div>
+      <div><dt>CROSSING A SECTION</dt><dd>68</dd></div>
+      <div><dt>DOWN THE SPINE</dt><dd>47</dd></div>
+      <div><dt>UP THE SPINE</dt><dd>11</dd></div>
+      <div><dt>BAND TO SPINE</dt><dd>10</dd></div>
+    </dl>
+  </div>
 
   <div class="sheet">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1485 2102.5" role="img" aria-label="Taxonomy of Design Patterns for Working with Agents: 5 sections in a column ordered by span, Ambient Signals as a band beside it, and every relation drawn as an arc.">
-<rect width="1485" height="2102.5" fill="#ffffff"/>
-<g stroke="#b9c0c7" stroke-width="1"><line x1="24" y1="33" x2="42" y2="33"/><line x1="33" y1="24" x2="33" y2="42"/></g>
-<g stroke="#b9c0c7" stroke-width="1"><line x1="1443" y1="33" x2="1461" y2="33"/><line x1="1452" y1="24" x2="1452" y2="42"/></g>
-<g stroke="#b9c0c7" stroke-width="1"><line x1="24" y1="2069.5" x2="42" y2="2069.5"/><line x1="33" y1="2060.5" x2="33" y2="2078.5"/></g>
-<g stroke="#b9c0c7" stroke-width="1"><line x1="1443" y1="2069.5" x2="1461" y2="2069.5"/><line x1="1452" y1="2060.5" x2="1452" y2="2078.5"/></g>
-<text x="66" y="112" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="15" letter-spacing="5.4" fill="#0d0f12">ORGANON MIND</text>
-<text x="1419" y="112" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="13" letter-spacing="2.4" fill="#5c626b">ORGANONMIND.ORG/PATTERNS</text>
-<line x1="66" y1="130" x2="1419" y2="130" stroke="#cdd2d8" stroke-width="1"/>
-<text x="66" y="196" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="46" font-weight="600" letter-spacing="-0.9" fill="#0d0f12">Design Patterns for Working with Agents</text>
-<text x="66" y="232" font-family="system-ui,-apple-system,&quot;Segoe UI Variable Text&quot;,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif" font-size="19" fill="#5c626b">6 sections · 45 patterns · 174 relations · the whole language on one sheet</text>
-<text x="66" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">RELATIONS</text>
-<text x="66" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">174</text>
-<text x="292" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">WITHIN A SECTION</text>
-<text x="292" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">106</text>
-<text x="518" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">CROSSING A SECTION</text>
-<text x="518" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">68</text>
-<text x="744" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">DOWN THE SPINE</text>
-<text x="744" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">47</text>
-<text x="970" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">UP THE SPINE</text>
-<text x="970" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">11</text>
-<text x="1196" y="276" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.7" fill="#9aa1a9">BAND TO SPINE</text>
-<text x="1196" y="306" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="27" fill="#0d0f12">10</text>
-<line x1="66" y1="322" x2="1419" y2="322" stroke="#e6e9ec" stroke-width="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="48 298 1387 1755.5" role="img" aria-label="Taxonomy of Design Patterns for Working with Agents: 5 sections in a column ordered by span, Ambient Signals as a band beside it, and every relation drawn as an arc.">
 <path d="M83 344L101 344L93.5 1824.5000000000018L90.5 1824.5000000000018Z" fill="#e6e9ec"/>
 <line x1="92" y1="344" x2="92" y2="1824.5000000000018" stroke="#cdd2d8" stroke-width="1"/>
 <g transform="translate(76 1084.250000000001) rotate(-90)"><text text-anchor="middle" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" letter-spacing="4.2" fill="#5c626b">SPAN &#183; WIDER ABOVE &#183; FINER BELOW</text></g>
@@ -621,8 +617,9 @@ a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
 <text x="1419" y="2001.5" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" letter-spacing="2.2" fill="#9aa1a9">ORGANON MIND &#183; 2026-08-20</text>
 </svg>
   </div>
-  <p class="after">Every name on the sheet opens its entry in <a href="/patterns">the catalogue</a>.
-    The sheet alone, at A1 and ready to print: <a href="/poster">the poster</a>.</p>
+  <p class="after">Every name opens its entry in <a href="/patterns">the catalogue</a>.
+    The same drawing as a sheet, with its own masthead and ready to print at A1:
+    <a href="/poster">the poster</a>.</p>
 
   <div class="stack">
     <p class="axis">Outward in span — a turn at the bottom, days at the top</p>
