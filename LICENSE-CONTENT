@@ -7,9 +7,9 @@ Copyright (c) 2026 James Andrew Walsh, Organon Mind
 
 ## What this covers
 
-Everything in `site/` that is read rather than run, and everything in `doc/`:
-the publications, the pattern catalogue, the entries, the figures, the poster,
-and the prose of the pages that carry them.
+Everything in `site/` that is read rather than run: the publications, the
+pattern catalogue, the entries, the figures, the poster, and the prose of the
+pages that carry them.
 
 The code is separately licensed — see `LICENSE` (MIT). That covers `scripts/`
 and the JavaScript and CSS embedded in the pages. Where the two meet, in a file

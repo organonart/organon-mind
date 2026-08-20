@@ -17,9 +17,10 @@ kind of paper.
 
 ```
 site/       organonmind.org — the pages themselves
-doc/        sources for things that are not the pages
-scripts/    the generators and the verification harness
+scripts/    the generator and the verification harness
 ```
+
+The repo is the site and what checks it. Nothing else.
 
 `site/README.md` is the one to read before changing a page. It carries the rules
 each file is held to and the traps that are easy to walk into.
@@ -37,7 +38,7 @@ each file is held to and the traps that are easy to walk into.
 | `/om-003` | `om-003.html` | hand-authored. Six arrangements, and three for many teams |
 | `/om-004` | `om-004.html` | hand-authored. Seven ambient, seven for revised output |
 | `/om-005` | `om-005.html` | hand-authored. The argument behind all four |
-| `/why` | `why.html` | **generated** — served, and not linked |
+| `/why` | `why.html` | hand-authored. Served, and not linked |
 
 **Papers hold entries; `/patterns` holds the graph.** There is exactly one copy
 of each entry and it is in its paper. The explorer carries position, intent and
@@ -46,12 +47,11 @@ explorer without removing it from the paper.
 
 ## Generated files
 
-Four pages and one poster are written by a script. **Every one of them says so
-in its first comment, and a hand edit is lost at the next run.**
+Three pages are written by a script. **Each says so in its first comment, and a
+hand edit is lost at the next run.**
 
 ```bash
-node scripts/build_poster.mjs      # /, /contents, /poster — from patterns.html
-python3 scripts/generate_mind_why.py   # /why — from doc/not_just_what_it_says.md
+node scripts/build_poster.mjs      # /, /contents and /poster — from patterns.html
 ```
 
 `build_poster.mjs` reads the catalogue out of `patterns.html` and nothing else,
@@ -59,11 +59,10 @@ so the chart, the sheet and the front page cannot describe a catalogue the
 catalogue does not have. If you change an entry in `patterns.html`, re-run it
 and commit what it writes.
 
-There is a generator running the other way as well, and the direction is the
-point. `scripts/render_paper_markdown.py` consumes a *page* and produces
-`doc/om-003.md`, a disposable rendering for places that will not take HTML —
-so `site/om-003.html` stays canonical and no generator can overwrite a
-publication.
+`scripts/render_paper_markdown.py` runs the other way, and the direction is the
+point: it consumes a *page* and prints a markdown rendering of it, for places
+that will not take HTML. Nothing is committed from it. A publication is
+canonical and no generator can overwrite one.
 
 ## Verifying a change
 

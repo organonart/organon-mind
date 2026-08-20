@@ -65,15 +65,14 @@ lands on a line naming where it went. If you rename an entry, add a row to
 `LEGACY` in `patterns.html` so the old id still resolves. **Never delete a row
 from that table.**
 
-### 2. Four pages are generated
+### 2. Three pages are generated
 
-`index.html`, `contents.html`, `poster.html` and `why.html` are written by a
-script. Each says so in its first comment. A hand edit to any of them is
-discarded at the next build — silently, and possibly weeks later.
+`index.html`, `contents.html` and `poster.html` are written by a script. Each
+says so in its first comment. A hand edit to any of them is discarded at the
+next build — silently, and possibly weeks later.
 
 ```bash
 node scripts/build_poster.mjs          # /, /contents, /poster
-python3 scripts/generate_mind_why.py   # /why
 ```
 
 Change the source, re-run the generator, commit what it writes.
