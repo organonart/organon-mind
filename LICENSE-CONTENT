@@ -1,0 +1,40 @@
+# The writing, the catalogue and the figures
+
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Copyright (c) 2026 James Andrew Walsh, Organon Mind
+
+## What this covers
+
+Everything in `site/` that is read rather than run, and everything in `doc/`:
+the publications, the pattern catalogue, the entries, the figures, the poster,
+and the prose of the pages that carry them.
+
+The code is separately licensed — see `LICENSE` (MIT). That covers `scripts/`
+and the JavaScript and CSS embedded in the pages. Where the two meet, in a file
+that is both a program and a publication, take the code under MIT and the words
+under CC BY.
+
+## What you may do
+
+Share it and adapt it, for any purpose including commercially, provided you
+give appropriate credit, link to the licence, and say if you changed anything.
+
+Quote a pattern in a design document. Put an entry on a wall. Teach from it.
+Fork the catalogue and disagree with it in public. Translate it. Print the
+poster. None of that needs permission.
+
+## Attribution
+
+Credit "Organon Mind" and link to https://organonmind.org where practical. A
+citation of a specific pattern is best made against its number and its paper —
+for example *Honest Gauge (OM-001, 12)* — because a number here is permanent
+and is never reused.
+
+## Why this licence
+
+The programme's stated position is that a pattern must be refusable, and that a
+language argued in public gets corrected faster than one held back until it is
+safe. A licence that stopped people using these patterns at work would bar the
+only audience able to refuse them on evidence.
