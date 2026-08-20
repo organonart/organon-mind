@@ -5,12 +5,16 @@
 
 A pattern language for working with agents. Forty-five named patterns across six
 sections, every relation between them typed and drawn, and five papers making
-the case. It is deliberately separate from the instrument's source, which lives
-in [`organonart/organon`](https://github.com/organonart/organon).
+the case.
 
-Organon is the made thing. Organon Mind is the work of finding out how minds and
-people work together — the voice loop, the resident agent, the presence layer,
-the patterns that came out of building them. Same outfit, same marks, different
+The patterns came out of **[Organon](https://github.com/organonart/organon)** — a
+workspace for exploring new paradigms for interacting with machines in this
+agentic era. The voice loop, the resident agent, the presence layer: things built
+to find out how people and machines might work together. These patterns were
+surfaced there rather than invented here.
+
+Organon is where that work happens. Organon Mind is where what it surfaces gets
+written down, argued for, and made refusable. Same outfit, same marks, different
 kind of paper.
 
 ## What is here
