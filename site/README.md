@@ -3,11 +3,35 @@
 The page for **organonmind.org**, Organon Mind's own address. Same letterhead
 lineage as `organon.art`: one page, no external requests.
 
-- `index.html` — **the name, and the index.** No tagline, no description of the
-  programme, no invitation, no mail address. Set in the same tokens as the
-  publications: white ground, system sans, and the wordmark in tracked monospace
-  — the same treatment as a publication masthead, scaled up, so the identity is
-  one element used consistently rather than a logo.
+- `index.html` — **the landing page. GENERATED**, do not hand-edit. Run
+  `node scripts/build_poster.mjs`, which writes this and `poster.html` from the
+  same graph; the composition is `scripts/landing.mjs`.
+
+  It carries the wordmark, **one line** saying what the language is, the taxonomy
+  sheet, and the publications. ⚠️ **This reverses a stated decision and the
+  reversal is deliberate.** Until 20 Aug 2026 the index was the name and a list —
+  no tagline, no description, no invitation — on the grounds that the front page
+  should not argue. It still does not argue: the one line says what the thing is
+  and stops, because the argument is a document and a front page competing with
+  OM-005 would be a second copy of it. What changed is that there is now
+  something worth showing.
+
+  ⚠️ **Two compositions, one source, and the breakpoint is measured.** The sheet
+  is sized for A1, so its copy renders at container-width ÷ 1485 × 13.5 px —
+  about 4px on a phone. Below 1080px the same graph is drawn again as a stacked
+  ladder in real type and the sheet is offered rather than imposed. Neither is a
+  summary of the other; both come out of `patterns.html`.
+
+  ⚠️ **The ladder must not make Ambient Signals a sixth rung.** A vertical list is
+  exactly the shape that flattens the one thing the drawing exists to say, so the
+  band is its own block outside the numbered ladder, carrying the caption. And
+  the rungs carry **no ordinals**: a number beside One Agent reads as a document
+  number, and One Agent is OM-001 while sitting fourth in span order.
+
+  ⚠️ **The publications list is derived from the papers on disk**, each supplying
+  its own title from its masthead, and the builder throws if an `om-NNN.html`
+  exists that the page does not link. It was hand-kept before, which is why
+  OM-004 was live for some hours before the front page said so.
 - `patterns.html` — *Design Patterns for Working with Agents*, the catalogue at
   `/patterns`: index rail, specimen detail, and Related Patterns as navigation
   rather than a dead list. One file, hand-authored, no external requests; the
