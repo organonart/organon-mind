@@ -48,7 +48,20 @@ const BREAK = 1080;
 // wordmark line on both pages, in the same place, with the page you are on
 // marked rather than removed: a control that changes shape between pages is a
 // control people stop trusting.
-export const NAV = here => `<nav class="switch" aria-label="Views"><a href="/"${here === 'chart' ? ' aria-current="page"' : ''}>Chart</a><a href="/contents"${here === 'contents' ? ' aria-current="page"' : ''}>Contents</a></nav>`;
+// The three surfaces, in one place. /patterns is hand-authored and carries a
+// hand-written copy of this markup — unavoidable, since it is not generated —
+// so the harness asserts all three pages offer the SAME hrefs and labels and
+// mark exactly one current. A copy that cannot drift silently is acceptable;
+// one that can is not.
+export const VIEWS = [
+  ['chart', '/', 'Chart'],
+  ['contents', '/contents', 'Contents'],
+  ['catalogue', '/patterns', 'Catalogue'],
+];
+export const NAV = here => `<nav class="switch" aria-label="Views">` +
+  VIEWS.map(([id, href, label]) =>
+    `<a href="${href}"${here === id ? ' aria-current="page"' : ''}>${label}</a>`).join('') +
+  `</nav>`;
 
 export const SWITCH_CSS = `
 .top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
@@ -89,13 +102,6 @@ export function landingPage({
 
   const stats = readout.map(([k, v]) =>
     `      <div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join('\n');
-
-  const pubs = papers.map(p => `      <li>
-        <a href="${p.href}">
-          <span class="label">${esc(p.label)}</span>
-          <span class="title">${esc(p.title)}</span>
-        </a>
-      </li>`).join('\n');
 
   return `<!doctype html>
 <html lang="en">
@@ -180,14 +186,6 @@ h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
 .bwhy{margin:.1rem 0 .7rem;color:var(--muted);font-size:.9rem;max-width:40rem}
 .band .rpats a:hover{color:var(--amb);border-color:var(--amb)}
 
-.index{list-style:none;margin:3.4rem 0 0;padding:1.4rem 0 0;border-top:1px solid var(--rule2)}
-.index li{border-bottom:1px solid var(--rule)}
-.index a{display:block;padding:.85rem 0;text-decoration:none;color:inherit}
-.index a:hover .title{text-decoration:underline;text-decoration-color:var(--live);
-  text-underline-offset:3px}
-.index .label{display:block;font-family:var(--mono);font-size:.66rem;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:.15rem}
-.index .title{font-weight:600;letter-spacing:-.008em}
 
 /* The switch. Measured, not chosen — see BREAK at the head of this file. */
 .stack{display:block}
@@ -229,9 +227,6 @@ ${ladder}
       wants a wide screen or a printer.</p>
   </div>
 
-  <ul class="index">
-${pubs}
-  </ul>
 </main>
 </body>
 </html>

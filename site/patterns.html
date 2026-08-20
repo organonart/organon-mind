@@ -51,6 +51,17 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--live);outline-offse
 .bar .out{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted);text-decoration:none;white-space:nowrap}
 .bar .out:hover{color:var(--live)}
+/* The view switch. ⚠️ Hand-written copy of SWITCH_CSS in scripts/landing.mjs,
+   which generates the other two pages that carry it — this one is authored by
+   hand and nothing writes it. The harness asserts the three switches offer the
+   same views and mark exactly one current, so the copy cannot drift quietly. */
+.bar .switch{display:flex;gap:.1rem;font-family:var(--mono);font-size:.63rem;
+  letter-spacing:.16em;text-transform:uppercase;flex:none}
+.bar .switch a{padding:.3rem .62rem;text-decoration:none;color:var(--muted);
+  border:1px solid var(--rule-strong);white-space:nowrap}
+.bar .switch a+a{border-left:0}
+.bar .switch a:hover{color:var(--ink);background:var(--raise)}
+.bar .switch a[aria-current]{color:var(--paper);background:var(--ink);border-color:var(--ink)}
 .railtoggle{display:none}
 
 /* a fine calibration rule beneath the bar — the clean-room tell */
@@ -278,9 +289,8 @@ body[data-view="overview"] .desig .tag{display:none}
 <div class="bar">
   <button class="railtoggle" id="railtoggle" aria-label="Show index">Index</button>
   <a class="org" href="/">Organon Mind</a>
-  <span class="sep">/</span>
-  <span class="here">Catalogue</span>
   <span class="spacer"></span>
+  <nav class="switch" aria-label="Views"><a href="/">Chart</a><a href="/contents">Contents</a><a href="/patterns" aria-current="page">Catalogue</a></nav>
   <a class="out" id="out" href="/om-001">OM-001 · the paper →</a>
 </div>
 

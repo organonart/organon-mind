@@ -124,18 +124,33 @@ for (const path of PAGES) {
   idsByPath.set(path, new Set(await page.$$eval('[id]', els => els.map(e => e.id))));
 }
 
-// 0 · the two front doors reach each other. Neither may be a dead end, and the
-// switch must mark the page it is on — a control that silently stops saying
-// where you are is worse than no control.
-for (const [path, other] of [['/', '/contents'], ['/contents', '/']]) {
-  await page.goto(BASE + path, { waitUntil: 'networkidle' });
-  const sw = await page.$$eval('nav.switch a',
-    els => els.map(e => ({ href: e.getAttribute('href'), cur: e.hasAttribute('aria-current') })));
-  ok(sw.length === 2, path + ': switch has ' + sw.length + ' views, expected 2');
-  ok(sw.some(a => a.href === other), path + ': switch does not reach ' + other);
-  ok(sw.filter(a => a.cur).length === 1, path + ': switch marks ' + sw.filter(a => a.cur).length + ' current pages');
-  ok(sw.find(a => a.cur)?.href === path, path + ': switch marks the wrong page current');
+// 0 · the three views agree. Two of the pages are generated from one array in
+// scripts/landing.mjs; /patterns is hand-authored and carries a hand-written
+// copy of the same markup. That copy is the reason this check exists — it
+// asserts all three offer the SAME views in the SAME order and that each marks
+// itself, so the copy cannot drift without failing here. A switch that quietly
+// stops saying where you are is worse than no switch.
+const VIEW_PAGES = [["/", "Chart"], ["/contents", "Contents"], ["/patterns", "Catalogue"]];
+const seenSwitch = [];
+for (const [path, label] of VIEW_PAGES) {
+  await page.goto(BASE + path, { waitUntil: "networkidle" });
+  const sw = await page.$$eval("nav.switch a", els => els.map(e => ({
+    href: e.getAttribute("href"), text: e.textContent.trim(),
+    cur: e.hasAttribute("aria-current"),
+  })));
+  ok(sw.length === VIEW_PAGES.length,
+     path + ": switch offers " + sw.length + " views, expected " + VIEW_PAGES.length);
+  ok(sw.filter(a => a.cur).length === 1,
+     path + ": switch marks " + sw.filter(a => a.cur).length + " views current, expected 1");
+  const cur = sw.find(a => a.cur);
+  ok(cur && cur.href === path,
+     path + ": switch marks " + JSON.stringify(cur && cur.href) + " current, not this page");
+  ok(cur && cur.text === label,
+     path + ": current view reads " + JSON.stringify(cur && cur.text) + ", expected " + JSON.stringify(label));
+  seenSwitch.push(sw.map(a => a.href + "|" + a.text).join(" "));
 }
+ok(new Set(seenSwitch).size === 1,
+   "the three switches disagree: " + JSON.stringify([...new Set(seenSwitch)]));
 
 // 1 · every retired id resolves, scrolls, and names the exact fragment it claims.
 //
