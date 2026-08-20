@@ -22,13 +22,16 @@
 // Same standing as scripts/generate_mind_why.py: the committed artifact is the
 // page, it is served with no build step, and it is regenerated rather than
 // hand-edited.
-import { writeFile } from 'node:fs/promises';
+import { writeFile, readFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { load, classify, SPINE, BAND } from './pattern_graph.mjs';
+import { landingPage } from './landing.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = join(ROOT, 'site', 'poster.html');
+const SITE = join(ROOT, 'site');
+const OUT = join(SITE, 'poster.html');
+const OUT_INDEX = join(SITE, 'index.html');
 
 // ── the sheet ────────────────────────────────────────────────────────────────
 // A1 portrait: 594 × 841 mm at 2.5 user units per mm. Fixed, because a poster
@@ -154,13 +157,14 @@ const wrap = (s, width) => {
   if (line) out.push(line);
   return out;
 };
-const WHY = wrap(
+const WHY_TEXT =
   'Not a rung on the ladder, and drawn beside it rather than below it. ' +
   'The column is focal and single-channel: a turn is taken, attended to, ' +
   'and answered. This is the peripheral alternative — it reports when no ' +
   'turn is in progress, and there may never be one. Stacked as a sixth ' +
   'level it would read as a finer grain of the same thing. It is not. ' +
-  'It runs alongside every one of them.', BAND_TR - BAND_TL);
+  'It runs alongside every one of them.';
+const WHY = wrap(WHY_TEXT, BAND_TR - BAND_TL);
 // The caption goes at the FOOT of the field, so the seven patterns get the
 // height instead of it. They are what has to run alongside the whole ladder.
 const WHY_LH = 21;
@@ -606,7 +610,36 @@ const report = [
 ];
 console.log(report.join('\n'));
 
+// ── the landing page ─────────────────────────────────────────────────────────
+// The publications list is DERIVED, not kept. It used to be a hand-written list
+// in index.html, which is the one copy nobody notices has gone stale — OM-004
+// existed for hours before anything on the front page said so. Each paper on
+// disk supplies its own number and its own title, read from its masthead, and
+// the builder refuses to write a front page that has silently dropped one.
+const paperFiles = (await readdir(SITE)).filter(f => /^om-\d+\.html$/.test(f)).sort();
+const papers = [{ href: '/patterns', label: 'Catalogue', title: 'Design Patterns for Working with Agents' }];
+for (const f of paperFiles) {
+  const html = await readFile(join(SITE, f), 'utf8');
+  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+  if (!h1) throw new Error(`${f} has no <h1> — cannot title it on the index`);
+  const slug = f.replace(/\.html$/, '');
+  papers.push({
+    href: `/${slug}`,
+    label: `${slug.toUpperCase()} · Paper`,
+    title: h1[1].replace(/<[^>]+>/g, '').trim(),
+  });
+}
+const landing = landingPage({ svg, W, H, spine, band, of, whyText: WHY_TEXT, papers, nodes });
+for (const f of paperFiles) {
+  const slug = f.replace(/\.html$/, '');
+  if (!landing.includes(`href="/${slug}"`))
+    throw new Error(`${slug} is on disk but not linked from the index`);
+}
+
 if (!process.argv.includes('--dry')) {
   await writeFile(OUT, page, 'utf8');
   console.log(`\nwrote ${OUT.replace(ROOT, '.')}  (${(page.length / 1024).toFixed(1)} kB)`);
+  await writeFile(OUT_INDEX, landing, 'utf8');
+  console.log(`wrote ${OUT_INDEX.replace(ROOT, '.')}  (${(landing.length / 1024).toFixed(1)} kB)  ` +
+    `${papers.length} publications, ladder + sheet`);
 }
