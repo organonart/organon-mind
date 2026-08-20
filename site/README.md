@@ -132,6 +132,25 @@ lineage as `organon.art`: one page, no external requests.
   and the notes saying so are the point rather than an embarrassment to tidy: it is
   the added field doing its work. Do not soften them, and do not remove one because
   the instance was later fixed — date it instead.
+- `contents.html` — **the second front door**, at `/contents`. **GENERATED** by
+  the same run; the composition is `scripts/contents.mjs`. It is the page the
+  index used to be — the wordmark and the list, nothing else — kept rather than
+  lost when the chart took the front page. A reader who already knows they want
+  OM-003 should not have to scroll past a poster to reach it.
+
+  ⚠️ **It is deliberately the plain one.** The temptation is to put a small
+  version of the sheet at the top, which would make it a worse copy of the page
+  it exists to be an alternative to. What it gains from the chart existing is
+  one row — the sheet, listed as a thing you can open and print — not a picture
+  of it.
+
+  ⚠️ **The switch between the two lives in `landing.mjs` and is used by both.**
+  It sits on the wordmark line of each, in the same place, and marks the page
+  you are on rather than hiding it: a control that changes shape between pages
+  is one people stop trusting. The harness asserts both directions and that
+  exactly one view is marked current — a switch that silently stops saying where
+  you are is worse than no switch.
+
 - `poster.html` — the taxonomy poster at `/poster`. One A1 sheet carrying the
   whole language: five sections as a column ordered by span, Ambient Signals as a
   band beside it, and every relation between them drawn as an arc. **Generated**,
