@@ -7,8 +7,10 @@ lineage as `organon.art`: one page, no external requests.
   `node scripts/build_poster.mjs`, which writes this and `poster.html` from the
   same graph; the composition is `scripts/landing.mjs`.
 
-  It carries the wordmark, **one line** saying what the language is, the taxonomy
-  sheet, and the publications. ⚠️ **This reverses a stated decision and the
+  It carries the wordmark, the view switch, the masthead and the taxonomy sheet.
+  ⚠️ **It does not carry the publications list** — that is `/contents`, one click
+  away on the switch. A list at the foot of the chart would be a second copy of
+  that page, kept in step by nobody. ⚠️ **This reverses a stated decision and the
   reversal is deliberate.** Until 20 Aug 2026 the index was the name and a list —
   no tagline, no description, no invitation — on the grounds that the front page
   should not argue. It still does not argue: the one line says what the thing is
@@ -144,12 +146,20 @@ lineage as `organon.art`: one page, no external requests.
   one row — the sheet, listed as a thing you can open and print — not a picture
   of it.
 
-  ⚠️ **The switch between the two lives in `landing.mjs` and is used by both.**
-  It sits on the wordmark line of each, in the same place, and marks the page
-  you are on rather than hiding it: a control that changes shape between pages
-  is one people stop trusting. The harness asserts both directions and that
-  exactly one view is marked current — a switch that silently stops saying where
-  you are is worse than no switch.
+  ⚠️ **The switch offers three views — Chart, Contents, Catalogue — and one copy
+  of it is hand-written.** `scripts/landing.mjs` holds the array and generates it
+  for `/` and `/contents`; `patterns.html` is hand-authored, so its copy is typed.
+  The harness asserts all three pages offer the same views in the same order and
+  that each marks itself current — so the copy cannot drift without failing a
+  check. It sits in the same place on all three and marks the page you are on
+  rather than hiding it: a control that changes shape between pages is one people
+  stop trusting.
+
+  ⚠️ **`/contents` is the door that must be complete, and the builder enforces it.**
+  The chart links the papers that own a section, through the ladder — and OM-005
+  owns none, being the argument behind all of them. So the guard requires every
+  `om-NNN.html` on disk to appear on `/contents`, not on both. Requiring both is
+  what would force a list back onto the foot of the chart.
 
 - `poster.html` — the taxonomy poster at `/poster`. One A1 sheet carrying the
   whole language: five sections as a column ordered by span, Ambient Signals as a
