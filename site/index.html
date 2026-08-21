@@ -45,6 +45,12 @@ a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
 .switch a+a{border-left:0}
 .switch a:hover{color:var(--ink);background:#f6f7f9}
 .switch a[aria-current]{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+/* A thumb needs 44px. At the desktop padding these tabs draw about 25, which is
+   a control you aim at rather than one you hit. Height only — the labels are
+   short and widening them would push the wordmark onto its own line. */
+@media (max-width:1079px){
+  .switch a{display:flex;align-items:center;min-height:2.75rem;padding:.34rem .8rem}
+}
 
 .mast{border-top:1px solid var(--rule2);padding-top:clamp(1.1rem,2vw,1.6rem)}
 h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
@@ -67,22 +73,44 @@ h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
 /* Pan and scan, for anything too narrow to show the sheet whole.
    overscroll-behavior:contain stops a drag inside the viewport from scrolling
    the page behind it — without it the two fight, and the chart feels broken.
-   It also means the page cannot be scrolled by dragging ON the chart, which is
-   why the viewport is a bounded height with page above and below it. */
+   ⚠️ It is set from the script, NOT here, because it must only hold while the
+   pane actually has somewhere to scroll. At Fit the whole sheet is visible,
+   there is nothing to fight over, and contain turns most of a phone screen
+   into a surface where dragging does nothing at all — the page will not move
+   either, because contain is precisely a refusal to pass the drag on. See
+   setChaining() below.
+
+   ⚠️ svh, not vh. On iOS vh resolves against the LARGE viewport — the page as
+   it would be with Safari's bars hidden — so a pane sized in vh runs under the
+   bottom toolbar and loses its last centimetre to chrome that is still on
+   screen. Measured on an iPhone: the foot of the chart sat behind the URL bar.
+   The vh line stays first as the fallback for anything without svh. */
 @media (max-width:1079px){
-  .scanwrap{overflow:auto;overscroll-behavior:contain;height:62vh;min-height:20rem;
+  .scanwrap{overflow:auto;height:62vh;height:62svh;min-height:20rem;
     border:1px solid var(--rule);background:#fff;touch-action:pan-x pan-y;
     -webkit-overflow-scrolling:touch}
   .scanwrap svg{width:auto;max-width:none}
-  .zoom{display:flex;gap:.1rem;margin:0 0 .6rem;font-family:var(--mono);
+  .zoom{display:flex;gap:.1rem;margin:0 0 .5rem;font-family:var(--mono);
     font-size:.63rem;letter-spacing:.14em;text-transform:uppercase}
-  .zoom button{flex:1;padding:.62rem .3rem;background:none;color:var(--muted);
-    border:1px solid var(--rule2);cursor:pointer;font:inherit;letter-spacing:inherit;
-    text-transform:inherit}
+  /* 2.75rem is 44px, the smallest thing a thumb hits reliably. The old .62rem
+     of padding drew a 34px button, which is a control you aim at. */
+  .zoom button{flex:1;min-height:2.75rem;padding:.5rem .3rem;background:none;
+    color:var(--muted);border:1px solid var(--rule2);cursor:pointer;font:inherit;
+    letter-spacing:inherit;text-transform:inherit}
   .zoom button+button{border-left:0}
   .zoom button[aria-pressed="true"]{background:var(--ink);color:var(--paper);
     border-color:var(--ink)}
-  .scanhint{margin:.5rem 0 0;font-size:.82rem;color:var(--faint)}
+  /* Above the pane, not below it. It was below, which on a phone put the one
+     sentence explaining the gesture a screen and a half past the point where
+     anybody needed it. */
+  .scanhint{margin:0 0 .5rem;font-size:.82rem;color:var(--faint)}
+  /* Six derived numbers about a drawing you have not seen yet, sitting between
+     the title and the drawing, on the narrowest screen there is — and the first
+     of them repeats the standfirst word for word. The subtitle already carries
+     the three counts that matter. The readout is a caption for a chart you can
+     take in at a glance, so it belongs where the chart is legible. */
+  .readout{display:none}
+  .mast{padding-bottom:1.1rem;border-bottom:1px solid var(--rule)}
 }
 
 /* The ladder — the same graph in type, for anything the sheet is too fine for. */
@@ -146,8 +174,9 @@ h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
     <div class="zoom" role="group" aria-label="Chart size">
       <button type="button" data-zoom="fit" aria-pressed="true">Fit</button>
       <button type="button" data-zoom="read" aria-pressed="false">Read</button>
-      <button type="button" data-zoom="close" aria-pressed="false">Close</button>
+      <button type="button" data-zoom="close" aria-pressed="false">Detail</button>
     </div>
+    <p class="scanhint">Pinch to zoom, drag to explore. Tap any name to open its entry.</p>
     <div class="scanwrap" id="scanwrap" tabindex="0" role="region" aria-label="The chart, pannable">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="48 298 1387 1755.5" role="img" aria-label="Taxonomy of Design Patterns for Working with Agents: 5 sections in a column ordered by span, Ambient Signals as a band beside it, and every relation drawn as an arc.">
 <path d="M83 344L101 344L93.5 1824.5000000000018L90.5 1824.5000000000018Z" fill="#e6e9ec"/>
@@ -651,7 +680,6 @@ h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
 <text x="1419" y="2001.5" text-anchor="end" font-family="ui-monospace,&quot;Cascadia Mono&quot;,&quot;SF Mono&quot;,&quot;Roboto Mono&quot;,Menlo,Consolas,monospace" font-size="11.5" letter-spacing="2.2" fill="#9aa1a9">ORGANON MIND &#183; 2026-08-21</text>
 </svg>
     </div>
-    <p class="scanhint">Drag to explore. Tap any name to open its entry.</p>
   </div>
   <p class="after">Every name opens its entry in <a href="/patterns">the catalogue</a>.
     The same drawing as a sheet, with its own masthead and ready to print at A1:
@@ -712,6 +740,10 @@ h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
   var ratio = vb.height / vb.width;
   var buttons = [].slice.call(document.querySelectorAll('.zoom button'));
   var SIZES = { read: 1120, close: 1800 };
+  // The ceiling on a pinch. Past this the sheet is bigger than the drawing has
+  // detail for: the names are set at 16.5 of 1387 units, so 2600px renders them
+  // at about 31px and there is nothing further in to see.
+  var MAX_W = 2600;
   // Where to look when there was nowhere to look before. Fit shows the whole
   // sheet, so "keep the centre" has no useful meaning coming out of it — the
   // centre of this sheet is the gutter between the column and the band, and
@@ -719,49 +751,149 @@ h1{font-weight:600;letter-spacing:-.024em;line-height:1.08;margin:0;
   // 372 of 1485 sheet units, which is this fraction of the cropped view.
   var COLUMN_X = (372 - vb.x) / vb.width;
 
-  function widthFor(name) {
-    return name === 'fit' ? wrap.clientWidth : SIZES[name];
+  var current = 'fit';   // the preset in force, or null after a free pinch
+  var width = 0;         // the sheet width actually in force, in px
+
+  function fitWidth() { return wrap.clientWidth; }
+  // Never below Fit. Zooming out past the whole sheet strands the drawing in a
+  // field of white, which reads as a broken control rather than as a wide view.
+  function clampW(w) { return Math.max(fitWidth(), Math.min(MAX_W, w)); }
+
+  // ⚠️ A pane with nothing to scroll must not swallow the drag. contain is
+  // there to stop the chart and the page fighting WHILE the chart is
+  // scrollable; at Fit the sheet is entirely visible, so there is no fight —
+  // and contain then means a drag anywhere on 62svh of screen does nothing at
+  // all, because refusing to pass the scroll on is exactly what it is for.
+  // The page has almost no margin beside the pane on a phone, so this is the
+  // difference between a slow page and a dead one.
+  function setChaining() {
+    var over = svg.clientWidth > wrap.clientWidth + 1 ||
+               svg.clientHeight > wrap.clientHeight + 1;
+    wrap.style.overscrollBehavior = over ? 'contain' : 'auto';
   }
 
-  // Keep whatever was in the middle of the viewport in the middle of it. Zoom
-  // that throws you back to the top-left is the thing that makes a map feel
-  // like a document, and it is two lines to avoid.
-  function apply(name, animate) {
+  // Resize the sheet and hold one point of it still: ax and ay are pane-relative
+  // pixels — the midpoint of a pinch, or the middle of the viewport for a
+  // button. Zoom that throws you back to the top-left is the thing that makes a
+  // map feel like a document.
+  function setWidth(w, ax, ay) {
     var oldW = svg.clientWidth || wrap.clientWidth;
     var oldH = oldW * ratio;
-    // Preserve the centre only along an axis that was actually scrollable. If
-    // the whole thing was visible there is no remembered position to keep, and
-    // the honest anchor is where reading starts.
+    // Hold the anchor only along an axis that was actually scrollable. If the
+    // whole thing was visible there is no remembered position to keep, and the
+    // honest anchor is where reading starts.
     var hadX = oldW > wrap.clientWidth + 1;
     var hadY = oldH > wrap.clientHeight + 1;
-    var cx = hadX ? (wrap.scrollLeft + wrap.clientWidth / 2) / oldW : null;
-    var cy = hadY ? (wrap.scrollTop + wrap.clientHeight / 2) / oldH : null;
-    var w = widthFor(name);
+    if (ax == null) { ax = wrap.clientWidth / 2; ay = wrap.clientHeight / 2; }
+    var ux = hadX ? (wrap.scrollLeft + ax) / oldW : null;
+    var uy = hadY ? (wrap.scrollTop + ay) / oldH : null;
     svg.style.width = w + 'px';
     svg.style.height = (w * ratio) + 'px';
-    wrap.scrollLeft = cx === null ? COLUMN_X * w - 10 : cx * w - wrap.clientWidth / 2;
-    wrap.scrollTop = cy === null ? 0 : cy * w * ratio - wrap.clientHeight / 2;
-    buttons.forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.dataset.zoom === name));
-    });
-    current = name;
+    wrap.scrollLeft = ux === null ? COLUMN_X * w - 10 : ux * w - ax;
+    wrap.scrollTop = uy === null ? 0 : uy * w * ratio - ay;
+    width = w;
+    setChaining();
   }
 
-  var current = 'fit';
+  // Light the button that describes what is on screen, and light none of them
+  // when a pinch has left the presets behind — a lit button that no longer
+  // says anything true is worse than no lit button.
+  function mark() {
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(current !== null && b.dataset.zoom === current));
+    });
+  }
+
+  function presetAt(w) {
+    if (Math.abs(w - fitWidth()) < 1) return 'fit';
+    for (var k in SIZES) if (Math.abs(w - SIZES[k]) < 1) return k;
+    return null;
+  }
+
+  function apply(name) {
+    current = name;
+    setWidth(name === 'fit' ? fitWidth() : SIZES[name]);
+    mark();
+  }
+
   buttons.forEach(function (b) {
     b.addEventListener('click', function () { apply(b.dataset.zoom); });
   });
+
+  // ── pinch ──────────────────────────────────────────────────────────────────
+  // ⚠️ The pane declares touch-action:pan-x pan-y. That buys native one-finger
+  // scrolling with real momentum, and as a side effect it tells Safari not to
+  // run its own pinch on anything starting here — so pinching a map-shaped
+  // thing did nothing whatever, which is the first gesture anyone tries. It has
+  // to be supplied. One finger is still left entirely to the browser; two
+  // fingers zoom about their own midpoint and pan with it.
+  var gesture = null;
+  function spread(t) {
+    var dx = t[0].clientX - t[1].clientX, dy = t[0].clientY - t[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+  function mid(t, r) {
+    return [(t[0].clientX + t[1].clientX) / 2 - r.left,
+            (t[0].clientY + t[1].clientY) / 2 - r.top];
+  }
+
+  wrap.addEventListener('touchstart', function (e) {
+    if (e.touches.length !== 2) { gesture = null; return; }
+    var r = wrap.getBoundingClientRect(), m = mid(e.touches, r);
+    gesture = { d: spread(e.touches), w: svg.clientWidth || wrap.clientWidth,
+                sl: wrap.scrollLeft, st: wrap.scrollTop, mx: m[0], my: m[1] };
+  }, { passive: true });
+
+  wrap.addEventListener('touchmove', function (e) {
+    if (!gesture || e.touches.length !== 2) return;
+    // ⚠️ Must not be passive. Without preventDefault the pane scrolls under the
+    // pinch as well, and the sheet slides away from the fingers sizing it.
+    e.preventDefault();
+    var r = wrap.getBoundingClientRect(), m = mid(e.touches, r);
+    var w = clampW(gesture.w * (spread(e.touches) / gesture.d));
+    // Everything is measured from where the gesture STARTED, never from the
+    // last frame: accumulating per-frame deltas drifts, and drift in a zoom
+    // reads as the sheet crawling out from under your hand.
+    var ux = (gesture.sl + gesture.mx) / gesture.w;
+    var uy = (gesture.st + gesture.my) / (gesture.w * ratio);
+    svg.style.width = w + 'px';
+    svg.style.height = (w * ratio) + 'px';
+    wrap.scrollLeft = ux * w - m[0];
+    wrap.scrollTop = uy * w * ratio - m[1];
+    width = w;
+  }, { passive: false });
+
+  function endGesture() {
+    if (!gesture) return;
+    gesture = null;
+    current = presetAt(width);
+    mark();
+    setChaining();
+  }
+  wrap.addEventListener('touchend', function (e) {
+    if (e.touches.length < 2) endGesture();
+  }, { passive: true });
+  wrap.addEventListener('touchcancel', endGesture, { passive: true });
 
   // Only take over sizing where the viewport is actually a viewport. Above the
   // breakpoint the sheet is a plain block at width:100% and this must not touch
   // it — an inline width would override the stylesheet and break the desktop.
   var mq = window.matchMedia('(max-width: 1079px)');
   function sync() {
-    if (mq.matches) { apply(current); }
-    else { svg.style.width = ''; svg.style.height = ''; }
+    if (mq.matches) {
+      // Fit is the only preset that depends on the pane's width, so it is the
+      // only one a rotate has to recompute. A free pinch is re-clamped rather
+      // than discarded: turning the phone should not undo the zoom.
+      setWidth(current === 'fit' || !width ? fitWidth()
+             : current ? SIZES[current] : clampW(width));
+      mark();
+    } else {
+      svg.style.width = ''; svg.style.height = '';
+      wrap.style.overscrollBehavior = '';
+    }
   }
   (mq.addEventListener ? mq.addEventListener('change', sync) : mq.addListener(sync));
-  window.addEventListener('resize', function () { if (mq.matches) apply(current); });
+  window.addEventListener('resize', sync);
   sync();
 })();
 </script>

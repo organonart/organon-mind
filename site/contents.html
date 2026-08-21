@@ -44,6 +44,12 @@ a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
 .switch a+a{border-left:0}
 .switch a:hover{color:var(--ink);background:#f6f7f9}
 .switch a[aria-current]{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+/* A thumb needs 44px. At the desktop padding these tabs draw about 25, which is
+   a control you aim at rather than one you hit. Height only — the labels are
+   short and widening them would push the wordmark onto its own line. */
+@media (max-width:1079px){
+  .switch a{display:flex;align-items:center;min-height:2.75rem;padding:.34rem .8rem}
+}
 
 
 .index{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule2)}
