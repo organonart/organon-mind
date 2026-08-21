@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Not Just What It Says</title>
-  <meta name="description" content="Why Organon Mind exists: output tells you what a model is about to say, never what it is doing. The ability to see inside a model, and to intervene on it, must exist in the open.">
+  <meta name="description" content="Why Organon Mind exists: output tells you what a machine is about to say, never what it is doing. That is true of a model’s interior and of an agent acting on your behalf, and in both cases the ability to look, and to intervene, must exist in the open.">
 
   <link rel="icon" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Organon Mind">
   <meta property="og:title" content="Not Just What It Says">
-  <meta property="og:description" content="Because we need to see what it's doing, not just what it says. The ability to look inside a model must be public.">
+  <meta property="og:description" content="Because we need to see what it’s doing, not just what it says. One claim, pursued wherever the opacity is: inside the model, and across the surface where a machine acts on your behalf.">
   <meta property="og:url" content="https://organonmind.org/why">
   <meta property="og:image" content="https://organonmind.org/card-why.png">
   <meta property="og:image:width" content="1200">
@@ -58,6 +58,13 @@
     article th { text-align: left; font-weight: 600; color: var(--accent); border-bottom: 1px solid var(--rule); padding: 0.4rem 0.8rem 0.4rem 0; }
     article td { vertical-align: top; border-bottom: 1px solid var(--rule); padding: 0.55rem 0.8rem 0.55rem 0; color: var(--dim); }
     hr { border: 0; height: 1px; background: var(--rule); margin: 3rem 0; }
+    /* Same job as the papers' .revision blocks, in this page's own palette --
+       it is dark, serif and warm where they are light and sans, so the tokens
+       are not shared and copying their rule would import colours that do not
+       exist here. A published page that changes its own definition says so. */
+    .revision { font-family: var(--mono); font-size: 0.74rem; line-height: 1.62;
+      color: var(--faint); margin: 3.2rem 0 0; padding-left: 1.1rem;
+      border-left: 2px solid var(--rule); }
     .colophon { font-style: italic; color: var(--dim); }
     footer { margin-top: 4rem; color: var(--faint); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.02em; }
     footer a { color: var(--faint); text-decoration: none; border-bottom: 1px solid var(--rule); }
@@ -71,7 +78,7 @@
 
     <header>
       <h1 class="title">Not Just What It Says<span class="sub">Why Organon Mind exists</span></h1>
-      <p class="tagline">Output tells you what a model is about to say, never what it is doing. The ability to look inside a model must be public.</p>
+      <p class="tagline">Output tells you what a machine is about to say, never what it is doing. That is true of a model's interior and of an agent acting on your behalf, and in both cases the ability to look must be public.</p>
       <p class="byline">James Andrew Walsh</p>
     </header>
 
@@ -84,8 +91,8 @@
     <article>
     <h2>1. What "what it says" already covers</h2>
     <p>Almost everything we currently do to evaluate a language model reads its output.</p>
-    <p>Benchmarks read output. Red-teaming reads output. Evals, leaderboards, and safety cards read output. So do the honest, measured signals in Organon Mind's own dashboard today: next-token entropy, top-token confidence, the top-k candidates. Every one of those describes what the model is <strong>about to say</strong>.</p>
-    <p>None of that is worthless, and the line is careful about this. It says <em>not just</em>. Output is real evidence, it is the evidence we have most of, and Organon Mind shows it rather than dismissing it.</p>
+    <p>Benchmarks read output. Red-teaming reads output. Evals, leaderboards, and safety cards read output. So do the honest, measured signals in Organon's own dashboard today: next-token entropy, top-token confidence, the top-k candidates. Every one of those describes what the model is <strong>about to say</strong>.</p>
+    <p>None of that is worthless, and the line is careful about this. It says <em>not just</em>. Output is real evidence, it is the evidence we have most of, and the instrument shows it rather than dismissing it.</p>
     <p>But output-space observation has a structural limit, and the limit is not a matter of effort or budget. <strong>It can only tell you about the conditions you thought to test.</strong> A system that behaves one way when it is examined and another way when it is not is, to output-space testing, indistinguishable from a system that always behaves the first way. You cannot sample your way out of that. The missing behaviour is not rare, it is <em>conditional</em>, and the condition is exactly the one you did not set up.</p>
     <p>This is not a novel worry. It is roughly why mechanistic interpretability exists as a field.</p>
     <h2>2. The gap that open weights do not close</h2>
@@ -114,19 +121,30 @@
     </ul>
     <p>None of these require intent, malevolence, or superintelligence. They require only that a model's interior differ from its description, and that nobody outside be able to check. That is the actual failure mode, and it is mundane enough to be likely rather than dramatic enough to be dismissed.</p>
     <p>The Skynet framing is right about the stakes and wrong about the mechanism. The mechanism is opacity.</p>
-    <h2>6. What Organon Mind is, on this account</h2>
+    <h2>6. The same gap, one layer out</h2>
+    <p>Everything above is about a model's interior. The argument holds unchanged, in the same shape, about a machine acting on your behalf.</p>
+    <p>When you hand a task to an agent, what comes back is what it said. <strong>What it did goes missing.</strong> It read some files, called some tools, decided several times not to check with you, tried something and abandoned it, and then wrote you an account of the result. You get the account. Everything the account is about is interior, in exactly the sense &sect;1 means, and the same limit follows: a run that behaves one way while you are watching and another way when you are not is, to output-space reading, indistinguishable from a run that always behaved the first way.</p>
+    <p>The parallel is not decorative, and it is not an analogy. It produces the same three verbs. <strong>See</strong>, because the activity has to be rendered while it happens rather than summarised afterward by the thing being observed. <strong>Understand</strong>, because a rendering that cannot tell you which of its parts were measured is decoration. <strong>Modify</strong>, because an account you cannot interrupt, refuse, or undo is a report rather than a control surface.</p>
+    <p>It produces the same argument about who gets to look. An agent's <em>principal</em> is the person whose authority it borrows. If the only party who can see what it did is the party that built it, then "trust us" is again the entire verification procedure, no matter how sincerely it is offered.</p>
+    <p>And it produces the same mundane failure modes as &sect;5, one layer out. A tool that runs without asking because the condition for asking was never reached. A status that has read the same for so long that nobody looks at it. A summary written by the process whose work it summarises. None of these require intent or capability. They require only that what a machine did differ from its account of it, and that nobody outside be able to check.</p>
+    <p>The first publications are about this layer, because it is where the opacity is cheapest to observe and most immediately felt: a person delegates a task on a Tuesday and cannot tell what happened. <a href="/om-001">OM-001</a> proposes fourteen patterns for one agent taking one task, and <a href="/om-002">OM-002</a> to <a href="/om-005">OM-005</a> carry it outward to many agents at once, to arrangements of many, and to the peripheral channel that reports when no turn is in progress at all. They are a proposal and not a settled catalogue. A pattern shown not to exist in other people's work is a useful result and will be recorded as one.</p>
+    <h2>7. What this is, on this account</h2>
     <p>It is not an interpretability breakthrough and it should not be described as one. The hard science here belongs to other people, and we build on their published work rather than replacing it. The tools are early, ours included, and anyone promising otherwise is selling something.</p>
-    <p>What it is, is a <strong>reverse-engineering and profiling workbench</strong>: an instrument for taking a working model apart while it runs, profiling what its parts do, and rendering the result at a size a person can actually read. Understanding is the object of that work, not a hoped-for side effect of it.</p>
+    <p>Two things share a name here, and separating them is worth a paragraph each.</p>
+    <p><strong>Organon is the instrument, and it is one program.</strong> It renders large structured fields so that a person can read them, which is what it has been doing since before any of this was about models. For a while it looked like three programs, because a window full of editor panels beside a live viewport, a window full of conversation with an agent, and a window built around model visualisation were built separately and shipped separately. They are three arrangements of one program, and the arrangement is data rather than a build flag.</p>
+    <p><strong>Organon Mind is the research.</strong> This programme, these publications, and the one claim they pursue: that machine activity should be legible to the people it affects, and honest about what it is showing. Wherever the opacity happens to be. Inside the model, where the interior is illegible and output-space testing can only find the conditions you thought to test. Across the surface, where a machine acts on your behalf and you are handed its account instead of its work.</p>
+    <p>The instrument is what the research is done with, and it is often what the research is done <em>on</em>. Four of OM-001's fourteen patterns were found by getting Organon's own console wrong first, and the paper says which four, because a catalogue that does not say where its entries came from is asserting rather than reporting.</p>
     <p>Which makes it worth being exact about how understanding is produced, because looking is not enough on its own. The tools that turn raw activations into human-readable features are lossy, learned, and non-unique: train two sparse autoencoders on the same layer and you get two different dictionaries, so a feature label is a hypothesis about a direction in a vector space, not a measurement. Hypotheses are settled by intervening on them, which is why <em>modify</em> is one of the three verbs rather than an extra. Seeing opens the model. Intervening is what turns what you see into something you know.</p>
     <p>It contributes two specific things.</p>
-    <p><strong>Legibility at scale.</strong> Interior state is large: tens of thousands of features, dozens of layers, hundreds of heads, and a per-prompt causal graph that hairballs into unreadability in a 2-D node-link diagram past a few hundred nodes. Rendering large structured fields so a person can actually read them is the thing Organon has been doing since before any of this was about models.</p>
-    <p><strong>Provenance discipline.</strong> Every displayed quantity carries what it is: measured, derived, proxy, or projection. A 3-D view of a 2048-dimensional vector is shown as the shadow it is. This is the part that makes the seeing worth anything. A picture that cannot tell you which of its parts are measurements is decoration, and a beautiful picture that quietly mixes real signal with invented signal is worse than no picture, because it manufactures confidence.</p>
+    <p><strong>Legibility at scale.</strong> Interior state is large: tens of thousands of features, dozens of layers, hundreds of heads, and a per-prompt causal graph that hairballs into unreadability in a 2-D node-link diagram past a few hundred nodes. An agent's activity is large in a different way, spread across time rather than across dimensions, and it is unreadable for the same reason: nothing renders it at a size a person can take in. Rendering large structured fields so a person can actually read them is the thing Organon has been doing all along.</p>
+    <p><strong>Provenance discipline.</strong> Every displayed quantity carries what it is: measured, derived, proxy, or projection. A 3-D view of a 2048-dimensional vector is shown as the shadow it is. Stated for a service rather than a dashboard, that is the same rule one of the patterns already carries under a different name. This is the part that makes the seeing worth anything. A picture that cannot tell you which of its parts are measurements is decoration, and a beautiful picture that quietly mixes real signal with invented signal is worse than no picture, because it manufactures confidence.</p>
     <p>That discipline is why the honest state of the instrument gets published rather than hidden. Our own account of today's render says plainly which parts are real (the shape, counted from the file) and which were an honest stand-in (the light, driven by an effort proxy while the real per-layer tap was still being built). The line at the end of that account is the standard this one is held to: <strong>beautiful because it's honest, not instead of it.</strong></p>
-    <h2>7. Why these words, and not others</h2>
+    <h2>8. Why these words, and not others</h2>
     <ul>
       <li><strong>"we"</strong> because the claim is public. Not "you" and not "researchers".</li>
       <li><strong>"see"</strong> because it is the floor. Everything else in the list depends on it.</li>
       <li><strong>"what it's doing"</strong> because the subject is the interior. Not the outputs, not the benchmark scores, not the card.</li>
+      <li><strong>"it"</strong> because the line refuses to say whether the subject is a model or a machine acting for you. It was written for the first and it fits the second without alteration, which is the reason this is one programme and not two.</li>
       <li><strong>"not just"</strong> because output is real evidence and this instrument shows it. The line refuses a false choice; a version reading "not what it says" would overclaim by implying output does not matter.</li>
     </ul>
     <p>And one deliberate absence. The line does not say <em>understand</em>, and not because understanding is out of reach. Understanding is the object of the work. The line names the floor because the floor is what is actually contested: nobody disputes that understanding a model would be good, while what output-space evaluation quietly assumes away is whether anyone outside can look inside at all. <em>See what it's doing</em> puts that contrast in five words. <em>See and understand</em> softens it into a sentiment any tool could sign.</p>
@@ -146,8 +164,10 @@
     </tbody></table>
     </article>
 
+    <p class="revision"><strong>Rev. 2 &mdash; 21 Aug 2026.</strong> The definition widens and the product framing collapses. &sect;6 previously described this as "a reverse-engineering and profiling workbench", which was true of the work in front of it and excluded the agent-surface half entirely. A new &sect;6 states that half and shows it is the same argument rather than a second one; the old &sect;6 becomes &sect;7 and separates the instrument from the research. Organon is one program whose arrangements were previously three; Organon Mind is the programme of work, and keeps the name it publishes under.</p>
+
     <hr>
-    <p class="colophon">Organon Mind, an instrument for seeing inside a working model.</p>
+    <p class="colophon">Organon Mind is a research programme. Organon is the instrument it is done with.</p>
 
     <footer>
       Written for the workshop. To watch the work, write to <a href="mailto:hello@organon.art">hello@organon.art</a>.
