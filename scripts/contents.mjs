@@ -41,9 +41,14 @@ export function contentsPage({ papers, nav, switchCss }) {
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Organon Mind">
-<meta property="og:title" content="Contents — Organon Mind">
+<meta property="og:title" content="Contents">
+<meta property="og:description" content="Everything Organon Mind has published: the catalogue, the papers, and the sheet.">
 <meta property="og:url" content="https://organonmind.org/contents">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://organonmind.org/card-contents.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Contents — Organon Mind">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 /* GENERATED — do not hand-edit. scripts/build_poster.mjs writes this file via
    scripts/contents.mjs. An edit here is lost at the next run, and worse, it is

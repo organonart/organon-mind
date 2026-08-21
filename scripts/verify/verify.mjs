@@ -285,6 +285,90 @@ for (const path of PAGES) {
   ok(!hit || ALLOWED.has(path), `${path}: retired vocabulary in rendered text`);
 }
 
+// 8 · link-preview cards. The card filename is written twice by construction —
+// once as a PNG that scripts/build_cards.mjs emits from a page's og:title, and
+// once as an og:image in the page itself — and nothing in either place can see
+// the other. A card that was renamed, never generated, or generated for a page
+// that has since been retitled fails the same way: the crawler asks for it,
+// gets a 404, and shows the small grey text card that having no og:image at all
+// would have shown. Silent, and only visible from outside the project, which is
+// the worst place to find out.
+let cards = 0;
+for (const path of PAGES) {
+  await page.goto(BASE + path, { waitUntil: 'networkidle' });
+  const m = await page.evaluate(() => {
+    const g = p => document.querySelector(`meta[property="${p}"]`)?.getAttribute('content') || '';
+    return { img: g('og:image'), w: g('og:image:width'), h: g('og:image:height'),
+             alt: g('og:image:alt'),
+             card: document.querySelector('meta[name="twitter:card"]')?.getAttribute('content') || '' };
+  });
+  ok(!!m.img, `${path}: no og:image`);
+  if (!m.img) continue;
+  // Absolute, and on the canonical host. A relative og:image is resolved by
+  // some consumers and dropped by others, so it half-works, which is worse
+  // than failing.
+  ok(m.img.startsWith('https://organonmind.org/'),
+     `${path}: og:image is ${m.img}, expected an absolute organonmind.org URL`);
+  // summary_large_image is what turns the card from a thumbnail into the
+  // 1200×630 image. Shipping the image and leaving the old value renders a
+  // 120px square crop of a page of type, which is unreadable.
+  ok(m.card === 'summary_large_image',
+     `${path}: twitter:card is ${JSON.stringify(m.card)}, expected "summary_large_image"`);
+
+  const res = await fetch(BASE + new URL(m.img).pathname);
+  ok(res.status === 200, `${path}: og:image ${m.img} returns HTTP ${res.status}`);
+  if (res.status !== 200) continue;
+  const buf = Buffer.from(await res.arrayBuffer());
+  // Read the real dimensions out of IHDR rather than trusting the declared
+  // ones: the declared pair is what a crawler lays out against before it has
+  // fetched anything, so the two disagreeing is a visible layout jump.
+  const isPng = buf.length > 24 && buf.toString('latin1', 1, 4) === 'PNG';
+  ok(isPng, `${path}: og:image is not a PNG`);
+  if (!isPng) continue;
+  const w = buf.readUInt32BE(16), h = buf.readUInt32BE(20);
+  ok(w === 1200 && h === 630, `${path}: og:image is ${w}×${h}, expected 1200×630`);
+  ok(Number(m.w) === w && Number(m.h) === h,
+     `${path}: og:image declares ${m.w}×${m.h} but the file is ${w}×${h}`);
+  ok(m.alt.length > 0, `${path}: og:image has no alt`);
+  cards++;
+}
+ok(cards === PAGES.length, `cards: ${cards} of ${PAGES.length} pages have a working one`);
+
+// 9 · the sitemap lists every page and nothing else. It is generated from disk
+// by build_poster.mjs, so this is really a check that the generator ran — but
+// the failure it guards against is worth stating: a page missing from the
+// sitemap is not broken, not slower, and not visibly different in any way from
+// inside the project. It is simply never crawled. /why is the case that makes
+// this load-bearing, because nothing links to it and the sitemap is its only
+// route in.
+const sm = await fetch(BASE + '/sitemap.xml');
+ok(sm.status === 200, `/sitemap.xml: HTTP ${sm.status}`);
+if (sm.status === 200) {
+  const xml = await sm.text();
+  const listed = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map(m => new URL(m[1]).pathname).sort();
+  const want = [...PAGES].sort();
+  ok(listed.length === new Set(listed).size, `/sitemap.xml: duplicate <loc> entries`);
+  for (const p of want)
+    ok(listed.includes(p), `/sitemap.xml: does not list ${p}`);
+  for (const p of listed)
+    ok(want.includes(p), `/sitemap.xml: lists ${p}, which the harness does not know as a page`);
+  // Every <loc> must be the canonical absolute form. A relative or
+  // http:// entry is accepted by the schema and ignored by crawlers.
+  ok([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+       .every(m => m[1].startsWith('https://organonmind.org')),
+     `/sitemap.xml: a <loc> is not an absolute https://organonmind.org URL`);
+}
+
+const rb = await fetch(BASE + '/robots.txt');
+ok(rb.status === 200, `/robots.txt: HTTP ${rb.status}`);
+if (rb.status === 200) {
+  const txt = await rb.text();
+  ok(/^Sitemap:\s*https:\/\/organonmind\.org\/sitemap\.xml\s*$/m.test(txt),
+     `/robots.txt: does not point at the sitemap`);
+  ok(!/^Disallow:\s*\/\s*$/m.test(txt), `/robots.txt: disallows the whole site`);
+}
+
 await browser.close();
 if (server) server.close();
 
@@ -293,7 +377,8 @@ if (server) server.close();
 // entries looks exactly like "all clear" over fifty.
 console.log(`against ${BASE}`);
 console.log(`  ${PAGES.length} pages · ${retiredSeen} retired anchors · ${entries} entries · ` +
-            `${new Set(slots).size} slots · ${legacy.length} legacy ids · ${links} links`);
+            `${new Set(slots).size} slots · ${legacy.length} legacy ids · ${links} links · ` +
+            `${cards} cards`);
 console.log(`${pass} assertions passed`);
 if (fails.length) {
   console.error(`\n${fails.length} FAILED:`);
