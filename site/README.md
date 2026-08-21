@@ -18,6 +18,20 @@ lineage as `organon.art`: one page, no external requests.
   OM-005 would be a second copy of it. What changed is that there is now
   something worth showing.
 
+  ⚠️ **On a phone the chart is a pan-and-scan viewport, and the panning is
+  native scroll on purpose.** Every pan/zoom library takes over touch — they set
+  `touch-action:none` and then reimplement inertia, and none of them match the
+  platform. A large SVG inside `overflow:auto` *is* a pan surface: momentum,
+  rubber-banding, scrollbars and keyboard all come free, and no external script
+  is needed, which this site does not permit anyway. What native scroll cannot
+  give is pinch-zoom inside the box, so zoom is three named steps instead — the
+  useful sizes are known in advance and a step is reachable one-handed.
+
+  ⚠️ `overscroll-behavior:contain` is what stops a drag inside the viewport from
+  scrolling the page behind it. It also means the page cannot be scrolled by
+  dragging *on* the chart, which is why the viewport is a bounded height with
+  page above and below it rather than full-bleed.
+
   ⚠️ **Two compositions, one source, and the breakpoint is measured.** The sheet
   is sized for A1, so its copy renders at container-width ÷ 1485 × 13.5 px —
   about 4px on a phone. Below 1080px the same graph is drawn again as a stacked
