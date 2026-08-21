@@ -18,19 +18,48 @@ lineage as `organon.art`: one page, no external requests.
   OM-005 would be a second copy of it. What changed is that there is now
   something worth showing.
 
-  ⚠️ **On a phone the chart is a pan-and-scan viewport, and the panning is
-  native scroll on purpose.** Every pan/zoom library takes over touch — they set
+  ⚠️ **On a phone the chart is a pan-and-scan viewport. Panning is native
+  scroll; pinch is ours.** Every pan/zoom library takes over touch — they set
   `touch-action:none` and then reimplement inertia, and none of them match the
   platform. A large SVG inside `overflow:auto` *is* a pan surface: momentum,
   rubber-banding, scrollbars and keyboard all come free, and no external script
-  is needed, which this site does not permit anyway. What native scroll cannot
-  give is pinch-zoom inside the box, so zoom is three named steps instead — the
-  useful sizes are known in advance and a step is reachable one-handed.
+  is needed, which this site does not permit anyway. So one finger is left
+  entirely to the browser.
 
-  ⚠️ `overscroll-behavior:contain` is what stops a drag inside the viewport from
-  scrolling the page behind it. It also means the page cannot be scrolled by
-  dragging *on* the chart, which is why the viewport is a bounded height with
-  page above and below it rather than full-bleed.
+  ⚠️ **`touch-action:pan-x pan-y` is what buys that, and it also forbids
+  Safari's own pinch on anything starting in the pane.** For a while the page
+  therefore had no pinch at all — the first gesture anyone tries on a map, doing
+  nothing — and three named steps were offered as the substitute. They are still
+  there, because the useful sizes are known in advance and a step is reachable
+  one-handed. But the gesture had to be supplied: two fingers now zoom about
+  their own midpoint and pan with it, in about forty lines and no library.
+  Everything is measured from where the gesture *started*, never from the last
+  frame; accumulating per-frame deltas drifts, and drift in a zoom reads as the
+  sheet crawling out from under your hand. A free pinch lights none of the three
+  buttons, and landing back on a preset re-lights it.
+
+  ⚠️ **`overscroll-behavior:contain` must only hold while the pane can actually
+  scroll, and it is set from the script for that reason.** It exists to stop a
+  drag inside the viewport from scrolling the page behind it. But at Fit the
+  whole sheet is visible, there is nothing to scroll, and `contain` is precisely
+  a refusal to pass the drag on — so it turned most of a phone screen into a
+  surface where dragging did nothing whatever, on a page with almost no margin
+  beside the pane to grab instead. `setChaining()` flips it to `auto` whenever
+  the sheet fits. Do not move this back into the stylesheet: CSS cannot ask
+  whether the box overflows.
+
+  ⚠️ **`svh`, not `vh`, for the pane height.** On iOS `vh` resolves against the
+  *large* viewport — the page as it would be with Safari's bars hidden — so a
+  pane sized in `vh` runs under the bottom toolbar and loses its last centimetre
+  to chrome that is still on screen. Seen on a real iPhone. The `vh` line stays
+  first as the fallback.
+
+  ⚠️ **The readout is hidden below the breakpoint.** Six derived numbers about a
+  drawing, sitting between the title and the drawing, on the narrowest screen
+  there is — and the first of them repeated the standfirst word for word
+  (`174 relations`, then `RELATIONS / 174`). The standfirst already carries the
+  three counts that matter. It is a caption for a chart you can take in at a
+  glance, so it belongs where the chart is legible.
 
   ⚠️ **Two compositions, one source, and the breakpoint is measured.** The sheet
   is sized for A1, so its copy renders at container-width ÷ 1485 × 13.5 px —
@@ -347,6 +376,23 @@ today. That page is hand-authored now, so the swap there is an ordinary edit.
 - **`og:image`.** Omitted rather than reusing Organon's card, which is
   instrument-branded and would misdescribe the page in a link preview. A Mind
   card wants its own image.
+
+- **The section caption and the first entry touch, on every surface.** In
+  `build_poster.mjs` the caption is drawn at `headerBase + 21` (14.5 units) and
+  the first row lands at about `headerBase + 35` (16.5 units), so the caption's
+  descenders reach into the entry's caps — "one person, several groups" and
+  "01 Ordered by Readiness" merge into one line. All five column sections; the
+  band, which spaces its rows differently, is clean. Obvious on a phone, where
+  the sheet is a grey texture and this is the coarsest thing in it.
+
+  The fix is one constant: `HDR` 66 → 74. It is left for James because it is a
+  print decision, not a bug fix. `HDR` feeds `chrome`, `chrome` feeds `pitch`,
+  and `pitch` is not at its cap — so the eight units come back out of the rows
+  and the gaps. Measured: pitch 27.1 → 26.05, section gaps 42 → 30 (`GAP`, the
+  designed floor), sheet height unchanged. Denser rows and tighter sections in
+  exchange for a header that does not collide. That is a taste call about an A1
+  plate and it wants somebody looking at the plate.
+
 ## The index says nothing about the programme
 
 **Decided 2026-08-12. Do not "fix" this.**
