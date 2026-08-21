@@ -371,11 +371,49 @@ lands in an inbox, and only then switch.
 This still applies to `why.html`'s footer, which carries `hello@organon.art`
 today. That page is hand-authored now, so the swap there is an ordinary edit.
 
-## Still open
+## Being found
 
-- **`og:image`.** Omitted rather than reusing Organon's card, which is
-  instrument-branded and would misdescribe the page in a link preview. A Mind
-  card wants its own image.
+Two pieces of plumbing, both added 2026-08-21, both of which fail invisibly and
+only from outside the project.
+
+**`site/card-*.png` — link-preview cards, one per page.** Every page already
+carried `og:title`, `og:description` and `og:url`, and every one declared
+`twitter:card: summary` with no `og:image`, so anything anyone shared anywhere
+rendered as a small grey text card. Written by `node scripts/build_cards.mjs`.
+
+⚠️ **SVG is not an option**, however much it would suit this site. X, Slack,
+LinkedIn and iMessage all reject SVG for `og:image` and the failure is silent —
+no card, no warning, indistinguishable from having declared no image at all.
+
+⚠️ **The cards are type only.** The chart cropped is unmistakably ours and
+completely unreadable at the size a card is seen (a timeline card is about 300px
+wide, so the sheet's 13.5-unit copy lands near one pixel). Type reads at every
+size and looks like a paper rather than a product.
+
+⚠️ **The titles are not kept in the generator.** Each card is drawn from the
+page's own `og:title` and `og:description`, read from the file at build time.
+Retitle a page, re-run, and the card follows.
+
+⚠️ **The cards are deliberately NOT under the CI staleness job**, unlike the
+generated pages. They are rasterised text, so the same HTML renders to different
+bytes on Windows and on the CI runner — the font stacks resolve differently. A
+byte-comparison check would fail every run and teach everyone to ignore it.
+Regenerate by hand when a title changes, and commit the PNGs. What CI *does*
+check is that the card a page names actually exists and is 1200×630, which is
+the part that matters.
+
+**`site/sitemap.xml` and `site/robots.txt`.** The sitemap is generated from disk
+by `build_poster.mjs`, so it *is* under the staleness job.
+
+⚠️ **`/why` is the reason the sitemap earns its keep.** Every other page is
+reachable by link from the front page, so a crawler finds them unaided. `/why`
+is served and linked from nothing, which makes the sitemap its only route in.
+
+No `lastmod`, `changefreq` or `priority`: the first would have to be true and
+nothing here knows when a page last meaningfully changed, and the other two have
+been ignored by every major crawler for years.
+
+## Still open
 
 - **The section caption and the first entry touch, on every surface.** In
   `build_poster.mjs` the caption is drawn at `headerBase + 21` (14.5 units) and

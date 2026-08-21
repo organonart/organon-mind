@@ -550,8 +550,13 @@ const page = `<!doctype html>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Organon Mind">
 <meta property="og:title" content="The whole language, on one sheet">
+<meta property="og:description" content="A taxonomy poster of Design Patterns for Working with Agents: every section, every pattern, and every relation between them.">
 <meta property="og:url" content="https://organonmind.org/poster">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://organonmind.org/card-poster.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The whole language, on one sheet — Organon Mind">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 /* GENERATED — do not hand-edit. scripts/build_poster.mjs writes this file from
    site/patterns.html, which is the one place the graph lives. An edit here is
@@ -684,4 +689,28 @@ if (!process.argv.includes('--dry')) {
   console.log(`wrote ${OUT_INDEX.replace(ROOT, '.')}  (${(landing.length / 1024).toFixed(1)} kB)  ` +
     `${papers.length} publications, ladder + sheet`);
   console.log(`wrote ${OUT_CONTENTS.replace(ROOT, '.')}  (${(contents.length / 1024).toFixed(1)} kB)`);
+
+  // The sitemap, enumerated from disk rather than kept by hand. It is written
+  // here, with the generated pages, so the CI staleness job covers it: a
+  // sitemap that has stopped listing a page is the one kind of stale file that
+  // is completely invisible from inside the project, and a hand-kept list of
+  // ten URLs is exactly the copy nobody notices has gone wrong.
+  //
+  // ⚠️ /why is on it deliberately, and it is the reason the sitemap earns its
+  // keep at all. Every other page is reachable by link from the front page, so
+  // a crawler finds them without help; /why is served and linked from nothing,
+  // which means the sitemap is the only route to it that exists.
+  //
+  // No lastmod, no changefreq, no priority. lastmod would have to be true, and
+  // nothing here knows when a page last meaningfully changed; the other two are
+  // ignored by every major crawler and have been for years. A sitemap that
+  // asserts less cannot be wrong about more.
+  const pages = (await readdir(SITE)).filter(f => f.endsWith('.html')).sort()
+    .map(f => f === 'index.html' ? '/' : '/' + f.replace(/\.html$/, ''));
+  const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    pages.map(p => `  <url><loc>https://organonmind.org${p}</loc></url>`).join('\n') +
+    '\n</urlset>\n';
+  await writeFile(join(SITE, 'sitemap.xml'), sitemap, 'utf8');
+  console.log(`wrote ./site/sitemap.xml  (${pages.length} URLs)`);
 }

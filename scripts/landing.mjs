@@ -123,7 +123,11 @@ export function landingPage({
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(standfirst)}">
 <meta property="og:url" content="https://organonmind.org/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://organonmind.org/card-index.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(title)} — Organon Mind">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 /* GENERATED — do not hand-edit. scripts/build_poster.mjs writes this file via
    scripts/landing.mjs, from site/patterns.html and the papers on disk. An edit
