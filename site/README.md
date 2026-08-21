@@ -214,8 +214,8 @@ PRD section numbers, no repo paths, no "this product". It is published by an
 organization, and it should read that way.
 
 **The page withholds everything else, on purpose**, and has been narrowed twice
-before being reopened once. It originally carried a paragraph describing the
-instrument, links to `/why` and `organon.art/mind`, and an invitation; all of
+before being reopened once. It originally carried a paragraph describing
+Organon, links to `/why` and `organon.art/mind`, and an invitation; all of
 that came out on 2026-08-01, leaving the line. The line came out on 2026-08-12,
 leaving the name alone. Later the same day the work itself went up, and the page
 gained links to `/patterns` and `/om-001` — **two titles and nothing else**. Each
