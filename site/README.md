@@ -231,7 +231,14 @@ lineage as `organon.art`: one page, no external requests.
 - `why.html` — *Not Just What It Says*, the argument behind the line, served at
   `/why`. **Served and unlinked**, deliberately: it is reachable by direct URL and
   is not on the index. It was briefly linked on 15 Aug 2026 and unlinked the same
-  day — the essay is not current, and the index is not the place to work that out.
+  day — the essay was not current, and the index is not the place to work that out.
+
+  ⚠️ **That reason expired on 21 Aug 2026 and the page is still unlinked.** Rev. 2
+  widened the essay to cover both halves of the programme and separated the
+  instrument from the research, so "not current" no longer holds. Whether to link
+  it is now an open question about what the front page is, not a consequence of
+  the page being stale. The generated `sitemap.xml` lists it, so a crawler gets
+  there; no reader arrives without the URL.
   **Hand-authored since 20 Aug 2026.** It was generated from a markdown source
   until then; the source and its generator are gone, and the page is now edited
   directly like every other publication here.
@@ -267,8 +274,9 @@ version is one `git show` away — the earliest in `organonart/organon-private`
 this repo's history.
 
 `/why` is still **served but unlinked**, so anyone with a URL can read it. Its
-footer carries `hello@organon.art`, which comes from the generator template
-rather than from this page.
+footer carries `hello@organon.art`. That was once inherited from the generator
+template; the page has been hand-authored since 20 Aug 2026, so the swap there is
+an ordinary edit to one line whenever the contact address is settled.
 
 ## What this page deliberately is not
 
