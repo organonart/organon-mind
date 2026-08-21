@@ -260,14 +260,44 @@ body[data-view="overview"] .desig .tag{display:none}
   color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule)}
 
 @media (max-width:52rem){
-  :root{--rail:0rem}
+  /* Two rows: identity and the index toggle above, the three views below as a
+     full-width segmented control. --bar has to grow with it, because .shell and
+     .rail are both positioned off it — a taller bar with the old offset hides
+     the top of the index behind it. */
+  :root{--rail:0rem;--bar:5.4rem}
+  .bar{flex-wrap:wrap;height:var(--bar);align-content:center;row-gap:.5rem;
+    padding:.5rem .9rem}
+  .bar .switch{order:3;flex:1 0 100%;display:flex}
+  .bar .switch a{flex:1;text-align:center;padding:.5rem .3rem}
+  /* The bar carries this link to the current pattern's paper, and the detail
+     pane carries the same link in its own words for every pattern and every
+     overview. Two rows fit; three do not, and a duplicate is what gives way. */
+  .bar .out{display:none}
   .shell{grid-template-columns:1fr}
   .rail{position:fixed;inset:var(--bar) auto 0 0;width:17.5rem;z-index:15;
     transform:translateX(-100%);transition:transform .16s ease}
   body.rail-open .rail{transform:translateX(0)}
-  .railtoggle{display:inline-flex;align-items:center;background:none;border:1px solid var(--rule-strong);
-    padding:.2rem .45rem;cursor:pointer;font-family:var(--mono);font-size:.61rem;
-    letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  /* Filled, not outlined. Everything else in this bar is an outlined mono
+     label, so an outlined toggle reads as one more label — which is exactly
+     what happened. This is the only control on the page that opens the
+     catalogue, and it now looks like the only control. */
+  .railtoggle{display:inline-flex;align-items:center;gap:.4rem;
+    background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+    padding:.5rem .7rem;cursor:pointer;font-family:var(--mono);font-size:.63rem;
+    letter-spacing:.12em;text-transform:uppercase;min-height:2.4rem}
+  .railtoggle::before{content:"";width:.85rem;height:.6rem;flex:none;
+    background:linear-gradient(currentColor 0 0) 0 0/100% 2px no-repeat,
+               linear-gradient(currentColor 0 0) 0 50%/100% 2px no-repeat,
+               linear-gradient(currentColor 0 0) 0 100%/100% 2px no-repeat}
+  body.rail-open .railtoggle{background:none;color:var(--muted);
+    border-color:var(--rule-strong)}
+
+  /* A drawer needs to look like one over the page it covers. */
+  .rail{box-shadow:0 0 0 100vmax rgba(13,15,18,0);transition:transform .16s ease}
+  body.rail-open .rail{box-shadow:2px 0 18px rgba(13,15,18,.16)}
+  .scrim{position:fixed;inset:var(--bar) 0 0 0;z-index:14;background:rgba(13,15,18,.34);
+    opacity:0;pointer-events:none;transition:opacity .16s ease}
+  body.rail-open .scrim{opacity:1;pointer-events:auto}
   .pane{padding:1.7rem 1.2rem 6rem}
 }
 @media (prefers-reduced-motion:reduce){.rail{transition:none}}
@@ -287,7 +317,7 @@ body[data-view="overview"] .desig .tag{display:none}
 </defs></svg>
 
 <div class="bar">
-  <button class="railtoggle" id="railtoggle" aria-label="Show index">Index</button>
+  <button class="railtoggle" id="railtoggle" aria-label="Show the pattern index" aria-expanded="false" aria-controls="rail">Patterns</button>
   <a class="org" href="/">Organon Mind</a>
   <span class="spacer"></span>
   <nav class="switch" aria-label="Views"><a href="/">Chart</a><a href="/contents">Contents</a><a href="/patterns" aria-current="page">Catalogue</a></nav>
@@ -295,6 +325,11 @@ body[data-view="overview"] .desig .tag{display:none}
 </div>
 
 <div class="shell">
+
+  <!-- Inside .shell, not beside it. position:fixed makes .shell a stacking
+       context in Chrome, so a scrim outside it paints over the rail no matter
+       what z-index the rail is given — which is how it first shipped. -->
+  <div class="scrim" id="scrim" hidden></div>
 
   <nav class="rail" id="rail" aria-label="Pattern index">
     <div class="langs">
@@ -958,7 +993,7 @@ body[data-view="overview"] .desig .tag{display:none}
       var ip=document.createElement('p'); ip.className='eint'; ip.textContent=p.intent||'';
       var cl=document.createElement('p'); cl.className='ecanon'; cl.textContent='Canonical entry';
       var a=document.createElement('a'); a.href=l.href+'#'+p.id;
-      a.textContent='The full entry, with its figure and its evidence, is in '+l.doc+' →';
+      a.textContent='The full entry, with its figure and its costs, is in '+l.doc+' →';
       var wrap=document.createElement('p'); wrap.style.margin='0'; wrap.appendChild(a);
       d.appendChild(ip); d.appendChild(cl); d.appendChild(wrap);
       prose.innerHTML=''; prose.appendChild(d);
@@ -991,8 +1026,17 @@ body[data-view="overview"] .desig .tag{display:none}
       applyFilters(); return; }
   });
 
+  var scrim=document.getElementById('scrim');
+  if(scrim) scrim.hidden=false;
+  function railState(){
+    var open=document.body.classList.contains('rail-open');
+    document.getElementById('railtoggle').setAttribute('aria-expanded',String(open));
+  }
+  if(scrim) scrim.addEventListener('click',function(){
+    document.body.classList.remove('rail-open'); railState();
+  });
   document.getElementById('railtoggle').addEventListener('click',function(){
-    document.body.classList.toggle('rail-open');
+    document.body.classList.toggle('rail-open'); railState();
   });
   window.addEventListener('popstate',function(){
     var id=resolveId(location.hash.slice(1));
