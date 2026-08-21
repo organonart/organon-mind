@@ -79,8 +79,10 @@ lineage as `organon.art`: one page, no external requests.
   OM-004 was live for some hours before the front page said so.
 - `patterns.html` — *Design Patterns for Working with Agents*, the catalogue at
   `/patterns`: index rail, specimen detail, and Related Patterns as navigation
-  rather than a dead list. One file, hand-authored, no external requests; the
-  small amount of JavaScript is the explorer itself and runs from the same file.
+  rather than a dead list. One file, no external requests; the small amount of
+  JavaScript is the explorer itself and runs from the same file. Hand-authored
+  **except** for the `#store` region between the `ENTRIES` markers, which is
+  generated from the papers — see below.
   The One Agent overview carries *The line this stands in* — the OM-001 preface
   adapted to what this page does, and the reason Related Patterns is navigable at
   all. ⚠️ It is the short version on purpose; the signed one lives in the paper,
@@ -97,12 +99,40 @@ lineage as `organon.art`: one page, no external requests.
   hides elsewhere; a set with one group hides the stage row entirely, because
   "All" against one option is a control that cannot do anything.
 
-  ⚠️ **No entry's full text lives here, and that is the one-copy rule holding.**
-  Every set carries position, intent and relations, and names the paper that is
-  canonical for it. One Agent was the exception until Aug 2026, because Rev. 3 of
-  OM-001 had made that paper an argument with nowhere to put its fourteen; they
-  are back in OM-001 and the rule is now uniform — papers hold entries, this page
-  holds the graph. Do not add prose here without removing it there.
+  ⚠️ **Every entry's full text is here, and none of it is written here.** The 45
+  entries in `#store` are reproduced from the papers by `scripts/entries.mjs`,
+  which `build_poster.mjs` runs and CI re-runs — so the region between the
+  `ENTRIES:BEGIN` / `ENTRIES:END` markers is generated, and a paper edited
+  without a rebuild turns the PR red instead of leaving this page quoting last
+  week's wording. **Do not type entry prose into `patterns.html`.** Edit
+  `om-00N.html` and rebuild.
+
+  ⚠️ **This did not repeal the one-copy rule; it moved what enforces it.** From
+  Aug 2026 the rule was "no prose here", because two *hand-kept* copies drift and
+  the drift is invisible — nobody diffs a catalogue against a paper. There is
+  still exactly one **authored** copy of every entry and it is in the paper. What
+  changed is the reason: clicking a name in the chart used to land on the intent,
+  the position, the relations, and a link reading "the full entry … is in
+  OM-001 →". Two hops to read one pattern, on a page that looked like the entry
+  without being it. The chart's names are a promise and they now open the thing
+  they name.
+
+  ⚠️ **The renderer was never removed, only starved.** `show()` has always taken
+  a full-text branch when it found `[data-pat="<id>"]`, lifted that entry's
+  `<figure>` into the hero, and hidden `.prose .part`, `h2` and `figure` so
+  nothing is drawn twice. Measured against the pre-`e1ec1f1` hand-written store
+  blocks: 55 lines of 55 identical, the one difference being `<p class="part">`,
+  which is hidden anyway. So the generator supplies a copy of what used to be
+  typed, and the `.elsewhere` stub is now an unreachable backstop rather than the
+  normal path.
+
+  ⚠️ **Bare fragment links are rewritten to their paper.** The papers
+  cross-reference their own sections (`#slot-3`, `#open-questions`); those
+  anchors do not exist here, and nine links pointed at nothing until the harness
+  caught them. The tempting exception — leave `#gather` alone so a prose link
+  keeps you inside the catalogue — is *broken*, not nicer: the explorer routes on
+  `popstate`, and a same-page fragment click fires `hashchange`, which nothing
+  here listens for.
 
   Relations cross the sets freely and **say so** (`→ Many Agents` on the
   citation), and following one switches the rail with you. `Cited by` counts every

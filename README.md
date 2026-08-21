@@ -35,7 +35,7 @@ each file is held to and the traps that are easy to walk into.
 |---|---|---|
 | `/` | `index.html` | **generated** — the chart, and the front door |
 | `/contents` | `contents.html` | **generated** — the second front door: the name and the list |
-| `/patterns` | `patterns.html` | hand-authored. **The catalogue, and the one place the graph lives** |
+| `/patterns` | `patterns.html` | hand-authored, **except** the entry text in `#store`, reproduced from the papers. **The catalogue, and the one place the graph lives** |
 | `/poster` | `poster.html` | **generated** — the whole language on one A1 sheet |
 | `/om-001` | `om-001.html` | hand-authored. Fourteen patterns for one agent |
 | `/om-002` | `om-002.html` | hand-authored. Eight for many agents |
@@ -56,12 +56,19 @@ hand edit is lost at the next run.**
 
 ```bash
 node scripts/build_poster.mjs      # /, /contents and /poster — from patterns.html
+                                   # and the entry text in /patterns — from the papers
 ```
 
 `build_poster.mjs` reads the catalogue out of `patterns.html` and nothing else,
 so the chart, the sheet and the front page cannot describe a catalogue the
 catalogue does not have. If you change an entry in `patterns.html`, re-run it
 and commit what it writes.
+
+It then runs `scripts/entries.mjs`, which goes the other way: it reproduces each
+pattern’s full text **out of its paper** into `#store` in `patterns.html`, so a
+name clicked in the chart opens the entry rather than a summary of it. There is
+still exactly one authored copy of every entry and it is in the paper — edit
+`om-00N.html`, never the copy.
 
 `scripts/render_paper_markdown.py` runs the other way, and the direction is the
 point: it consumes a *page* and prints a markdown rendering of it, for places
@@ -76,7 +83,7 @@ node verify.mjs            # against site/, over real HTTP
 node verify.mjs --live     # against organonmind.org
 ```
 
-Just under a thousand assertions: every published fragment still resolves and
+Over a thousand assertions: every published fragment still resolves and
 scrolls, every entry anchor lands on its own heading, the explorer and the
 papers name the same set of patterns, every internal link has a target, and no
 page throws. It prints what it covered before it prints that it passed.
