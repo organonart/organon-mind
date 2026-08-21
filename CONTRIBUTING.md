@@ -71,23 +71,33 @@ from that table.**
 says so in its first comment. A hand edit to any of them is discarded at the
 next build — silently, and possibly weeks later.
 
+So is one region of `patterns.html`: the 45 entries in `#store`, between the
+`ENTRIES:BEGIN` and `ENTRIES:END` markers, reproduced from the papers. The rest
+of that file is hand-authored.
+
 ```bash
-node scripts/build_poster.mjs          # /, /contents, /poster
+node scripts/build_poster.mjs          # /, /contents, /poster, and #store
 ```
 
 Change the source, re-run the generator, commit what it writes.
 
-### 3. One copy of each entry
+### 3. One *authored* copy of each entry
 
-Papers hold entries; `/patterns` holds the graph. An entry's prose lives in its
-paper and nowhere else — the explorer carries position, intent and relations
-only. Adding prose to the explorer without removing it from the paper creates a
-second copy, and the second copy is the one that goes stale.
+An entry's prose is written in its paper and nowhere else. `/patterns` shows the
+full text too — a name in the chart should open the thing it names, not a
+summary and a second click — but it does not *hold* it: the 45 entries in
+`#store` are reproduced by `scripts/entries.mjs` at build time, between the
+`ENTRIES:BEGIN` / `ENTRIES:END` markers.
+
+So the rule is unchanged in substance and sharper in practice: **edit the paper,
+never the copy.** Typing prose into `patterns.html` loses it at the next build.
+Editing a paper without rebuilding turns your PR red, which is the point — the
+second copy cannot go stale, because nobody maintains it.
 
 ### 4. The view switch exists three times
 
 `/` and `/contents` are generated from one array in `scripts/landing.mjs`.
-`/patterns` is hand-authored and carries a typed copy. Change one and the
+`/patterns` carries a typed copy in its hand-authored part. Change one and the
 harness will tell you the three disagree — that check is the only thing keeping
 the copy honest.
 
@@ -98,7 +108,7 @@ cd scripts/verify && npm install && npx playwright install chromium
 node verify.mjs
 ```
 
-Just under a thousand assertions, and it prints what it covered before it prints
+Over a thousand assertions, and it prints what it covered before it prints
 that it passed. If you changed anything under `site/`, this is not optional —
 most of what it checks is invisible in a diff.
 

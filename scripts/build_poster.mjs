@@ -27,6 +27,7 @@ import { dirname, join } from 'node:path';
 import { load, classify, SPINE, BAND } from './pattern_graph.mjs';
 import { landingPage, NAV, SWITCH_CSS } from './landing.mjs';
 import { contentsPage } from './contents.mjs';
+import { inject as injectEntries } from './entries.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = join(ROOT, 'site');
@@ -713,4 +714,16 @@ if (!process.argv.includes('--dry')) {
     '\n</urlset>\n';
   await writeFile(join(SITE, 'sitemap.xml'), sitemap, 'utf8');
   console.log(`wrote ./site/sitemap.xml  (${pages.length} URLs)`);
+
+  // ⚠️ LAST, and it writes back into patterns.html — the file everything above
+  // READ. That is safe only because it touches nothing the graph is lifted
+  // from: `var LANGS` and `var P` live in the inline script, the entries land
+  // in #store, and the two never meet. Do not move this earlier on the
+  // assumption that order does not matter; it does not matter yet.
+  //
+  // Running it from here is the whole guarantee. CI rebuilds and fails if the
+  // tree moved, so a paper edited without a rebuild turns the PR red instead of
+  // leaving the catalogue quietly reproducing last week's wording.
+  const { count } = await injectEntries();
+  console.log(`wrote ./site/patterns.html  (${count} entries reproduced from the papers)`);
 }
