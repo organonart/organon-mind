@@ -3,6 +3,11 @@
 The page for **organonmind.org**, Organon Mind's own address. Same letterhead
 lineage as `organon.art`: one page, no external requests.
 
+This file is about the pages: what each one is, how it is built, and what breaks
+if you touch it wrongly. **[`STYLE.md`](STYLE.md) is about the prose inside
+them** — what each template field is for, and the two ways an entry has already
+gone wrong in public. Read it before writing into a paper.
+
 - `index.html` — **the landing page. GENERATED**, do not hand-edit. Run
   `node scripts/build_poster.mjs`, which writes this and `poster.html` from the
   same graph; the composition is `scripts/landing.mjs`.
