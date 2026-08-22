@@ -156,11 +156,38 @@ That is the bar, and it is checkable. Two consequences:
 | squad, fleet | **team**, defined at first use in each paper that uses it: *several agents working on one task for one person* | The section is already called Many Teams and the subtitle already says groups. |
 | taste (meaning decorative output) | **decoration** | The pattern is called Cap the Decoration. The literal word is right there. |
 | instrument (meaning status output) | **status**, or name the signal | Retired by OM-001 Rev. 2 and then used anyway. |
+| slot, where it means a display position (OM-004, 7 uses) | **single-channel** — the words that paper already uses of itself | Two of our own senses for one word is what the *Show the Handover* ruling forbids. The other sense cannot move; see below. |
 
 **Kept.** These are domain vocabulary a software architect either knows or can
 take from one definition: *agent, harness, turn, unit, actuator, renderer,
 gauge, cue, seam, rung, arrangement, commission*. Define each once, at first use
 in the paper, and then use it flatly.
+
+**`unit` is kept, and must be defined** at first use in every paper that uses
+it. It is the most-used house noun in the catalogue — 225 uses, 185 of them in
+OM-002 and OM-003 — and it is defined nowhere:
+
+> A unit is a piece of work one agent can run to completion on its own.
+
+⚠️ The definition must say **work, not people**. Now that a group of agents is a
+*team*, "unit" is one step from reading as an organisational unit, which is the
+opposite of what it means.
+
+⚠️ Do not "clarify" it by expanding it. **`unit of work` is Fowler's Unit of
+Work pattern**, which means something else entirely, and the reader this
+catalogue is written for is exactly the person who knows it. The phrase appears
+zero times today; keep it that way. `task` is taken as well: One Agent's
+subtitle is "one task, start to finish", so a task is the whole job rather than
+a piece of one.
+
+**`slot` keeps its OM-003 sense and loses its OM-004 one**, and that direction
+is forced rather than preferred. `slot-1` to `slot-8` are published ids in
+OM-003, linked from ten sections and from another document, and harness check 3
+asserts all eight resolve and scroll. Those anchors are owed forever, so the
+seven uses in OM-004 are the ones that give way.
+
+Ordinary English is not in scope: "the Gang of Four template has no slot for
+this" is idiom, not a term.
 
 The test for any candidate is not whether it is vivid. It is: **would a reader
 who has never seen this project understand it, or is it ours?**
