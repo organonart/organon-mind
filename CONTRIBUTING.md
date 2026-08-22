@@ -118,10 +118,16 @@ the papers name the same set of patterns, so a half-applied change fails loudly.
 
 ## House style
 
-Match the surrounding prose. It is plain, it states costs beside benefits, and
-it does not use a word where a shorter one works. Names follow one rule:
-**containers plain, leaves vivid** — build on vocabulary the reader already has,
-and a name that needs a glossary entry has failed.
+[`site/STYLE.md`](site/STYLE.md) is the guide, and it is two pages. Read it
+before writing prose into a paper.
+
+The short version: match the surrounding prose. It is plain, it states costs
+beside benefits, and it does not use a word where a shorter one works. Names
+follow one rule: **containers plain, leaves vivid** — build on vocabulary the
+reader already has, and a name that needs a glossary entry has failed. The
+corollary, which the guide is mostly about: **the metaphor lives in the name and
+the body is literal.** An entry has to read top to bottom for someone who knows
+Gang of Four and has never read another entry here.
 
 Where a number does appear it should be one somebody actually counted, and it
 should say where it came from. Most entries need no numbers at all, and one that

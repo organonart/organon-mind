@@ -163,6 +163,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
         <dt>Follows</dt><dd><a href="/om-001">OM-001</a> · <a href="/om-002">OM-002</a> · <a href="/om-003">OM-003</a> · <a href="/patterns">the catalogue</a></dd>
         <dt>Status</dt><dd>Current</dd>
       </dl>
+      <p class="revision">Rev. 3 — 22 Aug 2026. <strong>Two entries rewritten to be readable on their own.</strong> <a href="#deference-at-rest">Deference at Rest</a> and <a href="#cap-the-decoration">Cap the Decoration</a> carried this paper’s worst prose, and it was quoted back at the programme in public. Two defects, both real. Its <em>Intent</em> borrowed <em>decidable</em> from computability to mean “the system can tell”, and hid the pattern behind a caveat about how far it is implemented — while the plain statement of the mechanism sat two fields below, in <em>Structure</em>. And a pair of undefined metaphors, <em>taste</em> for decorative output and <em>instrument</em> for a status signal, were doing load-bearing work across <em>Intent</em>, <em>Participants</em> and <em>Consequences</em> of both entries; <em>instrument</em> in particular had already been retired from this catalogue once, by OM-001 Rev. 2, for colliding with another sense. Both entries now say the same things in the words their own <em>Applicability</em> and <em>Implementation</em> fields were already using — <em>decoration</em> and <em>status</em>. <strong>No mechanism, id, name, relation or claim has changed.</strong> <em>principal</em> becomes <em>person</em> in these two entries, ahead of the rest of the catalogue. The rules applied are in the repository at <code>site/STYLE.md</code>.</p>
       <p class="revision">Rev. 2 — 20 Aug 2026. <strong>The measurement apparatus is withdrawn.</strong> The <em>Evidence</em> field is gone from all fourteen entries, along with the figures and the counts that came out of a period of instrumented testing on one speech pipeline — replay totals, error rates, timings, and the weighting grid. Nothing that was <em>observed</em> has been removed: the entries still rest on building these two things and living with them, and the places where something has never actually been watched happening still say so on their faces. What has gone is the claim that the catalogue is formally verified, which was true of a handful of figures about a voice pipeline and of nothing else here. The template is accordingly OM-001’s plus this paper’s own addition, and no longer carries OM-003’s <em>Evidence</em> field — which stays in OM-003, where it names sources of practice rather than results of testing. No entry, no id and no relation changed.</p>
       <p class="revision">Rev. 1 — 15 Aug 2026. First publication. The case for this paper — what it corrects in <a href="/om-001">OM-001</a>, the field it adds to the template and the failure mode that field has, the evidence position, and the claims this programme has had to withdraw — is <a href="/om-005">OM-005 · <em>On the First Four Papers</em></a> §§14–18. This document is the fourteen patterns, presented.</p>
     </div>
@@ -431,14 +432,14 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <h2>Deference at Rest</h2>
 
       <p class="field first">Intent</p>
-      <p>A person's hand on the device always wins — implemented only where <em>wins</em> is decidable, which is when nothing is moving.</p>
+      <p>A person acting directly on a shared device overrides the agent. The agent notices by comparing what the device reports against its own last command, which it can only do while it is idle — during activity there is no single command to compare against.</p>
 
       <p class="field">Motivation</p>
       <p>The lamp has other controllers: a vendor app, a schedule, a switch. One was observed changing state on its own mid-session, which is also why capture-and-restore was rejected — it would have fought whatever else was driving it, and a renderer restoring what it captured is indistinguishable from a renderer with a bug.</p>
       <p>So the renderer watches for its commanded state and the device's actual state disagreeing, and treats the disagreement as a person. But it can only do that at rest. A live cue repaints every frame; comparing observed state against a moving target registers a mismatch almost immediately, and agent control would suspend itself permanently within seconds of the first conversation. <strong>The at-rest restriction is not a shortcut — it is what makes the feature possible at all.</strong></p>
 
       <p class="field">Applicability</p>
-      <p>Any actuator with more than one controller, where one of them is a person and cannot be asked what they meant.</p>
+      <p>Any actuator with more than one controller, one of them a person who cannot be asked what they meant.</p>
 
       <p class="field">Structure</p>
       <p>A poll compares the device's reported state against the renderer's last commanded state, but only through an accessor that returns nothing unless the renderer is idle. That accessor is the pattern: the comparison is not <em>disabled</em> during activity so much as <em>undefined</em>, because during activity there is no single commanded state to compare against. A mismatch drops the current decorative state and refuses new ones for a cooldown.</p>
@@ -450,7 +451,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p>Bounds <strong>Closed Vocabulary</strong>: a named state can be dropped by a hand, so the vocabulary's guarantee is about what may be <em>asked for</em> rather than what will be shown. Deliberately does <strong>not</strong> bound <strong>Verified Presence</strong> or any live cue, for the reason under Consequences.</p>
 
       <p class="field">Consequences</p>
-      <p><em>Gain:</em> the agent yields without needing to be told, and without the person learning a gesture. <em>Cost:</em> a poll, and a cooldown that is a guess. <em>Trap:</em> scope. The suspension covers decoration only. Dimming a lamp by hand is a preference about the room; it is not a wish to stop being told the agent is unreachable. <strong>A hand silences taste and leaves the instrument alone</strong> — the same cut <strong>Cap the Decoration</strong> makes along a different axis, which is the best available evidence that the cut is in the right place.</p>
+      <p><em>Gain:</em> the agent yields without needing to be told, and without the person learning a gesture. <em>Cost:</em> a poll, and a cooldown that is a guess. <em>Trap:</em> the suspension covers decorative states only, and must. Dimming a lamp by hand is a preference about the room; it is not a wish to stop being told the agent is unreachable, so the states that report agent health keep running. <strong>Cap the Decoration</strong> (7) draws that same line under a different pressure: here a hand on the device, there the hour of the night. Two unrelated pressures landing on one boundary is the best evidence available that the boundary is in the right place.</p>
 
       <p class="field">Implementation</p>
       <p>Poll device status every 20 s against the last commanded state; a mismatch drops the current scene and refuses new ones for 30 minutes. Gate the comparison on an accessor that yields nothing unless the renderer is at rest, and put the gate in the accessor rather than at each call site, so a future caller inherits it without knowing it exists.</p>
@@ -467,7 +468,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <p>If the renderer were the only controller — no vendor app, no schedules, no physical switch. Worth checking rather than assuming, since the second controller is usually the one nobody remembers installing.</p>
 
       <p class="field">Related patterns</p>
-      <p>Bounds <strong>Closed Vocabulary</strong> (3). Shares its cut with <strong>Cap the Decoration</strong> (7). Ranked by <strong>One Ordering, One Place</strong> (5). Yields to the principal in the sense <strong>Approval Gate</strong> (<a href="/om-001#approval-gate">OM-001, 10</a>) formalises, with the difference that there is no gate to pass through — the person acts on the world and the machine notices.</p>
+      <p>Bounds <strong>Closed Vocabulary</strong> (3). Shares its cut with <strong>Cap the Decoration</strong> (7). Ranked by <strong>One Ordering, One Place</strong> (5). Yields to the person in the sense <strong>Approval Gate</strong> (<a href="/om-001#approval-gate">OM-001, 10</a>) formalises, with the difference that there is no gate to pass through — the person acts on the world and the machine notices.</p>
     </div>
   </div>
 </section>
@@ -610,34 +611,34 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       <h2>Cap the Decoration</h2>
 
       <p class="field first">Intent</p>
-      <p>Bound the layer's <em>taste</em> by context and leave its <em>instruments</em> alone, so that a decorative capability never becomes a reason to switch the whole channel off.</p>
+      <p>Constrain an ambient channel's decorative output by context and exempt its status output from the constraint, so that carrying decoration never becomes a reason to switch the whole channel off.</p>
 
       <p class="field">Motivation</p>
-      <p>An agent that can name a scene can name a bright one at 2am. The obvious defence is a global brightness ceiling by hour — simple, and wrong, because it caps the alarm too. <strong>Capping taste is protective; capping an instrument is just breaking it quietly.</strong> An error you cannot see at 2am is exactly the failure this layer exists to prevent.</p>
+      <p>An agent that can name a scene can name a bright one at 2am. The obvious defence is a global brightness ceiling by hour — simple, and wrong, because it caps the alarm too. <strong>Capping decoration is protective; capping a status signal is breaking it quietly.</strong> An error you cannot see at 2am is exactly the failure this layer exists to prevent.</p>
       <p>So the clamp is applied at one point — a decorative state's brightness on its way to the device — and conversation cues pass it untouched. They last seconds, they are responses to something you just did, and they are the entire reason the channel is trusted at all.</p>
-      <p>This is the same cut <strong>Deference at Rest</strong> makes, one axis over. A hand on the lamp silences taste and leaves the instrument alone; the hour silences taste and leaves the instrument alone. Two unrelated pressures, and the boundary lands in the same place both times — which is the best evidence available that it is the right boundary and not a convenience.</p>
+      <p><strong>Deference at Rest</strong> (4) draws the same line under a different pressure. There it is a hand on the lamp that suppresses decoration and leaves the status signals alone; here it is the hour. Two unrelated pressures, and the boundary lands in the same place both times — which is the best evidence available that it is the right boundary and not a convenience.</p>
 
       <p class="field">Applicability</p>
-      <p>Any ambient layer carrying both decoration and signal, whose acceptable intensity varies with a context the layer can observe — hour, occupancy, a presentation, a meeting.</p>
+      <p>Any ambient layer carrying both decoration and status signals, whose acceptable intensity varies with a context the layer can observe — hour, occupancy, a presentation, a meeting.</p>
 
       <p class="field">Structure</p>
-      <p>One clamp, on one path. Decorative states pass through a brightness ceiling that is a function of context; instrument states reach the device by a route that has no ceiling on it. The two paths are separated at the point where a state is classified, not at the point where it is drawn, so a new state cannot reach the device without someone having decided which kind it is.</p>
+      <p>One clamp, on one path. Decorative states pass through a brightness ceiling that is a function of context; status states reach the device by a route that has no ceiling on it. The two paths are separated at the point where a state is classified, not at the point where it is drawn, so a new state cannot reach the device without someone having decided which kind it is.</p>
 
       <p class="field">Participants</p>
-      <p><strong>Decoration</strong>, which is capped. <strong>Instruments</strong>, which are not. <strong>The context</strong> — here the local hour — which is read rather than configured. <strong>The classifier</strong>, which is the only place the distinction exists and therefore the only place it can be got wrong.</p>
+      <p><strong>Decorative states</strong>, which are capped. <strong>Status states</strong>, which are not. <strong>The context</strong> — here the local hour — which is read rather than configured. <strong>The classifier</strong>, which is the only place the distinction exists and therefore the only place it can be got wrong.</p>
 
       <p class="field">Collaborations</p>
-      <p>Prices <strong>Closed Vocabulary</strong>: this cap is what that capability costs, and the design is that the price is charged to taste alone. Must not reach <strong>Darkness as Alarm</strong> or any live cue. Shares its cut with <strong>Deference at Rest</strong>.</p>
+      <p>Prices <strong>Closed Vocabulary</strong>: this cap is what that capability costs, and the design is that the price is charged to decoration alone. Must not reach <strong>Darkness as Alarm</strong> or any live cue. Shares its cut with <strong>Deference at Rest</strong> — both draw the line between decoration and status, and neither lets a limit on the first reach the second.</p>
 
       <p class="field">Consequences</p>
-      <p><em>Gain:</em> the layer stays on at night. Without the cap the honest choice is to disable the whole thing after hours, which disables the alarm — the decorative capability would have cost the instrument. <em>Cost:</em> two classes of output now exist and every new state must be classified, silently wrong in both directions: a capped instrument is unreadable at night, an uncapped decoration is a light in your eyes. <em>Trap:</em> the failure direction of the clock. <em>Trap:</em> the boundaries are guesses — the hours and the ceiling are unmeasured, a fixed window is wrong for a household on other hours, and wrong twice a year.</p>
+      <p><em>Gain:</em> the layer stays on at night. Without the cap the honest choice is to disable the whole thing after hours, which disables the alarm — the decorative capability would have cost the status signal. <em>Cost:</em> two classes of output now exist and every new state must be classified, silently wrong in both directions: a capped status state is unreadable at night; an uncapped decorative one is a light in your eyes. <em>Trap:</em> a clock reading that fails toward day lifts the cap instead of applying it — see Implementation, where the failure direction is the detail worth copying. <em>Trap:</em> the boundaries are guesses — the hours and the ceiling are unmeasured, a fixed window is wrong for a household on other hours, and wrong twice a year.</p>
 
       <p class="field">Implementation</p>
       <p>Clamp decorative brightness between 22:00 and 07:00 local, on the decorative path only. The window wraps midnight, so it is a union rather than a range, and writing it as a range is the obvious bug.</p>
       <p>The detail worth copying is the <strong>failure direction</strong>. The structure the clock is read into is zeroed before the call, and a zeroed structure reads as hour 0 — inside the night window. If the call does nothing whatsoever, the cap engages rather than lifts. <em>A cap that fails open is not a cap.</em></p>
 
       <p class="field">Failure signature</p>
-      <p>Not a bright light at 2am — that one announces itself. The failure that costs you is the other direction: someone reasonably decides the layer is too much at night, switches it off wholesale, and the alarm goes with it. Nothing then reports that the channel has stopped being an instrument, because a channel that is off reports nothing by definition.</p>
+      <p>Not a bright light at 2am — that one announces itself. The failure that costs you is the other direction: someone reasonably decides the layer is too much at night, switches it off wholesale, and the alarm goes with it. Nothing then reports that the channel has stopped reporting, because a channel that is off reports nothing by definition.</p>
 
       <p class="aside">⚠️ <strong>Never observed at night.</strong> Nobody has recorded whether the
       ceiling is right, and the decision to leave conversation cues uncapped is untested in exactly
@@ -645,7 +646,7 @@ figcaption{font-size:.83rem;color:var(--muted);margin-top:.55rem;max-width:var(-
       it read.</p>
 
       <p class="field">How you would know this is unnecessary</p>
-      <p>If the layer carried no decoration. A channel that only ever reports state has nothing to cap, because everything on it is an instrument and an instrument you cannot see is broken. The cap exists <strong>because</strong> Closed Vocabulary let taste onto the channel — so the test is not <em>is the cap working</em> but <em>is there anything decorative here at all</em>, and if the answer is no, both patterns go together.</p>
+      <p>If the layer carried no decoration. A channel that only ever reports state has nothing to cap, because every state on it is a status signal and a status signal you cannot see is broken. The cap exists <strong>because</strong> Closed Vocabulary let decoration onto the channel — so the test is not <em>is the cap working</em> but <em>is there anything decorative here at all</em>, and if the answer is no, both patterns go together.</p>
 
       <p class="field">Related patterns</p>
       <p>Prices <strong>Closed Vocabulary</strong> (3) — this cap is what that capability costs. Shares its cut with <strong>Deference at Rest</strong> (4). Must not reach <strong>Darkness as Alarm</strong> (6). Ranked by <strong>One Ordering, One Place</strong> (5).</p>
