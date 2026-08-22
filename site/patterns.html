@@ -2317,7 +2317,7 @@ ExecStart=/bin/sh -c 'if swapon --show=NAME --noheadings | grep -qx /swapfile; \
       <p>Reconcile N reports into one account, surfacing where they disagree rather than letting the disagreement land in the artifact.</p>
 
       <p class="field">Motivation</p>
-      <p>Four reports arrive. Read in series, each is internally coherent and each says its unit succeeded. Two of them touched the same file. One proceeded on an assumption that another's work contradicts. Read one after another, that contradiction is invisible: nothing in any single report is wrong, and the conflict exists only <em>between</em> them.</p>
+      <p>Four reports arrive. Read in series, each is internally coherent and each says its unit succeeded. Two of them touched the same file. One proceeded on an assumption that another's work contradicts. Read one after another, the reports hide that contradiction: nothing in any single one is wrong, and the conflict exists only <em>between</em> them.</p>
       <p>This is where fan-out either pays off or quietly produces a mess with several confident authors. The failure has a distinctive shape: a merge conflict that is not textual. The files merge cleanly and the system does not work, because two units made compatible edits under incompatible assumptions.</p>
       <p>The temptation is concatenation, and it is strong because it looks like the job is being done. Pasting four reports in series is not a gather; it is a pile with a covering note.</p>
 

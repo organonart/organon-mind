@@ -156,7 +156,7 @@ That is the bar, and it is checkable. Two consequences:
 | squad, fleet | **team**, defined at first use in each paper that uses it: *several agents working on one task for one person* | The section is already called Many Teams and the subtitle already says groups. |
 | taste (meaning decorative output) | **decoration** | The pattern is called Cap the Decoration. The literal word is right there. |
 | instrument (meaning status output) | **status**, or name the signal | Retired by OM-001 Rev. 2 and then used anyway. |
-| slot, where it means a display position (OM-004, 7 uses) | **single-channel** — the words that paper already uses of itself | Two of our own senses for one word is what the *Show the Handover* ruling forbids. The other sense cannot move; see below. |
+| slot, where it means a display position (OM-004, 7 uses) | **single-channel**, the words that paper already uses of itself | Two of our own senses for one word is what the *Show the Handover* ruling forbids. The other sense cannot move; see below. |
 
 **Kept.** These are domain vocabulary a software architect either knows or can
 take from one definition: *agent, harness, turn, unit, actuator, renderer,
@@ -164,8 +164,8 @@ gauge, cue, seam, rung, arrangement, commission*. Define each once, at first use
 in the paper, and then use it flatly.
 
 **`unit` is kept, and must be defined** at first use in every paper that uses
-it. It is the most-used house noun in the catalogue — 225 uses, 185 of them in
-OM-002 and OM-003 — and it is defined nowhere:
+it. It is the most-used house noun in the catalogue (225 uses, 185 of them in
+OM-002 and OM-003), and it was defined nowhere until OM-002 Rev. 6:
 
 > A unit is a piece of work one agent can run to completion on its own.
 
@@ -191,6 +191,33 @@ this" is idiom, not a term.
 
 The test for any candidate is not whether it is vivid. It is: **would a reader
 who has never seen this project understand it, or is it ours?**
+
+### Where a sweep reaches, and where it stops
+
+Replacing a word across a published paper is not a find-and-replace over the
+file. Three boundaries, each of which OM-002 found the hard way.
+
+**Revision histories are never swept.** They record what was true on the day
+each was written, and are owed the same way a published anchor is. OM-002's
+Rev. 3 still reads "*Fleet* is gone, replaced throughout by *squad*", which has
+been false of the document since the sweep and remains true of 15 Aug 2026.
+Leave it, and say in your own revision line that you did.
+
+**A quotation is left alone; an authored mockup is prose and tracks the
+vocabulary.** Both appear under *Sample interaction*, and **the difference
+cannot be read off the markup**: two `<pre>` blocks look identical whether they
+reproduce what a real surface printed or illustrate what one might. The author
+has to know which they wrote. In OM-002, Proposed Dispatch's suggested-task
+card is a reproduction and keeps its wording; Status Board's board is a mockup,
+so `squad · 4 units` became `team · 4 units`. A `<blockquote>` is always a
+quotation.
+
+**Figures are swept, and they are where the words hide.** Go through SVG
+`<text>`, `aria-label` and `<figcaption>` with the prose, and **match
+case-insensitively**: OM-002's row label `A SQUAD` survived a lowercase
+replacement and was caught by counting occurrences afterwards, not by reading.
+Check the box when a label gets longer, and remember that an `aria-label` is
+usually a whole sentence.
 
 ## 8. The em dash is not banned; overusing it is
 
@@ -229,16 +256,46 @@ never has to decide which relation actually holds:
 | joining two independent clauses, usually cause or consequence | a semicolon (Rule 5) |
 | introducing an amplification, an explanation or a list | a colon |
 | introducing a co-ordinate clause with *and* or *but* | a comma before the conjunction (Rule 4) |
+| holding together a sentence that has grown too long | recast, often into parallel form (Rule 15), and use no mark at all |
 | nothing at all | delete it and close the gap (Rule 13) |
 
-Two other tests, both cheap. **More than one dash in a sentence is almost
-always wrong.** More than one in a paragraph: look hard at the second. And
-where *so* is doing the joining, Strunk's own remedy is to recast with *as* or
-*since*, or to start a new sentence.
+That fifth row is the one people forget. Sometimes no mark is the answer:
+*reconstructing by hand a fraction of what the agent already holds — and does
+the decomposition themselves* became *reconstructing … and doing the
+decomposition themselves*, and the parallel participles carry what the dash had
+been carrying.
 
-Do not answer every dash with the same mark. Replacing all of them with full
-stops turns the page to gravel (Rule 14), and replacing all of them with
-semicolons is the same failure wearing a different mark.
+Two other tests, both cheap. **More than one dash in a sentence is almost
+always wrong**, with one exemption: a paired aside is a single construction
+using two marks, not two dashes. More than one in a paragraph: look hard at the
+second. And where *so* is doing the joining, Strunk's own remedy is to recast
+with *as* or *since*, or to start a new sentence.
+
+**The paired aside has three answers, and choosing between them is most of the
+work.** Use **parentheses** when it is genuinely an aside the sentence could
+survive without, and in *Participants*, where Gang of Four parenthesise:
+*Other controllers (a vendor app, a schedule, a switch), which are not
+observable*. Use **commas** (Rule 3) when it reads inside the sentence rather
+than beside it, which is the default and covers most cases: *every claim here,
+including the claim that any of this is worth doing, is argued rather than
+demonstrated*. **Recast** when it is neither, which is what the dashes were
+signalling when the aside carries the point rather than qualifying it:
+*Keep an irreducible set that no dispatch may pre-authorise: anything
+outward-facing, anything that publishes, anything that cannot be undone. Route
+those back to a live human.* OM-002 needed all three answers in eight entries.
+
+**Do not answer every dash with the same mark.** Any one mark repeated becomes
+the defect the dash was. All full stops turns the page to gravel (Rule 14); all
+semicolons is that failure wearing a second mark; all colons is it wearing a
+third. This is not a list of two bad choices; it is a property of repetition,
+and it applies to whichever mark you happen to reach for.
+
+The unit is the paragraph, not the paper. Three colons in one paragraph of
+OM-002's *The Return Path* read worse than the dashes they replaced. So
+**re-read each paragraph for mark variety after you have fixed its dashes, and
+count rather than trusting your ear**: the five-semicolon sentence this
+catalogue had to fix was written by someone who had just finished warning about
+semicolons, and it was the count that caught it, not the re-reading.
 
 **Before.** *Cap the Decoration*, Consequences:
 
@@ -248,9 +305,20 @@ semicolons is the same failure wearing a different mark.
 
 > *Trap:* the boundaries are guesses; the hours and the ceiling are unmeasured
 
-Structural dashes are appropriate use and stay: the `Rev. 3 — 22 Aug 2026`
-separator in a revision line, and the same use in a heading or a label. There
-are 22 across the papers' revision histories and they are deliberate.
+Structural dashes are appropriate use and stay. Three forms, all typography
+rather than punctuation:
+
+- the `Rev. 3 — 22 Aug 2026` separator in a revision line, 22 of them across
+  the five papers;
+- the same separator in a page title, a heading or a diagram label;
+- the bibliographic `Author, Title — annotation` in a *Sources and lineage*
+  list, which is a citation convention and is used consistently down each
+  list. OM-002 §13 has three and they stay.
+
+The test is whether the dash separates two *fields* rather than joining two
+parts of a sentence. If every sibling in the list uses it, it is a form. If one
+row uses it and the others use a comma, it is a stray, and OM-002 had one of
+those in its retired-ids table.
 
 Only `—` is in scope here. En dashes in ranges (`§7–§12`) and hyphens in
 compounds are unaffected.
