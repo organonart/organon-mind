@@ -35,6 +35,7 @@ const LIVE = process.argv.includes('--live');
 const BASE = LIVE ? 'https://organonmind.org' : `http://127.0.0.1:${PORT}`;
 
 let pass = 0;
+let layoutChecked = 0;
 const fails = [];
 const ok = (cond, what) => { if (cond) pass++; else fails.push(what); };
 
@@ -369,6 +370,50 @@ if (rb.status === 200) {
   ok(!/^Disallow:\s*\/\s*$/m.test(txt), `/robots.txt: disallows the whole site`);
 }
 
+// 12 · the catalogue is two panes side by side, and nothing else is in the grid.
+//
+// WHY THIS EXISTS. /patterns shipped on 20 Aug 2026 with its desktop layout
+// inside out: the rail rendered in the detail's column and the detail dropped
+// onto a second row, so the entry you clicked started below the fold. Cause was
+// one element — the mobile drawer's scrim, a child of `.shell`, which is a
+// two-column grid. Its only CSS lived inside the mobile media query while the
+// script unhides it at every width, so above the breakpoint it was a plain
+// static div and the grid dutifully gave it cell 1/1.
+//
+// Nothing here caught it. The harness had 1382 assertions about anchors, links
+// and the graph, and not one about where anything is — a page can satisfy every
+// one of them while being laid out sideways. This is the cheapest guard that
+// would have failed: assert the shape, not the pixels.
+{
+  const WIDE = 1440;
+  await page.setViewportSize({ width: WIDE, height: 900 });
+  await page.goto(BASE + '/patterns#status-board', { waitUntil: 'networkidle' });
+  const geo = await page.evaluate(() => {
+    const box = s => { const e = document.querySelector(s); if (!e) return null;
+      const r = e.getBoundingClientRect();
+      return { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width) }; };
+    const shell = document.querySelector('.shell');
+    const scrim = document.querySelector('.scrim');
+    return {
+      rows: shell ? getComputedStyle(shell).gridTemplateRows.trim().split(/\s+/).length : 0,
+      rail: box('.rail'), detail: box('.detail'),
+      // A grid item is one that is in flow. Out of flow — fixed or absolute —
+      // is the property that matters, not which value achieves it.
+      scrimInFlow: scrim ? ['static', 'relative'].includes(getComputedStyle(scrim).position) : false,
+    };
+  });
+  ok(geo.rows === 1, `/patterns at ${WIDE}px: .shell has ${geo.rows} grid rows, expected 1 — something extra is in the grid`);
+  ok(geo.scrimInFlow === false, `/patterns at ${WIDE}px: .scrim is in flow, so it is a grid item and displaces the panes`);
+  ok(geo.rail && geo.rail.x === 0, `/patterns at ${WIDE}px: rail starts at x=${geo.rail?.x}, expected 0`);
+  ok(geo.detail && geo.rail && geo.detail.x === geo.rail.w,
+     `/patterns at ${WIDE}px: detail starts at x=${geo.detail?.x}, expected ${geo.rail?.w} (immediately right of the rail)`);
+  ok(geo.detail && geo.rail && geo.detail.y === geo.rail.y,
+     `/patterns at ${WIDE}px: detail top is ${geo.detail?.y} and rail top is ${geo.rail?.y} — they are not side by side`);
+  ok(geo.detail && geo.detail.w > geo.rail.w,
+     `/patterns at ${WIDE}px: detail (${geo.detail?.w}px) is not wider than the rail (${geo.rail?.w}px)`);
+  layoutChecked = WIDE;
+}
+
 await browser.close();
 if (server) server.close();
 
@@ -378,7 +423,7 @@ if (server) server.close();
 console.log(`against ${BASE}`);
 console.log(`  ${PAGES.length} pages · ${retiredSeen} retired anchors · ${entries} entries · ` +
             `${new Set(slots).size} slots · ${legacy.length} legacy ids · ${links} links · ` +
-            `${cards} cards`);
+            `${cards} cards · layout at ${layoutChecked}px`);
 console.log(`${pass} assertions passed`);
 if (fails.length) {
   console.error(`\n${fails.length} FAILED:`);
