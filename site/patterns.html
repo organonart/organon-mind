@@ -77,6 +77,22 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--live);outline-offse
 
 .shell{position:fixed;inset:var(--bar) 0 0 0;display:grid;grid-template-columns:var(--rail) minmax(0,1fr)}
 
+/* ⚠️ THE SCRIM MUST BE OUT OF FLOW AT EVERY WIDTH, not only where it is used.
+   It is a mobile drawer device, and it is a child of .shell for a good reason
+   (see the note beside the element). But .shell is a TWO-COLUMN GRID, so a
+   scrim left in normal flow is a third grid item: it takes cell 1/1, pushes the
+   rail into the detail's column and the detail onto a second row. That is the
+   whole desktop catalogue laid out sideways with the entry below the fold, and
+   it shipped in #32 and stood until 21 Aug 2026 — because the only rule for
+   .scrim lived inside the mobile media query while the script unhides the
+   element at every width.
+
+   position, NOT display:none. The `hidden` attribute is what keeps the scrim
+   away with JavaScript off, and it works through the UA stylesheet's
+   `[hidden]{display:none}` — which any author rule setting `display` would
+   beat. Taking it out of flow instead leaves `hidden` in charge. */
+.scrim{position:fixed;inset:var(--bar) 0 0 0;opacity:0;pointer-events:none}
+
 /* ── index rail ── */
 .rail{border-right:1px solid var(--rule-strong);overflow-y:auto;background:var(--raise);
   display:flex;flex-direction:column}
@@ -307,8 +323,9 @@ body[data-view="overview"] .desig .tag{display:none}
   /* A drawer needs to look like one over the page it covers. */
   .rail{box-shadow:0 0 0 100vmax rgba(13,15,18,0);transition:transform .16s ease}
   body.rail-open .rail{box-shadow:2px 0 18px rgba(13,15,18,.16)}
-  .scrim{position:fixed;inset:var(--bar) 0 0 0;z-index:14;background:rgba(13,15,18,.34);
-    opacity:0;pointer-events:none;transition:opacity .16s ease}
+  /* Position and the resting opacity are set at base, above — everything here
+     is what the scrim only needs where a drawer exists to be dimmed behind. */
+  .scrim{z-index:14;background:rgba(13,15,18,.34);transition:opacity .16s ease}
   body.rail-open .scrim{opacity:1;pointer-events:auto}
   .pane{padding:1.7rem 1.2rem 6rem}
 }

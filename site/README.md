@@ -139,6 +139,33 @@ lineage as `organon.art`: one page, no external requests.
   set, and `[`/`]` deliberately step only within the set you are reading. Deep
   links are unchanged and set-agnostic: the id decides the set, so
   `/patterns#gather` lands in Many Agents without a caller knowing it exists.
+
+  ⚠️ **`.shell` is a two-column grid, so anything you put inside it becomes a
+  pane.** The mobile drawer's scrim is a child of `.shell` for a real reason —
+  `.shell` is `position:fixed`, which makes it a stacking context in Chrome, so
+  a scrim outside it paints over the rail at any z-index. But its only CSS lived
+  inside the mobile media query while the script unhides the element at *every*
+  width, so above the breakpoint it was a plain static div and the grid gave it
+  cell 1/1: the rail rendered in the detail's column and the detail dropped to a
+  second row. **The desktop catalogue was laid out sideways from 20 Aug 2026
+  (#32) until 21 Aug**, with the entry you clicked starting below the fold.
+
+  The scrim is now taken out of flow at base — `position`, deliberately not
+  `display:none`, because the `hidden` attribute is what keeps it away with
+  JavaScript off and it works through the UA stylesheet's `[hidden]{display:none}`,
+  which any author `display` rule would beat.
+
+  ⚠️ Note the breakpoints differ and this is easy to misread: the drawer flips
+  at **`52rem`** (832px), while the landing page's chart/ladder switch is at
+  **1080px**. They are unrelated measurements of different things.
+
+  ⚠️ **The harness now asserts the shape of this page, because 1382 assertions
+  about anchors, links and the graph did not notice.** A page can satisfy every
+  one of them while being laid out sideways. Check 12 loads `/patterns` at
+  1440px and asserts one grid row, the scrim out of flow, the rail at x=0 and
+  the detail immediately right of it and wider. Verified as a *negative*
+  control against the broken file before being trusted: six failures, and only
+  those six.
 - `om-001.html` — the paper at `/om-001`. Since Rev. 6 it is the **presentation**
   of the One Agent section and nothing else: §1 introduces it and §§2–15 are the
   fourteen entries in full, in the same template and markup OM-002 and OM-003 use.
@@ -452,6 +479,26 @@ nothing here knows when a page last meaningfully changed, and the other two have
 been ignored by every major crawler for years.
 
 ## Still open
+
+- ⚠️ **The sheet's colophon stamps the UTC build date, and that is a CI trap
+  waiting to fire.** `build_poster.mjs` writes
+  `new Date().toISOString().slice(0, 10)` into `index.html` and `poster.html`.
+  The `generated` job rebuilds and fails if the tree moved — so **a PR whose
+  build day differs from the day its generated files were last committed goes
+  red with a one-line date diff and no real cause.** It has not bitten yet only
+  because every regeneration so far happened to be pushed the same UTC day.
+
+  Already surprising locally, too: this machine is UTC−7, so a rebuild at 17:00
+  on the 21st stamps the 22nd — rebuilding to fix a layout bug moved two files
+  that had nothing to do with it.
+
+  Not fixed here, because it is a question about what the date should *mean* on
+  a plate meant for a wall, not a bug with one right answer. Three options:
+  derive it from the last commit that touched the catalogue
+  (`git log -1 --format=%cs` — meaningful and stable, but adds a git dependency
+  to the builder); drop it; or freeze it to a constant bumped deliberately at
+  publication. The first looks right — the date a reader wants is when the
+  *language* last changed, not when somebody happened to run a script.
 
 - **The section caption and the first entry touch, on every surface.** In
   `build_poster.mjs` the caption is drawn at `headerBase + 21` (14.5 units) and
