@@ -45,10 +45,6 @@
           {
             "context": "anchors, links and the graph",
             "integration_id": 15368
-          },
-          {
-            "context": "generated pages are up to date",
-            "integration_id": 15368
           }
         ]
       }

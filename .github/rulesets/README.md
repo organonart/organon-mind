@@ -140,41 +140,78 @@ where the judgement is:
   📌 The two rules overlap on purpose and are not redundant: this one governs the merge
   button, `required_linear_history` governs any push that reaches `main` by another route.
 
-**`required_status_checks` — a red build cannot be merged.** Both jobs in
-`.github/workflows/verify.yml` are required:
+**`required_status_checks` — a red harness cannot be merged.** Exactly one context is
+required, and which one took measuring:
 
-| `context` | job in `verify.yml` | `integration_id` |
-|---|---|---|
-| `anchors, links and the graph` | `harness` | `15368` |
-| `generated pages are up to date` | `generated` | `15368` |
+| `context` | job in `verify.yml` | `integration_id` | required? |
+|---|---|---|---|
+| `anchors, links and the graph` | `harness` | `15368` | **yes** |
+| `generated pages are up to date` | `generated` | `15368` | no — see below |
+| `Vercel Preview Comments` | — (Vercel app) | `8329` | no — see below |
 
-🚨 **This is the one rule that differs from `organonart/organon` on the merits, and the
-difference is a fact about this repository's workflows rather than a preference.** Over
-there the rule is omitted because `ci.yml` is `paths-ignore`-filtered: a prose-only pull
-request never *starts* the matrix, its checks never report, and a required check that
-never reports is not a slow merge but a permanent one. **`verify.yml` here has no path
-filter at all** — `on: pull_request:` with no `paths` or `paths-ignore` — so every pull
-request runs both jobs and both always report. The deadlock that rules the rule out over
-there cannot happen here.
+🚨 **This rule exists here and does not exist on `organonart/organon`, and the difference
+is a fact about the workflows rather than a preference.** Over there the rule is omitted
+because `ci.yml` is `paths-ignore`-filtered: a prose-only pull request never *starts* the
+matrix, its checks never report, and a required check that never reports is not a slow
+merge but a permanent one. **`verify.yml` here has no path filter at all** — `on:
+pull_request:` with no `paths` or `paths-ignore` — so every pull request runs both jobs
+and both always report.
 
 The `context` strings are the jobs' `name:` values, not their YAML keys, and they were
-read off a real run rather than transcribed from the workflow
-(`GET /commits/{sha}/check-runs` on `f226fb4`). `integration_id: 15368` is the GitHub
-Actions app; without it, any app reporting a check by that name would satisfy the rule.
+read off real runs rather than transcribed from the workflow
+(`GET /commits/{sha}/check-runs`). `integration_id: 15368` is the GitHub Actions app;
+without it, any app reporting a check by that name would satisfy the rule.
+
+🚨 **`generated pages are up to date` is NOT required, because it fails with the
+calendar.** `scripts/build_poster.mjs:530` stamps the build date into the poster
+colophon:
+
+```js
+ORGANON MIND &#183; ${new Date().toISOString().slice(0, 10)}
+```
+
+`toISOString()` is **UTC**, and the job rebuilds and then fails if the tree moved. So on
+any pull request opened on a later UTC day than the last committed rebuild, two lines
+move — the colophon in `site/poster.html` and the same SVG embedded in `site/index.html` —
+and the job goes red **whatever the diff contains**. This was not reasoned about in the
+abstract: the pull request that added this directory touches nothing but `.github/` and
+went red on exactly those two lines, while `anchors, links and the graph` passed.
+
+Requiring it would mean every pull request must carry a poster rebuild stamped with the
+UTC day it merges on, and would turn a night's delay in review into a red build. That is
+the same permanent-block shape that keeps the rule off `organon` entirely, reached
+through a clock instead of a path filter.
+
+> **The trigger.** Make that stamp deterministic and the check becomes requirable in the
+> same change. Three ways, in ascending order of how much they change what the poster
+> asserts: derive it from the last commit that touched the catalogue
+> (`git log -1 --format=%cs -- <paths>`), read it from a field in the source the poster is
+> built from, or drop the date line. All three are editorial decisions about what that
+> date *means*, which is why this file names the problem rather than fixing it.
+>
+> ⚠️ Until then, **not required means you have to look.** A genuinely stale generated page
+> — the failure the job was written to catch — reports identically to a date bump. Read
+> the diff in the job output: two lines, both `ORGANON MIND · <date>`, is the clock;
+> anything else is real.
+
+📌 **The Vercel checks are not required either, and that is a smaller decision.**
+`Vercel Preview Comments` (app `8329`) and the `Vercel` commit status report on every pull
+request. A preview deployment failing is worth seeing and is not worth blocking a prose
+correction over, and the context strings belong to a third party — Vercel can rename them,
+and a required context that no longer reports is a block with no error message.
 
 - **`strict_required_status_checks_policy: false`.** `true` would additionally require the
   branch to be up to date with `main` before merging, forcing an update-and-rewait cycle
   every time anything else lands first. For a repository merging roughly one pull request
-  at a time that is pure friction. *Trigger:* two green branches merging into a red
-  `main` — which, for a repository whose harness cross-checks generated pages against the
-  catalogue, is a real possibility rather than a theoretical one. Turn it on the first
-  time that happens.
+  at a time that is pure friction. *Trigger:* two green branches merging into a red `main`
+  — which, for a repository whose harness cross-checks the explorer against the papers, is
+  a real possibility rather than a theoretical one. Turn it on the first time it happens.
 
-🚨 **The failure mode to know about.** If `verify.yml` is renamed or deleted, or a job's
-`name:` is changed, the required check stops reporting and `main` becomes **unmergeable** —
-including for the pull request making that change. The fix is to `PATCH` the ruleset in
-the same breath, or flip `enforcement` to `disabled`, merge, and flip it back. Changing a
-job's display name in this repository is now a ruleset change.
+🚨 **The failure mode to know about.** If `verify.yml` is renamed or deleted, or the
+`harness` job's `name:` changes, the required check stops reporting and `main` becomes
+**unmergeable** — including for the pull request making that change. The fix is to `PATCH`
+the ruleset in the same breath, or flip `enforcement` to `disabled`, merge, and flip it
+back. Changing that job's display name is now a ruleset change.
 
 ## What is deliberately NOT in `main.json`
 
@@ -302,3 +339,11 @@ modes that matter on a public repository, and it has none of them:
 - **Repository-level `sha_pinning_required` is `false`.** GitHub can enforce SHA pinning
   repository-wide from Settings → Actions → General. Worth knowing it exists; turning it on
   before the first third-party action would be enforcing a rule against nothing.
+
+🚨 **One thing the audit did find, and it is not a security finding: the `generated` job
+goes red with the calendar.** The full reasoning is under `required_status_checks` above.
+The short version is that `build_poster.mjs` stamps the UTC build date into the poster, so
+the job fails on any pull request opened on a later UTC day than the last committed
+rebuild, regardless of the diff. This has been survivable because nothing required the
+check — it is the reason that one stays advisory, and the reason to fix the stamp is that
+a check which cries wolf on the clock is a check people learn to merge past.
